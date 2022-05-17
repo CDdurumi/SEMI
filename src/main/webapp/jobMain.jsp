@@ -293,17 +293,21 @@
             margin: auto;
         }
 
-        .card img {
-            height: 300px;
-        }
-
         .card-body {
-            height: 133px;
+            height: 150px;
+           
+            text-align: center;
+        }
+        .card-text{
+            margin-top: 35px;
         }
 
-        .bottom_board {
+        .editor {
+            width: 100%;
+            margin:auto;
             padding-right: 30px;
             padding-bottom: 30px;
+           
         }
         .board{
             /* text-align: center; */
@@ -339,7 +343,7 @@
     </header>
     <ul class="nav nav2">
         <li class="nav-item">
-            <a class="nav-link nav-link2" href="#">자유게시판</a>
+            <a class="nav-link nav-link2"  href="#">자유게시판</a>
         </li>
         <li class="nav-item">
             <a class="nav-link nav-link2" href="#">여행후기</a>
@@ -383,86 +387,8 @@
 
 
         <div class="row " id="freemain">
-            <div class="col-12 col-md-6 bottom_board">
-                <div class="row border border-2 rounded">
-                    <div class="col-12 border-bottom hotboard_bottom text-center">구인구직 화제</div>
-                    <div class="row  freeboard_bottom">
-                        <div class="col-12 ">
-                            <div class="row freeboard_bottom ">
-                                <div class="col-12 border border-2 rounded">
-                                    <div class="row m-0">
-                                        <div class="col-9 col-md-9 m-0 free_title">글 제목</div>
-                                        <div class="col-3 col-md-3 m-0 p-0">
-                                            <div class="row m-0 p-0">
-                                                <div class="col-12 m-0 p-0 text-center">추천 20</div>
-                                                <div class="col-12 m-0 p-0 text-center">댓글 5</div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-12 border border-2 rounded">
-                                    <div class="row m-0">
-                                        <div class="col-9 col-md-9 m-0 free_title">글 제목</div>
-                                        <div class="col-3 col-md-3 m-0 p-0">
-                                            <div class="row m-0 p-0">
-                                                <div class="col-12 m-0 p-0 text-center">추천 20</div>
-                                                <div class="col-12 m-0 p-0 text-center">댓글 5</div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-12 border border-2 rounded">
-                                    <div class="row m-0">
-                                        <div class="col-9 col-md-9 m-0 free_title">글 제목</div>
-                                        <div class="col-3 col-md-3 m-0 p-0">
-                                            <div class="row m-0 p-0">
-                                                <div class="col-12 m-0 p-0 text-center">추천 20</div>
-                                                <div class="col-12 m-0 p-0 text-center">댓글 5</div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-12 border border-2 rounded">
-                                    <div class="row m-0">
-                                        <div class="col-9 col-md-9 m-0 free_title">글 제목</div>
-                                        <div class="col-3 col-md-3 m-0 p-0">
-                                            <div class="row m-0 p-0">
-                                                <div class="col-12 m-0 p-0 text-center">추천 20</div>
-                                                <div class="col-12 m-0 p-0 text-center">댓글 5</div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-12 border border-2 rounded">
-                                    <div class="row m-0">
-                                        <div class="col-9 col-md-9 m-0 free_title">글 제목</div>
-                                        <div class="col-3 col-md-3 m-0 p-0">
-                                            <div class="row m-0 p-0">
-                                                <div class="col-12 m-0 p-0 text-center">추천 20</div>
-                                                <div class="col-12 m-0 p-0 text-center">댓글 5</div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-12 border border-2 rounded">
-                                    <div class="row m-0">
-                                        <div class="col-9 col-md-9 m-0 free_title">글 제목</div>
-                                        <div class="col-3 col-md-3 m-0 p-0">
-                                            <div class="row m-0 p-0">
-                                                <div class="col-12 m-0 p-0 text-center">추천 20</div>
-                                                <div class="col-12 m-0 p-0 text-center">댓글 5</div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
-                    </div>
-                </div>
-
-            </div>
-            <div class="col-12 col-md-6 bottom_board">
+            
+            <div class="col-12 col-md-6 editor">
                 <div class="row border border-2 rounded">
                     <div class="col-12 border-bottom hotboard_bottom text-center">에디터 추천</div>
                     <div id="carouselExampleIndicators" class="carousel slide" data-bs-ride="carousel">
@@ -477,7 +403,7 @@
                         <div class="carousel-inner text-center">
                             <div class="carousel-item active ">
                                 <div class="card w-100 border-0" style="width: 18rem;">
-                                    <img src="img/다운로드 (1).jpg" class="card-img-top " alt="...">
+                                   
                                     <div class="card-body">
                                         <p class="card-text text-black">Some quick example text to build on the card
                                             title
@@ -488,7 +414,6 @@
                             </div>
                             <div class="carousel-item">
                                 <div class="card w-100 border-0" style="width: 18rem;">
-                                    <img src="img/다운로드 (2).jpg" class="card-img-top w-100" alt="...">
                                     <div class="card-body">
                                         <p class="card-text text-black">Some quick example text to build on the card
                                             title
@@ -499,7 +424,6 @@
                             </div>
                             <div class="carousel-item">
                                 <div class="card w-100 border-0" style="width: 18rem;">
-                                    <img src="img/다운로드.jpg" class="card-img-top" alt="...">
                                     <div class="card-body">
                                         <p class="card-text text-black">웁스덜아널다ㅓㄴㅇㄹ</p>
                                     </div>
