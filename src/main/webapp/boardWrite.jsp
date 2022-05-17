@@ -409,6 +409,20 @@
 
 		//서머노트////////////////////////////////////////////////////////////////////////////
 		$('.summernote').summernote({
+            toolbar: [
+				['style', ['style']],
+				['fontsize', ['fontsize']],
+				['font', ['bold', 'italic', 'underline', 'clear']],
+				['fontname', ['fontname']],
+				['color', ['color']],
+				['para', ['ul', 'ol', 'paragraph']],
+				['height', ['height']],
+				['table', ['table']],
+				['insert',['picture','link','video','hr']],
+				['view', ['codeview','fullscreen']],
+				['help', ['help']]
+			],
+			
             minHeight: 350,             // 최소 높이
             maxHeight: null,             // 최대 높이
             focus: true,                  // 에디터 로딩후 포커스를 맞출지 여부
