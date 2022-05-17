@@ -18,6 +18,7 @@
 <link rel="canonical" href="https://getbootstrap.com/docs/5.1/examples/cover/">
 <link href="/docs/5.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
 
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css" integrity="sha512-KfkfwYDsLkIlwQp6LFnl8zNdLGxu9YAA1QvwINks4PhcElQSvqcyVLLD9aMhXd13uQjoXtEKNosOWaZqXgel0g==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 <link rel="apple-touch-icon" href="/docs/5.1/assets/img/favicons/apple-touch-icon.png" sizes="180x180">
 <link rel="icon" href="/docs/5.1/assets/img/favicons/favicon-32x32.png" sizes="32x32" type="image/png">
 <link rel="icon" href="/docs/5.1/assets/img/favicons/favicon-16x16.png" sizes="16x16" type="image/png">
@@ -26,6 +27,9 @@
 <link rel="icon" href="/docs/5.1/assets/img/favicons/favicon.ico">
 <meta name="theme-color" content="#7952b3">
 
+<meta name="google-signin-scope" content="profile email">
+<meta name="google-signin-client_id" content="YOUR_CLIENT_ID.apps.googleusercontent.com">
+<script src="https://apis.google.com/js/platform.js" async defer></script>
 
 <style>
 @import url('https://fonts.googleapis.com/css2?family=Nanum+Brush+Script&display=swap');
@@ -60,7 +64,7 @@
 	.secondtext{
 		font-size: 61px;
 	}
-	.login{
+	.login, .join{
 		color:black;
 	}
     body{
@@ -151,7 +155,7 @@
     .nav_icon{
         font-size: 1.25rem
     }
-    .show{
+    .show1{
         left: 0
     }
     .body-pd{
@@ -189,7 +193,7 @@
             left: 0;
             padding: 1rem 1rem 0 0
         }
-        .show{
+        .show1{
             width: calc(var(--nav-width) + 156px)
         }
         .body-pd{
@@ -197,6 +201,58 @@
         }
     }
     
+    .card-details{
+    position:relative;
+    display:flex;
+    
+    padding-bottom:20px;
+}
+.card-details input{
+    height:50px;
+    width:100%;
+    font-size:18px;
+    background-color:#f5f5f7;
+    color:black;
+    padding:0px 20px;
+    padding-left:50px;
+    box-sizing:border-box;
+    border-radius:10px;
+/*     outline:none; */
+    border:none;
+}
+.card-details i{
+    position:absolute;
+    left:10px;
+    top:16px;
+    color:black;
+    font-size:18px;
+}
+.card-details span{
+    position:absolute;
+    width:20px;
+    height:20px;
+    background-color:#fff;
+    border-radius:50%;
+    color:#ffe4be;
+    font-size:10px;
+    
+    right:10px;
+    top:15px;
+    opacity:0.4;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    cursor:pointer; 
+}
+
+.fa{
+	color:black;
+}
+
+.card-details span:hover{
+    opacity:1;
+}
+
     /*  */
     .bd-placeholder-img {
         font-size: 1.125rem;
@@ -204,6 +260,9 @@
         -webkit-user-select: none;
         -moz-user-select: none;
         user-select: none;
+      }
+      .loginBtn{
+      	text-aling:center;
       }
 
       @media (min-width: 768px) {
@@ -218,35 +277,40 @@
     <header class="header" id="header">
         <div class="header_toggle"><i class='bx bx-menu' id="header-toggle"></i></div>
         <div>
-        	<a href="#" class="login">login</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-        	<a href="#" class="login" data-bs-toggle="modal" data-bs-target="#exampleModal">join</a>
+        	<a href="#" class="login"  data-bs-toggle="modal" data-bs-target="#exampleModal">login</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        	<a href="#" class="join">join</a>
         </div>
-        
-        <!-- Button trigger modal -->
-<!-- <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
-  Launch demo modal
-</button> -->
 
-<!-- Modal -->
-<!-- <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-  <div class="modal-dialog">
+    </header>
+   
+<div class="modal" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-right" role="document">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+        <h5 class="modal-title text-center" id="exampleModalLabel">로그인</h5>
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
       <div class="modal-body">
-        ...
+        <div class="card-details">
+            <input type="text" id="id-input login_input" placeholder="id">
+            <i class="fa fa-envelope"></i>
+        </div>
+        <div class="card-details">
+            <input type="password" id="password-input login_input" placeholder="password">
+            <i class="fa fa-lock"></i>
+            <span><small class="fa fa-eye-slash passcode"></small></span>
+        </div>
+        <div class="login_api" style="text-align:center">
+        	<a href="#"><img src="/imgsrc/google_signin_buttons/web/1x/btn_google_signin_dark_normal_web.png"></a>
+        </div>
       </div>
       <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-        <button type="button" class="btn btn-primary">Save changes</button>
+        <button type="button" class="btn btn-primary">회원가입</button>
       </div>
     </div>
   </div>
-</div> -->
+</div>
 
-    </header>
     <div class="l-navbar" id="nav-bar">
         <nav class="nav">
             <div> <a href="#" class="nav_logo"> <i class='bx bx-layer nav_logo-icon'></i> <span class="nav_logo-name">쉼표 <br>- 일상의 쉼표를 찍다</span> </a>
@@ -271,7 +335,7 @@
   </header>
 
   <main class="px-3">
-    <span class="firsttext">쉼 표</span>
+    <span class="firsttext"><img src="/imgsrc/logo.png"></span>
     <p class="lead secondtext">지친 일상에 쉼표를 찍다,</p>
     
   </main>
@@ -283,14 +347,14 @@
     </div>
     <!--Container Main end-->
     
-    
+
     
     
     <script>
     
     document.addEventListener("DOMContentLoaded", function(event) {
     	   
-    	const showNavbar = (toggleId, navId, bodyId, headerId) =>{
+    	const show1Navbar = (toggleId, navId, bodyId, headerId) =>{
     	const toggle = document.getElementById(toggleId),
     	nav = document.getElementById(navId),
     	bodypd = document.getElementById(bodyId),
@@ -299,8 +363,8 @@
     	// Validate that all variables exist
     	if(toggle && nav && bodypd && headerpd){
     	toggle.addEventListener('click', ()=>{
-    	// show navbar
-    	nav.classList.toggle('show')
+    	// show1 navbar
+    	nav.classList.toggle('show1')
     	// change icon
     	toggle.classList.toggle('bx-x')
     	// add padding to body
@@ -311,7 +375,7 @@
     	}
     	}
 
-    	showNavbar('header-toggle','nav-bar','body-pd','header')
+    	show1Navbar('header-toggle','nav-bar','body-pd','header')
 
     	/*===== LINK ACTIVE =====*/
     	const linkColor = document.querySelectorAll('.nav_link')
@@ -326,6 +390,24 @@
 
     	 // Your code to run since DOM is loaded and ready
     	});
+    // input id, input pw, password eyes
+    let outer_eye=document.querySelector(".card-details span");
+    let eye=document.querySelector(".passcode");
+    let input=document.querySelector("#password-input");
+    outer_eye.addEventListener('click',function(){
+
+       if(input.type=='password'){
+           input.type="text"; 
+           eye.classList.remove('fa-eye-slash');
+           eye.classList.add('fa-eye');
+         input.classList.add('warning');
+        }else{
+          input.type="password"; 
+          eye.classList.remove('fa-eye');
+          eye.classList.add('fa-eye-slash');
+          input.classList.remove('warning');
+      }
+    });
     </script>
 </body>
 </html>
