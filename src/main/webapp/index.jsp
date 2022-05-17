@@ -49,7 +49,7 @@
     }
     
     body, header, .mainback {
-  		background-image: url('mainthem.jpg');
+  		background-image: url('/imgsrc/mainthem.jpg');
 	}
 	#body-pd {
     margin: 0;
@@ -292,11 +292,11 @@
       </div>
       <div class="modal-body">
         <div class="card-details">
-            <input type="text" id="id-input login_input" placeholder="id">
+            <input type="text" id="id-input" placeholder="id">
             <i class="fa fa-envelope"></i>
         </div>
         <div class="card-details">
-            <input type="password" id="password-input login_input" placeholder="password">
+            <input type="password" id="password-input" placeholder="password">
             <i class="fa fa-lock"></i>
             <span><small class="fa fa-eye-slash passcode"></small></span>
         </div>
@@ -390,6 +390,7 @@
 
     	 // Your code to run since DOM is loaded and ready
     	});
+    
     // input id, input pw, password eyes
     let outer_eye=document.querySelector(".card-details span");
     let eye=document.querySelector(".passcode");
