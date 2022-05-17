@@ -202,6 +202,10 @@
             .height-100 {
                 height: 100vh
             }
+            
+            .note-editor{
+            	background-color: white;
+            }
 
             @media screen and (min-width: 768px) {
                 body {
