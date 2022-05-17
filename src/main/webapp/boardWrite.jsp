@@ -40,10 +40,15 @@
         <meta name="theme-color" content="#7952b3">
         
         <!-- SummerNote -->
-        <link href="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote.min.css" rel="stylesheet">
-        <script src="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote.min.js"></script>
+<!--         <link href="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote.min.css" rel="stylesheet"> -->
+<!--         <script src="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote.min.js"></script> -->
 <!--         <link href="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css" rel="stylesheet"> -->
-        <script src="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+<!--         <script src="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script> -->
+
+        <script src="/summernote-0.8.18-dist/summernote-lite.js"></script>
+        <script src="/summernote-0.8.18-dist/lang/summernote-ko-KR.js"></script>
+        <link rel="stylesheet" href="/summernote-0.8.18-dist/summernote-lite.css">
+        
         <style>
             @import url("https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700&display=swap");
 
