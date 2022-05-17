@@ -295,6 +295,11 @@
 
         .card-body {
             height: 150px;
+           
+            text-align: center;
+        }
+        .card-text{
+            margin-top: 35px;
         }
 
         .editor {
@@ -302,6 +307,7 @@
             margin:auto;
             padding-right: 30px;
             padding-bottom: 30px;
+           
         }
         .board{
             /* text-align: center; */
@@ -419,10 +425,7 @@
                             <div class="carousel-item">
                                 <div class="card w-100 border-0" style="width: 18rem;">
                                     <div class="card-body">
-                                        <p class="card-text text-black">Some quick example text to build on the card
-                                            title
-                                            and make up
-                                            the bulk of the card's content.</p>
+                                        <p class="card-text text-black">웁스덜아널다ㅓㄴㅇㄹ</p>
                                     </div>
                                 </div>
                             </div>
