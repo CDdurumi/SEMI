@@ -415,37 +415,37 @@
     </header>
     <ul class="nav nav2">
         <li class="nav-item">
-            <a class="nav-link nav-link2" href="#">자유게시판</a>
+            <a class="nav-link nav-link2" href="/board/boardMain.jsp">자유게시판</a>
         </li>
         <li class="nav-item">
-            <a class="nav-link nav-link2" href="#">여행후기</a>
+            <a class="nav-link nav-link2" href="/board/gallery.jsp">여행후기</a>
         </li>
         <li class="nav-item">
-            <a class="nav-link nav-link2" href="#">구인구직</a>
+            <a class="nav-link nav-link2" href="/board/jobMain.jsp">구인구직</a>
         </li>
         <li class="nav-item">
-            <a class="nav-link nav-link2" id="page" href="#">맛집</a>
+            <a class="nav-link nav-link2" id="page" href="/board/foodMain.jsp">맛집</a>
         </li>
         <li class="nav-item">
-            <a class="nav-link nav-link2" href="#">숙소리뷰</a>
+            <a class="nav-link nav-link2" href="/board/stayreview.jsp">숙소리뷰</a>
         </li>
     </ul>
     <div class="l-navbar" id="nav-bar">
         <nav class="nav">
-            <div> <a href="#" class="nav_logo"> <i class='bx bx-layer nav_logo-icon'></i> <span class="nav_logo-name">쉼표
+            <div> <a href="/index.jsp" class="nav_logo"> <i class='bx bx-layer nav_logo-icon'></i> <span class="nav_logo-name">쉼표
                         <br>- 일상의 쉼표를 찍다</span> </a>
                 <div class="nav_list">
                     <a href="#" class="nav_link active"> <i class='bx bx-wind nav_icon'></i> <span
                             class="nav_name">날씨</span> </a>
-                    <a href="#" class="nav_link"> <i class='bx bx-message nav_icon'></i> <span
+                    <a href="/board/communityMain.jsp" class="nav_link"> <i class='bx bx-message nav_icon'></i> <span
                             class="nav_name">커뮤니티</span> </a>
-                    <a href="#" class="nav_link"> <i class='bx bx-bus nav_icon'></i> <span class="nav_name">여행정보</span>
+                    <a href="/board/editorReMain.jsp" class="nav_link"> <i class='bx bx-bus nav_icon'></i> <span class="nav_name">여행정보</span>
                     </a>
                     <a href="#" class="nav_link"> <i class='bx bx-user nav_icon'></i> <span
                             class="nav_name">마이페이지</span> </a>
                     <a href="#" class="nav_link"> <i class='bx bx-calendar nav_icon'></i> <span
                             class="nav_name">일정관리</span> </a>
-                    <a href="#" class="nav_link"> <i class='bx bx-home nav_icon'></i> <span class="nav_name">숙소정보</span>
+                    <a href="/board/stayreview.jsp" class="nav_link"> <i class='bx bx-home nav_icon'></i> <span class="nav_name">숙소정보</span>
                     </a>
                     <a href="#" class="nav_link"> <i class='bx bx-message-alt-detail nav_icon'></i> <span
                             class="nav_name">쪽지</span> </a>
