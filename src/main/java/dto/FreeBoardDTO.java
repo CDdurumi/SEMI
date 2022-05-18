@@ -4,7 +4,7 @@ import java.sql.Timestamp;
 import java.text.SimpleDateFormat;
 
 public class FreeBoardDTO {
-	private int free_board_seq;
+	private String free_board_seq;
 	private String id;
 	private String title;
 	private String contents;
@@ -15,7 +15,7 @@ public class FreeBoardDTO {
 	
 	public FreeBoardDTO() {
 	}
-	public FreeBoardDTO(int free_board_seq, String id, String title, String contents, Timestamp write_date,
+	public FreeBoardDTO(String free_board_seq, String id, String title, String contents, Timestamp write_date,
 			int like_count, String jjim, int view_count) {
 		super();
 		this.free_board_seq = free_board_seq;
@@ -27,10 +27,10 @@ public class FreeBoardDTO {
 		this.jjim = jjim;
 		this.view_count = view_count;
 	}
-	public int getFree_board_seq() {
+	public String getFree_board_seq() {
 		return free_board_seq;
 	}
-	public void setFree_board_seq(int free_board_seq) {
+	public void setFree_board_seq(String free_board_seq) {
 		this.free_board_seq = free_board_seq;
 	}
 	public String getId() {
@@ -75,7 +75,7 @@ public class FreeBoardDTO {
 	public void setView_count(int view_count) {
 		this.view_count = view_count;
 	}
-	
+
 	//날짜 format
 	public String getFormdDate() {
 		SimpleDateFormat sdf = new SimpleDateFormat("YYYY년 MM월 dd일 HH:mm");
