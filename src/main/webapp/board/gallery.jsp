@@ -93,7 +93,7 @@
             cursor: pointer
         }
 
-        .login {
+        .login, .join{
             color: black;
         }
 
@@ -337,7 +337,11 @@ p1{color: #fff;
     <header class="header" id="header">
         <div class="header_toggle"><i class='bx bx-menu' id="header-toggle"></i></div>
         <div>여행 커뮤니티</div>
-        <div><a href="#" class="login">login</a></div>
+        <div>
+            <a href="#" class="login"  data-bs-toggle="modal" data-bs-target="#exampleModal">login</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        	<a href="/signup.jsp" class="join">join</a>
+        </div>
+        
     </header>
     <ul class="nav nav2">
        <li class="nav-item">
