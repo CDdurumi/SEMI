@@ -48,8 +48,8 @@
     	display: none; /* Chrome, Safari, Opera*/
   	}	
     *,::before,::after{
-        box-sizing: border-box
-        border:1px solid black;
+        box-sizing: border-box;
+        /* border:1px solid black; */
     }
     
     body, header, .mainback {
@@ -266,7 +266,7 @@
         user-select: none;
       }
       .loginBtn{
-      	text-aling:center;
+      	text-align:center;
       }
 
       @media (min-width: 768px) {

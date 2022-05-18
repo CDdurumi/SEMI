@@ -20,6 +20,7 @@
     <!-- Bootstrap core CSS -->
     <link href="/docs/5.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
 
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css" integrity="sha512-KfkfwYDsLkIlwQp6LFnl8zNdLGxu9YAA1QvwINks4PhcElQSvqcyVLLD9aMhXd13uQjoXtEKNosOWaZqXgel0g==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <!-- Favicons -->
     <link rel="apple-touch-icon" href="/docs/5.1/assets/img/favicons/apple-touch-icon.png" sizes="180x180">
     <link rel="icon" href="/docs/5.1/assets/img/favicons/favicon-32x32.png" sizes="32x32" type="image/png">
@@ -216,7 +217,8 @@
         #cont{
             padding: 60px;
             border-radius:10px;
-            border: 1px solid gray;
+            border: 1px solid #f5f5f7;
+            background-color: #f5f5f7;
         }
         #cont div{
             padding-left: 0px;
@@ -264,6 +266,58 @@
         padding-bottom: 40px; 
         
     }
+    
+    .card-details{
+    position:relative;
+    display:flex;
+    
+    padding-bottom:20px;
+}
+.card-details input{
+    height:50px;
+    width:100%;
+    font-size:18px;
+    background-color:white;
+    color:black;
+    padding:0px 20px;
+    padding-left:50px;
+    box-sizing:border-box;
+    border-radius:10px;
+/*     outline:none; */
+    border:none;
+}
+.card-details i{
+    position:absolute;
+    left:10px;
+    top:16px;
+    color:black;
+    font-size:18px;
+}
+.card-details span{
+    position:absolute;
+    width:20px;
+    height:20px;
+    background-color:#fff;
+    border-radius:50%;
+    color:#ffe4be;
+    font-size:10px;
+    
+    right:10px;
+    top:15px;
+    opacity:0.4;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    cursor:pointer; 
+}
+
+.fa{
+	color:black;
+}
+
+.card-details span:hover{
+    opacity:1;
+}
     /* div{border: 1px solid black;} */
     </style>
 </head>
@@ -271,7 +325,9 @@
 <header class="header" id="header">
     <div class="header_toggle"><i class='bx bx-menu' id="header-toggle"></i></div>
     <div>
-    <a href ="index.jsp"><p class="lead secondtext">지친 일상에 쉼표를 찍다,</p></a>
+    <a href ="index.jsp">
+    	<img src="/imgsrc/textlogo3.png">
+    </a>
     </div>
     <div></div>
 </header>
@@ -315,7 +371,10 @@
             <div class="col">
          	<div class="row signup_input">
          		<div class ="col-8 input">
-         			<input type="text" placeholder="ID입력">
+                    <div class="card-details">
+                        <input type="text" id="id-input" placeholder="아이디">
+                        <i class="fa fa-user"></i>
+                    </div>
          		</div>
          		<div class ="col-4">
          			<div>확인 문구</div>
@@ -323,7 +382,10 @@
          	</div>
          	<div class="row signup_input">
          		<div class ="col-8 input">
-         			<input type="text" placeholder="PW입력">
+                    <div class="card-details">
+                        <input type="password" id="password-input" placeholder="비밀번호">
+                        <i class="fa fa-lock"></i>
+                    </div>
          		</div>
          		<div class ="col-4">
          			<div>확인 문구</div>
@@ -331,7 +393,11 @@
          	</div>
          	<div class="row signup_input">
          		<div class ="col-8 input">
-         			<input type="text" placeholder="PW확인">
+                    <div class="card-details">
+                        <input type="password" id="password-input" placeholder="비밀번호 확인">
+                        <i class="fa fa-lock-open"></i>
+                        <span><small class="fa fa-eye-slash passcode"></small></span>
+                    </div>
          		</div>
          		<div class ="col-4">
          			<div>확인 문구</div>
@@ -339,7 +405,10 @@
          	</div>
          	<div class="row signup_input">
          		<div class ="col-8 input">
-         			<input type="text" placeholder="email@naver.com">
+                    <div class="card-details">
+                        <input type="text" id="id-input" placeholder="이메일">
+                        <i class="fa fa-envelope"></i>
+                    </div>
          		</div>
          		<div class ="col-4">
          			<div>확인 문구</div>
@@ -389,15 +458,14 @@
          	</div>
          	<div class="row">
          		<div class="col-12">
-         			<label><input type="radio" name="info" value="Y" checked>동의</label>
+         			<label><input type="radio" name="info" value="Y" checked>동의</label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
          			<label><input type="radio" name="info" value="N">거부</label>
          		</div>
-         		
          	</div>
+         	<br>
          	<div class="row"  id="siginup_btn_area">         		
          		<button type="button" class="btn btn-primary" id ="signin_btn">회원가입</button>
-         	</div>
-         	 	
+         	</div> 	
         </div>
         </div>       
 </div>
