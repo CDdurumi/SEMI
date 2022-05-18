@@ -368,6 +368,7 @@
         .board_row{
             padding-top: 10px;
            height: 100%;
+            text-align: center;
         }
         #board_menu{
             height: 50px;
@@ -376,6 +377,7 @@
             font-size: 18px;
             font-weight:bold ;
             margin-bottom: 20px;
+             text-align: center;
         }
         .title{
             font-weight: bold;
@@ -394,8 +396,10 @@
            white-space: nowrap;
            text-overflow: ellipsis;
            position:absolute;
-           left: 9px;
-           right: 9px;
+           left: 0px;
+           right: 0px;
+ 			height:100%;
+ 			width:100%;
        }
     </style>
 </head>

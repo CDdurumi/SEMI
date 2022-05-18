@@ -368,11 +368,13 @@
         .board_row{
             padding-top: 10px;
            height: 100%;
+            text-align: center;
         }
         #board_menu{
             height: 50px;
         }
         #board_menu_text{
+         text-align: center;
             font-size: 18px;
             font-weight:bold ;
             margin-bottom: 20px;
@@ -394,8 +396,10 @@
            white-space: nowrap;
            text-overflow: ellipsis;
            position:absolute;
-           left: 9px;
-           right: 9px;
+           left: 0px;
+           right: 0px;
+           width:100%;
+           height:100%;
        }
     </style>
 </head>
