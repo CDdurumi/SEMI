@@ -408,7 +408,7 @@
         <div>여행 커뮤니티</div>
         <div>
             <a href="#" class="login"  data-bs-toggle="modal" data-bs-target="#exampleModal">login</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-        	<a href="#" class="join">join</a>
+        	<a href="/signup.jsp" class="join">join</a>
         </div>
     </header>
     <ul class="nav nav2">

@@ -282,7 +282,7 @@
         <div class="header_toggle"><i class='bx bx-menu' id="header-toggle"></i></div>
         <div>
            <a href="#" class="login"  data-bs-toggle="modal" data-bs-target="#exampleModal">login</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-           <a href="#" class="join">join</a>
+           <a href="/signup.jsp" class="join">join</a>
         </div>
 
     </header>
