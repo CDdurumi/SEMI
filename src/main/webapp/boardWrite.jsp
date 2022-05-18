@@ -105,7 +105,7 @@
                 cursor: pointer
             }
 
-            .login, .join {
+            .login {
                 color: black;
             }
 
@@ -180,7 +180,7 @@
                 font-size: 1.25rem
             }
 
-            .show1 {
+            .show {
                 left: 0
             }
 
@@ -204,62 +204,6 @@
             .height-100 {
                 height: 100vh
             }
-            
-            .note-editor{
-            	background-color: white;
-            }
-
-                .card-details{
-    position:relative;
-    display:flex;
-    
-    padding-bottom:20px;
-}
-.card-details input{
-    height:50px;
-    width:100%;
-    font-size:18px;
-    background-color:#f5f5f7;
-    color:black;
-    padding:0px 20px;
-    padding-left:50px;
-    box-sizing:border-box;
-    border-radius:10px;
-/*     outline:none; */
-    border:none;
-}
-.card-details i{
-    position:absolute;
-    left:10px;
-    top:16px;
-    color:black;
-    font-size:18px;
-}
-.card-details span{
-    position:absolute;
-    width:20px;
-    height:20px;
-    background-color:#fff;
-    border-radius:50%;
-    color:#ffe4be;
-    font-size:10px;
-    
-    right:10px;
-    top:15px;
-    opacity:0.4;
-    display:flex;
-    justify-content:center;
-    align-items:center;
-    cursor:pointer; 
-}
-
-.fa{
-	color:black;
-}
-
-.card-details span:hover{
-    opacity:1;
-}
 
             @media screen and (min-width: 768px) {
                 body {
@@ -277,13 +221,16 @@
                     padding: 1rem 1rem 0 0
                 }
 
-                .show1 {
+                .show {
                     width: calc(var(--nav-width) + 156px)
                 }
 
                 .body-pd {
                     padding-left: calc(var(--nav-width) + 188px)
                 }
+            }
+            .note-editor{
+            	background-color: white;
             }
 
             /*  */
@@ -308,18 +255,34 @@
             }
 
             .container {
-                /* border : 1px solid red; */
-            }
-
-            [class ^="height"] div {
-                /* border : 1px solid black; */
-                margin: 0px;
+                border : 1px solid black;
+                
             }
 
             [class ^="col"] {
                 border: 1px solid black;
                 padding: 0px;
             }
+
+            .mainTitle{
+                font-weight: bold;
+            }
+            .title{
+                border: 0px; width: 99.5%; 
+                margin: 2px; margin-left: 3px;
+                font-size: 20px;
+                font-weight: bold;
+            }
+            #firstFile{margin-left: 2px;}
+            .addFile{margin: 2px;}
+
+            #plusBtn, #minusBtn{
+                border-radius: 4px;
+                margin: 2px;
+                font-weight: bold;
+                width: 30px;
+            }
+
         </style>
     </head>
 
@@ -327,10 +290,7 @@
     <header class="header" id="header">
         <div class="header_toggle"><i class='bx bx-menu' id="header-toggle"></i></div>
         <div>여행 커뮤니티</div>
-        <div>
-        	<a href="#" class="login"  data-bs-toggle="modal" data-bs-target="#exampleModal">login</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-        	<a href="#" class="join">join</a>
-        </div>
+        <div><a href="#" class="login">login</a></div>
     </header>
     <ul class="nav nav2">
         <li class="nav-item">
@@ -373,57 +333,30 @@
             <a href="#" class="nav_link"> <i class='bx bx-log-out nav_icon'></i> <span class="nav_name">로그아웃</span> </a>
         </nav>
     </div>
-    
-    <div class="modal" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-  <div class="modal-dialog modal-right" role="document">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title text-center" id="exampleModalLabel">로그인</h5>
-        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-      </div>
-      <div class="modal-body">
-        <div class="card-details">
-            <input type="text" id="id-input" placeholder="id">
-            <i class="fa fa-envelope"></i>
-        </div>
-        <div class="card-details">
-            <input type="password" id="password-input" placeholder="password">
-            <i class="fa fa-lock"></i>
-            <span><small class="fa fa-eye-slash passcode"></small></span>
-        </div>
-        <div class="login_api" style="text-align:center">
-        	<a href="#"><img src="/imgsrc/google_signin_buttons/web/1x/btn_google_signin_dark_normal_web.png"></a>
-        </div>
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-primary">회원가입</button>
-      </div>
-    </div>
-  </div>
-</div>
 
     <!-- 게시글 작성하기 메인 ----------------------------------------------------------------------->
     <!--Container Main start-->
     <form action="2134" method="post" enctype="multipart/form-data">
-        <div class="container">
+        <div class="container my-4">
             <div class="row">
-                <div class="col-12 text-center display-6">
+                <div class="col-12 text-center display-6 mainTitle p-1">
                     - OO게시판 글 작성하기 -
                 </div>
                 <div class="col-12 ">
-                    <input type="text" placeholder="글 제목을 입력하세요" name="title" class="w-100" required>
+                    <input type="text" placeholder="글 제목을 입력하세요" name="title" class="title" required>
                 </div>
                 <div class="col-12 " id="fileArea">
-                    <input type="file" name="file1">
+                    <!-- <input type="hidden" name="fileCount" id="fileCount" value=1>  -->
+                    <input type="file" name="file1" id="firstFile">
                     <button id="plusBtn" type="button">+</button>
                     <button id="minusBtn" type="button">-</button>
                 </div>
                 <div class="col-12 ">
-                    <textarea class="summernote" placeholder="글 내용을 입력하세요." name="contents" required></textarea>
+                    <textarea class="summernote" name="contents" required></textarea>
                 </div>
-                <div class="col-12 align-content-end">
-                    <a href="/list.board?cpage=1"><input type="button" value="목록으로"></a>
-                    <input type="submit" value="작성완료">
+                <div class="col-12 " style="text-align: right;">
+                    <a href="/list.board?cpage=1"><input type="button" value="목록으로" class="my-1"></a>
+                    <input type="submit" value="작성완료" class="mx-2">
                 </div>
             </div>
         </div>
@@ -433,7 +366,7 @@
     <script>
         document.addEventListener("DOMContentLoaded", function (event) {
 
-            const show1Navbar = (toggleId, navId, bodyId, headerId) => {
+            const showNavbar = (toggleId, navId, bodyId, headerId) => {
                 const toggle = document.getElementById(toggleId),
                     nav = document.getElementById(navId),
                     bodypd = document.getElementById(bodyId),
@@ -442,8 +375,8 @@
                 // Validate that all variables exist
                 if (toggle && nav && bodypd && headerpd) {
                     toggle.addEventListener('click', () => {
-                        // show1 navbar
-                        nav.classList.toggle('show1')
+                        // show navbar
+                        nav.classList.toggle('show')
                         // change icon
                         toggle.classList.toggle('bx-x')
                         // add padding to body
@@ -454,7 +387,7 @@
                 }
             }
 
-            show1Navbar('header-toggle', 'nav-bar', 'body-pd', 'header')
+            showNavbar('header-toggle', 'nav-bar', 'body-pd', 'header')
 
             /*===== LINK ACTIVE =====*/
             const linkColor = document.querySelectorAll('.nav_link')
@@ -469,43 +402,25 @@
 
             // Your code to run since DOM is loaded and ready
         });
-        
-     // input id, input pw, password eyes
-        let outer_eye=document.querySelector(".card-details span");
-        let eye=document.querySelector(".passcode");
-        let input=document.querySelector("#password-input");
-        outer_eye.addEventListener('click',function(){
-
-           if(input.type=='password'){
-               input.type="text"; 
-               eye.classList.remove('fa-eye-slash');
-               eye.classList.add('fa-eye');
-             input.classList.add('warning');
-            }else{
-              input.type="password"; 
-              eye.classList.remove('fa-eye');
-              eye.classList.add('fa-eye-slash');
-              input.classList.remove('warning');
-          }
-        });
 
 
         //게시글 작성하기/////////////////////////////////////////////////////////////////////////////////////////
 		let i = 2;
         //+버튼 클릭시 type=file 추가
 		$("#plusBtn").on("click",function(){
-			let fileInput = ("<input type='file' class='addClass' name = file"+i+++">");
+			let fileInput = ("<input type='file' class='addFile' name = file"+i+++">");
 			$("#fileArea").append("<br>");
 			$("#fileArea").append(fileInput);
+			// $("#fileCount").val(i-1);
 		});
 	    //+버튼 클릭시 type=file 제거
 		$("#minusBtn").on("click",function(){
-            console.log($("#fileArea").children(".addClass").length)
-            for(let i=0 ; i<$("#fileArea").children(".addClass").length; i++ ){
-                if(i+1 == $("#fileArea").children(".addClass").length){
-                    let brIndex = $($("#fileArea").children(".addClass")[i]).siblings().length-1
-                    $($($("#fileArea").children(".addClass")[i]).siblings()[brIndex]).remove();
-                    $($("#fileArea").children(".addClass")[i]).remove();
+            console.log($("#fileArea").children(".addFile").length)
+            for(let i=0 ; i<$("#fileArea").children(".addFile").length; i++ ){
+                if(i+1 == $("#fileArea").children(".addFile").length){
+                    let brIndex = $($("#fileArea").children(".addFile")[i]).siblings().length-1
+                    $($($("#fileArea").children(".addFile")[i]).siblings()[brIndex]).remove();
+                    $($("#fileArea").children(".addFile")[i]).remove();
                 }
             }
             
@@ -514,28 +429,29 @@
 		//서머노트////////////////////////////////////////////////////////////////////////////
 		$('.summernote').summernote({
             toolbar: [
-				['style', ['style']],
-				['fontsize', ['fontsize']],
-				['font', ['bold', 'italic', 'underline', 'clear']],
-				['fontname', ['fontname']],
-				['color', ['color']],
-				['para', ['ul', 'ol', 'paragraph']],
-				['height', ['height']],
-				['table', ['table']],
-				['insert',['picture','link','video','hr']],
-				['view', ['codeview','fullscreen']],
-				['help', ['help']]
-			],
-			
-            minHeight: 350,             // 최소 높이
+							['style', ['style']],
+							['fontsize', ['fontsize']],
+							['font', ['bold', 'italic', 'underline', 'clear']],
+							['fontname', ['fontname']],
+							['color', ['color']],
+							['para', ['ul', 'ol', 'paragraph']],
+							['height', ['height']],
+							['table', ['table']],
+							['insert',['picture','link','video','hr']],
+							['view', ['codeview','fullscreen']],
+							['help', ['help']]
+						],
+
+            minHeight: 500,             // 최소 높이
             maxHeight: null,             // 최대 높이
             focus: true,                  // 에디터 로딩후 포커스를 맞출지 여부
             lang: "ko-KR",					// 한글 설정
+//             spellCheck: false,
             callbacks: {//콜백
                 //이미지 업로드 시 감지하는 이벤트
-//                onImageUpload : function(files, editor, welEditable) {
-//             	   sendFile(files[0],this);
-//                 },
+            //    onImageUpload : function(files, editor, welEditable) {
+            // 	   sendFile(files[0],this);
+            //     },
                 
                 //이미지 마우스 오른쪽 클릭하여 쓰레기통 이모티콘 클릭 시 감지하는 이벤트
                 onMediaDelete : function(target) {
@@ -553,7 +469,9 @@
 	 	    $.ajax({ // ajax를 통해 파일 업로드 처리
 	 	        data : data,
 	 	        type : "POST",
+// 	            enctype: 'multipart/form-data',
 	 	        url : "/imageUpload.file",
+// 	 	        cache : false,
 	 	        contentType : false,
 	 	        processData : false,
 	 	        dataType:"json",
