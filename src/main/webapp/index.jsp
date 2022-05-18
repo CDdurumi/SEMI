@@ -11,7 +11,7 @@
 <title>쉼표 | 지친 일상에 쉼표를 찍다</title>
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
-<script src="https://code.jquery.com/jquery-3.6.0.js"></script>	
+<script src="https://code.jquery.com/jquery-3.6.0.js"></script>   
 <link rel="stylesheet"
   href="https://cdn.jsdelivr.net/npm/boxicons@latest/css/boxicons.min.css">
 
@@ -42,35 +42,35 @@
     --white-color: #ffffff;
     --body-font: 'Nunito', sans-serif;
     --normal-font-size: 1rem;--z-fixed: 100
-	}
-	
-	body::-webkit-scrollbar{
-    	display: none; /* Chrome, Safari, Opera*/
-  	}	
+   }
+   
+   body::-webkit-scrollbar{
+       display: none; /* Chrome, Safari, Opera*/
+     }   
     *,::before,::after{
         box-sizing: border-box;
-        /* border:1px solid black; */
+   
     }
     
     body, header, .mainback {
-  		background-image: url('/imgsrc/mainthem.jpg');
-	}
-	#body-pd {
+        background-image: url('/imgsrc/mainthem.jpg');
+   }
+   #body-pd {
     margin: 0;
     padding: 0;
-	}
-	main{
-		font-family: 'Nanum Brush Script', cursive;
-	}
-	firsttext{
-		font-size: 200px;
-	}
-	.secondtext{
-		font-size: 61px;
-	}
-	.login, .join{
-		color:black;
-	}
+   }
+   main{
+      font-family: 'Nanum Brush Script', cursive;
+   }
+   firsttext{
+      font-size: 200px;
+   }
+   .secondtext{
+      font-size: 61px;
+   }
+   .login, .join{
+      color:black;
+   }
     body{
         position: relative;
         margin: var(--header-height) 0 0 0;
@@ -250,7 +250,7 @@
 }
 
 .fa{
-	color:black;
+   color:black;
 }
 
 .card-details span:hover{
@@ -266,7 +266,7 @@
         user-select: none;
       }
       .loginBtn{
-      	text-align:center;
+         text-aling:center;
       }
 
       @media (min-width: 768px) {
@@ -281,8 +281,8 @@
     <header class="header" id="header">
         <div class="header_toggle"><i class='bx bx-menu' id="header-toggle"></i></div>
         <div>
-        	<a href="#" class="login"  data-bs-toggle="modal" data-bs-target="#exampleModal">login</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-        	<a href="#" class="join">join</a>
+           <a href="#" class="login"  data-bs-toggle="modal" data-bs-target="#exampleModal">login</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+           <a href="#" class="join">join</a>
         </div>
 
     </header>
@@ -305,7 +305,7 @@
             <span><small class="fa fa-eye-slash passcode"></small></span>
         </div>
         <div class="login_api" style="text-align:center">
-        	<a href="#"><img src="/imgsrc/google_signin_buttons/web/1x/btn_google_signin_dark_normal_web.png"></a>
+           <a href="#"><img src="/imgsrc/google_signin_buttons/web/1x/btn_google_signin_dark_normal_web.png"></a>
         </div>
       </div>
       <div class="modal-footer">
@@ -317,15 +317,15 @@
 
     <div class="l-navbar" id="nav-bar">
         <nav class="nav">
-            <div> <a href="#" class="nav_logo"> <i class='bx bx-layer nav_logo-icon'></i> <span class="nav_logo-name">쉼표 <br>- 일상의 쉼표를 찍다</span> </a>
+            <div> <a href="/index.jsp" class="nav_logo"> <i class='bx bx-layer nav_logo-icon'></i> <span class="nav_logo-name">쉼표 <br>- 일상의 쉼표를 찍다</span> </a>
                 <div class="nav_list"> 
-                	<a href="#" class="nav_link active"> <i class='bx bx-wind nav_icon'></i> <span class="nav_name">날씨</span> </a> 
-                	<a href="/board/communityMain.jsp" class="nav_link"> <i class='bx bx-message nav_icon'></i> <span class="nav_name">커뮤니티</span> </a> 
-                	<a href="/board/gallery.jsp" class="nav_link"> <i class='bx bx-bus nav_icon'></i> <span class="nav_name">여행정보</span> </a> 
-                	<a href="#" class="nav_link"> <i class='bx bx-user nav_icon'></i> <span class="nav_name">마이페이지</span> </a> 
-                	<a href="#" class="nav_link"> <i class='bx bx-calendar nav_icon'></i> <span class="nav_name">일정관리</span> </a> 
-                	<a href="#" class="nav_link"> <i class='bx bx-home nav_icon'></i> <span class="nav_name">숙소정보</span> </a>
-                	<a href="#" class="nav_link"> <i class='bx bx-message-alt-detail nav_icon'></i> <span class="nav_name">쪽지</span> </a> 
+                   <a href="#" class="nav_link active"> <i class='bx bx-wind nav_icon'></i> <span class="nav_name">날씨</span> </a> 
+                   <a href="/board/communityMain.jsp" class="nav_link"> <i class='bx bx-message nav_icon'></i> <span class="nav_name">커뮤니티</span> </a> 
+                   <a href="/board/editorReMain.jsp" class="nav_link"> <i class='bx bx-bus nav_icon'></i> <span class="nav_name">여행정보</span> </a> 
+                   <a href="#" class="nav_link"> <i class='bx bx-user nav_icon'></i> <span class="nav_name">마이페이지</span> </a> 
+                   <a href="#" class="nav_link"> <i class='bx bx-calendar nav_icon'></i> <span class="nav_name">일정관리</span> </a> 
+                   <a href="/board/stayreview.jsp" class="nav_link"> <i class='bx bx-home nav_icon'></i> <span class="nav_name">숙소리뷰</span> </a>
+                   <a href="#" class="nav_link"> <i class='bx bx-message-alt-detail nav_icon'></i> <span class="nav_name">쪽지</span> </a> 
                 </div>
             </div> 
             <a href="#" class="nav_link"> <i class='bx bx-log-out nav_icon'></i> <span class="nav_name">로그아웃</span> </a>
@@ -357,43 +357,43 @@
     <script>
     
     document.addEventListener("DOMContentLoaded", function(event) {
-    	   
-    	const show1Navbar = (toggleId, navId, bodyId, headerId) =>{
-    	const toggle = document.getElementById(toggleId),
-    	nav = document.getElementById(navId),
-    	bodypd = document.getElementById(bodyId),
-    	headerpd = document.getElementById(headerId)
+          
+       const show1Navbar = (toggleId, navId, bodyId, headerId) =>{
+       const toggle = document.getElementById(toggleId),
+       nav = document.getElementById(navId),
+       bodypd = document.getElementById(bodyId),
+       headerpd = document.getElementById(headerId)
 
-    	// Validate that all variables exist
-    	if(toggle && nav && bodypd && headerpd){
-    	toggle.addEventListener('click', ()=>{
-    	// show1 navbar
-    	nav.classList.toggle('show1')
-    	// change icon
-    	toggle.classList.toggle('bx-x')
-    	// add padding to body
-    	bodypd.classList.toggle('body-pd')
-    	// add padding to header
-    	headerpd.classList.toggle('body-pd')
-    	})
-    	}
-    	}
+       // Validate that all variables exist
+       if(toggle && nav && bodypd && headerpd){
+       toggle.addEventListener('click', ()=>{
+       // show1 navbar
+       nav.classList.toggle('show1')
+       // change icon
+       toggle.classList.toggle('bx-x')
+       // add padding to body
+       bodypd.classList.toggle('body-pd')
+       // add padding to header
+       headerpd.classList.toggle('body-pd')
+       })
+       }
+       }
 
-    	show1Navbar('header-toggle','nav-bar','body-pd','header')
+       show1Navbar('header-toggle','nav-bar','body-pd','header')
 
-    	/*===== LINK ACTIVE =====*/
-    	const linkColor = document.querySelectorAll('.nav_link')
+       /*===== LINK ACTIVE =====*/
+       const linkColor = document.querySelectorAll('.nav_link')
 
-    	function colorLink(){
-    	if(linkColor){
-    	linkColor.forEach(l=> l.classList.remove('active'))
-    	this.classList.add('active')
-    	}
-    	}
-    	linkColor.forEach(l=> l.addEventListener('click', colorLink))
+       function colorLink(){
+       if(linkColor){
+       linkColor.forEach(l=> l.classList.remove('active'))
+       this.classList.add('active')
+       }
+       }
+       linkColor.forEach(l=> l.addEventListener('click', colorLink))
 
-    	 // Your code to run since DOM is loaded and ready
-    	});
+        // Your code to run since DOM is loaded and ready
+       });
     
     // input id, input pw, password eyes
     let outer_eye=document.querySelector(".card-details span");
