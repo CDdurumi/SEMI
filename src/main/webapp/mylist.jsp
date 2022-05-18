@@ -160,7 +160,7 @@
             font-size: 1.25rem
         }
 
-        .show {
+        .show1 {
             left: 0
         }
 
@@ -210,7 +210,7 @@
                 padding: 1rem 1rem 0 0
             }
 
-            .show {
+            .show1 {
                 width: calc(var(--nav1-width) + 156px)
             }
 
@@ -386,7 +386,7 @@
 
         document.addEventListener("DOMContentLoaded", function (event) {
 
-            const shownav1bar = (toggleId, nav1Id, bodyId, headerId) => {
+            const show1nav1bar = (toggleId, nav1Id, bodyId, headerId) => {
                 const toggle = document.getElementById(toggleId),
                     nav1 = document.getElementById(nav1Id),
                     bodypd = document.getElementById(bodyId),
@@ -395,8 +395,8 @@
                 // Validate that all variables exist
                 if (toggle && nav1 && bodypd && headerpd) {
                     toggle.addEventListener('click', () => {
-                        // show nav1bar
-                        nav1.classList.toggle('show')
+                        // show1 nav1bar
+                        nav1.classList.toggle('show1')
                         // change icon
                         toggle.classList.toggle('bx-x')
                         // add padding to body
@@ -407,7 +407,7 @@
                 }
             }
 
-            shownav1bar('header-toggle', 'nav1-bar', 'body-pd', 'header')
+            show1nav1bar('header-toggle', 'nav1-bar', 'body-pd', 'header')
 
             /*===== LINK ACTIVE =====*/
             const linkColor = document.querySelectorAll('.nav1_link')
