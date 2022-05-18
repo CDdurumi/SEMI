@@ -53,7 +53,10 @@
         ::after {
             box-sizing: border-box
         }
-
+		
+		body::-webkit-scrollbar{
+   			display: none; /* Chrome, Safari, Opera*/
+  		}
         body {
             position: relative;
             margin: var(--header-height) 0 0 0;

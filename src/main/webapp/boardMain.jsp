@@ -37,7 +37,9 @@
 
     <style>
         @import url("https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700&display=swap");
-
+		body::-webkit-scrollbar{
+		    display: none; /* Chrome, Safari, Opera*/
+		  }
         :root {
             --header-height: 3rem;
             --nav-width: 68px;

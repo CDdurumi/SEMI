@@ -51,7 +51,9 @@
             --z-fixed: 100
         }
 
-
+		body::-webkit-scrollbar{
+   			display: none; /* Chrome, Safari, Opera*/
+  		}
 
         *,
         ::before,

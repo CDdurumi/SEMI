@@ -48,7 +48,10 @@
             --normal-font-size: 1rem;
             --z-fixed: 100
         }
-
+		
+		body::-webkit-scrollbar{
+   			display: none; /* Chrome, Safari, Opera*/
+  		}
         div {
             /* border:1px solid black; */
         }
