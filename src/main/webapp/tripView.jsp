@@ -1,7 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<!-- <%@ page language="java" contentType="text/html; charset=UTF-8"
-         pageEncoding="UTF-8"%> -->
+
 <!DOCTYPE html>
 <html>
 
@@ -236,6 +235,58 @@
                 padding-left: calc(var(--nav-width) + 188px)
             }
         }
+        
+            .card-details{
+    position:relative;
+    display:flex;
+    
+    padding-bottom:20px;
+}
+.card-details input{
+    height:50px;
+    width:100%;
+    font-size:18px;
+    background-color:#f5f5f7;
+    color:black;
+    padding:0px 20px;
+    padding-left:50px;
+    box-sizing:border-box;
+    border-radius:10px;
+/*     outline:none; */
+    border:none;
+}
+.card-details i{
+    position:absolute;
+    left:10px;
+    top:16px;
+    color:black;
+    font-size:18px;
+}
+.card-details span{
+    position:absolute;
+    width:20px;
+    height:20px;
+    background-color:#fff;
+    border-radius:50%;
+    color:#ffe4be;
+    font-size:10px;
+    
+    right:10px;
+    top:15px;
+    opacity:0.4;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    cursor:pointer; 
+}
+
+.fa{
+	color:black;
+}
+
+.card-details span:hover{
+    opacity:1;
+}
 
         /*  */
         .bd-placeholder-img {
@@ -563,6 +614,25 @@
             linkColor.forEach(l => l.addEventListener('click', colorLink))
 
             // Your code to run since DOM is loaded and ready
+        });
+        
+     // input id, input pw, password eyes
+        let outer_eye=document.querySelector(".card-details span");
+        let eye=document.querySelector(".passcode");
+        let input=document.querySelector("#password-input");
+        outer_eye.addEventListener('click',function(){
+
+           if(input.type=='password'){
+               input.type="text"; 
+               eye.classList.remove('fa-eye-slash');
+               eye.classList.add('fa-eye');
+             input.classList.add('warning');
+            }else{
+              input.type="password"; 
+              eye.classList.remove('fa-eye');
+              eye.classList.add('fa-eye-slash');
+              input.classList.remove('warning');
+          }
         });
     </script>
 </body>
