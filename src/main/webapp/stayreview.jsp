@@ -1,5 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+         pageEncoding="UTF-8"%>
 
 
 <!DOCTYPE html>
@@ -383,6 +383,20 @@
         #page{
             color: #0080ff;
         }
+         /* 제목이 길어서 잘렸을 경우 밑의 두개 처리해준다 */
+       .ellipsis{
+           position: relative;
+           min-width: 50px;
+           
+       }
+       .ellipsis>span{
+        overflow: hidden;
+           white-space: nowrap;
+           text-overflow: ellipsis;
+           position:absolute;
+           left: 9px;
+           right: 9px;
+       }
     </style>
 </head>
 
@@ -584,8 +598,8 @@
             <div class="col-12 ">
                 <div class="row " id="board_menu_text">
                     <div class="col-1 col-md-1 d-none d-md-block p-0">번호</div>
-                    <div class="col-9 col-md-9 m-0 title">글제목</div>
-                    <div class="col-2 col-md-1 p-0">글쓴이</div>
+                    <div class="col-9 col-md-8 m-0 title">글제목</div>
+                    <div class="col-2 col-md-2 p-0 text-center">글쓴이</div>
                     <div class="col-1 col-md-1 d-none d-md-block p-0">조회</div>
                 </div>
              
@@ -594,8 +608,9 @@
         <div class="col-12  board">
             <div class="row m-0 border border-2 rounded board_row ">
                 <div class="col-1 col-md-1 d-none d-md-block p-0">번호</div>
-                <div class="col-9 col-md-9 m-0 title">글제목</div>
-                <div class="col-2 col-md-1 p-0">글쓴이</div>           
+                <div class="col-9 col-md-8 m-0 title ellipsis"><span>글제목글제목제목글제목제목글제목</span></div>
+                <!-- forEach반복이라 여기에만 ellipsis 넣습니다 -->
+                <div class="col-2 col-md-2 p-0 ellipsis text-center"><span>글쓴이</span></div>           
                 <div class="col-md-1 d-none d-md-block p-0">조회</div>
                
             </div>
