@@ -1,6 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-
 <!DOCTYPE html>
 <html>
 
@@ -25,7 +24,6 @@
     <link href="/docs/5.1/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
 
-	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css" integrity="sha512-KfkfwYDsLkIlwQp6LFnl8zNdLGxu9YAA1QvwINks4PhcElQSvqcyVLLD9aMhXd13uQjoXtEKNosOWaZqXgel0g==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <!-- Favicons -->
     <link rel="apple-touch-icon" href="/docs/5.1/assets/img/favicons/apple-touch-icon.png" sizes="180x180">
     <link rel="icon" href="/docs/5.1/assets/img/favicons/favicon-32x32.png" sizes="32x32" type="image/png">
@@ -161,7 +159,7 @@
             font-size: 1.25rem
         }
 
-        .show1 {
+        .show {
             left: 0
         }
 
@@ -211,7 +209,7 @@
                 padding: 1rem 1rem 0 0
             }
 
-            .show1 {
+            .show {
                 width: calc(var(--nav1-width) + 156px)
             }
 
@@ -219,58 +217,6 @@
                 padding-left: calc(var(--nav1-width) + 188px)
             }
         }
-        
-            .card-details{
-    position:relative;
-    display:flex;
-    
-    padding-bottom:20px;
-}
-.card-details input{
-    height:50px;
-    width:100%;
-    font-size:18px;
-    background-color:#f5f5f7;
-    color:black;
-    padding:0px 20px;
-    padding-left:50px;
-    box-sizing:border-box;
-    border-radius:10px;
-/*     outline:none; */
-    border:none;
-}
-.card-details i{
-    position:absolute;
-    left:10px;
-    top:16px;
-    color:black;
-    font-size:18px;
-}
-.card-details span{
-    position:absolute;
-    width:20px;
-    height:20px;
-    background-color:#fff;
-    border-radius:50%;
-    color:#ffe4be;
-    font-size:10px;
-    
-    right:10px;
-    top:15px;
-    opacity:0.4;
-    display:flex;
-    justify-content:center;
-    align-items:center;
-    cursor:pointer; 
-}
-
-.fa{
-	color:black;
-}
-
-.card-details span:hover{
-    opacity:1;
-}
 
         /*  */
         .bd-placeholder-img {
@@ -335,8 +281,6 @@
     height:92%;
     border-radius: 12px;
 }
-
-
 .nav-link{
          padding-right: 10PX;
          color: hsl(0, 1%, 65%);
@@ -344,16 +288,44 @@
       #click{
           color: #0D62FD;
       }
+
+
+      #myBtn {
+  display: none; /* Hidden by default */
+  position: fixed; /* Fixed/sticky position */
+  bottom: 13px; /* Place the button at the bottom of the page */
+  right: 0px; /* Place the button 30px from the right */
+  
+  z-index: 99; /* Make sure it does not overlap */
+  border: none; /* Remove borders */
+  outline: none; /* Remove outline */
+  background-color: #0D62FD; /* Set a background color */
+  color: white; /* Text color */
+  cursor: pointer; /* Add a mouse pointer on hover */
+  padding: 15px; /* Some padding */
+  border-radius: 70%; /* Rounded corners */
+  font-size: 29px; /* Increase font size */
+  width:46px;
+  height: 44px;
+  line-height:2px;
+  padding-left:7px;
+  padding-right:7px;
+  padding-top: 13.5px;
+  font-weight:bold ;
+}
+
+#myBtn:hover {
+  background-color: #0D62FD; /* Add a dark-grey background on hover */
+}
+
+
     </style>
 </head>
 
 <body id="body-pd">
     <header class="header" id="header">
         <div class="header_toggle"><i class='bx bx-menu' id="header-toggle"></i></div>
-        <div>
-        	<a href="#" class="login"  data-bs-toggle="modal" data-bs-target="#exampleModal">login</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-        	<a href="#" class="join">join</a>
-        </div>
+        <div class="login">login</div>
     </header>
     <div class="l-nav1bar" id="nav1-bar">
         <nav1 class="nav1">
@@ -379,34 +351,6 @@
             <a href="#" class="nav1_link"> <i class='bx bx-log-out nav1_icon'></i> <span class="nav1_name">로그아웃</span> </a>
         </nav1>
     </div>
-    
-    <div class="modal" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-  <div class="modal-dialog modal-right" role="document">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title text-center" id="exampleModalLabel">로그인</h5>
-        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-      </div>
-      <div class="modal-body">
-        <div class="card-details">
-            <input type="text" id="id-input" placeholder="id">
-            <i class="fa fa-envelope"></i>
-        </div>
-        <div class="card-details">
-            <input type="password" id="password-input" placeholder="password">
-            <i class="fa fa-lock"></i>
-            <span><small class="fa fa-eye-slash passcode"></small></span>
-        </div>
-        <div class="login_api" style="text-align:center">
-        	<a href="#"><img src="/imgsrc/google_signin_buttons/web/1x/btn_google_signin_dark_normal_web.png"></a>
-        </div>
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-primary">회원가입</button>
-      </div>
-    </div>
-  </div>
-</div>
     <!--Container Main start-->
     <div class="height-100 d-flex text-center text-black bg-white" id="nv">
         <div class="cover-container d-flex w-100 h-100 p-3 mx-auto flex-column">
@@ -462,15 +406,15 @@
         </div>
     </div>
     <!--Container Main end-->
-
-
+<!--버튼-->
+    <button onclick="topFunction()" id="myBtn" title="Go to top">↑</button>
 
 
     <script>
 
         document.addEventListener("DOMContentLoaded", function (event) {
 
-            const show1nav1bar = (toggleId, nav1Id, bodyId, headerId) => {
+            const shownav1bar = (toggleId, nav1Id, bodyId, headerId) => {
                 const toggle = document.getElementById(toggleId),
                     nav1 = document.getElementById(nav1Id),
                     bodypd = document.getElementById(bodyId),
@@ -479,8 +423,8 @@
                 // Validate that all variables exist
                 if (toggle && nav1 && bodypd && headerpd) {
                     toggle.addEventListener('click', () => {
-                        // show1 nav1bar
-                        nav1.classList.toggle('show1')
+                        // show nav1bar
+                        nav1.classList.toggle('show')
                         // change icon
                         toggle.classList.toggle('bx-x')
                         // add padding to body
@@ -491,7 +435,7 @@
                 }
             }
 
-            show1nav1bar('header-toggle', 'nav1-bar', 'body-pd', 'header')
+            shownav1bar('header-toggle', 'nav1-bar', 'body-pd', 'header')
 
             /*===== LINK ACTIVE =====*/
             const linkColor = document.querySelectorAll('.nav1_link')
@@ -506,25 +450,28 @@
 
             // Your code to run since DOM is loaded and ready
         });
-        
-     // input id, input pw, password eyes
-        let outer_eye=document.querySelector(".card-details span");
-        let eye=document.querySelector(".passcode");
-        let input=document.querySelector("#password-input");
-        outer_eye.addEventListener('click',function(){
 
-           if(input.type=='password'){
-               input.type="text"; 
-               eye.classList.remove('fa-eye-slash');
-               eye.classList.add('fa-eye');
-             input.classList.add('warning');
-            }else{
-              input.type="password"; 
-              eye.classList.remove('fa-eye');
-              eye.classList.add('fa-eye-slash');
-              input.classList.remove('warning');
-          }
-        });
+
+//top버튼
+mybutton = document.getElementById("myBtn");
+
+// When the user scrolls down 20px from the top of the document, show the button
+window.onscroll = function() {scrollFunction()};
+
+function scrollFunction() {
+if (document.body.scrollTop > 100 || document.documentElement.scrollTop > 100) {
+mybutton.style.display = "block";
+} else {
+mybutton.style.display = "none";
+}
+}
+// When the user clicks on the button, scroll to the top of the document
+function topFunction() {
+document.body.scrollTop = 0; // For Safari
+document.documentElement.scrollTop = 0; // For Chrome, Firefox, IE and Opera
+}
+
+
     </script>
 </body>
 
