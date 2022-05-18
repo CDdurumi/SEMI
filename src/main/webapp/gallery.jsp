@@ -1,8 +1,8 @@
+
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -90,9 +90,9 @@
             cursor: pointer
         }
 
-        .login, .join{
-		color:black;
-	}
+        .login {
+            color: black;
+        }
 
         .header_img {
             width: 35px;
@@ -174,7 +174,7 @@
             font-size: 1.25rem
         }
 
-        .show1 {
+        .show {
             left: 0
         }
 
@@ -224,7 +224,7 @@
                 padding: 1rem 1rem 0 0
             }
 
-            .show1 {
+            .show {
                 width: calc(var(--nav-width) + 156px)
             }
 
@@ -232,58 +232,6 @@
                 padding-left: calc(var(--nav-width) + 188px)
             }
         }
-        
-            .card-details{
-    position:relative;
-    display:flex;
-    
-    padding-bottom:20px;
-}
-.card-details input{
-    height:50px;
-    width:100%;
-    font-size:18px;
-    background-color:#f5f5f7;
-    color:black;
-    padding:0px 20px;
-    padding-left:50px;
-    box-sizing:border-box;
-    border-radius:10px;
-/*     outline:none; */
-    border:none;
-}
-.card-details i{
-    position:absolute;
-    left:10px;
-    top:16px;
-    color:black;
-    font-size:18px;
-}
-.card-details span{
-    position:absolute;
-    width:20px;
-    height:20px;
-    background-color:#fff;
-    border-radius:50%;
-    color:#ffe4be;
-    font-size:10px;
-    
-    right:10px;
-    top:15px;
-    opacity:0.4;
-    display:flex;
-    justify-content:center;
-    align-items:center;
-    cursor:pointer; 
-}
-
-.fa{
-	color:black;
-}
-
-.card-details span:hover{
-    opacity:1;
-}
 
         /*  */
         .bd-placeholder-img {
@@ -301,15 +249,16 @@
         }
 
         /* 메인내용 */
-           /* div {
+             /* div {
              border: 1px solid black; 
-        }    */
+        }       */
         #cont{
             height: 100%;
         }
         #title{
-    font-size: 45px;
+    font-size: 50px;
     text-align: center;
+    font-weight:bold ;
     height: 10%;
     padding-top: 10px;
     padding-bottom: 10px;
@@ -322,28 +271,60 @@
     height: 100px;
 }
 #mm{
+    
     height: 90%;
-    border: 1px solid #aaa9a9; 
+    border: 2px solid #aaa9a9; 
     border-radius: 10px;
+    padding-top: 20px;
 }
 #img{
      padding-left: 15px;
     padding-right: 15px;
-    padding-top: 20px;
+    padding-top: 13px;
     padding-bottom: 20px; 
     float: left;
     height: 100%;
     text-align: center;
-  
 }
-
-
 #imgmenu1{
     height: 350px;
 }
 #ptitle{
     padding-top: 2px;
 }
+#rev{
+    color: #3b59dc;
+}
+  #img {position:relative;
+}  
+
+p1{color: #fff;
+     line-height:350px;
+    }
+.mask{
+    left: 0; top:0; 
+    text-align: center;
+        width: 99%; height: 97%;
+       position: absolute;
+         border-radius: 50%;
+         background-color: rgba(32, 32, 32, 0.329); 
+         display: none;
+       
+        }
+
+ img:hover + .mask, .mask:hover {display: block;}
+
+/* .imgs{
+    width: 100%; height: 100%;
+    
+} */
+ #imgs{
+    width: 100%; height: 100%;
+   
+} 
+
+
+     
     </style>
 </head>
 
@@ -351,17 +332,14 @@
     <header class="header" id="header">
         <div class="header_toggle"><i class='bx bx-menu' id="header-toggle"></i></div>
         <div>여행 커뮤니티</div>
-        <div>
-            <a href="#" class="login"  data-bs-toggle="modal" data-bs-target="#exampleModal">login</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-        	<a href="#" class="join">join</a>
-        </div>
+        <div><a href="#" class="login">login</a></div>
     </header>
     <ul class="nav nav2">
         <li class="nav-item">
             <a class="nav-link nav-link2" href="#">자유게시판</a>
         </li>
         <li class="nav-item">
-            <a class="nav-link nav-link2" href="#">여행후기</a>
+            <a class="nav-link nav-link2" href="#" id="rev">여행후기</a>
         </li>
         <li class="nav-item">
             <a class="nav-link nav-link2" href="#">구인구직</a>
@@ -397,33 +375,6 @@
             <a href="#" class="nav_link"> <i class='bx bx-log-out nav_icon'></i> <span class="nav_name">로그아웃</span> </a>
         </nav>
     </div>
-    <div class="modal" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-  <div class="modal-dialog modal-right" role="document">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title text-center" id="exampleModalLabel">로그인</h5>
-        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-      </div>
-      <div class="modal-body">
-        <div class="card-details">
-            <input type="text" id="id-input" placeholder="id">
-            <i class="fa fa-envelope"></i>
-        </div>
-        <div class="card-details">
-            <input type="password" id="password-input" placeholder="password">
-            <i class="fa fa-lock"></i>
-            <span><small class="fa fa-eye-slash passcode"></small></span>
-        </div>
-        <div class="login_api" style="text-align:center">
-        	<a href="#"><img src="/imgsrc/google_signin_buttons/web/1x/btn_google_signin_dark_normal_web.png"></a>
-        </div>
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-primary">회원가입</button>
-      </div>
-    </div>
-  </div>
-</div>
     <!--Container Main start-->
     
     <div id="cont">
@@ -432,38 +383,41 @@
            TRAVEL LOUNGE
         </div>
 
-        <div class="col-12" id="searchbar" align="right">
-         <input type="placeholder">
+        <div class="col-12" id="searchbar" >
+            <nav class="navbar bg">
+                <div class="container-fluid">
+                  <a class="navbar-brand"> </a>
+                  <form class="d-flex" role="search">
+                    <input class="form-control me-2" type="search" placeholder="검색어를 입력하세요" aria-label="Search">
+                    <button class="btn btn-primary" type="submit">Search</button>
+                  </form>
+                </div>
+              </nav>
             </div>
 
             <div id="mm">
                  <div id="imgmenu1">
-                    <div class=" col-12 col-sm-4" id="img"><img src="88.jpg" alt=".." class="rounded-circle w-100 h-100"><div id="ptitle">한라산근처 -남휘리조트</div></div>
-                 <div class=" col-12 col-sm-4" id="img"><img src="88.jpg" alt="..." class="rounded-circle w-100 h-100"><div id="ptitle">한라산근처 -남휘리조트</div></div>
-                  <div class=" col-12 col-sm-4" id="img"><img src="88.jpg" alt="..." class="rounded-circle w-100 h-100"><div id="ptitle">한라산근처 -남휘리조트</div></div>
-                </div> 
-                  <div id="imgmenu1">
-                            <div class="col-12 col-sm-4" id="img"><img src="88.jpg" alt="..." class="rounded-circle w-100 h-100"><div id="ptitle">한라산근처 -남휘리조트</div></div>
-                            <div class="col-12 col-sm-4" id="img"><img src="88.jpg" alt="..." class="rounded-circle w-100 h-100"><div id="ptitle">한라산근처 -남휘리조트</div></div>
-                            <div class="col-12 col-sm-4" id="img"><img src="88.jpg" alt="..." class="rounded-circle w-100 h-100"><div id="ptitle">한라산근처 -남휘리조트</div></div>
+                    <div class=" col-12 col-sm-4" id="img"><img src="88.jpg" alt=".." class="rounded-circle w-100 h-100"><div class="mask"><p1>한라산근처 - 남휘리조트</p1></div></div>
+                    <div class=" col-12 col-sm-4" id="img"><img src="88.jpg" alt=".." class="rounded-circle w-100 h-100"><div class="mask"><p1>한라산근처 - 남휘리조트</p1></div></div>
+                    <div class=" col-12 col-sm-4" id="img"><img src="88.jpg" alt=".." class="rounded-circle w-100 h-100"><div class="mask"><p1>한라산근처 - 남휘리조트</p1></div></div>
+                </div>  
+                <div id="imgmenu1">
+                    <div class=" col-12 col-sm-4" id="img"><img src="88.jpg" alt=".." class="rounded-circle w-100 h-100"><div class="mask"><p1>한라산근처 - 남휘리조트</p1></div></div>
+                    <div class=" col-12 col-sm-4" id="img"><img src="88.jpg" alt=".." class="rounded-circle w-100 h-100"><div class="mask"><p1>한라산근처 - 남휘리조트</p1></div></div>
+                    <div class=" col-12 col-sm-4" id="img"><img src="88.jpg" alt=".."  class="rounded-circle w-100 h-100"><div class="mask"><p1>한라산근처 - 남휘리조트</p1></div></div>
                         </div>  
                             <div id="imgmenu1">
-                                    <div class="col-12 col-sm-4" id="img"><img src="88.jpg" alt="..." class="rounded-circle w-100 h-100"><div id="ptitle">한라산근처 -남휘리조트</div></div>
-                                    <div class="col-12 col-sm-4" id="img"><img src="88.jpg" alt="..." class="rounded-circle w-100 h-100"><div id="ptitle">한라산근처 -남휘리조트</div></div>
-                                    <div class="col-12 col-sm-4" id="img"><img src="88.jpg" alt="..." class="rounded-circle w-100 h-100"><div id="ptitle">한라산근처 -남휘리조트</div></div>
-                                          </div>  
-                                     
-     
+                                <div class=" col-12 col-sm-4" id="img"><img src="88.jpg" alt=".." class="rounded-circle w-100 h-100"><div class="mask"><p1>한라산근처 - 남휘리조트</p1></div></div>
+                                <div class=" col-12 col-sm-4" id="img"><img src="88.jpg" alt=".."  class="rounded-circle w-100 h-100"><div class="mask"><p1>한라산근처 - 남휘리조트</p1></div></div>
+                                <div class=" col-12 col-sm-4" id="img"><img src="88.jpg" alt=".." class="rounded-circle w-100 h-100"><div class="mask"><p1>한라산근처 - 남휘리조트</p1></div></div>
+
+                            </div>
                                     </header>
-                                
-                                    
-                                 
-                                  <br>
-                                    <footer class="mt-auto text-black-50">
-                                        <div calss="bar">
-                                            <div class="col-12 text-center">
-                                                1 2 3 4 5 6 7 8 9 >
-                                            </div>
+                                    <div calss="bar">
+                                        <div class="col-12 text-center">
+                                            1 2 3 4 5 6 7 8 9 >
+                                        </div>
+                                    <footer class="mt-auto text-black-50">                   
                                         <p>Designed for <a href="https://getbootstrap.com/" class="text-black">Catch the Java</a>, by <a
                                             href="https://twitter.com/mdo" class="text-black">@Jo yang gi</a>.</p>
                                     </footer>
@@ -479,7 +433,7 @@
 
         document.addEventListener("DOMContentLoaded", function (event) {
 
-            const show1Navbar = (toggleId, navId, bodyId, headerId) => {
+            const showNavbar = (toggleId, navId, bodyId, headerId) => {
                 const toggle = document.getElementById(toggleId),
                     nav = document.getElementById(navId),
                     bodypd = document.getElementById(bodyId),
@@ -488,8 +442,8 @@
                 // Validate that all variables exist
                 if (toggle && nav && bodypd && headerpd) {
                     toggle.addEventListener('click', () => {
-                        // show1 navbar
-                        nav.classList.toggle('show1')
+                        // show navbar
+                        nav.classList.toggle('show')
                         // change icon
                         toggle.classList.toggle('bx-x')
                         // add padding to body
@@ -500,7 +454,7 @@
                 }
             }
 
-            show1Navbar('header-toggle', 'nav-bar', 'body-pd', 'header')
+            showNavbar('header-toggle', 'nav-bar', 'body-pd', 'header')
 
             /*===== LINK ACTIVE =====*/
             const linkColor = document.querySelectorAll('.nav_link')
@@ -514,25 +468,6 @@
             linkColor.forEach(l => l.addEventListener('click', colorLink))
 
             // Your code to run since DOM is loaded and ready
-        });
-        
-     // input id, input pw, password eyes
-        let outer_eye=document.querySelector(".card-details span");
-        let eye=document.querySelector(".passcode");
-        let input=document.querySelector("#password-input");
-        outer_eye.addEventListener('click',function(){
-
-           if(input.type=='password'){
-               input.type="text"; 
-               eye.classList.remove('fa-eye-slash');
-               eye.classList.add('fa-eye');
-             input.classList.add('warning');
-            }else{
-              input.type="password"; 
-              eye.classList.remove('fa-eye');
-              eye.classList.add('fa-eye-slash');
-              input.classList.remove('warning');
-          }
         });
     </script>
 </body>
