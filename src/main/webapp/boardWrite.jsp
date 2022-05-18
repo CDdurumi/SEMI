@@ -254,17 +254,32 @@
             }
 
             .container {
-                /* border : 1px solid red; */
-            }
-
-            [class ^="height"] div {
-                /* border : 1px solid black; */
-                margin: 0px;
+                border : 1px solid black;
+                
             }
 
             [class ^="col"] {
                 border: 1px solid black;
                 padding: 0px;
+            }
+            
+            .mainTitle{
+                font-weight: bold;
+            }
+            .title{
+                border: 0px; width: 99.5%; 
+                margin: 2px; margin-left: 3px;
+                font-size: 20px;
+                font-weight: bold;
+            }
+            #firstFile{margin-left: 2px;}
+            .addFile{margin: 2px;}
+
+            #plusBtn, #minusBtn{
+                border-radius: 4px;
+                margin: 2px;
+                font-weight: bold;
+                width: 30px;
             }
         </style>
     </head>
@@ -320,25 +335,25 @@
     <!-- 게시글 작성하기 메인 ----------------------------------------------------------------------->
     <!--Container Main start-->
     <form action="2134" method="post" enctype="multipart/form-data">
-        <div class="container">
+        <div class="container my-4">
             <div class="row">
-                <div class="col-12 text-center display-6">
+                <div class="col-12 text-center display-6 mainTitle p-1">
                     - OO게시판 글 작성하기 -
                 </div>
                 <div class="col-12 ">
-                    <input type="text" placeholder="글 제목을 입력하세요" name="title" class="w-100" required>
+                    <input type="text" placeholder="글 제목을 입력하세요" name="title" class="title" required>
                 </div>
                 <div class="col-12 " id="fileArea">
-                    <input type="file" name="file1">
+                    <input type="file" name="file1" id="firstFile">
                     <button id="plusBtn" type="button">+</button>
                     <button id="minusBtn" type="button">-</button>
                 </div>
                 <div class="col-12 ">
-                    <textarea class="summernote" placeholder="글 내용을 입력하세요." name="contents" required></textarea>
+                    <textarea class="summernote" name="contents" required></textarea>
                 </div>
-                <div class="col-12 text-center">
-                    <a href="/list.board?cpage=1"><input type="button" value="목록으로"></a>
-                    <input type="submit" value="작성완료">
+                <div class="col-12 " style="text-align: right;">
+                    <a href="/list.board?cpage=1"><input type="button" value="목록으로" class="my-1"></a>
+                    <input type="submit" value="작성완료" class="mx-2">
                 </div>
             </div>
         </div>
@@ -390,18 +405,18 @@
 		let i = 2;
         //+버튼 클릭시 type=file 추가
 		$("#plusBtn").on("click",function(){
-			let fileInput = ("<input type='file' class='addClass' name = file"+i+++">");
+			let fileInput = ("<input type='file' class='addFile' name = file"+i+++">");
 			$("#fileArea").append("<br>");
 			$("#fileArea").append(fileInput);
 		});
 	    //+버튼 클릭시 type=file 제거
 		$("#minusBtn").on("click",function(){
-            console.log($("#fileArea").children(".addClass").length)
-            for(let i=0 ; i<$("#fileArea").children(".addClass").length; i++ ){
-                if(i+1 == $("#fileArea").children(".addClass").length){
-                    let brIndex = $($("#fileArea").children(".addClass")[i]).siblings().length-1
-                    $($($("#fileArea").children(".addClass")[i]).siblings()[brIndex]).remove();
-                    $($("#fileArea").children(".addClass")[i]).remove();
+            console.log($("#fileArea").children(".addFile").length)
+            for(let i=0 ; i<$("#fileArea").children(".addFile").length; i++ ){
+                if(i+1 == $("#fileArea").children(".addFile").length){
+                    let brIndex = $($("#fileArea").children(".addFile")[i]).siblings().length-1
+                    $($($("#fileArea").children(".addFile")[i]).siblings()[brIndex]).remove();
+                    $($("#fileArea").children(".addFile")[i]).remove();
                 }
             }
             
@@ -423,7 +438,7 @@
 				['help', ['help']]
 			],
 			
-            minHeight: 350,             // 최소 높이
+            minHeight: 450,             // 최소 높이
             maxHeight: null,             // 최대 높이
             focus: true,                  // 에디터 로딩후 포커스를 맞출지 여부
             lang: "ko-KR",					// 한글 설정
