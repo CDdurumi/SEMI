@@ -9,6 +9,7 @@
 <meta name="author" content="Mark Otto, Jacob Thornton, and Bootstrap contributors">
 <meta name="generator" content="Hugo 0.88.1">
 <title>쉼표 | 지친 일상에 쉼표를 찍다</title>
+<script defer src="https://use.fontawesome.com/releases/v5.15.2/js/all.js" integrity="sha384-vuFJ2JiSdUpXLKGK+tDteQZBqNlMwAjhZ3TvPaDfN9QmbPb7Q8qUpbSNapQev3YF" crossorigin="anonymous"></script>
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
 <script src="https://code.jquery.com/jquery-3.6.0.js"></script>	
@@ -319,7 +320,10 @@
         <nav class="nav">
             <div> <a href="#" class="nav_logo"> <i class='bx bx-layer nav_logo-icon'></i> <span class="nav_logo-name">쉼표 <br>- 일상의 쉼표를 찍다</span> </a>
                 <div class="nav_list"> 
-                	<a href="#" class="nav_link active"> <i class='bx bx-wind nav_icon'></i> <span class="nav_name">날씨</span> </a> 
+                	<a href="#" class="nav_link active"> <i class='CurrIcon'></i> <span class="nav_name"><span class="weather">
+                    <span class="CurrTemp"></span>
+                    <span class="City"></span>
+                    </span></span> </a>
                 	<a href="/board/communityMain.jsp" class="nav_link"> <i class='bx bx-message nav_icon'></i> <span class="nav_name">커뮤니티</span> </a> 
                 	<a href="/board/gallery.jsp" class="nav_link"> <i class='bx bx-bus nav_icon'></i> <span class="nav_name">여행정보</span> </a> 
                 	<a href="#" class="nav_link"> <i class='bx bx-user nav_icon'></i> <span class="nav_name">마이페이지</span> </a> 
@@ -414,5 +418,49 @@
       }
     });
     </script>
+    <script type="text/javascript">
+ 	let city = ['Jeju City'];
+	
+	city.forEach(function(city){
+		$(document).ready(function() {
+			let weatherIcon = {
+			'01' : 'fas fa-sun',
+			'02' : 'fas fa-cloud-sun',
+			'03' : 'fas fa-cloud',
+			'04' : 'fas fa-cloud-meatball',
+			'09' : 'fas fa-cloud-sun-rain',
+			'10' : 'fas fa-cloud-showers-heavy',
+			'11' : 'fas fa-poo-storm',
+			'13' : 'far fa-snowflake',
+			'50' : 'fas fa-smog'
+			};
+			$.ajax({
+				url:'http://api.openweathermap.org/data/2.5/weather?q='+city+'&APPID=71199a5512c711405120f9710683654c&units=metric',
+				dataType:'json',
+				type:'GET',
+				success:function(data){
+					let $Icon = (data.weather[0].icon).substr(0,2);
+					let $Temp = Math.floor(data.main.temp) + 'º';
+					let $city = data.name;
+					
+					$('.CurrIcon').append('<i class="' + weatherIcon[$Icon] +'"></i>');
+					$('.CurrTemp').prepend($Temp);
+					$('.City').append($city);
+					console.log(data);
+	                console.log("현재온도 : "+ (data.main.temp- 273.15) ); //섭씨온도를 만들기 위함
+	                console.log("현재습도 : "+ data.main.humidity);
+	                console.log("날씨 : "+ data.weather[0].main );
+	                console.log("상세날씨설명 : "+ data.weather[0].description );
+	                console.log("날씨 이미지 : "+ data.weather[0].icon );
+	                console.log("바람   : "+ data.wind.speed );
+	                console.log("나라   : "+ data.sys.country );
+	                console.log("도시이름  : "+ data.name );
+	                console.log("구름  : "+ (data.clouds.all) +"%" );  
+				}
+			})
+		});
+	});
+	
+</script>
 </body>
 </html>
