@@ -225,12 +225,15 @@
 		padding-top:10px;
 	}
 	#signin_btn{
+		
 		width:200px;
 		height:100px;
 		border-radius:30px;
 		margin:auto;
 	}
-	
+	#siginup_btn_area{
+		padding-top:10px;
+	}
 
     </style>
 </head>
@@ -342,8 +345,8 @@
          		</div>
          		
          	</div>
-         	<div class="row">
-         		<button id="signin_btn">회원가입</button>
+         	<div class="row"  id="siginup_btn_area">         		
+         		<button type="button" class="btn btn-primary" id ="signin_btn">회원가입</button>
          	</div>
          	 	
          	
