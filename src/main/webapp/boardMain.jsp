@@ -328,6 +328,20 @@
         #page{
             color: #0080ff;
         }
+         /* 제목이 길어서 잘렸을 경우 밑의 두개 처리해준다 */
+       .ellipsis{
+           position: relative;
+           min-width: 50px;
+           
+       }
+       .ellipsis>span{
+        overflow: hidden;
+           white-space: nowrap;
+           text-overflow: ellipsis;
+           position:absolute;
+           left: 9px;
+           right: 9px;
+       }
     </style>
 </head>
 
@@ -394,7 +408,8 @@
                             <div class="row freeboard_bottom ">
                                 <div class="col-12 border border-2 rounded">
                                     <div class="row m-0">
-                                        <div class="col-9 col-md-9 m-0 free_title">글 제목</div>
+                                        <div class="col-9 col-md-9 m-0 free_title ellipsis"><span>글 제목</span></div>
+                                        <!-- ellipsis 밑에 forEach로 하니까 한줄만 추가했습니다.  -->
                                         <div class="col-3 col-md-3 m-0 p-0">
                                             <div class="row m-0 p-0">
                                                 <div class="col-12 m-0 p-0 text-center">추천 20</div>
@@ -543,7 +558,8 @@
         <div class="col-12  board">
             <div class="row m-0 border border-2 rounded board_row ">
                 <div class="col-1 col-md-1 d-none d-md-block p-0">번호</div>
-                <div class="col-9 col-md-7 m-0 title">글 제목</div>
+                     <div class="col-9 col-md-7 m-0 title ellipsis"><span>글 제목글 제목</span></div>
+<!--                 ellipsis"><span>글 제목</span></div> 밑에 forEach 작업이라 한줄만 추가했습니다. -->
                 <div class="col-2 col-md-1 p-0">글쓴이</div>
                 <div class="col-md-1 d-none d-md-block p-0 ">날짜</div>
                 <div class="col-md-1 d-none d-md-block p-0">조회</div>

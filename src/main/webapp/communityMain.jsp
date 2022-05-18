@@ -308,6 +308,20 @@
             padding-right: 30px;
             padding-bottom: 30px;
         }
+          /* 제목이 길어서 잘렸을 경우 밑의 두개 처리해준다 */
+       .ellipsis{
+           position: relative;
+           min-width: 50px;
+           
+       }
+       .ellipsis>span{
+        overflow: hidden;
+           white-space: nowrap;
+           text-overflow: ellipsis;
+           position:absolute;
+           left: 9px;
+           right: 9px;
+       }
     </style>
 </head>
 
@@ -373,7 +387,7 @@
                             <div class="row freeboard_bottom ">
                                 <div class="col-12 border border-2 rounded">
                                     <div class="row m-0">
-                                        <div class="col-9 col-md-9 m-0 free_title">글 제목</div>
+                                        <div class="col-9 col-md-9 m-0 free_title ellipsis"><span>글 제목</span></div>
                                         <div class="col-3 col-md-3 m-0 p-0">
                                             <div class="row m-0 p-0">
                                                 <div class="col-12 m-0 p-0 text-center">추천 20</div>
@@ -384,7 +398,7 @@
                                 </div>
                                 <div class="col-12 border border-2 rounded">
                                     <div class="row m-0">
-                                        <div class="col-9 col-md-9 m-0 free_title">글 제목</div>
+                                        <div class="col-9 col-md-9 m-0 free_title ellipsis"><span>글 제목</span></div>
                                         <div class="col-3 col-md-3 m-0 p-0">
                                             <div class="row m-0 p-0">
                                                 <div class="col-12 m-0 p-0 text-center">추천 20</div>
@@ -395,7 +409,7 @@
                                 </div>
                                 <div class="col-12 border border-2 rounded">
                                     <div class="row m-0">
-                                        <div class="col-9 col-md-9 m-0 free_title">글 제목</div>
+                                        <div class="col-9 col-md-9 m-0 free_title ellipsis"><span>글 제목</span></div>
                                         <div class="col-3 col-md-3 m-0 p-0">
                                             <div class="row m-0 p-0">
                                                 <div class="col-12 m-0 p-0 text-center">추천 20</div>
@@ -406,7 +420,7 @@
                                 </div>
                                 <div class="col-12 d-block d-md-none border border-2 rounded">
                                     <div class="row m-0">
-                                        <div class="col-9 col-md-9 d-block d-md-none m-0 free_title">글 제목</div>
+                                        <div class="col-9 col-md-9 d-block d-md-none m-0 free_title ellipsis"><span>글 제목</span></div>
                                         <div class="col-3 col-md-3 m-0 p-0">
                                             <div class="row m-0 p-0">
                                                 <div class="col-12 m-0 p-0 text-center">추천 20</div>
@@ -417,7 +431,7 @@
                                 </div>
                                 <div class="col-12 d-block d-md-none border border-2 rounded">
                                     <div class="row m-0">
-                                        <div class="col-9 col-md-9 d-block d-md-none m-0 free_title">글 제목</div>
+                                        <div class="col-9 col-md-9 d-block d-md-none m-0 free_title ellipsis"><span>글 제목</span></div>
                                         <div class="col-3 col-md-3 m-0 p-0">
                                             <div class="row m-0 p-0">
                                                 <div class="col-12 m-0 p-0 text-center">추천 20</div>
@@ -428,7 +442,7 @@
                                 </div>
                                 <div class="col-12 d-block d-md-none border border-2 rounded">
                                     <div class="row m-0">
-                                        <div class="col-9 col-md-9 d-block d-md-none m-0 free_title">글 제목</div>
+                                        <div class="col-9 col-md-9 d-block d-md-none m-0 free_title ellipsis"><span>글 제목</span></div>
                                         <div class="col-3 col-md-3 m-0 p-0">
                                             <div class="row m-0 p-0">
                                                 <div class="col-12 m-0 p-0 text-center">추천 20</div>
@@ -443,7 +457,7 @@
                             <div class="row freeboard_bottom">
                                 <div class="col-12 border border-2 rounded">
                                     <div class="row m-0">
-                                        <div class="col-12 col-md-9 m-0 free_title">글 제목</div>
+                                        <div class="col-12 col-md-9 m-0 free_title ellipsis"><span>글 제목</span></div>
                                         <div class="col-3 col-md-3 m-0 p-0">
                                             <div class="row m-0 p-0">
                                                 <div class="col-12 m-0 p-0 text-center">추천 20</div>
@@ -455,7 +469,7 @@
                                 </div>
                                 <div class="col-12 border border-2 rounded">
                                     <div class="row m-0">
-                                        <div class="col-12 col-md-9 m-0 free_title">글 제목</div>
+                                        <div class="col-12 col-md-9 m-0 free_title ellipsis"><span>글 제목</span></div>
                                         <div class="col-3 col-md-3 m-0 p-0">
                                             <div class="row m-0 p-0">
                                                 <div class="col-12 m-0 p-0 text-center">추천 20</div>
@@ -466,7 +480,7 @@
                                 </div>
                                 <div class="col-12 border border-2 rounded">
                                     <div class="row m-0">
-                                        <div class="col-12 col-md-9 m-0 free_title">글 제목</div>
+                                        <div class="col-12 col-md-9 m-0 free_title ellipsis"><span>글 제목</span></div>
                                         <div class="col-3 col-md-3 m-0 p-0">
                                             <div class="row m-0 p-0">
                                                 <div class="col-12 m-0 p-0 text-center">추천 20</div>
@@ -551,7 +565,7 @@
                             <div class="row freeboard_bottom ">
                                 <div class="col-12 border border-2 rounded">
                                     <div class="row m-0">
-                                        <div class="col-9 col-md-9 m-0 free_title">글 제목</div>
+                                        <div class="col-9 col-md-9 m-0 free_title ellipsis"><span>글 제목</span></div>
                                         <div class="col-3 col-md-3 m-0 p-0">
                                             <div class="row m-0 p-0">
                                                 <div class="col-12 m-0 p-0 text-center">추천 20</div>
@@ -562,7 +576,7 @@
                                 </div>
                                 <div class="col-12 border border-2 rounded">
                                     <div class="row m-0">
-                                        <div class="col-9 col-md-9 m-0 free_title">글 제목</div>
+                                        <div class="col-9 col-md-9 m-0 free_title ellipsis"><span>글 제목</span></div>
                                         <div class="col-3 col-md-3 m-0 p-0">
                                             <div class="row m-0 p-0">
                                                 <div class="col-12 m-0 p-0 text-center">추천 20</div>
@@ -573,7 +587,7 @@
                                 </div>
                                 <div class="col-12 border border-2 rounded">
                                     <div class="row m-0">
-                                        <div class="col-9 col-md-9 m-0 free_title">글 제목</div>
+                                        <div class="col-9 col-md-9 m-0 free_title ellipsis"><span>글 제목</span></div>
                                         <div class="col-3 col-md-3 m-0 p-0">
                                             <div class="row m-0 p-0">
                                                 <div class="col-12 m-0 p-0 text-center">추천 20</div>
@@ -584,7 +598,7 @@
                                 </div>
                                 <div class="col-12 border border-2 rounded">
                                     <div class="row m-0">
-                                        <div class="col-9 col-md-9 m-0 free_title">글 제목</div>
+                                        <div class="col-9 col-md-9 m-0 free_title ellipsis"><span>글 제목</span></div>
                                         <div class="col-3 col-md-3 m-0 p-0">
                                             <div class="row m-0 p-0">
                                                 <div class="col-12 m-0 p-0 text-center">추천 20</div>
@@ -595,7 +609,7 @@
                                 </div>
                                 <div class="col-12 border border-2 rounded">
                                     <div class="row m-0">
-                                        <div class="col-9 col-md-9 m-0 free_title">글 제목</div>
+                                        <div class="col-9 col-md-9 m-0 free_title ellipsis"><span>글 제목</span></div>
                                         <div class="col-3 col-md-3 m-0 p-0">
                                             <div class="row m-0 p-0">
                                                 <div class="col-12 m-0 p-0 text-center">추천 20</div>
@@ -606,7 +620,7 @@
                                 </div>
                                 <div class="col-12 border border-2 rounded">
                                     <div class="row m-0">
-                                        <div class="col-9 col-md-9 m-0 free_title">글 제목</div>
+                                        <div class="col-9 col-md-9 m-0 free_title ellipsis"><span>글 제목</span></div>
                                         <div class="col-3 col-md-3 m-0 p-0">
                                             <div class="row m-0 p-0">
                                                 <div class="col-12 m-0 p-0 text-center">추천 20</div>
@@ -631,7 +645,7 @@
                             <div class="row freeboard_bottom ">
                                 <div class="col-12 border border-2 rounded">
                                     <div class="row m-0">
-                                        <div class="col-9 col-md-9 m-0 free_title">글 제목</div>
+                                        <div class="col-9 col-md-9 m-0 free_title ellipsis"><span>글 제목</span></div>
                                         <div class="col-3 col-md-3 m-0 p-0">
                                             <div class="row m-0 p-0">
                                                 <div class="col-12 m-0 p-0 text-center">추천 20</div>
@@ -642,7 +656,7 @@
                                 </div>
                                 <div class="col-12 border border-2 rounded">
                                     <div class="row m-0">
-                                        <div class="col-9 col-md-9 m-0 free_title">글 제목</div>
+                                        <div class="col-9 col-md-9 m-0 free_title ellipsis"><span>글 제목</span></div>
                                         <div class="col-3 col-md-3 m-0 p-0">
                                             <div class="row m-0 p-0">
                                                 <div class="col-12 m-0 p-0 text-center">추천 20</div>
@@ -653,7 +667,7 @@
                                 </div>
                                 <div class="col-12 border border-2 rounded">
                                     <div class="row m-0">
-                                        <div class="col-9 col-md-9 m-0 free_title">글 제목</div>
+                                        <div class="col-9 col-md-9 m-0 free_title ellipsis"><span>글 제목</span></div>
                                         <div class="col-3 col-md-3 m-0 p-0">
                                             <div class="row m-0 p-0">
                                                 <div class="col-12 m-0 p-0 text-center">추천 20</div>
@@ -664,7 +678,7 @@
                                 </div>
                                 <div class="col-12 border border-2 rounded">
                                     <div class="row m-0">
-                                        <div class="col-9 col-md-9 m-0 free_title">글 제목</div>
+                                        <div class="col-9 col-md-9 m-0 free_title ellipsis"><span>글 제목</span></div>
                                         <div class="col-3 col-md-3 m-0 p-0">
                                             <div class="row m-0 p-0">
                                                 <div class="col-12 m-0 p-0 text-center">추천 20</div>
@@ -675,7 +689,7 @@
                                 </div>
                                 <div class="col-12 border border-2 rounded">
                                     <div class="row m-0">
-                                        <div class="col-9 col-md-9 m-0 free_title">글 제목</div>
+                                        <div class="col-9 col-md-9 m-0 free_title ellipsis"><span>글 제목</span></div>
                                         <div class="col-3 col-md-3 m-0 p-0">
                                             <div class="row m-0 p-0">
                                                 <div class="col-12 m-0 p-0 text-center">추천 20</div>
@@ -686,7 +700,7 @@
                                 </div>
                                 <div class="col-12 border border-2 rounded">
                                     <div class="row m-0">
-                                        <div class="col-9 col-md-9 m-0 free_title">글 제목</div>
+                                        <div class="col-9 col-md-9 m-0 free_title ellipsis"><span>글 제목</span></div>
                                         <div class="col-3 col-md-3 m-0 p-0">
                                             <div class="row m-0 p-0">
                                                 <div class="col-12 m-0 p-0 text-center">추천 20</div>
