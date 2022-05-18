@@ -178,7 +178,7 @@
                 font-size: 1.25rem
             }
 
-            .show1 {
+            .show {
                 left: 0
             }
 
@@ -202,10 +202,6 @@
             .height-100 {
                 height: 100vh
             }
-            
-            .note-editor{
-            	background-color: white;
-            }
 
             @media screen and (min-width: 768px) {
                 body {
@@ -223,13 +219,16 @@
                     padding: 1rem 1rem 0 0
                 }
 
-                .show1 {
+                .show {
                     width: calc(var(--nav-width) + 156px)
                 }
 
                 .body-pd {
                     padding-left: calc(var(--nav-width) + 188px)
                 }
+            }
+            .note-editor{
+            	background-color: white;
             }
 
             /*  */
@@ -262,7 +261,7 @@
                 border: 1px solid black;
                 padding: 0px;
             }
-            
+
             .mainTitle{
                 font-weight: bold;
             }
@@ -281,6 +280,7 @@
                 font-weight: bold;
                 width: 30px;
             }
+
         </style>
     </head>
 
@@ -344,6 +344,7 @@
                     <input type="text" placeholder="글 제목을 입력하세요" name="title" class="title" required>
                 </div>
                 <div class="col-12 " id="fileArea">
+                    <!-- <input type="hidden" name="fileCount" id="fileCount" value=1>  -->
                     <input type="file" name="file1" id="firstFile">
                     <button id="plusBtn" type="button">+</button>
                     <button id="minusBtn" type="button">-</button>
@@ -363,7 +364,7 @@
     <script>
         document.addEventListener("DOMContentLoaded", function (event) {
 
-            const show1Navbar = (toggleId, navId, bodyId, headerId) => {
+            const showNavbar = (toggleId, navId, bodyId, headerId) => {
                 const toggle = document.getElementById(toggleId),
                     nav = document.getElementById(navId),
                     bodypd = document.getElementById(bodyId),
@@ -372,8 +373,8 @@
                 // Validate that all variables exist
                 if (toggle && nav && bodypd && headerpd) {
                     toggle.addEventListener('click', () => {
-                        // show1 navbar
-                        nav.classList.toggle('show1')
+                        // show navbar
+                        nav.classList.toggle('show')
                         // change icon
                         toggle.classList.toggle('bx-x')
                         // add padding to body
@@ -384,7 +385,7 @@
                 }
             }
 
-            show1Navbar('header-toggle', 'nav-bar', 'body-pd', 'header')
+            showNavbar('header-toggle', 'nav-bar', 'body-pd', 'header')
 
             /*===== LINK ACTIVE =====*/
             const linkColor = document.querySelectorAll('.nav_link')
@@ -408,6 +409,7 @@
 			let fileInput = ("<input type='file' class='addFile' name = file"+i+++">");
 			$("#fileArea").append("<br>");
 			$("#fileArea").append(fileInput);
+			// $("#fileCount").val(i-1);
 		});
 	    //+버튼 클릭시 type=file 제거
 		$("#minusBtn").on("click",function(){
@@ -425,28 +427,29 @@
 		//서머노트////////////////////////////////////////////////////////////////////////////
 		$('.summernote').summernote({
             toolbar: [
-				['style', ['style']],
-				['fontsize', ['fontsize']],
-				['font', ['bold', 'italic', 'underline', 'clear']],
-				['fontname', ['fontname']],
-				['color', ['color']],
-				['para', ['ul', 'ol', 'paragraph']],
-				['height', ['height']],
-				['table', ['table']],
-				['insert',['picture','link','video','hr']],
-				['view', ['codeview','fullscreen']],
-				['help', ['help']]
-			],
-			
-            minHeight: 450,             // 최소 높이
+							['style', ['style']],
+							['fontsize', ['fontsize']],
+							['font', ['bold', 'italic', 'underline', 'clear']],
+							['fontname', ['fontname']],
+							['color', ['color']],
+							['para', ['ul', 'ol', 'paragraph']],
+							['height', ['height']],
+							['table', ['table']],
+							['insert',['picture','link','video','hr']],
+							['view', ['codeview','fullscreen']],
+							['help', ['help']]
+						],
+
+            minHeight: 500,             // 최소 높이
             maxHeight: null,             // 최대 높이
             focus: true,                  // 에디터 로딩후 포커스를 맞출지 여부
             lang: "ko-KR",					// 한글 설정
+//             spellCheck: false,
             callbacks: {//콜백
                 //이미지 업로드 시 감지하는 이벤트
-//                onImageUpload : function(files, editor, welEditable) {
-//             	   sendFile(files[0],this);
-//                 },
+            //    onImageUpload : function(files, editor, welEditable) {
+            // 	   sendFile(files[0],this);
+            //     },
                 
                 //이미지 마우스 오른쪽 클릭하여 쓰레기통 이모티콘 클릭 시 감지하는 이벤트
                 onMediaDelete : function(target) {
@@ -464,7 +467,9 @@
 	 	    $.ajax({ // ajax를 통해 파일 업로드 처리
 	 	        data : data,
 	 	        type : "POST",
+// 	            enctype: 'multipart/form-data',
 	 	        url : "/imageUpload.file",
+// 	 	        cache : false,
 	 	        contentType : false,
 	 	        processData : false,
 	 	        dataType:"json",
