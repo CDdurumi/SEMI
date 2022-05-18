@@ -103,7 +103,7 @@
                 cursor: pointer
             }
 
-            .login {
+            .login, .join {
                 color: black;
             }
 
@@ -207,6 +207,58 @@
             	background-color: white;
             }
 
+                .card-details{
+    position:relative;
+    display:flex;
+    
+    padding-bottom:20px;
+}
+.card-details input{
+    height:50px;
+    width:100%;
+    font-size:18px;
+    background-color:#f5f5f7;
+    color:black;
+    padding:0px 20px;
+    padding-left:50px;
+    box-sizing:border-box;
+    border-radius:10px;
+/*     outline:none; */
+    border:none;
+}
+.card-details i{
+    position:absolute;
+    left:10px;
+    top:16px;
+    color:black;
+    font-size:18px;
+}
+.card-details span{
+    position:absolute;
+    width:20px;
+    height:20px;
+    background-color:#fff;
+    border-radius:50%;
+    color:#ffe4be;
+    font-size:10px;
+    
+    right:10px;
+    top:15px;
+    opacity:0.4;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    cursor:pointer; 
+}
+
+.fa{
+	color:black;
+}
+
+.card-details span:hover{
+    opacity:1;
+}
+
             @media screen and (min-width: 768px) {
                 body {
                     margin: calc(var(--header-height) + 1rem) 0 0 0;
@@ -273,7 +325,10 @@
     <header class="header" id="header">
         <div class="header_toggle"><i class='bx bx-menu' id="header-toggle"></i></div>
         <div>여행 커뮤니티</div>
-        <div><a href="#" class="login">login</a></div>
+        <div>
+        	<a href="#" class="login"  data-bs-toggle="modal" data-bs-target="#exampleModal">login</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        	<a href="#" class="join">join</a>
+        </div>
     </header>
     <ul class="nav nav2">
         <li class="nav-item">
@@ -316,6 +371,34 @@
             <a href="#" class="nav_link"> <i class='bx bx-log-out nav_icon'></i> <span class="nav_name">로그아웃</span> </a>
         </nav>
     </div>
+    
+    <div class="modal" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-right" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title text-center" id="exampleModalLabel">로그인</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <div class="card-details">
+            <input type="text" id="id-input" placeholder="id">
+            <i class="fa fa-envelope"></i>
+        </div>
+        <div class="card-details">
+            <input type="password" id="password-input" placeholder="password">
+            <i class="fa fa-lock"></i>
+            <span><small class="fa fa-eye-slash passcode"></small></span>
+        </div>
+        <div class="login_api" style="text-align:center">
+        	<a href="#"><img src="/imgsrc/google_signin_buttons/web/1x/btn_google_signin_dark_normal_web.png"></a>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-primary">회원가입</button>
+      </div>
+    </div>
+  </div>
+</div>
 
     <!-- 게시글 작성하기 메인 ----------------------------------------------------------------------->
     <!--Container Main start-->
@@ -336,7 +419,7 @@
                 <div class="col-12 ">
                     <textarea class="summernote" placeholder="글 내용을 입력하세요." name="contents" required></textarea>
                 </div>
-                <div class="col-12 text-center">
+                <div class="col-12 align-content-end">
                     <a href="/list.board?cpage=1"><input type="button" value="목록으로"></a>
                     <input type="submit" value="작성완료">
                 </div>
@@ -383,6 +466,25 @@
             linkColor.forEach(l => l.addEventListener('click', colorLink))
 
             // Your code to run since DOM is loaded and ready
+        });
+        
+     // input id, input pw, password eyes
+        let outer_eye=document.querySelector(".card-details span");
+        let eye=document.querySelector(".passcode");
+        let input=document.querySelector("#password-input");
+        outer_eye.addEventListener('click',function(){
+
+           if(input.type=='password'){
+               input.type="text"; 
+               eye.classList.remove('fa-eye-slash');
+               eye.classList.add('fa-eye');
+             input.classList.add('warning');
+            }else{
+              input.type="password"; 
+              eye.classList.remove('fa-eye');
+              eye.classList.add('fa-eye-slash');
+              input.classList.remove('warning');
+          }
         });
 
 

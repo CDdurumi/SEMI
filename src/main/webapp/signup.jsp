@@ -225,12 +225,15 @@
 		padding-top:10px;
 	}
 	#signin_btn{
+		
 		width:200px;
 		height:100px;
 		border-radius:30px;
 		margin:auto;
 	}
-	
+	#siginup_btn_area{
+		padding-top:10px;
+	}
 
     </style>
 </head>
@@ -342,8 +345,8 @@
          		</div>
          		
          	</div>
-         	<div class="row">
-         		<button id="signin_btn">회원가입</button>
+         	<div class="row"  id="siginup_btn_area">         		
+         		<button type="button" class="btn btn-primary" id ="signin_btn">회원가입</button>
          	</div>
          	 	
          	
@@ -393,6 +396,25 @@
         linkColor.forEach(l=> l.addEventListener('click', colorLink))
 
         // Your code to run since DOM is loaded and ready
+    });
+    
+ // input id, input pw, password eyes
+    let outer_eye=document.querySelector(".card-details span");
+    let eye=document.querySelector(".passcode");
+    let input=document.querySelector("#password-input");
+    outer_eye.addEventListener('click',function(){
+
+       if(input.type=='password'){
+           input.type="text"; 
+           eye.classList.remove('fa-eye-slash');
+           eye.classList.add('fa-eye');
+         input.classList.add('warning');
+        }else{
+          input.type="password"; 
+          eye.classList.remove('fa-eye');
+          eye.classList.add('fa-eye-slash');
+          input.classList.remove('warning');
+      }
     });
 </script>
 </body>
