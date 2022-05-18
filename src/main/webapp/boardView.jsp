@@ -540,9 +540,9 @@
             </div>
         </div>
         <br>
-        <div class="row msg border border-2 rounded" >
-            <div class="col-10">댓글</div>
-            <div class="col-2 border-start border-2 " style="text-align: center;">
+        <div class="row msg " >
+            <div class="col-10 border-bottom border-2 rounded">댓글</div>
+            <div class="col-2  " style="text-align: center;">
                 <button class="btn btn-primary h-100 " type="submit">Button</button>
             </div>
         </div>
