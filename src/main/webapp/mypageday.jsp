@@ -369,7 +369,10 @@
 <body id="body-pd">
     <header class="header" id="header">
         <div class="header_toggle"><i class='bx bx-menu' id="header-toggle"></i></div>
-        <div class="login">login</div>
+        <div>
+        	<a href="#" class="login"  data-bs-toggle="modal" data-bs-target="#exampleModal">login</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        	<a href="#" class="join">join</a>
+        </div>
     </header>
     <div class="l-nav1bar" id="nav1-bar">
         <nav1 class="nav1">
