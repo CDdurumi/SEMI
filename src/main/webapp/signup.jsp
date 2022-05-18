@@ -211,30 +211,58 @@
                 font-size: 3.5rem;
             }
         }
-        
+        #cont{
+            padding: 60px;
+            border-radius:10px;
+            border: 1px solid gray;
+        }
+        #cont div{
+            padding-left: 0px;
+        padding-right: 0px;
+        }
 	.secondtext{
 		font-size: 51px;
 		font-family: 'Nanum Brush Script', cursive;
 	}
 		#textbox{
-		width:400px; height:100px; border:1px solid #009;margin:40px auto;
- text-align:justify; overflow:auto;
+		width:400px; height:100px; 
+        border:1px solid #009; margin:40px auto;
+        text-align:justify; overflow:auto;
+        border-radius:7px;
 	}
 
-	#signup_input{
+	.signup_input{
 		padding-top:10px;
+        padding-left: 0px;
+        padding-right: 0px;
+        width: 100%;
 	}
 	#signin_btn{
 		
-		width:200px;
-		height:100px;
-		border-radius:30px;
+		width:100%;
+		height:50px;
+		border-radius:10px;
 		margin:auto;
 	}
 	#siginup_btn_area{
 		padding-top:10px;
+        padding-left: 0px;
+        padding-right: 0px;
+        width: 100%;
 	}
-
+    .input{
+    }
+    .input>input{
+      width: 100%;
+      border-radius:10px;
+      border: 1px solid gray;
+    }
+    #acodian{
+        padding-top: 40px; 
+        padding-bottom: 40px; 
+        
+    }
+    /* div{border: 1px solid black;} */
     </style>
 </head>
 <body id="body-pd">
@@ -281,33 +309,34 @@
 <!--Container Main start-->
 <div class="height-100 " align ="center">
 	
-		<div class="row border border-2 rounded" id="cont">
-         	<div class="row" id="signup_input">
-         		<div class ="col-8">
+		<div class="row " id="cont">
+            <div class="col">
+         	<div class="row signup_input">
+         		<div class ="col-8 input">
          			<input type="text" placeholder="ID입력">
          		</div>
          		<div class ="col-4">
          			<div>확인 문구</div>
          		</div>
          	</div>
-         	<div class="row" id="signup_input">
-         		<div class ="col-8">
+         	<div class="row signup_input">
+         		<div class ="col-8 input">
          			<input type="text" placeholder="PW입력">
          		</div>
          		<div class ="col-4">
          			<div>확인 문구</div>
          		</div>
          	</div>
-         	<div class="row" id="signup_input">
-         		<div class ="col-8">
+         	<div class="row signup_input">
+         		<div class ="col-8 input">
          			<input type="text" placeholder="PW확인">
          		</div>
          		<div class ="col-4">
          			<div>확인 문구</div>
          		</div>
          	</div>
-         	<div class="row" id="signup_input">
-         		<div class ="col-8">
+         	<div class="row signup_input">
+         		<div class ="col-8 input">
          			<input type="text" placeholder="email@naver.com">
          		</div>
          		<div class ="col-4">
@@ -315,28 +344,46 @@
          		</div>
          	</div>
          	<div class="row">
-         		<div id = "textbox">
-	  
- 					회사는 회원 가입시 다음과 같이 개인정보를 수집에 대한 동의를 받고 있습니다.<br> 가입자가 아래 내용을 읽고 동의를 선택하여 클릭하면 개인정보 수집에 대해 동의한 것으로 간주합니다.<br>
+         		<div class="col" id="acodian">
+                    <div class="accordion" id="accordionExample">
+                        <div class="accordion-item">
+                          <h2 class="accordion-header" id="headingOne">
+                            <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                              이용약관
+                            </button>
+                          </h2>
+                          <div id="collapseOne" class="accordion-collapse collapse show" aria-labelledby="headingOne" data-bs-parent="#accordionExample">
+                            <div class="accordion-body">
+                                회사는 회원 가입시 다음과 같이 개인정보를 수집에 대한 <br>
+                                동의를 받고 있습니다. 가입자가 아래 내용을 읽고 동의를 <br>
+                                선택하여 클릭하면 개인정보 수집에 대해 
+                                <br>동의한 것으로 간주합니다.<br>
 
 
-아래 내용은 수집하는 개인정보의 항목, 수집 및 이용 목적, 보유 및 이용 기간에 대한 안내이며 자세히 읽어보신 후 동의하여 주시기 바랍니다.<br>
-
-
-<h5>1. 수집하는 개인정보 및 이용 목적</h5><br>
-회사는 이용자가 게시물 작성, 이벤트 참여, 상담 등의 서비스를 이용하기 위하여 회원가입을 신청할 경우, 회사는 서비스 이용을 위해 필요한 최소한의 개인정보를 수집합니다.
-<br>
-
-- 수집 항목: ID, 비밀번호, 이메일 주소<br>
-- 수집 목적: 회원제 서비스 이용, 본인 확인 및 개인 식별, 부정 이용 방지 등 회원 관리<br>
-- 수집 목적: 중복 가입 방지, 부정 이용 방지,<br>
-- 수집 목적: 회원관리, 부정 이용 방지, 오류 상황 확인, 통계활용<br>
-
-2. 개인정보의 보유 및 이용기간<br>
-회사는 회원이 회사가 제공하는 서비스를 받는 동안 회원의 개인정보를 보유합니다.<br> 이용자의 개인정보는 원칙적으로 개인정보의 수집 및 이용 목적이 달성된 시점에서 지체없이 파기합니다.
-
- 							        			
-         		</div>
+                                아래 내용은 수집하는 개인정보의 항목, 수집 및 이용 목적, 보유 및 이용 기간에 대한 안내이며 자세히 읽어보신 후 
+                                <br>동의하여 주시기 바랍니다.<br>
+                                
+                                <br>
+                                <strong>1. 수집하는 개인정보 및 이용 목적</strong>
+                                <br>
+                                <br>
+                                회사는 이용자가 게시물 작성, 이벤트 참여, 상담 등의 <br>서비스를 이용하기 위하여 회원가입을 신청할 경우, 
+                                <br>회사는 서비스 이용을 위해 필요한 최소한의 <br>개인정보를 수집합니다.
+                                <br>
+                                
+                                - 수집 항목: ID, 비밀번호, 이메일 주소<br>
+                                - 수집 목적: 회원제 서비스 이용, 본인 확인 및 개인 식별, <br>부정 이용 방지 등 회원 관리<br>
+                                - 수집 목적: 중복 가입 방지, 부정 이용 방지,<br>
+                                - 수집 목적: 회원관리, 부정 이용 방지, 오류 상황 확인,<br> 통계활용<br>
+                                
+                                2. 개인정보의 보유 및 이용기간<br>
+                                회사는 회원이 회사가 제공하는 서비스를 받는 동안<br> 회원의 개인정보를 보유합니다.<br> 이용자의 개인정보는 원칙적으로 개인정보의 <br>수집 및 이용 목적이 달성된 시점에서 지체없이 파기합니다.
+                            </div>
+                          </div>
+                        </div>
+                       
+                      </div>
+                 </div>
          	</div>
          	<div class="row">
          		<div class="col-12">
@@ -349,7 +396,7 @@
          		<button type="button" class="btn btn-primary" id ="signin_btn">회원가입</button>
          	</div>
          	 	
-         	
+        </div>
         </div>       
 </div>
 <!--Container Main end-->
