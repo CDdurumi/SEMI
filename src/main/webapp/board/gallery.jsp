@@ -325,7 +325,9 @@ p1{color: #fff;
     width: 100%; height: 100%;
    
 } 
-
+#page{
+            color: #0080ff;
+        }
 
      
     </style>
@@ -338,20 +340,20 @@ p1{color: #fff;
         <div><a href="#" class="login">login</a></div>
     </header>
     <ul class="nav nav2">
-        <li class="nav-item">
-            <a class="nav-link nav-link2" href="#">자유게시판</a>
+       <li class="nav-item">
+            <a class="nav-link nav-link2" href="/board/boardMain.jsp">자유게시판</a>
         </li>
         <li class="nav-item">
-            <a class="nav-link nav-link2" href="#" id="rev">여행후기</a>
+            <a class="nav-link nav-link2" id="page" href="/board/gallery.jsp">여행후기</a>
         </li>
         <li class="nav-item">
-            <a class="nav-link nav-link2" href="#">구인구직</a>
+            <a class="nav-link nav-link2" href="/board/jobMain.jsp">구인구직</a>
         </li>
         <li class="nav-item">
-            <a class="nav-link nav-link2" href="#">맛집</a>
+            <a class="nav-link nav-link2" href="/board/foodMain.jsp">맛집</a>
         </li>
         <li class="nav-item">
-            <a class="nav-link nav-link2" href="#">숙소리뷰</a>
+            <a class="nav-link nav-link2" href="/board/stayreview.jsp">숙소리뷰</a>
         </li>
     </ul>
     <div class="l-navbar" id="nav-bar">
