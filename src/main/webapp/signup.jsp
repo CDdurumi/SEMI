@@ -369,6 +369,7 @@
     </nav>
 </div>
 <!--Container Main start-->
+<form action="/signup.member" method="post">
 <div class="height-100 " align ="center">
 	
 		<div class="row " id="cont">
@@ -376,7 +377,7 @@
          	<div class="row signup_input">
          		<div class ="col-8 input">
                     <div class="card-details">
-                        <input type="text" id="id-input" placeholder="아이디">
+                        <input type="text" id="id-input" placeholder="아이디" name="id">
                         <i class="fa fa-user"></i>
                     </div>
          		</div>
@@ -387,7 +388,7 @@
          	<div class="row signup_input">
          		<div class ="col-8 input">
                     <div class="card-details">
-                        <input type="password" id="password1-input" placeholder="비밀번호">
+                        <input type="password" id="password1-input" placeholder="비밀번호" name="pw">
                         <i class="fa fa-lock"></i>
                     </div>
          		</div>
@@ -410,7 +411,7 @@
          	<div class="row signup_input">
          		<div class ="col-8 input">
                     <div class="card-details">
-                        <input type="text" id="id-input" placeholder="이메일">
+                        <input type="text" id="id-input" placeholder="이메일" name="email">
                         <i class="fa fa-envelope"></i>
                     </div>
          		</div>
@@ -462,17 +463,18 @@
          	</div>
          	<div class="row">
          		<div class="col-12">
-         			<label><input type="radio" name="info" value="Y" checked>동의</label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-         			<label><input type="radio" name="info" value="N">거부</label>
+         			<label><input type="radio" name="info" value="Y" checked name="info">동의</label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+         			<label><input type="radio" name="info" value="N" name="info">거부</label>
          		</div>
          	</div>
          	<br>
          	<div class="row"  id="siginup_btn_area">         		
-         		<button type="button" class="btn btn-primary" id ="signin_btn">회원가입</button>
+         		<button type="submit" class="btn btn-primary" id ="signin_btn">회원가입</button>
          	</div> 	
         </div>
         </div>       
 </div>
+</form>
 <!--Container Main end-->
 
 

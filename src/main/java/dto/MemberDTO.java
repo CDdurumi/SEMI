@@ -1,9 +1,10 @@
 package dto;
 
 import java.sql.Date;
+import java.sql.Timestamp;
 
 public class MemberDTO {
-	public MemberDTO(String id, String pw, String email, Date join_date, String information) {
+	public MemberDTO(String id, String pw, String email, Timestamp join_date, String information) {
 		this.id = id;
 		this.pw = pw;
 		this.email = email;
@@ -11,10 +12,14 @@ public class MemberDTO {
 		this.information = information;
 	}
 	
+	public MemberDTO() {
+		// TODO Auto-generated constructor stub
+	}
+
 	private String id;
 	private String pw;
 	private String email;
-	private Date join_date;	
+	private Timestamp join_date;	
 	private String information;
 	
 	public String getId() {
@@ -35,10 +40,10 @@ public class MemberDTO {
 	public void setEmail(String email) {
 		this.email = email;
 	}
-	public Date getJoin_date() {
+	public Timestamp getJoin_date() {
 		return join_date;
 	}
-	public void setJoin_date(Date join_date) {
+	public void setJoin_date(Timestamp join_date) {
 		this.join_date = join_date;
 	}
 	public String getInformation() {
