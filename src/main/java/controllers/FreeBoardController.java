@@ -43,11 +43,9 @@ public class FreeBoardController extends HttpServlet {
 
 //				response.sendRedirect("/detailView.freeBoard?seq="+parent_seq);//작성글 출력
 			
-			}else if(uri.equals("/chat.freeBoard")) {//댓글 등록 시(작성 글에서 댓글 등록 클릭 시 여기로)
-				
-//				response.sendRedirect("/detailView.freeBoard?seq="+parent_seq);//작성글 출력
 			}
-
+			
+			
 		} catch(Exception e) {
 			e.printStackTrace();
 			response.sendRedirect("error.jsp");
