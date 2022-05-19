@@ -1,6 +1,5 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
-
+<!-- <%@ page language="java" contentType="text/html; charset=UTF-8"
+         pageEncoding="UTF-8"%> -->
 <!DOCTYPE html>
 <html>
 
@@ -11,7 +10,6 @@
     <meta name="author" content="Mark Otto, Jacob Thornton, and Bootstrap contributors">
     <meta name="generator" content="Hugo 0.88.1">
     <title>Insert title here</title>
-    
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
@@ -25,9 +23,7 @@
     <!-- Bootstrap core CSS -->
     <link href="/docs/5.1/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
-	
-	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css" integrity="sha512-KfkfwYDsLkIlwQp6LFnl8zNdLGxu9YAA1QvwINks4PhcElQSvqcyVLLD9aMhXd13uQjoXtEKNosOWaZqXgel0g==" crossorigin="anonymous" referrerpolicy="no-referrer" />
-    
+
     <!-- Favicons -->
     <link rel="apple-touch-icon" href="/docs/5.1/assets/img/favicons/apple-touch-icon.png" sizes="180x180">
     <link rel="icon" href="/docs/5.1/assets/img/favicons/favicon-32x32.png" sizes="32x32" type="image/png">
@@ -36,7 +32,7 @@
     <link rel="mask-icon" href="/docs/5.1/assets/img/favicons/safari-pinned-tab.svg" color="#7952b3">
     <link rel="icon" href="/docs/5.1/assets/img/favicons/favicon.ico">
     <meta name="theme-color" content="#7952b3">
-
+    <script src="https://kit.fontawesome.com/247b201f79.js" crossorigin="anonymous"></script>
 
     <style>
         @import url("https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700&display=swap");
@@ -51,9 +47,7 @@
             --normal-font-size: 1rem;
             --z-fixed: 100
         }
-		body::-webkit-scrollbar{
-    		display: none; /* Chrome, Safari, Opera*/
-  		}
+
         div {
             /* border:1px solid black; */
         }
@@ -93,14 +87,14 @@
         }
 
         .header_toggle {
-            color: black;
+            color: var(--first-color);
             font-size: 1.5rem;
             cursor: pointer
         }
 
-        .login, .join{
-		color:black;
-	}
+        .login {
+            color: black;
+        }
 
         .header_img {
             width: 35px;
@@ -182,7 +176,7 @@
             font-size: 1.25rem
         }
 
-        .show1 {
+        .show {
             left: 0
         }
 
@@ -232,7 +226,7 @@
                 padding: 1rem 1rem 0 0
             }
 
-            .show1 {
+            .show {
                 width: calc(var(--nav-width) + 156px)
             }
 
@@ -255,58 +249,6 @@
                 font-size: 3.5rem;
             }
         }
-        
-            .card-details{
-    position:relative;
-    display:flex;
-    
-    padding-bottom:20px;
-}
-.card-details input{
-    height:50px;
-    width:100%;
-    font-size:18px;
-    background-color:#f5f5f7;
-    color:black;
-    padding:0px 20px;
-    padding-left:50px;
-    box-sizing:border-box;
-    border-radius:10px;
-/*     outline:none; */
-    border:none;
-}
-.card-details i{
-    position:absolute;
-    left:10px;
-    top:16px;
-    color:black;
-    font-size:18px;
-}
-.card-details span{
-    position:absolute;
-    width:20px;
-    height:20px;
-    background-color:#fff;
-    border-radius:50%;
-    color:#ffe4be;
-    font-size:10px;
-    
-    right:10px;
-    top:15px;
-    opacity:0.4;
-    display:flex;
-    justify-content:center;
-    align-items:center;
-    cursor:pointer; 
-}
-
-.fa{
-	color:black;
-}
-
-.card-details span:hover{
-    opacity:1;
-}
 
         /* 메인내용 */
         div {
@@ -363,7 +305,27 @@
        #heart{
            width: 82%;
            text-align: right;
-           padding-top: 13px;
+           padding-top: 30px;
+       }
+       #heartcol{
+           font-size: 30px;
+           color: #b1b1b1;
+           text-align: center;
+           padding: 0px;
+           border-radius: 100px;
+           border: 1px solid rgb(177, 177, 177);
+           max-width: 47px;
+           min-width: 47px;
+       }
+       #jjimcol{
+        font-size: 30px;
+           color: #b1b1b1;
+           text-align: center;
+           padding: 0px;
+           border-radius: 100px;
+           border: 1px solid rgb(177, 177, 177);
+           max-width: 47px;
+           min-width: 47px;
        }
        .msg{
            width: 90%;
@@ -388,7 +350,22 @@
            left: 9px;
            right: 9px;
        }
-       
+       /* */
+       .wrap{
+           padding: 0px;
+           margin: auto;
+           width: 90%;
+       }
+       .wrap div{
+           width: 100%;
+       }
+       #btn{
+          width: 100%;
+       }
+       #jjimdummy{
+           min-width: 5px;
+           max-width: 5px;
+       }
     </style>
 </head>
 
@@ -396,46 +373,41 @@
     <header class="header" id="header">
         <div class="header_toggle"><i class='bx bx-menu' id="header-toggle"></i></div>
         <div>여행 커뮤니티</div>
-        <div>
-            <a href="#" class="login"  data-bs-toggle="modal" data-bs-target="#exampleModal">login</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-        	<a href="#" class="join">join</a>
-        </div>
+        <div><a href="#" class="login">login</a></div>
     </header>
     <ul class="nav nav2">
         <li class="nav-item">
-            <a class="nav-link nav-link2 "  href="/board/boardMain.jsp" id="page">자유게시판</a>
+            <a class="nav-link nav-link2"  href="#">자유게시판</a>
         </li>
         <li class="nav-item">
-            <a class="nav-link nav-link2" href="/board/gallery.jsp">여행후기</a>
+            <a class="nav-link nav-link2"  href="#">여행후기</a>
         </li>
         <li class="nav-item">
-            <a class="nav-link nav-link2" href="/board/jobMain.jsp">구인구직</a>
+            <a class="nav-link nav-link2"  href="#">구인구직</a>
         </li>
         <li class="nav-item">
-            <a class="nav-link nav-link2" href="/board/foodMain.jsp">맛집</a>
+            <a class="nav-link nav-link2"  href="#">맛집</a>
         </li>
         <li class="nav-item">
-            <a class="nav-link nav-link2" href="/board/stayreview.jsp">숙소리뷰</a>
+            <a class="nav-link nav-link2" id="page" href="#">숙소리뷰</a>
         </li>
     </ul>
     <div class="l-navbar" id="nav-bar">
         <nav class="nav">
-            <div> <a href="/index.jsp" class="nav_logo"> <i class='bx bx-layer nav_logo-icon'></i> <span class="nav_logo-name">쉼표
+            <div> <a href="#" class="nav_logo"> <i class='bx bx-layer nav_logo-icon'></i> <span class="nav_logo-name">쉼표
                         <br>- 일상의 쉼표를 찍다</span> </a>
                 <div class="nav_list">
-                    <a href="#" class="nav_link active"> <i class='CurrIcon'></i> <span class="nav_name"><span class="weather">
-                    <span class="CurrTemp"></span>
-                    <span class="City"></span>
-                    </span></span> </a>
-                    <a href="/board/communityMain.jsp" class="nav_link"> <i class='bx bx-message nav_icon'></i> <span
+                    <a href="#" class="nav_link active"> <i class='bx bx-wind nav_icon'></i> <span
+                            class="nav_name">날씨</span> </a>
+                    <a href="#" class="nav_link"> <i class='bx bx-message nav_icon'></i> <span
                             class="nav_name">커뮤니티</span> </a>
-                    <a href="/board/editorReMain.jsp" class="nav_link"> <i class='bx bx-bus nav_icon'></i> <span class="nav_name">여행정보</span>
+                    <a href="#" class="nav_link"> <i class='bx bx-bus nav_icon'></i> <span class="nav_name">여행정보</span>
                     </a>
-                    <a href="/myPage.jsp" class="nav_link"> <i class='bx bx-user nav_icon'></i> <span
+                    <a href="#" class="nav_link"> <i class='bx bx-user nav_icon'></i> <span
                             class="nav_name">마이페이지</span> </a>
                     <a href="#" class="nav_link"> <i class='bx bx-calendar nav_icon'></i> <span
                             class="nav_name">일정관리</span> </a>
-                    <a href="/board/stayreview.jsp" class="nav_link"> <i class='bx bx-home nav_icon'></i> <span class="nav_name">숙소정보</span>
+                    <a href="#" class="nav_link"> <i class='bx bx-home nav_icon'></i> <span class="nav_name">숙소정보</span>
                     </a>
                     <a href="#" class="nav_link"> <i class='bx bx-message-alt-detail nav_icon'></i> <span
                             class="nav_name">쪽지</span> </a>
@@ -444,34 +416,6 @@
             <a href="#" class="nav_link"> <i class='bx bx-log-out nav_icon'></i> <span class="nav_name">로그아웃</span> </a>
         </nav>
     </div>
-    
-    <div class="modal" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-  <div class="modal-dialog modal-right" role="document">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title text-center" id="exampleModalLabel">로그인</h5>
-        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-      </div>
-      <div class="modal-body">
-        <div class="card-details">
-            <input type="text" id="id-input" placeholder="id">
-            <i class="fa fa-envelope"></i>
-        </div>
-        <div class="card-details">
-            <input type="password" id="password-input" placeholder="password">
-            <i class="fa fa-lock"></i>
-            <span><small class="fa fa-eye-slash passcode"></small></span>
-        </div>
-        <div class="login_api" style="text-align:center">
-        	<a href="#"><img src="/imgsrc/google_signin_buttons/web/1x/btn_google_signin_dark_normal_web.png"></a>
-        </div>
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-primary">회원가입</button>
-      </div>
-    </div>
-  </div>
-</div>
     <!--Container Main start-->
     <div class="height-100 ">
         <div class="row width-100 dummy" ></div>
@@ -488,7 +432,7 @@
             <div class="col-12 p-0 border border-2 rounded" id="contents">
                 <div class="row text-center border-bottom border-2 rounded" id="conMenu">
                     <div class="col-md-1 d-none d-md-block">1</div>
-                    <div class="col-6 col-md-6 ellipsis"><span>자유게시판 글자유게시판 글자유게시판 글</span></div>
+                    <div class="col-6 col-md-6 ellipsis "><span>자유게시판 글자유게시판 글자유게시판 글</span></div>
                     <div class="col-3 col-md-2 ellipsis"><span>글쓴이글쓴이글쓴이글쓴이</span></div>
                     <div class="col-md-1 d-none d-md-block">22/5/14</div>
                     <div class="col-md-1 d-none d-md-block">43</div>
@@ -539,18 +483,29 @@
                 
             </div>
             <div class="row " id="heart" style="margin: auto;">
-                <div class="col p-0">하트!</div>
+                
+                <div class="col-1" id="jjimcol">
+                    <i class="fa-solid fa-star"></i>
+                </div>
+                <div class="col-1" id="jjimdummy"></div>
+                <div class="col-1 text-center" id="heartcol">
+                    ♥
+                </div>
+                <div class="col-9"></div>
             </div>
+            
         </div>
         <br>
         <div class="row msg " >
             <div class="col-10 border-bottom border-2 rounded">댓글</div>
             <div class="col-2  " style="text-align: center;">
-                <button class="btn btn-primary h-100 " type="submit">Button</button>
+                <button class="btn btn-primary h-100 " id="btn" type="submit">등록</button>
             </div>
         </div>
         <div class="row dummy"></div>
-        <div class="row border-top border-1 pt-4" >
+        <div class="row wrap">
+        <div class="col-12 wrap">
+            <div class="row border-top border-1 pt-4 m-0" >
             <div class="col-3 ">유자빵</div>
             <div class="col-3 ">2022/05/13</div>
             <div class="col-6 " style="text-align: right;">
@@ -559,10 +514,14 @@
             </div>
            
         </div>
-        <div class="row message border-bottom border-2">
+        <div class="row message border-bottom border-2 m-0">
             <div class="col-12 ">버튼 그냥 기본으로 넣어봤습니다아아ㅏ </div>
         </div>
-        <div class="row border-top border-1 pt-4" >
+    </div>
+    </div>
+    <div class="row wrap">
+        <div class="col-12 wrap">
+        <div class="row border-top border-1 pt-4 m-0" >
             <div class="col-3 ">유자빵</div>
             <div class="col-3 ">2022/05/13</div>
             <div class="col-6 " style="text-align: right;">
@@ -571,10 +530,11 @@
             </div>
            
         </div>
-        <div class="row message border-bottom border-2">
+        <div class="row message border-bottom border-2 m-0">
             <div class="col-12 ">버튼 그냥 기본으로 넣어봤습니다아아ㅏ </div>
         </div>
-        
+    </div>
+</div>
         <div class="row dummy"></div>
     </div>
     <!--Container Main end-->
@@ -583,10 +543,40 @@
 
 
     <script>
+    //heart
+    let heart = true;
+    $("#heartcol").on("click", function () {
+        
+        if (heart) {
+            $("#heartcol").css("color", "red" );
+            $("#heartcol").css("border","1px solid red" );
+            heart=false;
+        } else {
+            $("#heartcol").css("color", "#b1b1b1");
+            $("#heartcol").css("border","1px solid #b1b1b1" );
+            heart=true;
+        }
+
+    })
+    //jjim
+    let jjim = true;
+    $("#jjimcol").on("click", function () {
+        
+        if (jjim) {
+            $("#jjimcol").css("color", "#ffd000" );
+            $("#jjimcol").css("border","1px solid #ffd000" );
+            jjim=false;
+        } else {
+            $("#jjimcol").css("color", "#b1b1b1");
+            $("#jjimcol").css("border","1px solid #b1b1b1" );
+            jjim=true;
+        }
+
+    })
 
         document.addEventListener("DOMContentLoaded", function (event) {
 
-            const show1Navbar = (toggleId, navId, bodyId, headerId) => {
+            const showNavbar = (toggleId, navId, bodyId, headerId) => {
                 const toggle = document.getElementById(toggleId),
                     nav = document.getElementById(navId),
                     bodypd = document.getElementById(bodyId),
@@ -595,8 +585,8 @@
                 // Validate that all variables exist
                 if (toggle && nav && bodypd && headerpd) {
                     toggle.addEventListener('click', () => {
-                        // show1 navbar
-                        nav.classList.toggle('show1')
+                        // show navbar
+                        nav.classList.toggle('show')
                         // change icon
                         toggle.classList.toggle('bx-x')
                         // add padding to body
@@ -607,7 +597,7 @@
                 }
             }
 
-            show1Navbar('header-toggle', 'nav-bar', 'body-pd', 'header')
+            showNavbar('header-toggle', 'nav-bar', 'body-pd', 'header')
 
             /*===== LINK ACTIVE =====*/
             const linkColor = document.querySelectorAll('.nav_link')
@@ -622,71 +612,7 @@
 
             // Your code to run since DOM is loaded and ready
         });
-        
-     // input id, input pw, password eyes
-        let outer_eye=document.querySelector(".card-details span");
-        let eye=document.querySelector(".passcode");
-        let input=document.querySelector("#password-input");
-        outer_eye.addEventListener('click',function(){
-
-           if(input.type=='password'){
-               input.type="text"; 
-               eye.classList.remove('fa-eye-slash');
-               eye.classList.add('fa-eye');
-             input.classList.add('warning');
-            }else{
-              input.type="password"; 
-              eye.classList.remove('fa-eye');
-              eye.classList.add('fa-eye-slash');
-              input.classList.remove('warning');
-          }
-        });
     </script>
-    
-    <script type="text/javascript">
- 	let city = ['Jeju City'];
-	
-	city.forEach(function(city){
-		$(document).ready(function() {
-			let weatherIcon = {
-			'01' : 'fas fa-sun',
-			'02' : 'fas fa-cloud-sun',
-			'03' : 'fas fa-cloud',
-			'04' : 'fas fa-cloud-meatball',
-			'09' : 'fas fa-cloud-sun-rain',
-			'10' : 'fas fa-cloud-showers-heavy',
-			'11' : 'fas fa-poo-storm',
-			'13' : 'far fa-snowflake',
-			'50' : 'fas fa-smog'
-			};
-			$.ajax({
-				url:'http://api.openweathermap.org/data/2.5/weather?q='+city+'&APPID=71199a5512c711405120f9710683654c&units=metric',
-				dataType:'json',
-				type:'GET',
-				success:function(data){
-					let $Icon = (data.weather[0].icon).substr(0,2);
-					let $Temp = Math.floor(data.main.temp) + 'º';
-					let $city = "제주도";
-					
-					$('.CurrIcon').append('<i class="' + weatherIcon[$Icon] +'"></i>');
-					$('.CurrTemp').prepend($Temp);
-					$('.City').append($city);
-					console.log(data);
-	                console.log("현재온도 : "+ (data.main.temp- 273.15) ); //섭씨온도를 만들기 위함
-	                console.log("현재습도 : "+ data.main.humidity);
-	                console.log("날씨 : "+ data.weather[0].main );
-	                console.log("상세날씨설명 : "+ data.weather[0].description );
-	                console.log("날씨 이미지 : "+ data.weather[0].icon );
-	                console.log("바람   : "+ data.wind.speed );
-	                console.log("나라   : "+ data.sys.country );
-	                console.log("도시이름  : "+ data.name );
-	                console.log("구름  : "+ (data.clouds.all) +"%" );  
-				}
-			})
-		});
-	});
-	
-</script>
 </body>
 
 </html>
