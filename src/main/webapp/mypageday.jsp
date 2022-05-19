@@ -88,7 +88,7 @@
         }
 
         .header_toggle {
-            color: var(--first-color);
+            color: black;
             font-size: 1.5rem;
             cursor: pointer
         }
@@ -188,7 +188,9 @@
         .height-100 {
             height: 100%
         }
-
+.login, .join{
+      color:black;
+   }
         @media screen and (min-width: 768px) {
             body {
                 margin: calc(var(--header-height) + 1rem) 0 0 0;
@@ -222,7 +224,12 @@
                 padding-left: calc(var(--nav1-width) + 188px)
             }
         }
-
+ .card-details{
+    position:relative;
+    display:flex;
+    
+    padding-bottom:20px;
+}
 .card-details input{
     height:50px;
     width:100%;
@@ -570,7 +577,24 @@
             // Your code to run since DOM is loaded and ready
         });
 
+     // input id, input pw, password eyes
+        let outer_eye=document.querySelector(".card-details span");
+        let eye=document.querySelector(".passcode");
+        let input=document.querySelector("#password-input");
+        outer_eye.addEventListener('click',function(){
 
+           if(input.type=='password'){
+               input.type="text"; 
+               eye.classList.remove('fa-eye-slash');
+               eye.classList.add('fa-eye');
+             input.classList.add('warning');
+            }else{
+              input.type="password"; 
+              eye.classList.remove('fa-eye');
+              eye.classList.add('fa-eye-slash');
+              input.classList.remove('warning');
+          }
+        });
 
          
         //top버튼

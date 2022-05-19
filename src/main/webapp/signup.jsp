@@ -78,11 +78,11 @@
             transition: .5s
         }
         .header_toggle{
-            color: var(--first-color);
+            color: black;
             font-size: 1.5rem;
             cursor: pointer
         }
-        .login{
+        .login, .join{
            color:black;
         }
         .header_img{
@@ -330,25 +330,11 @@
     	<img src="/imgsrc/textlogo3.png">
     </a>
     </div>
-    <div></div>
+    <div>
+    	<a href="#" class="login"  data-bs-toggle="modal" data-bs-target="#exampleModal">login</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        <a href="/signup.jsp" class="join">join</a>
+    </div>
 </header>
-<ul class="nav nav2">
-  <li class="nav-item">
-            <a class="nav-link nav-link2" href="/board/boardMain.jsp">자유게시판</a>
-        </li>
-        <li class="nav-item">
-            <a class="nav-link nav-link2" href="/board/gallery.jsp">여행후기</a>
-        </li>
-        <li class="nav-item">
-            <a class="nav-link nav-link2" href="/board/jobMain.jsp" id="page">구인구직</a>
-        </li>
-        <li class="nav-item">
-            <a class="nav-link nav-link2" href="/board/foodMain.jsp">맛집</a>
-        </li>
-        <li class="nav-item">
-            <a class="nav-link nav-link2" href="/board/stayreview.jsp">숙소리뷰</a>
-        </li>
-</ul>
 <div class="l-navbar" id="nav-bar">
     <nav class="nav">
         <div> <a href="/index.jsp" class="nav_logo"> <i class='bx bx-layer nav_logo-icon'></i> <span class="nav_logo-name">쉼표 <br>- 일상의 쉼표를 찍다</span> </a>
@@ -368,6 +354,35 @@
         <a href="#" class="nav_link"> <i class='bx bx-log-out nav_icon'></i> <span class="nav_name">로그아웃</span> </a>
     </nav>
 </div>
+
+<div class="modal" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-right" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title text-center" id="exampleModalLabel">로그인</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <div class="card-details">
+            <input type="text" id="id-input" placeholder="id">
+            <i class="fa fa-envelope"></i>
+        </div>
+        <div class="card-details">
+            <input type="password" id="password-input" placeholder="password">
+            <i class="fa fa-lock"></i>
+            <span><small class="fa fa-eye-slash passcode"></small></span>
+        </div>
+        <div class="login_api" style="text-align:center">
+           <a href="#"><img src="/imgsrc/google_signin_buttons/web/1x/btn_google_signin_dark_normal_web.png"></a>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-primary">회원가입</button>
+      </div>
+    </div>
+  </div>
+</div>
+
 <!--Container Main start-->
 <form action="/signup.member" method="post">
 <div class="height-100 " align ="center">
