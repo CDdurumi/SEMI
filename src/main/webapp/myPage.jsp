@@ -233,7 +233,7 @@
         /*마이페이지 ------------------------------------------------------------------------------------------------*/
         .container {
             height: 100vh;
-            border: 1px solid red
+/*             border: 1px solid red */
         }
         /*탭*/
         #myTabContent>div{
@@ -295,14 +295,15 @@
            white-space: nowrap;
            text-overflow: ellipsis;
            position:absolute;
-           left: 9px;
-           right: 9px;
+           left: 0px;
+           right: 0px;
+           height:100%;
        }
        /*받은 쪽지함, 보낸 쪽지함 버튼*/
        #v-pills-tab> button{
            width: 80px;
        }
-       /* div{border: 1px solid blue;} */
+/*         div{border: 1px solid blue;}  */
         /*--게시글-----------------------------------------------------------------------------------------*/
 
 
@@ -388,7 +389,7 @@
                                 <div class="row m-0 ">
                                     <div class="col-12  ">
                                         <div class="row " id="board_menu_text">
-                                            <div class="col-md-2 col-lg-1 d-none d-md-block ">번호</div>
+                                            <div class="col-md-2 col-lg-1 d-none d-md-block text-center">번호</div>
                                             <div class="col-8 col-md-6 col-lg-7">제목</div>
                                             <div class="col-4 col-md-2 col-lg-2 text-center">보낸이</div>
                                             <div class="col-md-2 col-lg-2 d-none  d-md-block text-center">날짜</div>
@@ -397,7 +398,7 @@
 
                                    <div class="col-12  board">
                                        <div class="row m-0 border border-2 rounded board_row ">
-                                           <div class="col-md-2 col-lg-1 d-none d-md-block p-0">번호</div>
+                                           <div class="col-md-2 col-lg-1 d-none d-md-block p-0 text-center">번호</div>
                                            <div class="col-8 col-md-6 col-lg-7 m-0 title ellipsis p-0"><span>글 제목글 제목</span></div>
                                            <!-- ellipsis"><span>글 제목</span></div> 밑에 forEach 작업이라 한줄만 추가했습니다. -->
                                            <div class="col-4 col-md-2 col-lg-2 p-0 ellipsis text-center"><span>글쓴이글쓴이글쓴이</span></div>
@@ -463,7 +464,7 @@
                                 <div class="row m-0 ">
                                     <div class="col-12  ">
                                         <div class="row " id="board_menu_text">
-                                            <div class="col-md-2 col-lg-1 d-none d-md-block ">번호</div>
+                                            <div class="col-md-2 col-lg-1 d-none d-md-block text-center">번호</div>
                                             <div class="col-8 col-md-6 col-lg-7">제목</div>
                                             <div class="col-4 col-md-2 col-lg-2 text-center">받는이</div>
                                             <div class="col-md-2 col-lg-2 d-none  d-md-block text-center">날짜</div>
@@ -472,8 +473,8 @@
 
                                    <div class="col-12  board">
                                        <div class="row m-0 border border-2 rounded board_row ">
-                                           <div class="col-md-2 col-lg-1 d-none d-md-block p-0">번호</div>
-                                           <div class="col-8 col-md-6 col-lg-7 m-0 title ellipsis p-0"><span>글 제목글 제목</span></div>
+                                           <div class="col-md-2 col-lg-1 d-none d-md-block p-0 text-center">번호</div>
+                                           <div class="col-8 col-md-6 col-lg-7 m-0 title ellipsis p-0"><span>글 제목글제목제목제목 제목</span></div>
                                            <!-- ellipsis"><span>글 제목</span></div> 밑에 forEach 작업이라 한줄만 추가했습니다. -->
                                            <div class="col-4 col-md-2 col-lg-2 p-0 ellipsis text-center"><span>글쓴이글쓴이글쓴이</span></div>
                                            <!-- 글제목 글쓴이 col 밑에랑 달라요 반복이라 한줄만 추가합니다 -->
