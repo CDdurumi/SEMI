@@ -31,15 +31,15 @@ public class BoardDAO {
 	public String getSeqNextVal(String boardOption) throws Exception{
 		String boardSeq = "";
 		if(boardOption.equals("f")) {//자유게시판
-			boardSeq = "free_board_seq ";
+			boardSeq = "free_board_seq";
 		}else if(boardOption.equals("g")) {//여행후기
-			boardSeq = "gallery_seq  ";
+			boardSeq = "gallery_seq";
 		}else if(boardOption.equals("j")) {//구인구직
-			boardSeq = "job_board_seq  ";
+			boardSeq = "job_board_seq";
 		}else if(boardOption.equals("r")) {//맛집
-			boardSeq = "restaurant_board_seq  ";
+			boardSeq = "restaurant_board_seq";
 		}else if(boardOption.equals("h")) {//숙소리뷰
-			boardSeq = "house_board_seq ";
+			boardSeq = "house_board_seq";
 		}
 		
 		String sql = "select '"+boardOption+"'||"+boardSeq+".nextval from dual ";
