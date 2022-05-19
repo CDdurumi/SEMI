@@ -3,7 +3,7 @@ package dto;
 import java.sql.Timestamp;
 import java.text.SimpleDateFormat;
 
-public class FreeBoardDTO {
+public class BoardDTO {
 	private String free_board_seq;
 	private String id;
 	private String title;
@@ -12,9 +12,9 @@ public class FreeBoardDTO {
 	private int like_count;
 	private int view_count;
 	
-	public FreeBoardDTO() {
+	public BoardDTO() {
 	}
-	public FreeBoardDTO(String free_board_seq, String id, String title, String contents, Timestamp write_date,
+	public BoardDTO(String free_board_seq, String id, String title, String contents, Timestamp write_date,
 			int like_count, int view_count) {
 		super();
 		this.free_board_seq = free_board_seq;
