@@ -8,15 +8,15 @@ import javax.naming.Context;
 import javax.naming.InitialContext;
 import javax.sql.DataSource;
 
-import dto.FreeBoardDTO;
+import dto.BoardDTO;
 
-public class FreeBoardDAO {
+public class BoardDAO {
 
 	//싱글턴
-	private static FreeBoardDAO instance = null;
-	public synchronized static FreeBoardDAO getInstance() {
+	private static BoardDAO instance = null;
+	public synchronized static BoardDAO getInstance() {
 		if(instance == null) {
-			instance = new FreeBoardDAO();
+			instance = new BoardDAO();
 		}
 		return instance;	
 	}
@@ -40,7 +40,7 @@ public class FreeBoardDAO {
 	}
 	
 	//삽입
-	public int insert(FreeBoardDTO dto) throws Exception {
+	public int insert(BoardDTO dto) throws Exception {
 
 		String sql = "insert into free_board values(?, ?, ?, ?, default, default, default)";
 		try(Connection con = this.getConnection();
