@@ -37,7 +37,7 @@ public class FilesDAO {
 				PreparedStatement pstat = con.prepareStatement(sql);) {
 			pstat.setString(1, dto.getOri_name());
 			pstat.setString(2, dto.getSys_name());
-			pstat.setInt(3, dto.getParent_seq());
+			pstat.setString(3, dto.getParent_seq());
 
 			int result = pstat.executeUpdate();
 			con.commit();
@@ -59,7 +59,7 @@ public class FilesDAO {
 					int seq = rs.getInt("seq");
 					String ori_name = rs.getString("ori_name");
 					String sys_name = rs.getString("sys_name");
-					int parent_seq = rs.getInt("parent_seq");
+					String parent_seq = rs.getString("parent_seq");
 					list.add(new FilesDTO(seq, ori_name, sys_name,parent_seq));
 				}
 				return list;

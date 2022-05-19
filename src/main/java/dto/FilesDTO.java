@@ -5,11 +5,11 @@ public class FilesDTO {
 	private int seq;
 	private String ori_name;
 	private String sys_name;
-	private int parent_seq;
+	private String parent_seq;
 	
 	public FilesDTO() {
 	}
-	public FilesDTO(int seq, String ori_name, String sys_name, int parent_seq) {
+	public FilesDTO(int seq, String ori_name, String sys_name, String parent_seq) {
 		super();
 		this.seq = seq;
 		this.ori_name = ori_name;
@@ -34,11 +34,12 @@ public class FilesDTO {
 	public void setSys_name(String sys_name) {
 		this.sys_name = sys_name;
 	}
-	public int getParent_seq() {
+	public String getParent_seq() {
 		return parent_seq;
 	}
-	public void setParent_seq(int parent_seq) {
+	public void setParent_seq(String parent_seq) {
 		this.parent_seq = parent_seq;
 	}
 	
+
 }
