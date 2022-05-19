@@ -337,7 +337,7 @@
 
     <!-- 게시글 작성하기 메인 ----------------------------------------------------------------------->
     <!--Container Main start-->
-    <form action="2134" method="post" enctype="multipart/form-data">
+    <form action="/writeProcessing.freeBoard" method="post" enctype="multipart/form-data">
         <div class="container my-4">
             <div class="row">
                 <div class="col-12 text-center display-6 mainTitle p-1">
