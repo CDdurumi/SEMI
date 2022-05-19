@@ -43,7 +43,7 @@ public class FreeBoardController extends HttpServlet {
 
 				int maxSize = 1024*1024*10;//파일허용 크기
 				String savePath = request.getServletContext().getRealPath("f_files");//자유게시판 업로드 파일 저장 경로	
-				System.out.println(savePath);
+//				System.out.println(savePath);
 				File filePath = new File(savePath);
 				if(!filePath.exists()) {
 					filePath.mkdir();
@@ -66,7 +66,9 @@ public class FreeBoardController extends HttpServlet {
 					String name = e.nextElement();
 					String oriName = multi.getOriginalFileName(name);//원본파일이름
 					String sysName = multi.getFilesystemName(name);//서버저장파일이름
-					filesDAO.insert(new FilesDTO(0, oriName, sysName, seq));//파일 정보 저장
+					if( !(sysName == null || sysName.isEmpty()) ) {
+						filesDAO.insert(new FilesDTO(0, oriName, sysName, seq));//파일 정보 저장
+					}	
 				}
 				
 				response.sendRedirect("/freeBoardMainView.freeBoard?cpage=1");//자유게시판 메인화면으로 전환
