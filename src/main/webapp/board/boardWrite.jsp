@@ -496,18 +496,18 @@
 	 	}
 
         //이미지 삭제 시 서버로 해당 이미지 소스 보내기(서블릿에서 소스-이미지 파일 주소 받아서 삭제)
-	 	function deleteFile(src) {
-	 	    $.ajax({
-	 	        data: {src : src},
-	 	        type: "POST",
-	 	        url: "/dummmyImageDel.file", // replace with your url
-// 	 	        cache: false,
-// 	 	        dataType:"json",
-	 	        success: function(resp) {
-	 	            console.log(resp);
-	 	        }
-	 	    });
-	 	}
+// 	 	function deleteFile(src) {
+// 	 	    $.ajax({
+// 	 	        data: {src : src},
+// 	 	        type: "POST",
+// 	 	        url: "/dummmyImageDel.file", // replace with your url
+// // 	 	        cache: false,
+// // 	 	        dataType:"json",
+// 	 	        success: function(resp) {
+// 	 	            console.log(resp);
+// 	 	        }
+// 	 	    });
+// 	 	}
          //////////////////////////////////////////////////////////////////////서머노트////////
     </script>
     
