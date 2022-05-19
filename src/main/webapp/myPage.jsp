@@ -471,7 +471,35 @@
 
 
         /*--계정관리---------------------------------------------------------------------------------------*/
+#header_header {
+            height: 100%;
+          padding-top: 80px;
+          border: 1px #cfcfcf;
+        }
 
+        #modi{
+            margin: auto;
+            width: 60%; 
+            max-width: 500px;
+            border: 1px solid #cfcfcf;
+            border-radius: 10px;
+            padding-top: 50px;
+            padding-bottom: 50px;
+        }
+        #modi div{
+            font-size: 20px;   
+           padding: 0px;
+           margin-top: 5px;
+          
+        }
+        #modi>div{
+            padding-top: 5px;
+            /* border-top: 1px solid #0080ff; */
+        }
+        .btn{
+            
+            margin-top: 20px;
+        }
 
     </style>
 </head>
@@ -954,11 +982,59 @@
                 
                 
                 
-                계정관리
-            
-            
+                <form action="/test" method="post">
+                <div class="row text-center" id="header_header">
+                    <div class="col-12" id="modi">
+                        <div class="row" id="name">
+                            <div class="col-12 col-md-4 content"><strong>아이디</strong> </div>
+                            <div class="col-12 col-md-8 modify content " id="id">
+                                아이디입니다
+                            </div>
+                        </div>
+                        <div class="row "  id="pw" >
+                            <div class="col-12 col-md-4 pw content" style="display:none;"><strong>비밀번호</strong> </div>
+                            <div class="col-12 col-md-8 modify content pw" style="display:none;">
+                                비밀입니다
+                            </div>
+                        </div>
+                        <div class="row" id="email">
+                            <div class="col-12 col-md-4 content"><strong>이메일</strong> </div>
+                            <div class="col-12 col-md-8 content">
+                                sefdswe@wadsaer.wer
+                            </div>
+                        </div>
+                        <div class="row" id="joinday">
+                            <div class="col-12 col-md-4 content"><strong>가입일</strong> </div>
+                            <div class="col-12 col-md-8 content">
+                                2022/05/19
+                            </div>
+                        </div>
+                        <div class="row" id="joinday">
+                            <div class="col-12 col-md-4 check" style="display:none;"><strong>비밀번호 확인</strong> </div>
+                            <div class="col-12 col-md-8 check" style="display:none;">
+                                <input type="text" placeholder="비밀번호를 입력하세요" id="pwtext">
+                                
+                            </div>
+                        </div>
+                            <div class="row btn" id="btn">
+                                <div class="col-12 text-center" >
+                                <input type="button" class="btn btn-primary" value="수정하기" id="modify">
+                                <button class="btn btn-primary " id="ok" style="display:none;">완료</button>
+                                <button type="button" class="btn btn-primary check " id="checkpw" style="display:none;">확인</button>
+                                <input type="button" class="btn btn-primary " value="취소" id="back" style="display:none;">
+                                
+                            </div>
+                        </div>
+                        
+                        
+                    </div>
             
             </div>
+            </form>
+            
+            
+            
+           
           </div>
 
     </div>
@@ -968,6 +1044,57 @@
 
 
     <script>
+  //계정관리
+
+    $("#modify").on("click",function(){
+        $(".content").css("display","none"); //모든 컨텐츠
+        $("#back").css("display","inline"); //취소버튼
+        $("#modify").css("display","none");   //수정하기 버튼
+        $(".check").css("display","inline"); //비밀번호 확인 입력창
+        
+        
+        $("#checkpw").on("click",function(){
+            $.ajax({
+            url:"/#",
+            data:{pw:$("#pwtext").text()},
+            dataType:"json"
+        }).done(function(resp){
+            resp=true;
+            if(resp){
+                $(".content").css("display","inline");
+                $("#ok").css("display","inline");    //완료버튼
+                $(".pw").css("display","block");    //비번 수정
+                $(".check").css("display","none");  //비밀번호 확인 입력창
+               
+
+                $(".modify").attr("contenteditable","true");
+                $(".modify").css("color","#0089ff");
+                $("#id").focus();
+            }else{
+                alert("비밀번호가 틀렸습니다.");
+            }
+        })
+            
+        })
+       
+
+        })
+        
+        
+
+    $("#back").on("click",function(){
+        $(".content").css("display","inline"); 
+        $("#modify").css("display","inline");
+        $("#back").css("display","none");
+        $("#ok").css("display","none");
+        $(".pw").css("display","none");
+        $(".check").css("display","none");
+
+        $(".modify").attr("contenteditable","false");
+        $(".modify").css("color","black");
+    })
+
+    
  // input id, input pw, password eyes
     let outer_eye=document.querySelector(".card-details span");
     let eye=document.querySelector(".passcode");
