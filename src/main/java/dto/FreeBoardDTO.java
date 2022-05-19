@@ -10,13 +10,12 @@ public class FreeBoardDTO {
 	private String contents;
 	private Timestamp write_date;
 	private int like_count;
-	private String jjim;
 	private int view_count;
 	
 	public FreeBoardDTO() {
 	}
 	public FreeBoardDTO(String free_board_seq, String id, String title, String contents, Timestamp write_date,
-			int like_count, String jjim, int view_count) {
+			int like_count, int view_count) {
 		super();
 		this.free_board_seq = free_board_seq;
 		this.id = id;
@@ -24,7 +23,6 @@ public class FreeBoardDTO {
 		this.contents = contents;
 		this.write_date = write_date;
 		this.like_count = like_count;
-		this.jjim = jjim;
 		this.view_count = view_count;
 	}
 	public String getFree_board_seq() {
@@ -62,12 +60,6 @@ public class FreeBoardDTO {
 	}
 	public void setLike_count(int like_count) {
 		this.like_count = like_count;
-	}
-	public String getJjim() {
-		return jjim;
-	}
-	public void setJjim(String jjim) {
-		this.jjim = jjim;
 	}
 	public int getView_count() {
 		return view_count;
