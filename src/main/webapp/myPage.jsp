@@ -515,20 +515,20 @@
     
     <div class="l-navbar" id="nav1-bar">
         <nav class="nav1">
-            <div> <a href="#" class="nav1_logo"> <i class='bx bx-layer nav1_logo-icon'></i> <span class="nav1_logo-name">쉼표
+            <div> <a href="/index.jsp" class="nav1_logo"> <i class='bx bx-layer nav1_logo-icon'></i> <span class="nav1_logo-name">쉼표
                         <br>- 일상의 쉼표를 찍다</span> </a>
                 <div class="nav1_list">
                     <a href="#" class="nav1_link active"> <i class='bx bx-wind nav1_icon'></i> <span
                             class="nav1_name">날씨</span> </a>
-                    <a href="#" class="nav1_link"> <i class='bx bx-message nav1_icon'></i> <span
+                    <a href="/board/communityMain.jsp" class="nav1_link"> <i class='bx bx-message nav1_icon'></i> <span
                             class="nav1_name">커뮤니티</span> </a>
-                    <a href="#" class="nav1_link"> <i class='bx bx-bus nav1_icon'></i> <span class="nav1_name">여행정보</span>
+                    <a href="/board/gallery.jsp" class="nav1_link"> <i class='bx bx-bus nav1_icon'></i> <span class="nav1_name">여행정보</span>
                     </a>
-                    <a href="#" class="nav1_link"> <i class='bx bx-user nav1_icon'></i> <span
+                    <a href="/myPage.jsp" class="nav1_link"> <i class='bx bx-user nav1_icon'></i> <span
                             class="nav1_name">마이페이지</span> </a>
                     <a href="#" class="nav1_link"> <i class='bx bx-calendar nav1_icon'></i> <span
                             class="nav1_name">일정관리</span> </a>
-                    <a href="#" class="nav1_link"> <i class='bx bx-home nav1_icon'></i> <span class="nav1_name">숙소정보</span>
+                    <a href="/board/stayreview.jsp" class="nav1_link"> <i class='bx bx-home nav1_icon'></i> <span class="nav1_name">숙소정보</span>
                     </a>
                     <a href="#" class="nav1_link"> <i class='bx bx-message-alt-detail nav1_icon'></i> <span
                             class="nav1_name">쪽지</span> </a>
