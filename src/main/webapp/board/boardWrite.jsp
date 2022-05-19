@@ -266,8 +266,14 @@
             .mainTitle{
                 font-weight: bold;
             }
+            select{
+                border-radius: 5px;
+                margin: 2px; margin-left: 2px;
+                font-size: 18px;
+                font-weight: bold;
+            }
             .title{
-                border: 0px; width: 99.5%; 
+                border: 0px; width: 85%; 
                 margin: 2px; margin-left: 3px;
                 font-size: 20px;
                 font-weight: bold;
@@ -335,15 +341,34 @@
         </nav>
     </div>
 
+
+
     <!-- 게시글 작성하기 메인 ----------------------------------------------------------------------->
     <!--Container Main start-->
-    <form action="/writeProcessing.freeBoard" method="post" enctype="multipart/form-data" id="from">
+    <form action="/writeProcessing.board" method="post" enctype="multipart/form-data" id="from">
         <div class="container my-4">
             <div class="row">
                 <div class="col-12 text-center display-6 mainTitle p-1">
-                    - OO게시판 글 작성하기 -
+                    - 게시판 글 작성하기 -
                 </div>
                 <div class="col-12 ">
+					<select name="boardOption">
+                        <option value="f">
+                            자유게시판
+                        </option>
+                        <option value="g">
+                            여행후기
+                        </option>
+                        <option value="j">
+                            구인구직
+                        </option>
+                        <option value="r">
+                            맛집
+                        </option>
+                        <option value="h">
+                            숙소리뷰
+                        </option>
+                    </select>
                     <input type="text" placeholder="글 제목을 입력하세요" name="title" class="title" required>
                 </div>
                 <div class="col-12 " id="fileArea">
