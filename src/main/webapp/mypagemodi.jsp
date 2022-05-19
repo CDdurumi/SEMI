@@ -464,10 +464,7 @@
 
             </main>
 
-            <footer class="mt-auto text-black-50">
-                <p>Designed for <a href="https://getbootstrap.com/" class="text-black">Catch the Java</a>, by <a
-                        href="https://twitter.com/mdo" class="text-black">@Jo yang gi</a>.</p>
-            </footer>
+            
         </div>
     </div>
     <!--Container Main end-->

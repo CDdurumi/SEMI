@@ -192,7 +192,7 @@
     height:50px;
     width:100%;
     font-size:18px;
-    background-color:#f5f5f7;
+    background-color:white;
     color:black;
     padding:0px 20px;
     padding-left:50px;
@@ -233,6 +233,12 @@
 .card-details span:hover{
     opacity:1;
 }
+.signup_input{
+		padding-top:10px;
+        padding-left: 0px;
+        padding-right: 0px;
+        width: 100%;
+	}
         @media screen and (min-width: 768px) {
             body {
                 margin: calc(var(--header-height) + 1rem) 0 0 0;
@@ -266,6 +272,34 @@
                 padding-left: calc(var(--nav1-width) + 188px)
             }
         }
+        #cont{
+            padding: 60px;
+            border-radius:10px;
+            border: 1px solid #f5f5f7;
+            background-color: #f5f5f7;
+        }
+        #cont div{
+            padding-left: 0px;
+        padding-right: 0px;
+        }
+        .input>input{
+      width: 100%;
+      border-radius:10px;
+      border: 1px solid gray;
+    }
+    #signin_btn{
+		
+		width:100%;
+		height:50px;
+		border-radius:10px;
+		margin:auto;
+	}
+	#siginup_btn_area{
+		padding-top:10px;
+        padding-left: 0px;
+        padding-right: 0px;
+        width: 100%;
+	}
 
         /*  */
         .bd-placeholder-img {
@@ -631,16 +665,63 @@
 
             <!--계정관리 UI--------------------------------------------------------------------------------------->
             <div class="tab-pane fade" id="account" role="tabpanel" aria-labelledby="account-tab">
-                
-                
-                
-                계정관리
-            
-            
-            
+                <div class="height-100 " align ="center">
+                <div class="row " id="cont">
+            <div class="col">
+         	<div class="row signup_input">
+         		<div class ="col-8 input">
+                    <div class="card-details">
+                        <input type="text" id="id-input" placeholder="아이디" name="id">
+                        <i class="fa fa-user"></i>
+                    </div>
+         		</div>
+         		<div class ="col-4">
+         			<div>확인 문구</div>
+         		</div>
+         	</div>
+         	<div class="row signup_input">
+         		<div class ="col-8 input">
+                    <div class="card-details">
+                        <input type="password" id="password1-input" placeholder="비밀번호" name="pw">
+                        <i class="fa fa-lock"></i>
+                    </div>
+         		</div>
+         		<div class ="col-4">
+         			<div>확인 문구</div>
+         		</div>
+         	</div>
+         	<div class="row signup_input">
+         		<div class ="col-8 input">
+                    <div class="card-details">
+            			<input type="password" id="password-input" placeholder="password">
+            				<i class="fa fa-lock-open"></i>
+            			<span><small class="fa fa-eye-slash passcode"></small></span>
+        	</div>
+         		</div>
+         		<div class ="col-4">
+         			<div>확인 문구</div>
+         		</div>
+         	</div>
+         	<div class="row signup_input">
+         		<div class ="col-8 input">
+                    <div class="card-details">
+                        <input type="text" id="id-input" placeholder="이메일" name="email">
+                        <i class="fa fa-envelope"></i>
+                    </div>
+         		</div>
+         		<div class ="col-4">
+         			<div>확인 문구</div>
+         		</div>
+         	</div>  		
+        </div>
+        <div class="row"  id="siginup_btn_area">         		
+         		<button type="submit" class="btn btn-primary" id ="signin_btn">수정하기</button>
+         	</div> 
+        </div> 
+                   
             </div>
           </div>
-
+    </div>
     </div>
     <!-------------------------------------------------------------------------------------------------------------------Container Main end-->
 
