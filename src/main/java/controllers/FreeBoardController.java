@@ -52,9 +52,9 @@ public class FreeBoardController extends HttpServlet {
 				String title = multi.getParameter("title");
 				String contents = multi.getParameter("contents");
 				
-				int seq = dao.getSeqNextVal(); //해당 작성글 넘버 가져오기
+				String seq = dao.getSeqNextVal(); //해당 작성글 넘버 가져오기
 				//게시글 저장 //
-				dao.insert(new FreeBoardDTO(savePath, writer, title, contents, null, maxSize, contents, seq));
+				dao.insert(new FreeBoardDTO(seq, writer, title, contents, null, 0, 0));
 
 				//업로드 파일 정보 저장
 				Enumeration<String> e = multi.getFileNames();

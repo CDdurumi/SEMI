@@ -28,14 +28,14 @@ public class FreeBoardDAO {
 	}
 	
 	//NEXT SEQ 가져오기(해당 작성글 seq)
-	public int getSeqNextVal() throws Exception{
+	public String getSeqNextVal() throws Exception{
 
 		String sql = "select 'f'||free_board_seq.nextval from dual ";
 		try(Connection con = this.getConnection();
 				PreparedStatement pstat = con.prepareStatement(sql);
 				ResultSet rs = pstat.executeQuery();) {
 				rs.next();
-				return rs.getInt(1);
+				return rs.getString(1);
 		}	
 	}
 	
