@@ -193,7 +193,7 @@
     height:50px;
     width:100%;
     font-size:18px;
-    background-color:white;
+    background-color:#f5f5f7;
     color:black;
     padding:0px 20px;
     padding-left:50px;
@@ -234,12 +234,6 @@
 .card-details span:hover{
     opacity:1;
 }
-.signup_input{
-		padding-top:10px;
-        padding-left: 0px;
-        padding-right: 0px;
-        width: 100%;
-	}
         @media screen and (min-width: 768px) {
             body {
                 margin: calc(var(--header-height) + 1rem) 0 0 0;
@@ -273,34 +267,6 @@
                 padding-left: calc(var(--nav1-width) + 188px)
             }
         }
-        #cont{
-            padding: 60px;
-            border-radius:10px;
-            border: 1px solid #f5f5f7;
-            background-color: #f5f5f7;
-        }
-        #cont div{
-            padding-left: 0px;
-        padding-right: 0px;
-        }
-        .input>input{
-      width: 100%;
-      border-radius:10px;
-      border: 1px solid gray;
-    }
-    #signin_btn{
-		
-		width:100%;
-		height:50px;
-		border-radius:10px;
-		margin:auto;
-	}
-	#siginup_btn_area{
-		padding-top:10px;
-        padding-left: 0px;
-        padding-right: 0px;
-        width: 100%;
-	}
 
         /*  */
         .bd-placeholder-img {
@@ -321,7 +287,7 @@
         /*마이페이지 ------------------------------------------------------------------------------------------------*/
         .container {
             height: 100vh;
-/*             border: 1px solid red */
+            /* border: 1px solid red */
         }
         /*탭*/
         #myTabContent>div{
@@ -467,17 +433,13 @@
            position:absolute;
            left: 0px;
            right: 0px;
-<<<<<<< HEAD
            height: 100%;
-=======
-           height:100%;
->>>>>>> 0ca809e712bcc19acad2a548259153a045ca8e2f
        }
        /*받은 쪽지함, 보낸 쪽지함 버튼*/
        #v-pills-tab> button{
            width: 80px;
        }
-/*         div{border: 1px solid blue;}  */
+       /* div{border: 1px solid blue;} */
         /*--게시글-----------------------------------------------------------------------------------------*/
         #list{
         border: 1px solid black;
@@ -676,7 +638,7 @@
                                 <div class="row m-0 ">
                                     <div class="col-12  ">
                                         <div class="row " id="board_menu_text">
-                                            <div class="col-md-2 col-lg-1 d-none d-md-block text-center">번호</div>
+                                            <div class="col-md-2 col-lg-1 d-none d-md-block ">번호</div>
                                             <div class="col-8 col-md-6 col-lg-7">제목</div>
                                             <div class="col-4 col-md-2 col-lg-2 text-center">보낸이</div>
                                             <div class="col-md-2 col-lg-2 d-none  d-md-block text-center">날짜</div>
@@ -685,7 +647,7 @@
 
                                    <div class="col-12  board2">
                                        <div class="row m-0 border border-2 rounded board_row ">
-                                           <div class="col-md-2 col-lg-1 d-none d-md-block p-0 text-center">번호</div>
+                                           <div class="col-md-2 col-lg-1 d-none d-md-block p-0">번호</div>
                                            <div class="col-8 col-md-6 col-lg-7 m-0 title ellipsis p-0"><span>글 제목글 제목</span></div>
                                            <!-- ellipsis"><span>글 제목</span></div> 밑에 forEach 작업이라 한줄만 추가했습니다. -->
                                            <div class="col-4 col-md-2 col-lg-2 p-0 ellipsis text-center"><span>글쓴이글쓴이글쓴이</span></div>
@@ -753,7 +715,7 @@
                                 <div class="row m-0 ">
                                     <div class="col-12  ">
                                         <div class="row " id="board_menu_text">
-                                            <div class="col-md-2 col-lg-1 d-none d-md-block text-center">번호</div>
+                                            <div class="col-md-2 col-lg-1 d-none d-md-block ">번호</div>
                                             <div class="col-8 col-md-6 col-lg-7">제목</div>
                                             <div class="col-4 col-md-2 col-lg-2 text-center">받는이</div>
                                             <div class="col-md-2 col-lg-2 d-none  d-md-block text-center">날짜</div>
@@ -762,8 +724,8 @@
 
                                    <div class="col-12  board2">
                                        <div class="row m-0 border border-2 rounded board_row ">
-                                           <div class="col-md-2 col-lg-1 d-none d-md-block p-0 text-center">번호</div>
-                                           <div class="col-8 col-md-6 col-lg-7 m-0 title ellipsis p-0"><span>글 제목글제목제목제목 제목</span></div>
+                                           <div class="col-md-2 col-lg-1 d-none d-md-block p-0">번호</div>
+                                           <div class="col-8 col-md-6 col-lg-7 m-0 title ellipsis p-0"><span>글 제목글 제목</span></div>
                                            <!-- ellipsis"><span>글 제목</span></div> 밑에 forEach 작업이라 한줄만 추가했습니다. -->
                                            <div class="col-4 col-md-2 col-lg-2 p-0 ellipsis text-center"><span>글쓴이글쓴이글쓴이</span></div>
                                            <!-- 글제목 글쓴이 col 밑에랑 달라요 반복이라 한줄만 추가합니다 -->
@@ -989,63 +951,16 @@
 
             <!--계정관리 UI--------------------------------------------------------------------------------------->
             <div class="tab-pane fade" id="account" role="tabpanel" aria-labelledby="account-tab">
-                <div class="height-100 " align ="center">
-                <div class="row " id="cont">
-            <div class="col">
-         	<div class="row signup_input">
-         		<div class ="col-8 input">
-                    <div class="card-details">
-                        <input type="text" id="id-input" placeholder="아이디" name="id">
-                        <i class="fa fa-user"></i>
-                    </div>
-         		</div>
-         		<div class ="col-4">
-         			<div>확인 문구</div>
-         		</div>
-         	</div>
-         	<div class="row signup_input">
-         		<div class ="col-8 input">
-                    <div class="card-details">
-                        <input type="password" id="password1-input" placeholder="비밀번호" name="pw">
-                        <i class="fa fa-lock"></i>
-                    </div>
-         		</div>
-         		<div class ="col-4">
-         			<div>확인 문구</div>
-         		</div>
-         	</div>
-         	<div class="row signup_input">
-         		<div class ="col-8 input">
-                    <div class="card-details">
-            			<input type="password" id="password-input" placeholder="password">
-            				<i class="fa fa-lock-open"></i>
-            			<span><small class="fa fa-eye-slash passcode"></small></span>
-        	</div>
-         		</div>
-         		<div class ="col-4">
-         			<div>확인 문구</div>
-         		</div>
-         	</div>
-         	<div class="row signup_input">
-         		<div class ="col-8 input">
-                    <div class="card-details">
-                        <input type="text" id="id-input" placeholder="이메일" name="email">
-                        <i class="fa fa-envelope"></i>
-                    </div>
-         		</div>
-         		<div class ="col-4">
-         			<div>확인 문구</div>
-         		</div>
-         	</div>  		
-        </div>
-        <div class="row"  id="siginup_btn_area">         		
-         		<button type="submit" class="btn btn-primary" id ="signin_btn">수정하기</button>
-         	</div> 
-        </div> 
-                   
+                
+                
+                
+                계정관리
+            
+            
+            
             </div>
           </div>
-    </div>
+
     </div>
     <!-------------------------------------------------------------------------------------------------------------------Container Main end-->
 
