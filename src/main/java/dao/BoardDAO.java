@@ -28,9 +28,21 @@ public class BoardDAO {
 	}
 	
 	//NEXT SEQ 가져오기(해당 작성글 seq)
-	public String getSeqNextVal() throws Exception{
-
-		String sql = "select 'f'||free_board_seq.nextval from dual ";
+	public String getSeqNextVal(String boardOption) throws Exception{
+		String boardSeq = "";
+		if(boardOption.equals("f")) {//자유게시판
+			boardSeq = "free_board_seq ";
+		}else if(boardOption.equals("g")) {//여행후기
+			boardSeq = "gallery_seq  ";
+		}else if(boardOption.equals("j")) {//구인구직
+			boardSeq = "job_board_seq  ";
+		}else if(boardOption.equals("r")) {//맛집
+			boardSeq = "restaurant_board_seq  ";
+		}else if(boardOption.equals("h")) {//숙소리뷰
+			boardSeq = "house_board_seq ";
+		}
+		
+		String sql = "select '"+boardOption+"'||"+boardSeq+".nextval from dual ";
 		try(Connection con = this.getConnection();
 				PreparedStatement pstat = con.prepareStatement(sql);
 				ResultSet rs = pstat.executeQuery();) {
@@ -42,7 +54,7 @@ public class BoardDAO {
 	//삽입
 	public int insert(BoardDTO dto) throws Exception {
 
-		String sql = "insert into free_board values(?, ?, ?, ?, default, default, default)";
+		String sql = "insert into all_board values(?, ?, ?, ?, default, default, default)";
 		try(Connection con = this.getConnection();
 				PreparedStatement pstat = con.prepareStatement(sql);) {
 			pstat.setString(1, dto.getFree_board_seq());

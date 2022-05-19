@@ -39,8 +39,12 @@ public class BoardController extends HttpServlet {
 				
 				response.sendRedirect("/board/boardWrite.jsp");//자유게시판 글 작성 페이지 전환
 
+				
+				
+				
+				
 			}else if(uri.equals("/writeProcessing.board")) {//게시글 작성완료 처리 과정(boardWrite.jsp에서 작성완료 버튼 클릭 시 여기로.)
-
+				
 				int maxSize = 1024*1024*10;//파일허용 크기
 				String savePath = request.getServletContext().getRealPath("f_files");//자유게시판 업로드 파일 저장 경로	
 //				System.out.println(savePath);
@@ -56,7 +60,10 @@ public class BoardController extends HttpServlet {
 				String title = multi.getParameter("title");
 				String contents = multi.getParameter("contents");
 				
-				String seq = dao.getSeqNextVal(); //해당 작성글 넘버 가져오기
+				//게시판 옵션(게시판 선택 값 cf.f:자유게시판, g:여행후기, j:구인구직, r:맛집, h:숙소리뷰)
+				String boardOption = multi.getParameter("boardOption");
+				String seq = dao.getSeqNextVal(boardOption); //해당 작성글 넘버 가져오기(해당 게시판의 seq)
+				
 				//게시글 저장 //
 				dao.insert(new BoardDTO(seq, writer, title, contents, null, 0, 0));
 
@@ -72,6 +79,10 @@ public class BoardController extends HttpServlet {
 				}
 				
 				response.sendRedirect("/boardMainView.board?cpage=1");//자유게시판 메인화면으로 전환
+				
+				
+				
+				
 				
 				
 			}else if(uri.equals("/detailView.board")) {//작성글 출력(게시판 목록에서 게시글 클릭 시 여기로.)
