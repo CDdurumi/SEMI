@@ -88,7 +88,7 @@
         }
 
         .header_toggle {
-            color: var(--first-color);
+            color: black;
             font-size: 1.5rem;
             cursor: pointer
         }
@@ -250,7 +250,12 @@
                 font-size: 3.5rem;
             }
         }
-        
+        .card-details{
+    position:relative;
+    display:flex;
+    
+    padding-bottom:20px;
+}
         .card-details input{
     height:50px;
     width:100%;
