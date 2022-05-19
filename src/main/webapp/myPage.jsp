@@ -1,5 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+
+
 <!DOCTYPE html>
 <html>
 
@@ -297,6 +299,93 @@
         /*--일정 관리---------------------------------------------------------------------------------------*/
 
 
+        #wt{
+            border: 1px solid black;
+            height: 100%;
+        }
+        #ht{
+            border: 1px solid black;
+            height: 100%;
+        }
+        #bar{
+        border: 1px solid black;
+        height: 8%;
+        padding-top: 5px;
+        }
+        #list{
+        border: 1px solid black;
+        height:100%;
+         }
+        #month{
+            height: 100%;
+            float: left;
+       padding-bottom: 10px;
+           
+        }
+        #today{
+            height: 100%;
+            float: left;
+            padding-bottom: 10px;
+          
+        }
+        #td{
+            width: 95%;
+            border-radius: 10px;
+            height: 66%;
+            border: 1px solid hsl(0, 1%, 65%);
+            padding-left: 10px;
+        }
+        #api{
+            width: 95%;
+            height: 66%;
+            border: 1px solid hsl(0, 1%, 65%);
+            border-radius: 10px;
+            padding-left: 10px;
+        }
+        #board_menu_text{
+            font-size: 18px;
+            font-weight:bold ;
+            margin-bottom: 20px;
+        }
+        .board{
+            /* text-align: center; */
+            height: 50px;
+            margin-bottom: 3px;
+        }
+        .board_row{
+            padding-top: 10px;
+           height: 100%;
+        }
+        #board_menu{
+            height: 50px;
+        }
+        #board_menu_text{
+            font-size: 18px;
+            font-weight:bold ;
+            margin-bottom: 20px;
+        }
+        /* 제목이 길어서 잘렸을 경우 밑의 두개 처리해준다 */
+       .ellipsis{
+           position: relative;
+           min-width: 50px;
+           
+       }
+       .ellipsis>span{
+        overflow: hidden;
+           white-space: nowrap;
+           text-overflow: ellipsis;
+           position:absolute;
+           left: 9px;
+           right: 9px;
+       }
+
+
+
+
+
+
+
+
 
         /*--쪽지-------------------------------------------------------------------------------------------*/
         /*쪽지 탭*/
@@ -357,6 +446,11 @@
        }
        /* div{border: 1px solid blue;} */
         /*--게시글-----------------------------------------------------------------------------------------*/
+
+
+
+
+
 
 
 
@@ -450,7 +544,50 @@
             <!--일정 관리 UI--------------------------------------------------------------------------------------->
             <div class="tab-pane fade show active" id="schedule" role="tabpanel" aria-labelledby="schedule-tab"> 
 
-                일정관리
+                
+
+
+
+
+
+                <div class="col-12 col-sm-6 col-lg-6" id="month" align="left">  
+                    <div id="api">
+                        달력api 들어올 곳dsadasdasdasdsd
+                        달력api 들어올 곳dsadasdasdasdsd
+                        달력api 들어올 곳dsadasdasdasdsd
+                        달력api 들어올 곳dsadasdasdasdsd
+                        달력api 들어올 곳dsadasdasdasdsd
+                        달력api 들어올 곳dsadasdasdasdsd
+                        달력api 들어올 곳dsadasdasdasdsd
+                        달력api 들어올 곳dsadasdasdasdsd
+                        v
+                        달력api 들어올 곳dsadasdasdasdsd
+                        달력api 들어올 곳dsadasdasdasdsd
+                        달력api 들어올 곳dsadasdasdasdsd
+                        달력api 들어올 곳dsadasdasdasdsdv달력api 들어올 곳dsadasdasdasdsd
+                        달력api 들어올 곳dsadasdasdasdsd
+                    </div> 
+                    
+                </div>
+                  
+                <div class="col-12 col-sm-6 col-lg-6" id="today" align="left">
+                    <div id="td">
+                오늘일정<br>
+                ★ Item One<br>
+                ♥ Item Two<br>
+                ● Item Three<br>
+                ★ Item One<br>
+                ★ Item Two<br>
+                ♥ Item Three<br>
+                    </div>
+                 </div>
+
+
+
+
+
+
+
 
             </div>
 
@@ -622,10 +759,188 @@
             <div class="tab-pane fade" id="board" role="tabpanel" aria-labelledby="board-tab">
                 
                 
-                게시글
-            
-            
-            
+
+                <div class="row" id="header_header">
+                    <div class="col-12">
+                        <div class="row" id="wt2"> 
+
+                               <div class="list">
+                               
+                                <div class="row m-0 ">
+                                       <div class="col-12  ">
+                                           <div class="row " id="board_menu_text">
+                                            <div class="col-1 col-md-1 d-none d-md-block p-0">번호</div>
+                                            <div class="col-7 col-md-6 m-0 title">글 제목</div>
+                                            <div class="col-3 col-md-2 text-center p-0">글쓴이</div>
+                                            <div class="col-md-1 d-none d-md-block p-0 ">날짜</div>
+                                            <div class="col-md-1 d-none d-md-block p-0">조회</div>
+                                            <div class="col-2 col-md-1 p-0">추천</div>
+                                           </div>
+                                        
+                                       </div>
+                                   </div>
+                                   <div class="col-12  board">
+                                       <div class="row m-0 border border-2 rounded board_row ">
+                                        <div class="col-1 col-md-1 d-none d-md-block p-0">번호</div>
+                                        <div class="col-7 col-md-6 m-0 title">글 제목</div>
+                                        <div class="col-3 col-md-2 text-center p-0">글쓴이</div>
+                                        <div class="col-md-1 d-none d-md-block p-0 ">날짜</div>
+                                        <div class="col-md-1 d-none d-md-block p-0">조회</div>
+                                        <div class="col-2 col-md-1 p-0">추천</div>
+                                       </div>
+                                   </div>
+                                   <div class="col-12  board">
+                                       <div class="row m-0 border border-2 rounded board_row">
+                                        <div class="col-1 col-md-1 d-none d-md-block p-0">번호</div>
+                                        <div class="col-7 col-md-6 m-0 title">글 제목</div>
+                                        <div class="col-3 col-md-2 text-center p-0">글쓴이</div>
+                                        <div class="col-md-1 d-none d-md-block p-0 ">날짜</div>
+                                        <div class="col-md-1 d-none d-md-block p-0">조회</div>
+                                        <div class="col-2 col-md-1 p-0">추천</div>
+                                       </div>
+                                   </div>
+                                   <div class="col-12  board">
+                                       <div class="row m-0 border border-2 rounded board_row">
+                                        <div class="col-1 col-md-1 d-none d-md-block p-0">번호</div>
+                                        <div class="col-7 col-md-6 m-0 title">글 제목</div>
+                                        <div class="col-3 col-md-2 text-center p-0">글쓴이</div>
+                                        <div class="col-md-1 d-none d-md-block p-0 ">날짜</div>
+                                        <div class="col-md-1 d-none d-md-block p-0">조회</div>
+                                        <div class="col-2 col-md-1 p-0">추천</div>
+                                       </div>
+                                   </div>
+                                   <div class="col-12  board">
+                                       <div class="row m-0 border border-2 rounded board_row">
+                                        <div class="col-1 col-md-1 d-none d-md-block p-0">번호</div>
+                                        <div class="col-7 col-md-6 m-0 title">글 제목</div>
+                                        <div class="col-3 col-md-2 text-center p-0">글쓴이</div>
+                                        <div class="col-md-1 d-none d-md-block p-0 ">날짜</div>
+                                        <div class="col-md-1 d-none d-md-block p-0">조회</div>
+                                        <div class="col-2 col-md-1 p-0">추천</div>
+                                       </div>
+                                   </div>
+                                   <div class="col-12  board">
+                                       <div class="row m-0 border border-2 rounded board_row">
+                                        <div class="col-1 col-md-1 d-none d-md-block p-0">번호</div>
+                                        <div class="col-7 col-md-6 m-0 title">글 제목</div>
+                                        <div class="col-3 col-md-2 text-center p-0">글쓴이</div>
+                                        <div class="col-md-1 d-none d-md-block p-0 ">날짜</div>
+                                        <div class="col-md-1 d-none d-md-block p-0">조회</div>
+                                        <div class="col-2 col-md-1 p-0">추천</div>
+                                       </div>
+                                   </div>
+                                   <div class="col-12  board">
+                                       <div class="row m-0 border border-2 rounded board_row">
+                                        <div class="col-1 col-md-1 d-none d-md-block p-0">번호</div>
+                                        <div class="col-7 col-md-6 m-0 title">글 제목</div>
+                                        <div class="col-3 col-md-2 text-center p-0">글쓴이</div>
+                                        <div class="col-md-1 d-none d-md-block p-0 ">날짜</div>
+                                        <div class="col-md-1 d-none d-md-block p-0">조회</div>
+                                        <div class="col-2 col-md-1 p-0">추천</div>
+                                       </div>
+                                   </div>
+                                   <div calss="row">
+                                       <div class="col-12 text-center">
+                                           < 1 2 3 4 5 6 7 8 9 >
+                                       </div>
+                                   </div>
+                               </div>
+                            </div>
+                
+                            <br>
+                      
+                        <div class="row" id="wt2"> 
+
+                            <div class="list">
+                            
+                             <div class="row m-0 ">
+                                    <div class="col-12  ">
+                                        <div class="row " id="board_menu_text">
+                                            <div class="col-1 col-md-1 d-none d-md-block p-0">번호</div>
+                                            <div class="col-7 col-md-6 m-0 title">글 제목</div>
+                                            <div class="col-3 col-md-2 text-center p-0">글쓴이</div>
+                                            <div class="col-md-1 d-none d-md-block p-0 ">날짜</div>
+                                            <div class="col-md-1 d-none d-md-block p-0">조회</div>
+                                            <div class="col-2 col-md-1 p-0">추천</div>
+                                        </div>
+                                     
+                                    </div>
+                                </div>
+                                <div class="col-12  board">
+                                    <div class="row m-0 border border-2 rounded board_row ">
+                                        <div class="col-1 col-md-1 d-none d-md-block p-0">번호</div>
+                                        <div class="col-7 col-md-6 m-0 title">글 제목</div>
+                                        <div class="col-3 col-md-2 text-center p-0">글쓴이</div>
+                                        <div class="col-md-1 d-none d-md-block p-0 ">날짜</div>
+                                        <div class="col-md-1 d-none d-md-block p-0">조회</div>
+                                        <div class="col-2 col-md-1 p-0">추천</div>
+                                    </div>
+                                </div>
+                                <div class="col-12  board">
+                                    <div class="row m-0 border border-2 rounded board_row">
+                                        <div class="col-1 col-md-1 d-none d-md-block p-0">번호</div>
+                                        <div class="col-7 col-md-6 m-0 title">글 제목</div>
+                                        <div class="col-3 col-md-2 text-center p-0">글쓴이</div>
+                                        <div class="col-md-1 d-none d-md-block p-0 ">날짜</div>
+                                        <div class="col-md-1 d-none d-md-block p-0">조회</div>
+                                        <div class="col-2 col-md-1 p-0">추천</div>
+                                    </div>
+                                </div>
+                                <div class="col-12  board">
+                                    <div class="row m-0 border border-2 rounded board_row">
+                                        <div class="col-1 col-md-1 d-none d-md-block p-0">번호</div>
+                                        <div class="col-7 col-md-6 m-0 title">글 제목</div>
+                                        <div class="col-3 col-md-2 text-center p-0">글쓴이</div>
+                                        <div class="col-md-1 d-none d-md-block p-0 ">날짜</div>
+                                        <div class="col-md-1 d-none d-md-block p-0">조회</div>
+                                        <div class="col-2 col-md-1 p-0">추천</div>
+                                    </div>
+                                </div>
+                                <div class="col-12  board">
+                                    <div class="row m-0 border border-2 rounded board_row">
+                                        <div class="col-1 col-md-1 d-none d-md-block p-0">번호</div>
+                                        <div class="col-7 col-md-6 m-0 title">글 제목</div>
+                                        <div class="col-3 col-md-2 text-center p-0">글쓴이</div>
+                                        <div class="col-md-1 d-none d-md-block p-0 ">날짜</div>
+                                        <div class="col-md-1 d-none d-md-block p-0">조회</div>
+                                        <div class="col-2 col-md-1 p-0">추천</div>
+                                    </div>
+                                </div>
+                                <div class="col-12  board">
+                                    <div class="row m-0 border border-2 rounded board_row">
+                                        <div class="col-1 col-md-1 d-none d-md-block p-0">번호</div>
+                                        <div class="col-7 col-md-6 m-0 title">글 제목</div>
+                                        <div class="col-3 col-md-2 text-center p-0">글쓴이</div>
+                                        <div class="col-md-1 d-none d-md-block p-0 ">날짜</div>
+                                        <div class="col-md-1 d-none d-md-block p-0">조회</div>
+                                        <div class="col-2 col-md-1 p-0">추천</div>
+                                    </div>
+                                </div>
+                                <div class="col-12  board">
+                                    <div class="row m-0 border border-2 rounded board_row">
+                                        <div class="col-1 col-md-1 d-none d-md-block p-0">번호</div>
+                                        <div class="col-7 col-md-6 m-0 title">글 제목</div>
+                                        <div class="col-3 col-md-2 text-center p-0">글쓴이</div>
+                                        <div class="col-md-1 d-none d-md-block p-0 ">날짜</div>
+                                        <div class="col-md-1 d-none d-md-block p-0">조회</div>
+                                        <div class="col-2 col-md-1 p-0">추천</div>
+                                    </div>
+                                </div>
+                                <div calss="row">
+                                    <div class="col-12 text-center">
+                                        < 1 2 3 4 5 6 7 8 9 >
+                                    </div>
+                                </div>
+                            </div>
+                         </div>
+             
+                         <br>
+
+               
+</div>
+</div>
+
+
             </div>
 
             <!--계정관리 UI--------------------------------------------------------------------------------------->
