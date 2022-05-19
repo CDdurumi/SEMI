@@ -1,15 +1,12 @@
 package controllers;
 
-import java.io.DataInputStream;
 import java.io.File;
-import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.io.UnsupportedEncodingException;
 import java.util.Enumeration;
-import java.util.List;
 
 import javax.servlet.ServletException;
-import javax.servlet.ServletOutputStream;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -21,7 +18,6 @@ import com.oreilly.servlet.MultipartRequest;
 import com.oreilly.servlet.multipart.DefaultFileRenamePolicy;
 
 import dao.FilesDAO;
-import dto.FilesDTO;
 
 @WebServlet("*.file")
 public class FilesController extends HttpServlet {
@@ -85,13 +81,19 @@ public class FilesController extends HttpServlet {
 
 				PrintWriter pw = response.getWriter();
 				// 업로드된 경로와 파일명을 통해 이미지의 경로를 생성
-				String uploadPath = "/images/" + fileName;
+				String uploadPath = "/f_dummy_images/" + fileName;
 
 			    // 생성된 경로를 JSON 형식으로 보내주기 위한 설정
 				JsonObject jobj = new JsonObject();
 				jobj.addProperty("url", uploadPath);
 				pw.append(jobj.toString());
+System.out.println(jobj.toString());
 
+
+			}else if(uri.equals("/dummmyImageDel.file")) {//이미지 업로드
+				
+				String src = request.getParameter("src");			
+				System.out.println(src);
 			}
 
 

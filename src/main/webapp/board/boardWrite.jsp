@@ -461,13 +461,13 @@
 //             spellCheck: false,
             callbacks: {//콜백
                 //이미지 업로드 시 감지하는 이벤트
-            //    onImageUpload : function(files, editor, welEditable) {
-            // 	   sendFile(files[0],this);
-            //     },
+               onImageUpload : function(files, editor, welEditable) {
+            	   sendFile(files[0],this);
+                },
                 
                 //이미지 마우스 오른쪽 클릭하여 쓰레기통 이모티콘 클릭 시 감지하는 이벤트
                 onMediaDelete : function(target) {
-
+// alert(target[0].src);
  	                deleteFile(target[0].src);
  	            }
             }
@@ -501,7 +501,8 @@
 	 	        data: {src : src},
 	 	        type: "POST",
 	 	        url: "/dummmyImageDel.file", // replace with your url
-	 	        cache: false,
+// 	 	        cache: false,
+// 	 	        dataType:"json",
 	 	        success: function(resp) {
 	 	            console.log(resp);
 	 	        }
