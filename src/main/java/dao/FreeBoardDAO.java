@@ -42,12 +42,13 @@ public class FreeBoardDAO {
 	//삽입
 	public int insert(FreeBoardDTO dto) throws Exception {
 
-		String sql = "insert into free_board values('f'||free_board_seq.nextval, ?, ?, ?, default, default, default)";
+		String sql = "insert into free_board values(?, ?, ?, ?, default, default, default)";
 		try(Connection con = this.getConnection();
 				PreparedStatement pstat = con.prepareStatement(sql);) {
-			pstat.setString(1, dto.getId());
-			pstat.setString(2, dto.getTitle());
-			pstat.setString(3, dto.getContents());
+			pstat.setString(1, dto.getFree_board_seq());
+			pstat.setString(2, dto.getId());
+			pstat.setString(3, dto.getTitle());
+			pstat.setString(4, dto.getContents());
 
 			int result = pstat.executeUpdate();
 			con.commit();

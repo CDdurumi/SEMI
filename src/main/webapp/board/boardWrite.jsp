@@ -337,7 +337,7 @@
 
     <!-- 게시글 작성하기 메인 ----------------------------------------------------------------------->
     <!--Container Main start-->
-    <form action="/writeProcessing.freeBoard" method="post" enctype="multipart/form-data">
+    <form action="/writeProcessing.freeBoard" method="post" enctype="multipart/form-data" id="from">
         <div class="container my-4">
             <div class="row">
                 <div class="col-12 text-center display-6 mainTitle p-1">
@@ -353,7 +353,7 @@
                     <button id="minusBtn" type="button">-</button>
                 </div>
                 <div class="col-12 ">
-                    <textarea class="summernote" name="contents" required></textarea>
+                    <textarea class="summernote" name="contents" id="summernote" ></textarea>
                 </div>
                 <div class="col-12 " style="text-align: right;">
                     <a href="/board/boardMain.jsp?cpage=1"><input type="button" value="목록으로" class="my-1"></a>
@@ -426,9 +426,20 @@
             }
             
 		});
-
+	    
+		//작성완료 버튼 클릭 시 서머노트 안 적었으면 경고창/////////////////////////////////////////////////////
+		let frm = document.getElementById("from");
+		frm.onsubmit = function(){
+			let summernote = document.getElementById("summernote").value;
+			if(summernote == "" || summernote =="<p><br></p>"){
+				alert("본문을 작성해주세요.");
+				return false;
+			}
+		}
+	    
 		//서머노트////////////////////////////////////////////////////////////////////////////
 		$('.summernote').summernote({
+			placeholder:"자유롭게 글을 작성할 수 있습니다.<br/>명예훼손이나 상대방을 비방, 불쾌감을 주는 글, 욕설, 남을 모욕하는 글은 임의로 제제가 있을 수 있습니다.",
             toolbar: [
 							['style', ['style']],
 							['fontsize', ['fontsize']],
