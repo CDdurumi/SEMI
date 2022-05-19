@@ -87,7 +87,7 @@
         }
 
         .header_toggle {
-            color: var(--first-color);
+            color: black;
             font-size: 1.5rem;
             cursor: pointer
         }
@@ -221,7 +221,9 @@
                 padding-left: calc(var(--nav1-width) + 188px)
             }
         }
-        
+        .login, .join{
+      color:black;
+   }
             .card-details{
     position:relative;
     display:flex;
