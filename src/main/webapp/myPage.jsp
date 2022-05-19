@@ -1,7 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 
-
 <!DOCTYPE html>
 <html>
 
@@ -181,10 +180,10 @@
             height: 32px;
             background-color: var(--white-color)
         }
-		.login, .join{
-     		color:black;
-   		}
-   		 .card-details{
+      .login, .join{
+           color:black;
+         }
+          .card-details{
     position:relative;
     display:flex;
     
@@ -194,7 +193,7 @@
     height:50px;
     width:100%;
     font-size:18px;
-    background-color:white;
+    background-color:#f5f5f7;
     color:black;
     padding:0px 20px;
     padding-left:50px;
@@ -235,12 +234,6 @@
 .card-details span:hover{
     opacity:1;
 }
-.signup_input{
-		padding-top:10px;
-        padding-left: 0px;
-        padding-right: 0px;
-        width: 100%;
-	}
         @media screen and (min-width: 768px) {
             body {
                 margin: calc(var(--header-height) + 1rem) 0 0 0;
@@ -274,34 +267,6 @@
                 padding-left: calc(var(--nav1-width) + 188px)
             }
         }
-        #cont{
-            padding: 60px;
-            border-radius:10px;
-            border: 1px solid #f5f5f7;
-            background-color: #f5f5f7;
-        }
-        #cont div{
-            padding-left: 0px;
-        padding-right: 0px;
-        }
-        .input>input{
-      width: 100%;
-      border-radius:10px;
-      border: 1px solid gray;
-    }
-    #signin_btn{
-		
-		width:100%;
-		height:50px;
-		border-radius:10px;
-		margin:auto;
-	}
-	#siginup_btn_area{
-		padding-top:10px;
-        padding-left: 0px;
-        padding-right: 0px;
-        width: 100%;
-	}
 
         /*  */
         .bd-placeholder-img {
@@ -322,7 +287,7 @@
         /*마이페이지 ------------------------------------------------------------------------------------------------*/
         .container {
             height: 100vh;
-/*             border: 1px solid red */
+            /* border: 1px solid red */
         }
         /*탭*/
         #myTabContent>div{
@@ -346,10 +311,7 @@
         height: 8%;
         padding-top: 5px;
         }
-        #list{
-        border: 1px solid black;
-        height:100%;
-         }
+      
         #month{
             height: 100%;
             float: left;
@@ -375,6 +337,7 @@
             border: 1px solid hsl(0, 1%, 65%);
             border-radius: 10px;
             padding-left: 10px;
+            
         }
         #board_menu_text{
             font-size: 18px;
@@ -398,6 +361,9 @@
             font-weight:bold ;
             margin-bottom: 20px;
         }
+
+
+
         /* 제목이 길어서 잘렸을 경우 밑의 두개 처리해준다 */
        .ellipsis{
            position: relative;
@@ -412,12 +378,6 @@
            left: 9px;
            right: 9px;
        }
-
-
-
-
-
-
 
 
 
@@ -473,24 +433,73 @@
            position:absolute;
            left: 0px;
            right: 0px;
-           height:100%;
+           height: 100%;
        }
        /*받은 쪽지함, 보낸 쪽지함 버튼*/
        #v-pills-tab> button{
            width: 80px;
        }
-/*         div{border: 1px solid blue;}  */
+       /* div{border: 1px solid blue;} */
         /*--게시글-----------------------------------------------------------------------------------------*/
+        #list{
+        border: 1px solid black;
+        padding-top: 20px;
+        height:100%;
+         }
 
-
-
-
+        #board_text{
+            font-size: 18px;
+            font-weight:bold ;
+            margin-bottom: 20px;
+        }
+        #board_text>div{
+            padding: 0px;
+        }
+        .board2{
+            /* text-align: center; */
+            height: 50px;
+            margin-bottom: 3px;
+            padding: 0px;
+        }
+        .board_row2{
+            padding-top: 10px;
+            height: 100%;
+        }
+        
 
 
 
 
         /*--계정관리---------------------------------------------------------------------------------------*/
+#header_header {
+            height: 100%;
+          padding-top: 80px;
+          border: 1px #cfcfcf;
+        }
 
+        #modi{
+            margin: auto;
+            width: 60%; 
+            max-width: 500px;
+            border: 1px solid #cfcfcf;
+            border-radius: 10px;
+            padding-top: 50px;
+            padding-bottom: 50px;
+        }
+        #modi div{
+            font-size: 20px;   
+           padding: 0px;
+           margin-top: 5px;
+          
+        }
+        #modi>div{
+            padding-top: 5px;
+            /* border-top: 1px solid #0080ff; */
+        }
+        .btn{
+            
+            margin-top: 20px;
+        }
 
     </style>
 </head>
@@ -499,8 +508,8 @@
     <header class="header" id="header">
         <div class="header_toggle"><i class='bx bx-menu' id="header-toggle"></i></div>
         <div>
-        	<a href="#" class="login"  data-bs-toggle="modal" data-bs-target="#exampleModal">login</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-          	<a href="/signup.jsp" class="join">join</a>
+           <a href="#" class="login"  data-bs-toggle="modal" data-bs-target="#exampleModal">login</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+             <a href="/signup.jsp" class="join">join</a>
         </div>
     </header>
     
@@ -579,12 +588,9 @@
             <!--일정 관리 UI--------------------------------------------------------------------------------------->
             <div class="tab-pane fade show active" id="schedule" role="tabpanel" aria-labelledby="schedule-tab"> 
 
-                
-
-
-
-
-
+            <br>
+            <br>
+    
                 <div class="col-12 col-sm-6 col-lg-6" id="month" align="left">  
                     <div id="api">
                         달력api 들어올 곳dsadasdasdasdsd
@@ -598,9 +604,20 @@
                         v
                         달력api 들어올 곳dsadasdasdasdsd
                         달력api 들어올 곳dsadasdasdasdsd
+                        달력api 들어올 곳dsad
                         달력api 들어올 곳dsadasdasdasdsd
-                        달력api 들어올 곳dsadasdasdasdsdv달력api 들어올 곳dsadasdasdasdsd
-                        달력api 들어올 곳dsadasdasdasdsd
+                        ★ Item One<br>
+                        ♥ Item Two<br>
+                        ● Item Three<br>
+                        ★ Item One<br>
+                        ★ Item Two<br>
+                        ♥ Item Three<br>
+                        ★ Item One<br>
+                        ♥ Item Two<br>
+                        ● Item Three<br>
+                        ★ Item One<br>
+                      
+
                     </div> 
                     
                 </div>
@@ -614,13 +631,19 @@
                 ★ Item One<br>
                 ★ Item Two<br>
                 ♥ Item Three<br>
+                ★ Item One<br>
+                ♥ Item Two<br>
+                ● Item Three<br>
+                ★ Item One<br>
+                ★ Item Two<br>
+                ♥ Item Three<br>
+                ★ Item One<br>
+                ♥ Item Two<br>
+                ● Item Three<br>
+                ♥ Item Two<br>
+                
                     </div>
                  </div>
-
-
-
-
-
 
 
 
@@ -643,24 +666,26 @@
                                 <div class="row m-0 ">
                                     <div class="col-12  ">
                                         <div class="row " id="board_menu_text">
-                                            <div class="col-md-2 col-lg-1 d-none d-md-block text-center">번호</div>
+                                            <div class="col-md-2 col-lg-1 d-none d-md-block ">번호</div>
                                             <div class="col-8 col-md-6 col-lg-7">제목</div>
                                             <div class="col-4 col-md-2 col-lg-2 text-center">보낸이</div>
                                             <div class="col-md-2 col-lg-2 d-none  d-md-block text-center">날짜</div>
                                         </div>
                                     </div>
 
-                                   <div class="col-12  board">
+                                   <div class="col-12  board2">
                                        <div class="row m-0 border border-2 rounded board_row ">
-                                           <div class="col-md-2 col-lg-1 d-none d-md-block p-0 text-center">번호</div>
+                                           <div class="col-md-2 col-lg-1 d-none d-md-block p-0">번호</div>
                                            <div class="col-8 col-md-6 col-lg-7 m-0 title ellipsis p-0"><span>글 제목글 제목</span></div>
                                            <!-- ellipsis"><span>글 제목</span></div> 밑에 forEach 작업이라 한줄만 추가했습니다. -->
                                            <div class="col-4 col-md-2 col-lg-2 p-0 ellipsis text-center"><span>글쓴이글쓴이글쓴이</span></div>
                                            <!-- 글제목 글쓴이 col 밑에랑 달라요 반복이라 한줄만 추가합니다 -->
                                            <div class="col-md-2 col-lg-2 d-none d-md-block p-0 text-center">날짜</div>
+
+                                           
                                        </div>
                                    </div>
-                                   <div class="col-12  board">
+                                   <div class="col-12  board2">
                                        <div class="row m-0 border border-2 rounded board_row">
                                            <div class="col-md-2 col-lg-1 d-none d-md-block p-0 ">번호</div>
                                            <div class="col-8 col-md-6 col-lg-7 m-0 title ellipsis p-0">글 제목</div>
@@ -668,7 +693,7 @@
                                            <div class="col-md-2 col-lg-2 d-none d-md-block p-0 text-center">날짜</div>
                                        </div>
                                    </div>
-                                   <div class="col-12  board">
+                                   <div class="col-12  board2">
                                        <div class="row m-0 border border-2 rounded board_row">
                                            <div class="col-md-2 col-lg-1 d-none d-md-block p-0">번호</div>
                                            <div class="col-8 col-md-6 col-lg-7 m-0 title ellipsis p-0">글 제목</div>
@@ -676,7 +701,7 @@
                                            <div class="col-md-2 col-lg-2 d-none d-md-block p-0 text-center">날짜</div>
                                        </div>
                                    </div>
-                                   <div class="col-12  board">
+                                   <div class="col-12  board2">
                                        <div class="row m-0 border border-2 rounded board_row">
                                            <div class="col-md-2 col-lg-1 d-none d-md-block p-0">번호</div>
                                            <div class="col-8 col-md-6 col-lg-7 m-0 title ellipsis p-0">글 제목</div>
@@ -684,7 +709,7 @@
                                            <div class="col-md-2 col-lg-2 d-none d-md-block p-0 text-center">날짜</div>
                                        </div>
                                    </div>
-                                   <div class="col-12  board">
+                                   <div class="col-12  board2">
                                        <div class="row m-0 border border-2 rounded board_row">
                                            <div class="col-md-2 col-lg-1 d-none d-md-block p-0">번호</div>
                                            <div class="col-8 col-md-6 col-lg-7 m-0 title ellipsis p-0">글 제목</div>
@@ -692,7 +717,7 @@
                                            <div class="col-md-2 col-lg-2 d-none d-md-block p-0 text-center">날짜</div>
                                        </div>
                                    </div>
-                                   <div class="col-12  board">
+                                   <div class="col-12  board2">
                                        <div class="row m-0 border border-2 rounded board_row">
                                            <div class="col-md-2 col-lg-1 d-none d-md-block p-0">번호</div>
                                            <div class="col-8 col-md-6 col-lg-7 m-0 title ellipsis p-0">글 제목</div>
@@ -718,40 +743,32 @@
                                 <div class="row m-0 ">
                                     <div class="col-12  ">
                                         <div class="row " id="board_menu_text">
-                                            <div class="col-md-2 col-lg-1 d-none d-md-block text-center">번호</div>
+                                            <div class="col-md-2 col-lg-1 d-none d-md-block ">번호</div>
                                             <div class="col-8 col-md-6 col-lg-7">제목</div>
                                             <div class="col-4 col-md-2 col-lg-2 text-center">받는이</div>
                                             <div class="col-md-2 col-lg-2 d-none  d-md-block text-center">날짜</div>
                                         </div>
                                     </div>
 
-                                   <div class="col-12  board">
+                                   <div class="col-12  board2">
                                        <div class="row m-0 border border-2 rounded board_row ">
-                                           <div class="col-md-2 col-lg-1 d-none d-md-block p-0 text-center">번호</div>
-                                           <div class="col-8 col-md-6 col-lg-7 m-0 title ellipsis p-0"><span>글 제목글제목제목제목 제목</span></div>
+                                           <div class="col-md-2 col-lg-1 d-none d-md-block p-0">번호</div>
+                                           <div class="col-8 col-md-6 col-lg-7 m-0 title ellipsis p-0"><span>글 제목글 제목</span></div>
                                            <!-- ellipsis"><span>글 제목</span></div> 밑에 forEach 작업이라 한줄만 추가했습니다. -->
                                            <div class="col-4 col-md-2 col-lg-2 p-0 ellipsis text-center"><span>글쓴이글쓴이글쓴이</span></div>
                                            <!-- 글제목 글쓴이 col 밑에랑 달라요 반복이라 한줄만 추가합니다 -->
                                            <div class="col-md-2 col-lg-2 d-none d-md-block p-0 text-center">날짜</div>
                                        </div>
                                    </div>
-                                   <div class="col-12  board">
-                                       <div class="row m-0 border border-2 rounded board_row">
-                                           <div class="col-md-2 col-lg-1 d-none d-md-block p-0 ">번호</div>
-                                           <div class="col-8 col-md-6 col-lg-7 m-0 title ellipsis p-0">글 제목</div>
-                                           <div class="col-4 col-md-2 col-lg-2 p-0 ellipsis text-center"><span>글쓴이글쓴이글쓴이</span></div>
-                                           <div class="col-md-2 col-lg-2 d-none d-md-block p-0 text-center">날짜</div>
-                                       </div>
-                                   </div>
-                                   <div class="col-12  board">
-                                       <div class="row m-0 border border-2 rounded board_row">
-                                           <div class="col-md-2 col-lg-1 d-none d-md-block p-0">번호</div>
-                                           <div class="col-8 col-md-6 col-lg-7 m-0 title ellipsis p-0">글 제목</div>
-                                           <div class="col-4 col-md-2 col-lg-2 p-0 ellipsis text-center"><span>글쓴이글쓴이글쓴이</span></div>
-                                           <div class="col-md-2 col-lg-2 d-none d-md-block p-0 text-center">날짜</div>
-                                       </div>
-                                   </div>
-                                   <div class="col-12  board">
+                                   <div class="col-12  board2">
+                                    <div class="row m-0 border border-2 rounded board_row">
+                                        <div class="col-md-2 col-lg-1 d-none d-md-block p-0">번호</div>
+                                        <div class="col-8 col-md-6 col-lg-7 m-0 title ellipsis p-0">글 제목</div>
+                                        <div class="col-4 col-md-2 col-lg-2 p-0 ellipsis text-center"><span>글쓴이글쓴이글쓴이</span></div>
+                                        <div class="col-md-2 col-lg-2 d-none d-md-block p-0 text-center">날짜</div>
+                                    </div>
+                                </div>
+                                   <div class="col-12  board2">
                                        <div class="row m-0 border border-2 rounded board_row">
                                            <div class="col-md-2 col-lg-1 d-none d-md-block p-0">번호</div>
                                            <div class="col-8 col-md-6 col-lg-7 m-0 title ellipsis p-0">글 제목</div>
@@ -759,7 +776,7 @@
                                            <div class="col-md-2 col-lg-2 d-none d-md-block p-0 text-center">날짜</div>
                                        </div>
                                    </div>
-                                   <div class="col-12  board">
+                                   <div class="col-12  board2">
                                        <div class="row m-0 border border-2 rounded board_row">
                                            <div class="col-md-2 col-lg-1 d-none d-md-block p-0">번호</div>
                                            <div class="col-8 col-md-6 col-lg-7 m-0 title ellipsis p-0">글 제목</div>
@@ -767,7 +784,15 @@
                                            <div class="col-md-2 col-lg-2 d-none d-md-block p-0 text-center">날짜</div>
                                        </div>
                                    </div>
-                                   <div class="col-12  board">
+                                   <div class="col-12  board2">
+                                       <div class="row m-0 border border-2 rounded board_row">
+                                           <div class="col-md-2 col-lg-1 d-none d-md-block p-0">번호</div>
+                                           <div class="col-8 col-md-6 col-lg-7 m-0 title ellipsis p-0">글 제목</div>
+                                           <div class="col-4 col-md-2 col-lg-2 p-0 ellipsis text-center"><span>글쓴이글쓴이글쓴이</span></div>
+                                           <div class="col-md-2 col-lg-2 d-none d-md-block p-0 text-center">날짜</div>
+                                       </div>
+                                   </div>
+                                   <div class="col-12  board2">
                                        <div class="row m-0 border border-2 rounded board_row">
                                            <div class="col-md-2 col-lg-1 d-none d-md-block p-0">번호</div>
                                            <div class="col-8 col-md-6 col-lg-7 m-0 title ellipsis p-0">글 제목</div>
@@ -793,7 +818,8 @@
             <!--게시글 UI--------------------------------------------------------------------------------------->
             <div class="tab-pane fade" id="board" role="tabpanel" aria-labelledby="board-tab">
                 
-                
+                <br>
+                <br>
 
                 <div class="row" id="header_header">
                     <div class="col-12">
@@ -802,78 +828,66 @@
                                <div class="list">
                                
                                 <div class="row m-0 ">
-                                       <div class="col-12  ">
-                                           <div class="row " id="board_menu_text">
-                                            <div class="col-1 col-md-1 d-none d-md-block p-0">번호</div>
-                                            <div class="col-7 col-md-6 m-0 title">글 제목</div>
-                                            <div class="col-3 col-md-2 text-center p-0">글쓴이</div>
-                                            <div class="col-md-1 d-none d-md-block p-0 ">날짜</div>
-                                            <div class="col-md-1 d-none d-md-block p-0">조회</div>
-                                            <div class="col-2 col-md-1 p-0">추천</div>
-                                           </div>
+                                    <div class="col-12  p-0">
+                                        <div class="row " id="board_text">
+                                            <div class="col-md-2 col-lg-1 d-none d-md-block text-center">번호</div>
+                                            <div class="col-8 col-md-6 col-lg-7">제목</div>
+                                            <div class="col-4 col-md-2 col-lg-2 text-center">글쓴이</div>
+                                            <div class="col-md-2 col-lg-2 d-none  d-md-block text-center">날짜</div>
+                                        </div>
+                                    </div>
                                         
                                        </div>
                                    </div>
                                    <div class="col-12  board">
-                                       <div class="row m-0 border border-2 rounded board_row ">
-                                        <div class="col-1 col-md-1 d-none d-md-block p-0">번호</div>
-                                        <div class="col-7 col-md-6 m-0 title">글 제목</div>
-                                        <div class="col-3 col-md-2 text-center p-0">글쓴이</div>
-                                        <div class="col-md-1 d-none d-md-block p-0 ">날짜</div>
-                                        <div class="col-md-1 d-none d-md-block p-0">조회</div>
-                                        <div class="col-2 col-md-1 p-0">추천</div>
-                                       </div>
-                                   </div>
+                                    <div class="row m-0 border border-2 rounded board_row2">
+                                        <div class="col-md-2 col-lg-1 d-none d-md-block p-0 text-center">번호</div>
+                                        <div class="col-8 col-md-6 col-lg-7 m-0 title ellipsis p-0">글 제목</div>
+                                        <div class="col-4 col-md-2 col-lg-2 p-0 ellipsis text-center"><span>글쓴xxxxxx</span></div>
+                                        <div class="col-md-2 col-lg-2 d-none d-md-block p-0 text-center">날짜</div>
+                                    </div>
+                                </div>
+                                <div class="col-12  board">
+                                    <div class="row m-0 border border-2 rounded board_row2">
+                                        <div class="col-md-2 col-lg-1 d-none d-md-block p-0 text-center">번호</div>
+                                        <div class="col-8 col-md-6 col-lg-7 m-0 title ellipsis p-0">글 제목</div>
+                                        <div class="col-4 col-md-2 col-lg-2 p-0 ellipsis text-center"><span>글쓴이</span></div>
+                                        <div class="col-md-2 col-lg-2 d-none d-md-block p-0 text-center">날짜</div>
+                                    </div>
+                                </div>
+                                <div class="col-12  board">
+                                    <div class="row m-0 border border-2 rounded board_row2">
+                                        <div class="col-md-2 col-lg-1 d-none d-md-block p-0 text-center">번호</div>
+                                        <div class="col-8 col-md-6 col-lg-7 m-0 title ellipsis p-0">글 제목</div>
+                                        <div class="col-4 col-md-2 col-lg-2 p-0 ellipsis text-center"><span>글쓴이</span></div>
+                                        <div class="col-md-2 col-lg-2 d-none d-md-block p-0 text-center">날짜</div>
+                                    </div>
+                                </div>
+                                  
                                    <div class="col-12  board">
-                                       <div class="row m-0 border border-2 rounded board_row">
-                                        <div class="col-1 col-md-1 d-none d-md-block p-0">번호</div>
-                                        <div class="col-7 col-md-6 m-0 title">글 제목</div>
-                                        <div class="col-3 col-md-2 text-center p-0">글쓴이</div>
-                                        <div class="col-md-1 d-none d-md-block p-0 ">날짜</div>
-                                        <div class="col-md-1 d-none d-md-block p-0">조회</div>
-                                        <div class="col-2 col-md-1 p-0">추천</div>
-                                       </div>
-                                   </div>
-                                   <div class="col-12  board">
-                                       <div class="row m-0 border border-2 rounded board_row">
-                                        <div class="col-1 col-md-1 d-none d-md-block p-0">번호</div>
-                                        <div class="col-7 col-md-6 m-0 title">글 제목</div>
-                                        <div class="col-3 col-md-2 text-center p-0">글쓴이</div>
-                                        <div class="col-md-1 d-none d-md-block p-0 ">날짜</div>
-                                        <div class="col-md-1 d-none d-md-block p-0">조회</div>
-                                        <div class="col-2 col-md-1 p-0">추천</div>
-                                       </div>
-                                   </div>
-                                   <div class="col-12  board">
-                                       <div class="row m-0 border border-2 rounded board_row">
-                                        <div class="col-1 col-md-1 d-none d-md-block p-0">번호</div>
-                                        <div class="col-7 col-md-6 m-0 title">글 제목</div>
-                                        <div class="col-3 col-md-2 text-center p-0">글쓴이</div>
-                                        <div class="col-md-1 d-none d-md-block p-0 ">날짜</div>
-                                        <div class="col-md-1 d-none d-md-block p-0">조회</div>
-                                        <div class="col-2 col-md-1 p-0">추천</div>
-                                       </div>
-                                   </div>
-                                   <div class="col-12  board">
-                                       <div class="row m-0 border border-2 rounded board_row">
-                                        <div class="col-1 col-md-1 d-none d-md-block p-0">번호</div>
-                                        <div class="col-7 col-md-6 m-0 title">글 제목</div>
-                                        <div class="col-3 col-md-2 text-center p-0">글쓴이</div>
-                                        <div class="col-md-1 d-none d-md-block p-0 ">날짜</div>
-                                        <div class="col-md-1 d-none d-md-block p-0">조회</div>
-                                        <div class="col-2 col-md-1 p-0">추천</div>
-                                       </div>
-                                   </div>
-                                   <div class="col-12  board">
-                                       <div class="row m-0 border border-2 rounded board_row">
-                                        <div class="col-1 col-md-1 d-none d-md-block p-0">번호</div>
-                                        <div class="col-7 col-md-6 m-0 title">글 제목</div>
-                                        <div class="col-3 col-md-2 text-center p-0">글쓴이</div>
-                                        <div class="col-md-1 d-none d-md-block p-0 ">날짜</div>
-                                        <div class="col-md-1 d-none d-md-block p-0">조회</div>
-                                        <div class="col-2 col-md-1 p-0">추천</div>
-                                       </div>
-                                   </div>
+                                    <div class="row m-0 border border-2 rounded board_row2">
+                                        <div class="col-md-2 col-lg-1 d-none d-md-block p-0 text-center">번호</div>
+                                        <div class="col-8 col-md-6 col-lg-7 m-0 title ellipsis p-0">글 제목</div>
+                                        <div class="col-4 col-md-2 col-lg-2 p-0 ellipsis text-center"><span>글쓴이</span></div>
+                                        <div class="col-md-2 col-lg-2 d-none d-md-block p-0 text-center">날짜</div>
+                                    </div>
+                                </div>
+                                <div class="col-12  board">
+                                    <div class="row m-0 border border-2 rounded board_row2">
+                                        <div class="col-md-2 col-lg-1 d-none d-md-block p-0 text-center">번호</div>
+                                        <div class="col-8 col-md-6 col-lg-7 m-0 title ellipsis p-0">글 제목</div>
+                                        <div class="col-4 col-md-2 col-lg-2 p-0 ellipsis text-center"><span>글쓴쓴이글쓴이</span></div>
+                                        <div class="col-md-2 col-lg-2 d-none d-md-block p-0 text-center">날짜</div>
+                                    </div>
+                                </div>
+                                <div class="col-12  board">
+                                    <div class="row m-0 border border-2 rounded board_row2">
+                                        <div class="col-md-2 col-lg-1 d-none d-md-block p-0 text-center">번호</div>
+                                        <div class="col-8 col-md-6 col-lg-7 m-0 title ellipsis p-0">글 제목</div>
+                                        <div class="col-4 col-md-2 col-lg-2 p-0 ellipsis text-center"><span>글쓴이</span></div>
+                                        <div class="col-md-2 col-lg-2 d-none d-md-block p-0 text-center">날짜</div>
+                                    </div>
+                                </div>
                                    <div calss="row">
                                        <div class="col-12 text-center">
                                            < 1 2 3 4 5 6 7 8 9 >
@@ -884,159 +898,145 @@
                 
                             <br>
                       
-                        <div class="row" id="wt2"> 
-
-                            <div class="list">
-                            
-                             <div class="row m-0 ">
-                                    <div class="col-12  ">
-                                        <div class="row " id="board_menu_text">
-                                            <div class="col-1 col-md-1 d-none d-md-block p-0">번호</div>
-                                            <div class="col-7 col-md-6 m-0 title">글 제목</div>
-                                            <div class="col-3 col-md-2 text-center p-0">글쓴이</div>
-                                            <div class="col-md-1 d-none d-md-block p-0 ">날짜</div>
-                                            <div class="col-md-1 d-none d-md-block p-0">조회</div>
-                                            <div class="col-2 col-md-1 p-0">추천</div>
+                                <div class="list">
+                                
+                                 <div class="row m-0 ">
+                                     <div class="col-12  p-0">
+                                         <div class="row " id="board_text">
+                                             <div class="col-md-2 col-lg-1 d-none d-md-block text-center">번호</div>
+                                             <div class="col-8 col-md-6 col-lg-7">제목</div>
+                                             <div class="col-4 col-md-2 col-lg-2 text-center">글쓴이</div>
+                                             <div class="col-md-2 col-lg-2 d-none  d-md-block text-center">날짜</div>
+                                         </div>
+                                     </div>
+                                         
                                         </div>
-                                     
                                     </div>
-                                </div>
-                                <div class="col-12  board">
-                                    <div class="row m-0 border border-2 rounded board_row ">
-                                        <div class="col-1 col-md-1 d-none d-md-block p-0">번호</div>
-                                        <div class="col-7 col-md-6 m-0 title">글 제목</div>
-                                        <div class="col-3 col-md-2 text-center p-0">글쓴이</div>
-                                        <div class="col-md-1 d-none d-md-block p-0 ">날짜</div>
-                                        <div class="col-md-1 d-none d-md-block p-0">조회</div>
-                                        <div class="col-2 col-md-1 p-0">추천</div>
-                                    </div>
-                                </div>
-                                <div class="col-12  board">
-                                    <div class="row m-0 border border-2 rounded board_row">
-                                        <div class="col-1 col-md-1 d-none d-md-block p-0">번호</div>
-                                        <div class="col-7 col-md-6 m-0 title">글 제목</div>
-                                        <div class="col-3 col-md-2 text-center p-0">글쓴이</div>
-                                        <div class="col-md-1 d-none d-md-block p-0 ">날짜</div>
-                                        <div class="col-md-1 d-none d-md-block p-0">조회</div>
-                                        <div class="col-2 col-md-1 p-0">추천</div>
-                                    </div>
-                                </div>
-                                <div class="col-12  board">
-                                    <div class="row m-0 border border-2 rounded board_row">
-                                        <div class="col-1 col-md-1 d-none d-md-block p-0">번호</div>
-                                        <div class="col-7 col-md-6 m-0 title">글 제목</div>
-                                        <div class="col-3 col-md-2 text-center p-0">글쓴이</div>
-                                        <div class="col-md-1 d-none d-md-block p-0 ">날짜</div>
-                                        <div class="col-md-1 d-none d-md-block p-0">조회</div>
-                                        <div class="col-2 col-md-1 p-0">추천</div>
-                                    </div>
-                                </div>
-                                <div class="col-12  board">
-                                    <div class="row m-0 border border-2 rounded board_row">
-                                        <div class="col-1 col-md-1 d-none d-md-block p-0">번호</div>
-                                        <div class="col-7 col-md-6 m-0 title">글 제목</div>
-                                        <div class="col-3 col-md-2 text-center p-0">글쓴이</div>
-                                        <div class="col-md-1 d-none d-md-block p-0 ">날짜</div>
-                                        <div class="col-md-1 d-none d-md-block p-0">조회</div>
-                                        <div class="col-2 col-md-1 p-0">추천</div>
-                                    </div>
-                                </div>
-                                <div class="col-12  board">
-                                    <div class="row m-0 border border-2 rounded board_row">
-                                        <div class="col-1 col-md-1 d-none d-md-block p-0">번호</div>
-                                        <div class="col-7 col-md-6 m-0 title">글 제목</div>
-                                        <div class="col-3 col-md-2 text-center p-0">글쓴이</div>
-                                        <div class="col-md-1 d-none d-md-block p-0 ">날짜</div>
-                                        <div class="col-md-1 d-none d-md-block p-0">조회</div>
-                                        <div class="col-2 col-md-1 p-0">추천</div>
-                                    </div>
-                                </div>
-                                <div class="col-12  board">
-                                    <div class="row m-0 border border-2 rounded board_row">
-                                        <div class="col-1 col-md-1 d-none d-md-block p-0">번호</div>
-                                        <div class="col-7 col-md-6 m-0 title">글 제목</div>
-                                        <div class="col-3 col-md-2 text-center p-0">글쓴이</div>
-                                        <div class="col-md-1 d-none d-md-block p-0 ">날짜</div>
-                                        <div class="col-md-1 d-none d-md-block p-0">조회</div>
-                                        <div class="col-2 col-md-1 p-0">추천</div>
-                                    </div>
-                                </div>
-                                <div calss="row">
-                                    <div class="col-12 text-center">
-                                        < 1 2 3 4 5 6 7 8 9 >
-                                    </div>
-                                </div>
-                            </div>
-                         </div>
+                                    <div class="col-12  board">
+                                     <div class="row m-0 border border-2 rounded board_row2">
+                                         <div class="col-md-2 col-lg-1 d-none d-md-block p-0 text-center">번호</div>
+                                         <div class="col-8 col-md-6 col-lg-7 m-0 title ellipsis p-0">글 제목</div>
+                                         <div class="col-4 col-md-2 col-lg-2 p-0 ellipsis text-center"><span>글쓴이글쓴이글쓴이</span></div>
+                                         <div class="col-md-2 col-lg-2 d-none d-md-block p-0 text-center">날짜</div>
+                                     </div>
+                                 </div>
+                                 <div class="col-12  board">
+                                     <div class="row m-0 border border-2 rounded board_row2">
+                                        <div class="col-md-2 col-lg-1 d-none d-md-block p-0 text-center">번호</div>
+                                         <div class="col-8 col-md-6 col-lg-7 m-0 title ellipsis p-0">글 제목</div>
+                                         <div class="col-4 col-md-2 col-lg-2 p-0 ellipsis text-center"><span>글쓴이</span></div>
+                                         <div class="col-md-2 col-lg-2 d-none d-md-block p-0 text-center">날짜</div>
+                                     </div>
+                                 </div>
+                                 <div class="col-12  board">
+                                     <div class="row m-0 border border-2 rounded board_row2">
+                                        <div class="col-md-2 col-lg-1 d-none d-md-block p-0 text-center">번호</div>
+                                         <div class="col-8 col-md-6 col-lg-7 m-0 title ellipsis p-0">글 제목</div>
+                                         <div class="col-4 col-md-2 col-lg-2 p-0 ellipsis text-center"><span>글쓴이</span></div>
+                                         <div class="col-md-2 col-lg-2 d-none d-md-block p-0 text-center">날짜</div>
+                                     </div>
+                                 </div>
+                                   
+                                    <div class="col-12  board">
+                                     <div class="row m-0 border border-2 rounded board_row2">
+                                        <div class="col-md-2 col-lg-1 d-none d-md-block p-0 text-center">번호</div>
+                                         <div class="col-8 col-md-6 col-lg-7 m-0 title ellipsis p-0">글 제목</div>
+                                         <div class="col-4 col-md-2 col-lg-2 p-0 ellipsis text-center"><span>글쓴이</span></div>
+                                         <div class="col-md-2 col-lg-2 d-none d-md-block p-0 text-center">날짜</div>
+                                     </div>
+                                 </div>
+                                 <div class="col-12  board">
+                                     <div class="row m-0 border border-2 rounded board_row2">
+                                        <div class="col-md-2 col-lg-1 d-none d-md-block p-0 text-center">번호</div>
+                                         <div class="col-8 col-md-6 col-lg-7 m-0 title ellipsis p-0">글 제목</div>
+                                         <div class="col-4 col-md-2 col-lg-2 p-0 ellipsis text-center"><span>글쓴이</span></div>
+                                         <div class="col-md-2 col-lg-2 d-none d-md-block p-0 text-center">날짜</div>
+                                     </div>
+                                 </div>
+                                 <div class="col-12  board">
+                                     <div class="row m-0 border border-2 rounded board_row2">
+                                        <div class="col-md-2 col-lg-1 d-none d-md-block p-0 text-center">번호</div>
+                                         <div class="col-8 col-md-6 col-lg-7 m-0 title ellipsis p-0">글 제목</div>
+                                         <div class="col-4 col-md-2 col-lg-2 p-0 ellipsis text-center"><span>글쓴이</span></div>
+                                         <div class="col-md-2 col-lg-2 d-none d-md-block p-0 text-center">날짜</div>
+                                     </div>
+                                 </div>
+                                    <div calss="row">
+                                        <div class="col-12 text-center">
+                                            < 1 2 3 4 5 6 7 8 9 >
+                                        </div>
+                                   
+                 
+                             <br>
              
                          <br>
 
                
-</div>
-</div>
-
+                    </div>
+                </div>
 
             </div>
 
             <!--계정관리 UI--------------------------------------------------------------------------------------->
             <div class="tab-pane fade" id="account" role="tabpanel" aria-labelledby="account-tab">
-                <div class="height-100 " align ="center">
-                <div class="row " id="cont">
-            <div class="col">
-         	<div class="row signup_input">
-         		<div class ="col-8 input">
-                    <div class="card-details">
-                        <input type="text" id="id-input" placeholder="아이디" name="id">
-                        <i class="fa fa-user"></i>
+                
+                
+                
+                <form action="/test" method="post">
+                <div class="row text-center" id="header_header">
+                    <div class="col-12" id="modi">
+                        <div class="row" id="name">
+                            <div class="col-12 col-md-4 content"><strong>아이디</strong> </div>
+                            <div class="col-12 col-md-8 modify content " id="id">
+                                아이디입니다
+                            </div>
+                        </div>
+                        <div class="row "  id="pw" >
+                            <div class="col-12 col-md-4 pw content" style="display:none;"><strong>비밀번호</strong> </div>
+                            <div class="col-12 col-md-8 modify content pw" style="display:none;">
+                                비밀입니다
+                            </div>
+                        </div>
+                        <div class="row" id="email">
+                            <div class="col-12 col-md-4 content"><strong>이메일</strong> </div>
+                            <div class="col-12 col-md-8 content">
+                                sefdswe@wadsaer.wer
+                            </div>
+                        </div>
+                        <div class="row" id="joinday">
+                            <div class="col-12 col-md-4 content"><strong>가입일</strong> </div>
+                            <div class="col-12 col-md-8 content">
+                                2022/05/19
+                            </div>
+                        </div>
+                        <div class="row" id="joinday">
+                            <div class="col-12 col-md-4 check" style="display:none;"><strong>비밀번호 확인</strong> </div>
+                            <div class="col-12 col-md-8 check" style="display:none;">
+                                <input type="text" placeholder="비밀번호를 입력하세요" id="pwtext">
+                                
+                            </div>
+                        </div>
+                            <div class="row btn" id="btn">
+                                <div class="col-12 text-center" >
+                                <input type="button" class="btn btn-primary" value="수정하기" id="modify">
+                                <button class="btn btn-primary " id="ok" style="display:none;">완료</button>
+                                <button type="button" class="btn btn-primary check " id="checkpw" style="display:none;">확인</button>
+                                <input type="button" class="btn btn-primary " value="취소" id="back" style="display:none;">
+                                
+                            </div>
+                        </div>
+                        
+                        
                     </div>
-         		</div>
-         		<div class ="col-4">
-         			<div>확인 문구</div>
-         		</div>
-         	</div>
-         	<div class="row signup_input">
-         		<div class ="col-8 input">
-                    <div class="card-details">
-                        <input type="password" id="password1-input" placeholder="비밀번호" name="pw">
-                        <i class="fa fa-lock"></i>
-                    </div>
-         		</div>
-         		<div class ="col-4">
-         			<div>확인 문구</div>
-         		</div>
-         	</div>
-         	<div class="row signup_input">
-         		<div class ="col-8 input">
-                    <div class="card-details">
-            			<input type="password" id="password-input" placeholder="password">
-            				<i class="fa fa-lock-open"></i>
-            			<span><small class="fa fa-eye-slash passcode"></small></span>
-        	</div>
-         		</div>
-         		<div class ="col-4">
-         			<div>확인 문구</div>
-         		</div>
-         	</div>
-         	<div class="row signup_input">
-         		<div class ="col-8 input">
-                    <div class="card-details">
-                        <input type="text" id="id-input" placeholder="이메일" name="email">
-                        <i class="fa fa-envelope"></i>
-                    </div>
-         		</div>
-         		<div class ="col-4">
-         			<div>확인 문구</div>
-         		</div>
-         	</div>  		
-        </div>
-        <div class="row"  id="siginup_btn_area">         		
-         		<button type="submit" class="btn btn-primary" id ="signin_btn">수정하기</button>
-         	</div> 
-        </div> 
-                   
+            
             </div>
+            </form>
+            
+            
+            
+           
           </div>
-    </div>
+
     </div>
     <!-------------------------------------------------------------------------------------------------------------------Container Main end-->
 
@@ -1044,6 +1044,57 @@
 
 
     <script>
+  //계정관리
+
+    $("#modify").on("click",function(){
+        $(".content").css("display","none"); //모든 컨텐츠
+        $("#back").css("display","inline"); //취소버튼
+        $("#modify").css("display","none");   //수정하기 버튼
+        $(".check").css("display","inline"); //비밀번호 확인 입력창
+        
+        
+        $("#checkpw").on("click",function(){
+            $.ajax({
+            url:"/#",
+            data:{pw:$("#pwtext").text()},
+            dataType:"json"
+        }).done(function(resp){
+            resp=true;
+            if(resp){
+                $(".content").css("display","inline");
+                $("#ok").css("display","inline");    //완료버튼
+                $(".pw").css("display","block");    //비번 수정
+                $(".check").css("display","none");  //비밀번호 확인 입력창
+               
+
+                $(".modify").attr("contenteditable","true");
+                $(".modify").css("color","#0089ff");
+                $("#id").focus();
+            }else{
+                alert("비밀번호가 틀렸습니다.");
+            }
+        })
+            
+        })
+       
+
+        })
+        
+        
+
+    $("#back").on("click",function(){
+        $(".content").css("display","inline"); 
+        $("#modify").css("display","inline");
+        $("#back").css("display","none");
+        $("#ok").css("display","none");
+        $(".pw").css("display","none");
+        $(".check").css("display","none");
+
+        $(".modify").attr("contenteditable","false");
+        $(".modify").css("color","black");
+    })
+
+    
  // input id, input pw, password eyes
     let outer_eye=document.querySelector(".card-details span");
     let eye=document.querySelector(".passcode");
