@@ -1,5 +1,5 @@
-<!-- <%@ page language="java" contentType="text/html; charset=UTF-8"
-         pageEncoding="UTF-8"%> -->
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+         pageEncoding="UTF-8"%> 
 <!DOCTYPE html>
 <html>
 
@@ -307,6 +307,12 @@
            text-align: right;
            padding-top: 30px;
        }
+       #count{
+           padding-top: 5px;
+        width: 82%;
+           text-align: center;
+           padding-right: 5px;
+       }
        #heartcol{
            font-size: 30px;
            color: #b1b1b1;
@@ -324,6 +330,16 @@
            padding: 0px;
            border-radius: 100px;
            border: 1px solid rgb(177, 177, 177);
+           max-width: 47px;
+           min-width: 47px;
+       }
+       #jjimcnt{
+           padding: 0px;
+           max-width: 47px;
+           min-width: 47px;
+       }
+       #heartcnt{
+           padding: 0px;
            max-width: 47px;
            min-width: 47px;
        }
@@ -362,7 +378,7 @@
        #btn{
           width: 100%;
        }
-       #jjimdummy{
+       .jjimdummy{
            min-width: 5px;
            max-width: 5px;
        }
@@ -377,7 +393,7 @@
     </header>
     <ul class="nav nav2">
         <li class="nav-item">
-            <a class="nav-link nav-link2"  href="#">자유게시판</a>
+            <a class="nav-link nav-link2" id="page" href="#">자유게시판</a>
         </li>
         <li class="nav-item">
             <a class="nav-link nav-link2"  href="#">여행후기</a>
@@ -389,7 +405,7 @@
             <a class="nav-link nav-link2"  href="#">맛집</a>
         </li>
         <li class="nav-item">
-            <a class="nav-link nav-link2" id="page" href="#">숙소리뷰</a>
+            <a class="nav-link nav-link2"  href="#">숙소리뷰</a>
         </li>
     </ul>
     <div class="l-navbar" id="nav-bar">
@@ -485,11 +501,23 @@
             <div class="row " id="heart" style="margin: auto;">
                 
                 <div class="col-1" id="jjimcol">
-                    <i class="fa-solid fa-star"></i>
+                    <i class="fa-solid fa-thumbs-up"></i>
                 </div>
-                <div class="col-1" id="jjimdummy"></div>
+                <div class="col-1 jjimdummy " ></div>
                 <div class="col-1 text-center" id="heartcol">
-                    ♥
+                    <i class="fa-solid fa-heart"></i>
+                </div>
+                <div class="col-9"></div>
+            </div>
+
+            <div class="row " id="count" style="margin: auto;">
+                
+                <div class="col-1" id="jjimcnt">
+                    32
+                </div>
+                <div class="col-1 jjimdummy" ></div>
+                <div class="col-1 text-center" id="heartcnt">
+                   24
                 </div>
                 <div class="col-9"></div>
             </div>
