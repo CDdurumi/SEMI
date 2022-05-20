@@ -19,14 +19,13 @@
     <!--  -->
     <link rel="canonical" href="https://getbootstrap.com/docs/5.1/examples/cover/">
     <!-- Bootstrap core CSS -->
-    <link href="/docs/5.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
-
+    
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css" integrity="sha512-KfkfwYDsLkIlwQp6LFnl8zNdLGxu9YAA1QvwINks4PhcElQSvqcyVLLD9aMhXd13uQjoXtEKNosOWaZqXgel0g==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <!-- Favicons -->
     <link rel="apple-touch-icon" href="/docs/5.1/assets/img/favicons/apple-touch-icon.png" sizes="180x180">
     <link rel="icon" href="/docs/5.1/assets/img/favicons/favicon-32x32.png" sizes="32x32" type="image/png">
     <link rel="icon" href="/docs/5.1/assets/img/favicons/favicon-16x16.png" sizes="16x16" type="image/png">
-    <link rel="manifest" href="/docs/5.1/assets/img/favicons/manifest.json">
+    
     <link rel="mask-icon" href="/docs/5.1/assets/img/favicons/safari-pinned-tab.svg" color="#7952b3">
     <link rel="icon" href="/docs/5.1/assets/img/favicons/favicon.ico">
     <meta name="theme-color" content="#7952b3">
@@ -396,30 +395,30 @@
                     </div>
          		</div>
          		<div class ="col-4">
-         			<div>확인 문구</div>
+         			<div id ="id_check_text"></div>
          		</div>
          	</div>
          	<div class="row signup_input">
          		<div class ="col-8 input">
                     <div class="card-details">
-                        <input type="password" id="password1_input" placeholder="비밀번호" name="pw">
+                        <input type="password" class="passwrods" id="password1_input" placeholder="비밀번호" name="pw">
                         <i class="fa fa-lock"></i>
                     </div>
          		</div>
          		<div class ="col-4">
-         			<div id="pw_check_text">확인 문구</div>
+         			<div id="pw_check_text"></div>
          		</div>
          	</div>
          	<div class="row signup_input">
          		<div class ="col-8 input">
                     <div class="card-details">
-            			<input type="password" id="password_input" placeholder="password">
+            			<input type="password" class="passwrods" id="password_input" placeholder="password">
             				<i class="fa fa-lock-open"></i>
             			<span><small class="fa fa-eye-slash passcode"></small></span>
         	</div>
          		</div>
          		<div class ="col-4">
-         			<div>확인 문구</div>
+         			<div></div>
          		</div>
          	</div>
          	<div class="row signup_input">
@@ -430,7 +429,7 @@
                     </div>
          		</div>
          		<div class ="col-4">
-         			<div>확인 문구</div>
+         			<div id="email_check_text"></div>
          		</div>
          	</div>
          	<div class="row">
@@ -498,20 +497,72 @@
 	
 	//회원가입 관련 id_input , password1_input ,password_input , email_input
 	
+	//아이디 중복확인
+	$("#id_input").on("input",function(){
+			$.ajax({
+				url:"/duplIDCheck.member",
+				type:"get",
+				data:{id:$("#id_input").val()},
+				dataType:"json"
+			}).done(function(resp){
+				
+				if(resp==false){
+					console.log(resp);
+					$("#id_check_text").text("사용 가능한 ID입니다!");
+					$("#id_check_text").css({ color: "blue" });
+					
+				}else if(resp==true){
+					console.log(resp);
+					$("#id_check_text").text("이미 사용중인 ID입니다!");
+					$("#id_check_text").css({ color: "red" });			
+				}				
+			});
+		})
 	//비밀번호 확인 
-	$("#password_input").on("input", function () {
+	$(".passwrods").on("input", function () {
             let pw1 = $("#password1_input").val();
             let pw2 = $("#password_input").val();
             let check = $("#pw_check_text");
-            if (pw1 == pw2) {
-                check.text("비밀번호가 일치합니다");
-                check.css({ color: "blue" });
+            
+            if(pw2!=""){
+            	if (pw1 == pw2) {
+                	check.text("비밀번호가 일치합니다");
+                    check.css({ color: "blue" });
+                }
+                else if(pw1!==pw2){
+                    check.text("비밀번호가 일치하지 않습니다");
+                    check.css({ color: "red" });
+                }
+            }else if(pw2==""){
+    
+            	check.text("비밀번호는 필수정보입니다");
+                check.css({ color: "red" });
             }
-            else {
-                check.text("비밀번호가 일치하지 않습니다");
-                check.css({ color: "red" })
-            }
+            
         });
+	//아이디 중복확인
+	$("#email_input").on("input",function(){
+			$.ajax({
+				url:"/isEmailExist.member",
+				type:"get",
+				data:{email:$("#email_input").val()},
+				dataType:"json"
+			}).done(function(resp){
+				
+				if(resp==false){
+					console.log("사용가능한 이메일");
+					$("#email_check_text").text("사용 가능한 Email 입니다!");
+					$("#email_check_text").css({ color: "blue" });
+					
+				}else if(resp==true){
+					console.log("사용중인 이메일");
+					$("#email_check_text").text("이미 사용중인 Email 입니다!");
+					$("#email_check_text").css({ color: "red" });			
+				}
+				
+			});
+		})
+	//회원가입 끝	
 	
     document.addEventListener("DOMContentLoaded", function(event) {
 

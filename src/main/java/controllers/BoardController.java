@@ -4,6 +4,7 @@ import java.io.File;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.Enumeration;
+import java.util.List;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -36,7 +37,15 @@ public class BoardController extends HttpServlet {
 		String uri = request.getRequestURI();
 		try {
 			if(uri.equals("/boardMainView.board")) {//자유게시판 메인화면 출력(communityMain.jsp에서 자유게시판 메뉴 클릭 시 여기로.)
-
+				int cpage = Integer.parseInt(request.getParameter("cpage"));
+				request.setAttribute("cpage", cpage);
+				
+				List<BoardDTO> list = dao.selectByPage(cpage);
+				
+				String pageNavi = dao.getPageNavi(cpage);
+				request.setAttribute("list", list);
+				request.setAttribute("navi", pageNavi);
+				
 				request.getRequestDispatcher("/board/boardMain.jsp").forward(request, response);//자유게시판 메인페이지
 
 			}else if(uri.equals("/writeboard.board")) {//자유게시판 글 작성하기 폼 출력(boardMain.jsp에서 글 작성하기 버튼 클릭 시 여기로.)

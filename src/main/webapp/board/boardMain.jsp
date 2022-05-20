@@ -1,5 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+    <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+    <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <!DOCTYPE html>
 <html>
 
@@ -672,71 +674,38 @@
              
             </div>
         </div>
+        <c:forEach var="i" items="${list }">
         <div class="col-12  board">
             <div class="row m-0 border border-2 rounded board_row ">
-                <div class="col-1 col-md-1 d-none d-md-block p-0">번호</div>
-               <div class="col-7 col-md-6 m-0 title ellipsis"><span>글 제목글 제목</span></div>
-                <!-- ellipsis"><span>글 제목</span></div> 밑에 forEach 작업이라 한줄만 추가했습니다. -->
-                <div class="col-3 col-md-2 p-0 ellipsis text-center"><span>글쓴이글쓴이글쓴이</span></div>
-                <!-- 글제목 글쓴이 col 밑에랑 달라요 반복이라 한줄만 추가합니다 -->
-                <div class="col-md-1 d-none d-md-block p-0 ">날짜</div>
-                <div class="col-md-1 d-none d-md-block p-0">조회</div>
-                <div class="col-2 col-md-1 p-0">추천</div>
+            	
+                <div class="col-1 col-md-1 d-none d-md-block p-0">0</div>
+               	<div class="col-7 col-md-6 m-0 title ellipsis"><span>${i. title }</span></div>
+                <div class="col-3 col-md-2 p-0 ellipsis text-center"><span>${i.id }</span></div>
+                <div class="col-md-1 d-none d-md-block p-0 "><fmt:formatDate value="${i.write_date }" pattern="yy-MM-dd"/></div>
+                <div class="col-md-1 d-none d-md-block p-0">${i.view_count}</div>
+                <div class="col-2 col-md-1 p-0">${i.like_count}</div>
+                
             </div>
         </div>
-        <div class="col-12  board">
-            <div class="row m-0 border border-2 rounded board_row">
-                <div class="col-1 col-md-1 d-none d-md-block p-0">번호</div>
-                <div class="col-9 col-md-6 m-0 title">글 제목</div>
-                <div class="col-2 col-md-2 text-center p-0">글쓴이</div>
-                <div class="col-md-1 d-none d-md-block p-0 ">날짜</div>
-                <div class="col-md-1 d-none d-md-block p-0">조회</div>
-                <div class="col-1 col-md-1 p-0">추천</div>
-            </div>
-        </div>
-        <div class="col-12  board">
-            <div class="row m-0 border border-2 rounded board_row">
-                <div class="col-1 col-md-1 d-none d-md-block p-0">번호</div>
-                <div class="col-9 col-md-7 m-0 title">글 제목</div>
-                <div class="col-2 col-md-1 p-0">글쓴이</div>
-                <div class="col-md-1 d-none d-md-block p-0 ">날짜</div>
-                <div class="col-md-1 d-none d-md-block p-0">조회</div>
-                <div class="col-1 col-md-1 p-0">추천</div>
-            </div>
-        </div>
-        <div class="col-12  board">
-            <div class="row m-0 border border-2 rounded board_row">
-                <div class="col-1 col-md-1 d-none d-md-block p-0">번호</div>
-                <div class="col-9 col-md-7 m-0 title">글 제목</div>
-                <div class="col-2 col-md-1 p-0">글쓴이</div>
-                <div class="col-md-1 d-none d-md-block p-0 ">날짜</div>
-                <div class="col-md-1 d-none d-md-block p-0">조회</div>
-                <div class="col-1 col-md-1 p-0">추천</div>
-            </div>
-        </div>
-        <div class="col-12  board">
-            <div class="row m-0 border border-2 rounded board_row">
-                <div class="col-1 col-md-1 d-none d-md-block p-0">번호</div>
-                <div class="col-9 col-md-7 m-0 title">글 제목</div>
-                <div class="col-2 col-md-1 p-0">글쓴이</div>
-                <div class="col-md-1 d-none d-md-block p-0 ">날짜</div>
-                <div class="col-md-1 d-none d-md-block p-0">조회</div>
-                <div class="col-1 col-md-1 p-0">추천</div>
-            </div>
-        </div>
-        <div class="col-12  board">
-            <div class="row m-0 border border-2 rounded board_row">
-                <div class="col-1 col-md-1 d-none d-md-block p-0">번호</div>
-                <div class="col-9 col-md-7 m-0 title">글 제목</div>
-                <div class="col-2 col-md-1 p-0">글쓴이</div>
-                <div class="col-md-1 d-none d-md-block p-0 ">날짜</div>
-                <div class="col-md-1 d-none d-md-block p-0">조회</div>
-                <div class="col-1 col-md-1 p-0">추천</div>
-            </div>
-        </div>
+        </c:forEach>
+        
         <div calss="row">
             <div class="col-12 text-center">
-                < 1 2 3 4 5 6 7 8 9 >
+                <nav aria-label="Page navigation example">
+  <ul class="pagination justify-content-center">
+    <li class="page-item">
+      <a class="page-link" href="#" aria-label="Previous">
+        <span aria-hidden="true">&laquo;</span>
+      </a>
+    </li>
+    ${navi }
+    <li class="page-item">
+      <a class="page-link" href="#" aria-label="Next">
+        <span aria-hidden="true">&raquo;</span>
+      </a>
+    </li>
+  </ul>
+</nav>
             </div>
         </div>
         </header>
