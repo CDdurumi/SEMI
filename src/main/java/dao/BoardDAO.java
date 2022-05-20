@@ -56,7 +56,7 @@ public class BoardDAO {
 	//삽입
 	public int insert(BoardDTO dto) throws Exception {
 
-		String sql = "insert into all_board values(?, ?, ?, ?, default, default, default)";
+		String sql = "insert into all_board values(?, ?, ?, ?, default, default, default, default)";
 		try(Connection con = this.getConnection();
 				PreparedStatement pstat = con.prepareStatement(sql);) {
 			pstat.setString(1, dto.getFree_board_seq());
