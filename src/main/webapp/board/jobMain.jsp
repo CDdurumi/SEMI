@@ -1,5 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+         pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
 
@@ -405,6 +405,33 @@
            height:100%;
            width:100%;
        }
+
+       /*--top버튼----------------------------------------------------------------*/
+
+#myBtn {
+  display: none; /* Hidden by default */
+  position: fixed; /* Fixed/sticky position */
+  bottom: 12px;
+  width: 45px;
+  height: 45px;
+  right: 10px; /* Place the button 30px from the right */
+  z-index: 99; /* Make sure it does not overlap */
+  border: none; /* Remove borders */
+  outline: none; /* Remove outline */
+  background-color:  #0080ff;
+  color: white; /* Text color */
+  cursor: pointer; /* Add a mouse pointer on hover */
+  padding: 3px; /* Some padding */
+  border-radius: 50%; /* Rounded corners */
+  font-size: 32px; /* Increase font size */
+  font-weight: bold;
+  padding-bottom:40px;
+  padding-top: 0px;
+}
+
+#myBtn:hover {
+  background-color: #555; 
+}
     </style>
 </head>
 
@@ -640,7 +667,8 @@
     </div>
 
     <!--Container Main end-->
-
+ <!--top 버튼-->
+ <button onclick="topFunction()" id="myBtn" title="Go to top">↑</button>
 
 
 
@@ -748,7 +776,27 @@
 		});
 	});
 	
-</script>
+    //top 버튼
+    
+    mybutton = document.getElementById("myBtn");
+    
+    window.onscroll = function() {scrollFunction()};
+    
+    function scrollFunction() {
+      if (document.body.scrollTop > 60 || document.documentElement.scrollTop > 60) {
+        mybutton.style.display = "block";
+      } else {
+        mybutton.style.display = "none";
+      }
+    }
+    
+    
+    function topFunction() {
+      document.body.scrollTop = 0; 
+      document.documentElement.scrollTop = 0; 
+    }
+    </script>
+    
 </body>
 
 </html>

@@ -12,6 +12,7 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import com.google.gson.Gson;
+import com.google.gson.JsonNull;
 
 import dao.MemberDAO;
 import dto.MemberDTO;
@@ -59,6 +60,7 @@ public class MemberController extends HttpServlet {
 		String uri = request.getRequestURI();
 		MemberDAO dao = new MemberDAO();
 		MemberDTO dto =new MemberDTO();
+		Gson g= new Gson();
 		request.setCharacterEncoding("UTF-8");//post
 		try {
 			if(uri.equals("/signup.member")) {
@@ -101,9 +103,15 @@ public class MemberController extends HttpServlet {
 					
 					//request.setAttribute("userList", list); 유저정보 담아놓은거 
 					
-					
+					//response.sendRedirect("/index.jsp");
 				}
-				response.sendRedirect("/index.jsp");
+				
+					PrintWriter pwriter = response.getWriter();
+					pwriter.append(g.toJson(result));
+					System.out.println(result);
+				
+				
+				
 			}
 		}catch (Exception e) {
 			response.sendRedirect("errol.html");
