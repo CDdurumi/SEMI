@@ -100,12 +100,12 @@ public class BoardDAO {
 	public int likeCountUpDown(String seq, int upDown)  throws Exception { 
 		String plusMinus = "";
 		if(upDown == 1) {//카운트 증가
-			plusMinus = "+1";
+			plusMinus = "+";
 		}else if(upDown == 0) {//카운트 감소
-			plusMinus = "-1";
+			plusMinus = "-";
 		}
 		
-		String sql = "update all_board set like_count = like_count"+plusMinus+" all_board_seq seq =? ";
+		String sql = "update all_board set like_count = like_count "+ plusMinus +"1 where all_board_seq =? ";
 		try (Connection con = this.getConnection(); 
 				PreparedStatement pstat = con.prepareStatement(sql);) {
 			pstat.setString(1,seq);
@@ -119,12 +119,11 @@ public class BoardDAO {
 	public int jjimCountUpDown(String seq, int upDown)  throws Exception {     
 		String plusMinus = "";
 		if(upDown == 1) {//카운트 증가
-			plusMinus = "+1";
+			plusMinus = "+";
 		}else if(upDown == 0) {//카운트 감소
-			plusMinus = "-1";
+			plusMinus = "-";
 		}
-		
-		String sql = "update all_board set jjim_count = jjim_count"+plusMinus+" all_board_seq seq =? ";
+		String sql = "update all_board set jjim_count = jjim_count "+ plusMinus +"1 where all_board_seq =? ";
 		try (Connection con = this.getConnection(); 
 				PreparedStatement pstat = con.prepareStatement(sql);) {
 			pstat.setString(1,seq);

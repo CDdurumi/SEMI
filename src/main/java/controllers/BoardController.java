@@ -93,7 +93,7 @@ public class BoardController extends HttpServlet {
 	
 			}else if(uri.equals("/detailView.board")) {//작성글 출력(게시판 목록에서 게시글 클릭 시 여기로.)
 				//테스트용 하드코딩
-				String seq = "f74";
+				String seq = "f75";
 //				String seq = request.getParameter("seq"); //해당 게시글 고유seq
 				
 //				int cpage = Integer.parseInt(request.getParameter("cpage"));
@@ -122,9 +122,11 @@ public class BoardController extends HttpServlet {
 				
 			}else if(uri.equals("/goodClick.board")) {//좋아요 클릭 시
 				//테스트용 하드코딩
-				String seq = "f74";
-//				String seq = request.getParameter("seq"); //해당 게시글 고유seq
+//				String seq = "f75";
+				String seq = request.getParameter("seq"); //해당 게시글 고유seq
 				int upDown =Integer.parseInt(request.getParameter("upDown"));//( 1:선택 , 0:해제)
+				System.out.println(seq);
+				System.out.println(upDown);
 				dao.likeCountUpDown(seq, upDown);//좋아요 증감
 				
 				int likeCount = dao.getLikeCount(seq);//좋아요 개수 get.
@@ -134,12 +136,12 @@ public class BoardController extends HttpServlet {
 				jobj.addProperty("likeCount", likeCount);
 				pw.append(jobj.toString());
 				
-				
 			}else if(uri.equals("/jjimClick.board")) {//찜 클릭 시
 				//테스트용 하드코딩
-				String seq = "f74";
-//				String seq = request.getParameter("seq"); //해당 게시글 고유seq
+//				String seq = "f75";
+				String seq = request.getParameter("seq"); //해당 게시글 고유seq
 				int upDown =Integer.parseInt(request.getParameter("upDown"));//( 1:선텍 , 0:해제)
+				System.out.println(upDown);
 				dao.jjimCountUpDown(seq, upDown);//찜 증감
 					
 				String id = (String) request.getSession().getAttribute("loginID");//로그인 id
