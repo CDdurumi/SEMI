@@ -33,8 +33,13 @@
     <link rel="mask-icon" href="/docs/5.1/assets/img/favicons/safari-pinned-tab.svg" color="#7952b3">
     <link rel="icon" href="/docs/5.1/assets/img/favicons/favicon.ico">
     <meta name="theme-color" content="#7952b3">
-
-
+	
+	<!-- Calendar -->
+	<link
+	href='https://cdn.jsdelivr.net/npm/fullcalendar@5.11.0/main.min.css'
+	rel='stylesheet' />
+	<script src='https://cdn.jsdelivr.net/npm/fullcalendar@5.11.0/main.min.js'></script>
+    
     <style>
         @import url("https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700&display=swap");
 
@@ -315,7 +320,7 @@
         #month{
             height: 100%;
             float: left;
-       padding-bottom: 10px;
+            padding-bottom: 10px;
            
         }
         #today{
@@ -336,8 +341,11 @@
             height: 66%;
             border: 1px solid hsl(0, 1%, 65%);
             border-radius: 10px;
-            padding-left: 10px;
-            
+        }
+        #calendar{
+        	width: 100%;
+        	height: 100%;
+        	min-height:520px;
         }
         #board_menu_text{
             font-size: 18px;
@@ -591,38 +599,14 @@
             <br>
             <br>
     
-                <div class="col-12 col-sm-6 col-lg-6" id="month" align="left">  
+                <div class="col-12 col-sm-12 col-md-12 col-lg-6" id="month" align="left">  
                     <div id="api">
-                        달력api 들어올 곳dsadasdasdasdsd
-                        달력api 들어올 곳dsadasdasdasdsd
-                        달력api 들어올 곳dsadasdasdasdsd
-                        달력api 들어올 곳dsadasdasdasdsd
-                        달력api 들어올 곳dsadasdasdasdsd
-                        달력api 들어올 곳dsadasdasdasdsd
-                        달력api 들어올 곳dsadasdasdasdsd
-                        달력api 들어올 곳dsadasdasdasdsd
-                        v
-                        달력api 들어올 곳dsadasdasdasdsd
-                        달력api 들어올 곳dsadasdasdasdsd
-                        달력api 들어올 곳dsad
-                        달력api 들어올 곳dsadasdasdasdsd
-                        ★ Item One<br>
-                        ♥ Item Two<br>
-                        ● Item Three<br>
-                        ★ Item One<br>
-                        ★ Item Two<br>
-                        ♥ Item Three<br>
-                        ★ Item One<br>
-                        ♥ Item Two<br>
-                        ● Item Three<br>
-                        ★ Item One<br>
-                      
-
+						<div id='calendar'></div>
                     </div> 
                     
                 </div>
                   
-                <div class="col-12 col-sm-6 col-lg-6" id="today" align="left">
+                <div class="col-12 col-sm-12 col-lg-6" id="today" align="left">
                     <div id="td">
                 오늘일정<br>
                 ★ Item One<br>
@@ -636,11 +620,6 @@
                 ● Item Three<br>
                 ★ Item One<br>
                 ★ Item Two<br>
-                ♥ Item Three<br>
-                ★ Item One<br>
-                ♥ Item Two<br>
-                ● Item Three<br>
-                ♥ Item Two<br>
                 
                     </div>
                  </div>
@@ -1151,6 +1130,32 @@
 
             // Your code to run since DOM is loaded and ready
         });
+        /*========== Calendar Script ==========*/
+		document.addEventListener('DOMContentLoaded', function() {
+			var calendarEl = document.getElementById('calendar');
+			var calendar = new FullCalendar.Calendar(calendarEl, {
+				initialView: 'dayGridMonth',
+				googleCalendarApiKey: 'AIzaSyBJEiOXKXgzlPpGoHUB3C00sjH3_2I_Tyw',
+				eventSources: [{
+					googleCalendarId: '${email }',
+					className: 'gcal-event'
+					},{
+					googleCalendarId : 'ko.south_korea#holiday@group.v.calendar.google.com',
+					className : 'ko_event'
+					}], 
+				eventClick: function(info) {
+					info.jsEvent.stopPropagation();
+					info.jsEvent.preventDefault();
+				},
+				dayMaxEventRows: true, // for all non-TimeGrid views
+				  views: {
+				    timeGrid: {
+				      dayMaxEventRows: 6// adjust to 6 only for timeGridWeek/timeGridDay
+				    }
+				  }
+			});
+			calendar.render();
+			});
     </script>
 </body>
 
