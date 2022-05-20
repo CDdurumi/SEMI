@@ -580,8 +580,9 @@ $(".filebtn").on("click",function(){
    
 })
 
-    //heart
+    //heart-> 찜
     let heart = true;
+	let hUpDown = 0;
     $("#heartcol").on("click", function () {
         
         if (heart) {
@@ -593,10 +594,30 @@ $(".filebtn").on("click",function(){
             $("#heartcol").css("border","1px solid #b1b1b1" );
             heart=true;
         }
-
+        
+        if(heart == false){
+        	hUpDown = 1;
+        }else{
+        	hUpDown = 0;
+        }
+        
+		$.ajax({
+			url:"/jjimClick.board",
+			data:{
+				seq:"${dto.all_board_seq}",
+				upDown:hUpDown
+			},
+			dataType:"json"
+		}).done(function(resp){
+				console.log(resp.jjimCount)//좋아요 갯수
+			})
+        
     })
-    //jjim
+    
+    
+    //jjim->좋아요
     let jjim = true;
+    let jUpDown = 0;
     $("#jjimcol").on("click", function () {
         
         if (jjim) {
@@ -609,8 +630,30 @@ $(".filebtn").on("click",function(){
             jjim=true;
         }
 
+        if(jjim == false){
+        	jUpDown = 1;
+        }else{
+        	jUpDown = 0;
+        }
+        
+		$.ajax({
+			url:"/goodClick.board",
+			data:{
+				seq:"${dto.all_board_seq}",
+				upDown:jUpDown
+			},
+			dataType:"json"
+		}).done(function(resp){
+				console.log(resp.likeCount)//좋아요 갯수
+			})
+			
+			
+			
     })
 
+    
+    
+    
         document.addEventListener("DOMContentLoaded", function (event) {
 
             const showNavbar = (toggleId, navId, bodyId, headerId) => {
