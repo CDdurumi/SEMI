@@ -49,8 +49,8 @@ public class BoardController extends HttpServlet {
 				}
 				MultipartRequest multi = new MultipartRequest(request, savePath, maxSize, "UTF8", new DefaultFileRenamePolicy() );
 
-//				String writer = (String) request.getSession().getAttribute("loginID");//로그인 id
-				String writer = "test";//테스트 하드코딩 - 위에 주석 풀어서 쓸 것
+				String writer = (String) request.getSession().getAttribute("loginID");//로그인 id
+//				String writer = "test";//테스트 하드코딩 - 위에 주석 풀어서 쓸 것
 
 				String title = multi.getParameter("title");
 				String contents = multi.getParameter("contents");
