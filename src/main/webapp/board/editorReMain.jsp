@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+         pageEncoding="UTF-8"%> 
+         
 <!DOCTYPE html>
 <html>
 
@@ -299,11 +300,88 @@
                 margin: 0px;
             }
 
-            [class ^="col"] {
-                border: 1px solid black;
-                height: 300px;
-                padding: 0px;
+           
+            /* div{border:1px solid black;} */
+
+            /* 수정버튼 */
+            #btn{
+                height: 50px;
+                text-align: right;
             }
+            .content{
+                margin: auto;
+                width:50%;
+                max-width: 600px;
+                min-width: 500px;
+                height: 500px;
+                padding-bottom: 20px;
+            }
+            .main{
+                height: 16%;
+            }
+            .img{
+                height: 70%;
+                padding-left: 20px ;
+                padding-right: 20px;
+                padding-top: 10px;
+               
+
+            }
+            .imgimg{
+                border-radius: 20px;
+            }
+            .wrapper{
+                border: 1px solid gray;
+                border-radius: 20px;
+                padding-top: 20px;
+                margin-right: 20px;
+            }
+            .userimg{
+                padding-top: 10px;
+            }
+            .username{
+                font-size: 14px;
+            }
+            .main2>.row{
+                padding-top:20px ;
+                text-align: center;
+            }
+            .img2{
+                height: 70%;
+                padding-left: 20px ;
+                padding-right: 20px;
+                padding-top: 20px;
+            }
+            .main2{
+                height: 8%;
+            }
+            .title{
+                padding-top: 5px;
+                font-size: 20px;
+
+            }
+            .heartcol{
+           font-size: 25px;
+           color: #b1b1b1;
+           
+           /* padding: 0px; */
+          
+          
+          
+       }
+       .jjimcol{
+        font-size: 25px;
+           color: #b1b1b1;
+           text-align: right;
+           /* padding: 0px; */
+           
+          
+ 
+       }
+       .jjimcnt{
+          text-align: right;
+       }
+       
         </style>
     </head>
 
@@ -395,24 +473,228 @@
             <div class="col-12 text-center display-6" style="height: 100px; line-height: 95px; border:0px;">
                - 애디터 추천글 -
             </div>
-            <div class="col-12 col-md-6">
-                <img src="https://d4x5yybe1iyrp.cloudfront.net/public/assets/images/story_thumbnail10.jpg" class="w-100 h-100 img-fluid">
+            <div class="col-12" id="btn">
+                <button type="button" class="btn btn-primary">수정
+
             </div>
-            <div class="col-12 col-md-6">
-                #2 dsaf
+
+
+        </div>
+        <div class="row">
+            <div class="col-12 col-md-6 content ">
+                <div class="row h-100 wrapper">
+                    <div class="col-12 main" >
+                        <div class="row h-100">
+                            <div class="col-2 h-100">
+                                <img src="img/라이언.jpg" class="w-100 h-100 userimg" alt="">
+                            </div>
+                            <div class="col-3 h-100 username">
+                                <div class="row h-100">
+                                     <div class="col-12">user</div>
+                                    <div class="col-12">2022-02-02</div>
+                                    <div class="col-12">view count</div>
+                                     
+                                </div>
+                            </div>
+                            <div class="col-7 h-100 title">
+                                제목제목제목제목제목제목제목제목제목제
+                            </div>
+                        </div>
+                       
+                    </div>
+                    <div class="col-12 img">
+                        <img src="img/다운로드 (1).jpg" class="w-100 h-100 imgimg" alt="">
+                    </div>
+                    <div class="col-12">
+                        <div class="row  heart"  style="margin: auto;">
+                           
+                            <div class="col-6 jjimcol">
+                                <i class="fa-solid fa-thumbs-up"></i>
+                            </div>
+                           
+                            <div class="col-6 heartcol" >
+                                <i class="fa-solid fa-heart"></i>
+                            </div>
+                           
+                        </div>
+            
+                        <div class="row " id="count" style="margin: auto;">
+                           
+                            <div class="col-6 jjimcnt" >
+                                32
+                            </div>
+                           
+                            <div class="col-6 heartcnt" >
+                               24
+                            </div>
+                          
+                        </div>
+                    </div>
+                </div>
+                
             </div>
-            <div class="col-12 col-md-6">
-                #3 dsaf
+
+
+
+            <div class="col-12 col-md-6 content ">
+                <div class="row h-100 wrapper">
+                    <div class="col-12 main" >
+                        <div class="row h-100">
+                            <div class="col-2 h-100">
+                                <img src="img/라이언.jpg" class="w-100 h-100 userimg" alt="">
+                            </div>
+                            <div class="col-3 h-100 username">
+                                <div class="row h-100">
+                                     <div class="col-12">user</div>
+                                    <div class="col-12">2022-02-02</div>
+                                    <div class="col-12">view count</div>
+                                     
+                                </div>
+                            </div>
+                            <div class="col-7 h-100 title">
+                                제목제목제목제목제목제목제목제목제목제
+                            </div>
+                        </div>
+                       
+                    </div>
+                    <div class="col-12 img">
+                        <img src="img/다운로드 (1).jpg" class="w-100 h-100 imgimg" alt="">
+                    </div>
+                    <div class="col-12">
+                        <div class="row  heart"  style="margin: auto;">
+                           
+                            <div class="col-6 jjimcol">
+                                <i class="fa-solid fa-thumbs-up"></i>
+                            </div>
+                           
+                            <div class="col-6 heartcol" >
+                                <i class="fa-solid fa-heart"></i>
+                            </div>
+                           
+                        </div>
+            
+                        <div class="row " id="count" style="margin: auto;">
+                           
+                            <div class="col-6 jjimcnt" >
+                                32
+                            </div>
+                           
+                            <div class="col-6 heartcnt" >
+                               24
+                            </div>
+                          
+                        </div>
+                    </div>
+                </div>
+                
             </div>
-            <div class="col-12 col-md-6">
-                #4 dsaf
+            <div class="col-12 col-md-6 content ">
+                <div class="row h-100 wrapper">
+                    <div class="col-12 main" >
+                        <div class="row h-100">
+                            <div class="col-2 h-100">
+                                <img src="img/라이언.jpg" class="w-100 h-100 userimg" alt="">
+                            </div>
+                            <div class="col-3 h-100 username">
+                                <div class="row h-100">
+                                     <div class="col-12">user</div>
+                                    <div class="col-12">2022-02-02</div>
+                                    <div class="col-12">view count</div>
+                                     
+                                </div>
+                            </div>
+                            <div class="col-7 h-100 title">
+                                제목제목제목제목제목제목제목제목제목제
+                            </div>
+                        </div>
+                       
+                    </div>
+                    <div class="col-12 img">
+                        <img src="img/다운로드 (1).jpg" class="w-100 h-100" alt="">
+                    </div>
+                    <div class="col-12">
+                        <div class="row  heart"  style="margin: auto;">
+                           
+                            <div class="col-6 jjimcol">
+                                <i class="fa-solid fa-thumbs-up"></i>
+                            </div>
+                           
+                            <div class="col-6 heartcol" >
+                                <i class="fa-solid fa-heart"></i>
+                            </div>
+                           
+                        </div>
+            
+                        <div class="row " id="count" style="margin: auto;">
+                           
+                            <div class="col-6 jjimcnt" >
+                                32
+                            </div>
+                           
+                            <div class="col-6 heartcnt" >
+                               24
+                            </div>
+                          
+                        </div>
+                    </div>
+                </div>
+                
             </div>
-            <div class="col-12 col-md-6">
-                #5 dsaf
+            <div class="col-12 col-md-6 content ">
+                <div class="row h-100 wrapper">
+                    <div class="col-12 main" >
+                        <div class="row h-100">
+                            <div class="col-2 h-100">
+                                <img src="img/라이언.jpg" class="w-100 h-100 userimg" alt="">
+                            </div>
+                            <div class="col-3 h-100 username">
+                                <div class="row h-100">
+                                     <div class="col-12">user</div>
+                                    <div class="col-12">2022-02-02</div>
+                                    <div class="col-12">view count</div>
+                                     
+                                </div>
+                            </div>
+                            <div class="col-7 h-100 title">
+                                제목제목제목제목제목제목제목제목제목제
+                            </div>
+                        </div>
+                       
+                    </div>
+                    <div class="col-12 img">
+                        <img src="img/다운로드 (1).jpg" class="w-100 h-100" alt="">
+                    </div>
+                    <div class="col-12">
+                        <div class="row  heart"  style="margin: auto;">
+                           
+                            <div class="col-6 jjimcol">
+                                <i class="fa-solid fa-thumbs-up"></i>
+                            </div>
+                           
+                            <div class="col-6 heartcol" >
+                                <i class="fa-solid fa-heart"></i>
+                            </div>
+                           
+                        </div>
+            
+                        <div class="row " id="count" style="margin: auto;">
+                           
+                            <div class="col-6 jjimcnt" >
+                                32
+                            </div>
+                           
+                            <div class="col-6 heartcnt" >
+                               24
+                            </div>
+                          
+                        </div>
+                    </div>
+                </div>
+                
             </div>
-            <div class="col-12 col-md-6">
-                #6 dsaf
-            </div>
+
+
+
         </div>
 
     </div>
@@ -420,6 +702,37 @@
 
 
     <script>
+ //heart
+ let heart = true;
+    $(".heartcol").on("click", function () {
+        
+        if (heart) {
+            $(this).css("color", "red" );
+            
+            heart=false;
+        } else {
+            $(this).css("color", "#b1b1b1");
+            
+            heart=true;
+        }
+
+    })
+    //jjim
+    let jjim = true;
+    $(".jjimcol").on("click", function () {
+        
+        if (jjim) {
+            $(this).css("color", "#ffd000" );
+           
+            jjim=false;
+        } else {
+            $(this).css("color", "#b1b1b1");
+           
+            jjim=true;
+        }
+
+    })
+
 
         document.addEventListener("DOMContentLoaded", function (event) {
 
