@@ -50,7 +50,10 @@ public class BoardController extends HttpServlet {
 				MultipartRequest multi = new MultipartRequest(request, savePath, maxSize, "UTF8", new DefaultFileRenamePolicy() );
 
 				String writer = (String) request.getSession().getAttribute("loginID");//로그인 id
-//				String writer = "test";//테스트 하드코딩 - 위에 주석 풀어서 쓸 것
+				System.out.println(writer);
+				if(writer.equals("")) {
+					response.sendRedirect("error.jsp");
+				}
 
 				String title = multi.getParameter("title");
 				String contents = multi.getParameter("contents");
@@ -77,7 +80,7 @@ public class BoardController extends HttpServlet {
 	
 			}else if(uri.equals("/detailView.board")) {//작성글 출력(게시판 목록에서 게시글 클릭 시 여기로.)
 				//테스트용 하드코딩
-				String seq = "f40";
+				String seq = "f67";
 //				String seq = request.getParameter("seq"); //해당 게시글 고유seq
 				
 //				int cpage = Integer.parseInt(request.getParameter("cpage"));

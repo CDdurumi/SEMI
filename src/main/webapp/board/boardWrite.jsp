@@ -281,7 +281,6 @@
             }
             #firstFile{margin-left: 2px;}
             .addFile{margin: 2px;}
-
             #plusBtn, #minusBtn{
                 border-radius: 4px;
                 margin: 2px;
@@ -289,6 +288,9 @@
                 width: 30px;
             }
 
+			img{
+				max-width:100% !important;
+			}
         </style>
     </head>
 
