@@ -382,6 +382,17 @@
            min-width: 5px;
            max-width: 5px;
        }
+        .filebox{
+            position: relative;
+        }
+        .filelist{
+            position: absolute ;
+            background-color: #ffffff;
+            width: 200px;
+            right: -51px;
+            border: 1px solid #0080ff;
+            border-radius: 10px;
+        }
     </style>
 </head>
 
@@ -437,22 +448,27 @@
         <div class="row width-100 dummy" ></div>
         <div class="row text-center" id="menu">
             <div class="col-md-1 d-none d-md-block">번호</div>
-            <div class="col-6 col-md-6">제목</div>
+            <div class="col-5 col-md-5">제목</div>
             <div class="col-3 col-md-2">글쓴이</div>
-            <div class="col-md-1 d-none d-md-block">등록일</div>
-            <div class="col-md-1 d-none d-md-block">조회수</div>
-            <div class="col-3 col-md-1 ">추천수</div>
+            <div class="col-md-1 d-none d-md-block">등록</div>
+            <div class="col-md-1 d-none d-md-block">조회</div>
+            <div class="col-2 col-md-1 ">추천</div>
+            <div class="col-2 col-md-1 ">파일</div>
         </div>
         <div class="row " id="contentsRow">
            
             <div class="col-12 p-0 border border-2 rounded" id="contents">
                 <div class="row text-center border-bottom border-2 rounded" id="conMenu">
-                    <div class="col-md-1 d-none d-md-block">1</div>
-                    <div class="col-6 col-md-6 ellipsis "><span>자유게시판 글자유게시판 글자유게시판 글</span></div>
-                    <div class="col-3 col-md-2 ellipsis"><span>글쓴이글쓴이글쓴이글쓴이</span></div>
-                    <div class="col-md-1 d-none d-md-block">22/5/14</div>
-                    <div class="col-md-1 d-none d-md-block">43</div>
-                    <div class="col-3 col-md-1 ">13</div>
+                    <div class="col-md-1 d-none d-md-block">${dto.all_board_seq}</div>
+                    <div class="col-5 col-md-5 ellipsis "><span>${dto.title}</span></div>
+                    <div class="col-3 col-md-2 ellipsis"><span>${dto.id}</span></div>
+                    <div class="col-md-1 d-none d-md-block">${dto.formdDate}</div>
+                    <div class="col-md-1 d-none d-md-block">${dto.view_count}</div>
+                    <div class="col-2 col-md-1 ">${dto.like_count}</div>
+                    <div class="col-2 col-md-1 p-0 filebox">
+                    <button type="button" class="btn btn-primary filebtn">보기</button>
+                    <div class="filelist" style="display:none; padding-top:10px; padding-bottom: 10px; ">파일명<br>파일명<br>파일명</div>
+                    </div>
                 </div>
                 <div class="col-12 text-center" id="cont" style="padding:0px;">
                     <div class="row " id="contentsdummy" style="padding:0px;" >
@@ -576,6 +592,21 @@
 
 
     <script>
+  //누르면 파일 펼치기
+    let listExist = false;
+
+    $(".filebtn").on("click",function(){
+        let filelist = $(this).siblings();
+        if(listExist==false){
+            filelist.css("display","block");
+            listExist = true;
+        } else{
+            filelist.css("display","none");
+            listExist = false;
+        }
+       
+    })
+
     //heart
     let heart = true;
     $("#heartcol").on("click", function () {
