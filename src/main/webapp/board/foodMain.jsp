@@ -1,5 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+    <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+    <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <!DOCTYPE html>
 <html>
 
@@ -10,6 +12,7 @@
     <meta name="author" content="Mark Otto, Jacob Thornton, and Bootstrap contributors">
     <meta name="generator" content="Hugo 0.88.1">
     <title>Insert title here</title>
+    
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
@@ -23,7 +26,7 @@
     <!-- Bootstrap core CSS -->
     <link href="/docs/5.1/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
-	
+
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css" integrity="sha512-KfkfwYDsLkIlwQp6LFnl8zNdLGxu9YAA1QvwINks4PhcElQSvqcyVLLD9aMhXd13uQjoXtEKNosOWaZqXgel0g==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <!-- Favicons -->
     <link rel="apple-touch-icon" href="/docs/5.1/assets/img/favicons/apple-touch-icon.png" sizes="180x180">
@@ -37,7 +40,9 @@
 
     <style>
         @import url("https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700&display=swap");
-
+		body::-webkit-scrollbar{
+		    display: none; /* Chrome, Safari, Opera*/
+		  }
         :root {
             --header-height: 3rem;
             --nav-width: 68px;
@@ -49,9 +54,7 @@
             --z-fixed: 100
         }
 
-		body::-webkit-scrollbar{
-    		display: none; /* Chrome, Safari, Opera*/
-  		}
+
 
         *,
         ::before,
@@ -374,10 +377,10 @@
             height: 50px;
         }
         #board_menu_text{
+         text-align: center;
             font-size: 18px;
             font-weight:bold ;
             margin-bottom: 20px;
-             text-align: center;
         }
         .title{
             font-weight: bold;
@@ -398,12 +401,10 @@
            position:absolute;
            left: 0px;
            right: 0px;
- 			height:100%;
- 			width:100%;
+           width:100%;
+           height:100%;
        }
-
-
-/*--top버튼----------------------------------------------------------------*/
+       /*--top버튼----------------------------------------------------------------*/
 
 #myBtn {
   display: none; /* Hidden by default */
@@ -430,13 +431,6 @@
   background-color: #555; 
 }
 
-
-
-
-
-
-
-
     </style>
 </head>
 
@@ -450,8 +444,8 @@
         </div>
     </header>
     <ul class="nav nav2">
-        <li class="nav-item">
-            <a class="nav-link nav-link2" href="/board/boardMain.jsp">자유게시판</a>
+       <li class="nav-item">
+            <a class="nav-link nav-link2 "  href="/board/boardMain.jsp" id="page">자유게시판</a>
         </li>
         <li class="nav-item">
             <a class="nav-link nav-link2" href="/board/gallery.jsp">여행후기</a>
@@ -460,7 +454,7 @@
             <a class="nav-link nav-link2" href="/board/jobMain.jsp">구인구직</a>
         </li>
         <li class="nav-item">
-            <a class="nav-link nav-link2" id="page" href="/board/foodMain.jsp">맛집</a>
+            <a class="nav-link nav-link2" href="/board/foodMain.jsp">맛집</a>
         </li>
         <li class="nav-item">
             <a class="nav-link nav-link2" href="/board/stayreview.jsp">숙소리뷰</a>
@@ -477,7 +471,7 @@
                     </span></span> </a>
                     <a href="/board/communityMain.jsp" class="nav_link"> <i class='bx bx-message nav_icon'></i> <span
                             class="nav_name">커뮤니티</span> </a>
-                    <a href="/board/editorReMain.jsp" class="nav_link"> <i class='bx bx-bus nav_icon'></i> <span class="nav_name">여행정보</span>
+                    <a href="#" class="nav_link"> <i class='bx bx-bus nav_icon'></i> <span class="nav_name">여행정보</span>
                     </a>
                     <a href="/myPage.jsp" class="nav_link"> <i class='bx bx-user nav_icon'></i> <span
                             class="nav_name">마이페이지</span> </a>
@@ -668,7 +662,7 @@
         <div class="row m-0" id="board_menu" ></div>
 
         <div class="row m-0 ">
-            <div class="col-12  ">
+             <div class="col-12  ">
                 <div class="row " id="board_menu_text">
                     <div class="col-md-1 d-none d-md-block p-0">번호</div>
                     <div class="col-7 col-md-6 ">제목</div>
@@ -680,80 +674,48 @@
              
             </div>
         </div>
+        <c:forEach var="i" items="${list }">
         <div class="col-12  board">
             <div class="row m-0 border border-2 rounded board_row ">
-                <div class="col-1 col-md-1 d-none d-md-block p-0">번호</div>
-               <div class="col-7 col-md-6 m-0 title ellipsis"><span>글 제목글 제목</span></div>
-                <!-- ellipsis"><span>글 제목</span></div> 밑에 forEach 작업이라 한줄만 추가했습니다. -->
-                <div class="col-3 col-md-2 p-0 ellipsis text-center"><span>글쓴이글쓴이글쓴이</span></div>
-                <!-- 글제목 글쓴이 col 밑에랑 달라요 반복이라 한줄만 추가합니다 -->
-                <div class="col-md-1 d-none d-md-block p-0 ">날짜</div>
-                <div class="col-md-1 d-none d-md-block p-0">조회</div>
-                <div class="col-2 col-md-1 p-0">추천</div>
+            	
+                <div class="col-1 col-md-1 d-none d-md-block p-0">0</div>
+               	<div class="col-7 col-md-6 m-0 title ellipsis"><span>${i. title }</span></div>
+                <div class="col-3 col-md-2 p-0 ellipsis text-center"><span>${i.id }</span></div>
+                <div class="col-md-1 d-none d-md-block p-0 "><fmt:formatDate value="${i.write_date }" pattern="yy-MM-dd"/></div>
+                <div class="col-md-1 d-none d-md-block p-0">${i.view_count}</div>
+                <div class="col-2 col-md-1 p-0">${i.like_count}</div>
+                
             </div>
         </div>
-        <div class="col-12  board">
-            <div class="row m-0 border border-2 rounded board_row">
-                <div class="col-1 col-md-1 d-none d-md-block p-0">번호</div>
-                <div class="col-9 col-md-6 m-0 title">글 제목</div>
-                <div class="col-2 col-md-2 text-center p-0">글쓴이</div>
-                <div class="col-md-1 d-none d-md-block p-0 ">날짜</div>
-                <div class="col-md-1 d-none d-md-block p-0">조회</div>
-                <div class="col-1 col-md-1 p-0">추천</div>
-            </div>
-        </div>
-        <div class="col-12  board">
-            <div class="row m-0 border border-2 rounded board_row">
-                <div class="col-1 col-md-1 d-none d-md-block p-0">번호</div>
-                <div class="col-9 col-md-7 m-0 title">글 제목</div>
-                <div class="col-2 col-md-1 p-0">글쓴이</div>
-                <div class="col-md-1 d-none d-md-block p-0 ">날짜</div>
-                <div class="col-md-1 d-none d-md-block p-0">조회</div>
-                <div class="col-1 col-md-1 p-0">추천</div>
-            </div>
-        </div>
-        <div class="col-12  board">
-            <div class="row m-0 border border-2 rounded board_row">
-                <div class="col-1 col-md-1 d-none d-md-block p-0">번호</div>
-                <div class="col-9 col-md-7 m-0 title">글 제목</div>
-                <div class="col-2 col-md-1 p-0">글쓴이</div>
-                <div class="col-md-1 d-none d-md-block p-0 ">날짜</div>
-                <div class="col-md-1 d-none d-md-block p-0">조회</div>
-                <div class="col-1 col-md-1 p-0">추천</div>
-            </div>
-        </div>
-        <div class="col-12  board">
-            <div class="row m-0 border border-2 rounded board_row">
-                <div class="col-1 col-md-1 d-none d-md-block p-0">번호</div>
-                <div class="col-9 col-md-7 m-0 title">글 제목</div>
-                <div class="col-2 col-md-1 p-0">글쓴이</div>
-                <div class="col-md-1 d-none d-md-block p-0 ">날짜</div>
-                <div class="col-md-1 d-none d-md-block p-0">조회</div>
-                <div class="col-1 col-md-1 p-0">추천</div>
-            </div>
-        </div>
-        <div class="col-12  board">
-            <div class="row m-0 border border-2 rounded board_row">
-                <div class="col-1 col-md-1 d-none d-md-block p-0">번호</div>
-                <div class="col-9 col-md-7 m-0 title">글 제목</div>
-                <div class="col-2 col-md-1 p-0">글쓴이</div>
-                <div class="col-md-1 d-none d-md-block p-0 ">날짜</div>
-                <div class="col-md-1 d-none d-md-block p-0">조회</div>
-                <div class="col-1 col-md-1 p-0">추천</div>
-            </div>
-        </div>
+        </c:forEach>
+        
         <div calss="row">
             <div class="col-12 text-center">
-                < 1 2 3 4 5 6 7 8 9 >
+                <nav aria-label="Page navigation example">
+  <ul class="pagination justify-content-center">
+    <li class="page-item">
+      <a class="page-link" href="#" aria-label="Previous">
+        <span aria-hidden="true">&laquo;</span>
+      </a>
+    </li>
+    ${navi }
+    <li class="page-item">
+      <a class="page-link" href="#" aria-label="Next">
+        <span aria-hidden="true">&raquo;</span>
+      </a>
+    </li>
+  </ul>
+</nav>
             </div>
         </div>
         </header>
 
         <footer class="mt-auto text-black-50"></footer>
     </div>
-    <button onclick="topFunction()" id="myBtn" title="Go to top">↑</button>
-    <!--Container Main end-->
 
+    <!--Container Main end-->
+ <!--top 버튼-->
+ <button onclick="topFunction()" id="myBtn" title="Go to top">↑</button>
 
 
 
@@ -883,7 +845,6 @@
       document.documentElement.scrollTop = 0; 
     }
     </script>
-    
 </body>
 
 </html>

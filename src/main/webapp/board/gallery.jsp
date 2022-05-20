@@ -440,13 +440,13 @@ width: 100%; height: 100%;
         <div> <a href="/index.jsp" class="nav_logo"> <i class='bx bx-layer nav_logo-icon'></i> <span class="nav_logo-name">쉼표
                     <br>- 일상의 쉼표를 찍다</span> </a>
             <div class="nav_list">
-               <a href="#" class="nav_link active"> <i class='CurrIcon'></i> <span class="nav_name"><span class="weather">
+               <a href="#" class="nav_link"> <i class='CurrIcon'></i> <span class="nav_name"><span class="weather">
                 <span class="CurrTemp"></span>
                 <span class="City"></span>
                 </span></span> </a>
                 <a href="/board/communityMain.jsp" class="nav_link"> <i class='bx bx-message nav_icon'></i> <span
                         class="nav_name">커뮤니티</span> </a>
-                <a href="/board/editorReMain.jsp" class="nav_link"> <i class='bx bx-bus nav_icon'></i> <span class="nav_name">여행정보</span>
+                <a href="/board/editorReMain.jsp" class="nav_link active"> <i class='bx bx-bus nav_icon'></i> <span class="nav_name">여행정보</span>
                 </a>
                 <a href="/myPage.jsp" class="nav_link"> <i class='bx bx-user nav_icon'></i> <span
                         class="nav_name">마이페이지</span> </a>
@@ -529,7 +529,21 @@ width: 100%; height: 100%;
                                 </header>
                                 <div calss="bar">
                                     <div class="col-12 text-center">
-                                        1 2 3 4 5 6 7 8 9 >
+                                        <nav aria-label="Page navigation example">
+  <ul class="pagination justify-content-center">
+    <li class="page-item">
+      <a class="page-link" href="#" aria-label="Previous">
+        <span aria-hidden="true">&laquo;</span>
+      </a>
+    </li>
+    ${navi }
+    <li class="page-item">
+      <a class="page-link" href="#" aria-label="Next">
+        <span aria-hidden="true">&raquo;</span>
+      </a>
+    </li>
+  </ul>
+</nav>
                                     </div>
                                 <footer class="mt-auto text-black-50">                   
                               
