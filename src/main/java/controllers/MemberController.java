@@ -1,6 +1,8 @@
 package controllers;
 
 import java.io.IOException;
+import java.io.PrintWriter;
+import java.util.List;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -8,6 +10,8 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
+
+import com.google.gson.Gson;
 
 import dao.MemberDAO;
 import dto.MemberDTO;
@@ -23,15 +27,38 @@ public class MemberController extends HttpServlet {
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		
+		String uri = request.getRequestURI();
+		MemberDAO dao = new MemberDAO();
+		Gson g= new Gson();
+		//response.setCharacterEncoding("UTF-8");//get
+		try {
+			if (uri.equals("/duplCheck.member")) {// 아이디 중복 확인
+				String id = request.getParameter("id");
+
+				boolean result = dao.isIdExist(id);
+				PrintWriter pw = response.getWriter();
+				pw.append(g.toJson(result));
+//				request.setAttribute("result", result);
+//				request.getRequestDispatcher("/member/idCheckView.jsp").forward(request, response);
+
+			} else if (uri.equals("/logout.member")) {
+				request.getSession().invalidate();
+				response.sendRedirect("/index.jsp");
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+			response.sendRedirect("errol.html");
+			return;
+		}
 	}
+	
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		
 		String uri = request.getRequestURI();
 		MemberDAO dao = new MemberDAO();
-		
+		MemberDTO dto =new MemberDTO();
 		request.setCharacterEncoding("UTF-8");//post
 		try {
 			if(uri.equals("/signup.member")) {
@@ -51,9 +78,35 @@ public class MemberController extends HttpServlet {
 					
 				
 				response.sendRedirect("/index.jsp");
+			}else if(uri.equals("/login.member")) {
+				String email = request.getParameter("email");
+				System.out.println(email);
+				String pw = request.getParameter("pw");
+				System.out.println(pw);
+				pw = EncryptUtils.SHA512(pw);
+				
+				System.out.println("ID PW DB에서 체크");
+				boolean result = dao.isIdPwExist(email, pw);
+				
+				if (result) {			
+					
+					//유저정보
+					System.out.println("유저정보 탐색");
+					List<MemberDTO> list;
+
+					list = dao.searchUser(email);			
+					HttpSession session = request.getSession();
+					session.setAttribute("loginID", list.get(0).getId());
+					session.setAttribute("loginEmail", email);
+					
+					//request.setAttribute("userList", list); 유저정보 담아놓은거 
+					
+					
+				}
+				response.sendRedirect("/index.jsp");
 			}
 		}catch (Exception e) {
-			
+			response.sendRedirect("errol.html");
 		}
 	}
 

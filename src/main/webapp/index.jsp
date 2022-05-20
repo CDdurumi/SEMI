@@ -17,13 +17,13 @@
   href="https://cdn.jsdelivr.net/npm/boxicons@latest/css/boxicons.min.css">
 
 <link rel="canonical" href="https://getbootstrap.com/docs/5.1/examples/cover/">
-<link href="/docs/5.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+
 
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css" integrity="sha512-KfkfwYDsLkIlwQp6LFnl8zNdLGxu9YAA1QvwINks4PhcElQSvqcyVLLD9aMhXd13uQjoXtEKNosOWaZqXgel0g==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 <link rel="apple-touch-icon" href="/docs/5.1/assets/img/favicons/apple-touch-icon.png" sizes="180x180">
 <link rel="icon" href="/docs/5.1/assets/img/favicons/favicon-32x32.png" sizes="32x32" type="image/png">
 <link rel="icon" href="/docs/5.1/assets/img/favicons/favicon-16x16.png" sizes="16x16" type="image/png">
-<link rel="manifest" href="/docs/5.1/assets/img/favicons/manifest.json">
+
 <link rel="mask-icon" href="/docs/5.1/assets/img/favicons/safari-pinned-tab.svg" color="#7952b3">
 <link rel="icon" href="/docs/5.1/assets/img/favicons/favicon.ico">
 <meta name="theme-color" content="#7952b3">
@@ -286,7 +286,7 @@
 	        <c:choose>
 				<c:when test="${loginID !=null}">
 						${loginID }님 안녕하세요 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-					<a href="#" class=""  >logout</a>					
+					<a href="/logout.member" class=""  >logout</a>					
 				</c:when>
 		
 				<c:otherwise>
@@ -299,6 +299,8 @@
 		
     </header>
    
+<!-- 로그인 모달  -->
+<form action="/login.member" method="post">   
 <div class="modal" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
   <div class="modal-dialog modal-right" role="document">
     <div class="modal-content">
@@ -308,11 +310,11 @@
       </div>
       <div class="modal-body">
         <div class="card-details">
-            <input type="text" id="id-input" placeholder="id">
+            <input type="text" id="id-input" placeholder="email" name="email" required>
             <i class="fa fa-envelope"></i>
         </div>
         <div class="card-details">
-            <input type="password" id="password-input" placeholder="password">
+            <input type="password" id="password-input" placeholder="password" name="pw" required>
             <i class="fa fa-lock"></i>
             <span><small class="fa fa-eye-slash passcode"></small></span>
         </div>
@@ -321,11 +323,14 @@
         </div>
       </div>
       <div class="modal-footer">
-        <button type="button" class="btn btn-primary">회원가입</button>
+      <button type="submit" class="btn btn-primary">로그인</button>
+        <a href="/signup.jsp"><button type="button" class="btn btn-primary">회원가입</button></a>
       </div>
     </div>
   </div>
 </div>
+</form>
+<!-- 로그인 모달  -->
 
     <div class="l-navbar" id="nav-bar">
         <nav class="nav">
@@ -343,7 +348,7 @@
                    <a href="#" class="nav_link"> <i class='bx bx-message-alt-detail nav_icon'></i> <span class="nav_name">쪽지</span> </a> 
                 </div>
             </div> 
-            <a href="#" class="nav_link"> <i class='bx bx-log-out nav_icon'></i> <span class="nav_name">로그아웃</span> </a>
+            <a href="/logout.member" class="nav_link"> <i class='bx bx-log-out nav_icon'></i> <span class="nav_name">로그아웃</span> </a>
         </nav>
     </div>
     <!--Container Main start-->
