@@ -80,7 +80,7 @@ public class BoardController extends HttpServlet {
 	
 			}else if(uri.equals("/detailView.board")) {//작성글 출력(게시판 목록에서 게시글 클릭 시 여기로.)
 				//테스트용 하드코딩
-				String seq = "f67";
+				String seq = "f74";
 //				String seq = request.getParameter("seq"); //해당 게시글 고유seq
 				
 //				int cpage = Integer.parseInt(request.getParameter("cpage"));

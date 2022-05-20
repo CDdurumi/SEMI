@@ -86,8 +86,8 @@ public class BoardDAO {
 				String title = rs.getString("title");
 				String contents = rs.getString("contents");
 				Timestamp write_date = rs.getTimestamp("write_date");
-				int like_count = rs.getInt("view_count");
-				int jjim_count = rs.getInt("view_count");
+				int like_count = rs.getInt("like_count");
+				int jjim_count = rs.getInt("jjim_count");
 				int view_count = rs.getInt("view_count");
 				return (new BoardDTO(all_board_seq, id, title, contents, write_date, like_count, jjim_count, view_count));
 			}
