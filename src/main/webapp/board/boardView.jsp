@@ -430,9 +430,9 @@
             <div> <a href="/index.jsp" class="nav_logo"> <i class='bx bx-layer nav_logo-icon'></i> <span class="nav_logo-name">쉼표
                         <br>- 일상의 쉼표를 찍다</span> </a>
                 <div class="nav_list">
-                    <a href="#" class="nav_link active"> <i class='bx bx-wind nav_icon'></i> <span
+                    <a href="#" class="nav_link"> <i class='bx bx-wind nav_icon'></i> <span
                             class="nav_name">날씨</span> </a>
-                    <a href="/board/cummityMain.jsp" class="nav_link"> <i class='bx bx-message nav_icon'></i> <span
+                    <a href="/board/cummityMain.jsp" class="nav_link active"> <i class='bx bx-message nav_icon'></i> <span
                             class="nav_name">커뮤니티</span> </a>
                     <a href="/board/editorReMain.jsp" class="nav_link"> <i class='bx bx-bus nav_icon'></i> <span class="nav_name">여행정보</span>
                     </a>
