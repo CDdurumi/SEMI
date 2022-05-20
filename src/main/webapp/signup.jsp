@@ -391,7 +391,7 @@
          	<div class="row signup_input">
          		<div class ="col-8 input">
                     <div class="card-details">
-                        <input type="text" id="id-input" placeholder="아이디" name="id">
+                        <input type="text" id="id_input" placeholder="아이디" name="id">
                         <i class="fa fa-user"></i>
                     </div>
          		</div>
@@ -402,18 +402,18 @@
          	<div class="row signup_input">
          		<div class ="col-8 input">
                     <div class="card-details">
-                        <input type="password" id="password1-input" placeholder="비밀번호" name="pw">
+                        <input type="password" id="password1_input" placeholder="비밀번호" name="pw">
                         <i class="fa fa-lock"></i>
                     </div>
          		</div>
          		<div class ="col-4">
-         			<div>확인 문구</div>
+         			<div id="pw_check_text">확인 문구</div>
          		</div>
          	</div>
          	<div class="row signup_input">
          		<div class ="col-8 input">
                     <div class="card-details">
-            			<input type="password" id="password-input" placeholder="password">
+            			<input type="password" id="password_input" placeholder="password">
             				<i class="fa fa-lock-open"></i>
             			<span><small class="fa fa-eye-slash passcode"></small></span>
         	</div>
@@ -425,7 +425,7 @@
          	<div class="row signup_input">
          		<div class ="col-8 input">
                     <div class="card-details">
-                        <input type="text" id="id-input" placeholder="이메일" name="email">
+                        <input type="text" id="email_input" placeholder="이메일" name="email">
                         <i class="fa fa-envelope"></i>
                     </div>
          		</div>
@@ -495,7 +495,24 @@
 
 
 <script>
-
+	
+	//회원가입 관련 id_input , password1_input ,password_input , email_input
+	
+	//비밀번호 확인 
+	$("#password_input").on("input", function () {
+            let pw1 = $("#password1_input").val();
+            let pw2 = $("#password_input").val();
+            let check = $("#pw_check_text");
+            if (pw1 == pw2) {
+                check.text("비밀번호가 일치합니다");
+                check.css({ color: "blue" });
+            }
+            else {
+                check.text("비밀번호가 일치하지 않습니다");
+                check.css({ color: "red" })
+            }
+        });
+	
     document.addEventListener("DOMContentLoaded", function(event) {
 
         const show1Navbar = (toggleId, navId, bodyId, headerId) =>{
@@ -535,7 +552,7 @@
         // Your code to run since DOM is loaded and ready
     });
     
- // input id, input pw, password eyes
+ // input id, input pw, password eyes 모달
     let outer_eye=document.querySelector(".card-details span");
     let eye=document.querySelector(".passcode");
     let input=document.querySelector("#password-input");
@@ -576,7 +593,7 @@
 				type:'GET',
 				success:function(data){
 					let $Icon = (data.weather[0].icon).substr(0,2);
-					let $Temp = Math.floor(data.main.temp) + 'º';
+					let $Temp = Math.round(data.main.temp) + 'º';
 					let $city = "제주도";
 					
 					$('.CurrIcon').append('<i class="' + weatherIcon[$Icon] +'"></i>');
