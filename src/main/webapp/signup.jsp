@@ -315,7 +315,55 @@
 	color:black;
 }
 
-.card-details span:hover{
+
+.card-details1 span:hover{
+    opacity:1;
+}
+
+ .card-details1{
+    position:relative;
+    display:flex;
+    
+    padding-bottom:20px;
+}
+.card-details1 input{
+    height:50px;
+    width:100%;
+    font-size:18px;
+    background-color:#f5f5f7;
+    color:black;
+    padding:0px 20px;
+    padding-left:50px;
+    box-sizing:border-box;
+    border-radius:10px;
+/*     outline:none; */
+    border:none;
+}
+.card-details1 i{
+    position:absolute;
+    left:10px;
+    top:16px;
+    color:black;
+    font-size:18px;
+}
+.card-details1 span{
+    position:absolute;
+    width:20px;
+    height:20px;
+    background-color:#fff;
+    border-radius:50%;
+    color:#ffe4be;
+    font-size:10px;
+    
+    right:10px;
+    top:15px;
+    opacity:0.4;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    cursor:pointer; 
+}
+.card-details1 span:hover{
     opacity:1;
 }
     /* div{border: 1px solid black;} */
@@ -361,14 +409,14 @@
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
       <div class="modal-body">
-        <div class="card-details">
-            <input type="text" id="id-input" placeholder="id">
+        <div class="card-details1">
+            <input type="text" id="id-input1" placeholder="id">
             <i class="fa fa-envelope"></i>
         </div>
-        <div class="card-details">
-            <input type="password" id="password-input" placeholder="password">
+        <div class="card-details1">
+            <input type="password" id="password-input1" placeholder="password">
             <i class="fa fa-lock"></i>
-            <span><small class="fa fa-eye-slash passcode"></small></span>
+            <span><small class="fa fa-eye-slash passcode1"></small></span>
         </div>
         <div class="login_api" style="text-align:center">
            <a href="#"><img src="/imgsrc/google_signin_buttons/web/1x/btn_google_signin_dark_normal_web.png"></a>
@@ -401,7 +449,7 @@
          	<div class="row signup_input">
          		<div class ="col-8 input">
                     <div class="card-details">
-                        <input type="password" class="passwrods" id="password1_input" placeholder="비밀번호" name="pw">
+                        <input type="password" class="passwords passwords1_input" placeholder="비밀번호" name="pw">
                         <i class="fa fa-lock"></i>
                     </div>
          		</div>
@@ -412,7 +460,7 @@
          	<div class="row signup_input">
          		<div class ="col-8 input">
                     <div class="card-details">
-            			<input type="password" class="passwrods" id="password_input" placeholder="password">
+            			<input type="password" class="passwords passwords_input" id="password-input" placeholder="비밀번호 확인">
             				<i class="fa fa-lock-open"></i>
             			<span><small class="fa fa-eye-slash passcode"></small></span>
         	</div>
@@ -519,9 +567,9 @@
 			});
 		})
 	//비밀번호 확인 
-	$(".passwrods").on("input", function () {
-            let pw1 = $("#password1_input").val();
-            let pw2 = $("#password_input").val();
+	$(".passwords").on("input", function () {
+            let pw1 = $(".passwords1_input").val();
+            let pw2 = $(".passwords_input").val();
             let check = $("#pw_check_text");
             
             if(pw2!=""){
@@ -540,7 +588,7 @@
             }
             
         });
-	//아이디 중복확인
+	//이메일 중복확인
 	$("#email_input").on("input",function(){
 			$.ajax({
 				url:"/isEmailExist.member",
@@ -604,9 +652,28 @@
     });
     
  // input id, input pw, password eyes 모달
-    let outer_eye=document.querySelector(".card-details span");
-    let eye=document.querySelector(".passcode");
-    let input=document.querySelector("#password-input");
+    let outer_eye1 = document.querySelector(".card-details1 span");
+    let eye1 = document.querySelector(".passcode1");
+    let input1 = document.querySelector("#password-input1");
+    outer_eye1.addEventListener('click',function(){
+
+       if(input1.type=='password'){
+           input1.type="text"; 
+           eye1.classList.remove('fa-eye-slash');
+           eye1.classList.add('fa-eye');
+         input1.classList.add('warning');
+        }else{
+          input1.type="password"; 
+          eye1.classList.remove('fa-eye');
+          eye1.classList.add('fa-eye-slash');
+          input1.classList.remove('warning');
+      }
+    });
+    
+    // input id, input pw, password eyes sign up
+    let outer_eye = document.querySelector(".card-details span");
+    let eye = document.querySelector(".passcode");
+    let input = document.querySelector("#password-input");
     outer_eye.addEventListener('click',function(){
 
        if(input.type=='password'){
