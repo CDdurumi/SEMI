@@ -94,10 +94,91 @@ public class BoardDAO {
 		}
 	}
 	
+	//좋아요 카운트 upDown
+	public int likeCountUpDown(String seq, int upDown)  throws Exception { 
+		String plusMinus = "";
+		if(upDown == 1) {//카운트 증가
+			plusMinus = "+1";
+		}else if(upDown == 0) {//카운트 감소
+			plusMinus = "-1";
+		}
+		
+		String sql = "update all_board set like_count = like_count"+plusMinus+" all_board_seq seq =? ";
+		try (Connection con = this.getConnection(); 
+				PreparedStatement pstat = con.prepareStatement(sql);) {
+			pstat.setString(1,seq);
+			int result = pstat.executeUpdate();
+			con.commit();
+			return result;
+		}
+	}
+	
+	//찜 카운트 upDown
+	public int jjimCountUpDown(String seq, int upDown)  throws Exception {     
+		String plusMinus = "";
+		if(upDown == 1) {//카운트 증가
+			plusMinus = "+1";
+		}else if(upDown == 0) {//카운트 감소
+			plusMinus = "-1";
+		}
+		
+		String sql = "update all_board set jjim_count = jjim_count"+plusMinus+" all_board_seq seq =? ";
+		try (Connection con = this.getConnection(); 
+				PreparedStatement pstat = con.prepareStatement(sql);) {
+			pstat.setString(1,seq);
+			int result = pstat.executeUpdate();
+			con.commit();
+			return result;
+		}
+	}
+
+	//좋아요 개수 반환
+	public int getLikeCount(String seq) throws Exception {
+
+		String sql = "select like_count from all_board where all_board_seq = ? ";
+		try(Connection con = this.getConnection();
+				PreparedStatement pstat = con.prepareStatement(sql)) {
+			pstat.setString(1,seq);
+			
+			try(ResultSet rs = pstat.executeQuery();){
+				rs.next();
+				return rs.getInt(1);
+			}
+		}
+	}
+	
+	//찜 개수 반환
+	public int getJjimCount(String seq) throws Exception {
+
+		String sql = "select jjim_count from all_board where all_board_seq = ? ";
+		try(Connection con = this.getConnection();
+				PreparedStatement pstat = con.prepareStatement(sql)) {
+			pstat.setString(1,seq);
+			
+			try(ResultSet rs = pstat.executeQuery();){
+				rs.next();
+				return rs.getInt(1);
+			}
+		}
+	}
 	
 	
 	
 	
+	
+	
+
+	//조회수 증가
+//	public int viewCountUp(String seq)  throws Exception {      
+//		String sql = "update all_board set view_count = view_count+1 all_board_seq seq =? ";
+//		try (Connection con = this.getConnection(); 
+//				PreparedStatement pstat = con.prepareStatement(sql);) {
+//			pstat.setString(1,seq);
+//			int result = pstat.executeUpdate();
+//			con.commit();
+//			return result;
+//		}
+//	}
 	
 	
 }
