@@ -4,7 +4,7 @@ import java.sql.Timestamp;
 import java.text.SimpleDateFormat;
 
 public class BoardDTO {
-	private String free_board_seq;
+	private String all_board_seq;
 	private String id;
 	private String title;
 	private String contents;
@@ -15,10 +15,10 @@ public class BoardDTO {
 	
 	public BoardDTO() {
 	}
-	public BoardDTO(String free_board_seq, String id, String title, String contents, Timestamp write_date,
+	public BoardDTO(String all_board_seq, String id, String title, String contents, Timestamp write_date,
 			int like_count, int jjim_count, int view_count) {
 		super();
-		this.free_board_seq = free_board_seq;
+		this.all_board_seq = all_board_seq;
 		this.id = id;
 		this.title = title;
 		this.contents = contents;
@@ -27,11 +27,11 @@ public class BoardDTO {
 		this.jjim_count = jjim_count;
 		this.view_count = view_count;
 	}
-	public String getFree_board_seq() {
-		return free_board_seq;
+	public String getAll_board_seq() {
+		return all_board_seq;
 	}
-	public void setFree_board_seq(String free_board_seq) {
-		this.free_board_seq = free_board_seq;
+	public void setAll_board_seq(String all_board_seq) {
+		this.all_board_seq = all_board_seq;
 	}
 	public String getId() {
 		return id;

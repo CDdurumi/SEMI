@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-         pageEncoding="UTF-8"%> 
+         pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>  
 <!DOCTYPE html>
 <html>
 
@@ -447,50 +448,18 @@
            
             <div class="col-12 p-0 border border-2 rounded" id="contents">
                 <div class="row text-center border-bottom border-2 rounded" id="conMenu">
-                    <div class="col-md-1 d-none d-md-block">1</div>
-                    <div class="col-6 col-md-6 ellipsis "><span>자유게시판 글자유게시판 글자유게시판 글</span></div>
-                    <div class="col-3 col-md-2 ellipsis"><span>글쓴이글쓴이글쓴이글쓴이</span></div>
-                    <div class="col-md-1 d-none d-md-block">22/5/14</div>
-                    <div class="col-md-1 d-none d-md-block">43</div>
-                    <div class="col-3 col-md-1 ">13</div>
+                    <div class="col-md-1 d-none d-md-block">${dto.all_board_seq}</div>
+                    <div class="col-6 col-md-6 ellipsis "><span>${dto.title}</span></div>
+                    <div class="col-3 col-md-2 ellipsis"><span>${dto.id}</span></div>
+                    <div class="col-md-1 d-none d-md-block">${dto.formdDate}</div>
+                    <div class="col-md-1 d-none d-md-block">${dto.view_count}</div>
+                    <div class="col-3 col-md-1 ">${dto.like_count}</div>
                 </div>
                 <div class="col-12 text-center" id="cont" style="padding:0px;">
                     <div class="row " id="contentsdummy" style="padding:0px;" >
                         <div class="col-12" id="contentsdummy2" style="padding-top: 40px;padding-bottom: 40px;padding-left: 0px;padding-right: 0px;">
-                            글 내용fdsdsdddddddddddddddddddddsdsdsdssd
-                            글 내용fdsdsdddddddddddddddddddddsdsdsdssd
-                            글 내용fdsdsdddddddddddddddddddddsdsdsdssd
-                            글 내용fdsdsdddddddddddddddddddddsdsdsdssd
-                            글 내용fdsdsdddddddddddddddddddddsdsdsdssd
-                            글 내용fdsdsdddddddddddddddddddddsdsdsdssd
-                            글 내용fdsdsdddddddddddddddddddddsdsdsdssd
-                            글 내용fdsdsdddddddddddddddddddddsdsdsdssd
-                            글 내용fdsdsdddddddddddddddddddddsdsdsdssd
-                            글 내용fdsdsdddddddddddddddddddddsdsdsdssd
-                            글 내용fdsdsdddddddddddddddddddddsdsdsdssd
-                            글 내용fdsdsdddddddddddddddddddddsdsdsdssd
-                            글 내용fdsdsdddddddddddddddddddddsdsdsdssd
-                            글 내용fdsdsdddddddddddddddddddddsdsdsdssd
-                            글 내용fdsdsdddddddddddddddddddddsdsdsdssd
-                            글 내용fdsdsdddddddddddddddddddddsdsdsdssd
-                            글 내용fdsdsdddddddddddddddddddddsdsdsdssd
-                            글 내용fdsdsdddddddddddddddddddddsdsdsdssd
-                            글 내용fdsdsdddddddddddddddddddddsdsdsdssd
-                            글 내용fdsdsdddddddddddddddddddddsdsdsdssd
-                            글 내용fdsdsdddddddddddddddddddddsdsdsdssd
-                            글 내용fdsdsdddddddddddddddddddddsdsdsdssd
-                            글 내용fdsdsdddddddddddddddddddddsdsdsdssd
-                            글 내용fdsdsdddddddddddddddddddddsdsdsdssd
-                            글 내용fdsdsdddddddddddddddddddddsdsdsdssd
-                            글 내용fdsdsdddddddddddddddddddddsdsdsdssd
-                            글 내용fdsdsdddddddddddddddddddddsdsdsdssd
-                            글 내용fdsdsdddddddddddddddddddddsdsdsdssd
-                            글 내용fdsdsdddddddddddddddddddddsdsdsdssd
-                            글 내용fdsdsdddddddddddddddddddddsdsdsdssd
-                            글 내용fdsdsddddddddddddddddddddsdsdsdssd
-                            글 내용fdsdsdddddddddddddddddddddsdsdsdssd
-                            글 내용fdsdsdddddddddddddddddddddsdsdsdssd
-                           
+                            <a href="/detailView.board">테스트하려면 여기 클릭. 나중에 지워주세요.</a>
+                            ${dto.contents}
                         </div>
                     </div>
                     
