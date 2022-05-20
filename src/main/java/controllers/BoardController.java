@@ -60,7 +60,7 @@ public class BoardController extends HttpServlet {
 				String seq = dao.getSeqNextVal(boardOption); //해당 작성글 넘버 가져오기(해당 게시판의 seq)
 				
 				//게시글 저장 //
-				dao.insert(new BoardDTO(seq, writer, title, contents, null, 0, 0));
+				dao.insert(new BoardDTO(seq, writer, title, contents, null, 0, 0, 0));
 
 				//업로드 파일 정보 저장
 				Enumeration<String> e = multi.getFileNames();
