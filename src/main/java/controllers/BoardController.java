@@ -2,6 +2,7 @@ package controllers;
 
 import java.io.File;
 import java.io.IOException;
+import java.io.PrintWriter;
 import java.util.Enumeration;
 
 import javax.servlet.ServletException;
@@ -10,11 +11,13 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import com.google.gson.JsonObject;
 import com.oreilly.servlet.MultipartRequest;
 import com.oreilly.servlet.multipart.DefaultFileRenamePolicy;
 
 import dao.BoardDAO;
 import dao.FilesDAO;
+import dao.JjimDAO;
 import dto.BoardDTO;
 import dto.FilesDTO;
 
@@ -28,8 +31,9 @@ public class BoardController extends HttpServlet {
 
 		BoardDAO dao = BoardDAO.getInstance();
 		FilesDAO filesDAO = FilesDAO.getInstance();
+		JjimDAO jjimDao = JjimDAO.getInstance();
+		
 		String uri = request.getRequestURI();
-
 		try {
 			if(uri.equals("/boardMainView.board")) {//자유게시판 메인화면 출력(communityMain.jsp에서 자유게시판 메뉴 클릭 시 여기로.)
 
@@ -106,6 +110,43 @@ public class BoardController extends HttpServlet {
 
 //				response.sendRedirect("/detailView.board?seq="+parent_seq);//작성글 출력
 			
+				
+			}else if(uri.equals("/goodClick.board")) {//좋아요 클릭 시
+				//테스트용 하드코딩
+				String seq = "f74";
+//				String seq = request.getParameter("seq"); //해당 게시글 고유seq
+				int upDown =Integer.parseInt(request.getParameter("upDown"));//( 1:선택 , 0:해제)
+				dao.likeCountUpDown(seq, upDown);//좋아요 증감
+				
+				int likeCount = dao.getLikeCount(seq);//좋아요 개수 get.
+			    //좋아요 개수를 JSON 형식으로 보내주기 위한 설정
+				PrintWriter pw = response.getWriter();
+				JsonObject jobj = new JsonObject();
+				jobj.addProperty("likeCount", likeCount);
+				pw.append(jobj.toString());
+				
+				
+			}else if(uri.equals("/jjimClick.board")) {//찜 클릭 시
+				//테스트용 하드코딩
+				String seq = "f74";
+//				String seq = request.getParameter("seq"); //해당 게시글 고유seq
+				int upDown =Integer.parseInt(request.getParameter("upDown"));//( 1:선텍 , 0:해제)
+				dao.jjimCountUpDown(seq, upDown);//찜 증감
+					
+				String id = (String) request.getSession().getAttribute("loginID");//로그인 id
+				if(upDown == 1) {
+					jjimDao.insertJjim(seq, id);//찜 테이블에 추가
+				}else if(upDown == 0) {
+					jjimDao.deleteJjim(seq, id);//찜 테이블에서 삭제
+				}
+				
+				int jjimCount = dao.getJjimCount(seq);//찜 개수 get.
+			    //찜 개수를 JSON 형식으로 보내주기 위한 설정
+				PrintWriter pw = response.getWriter();
+				JsonObject jobj = new JsonObject();
+				jobj.addProperty("jjimCount", jjimCount);
+				pw.append(jobj.toString());
+				
 			}
 			
 			
