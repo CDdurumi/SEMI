@@ -3,6 +3,7 @@ package dao;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.sql.Timestamp;
 
 import javax.naming.Context;
 import javax.naming.InitialContext;
@@ -59,7 +60,7 @@ public class BoardDAO {
 		String sql = "insert into all_board values(?, ?, ?, ?, default, default, default, default)";
 		try(Connection con = this.getConnection();
 				PreparedStatement pstat = con.prepareStatement(sql);) {
-			pstat.setString(1, dto.getFree_board_seq());
+			pstat.setString(1, dto.getAll_board_seq());
 			pstat.setString(2, dto.getId());
 			pstat.setString(3, dto.getTitle());
 			pstat.setString(4, dto.getContents());
@@ -70,7 +71,28 @@ public class BoardDAO {
 		}
 	}
 
+	//게시글 정보 get(고유seq로 검색)
+	public BoardDTO selectBySeq(String sseq) throws Exception {
+		String sql = "select * from all_board where all_board_seq = ? ";
+		
+		try(Connection con = this.getConnection();
+				PreparedStatement pstat = con.prepareStatement(sql);) {
+			pstat.setString(1, sseq);
 
+			try(ResultSet rs = pstat.executeQuery()){
+				rs.next();
+				String all_board_seq = rs.getString("all_board_seq");
+				String id = rs.getString("id");
+				String title = rs.getString("title");
+				String contents = rs.getString("contents");
+				Timestamp write_date = rs.getTimestamp("write_date");
+				int like_count = rs.getInt("view_count");
+				int jjim_count = rs.getInt("view_count");
+				int view_count = rs.getInt("view_count");
+				return (new BoardDTO(all_board_seq, id, title, contents, write_date, like_count, jjim_count, view_count));
+			}
+		}
+	}
 	
 	
 	

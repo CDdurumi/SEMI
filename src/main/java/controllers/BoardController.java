@@ -77,28 +77,22 @@ public class BoardController extends HttpServlet {
 	
 			}else if(uri.equals("/detailView.board")) {//작성글 출력(게시판 목록에서 게시글 클릭 시 여기로.)
 				//테스트용 하드코딩
-				String seq = "f38";
+				String seq = "f40";
 //				String seq = request.getParameter("seq"); //해당 게시글 고유seq
 				
-//				int cpage = in
-				
-				
+//				int cpage = Integer.parseInt(request.getParameter("cpage"));
 //				if(request.getHeader("referer").equals("http://localhost/list.board?cpage="+cpage)){//이전 주소가 이와 같다면, 조회 수 증가
 //					dao.viewCountUp(seq);//조회수 증가
 //				}
-//				
-//				BoardDTO dto = dao.selectBySeq(seq);//고유넘버에 해당하는 게시글 정보get
-//				request.setAttribute("dto", dto);
-//				
+
+				BoardDTO dto = dao.selectBySeq(seq);//고유seq에 해당하는 게시글 정보get
+				request.setAttribute("dto", dto);
+
 //				List<ReplyDTO> replyList = replayDAO.selectAll();//댓글 정보 가져오기 All
 //				request.setAttribute("replyList", replyList);
 				
 				request.getRequestDispatcher("/board/boardView.jsp").forward(request, response);//작성글 페이지 전환
-				
-				
-				
-				
-				
+
 			}else if(uri.equals("/delete.board")) {//게시글 삭제 시
 				
 				response.sendRedirect("/boardMainView.board?cpage=1");//자유게시판 메인화면으로 전환
