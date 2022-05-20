@@ -1,7 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-         pageEncoding="UTF-8"%>
-
-
+    pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
 
@@ -68,6 +66,7 @@
             font-family: var(--body-font);
             font-size: var(--normal-font-size);
             transition: .5s
+           
         }
 
         a {
@@ -253,10 +252,9 @@
             }
         }
         
-            .card-details{
+.card-details{
     position:relative;
     display:flex;
-    
     padding-bottom:20px;
 }
 .card-details input{
@@ -306,9 +304,9 @@
 }
 
         /* 메인내용 */
-        /* div {
+         /* div {
              border: 1px solid black; 
-        } */
+        }  */
 
         .freeboard_bottom {
             margin: 10px;
@@ -317,6 +315,7 @@
         .freeboard_bottom div {
             margin-top: 6px;
             margin-bottom: 7px;
+         
         }
 
         .free_title {
@@ -343,24 +342,29 @@
             padding-top: 60px;
             max-width: 1400px;
             margin: auto;
+            border-radius: 20px;
         }
 
         #carouselExampleIndicators {
             width: 90%;
             margin: auto;
+           
         }
 
         .card img {
+            padding-top: 10px;
             height: 300px;
         }
 
         .card-body {
-            height: 133px;
+            height: 174px;
+         
         }
 
         .bottom_board {
             padding-right: 30px;
             padding-bottom: 30px;
+        
         }
         .board{
             /* text-align: center; */
@@ -377,7 +381,7 @@
         #board_menu_text{
             font-size: 18px;
             font-weight:bold ;
-            margin-bottom: 10px;
+             margin-bottom: 10px; 
         }
         .title{
             font-weight: bold;
@@ -399,6 +403,38 @@
            left: 9px;
            right: 9px;
        }
+       .carousel-control-prev{
+        padding-bottom: 150px;
+    }
+     .carousel-control-next{
+        padding-bottom: 150px;
+     }
+     /*--top버튼----------------------------------------------------------------*/
+
+#myBtn {
+  display: none; /* Hidden by default */
+  position: fixed; /* Fixed/sticky position */
+  bottom: 12px;
+  width: 45px;
+  height: 45px;
+  right: 10px; /* Place the button 30px from the right */
+  z-index: 99; /* Make sure it does not overlap */
+  border: none; /* Remove borders */
+  outline: none; /* Remove outline */
+  background-color:  #0080ff;
+  color: white; /* Text color */
+  cursor: pointer; /* Add a mouse pointer on hover */
+  padding: 3px; /* Some padding */
+  border-radius: 50%; /* Rounded corners */
+  font-size: 32px; /* Increase font size */
+  font-weight: bold;
+  padding-bottom:40px;
+  padding-top: 0px;
+}
+
+#myBtn:hover {
+  background-color: #555; 
+}
     </style>
 </head>
 
@@ -487,31 +523,32 @@
         <div class="row " id="freemain">
             <div class="col-12 col-md-6 bottom_board">
                 <div class="row border border-2 rounded">
-                    <div class="col-12 border-bottom hotboard_bottom text-center">리뷰</div>
-                    <div id="carouselExampleIndicators" class="carousel slide" data-bs-ride="carousel">
-                        <div class="carousel-indicators">
-                            <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0"
-                                class="active" aria-current="true" aria-label="Slide 1"></button>
-                            <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1"
-                                aria-label="Slide 2"></button>
-                            <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="2"
-                                aria-label="Slide 3"></button>
-                        </div>
+                    <div class="col-12 border-bottom hotboard_bottom text-center">BEST</div>
+                    <div id="carouselExampleIndicators1" class="carousel slide" data-bs-ride="carousel">
+                    
                         <div class="carousel-inner text-center">
-                            <div class="carousel-item active ">
+                            <div class="carousel-item active">
                                 <div class="card w-100 border-0" style="width: 18rem;">
-                                    <img src="img/다운로드 (1).jpg" class="card-img-top " alt="...">
+                                    <img src="숙소3.jpeg" class="card-img-top " alt="...">
                                     <div class="card-body">
-                                        <p class="card-text text-black">조아요
+                                        <p class="card-text text-black">
+                                            가격대비 정말 좋아요!
+                                            숙소도 사진에 비해서 더 깔끔하고 넓어요
+                                            근처에 24시간 마트가 있어서 이용하기 편리하고
+                                            호스트의 세심함이 보였던 숙소였습니다
+                                            이 가격에 이런 인테리어 청결을 갖춘 숙소는 없습니다.
                                           </p>
                                     </div>
                                 </div>
                             </div>
                             <div class="carousel-item">
                                 <div class="card w-100 border-0" style="width: 18rem;">
-                                    <img src="img/다운로드 (2).jpg" class="card-img-top w-100" alt="...">
+                                    <img src="t.jpg" class="card-img-top w-100" alt="...">
                                     <div class="card-body">
-                                        <p class="card-text text-black">깔끔해요</p>
+                                        <p class="card-text text-black">
+                                            진짜 너무너무 좋아요 !!! 예약 비어있음 무조건 예약 하세요 ㅠㅠ 가는순간 다시 일상생활로 가기 싫어 질껍니다.... 
+                                            강아지도 사람도 너무 행복하게 해주는 숙소 였어요 감사합니다 ㅠㅠ
+                                        </p>
                                     </div>
                                 </div>
                             </div>
@@ -519,85 +556,88 @@
                                 <div class="card w-100 border-0" style="width: 18rem;">
                                     <img src="img/다운로드.jpg" class="card-img-top" alt="...">
                                     <div class="card-body">
-                                        <p class="card-text text-black">비싸요</p>
+                                        <p class="card-text text-black">
+                                            휴식이 필요할 때 집보다 더 잘 쉴수 있는 공간입니다. 
+                                            숙소에는 항상 따스한 분위기가 깃들어 있고, 
+                                            너무 좋으신 사장님과 게스트 분들 덕에 한달을 알차게 보내다가 왔어요.
+                                            혼자 여행하신다면 더더욱 추천드립니다
+
+                                        </p>
                                     </div>
                                 </div>
                             </div>
                         </div>
-                        <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators"
+                        <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators1"
                             data-bs-slide="prev">
                             <span class="carousel-control-prev-icon" aria-hidden="true"></span>
                             <span class="visually-hidden">Previous</span>
                         </button>
-                        <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators"
+                        <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators1"
                             data-bs-slide="next">
                             <span class="carousel-control-next-icon" aria-hidden="true"></span>
                             <span class="visually-hidden">Next</span>
                         </button>
                     </div>
-                </div>
-
-
-                   
-               
-
+                </div>              
             </div>
-            <div class="col-12 col-md-6 bottom_board">
-                <div class="row border border-2 rounded">
-                    <div class="col-12 border-bottom hotboard_bottom text-center">리뷰</div>
-                    <div id="carouselExampleIndicators" class="carousel slide" data-bs-ride="carousel">
-                        <div class="carousel-indicators">
-                            <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0"
-                                class="active" aria-current="true" aria-label="Slide 1"></button>
-                            <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1"
-                                aria-label="Slide 2"></button>
-                            <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="2"
-                                aria-label="Slide 3"></button>
-                        </div>
-                        <div class="carousel-inner text-center">
-                            <div class="carousel-item active ">
-                                <div class="card w-100 border-0" style="width: 18rem;">
-                                    <img src="img/다운로드 (1).jpg" class="card-img-top " alt="...">
-                                    <div class="card-body">
-                                        <p class="card-text text-black">이뻐요</p>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="carousel-item">
-                                <div class="card w-100 border-0" style="width: 18rem;">
-                                    <img src="insta.jpg" class="card-img-top w-100" alt="...">
-                                    <div class="card-body">
-                                        <p class="card-text text-black">조아요</p>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="carousel-item">
-                                <div class="card w-100 border-0" style="width: 18rem;">
-                                    <img src="img/다운로드.jpg" class="card-img-top" alt="...">
-                                    <div class="card-body">
-                                        <p class="card-text text-black">굿</p>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators"
-                            data-bs-slide="prev">
-                            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                            <span class="visually-hidden">Previous</span>
-                        </button>
-                        <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators"
-                            data-bs-slide="next">
-                            <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                            <span class="visually-hidden">Next</span>
-                        </button>
-                    </div>
-                </div>
 
-            </div>
-        </div>
+                <div class="col-12 col-md-6 bottom_board">
+                    <div class="row border border-2 rounded">
+                        <div class="col-12 border-bottom hotboard_bottom text-center">BEST</div>
+                        <div id="carouselExampleIndicators2" class="carousel slide" data-bs-ride="carousel"> 
+                            <div class="carousel-inner text-center">
+                                <div class="carousel-item active ">
+                                    <div class="card w-100 border-0" style="width: 18rem;">
+                                        <img src="img/다운로드 (1).jpg" class="card-img-top " alt="...">
+                                        <div class="card-body">
+                                            <p class="card-text text-black">
+                                                위치가 너무 좋아서 일출,한라산, 바다가 보이고 공항과 관광지로 움직이기도 좋았어요
+                                                호스트님께 여쭤봐서 갔던 맛집들도 대박이구 친절하시고 재밌으셔서 너무 편안하게 머물렀습니다!
+                                                덕분에 즐겁게 제주생활하고갑니다!
+                                              </p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="carousel-item">
+                                    <div class="card w-100 border-0" style="width: 18rem;">
+                                        <img src="img/다운로드 (2).jpg" class="card-img-top w-100" alt="...">
+                                        <div class="card-body">
+                                            <p class="card-text text-black">
+                                                장기로 묵었는데 더할 나위 없엇습니다! 일을 해야 하는 때가 많았는데 호스트님께서
+                                                 필요한 물건 항상 구비해주시고 공간도 항상 깨끗하게 만들어주셨어요. 
+                                                 제주 다시 가게 된다면 꼭 다시 여기서 머무르고 싶습니다 :)
+                                            </p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="carousel-item">
+                                    <div class="card w-100 border-0" style="width: 18rem;">
+                                        <img src="img/다운로드.jpg" class="card-img-top" alt="...">
+                                        <div class="card-body">
+                                            <p class="card-text text-black">
+                                                위치는 제주시에 위치하여 어디든 근접성이 좋았고
+                                                숙소도 청결하고 주방이 따로 분리가되어서 좋았습니다
+                                                오래 여행하시는분들은 세탁기도 있어서 유용하게 사용할 것 같아요. 추천합니다^^
+                                            </p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                             <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators2"
+                                data-bs-slide="prev">
+                                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                                <span class="visually-hidden">Previous</span>
+                            </button>
+                            <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators2"
+                                data-bs-slide="next">
+                                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                                <span class="visually-hidden">Next</span>
+                            </button> 
+                        </div>
+                    </div>              
+                </div>
 
         <div class="row m-0" id="board_menu" ></div>
-
         <div class="row m-0 ">
             <div class="col-12 ">
                 <div class="row " id="board_menu_text">
@@ -622,9 +662,8 @@
         <div class="col-12  board">
             <div class="row m-0 border border-2 rounded board_row">
                 <div class="col-1 col-md-1 d-none d-md-block p-0">번호</div>
-                <div class="col-9 col-md-9 m-0 title">글제목</div>
-                <div class="col-2 col-md-1 p-0">글쓴이</div>
-           
+                <div class="col-9 col-md-8 m-0 title">글제목</div>
+                <div class="col-2 col-md-2 p-0 ellipsis text-center"><span>글쓴이</span></div>           
                 <div class="col-md-1 d-none d-md-block p-0">조회</div>
                
             </div>
@@ -632,8 +671,8 @@
         <div class="col-12  board">
             <div class="row m-0 border border-2 rounded board_row">
                 <div class="col-1 col-md-1 d-none d-md-block p-0">번호</div>
-                <div class="col-9 col-md-9 m-0 title">글제목</div>
-                <div class="col-2 col-md-1 p-0">글쓴이</div>            
+                <div class="col-9 col-md-8 m-0 title">글제목</div>
+                <div class="col-2 col-md-2 p-0 ellipsis text-center"><span>글쓴이</span></div>           
                 <div class="col-md-1 d-none d-md-block p-0">조회</div>
               
             </div>
@@ -641,17 +680,16 @@
         <div class="col-12  board">
             <div class="row m-0 border border-2 rounded board_row">
                 <div class="col-1 col-md-1 d-none d-md-block p-0">번호</div>
-                <div class="col-9 col-md-9 m-0 title">글제목</div>
-                <div class="col-2 col-md-1 p-0">글쓴이</div>          
+                <div class="col-9 col-md-8 m-0 title">글제목</div>
+                <div class="col-2 col-md-2 p-0 ellipsis text-center"><span>글쓴이</span></div>           
                 <div class="col-md-1 d-none d-md-block p-0">조회</div>
-             
             </div>
         </div>
         <div class="col-12  board">
             <div class="row m-0 border border-2 rounded board_row">
                 <div class="col-1 col-md-1 d-none d-md-block p-0">번호</div>
-                <div class="col-9 col-md-9 m-0 title">글 제목</div>
-                <div class="col-2 col-md-1 p-0">글쓴이</div>     
+                <div class="col-9 col-md-8 m-0 title">글제목</div>
+                <div class="col-2 col-md-2 p-0 ellipsis text-center"><span>글쓴이</span></div>           
                 <div class="col-md-1 d-none d-md-block p-0">조회</div>
                
             </div>
@@ -659,10 +697,9 @@
         <div class="col-12  board">
             <div class="row m-0 border border-2 rounded board_row">
                 <div class="col-1 col-md-1 d-none d-md-block p-0">번호</div>
-                <div class="col-9 col-md-9 m-0 title">글 제목</div>
-                <div class="col-2 col-md-1 p-0">글쓴이</div>      
+                <div class="col-9 col-md-8 m-0 title">글제목</div>
+                <div class="col-2 col-md-2 p-0 ellipsis text-center"><span>글쓴이</span></div>           
                 <div class="col-md-1 d-none d-md-block p-0">조회</div>
-                
             </div>
         </div>
         <div calss="row">
@@ -676,7 +713,8 @@
     </div>
 
     <!--Container Main end-->
-
+ <!--top 버튼-->
+ <button onclick="topFunction()" id="myBtn" title="Go to top">↑</button>
 
 
 
@@ -784,7 +822,26 @@
 		});
 	});
 	
-</script>
+    //top 버튼
+    
+    mybutton = document.getElementById("myBtn");
+    
+    window.onscroll = function() {scrollFunction()};
+    
+    function scrollFunction() {
+      if (document.body.scrollTop > 60 || document.documentElement.scrollTop > 60) {
+        mybutton.style.display = "block";
+      } else {
+        mybutton.style.display = "none";
+      }
+    }
+    
+    
+    function topFunction() {
+      document.body.scrollTop = 0; 
+      document.documentElement.scrollTop = 0; 
+    }
+    </script>
 </body>
 
 </html>
