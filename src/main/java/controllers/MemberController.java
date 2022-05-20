@@ -33,16 +33,28 @@ public class MemberController extends HttpServlet {
 		Gson g= new Gson();
 		//response.setCharacterEncoding("UTF-8");//get
 		try {
-			if (uri.equals("/duplCheck.member")) {// 아이디 중복 확인
+			if (uri.equals("/duplIDCheck.member")) {// 아이디 중복 확인
+				System.out.println("아이디 중복확인 수신확인");
 				String id = request.getParameter("id");
 
 				boolean result = dao.isIdExist(id);
 				PrintWriter pw = response.getWriter();
 				pw.append(g.toJson(result));
-//				request.setAttribute("result", result);
-//				request.getRequestDispatcher("/member/idCheckView.jsp").forward(request, response);
+				System.out.println(result);
 
-			} else if (uri.equals("/logout.member")) {
+			}else if (uri.equals("/isEmailExist.member")) {// 이메일 중복 확인
+				String email = request.getParameter("email");
+				
+				System.out.println("들어온 이메일 주소 : "+email);
+				
+				
+				boolean result = dao.isIdExist(email);
+				PrintWriter pw = response.getWriter();
+				pw.append(g.toJson(result));
+				System.out.println(result);
+
+			}
+			else if (uri.equals("/logout.member")) {
 				request.getSession().invalidate();
 				response.sendRedirect("/index.jsp");
 			}
