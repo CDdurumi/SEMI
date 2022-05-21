@@ -66,9 +66,6 @@ public class BoardController extends HttpServlet {
 
 				String writer = (String) request.getSession().getAttribute("loginID");//로그인 id
 //				System.out.println(writer);
-				if(writer.equals("")||writer.isEmpty()) {
-					response.sendRedirect("error.jsp");//로그인 안하면 에러남. 추후 로그인 안했을 때 작성하기 못하게(버튼) 막아야 함.->해당 if문 필요 없음
-				}
 
 				String title = multi.getParameter("title");
 				String contents = multi.getParameter("contents");
