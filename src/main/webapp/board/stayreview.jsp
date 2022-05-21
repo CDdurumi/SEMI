@@ -469,7 +469,7 @@
             <div> <a href="/index.jsp" class="nav_logo"> <i class='bx bx-layer nav_logo-icon'></i> <span class="nav_logo-name">쉼표
                         <br>- 일상의 쉼표를 찍다</span> </a>
                 <div class="nav_list">
-                    <a href="#" class="nav_link active"> <i class='CurrIcon'></i> <span class="nav_name"><span class="weather">
+                    <a href="#" class="nav_link"> <i class='CurrIcon'></i> <span class="nav_name"><span class="weather">
                     <span class="CurrTemp"></span>
                     <span class="City"></span>
                     </span></span> </a>
@@ -481,7 +481,7 @@
                             class="nav_name">마이페이지</span> </a>
                     <a href="#" class="nav_link"> <i class='bx bx-calendar nav_icon'></i> <span
                             class="nav_name">일정관리</span> </a>
-                    <a href="/board/stayreview.jsp" class="nav_link"> <i class='bx bx-home nav_icon'></i> <span class="nav_name">숙소정보</span>
+                    <a href="/board/stayreview.jsp" class="nav_link active"> <i class='bx bx-home nav_icon'></i> <span class="nav_name">숙소정보</span>
                     </a>
                     <a href="#" class="nav_link"> <i class='bx bx-message-alt-detail nav_icon'></i> <span
                             class="nav_name">쪽지</span> </a>
@@ -514,7 +514,7 @@
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-primary" id="modal_loginBtn">로그인</button>
-        <button type="button" class="btn btn-primary">회원가입</button>
+        <button type="button" class="btn btn-outline-primary">회원가입</button>
       </div>
     </div>
   </div>

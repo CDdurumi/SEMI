@@ -510,7 +510,7 @@
       </div>
       <div class="modal-footer">
       	<button type="button" class="btn btn-primary" id="modal_loginBtn">로그인</button>
-        <button type="button" class="btn btn-primary">회원가입</button>
+        <button type="button" class="btn btn-outline-primary">회원가입</button>
       </div>
     </div>
   </div>

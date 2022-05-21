@@ -569,7 +569,7 @@
       </div>
       <div class="modal-footer">
       <button type="button" class="btn btn-primary" id="modal_loginBtn">로그인</button>
-        <button type="button" class="btn btn-primary">회원가입</button>
+        <button type="button" class="btn btn-outline-primary">회원가입</button>
       </div>
     </div>
   </div>
@@ -707,8 +707,21 @@
                                    </div>
                                    <div calss="row">
                                        <div class="col-12 text-center">
-                                           <br>
-                                           &lt; 1 2 3 4 5 6 7 8 9 10>
+                                           <nav aria-label="Page navigation example">
+  											<ul class="pagination justify-content-center">
+											    <li class="page-item">
+											      <a class="page-link" href="#" aria-label="Previous">
+											        <span aria-hidden="true">&laquo;</span>
+											      </a>
+											    </li>
+											    ${navi }
+											    <li class="page-item">
+											      <a class="page-link" href="#" aria-label="Next">
+											        <span aria-hidden="true">&raquo;</span>
+											      </a>
+											    </li>
+											  </ul>
+											</nav>
                                        </div>
                                    </div>
                                </div>
@@ -782,8 +795,21 @@
                                    </div>
                                    <div calss="row">
                                        <div class="col-12 text-center">
-                                           <br>
-                                           &lt; 1 2 3 4 5 6 7 8 9 10 >
+                                           <nav aria-label="Page navigation example">
+											  <ul class="pagination justify-content-center">
+											    <li class="page-item">
+											      <a class="page-link" href="#" aria-label="Previous">
+											        <span aria-hidden="true">&laquo;</span>
+											      </a>
+											    </li>
+											    ${navi }
+											    <li class="page-item">
+											      <a class="page-link" href="#" aria-label="Next">
+											        <span aria-hidden="true">&raquo;</span>
+											      </a>
+											    </li>
+											  </ul>
+											</nav>
                                        </div>
                                    </div>
                                </div>
@@ -870,7 +896,21 @@
                                 </div>
                                    <div calss="row">
                                        <div class="col-12 text-center">
-                                           < 1 2 3 4 5 6 7 8 9 >
+                                           <nav aria-label="Page navigation example">
+											  <ul class="pagination justify-content-center">
+											    <li class="page-item">
+											      <a class="page-link" href="#" aria-label="Previous">
+											        <span aria-hidden="true">&laquo;</span>
+											      </a>
+											    </li>
+											    ${navi }
+											    <li class="page-item">
+											      <a class="page-link" href="#" aria-label="Next">
+											        <span aria-hidden="true">&raquo;</span>
+											      </a>
+											    </li>
+											  </ul>
+											</nav>
                                        </div>
                                    </div>
                                </div>
@@ -943,7 +983,21 @@
                                  </div>
                                     <div calss="row">
                                         <div class="col-12 text-center">
-                                            < 1 2 3 4 5 6 7 8 9 >
+                                            <nav aria-label="Page navigation example">
+											  <ul class="pagination justify-content-center">
+											    <li class="page-item">
+											      <a class="page-link" href="#" aria-label="Previous">
+											        <span aria-hidden="true">&laquo;</span>
+											      </a>
+											    </li>
+											    ${navi }
+											    <li class="page-item">
+											      <a class="page-link" href="#" aria-label="Next">
+											        <span aria-hidden="true">&raquo;</span>
+											      </a>
+											    </li>
+											  </ul>
+											</nav>
                                         </div>
                                    
                  
