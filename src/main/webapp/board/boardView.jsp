@@ -668,13 +668,20 @@
 	})
     //좋아요
     let good = true;
-	if(${isBoardGood}){
-        $("#goodcol").css("color", "#ffd000" );
-        $("#goodcol").css("border","1px solid #ffd000" );
-        good=false;
+	if(${isBoardGood!=null}){
+		if(${isBoardGood==true}){
+	        $("#goodcol").css("color", "#ffd000" );
+	        $("#goodcol").css("border","1px solid #ffd000" );
+	        good=false;
+		}
 	}
+
     let gUpDown = 0;
     $("#goodcol").on("click", function () {
+        if(${loginID == null}){
+        	alert("로그인이 필요합니다.");
+        	return false;
+        }
         
         if (good) {
             $("#goodcol").css("color", "#ffd000" );
@@ -702,6 +709,9 @@
 		}).done(function(resp){
 				console.log(resp.likeCount)//좋아요 갯수
 				$("#likecnt").text(resp.likeCount);
+			}).fail(function(a, b){ 
+				console.log(a);
+				console.log(b);
 			})
 	
     })
@@ -709,14 +719,20 @@
     
     //heart-> 찜
     let heart = true;
-	if(${isBoardJjim}){
-        $("#jjimcol").css("color", "red" );
-        $("#jjimcol").css("border","1px solid red" );
-		heart=false;
-	}
+    if(${isBoardJjim!=null}){
+    	if(${isBoardJjim==true}){
+            $("#jjimcol").css("color", "red" );
+            $("#jjimcol").css("border","1px solid red" );
+    		heart=false;
+    	}
+    }
 	let jUpDown = 0;
     $("#jjimcol").on("click", function () {
-        
+        if(${loginID == null}){
+        	alert("로그인이 필요합니다.");
+        	return false;
+        }
+    	
         if (heart) {
             $("#jjimcol").css("color", "red" );
             $("#jjimcol").css("border","1px solid red" );
@@ -744,7 +760,8 @@
 				console.log(resp.jjimCount)//좋아요 갯수
 				$("#jjimcnt").text(resp.jjimCount);
 			}).fail(function(a, b){ 
-				alert("로그인이 필요합니다. ajax리턴값을 못받고 있습니다. 나중에 로그인 안했을 시 클릭 못하게 막아야 합니다.")
+				console.log(a);
+				console.log(b);
 			})
 
         

@@ -67,7 +67,7 @@ public class BoardController extends HttpServlet {
 				String writer = (String) request.getSession().getAttribute("loginID");//로그인 id
 //				System.out.println(writer);
 				if(writer.equals("")||writer.isEmpty()) {
-					response.sendRedirect("error.jsp");//로그인 안했으면 에러남. 추후 로그인 안했을 때 작성하기 못하게 막아야 함.
+					response.sendRedirect("error.jsp");//로그인 안하면 에러남. 추후 로그인 안했을 때 작성하기 못하게(버튼) 막아야 함.->해당 if문 필요 없음
 				}
 
 				String title = multi.getParameter("title");
@@ -109,12 +109,11 @@ public class BoardController extends HttpServlet {
 //				List<ReplyDTO> replyList = replayDAO.selectAll();//댓글 정보 가져오기 All
 //				request.setAttribute("replyList", replyList);
 				
-				String id = (String) request.getSession().getAttribute("loginID");//로그인 id
-				if(!(id.equals("")||id.isEmpty())) {
+				if((String) request.getSession().getAttribute("loginID") != null) {
+					String id = (String) request.getSession().getAttribute("loginID");//로그인 id
 					request.setAttribute("isBoardJjim", dao.isBoardJjim(seq, id));//해당 게시글에 좋아요 했는지 정보
 					request.setAttribute("isBoardGood", dao.isBoardGood(seq, id));//해당 게시글에 좋아요 했는지 정보//해당 게시글에 찜 했는지 정보
 				}
-
 
 				request.getRequestDispatcher("/board/boardView.jsp").forward(request, response);//작성글 페이지 전환
 
@@ -136,13 +135,10 @@ public class BoardController extends HttpServlet {
 				int upDown =Integer.parseInt(request.getParameter("upDown"));//( 1:선택 , 0:해제)
 //				System.out.println(seq);
 //				System.out.println(upDown);
-				String id = (String) request.getSession().getAttribute("loginID");//로그인 id
-				if(id.equals("")||id.isEmpty()) {
-					response.sendRedirect("error.jsp");//로그인 안했으면 에러남. 추후 로그인 안했을 때 좋아요 못하게 막아야 함.
-				}
-				
+
 				dao.likeCountUpDown(seq, upDown);//좋아요 증감
 				
+				String id = (String) request.getSession().getAttribute("loginID");//로그인 id
 				if(upDown == 1) {
 					goodDao.insertgood(seq, id);//좋아요 테이블에 게시글 정보(해당 게시글seq, 내 id) 추가
 				}else if(upDown == 0) {
@@ -163,13 +159,10 @@ public class BoardController extends HttpServlet {
 				String seq = request.getParameter("seq"); //해당 게시글 고유seq
 				int upDown =Integer.parseInt(request.getParameter("upDown"));//( 1:선텍 , 0:해제)
 //				System.out.println(upDown);
-				String id = (String) request.getSession().getAttribute("loginID");//로그인 id
-				if(id.equals("")||id.isEmpty()) {
-					response.sendRedirect("error.jsp");//로그인 안했으면 에러남. 추후 로그인 안했을 때 찜 못하게 막아야 함.
-				}
-				
+
 				dao.jjimCountUpDown(seq, upDown);//찜 증감
 				
+				String id = (String) request.getSession().getAttribute("loginID");//로그인 id	
 				if(upDown == 1) {
 					jjimDao.insertJjim(seq, id);//찜 테이블에 추가
 				}else if(upDown == 0) {
