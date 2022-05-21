@@ -95,13 +95,13 @@ public class BoardController extends HttpServlet {
 	
 			}else if(uri.equals("/detailView.board")) {//작성글 출력(게시판 목록에서 게시글 클릭 시 여기로.)
 				//테스트용 하드코딩
-				String seq = "f75";
-//				String seq = request.getParameter("seq"); //해당 게시글 고유seq
-				
-//				int cpage = Integer.parseInt(request.getParameter("cpage"));
-//				if(request.getHeader("referer").equals("http://localhost/list.board?cpage="+cpage)){//이전 주소가 이와 같다면, 조회 수 증가
-//					dao.viewCountUp(seq);//조회수 증가
-//				}
+//				String seq = "f75";
+				String seq = request.getParameter("seq"); //해당 게시글 고유seq
+//				
+				int cpage = Integer.parseInt(request.getParameter("cpage"));
+				if(request.getHeader("referer").equals("http://localhost/boardMainView.board?cpage="+cpage)){//이전 주소가 이와 같다면, 조회 수 증가
+					dao.viewCountUp(seq);//조회수 증가
+				}
 
 				BoardDTO dto = dao.selectBySeq(seq);//고유seq에 해당하는 게시글 정보get
 				request.setAttribute("dto", dto);
