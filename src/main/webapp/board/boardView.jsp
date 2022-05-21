@@ -369,7 +369,7 @@
            text-align: center;
            padding-right: 5px;
        }
-       #heartcol{
+       #jjimcol{
            font-size: 30px;
            color: #b1b1b1;
            text-align: center;
@@ -379,7 +379,7 @@
            max-width: 47px;
            min-width: 47px;
        }
-       #jjimcol{
+       #goodcol{
         font-size: 30px;
            color: #b1b1b1;
            text-align: center;
@@ -389,12 +389,12 @@
            max-width: 47px;
            min-width: 47px;
        }
-       #jjimcnt{
+       #likecnt{
            padding: 0px;
            max-width: 47px;
            min-width: 47px;
        }
-       #heartcnt{
+       #jjimcnt{
            padding: 0px;
            max-width: 47px;
            min-width: 47px;
@@ -577,11 +577,11 @@
             </div>
             <div class="row " id="heart" style="margin: auto;">
                 
-                <div class="col-1" id="jjimcol">
+                <div class="col-1" id="goodcol">
                     <i class="fa-solid fa-thumbs-up"></i>
                 </div>
                 <div class="col-1 jjimdummy " ></div>
-                <div class="col-1 text-center" id="heartcol">
+                <div class="col-1 text-center" id="jjimcol">
                     <i class="fa-solid fa-heart"></i>
                 </div>
                 <div class="col-9"></div>
@@ -589,12 +589,12 @@
 
             <div class="row " id="count" style="margin: auto;">
                 
-                <div class="col-1" id="jjimcnt">
-                    32
+                <div class="col-1" id="likecnt">
+                    ${dto.like_count}
                 </div>
                 <div class="col-1 jjimdummy" ></div>
-                <div class="col-1 text-center" id="heartcnt">
-                   24
+                <div class="col-1 text-center" id="jjimcnt">
+                   ${dto.jjim_count}
                 </div>
                 <div class="col-9"></div>
             </div>
@@ -652,95 +652,104 @@
 
 
     <script>
-//누르면 파일 펼치기
-let listExist = false;
-
-$(".filebtn").on("click",function(){
-    let filelist = $(this).siblings();
-    if(listExist==false){
-        filelist.css("display","block");
-        listExist = true;
-    } else{
-        filelist.css("display","none");
-        listExist = false;
-    }
-   
-})
-
-    //heart-> 찜
-    let heart = true;
-	let hUpDown = 0;
-    $("#heartcol").on("click", function () {
+	//누르면 파일 펼치기
+	let listExist = false;
+	
+	$(".filebtn").on("click",function(){
+	    let filelist = $(this).siblings();
+	    if(listExist==false){
+	        filelist.css("display","block");
+	        listExist = true;
+	    } else{
+	        filelist.css("display","none");
+	        listExist = false;
+	    }
+	   
+	})
+    //좋아요
+    let good = true;
+	if(${isBoardGood}){
+        $("#goodcol").css("color", "#ffd000" );
+        $("#goodcol").css("border","1px solid #ffd000" );
+        good=false;
+	}
+    let gUpDown = 0;
+    $("#goodcol").on("click", function () {
         
-        if (heart) {
-            $("#heartcol").css("color", "red" );
-            $("#heartcol").css("border","1px solid red" );
-            heart=false;
+        if (good) {
+            $("#goodcol").css("color", "#ffd000" );
+            $("#goodcol").css("border","1px solid #ffd000" );
+            good=false;
         } else {
-            $("#heartcol").css("color", "#b1b1b1");
-            $("#heartcol").css("border","1px solid #b1b1b1" );
-            heart=true;
-        }
-        
-        if(heart == false){
-        	hUpDown = 1;
-        }else{
-        	hUpDown = 0;
-        }
-        
-		$.ajax({
-			url:"/jjimClick.board",
-			data:{
-				seq:"${dto.all_board_seq}",
-				upDown:hUpDown
-			},
-			dataType:"json"
-		}).done(function(resp){
-				console.log(resp.jjimCount)//좋아요 갯수
-			})
-        
-    })
-    
-    
-    //jjim->좋아요
-    let jjim = true;
-    let jUpDown = 0;
-    $("#jjimcol").on("click", function () {
-        
-        if (jjim) {
-            $("#jjimcol").css("color", "#ffd000" );
-            $("#jjimcol").css("border","1px solid #ffd000" );
-            jjim=false;
-        } else {
-            $("#jjimcol").css("color", "#b1b1b1");
-            $("#jjimcol").css("border","1px solid #b1b1b1" );
-            jjim=true;
+            $("#goodcol").css("color", "#b1b1b1");
+            $("#goodcol").css("border","1px solid #b1b1b1" );
+            good=true;
         }
 
-        if(jjim == false){
-        	jUpDown = 1;
+        if(good == false){
+        	gUpDown = 1;
         }else{
-        	jUpDown = 0;
+        	gUpDown = 0;
         }
         
 		$.ajax({
 			url:"/goodClick.board",
 			data:{
 				seq:"${dto.all_board_seq}",
-				upDown:jUpDown
+				upDown:gUpDown
 			},
 			dataType:"json"
 		}).done(function(resp){
 				console.log(resp.likeCount)//좋아요 갯수
+				$("#likecnt").text(resp.likeCount);
 			})
-			
-			
-			
+	
+    })
+    
+    
+    //heart-> 찜
+    let heart = true;
+	if(${isBoardJjim}){
+        $("#jjimcol").css("color", "red" );
+        $("#jjimcol").css("border","1px solid red" );
+		heart=false;
+	}
+	let jUpDown = 0;
+    $("#jjimcol").on("click", function () {
+        
+        if (heart) {
+            $("#jjimcol").css("color", "red" );
+            $("#jjimcol").css("border","1px solid red" );
+            heart=false;
+        } else {
+            $("#jjimcol").css("color", "#b1b1b1");
+            $("#jjimcol").css("border","1px solid #b1b1b1" );
+            heart=true;
+        }
+        
+        if(heart == false){
+        	jUpDown = 1;
+        }else{
+        	jUpDown = 0;
+        }
+        
+		$.ajax({
+			url:"/jjimClick.board",
+			data:{
+				seq:"${dto.all_board_seq}",
+				upDown:jUpDown
+			},
+			dataType:"json"
+		}).done(function(resp){
+				console.log(resp.jjimCount)//좋아요 갯수
+				$("#jjimcnt").text(resp.jjimCount);
+			}).fail(function(a, b){ 
+				alert("로그인이 필요합니다. ajax리턴값을 못받고 있습니다. 나중에 로그인 안했을 시 클릭 못하게 막아야 합니다.")
+			})
+
+        
     })
 
-    
-    
-    
         document.addEventListener("DOMContentLoaded", function (event) {
 
             const show1Navbar = (toggleId, navId, bodyId, headerId) => {

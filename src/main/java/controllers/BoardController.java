@@ -18,6 +18,7 @@ import com.oreilly.servlet.multipart.DefaultFileRenamePolicy;
 
 import dao.BoardDAO;
 import dao.FilesDAO;
+import dao.GoodDAO;
 import dao.JjimDAO;
 import dto.BoardDTO;
 import dto.FilesDTO;
@@ -33,6 +34,7 @@ public class BoardController extends HttpServlet {
 		BoardDAO dao = BoardDAO.getInstance();
 		FilesDAO filesDAO = FilesDAO.getInstance();
 		JjimDAO jjimDao = JjimDAO.getInstance();
+		GoodDAO goodDao = GoodDAO.getInstance();
 		
 		String uri = request.getRequestURI();
 		try {
@@ -63,9 +65,9 @@ public class BoardController extends HttpServlet {
 				MultipartRequest multi = new MultipartRequest(request, savePath, maxSize, "UTF8", new DefaultFileRenamePolicy() );
 
 				String writer = (String) request.getSession().getAttribute("loginID");//로그인 id
-				System.out.println(writer);
-				if(writer.equals("")) {
-					response.sendRedirect("error.jsp");
+//				System.out.println(writer);
+				if(writer.equals("")||writer.isEmpty()) {
+					response.sendRedirect("error.jsp");//로그인 안했으면 에러남. 추후 로그인 안했을 때 작성하기 못하게 막아야 함.
 				}
 
 				String title = multi.getParameter("title");
@@ -107,6 +109,13 @@ public class BoardController extends HttpServlet {
 //				List<ReplyDTO> replyList = replayDAO.selectAll();//댓글 정보 가져오기 All
 //				request.setAttribute("replyList", replyList);
 				
+				String id = (String) request.getSession().getAttribute("loginID");//로그인 id
+				if(!(id.equals("")||id.isEmpty())) {
+					request.setAttribute("isBoardJjim", dao.isBoardJjim(seq, id));//해당 게시글에 좋아요 했는지 정보
+					request.setAttribute("isBoardGood", dao.isBoardGood(seq, id));//해당 게시글에 좋아요 했는지 정보//해당 게시글에 찜 했는지 정보
+				}
+
+
 				request.getRequestDispatcher("/board/boardView.jsp").forward(request, response);//작성글 페이지 전환
 
 			}else if(uri.equals("/delete.board")) {//게시글 삭제 시
@@ -125,9 +134,20 @@ public class BoardController extends HttpServlet {
 //				String seq = "f75";
 				String seq = request.getParameter("seq"); //해당 게시글 고유seq
 				int upDown =Integer.parseInt(request.getParameter("upDown"));//( 1:선택 , 0:해제)
-				System.out.println(seq);
-				System.out.println(upDown);
+//				System.out.println(seq);
+//				System.out.println(upDown);
+				String id = (String) request.getSession().getAttribute("loginID");//로그인 id
+				if(id.equals("")||id.isEmpty()) {
+					response.sendRedirect("error.jsp");//로그인 안했으면 에러남. 추후 로그인 안했을 때 좋아요 못하게 막아야 함.
+				}
+				
 				dao.likeCountUpDown(seq, upDown);//좋아요 증감
+				
+				if(upDown == 1) {
+					goodDao.insertgood(seq, id);//좋아요 테이블에 게시글 정보(해당 게시글seq, 내 id) 추가
+				}else if(upDown == 0) {
+					goodDao.deletegood(seq, id);//좋아요 테이블에서 게시글 정보 삭제
+				}
 				
 				int likeCount = dao.getLikeCount(seq);//좋아요 개수 get.
 			    //좋아요 개수를 JSON 형식으로 보내주기 위한 설정
@@ -137,14 +157,19 @@ public class BoardController extends HttpServlet {
 				pw.append(jobj.toString());
 				
 			}else if(uri.equals("/jjimClick.board")) {//찜 클릭 시
+				
 				//테스트용 하드코딩
 //				String seq = "f75";
 				String seq = request.getParameter("seq"); //해당 게시글 고유seq
 				int upDown =Integer.parseInt(request.getParameter("upDown"));//( 1:선텍 , 0:해제)
-				System.out.println(upDown);
-				dao.jjimCountUpDown(seq, upDown);//찜 증감
-					
+//				System.out.println(upDown);
 				String id = (String) request.getSession().getAttribute("loginID");//로그인 id
+				if(id.equals("")||id.isEmpty()) {
+					response.sendRedirect("error.jsp");//로그인 안했으면 에러남. 추후 로그인 안했을 때 찜 못하게 막아야 함.
+				}
+				
+				dao.jjimCountUpDown(seq, upDown);//찜 증감
+				
 				if(upDown == 1) {
 					jjimDao.insertJjim(seq, id);//찜 테이블에 추가
 				}else if(upDown == 0) {
@@ -156,8 +181,8 @@ public class BoardController extends HttpServlet {
 				PrintWriter pw = response.getWriter();
 				JsonObject jobj = new JsonObject();
 				jobj.addProperty("jjimCount", jjimCount);
+//				System.out.println(jjimCount);
 				pw.append(jobj.toString());
-				
 			}
 			
 			
