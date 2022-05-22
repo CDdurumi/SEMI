@@ -1,11 +1,15 @@
 package controllers;
 
+import java.io.DataInputStream;
 import java.io.File;
+import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.Enumeration;
+import java.util.List;
 
 import javax.servlet.ServletException;
+import javax.servlet.ServletOutputStream;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -17,6 +21,7 @@ import com.oreilly.servlet.MultipartRequest;
 import com.oreilly.servlet.multipart.DefaultFileRenamePolicy;
 
 import dao.FilesDAO;
+import dto.FilesDTO;
 
 @WebServlet("*.file")
 public class FilesController extends HttpServlet {
@@ -33,29 +38,29 @@ public class FilesController extends HttpServlet {
 
 		try {
 			if(uri.equals("/f_list.file")) {//파일 목록
-				//				int parent_seq = Integer.parseInt(request.getParameter("parent_seq"));
-				//				PrintWriter pw = response.getWriter();
-				//				List<FilesDTO> list = dao.selectAll(parent_seq);
-				//				pw.append(g.toJson(list));
+				String parent_seq = request.getParameter("parent_seq");
+				PrintWriter pw = response.getWriter();
+				List<FilesDTO> list = dao.selectByParentSeq(parent_seq);
+				pw.append(g.toJson(list));
 			}else if(uri.equals("/f_download.file")) {//파일 다운로드
-				//				String filePath = request.getServletContext().getRealPath("files");
-				//				String sys_name = request.getParameter("sys_name");
-				//				String ori_name = request.getParameter("ori_name");
-				//
-				//				File target = new File(filePath +"/"+ ori_name );
-				//				byte[] contents = new byte[(int) target.length()];
-				//
-				//				ori_name = new String(ori_name.getBytes("utf8"),"ISO-8859-1");		
-				//				response.reset();
-				//				response.setHeader("Content-Disposition", "attachment;filename=\""+ori_name+"\"");
-				//
-				//				try(DataInputStream dis = new DataInputStream(new FileInputStream(target));
-				//						ServletOutputStream sos = response.getOutputStream();){
-				//
-				//					dis.readFully(contents);
-				//					sos.write(contents);
-				//					sos.flush();
-				//				}
+				String filePath = request.getServletContext().getRealPath("files");
+				String sys_name = request.getParameter("sys_name");
+				String ori_name = request.getParameter("ori_name");
+
+				File target = new File(filePath +"/"+ ori_name );
+				byte[] contents = new byte[(int) target.length()];
+
+				ori_name = new String(ori_name.getBytes("utf8"),"ISO-8859-1");		
+				response.reset();
+				response.setHeader("Content-Disposition", "attachment;filename=\""+ori_name+"\"");
+
+				try(DataInputStream dis = new DataInputStream(new FileInputStream(target));
+						ServletOutputStream sos = response.getOutputStream();){
+
+					dis.readFully(contents);
+					sos.write(contents);
+					sos.flush();
+				}
 
 			}else if(uri.equals("/imageUpload.file")) {//이미지 업로드
 				String fileName = ""; // 파일명
@@ -86,29 +91,29 @@ public class FilesController extends HttpServlet {
 				JsonObject jobj = new JsonObject();
 				jobj.addProperty("url", uploadPath);
 				pw.append(jobj.toString());
-//				System.out.println(jobj.toString());
+				//				System.out.println(jobj.toString());
 
 			}else if(uri.equals("/dummmyImageDel.file")) {//업로드 더미 이미지 삭제
 
-//				String src = request.getParameter("src");			
-//				System.out.println(src);
+				//				String src = request.getParameter("src");			
+				//				System.out.println(src);
 
-//				String savePath = request.getServletContext().getRealPath("f_dummy_images");//자유게시판 더미 이미지 저장 경로
-//				File filePath = new File(savePath);		
-//				if( filePath.exists() ){ //파일(폴더)존재여부확인			
-//					if(filePath.isDirectory()){ //파일이 디렉토리인지 확인
-//						File[] files = filePath.listFiles();//파일들 배열에 담기
-//
-//						for( int i=0; i<files.length; i++){
-//
-//							//							if(files[i] == savePath+"/"+sys_name )
-//							//							files[i].delete();//해당 이미지더미파일 삭제
-//							System.out.println(files[i]);
-//						}
-//					}
-//				}else{ 
-//					System.out.println("폴더가 존재하지 않습니다."); 
-//				}
+				//				String savePath = request.getServletContext().getRealPath("f_dummy_images");//자유게시판 더미 이미지 저장 경로
+				//				File filePath = new File(savePath);		
+				//				if( filePath.exists() ){ //파일(폴더)존재여부확인			
+				//					if(filePath.isDirectory()){ //파일이 디렉토리인지 확인
+				//						File[] files = filePath.listFiles();//파일들 배열에 담기
+				//
+				//						for( int i=0; i<files.length; i++){
+				//
+				//							//							if(files[i] == savePath+"/"+sys_name )
+				//							//							files[i].delete();//해당 이미지더미파일 삭제
+				//							System.out.println(files[i]);
+				//						}
+				//					}
+				//				}else{ 
+				//					System.out.println("폴더가 존재하지 않습니다."); 
+				//				}
 
 			}
 

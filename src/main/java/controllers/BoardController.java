@@ -56,7 +56,7 @@ public class BoardController extends HttpServlet {
 			}else if(uri.equals("/writeProcessing.board")) {//게시글 작성완료 처리 과정(boardWrite.jsp에서 작성완료 버튼 클릭 시 여기로.)
 				
 				int maxSize = 1024*1024*10;//파일허용 크기
-				String savePath = request.getServletContext().getRealPath("f_files");//자유게시판 업로드 파일 저장 경로	
+				String savePath = request.getServletContext().getRealPath("files");//자유게시판 업로드 파일 저장 경로	
 //				System.out.println(savePath);
 				File filePath = new File(savePath);
 				if(!filePath.exists()) {
