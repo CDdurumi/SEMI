@@ -339,6 +339,7 @@
             margin: auto;
             width: 90%;
             min-height: 600px;
+            min-width:330px;
             
         }
 
@@ -350,6 +351,7 @@
 
         #conMenu {
             height: 50px;
+             margin: 40px;
            
         }
 
@@ -404,6 +406,11 @@
            margin: auto;
            height: 65px;
        }
+        #message{
+           margin: auto;
+           width: 90%;
+           padding-bottom: 10px;
+       }
        .message{
            min-height: 80px;
        }
@@ -450,9 +457,13 @@
             position: absolute ;
             background-color: #ffffff;
             width: 200px;
-            right: -51px;
+            left:0px;
             border: 1px solid #0080ff;
             border-radius: 10px;
+        }
+         #title{
+            font-size: 40px;
+           
         }
     </style>
 </head>
@@ -539,34 +550,28 @@
     <!--Container Main start-->
     <div class="height-100 ">
         <div class="row width-100 dummy" ></div>
-        <div class="row text-center" id="menu">
-            <div class="col-md-1 d-none d-md-block">번호</div>
-            <div class="col-5 col-md-5">제목</div>
-            <div class="col-3 col-md-2">글쓴이</div>
-            <div class="col-md-1 d-none d-md-block">등록</div>
-            <div class="col-md-1 d-none d-md-block">조회</div>
-            <div class="col-2 col-md-1 ">추천</div>
-            <div class="col-2 col-md-1 ">파일</div>
-        </div>
+        
         <div class="row " id="contentsRow">
            
-            <div class="col-12 p-0 border border-2 rounded" id="contents">
-                <div class="row text-center border-bottom border-2 rounded" id="conMenu">
-                    <div class="col-md-1 d-none d-md-block">${dto.all_board_seq}</div>
-                    <div class="col-5 col-md-5 ellipsis "><span>${dto.title}</span></div>
-                    <div class="col-3 col-md-2 ellipsis"><span>${dto.id}</span></div>
-                    <div class="col-md-1 d-none d-md-block">${dto.formdDate}</div>
-                    <div class="col-md-1 d-none d-md-block">${dto.view_count}</div>
-                    <div class="col-2 col-md-1 ">${dto.like_count}</div>
-                    <div class="col-2 col-md-1 p-0 filebox">
-	                    <button type="button" class="btn btn-primary filebtn">보기</button>
-	                    <div class="filelist" style="display:none; padding-top:10px; padding-bottom: 10px; "></div>
-                    </div>
+            <div class="col-12 p-0 border-bottom border-2 rounded h-100" id="contents">
+                <div class="row border-bottom border-2 rounded h-100" id="conMenu">
+<%--                     <div class="col-md-1 d-none d-md-block">${dto.all_board_seq}</div> --%>
+                    <div class="col-12 col-md-12 ellipsis "  style="padding-left:15px" id="title">${dto.title} 제목제목</div>
+                    <div class="col-3 col-md-3 ellipsis " ><span style="width: 90%; ">${dto.id} 글쓴이</span></div>
+                    <div class="col-9 ">${dto.formdDate} 2022/02/02</div>
+                    <div class="col-3 " style="padding-left:8px;">${dto.view_count} 조회</div>
+                    <div class="col-9 ">${dto.like_count} 좋아요</div>
+                    <div class="col-6 filebox"  style="padding-left:8px;">첨부파일
+	                    <button type="button" class="btn btn-outline-primary filebtn">보기</button>
+	                    <div class="filelist text-center"  style="display:none;  padding-top:10px; padding-bottom: 10px; ">파일명<br>파일명</div>
+ 						 </div>
+ 						<div class="col-12" id="dummy3" style="height: 10px;"></div>                     
+                   
                 </div>
                 <div class="col-12 text-center" id="cont" style="padding:0px;">
                     <div class="row " id="contentsdummy" style="padding:0px;" >
                         <div class="col-12" id="contentsdummy2" style="padding-top: 40px;padding-bottom: 40px;padding-left: 0px;padding-right: 0px;">
-                            ${dto.contents}
+                            ${dto.contents} 글내용내용내용
                         </div>
                     </div>
                     
@@ -600,8 +605,11 @@
             
         </div>
         <br>
+        <div class="col-12" id="message">댓글 2 개</div>
         <div class="row msg " >
-            <div class="col-10 border-bottom border-2 rounded">댓글</div>
+            <div class="col-10 p-0">
+         	   <input type="text" class="w-100 h-100 border border-2 rounded">
+            </div>
             <div class="col-2  " style="text-align: center;">
                 <button class="btn btn-primary h-100 " id="btn" type="submit">등록</button>
             </div>
