@@ -31,7 +31,7 @@ public class MemberController extends HttpServlet {
 		String uri = request.getRequestURI();
 		MemberDAO dao = new MemberDAO();
 		Gson g= new Gson();
-		//response.setCharacterEncoding("UTF-8");//get
+		response.setCharacterEncoding("UTF-8");//get
 		try {
 			if (uri.equals("/duplIDCheck.member")) {// 아이디 중복 확인
 				System.out.println("아이디 중복확인 수신확인");
@@ -106,12 +106,10 @@ public class MemberController extends HttpServlet {
 					
 					//유저정보
 					System.out.println("유저정보 탐색");
-					List<MemberDTO> list;
-
-					list = dao.searchUser(email);			
+					dto = dao.searchUser(email);			
 					HttpSession session = request.getSession();
-					session.setAttribute("loginID", list.get(0).getId());
-					session.setAttribute("loginEmail", email);
+					session.setAttribute("loginID",dto.getId());
+					session.setAttribute("loginEmail", dto.getEmail());
 					
 					//request.setAttribute("userList", list); 유저정보 담아놓은거 
 					

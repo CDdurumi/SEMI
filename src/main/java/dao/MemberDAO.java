@@ -3,6 +3,7 @@ package dao;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.sql.Timestamp;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -81,24 +82,21 @@ private Connection getConnection() throws Exception {
 	
 	//사용자 정보 뽑기
 	
-	public List<MemberDTO> searchUser(String email) throws Exception {
+	public MemberDTO searchUser(String email) throws Exception {
 
 		String sql = "select * from member where email =?";
 		try (Connection con = this.getConnection(); PreparedStatement pstat = con.prepareStatement(sql);) {
 			pstat.setString(1, email);
 			try (ResultSet rs = pstat.executeQuery()) {
-				List<MemberDTO> list = new ArrayList<>();
-				while (rs.next()) {
-					MemberDTO dto = new MemberDTO();
-					dto.setId(rs.getString("id"));
-					dto.setEmail(rs.getString("email"));
-					dto.setJoin_date(rs.getTimestamp("join_date"));
-					list.add(dto);
-				}
-				return list;
+				
+				rs.next();
+				String id = rs.getString("id");
+				email = rs.getString("email");
+				Timestamp join_date = rs.getTimestamp("join_date");
+				String information = rs.getString("information");
+				return(new MemberDTO(id,null,email,join_date,information));
+				
 			}
-
 		}
-
-	}
+	}	
 }
