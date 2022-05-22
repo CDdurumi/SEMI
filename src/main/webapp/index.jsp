@@ -483,7 +483,7 @@ $("#modal_loginBtn").on("click",function(){
 				type:'GET',
 				success:function(data){
 					let $Icon = (data.weather[0].icon).substr(0,2);
-					let $Temp = Math.floor(data.main.temp) + 'º';
+					let $Temp = Math.round(data.main.temp) + 'º';
 					let $city = "제주도";
 					
 					$('.CurrIcon').append('<i class="' + weatherIcon[$Icon] +'"></i>');
