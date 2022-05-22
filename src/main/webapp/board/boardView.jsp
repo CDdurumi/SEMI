@@ -605,7 +605,7 @@
             
         </div>
         <br>
-        <div class="col-12" id="message">댓글</div>
+        <div class="col-12" id="message">댓글 2 개</div>
         <div class="row msg " >
             <div class="col-10 p-0">
          	   <input type="text" class="w-100 h-100 border border-2 rounded">
