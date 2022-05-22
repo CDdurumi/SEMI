@@ -559,14 +559,13 @@
                     <div class="col-md-1 d-none d-md-block">${dto.view_count}</div>
                     <div class="col-2 col-md-1 ">${dto.like_count}</div>
                     <div class="col-2 col-md-1 p-0 filebox">
-                    <button type="button" class="btn btn-primary filebtn">보기</button>
-                    <div class="filelist" style="display:none; padding-top:10px; padding-bottom: 10px; ">파일명<br>파일명<br>파일명</div>
+	                    <button type="button" class="btn btn-primary filebtn">보기</button>
+	                    <div class="filelist" style="display:none; padding-top:10px; padding-bottom: 10px; "></div>
                     </div>
                 </div>
                 <div class="col-12 text-center" id="cont" style="padding:0px;">
                     <div class="row " id="contentsdummy" style="padding:0px;" >
                         <div class="col-12" id="contentsdummy2" style="padding-top: 40px;padding-bottom: 40px;padding-left: 0px;padding-right: 0px;">
-                            <a href="/detailView.board">테스트하려면 여기 클릭. 나중에 지워주세요.</a>
                             ${dto.contents}
                         </div>
                     </div>
@@ -659,13 +658,38 @@
 	    let filelist = $(this).siblings();
 	    if(listExist==false){
 	        filelist.css("display","block");
-	        listExist = true;
+// 	        listExist = true;
+	        
+			$.ajax({
+				url:"/f_list.file",
+				data:{parent_seq:"${dto.all_board_seq}"},
+				dataType:"json"
+			}).done(function(resp){
+					for(let i=0; i<resp.length; i++){
+						let fileDiv = $("<div>");
+						
+						let anker = $("<a>");
+						anker.attr("href","/f_download.file?ori_name="+resp[i].ori_name+"&sys_name="+resp[i].sys_name);
+						anker.text(resp[i].ori_name);
+					
+						fileDiv.append(anker)
+						$(filelist).append(fileDiv);
+					}
+				})
+			listExist=true;
+	        
 	    } else{
 	        filelist.css("display","none");
+            $(filelist).children().remove();
 	        listExist = false;
 	    }
 	   
 	})
+	
+	
+	
+	
+	
     //좋아요
     let good = true;
 	if(${isBoardGood!=null}){

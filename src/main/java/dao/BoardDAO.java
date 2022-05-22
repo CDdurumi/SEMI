@@ -191,7 +191,18 @@ public class BoardDAO {
 			}
 		}
 	}
-	
+
+	//조회수 증가
+	public int viewCountUp(String seq)  throws Exception {      
+		String sql = "update all_board set view_count = view_count+1 where all_board_seq =? ";
+		try (Connection con = this.getConnection(); 
+				PreparedStatement pstat = con.prepareStatement(sql);) {
+			pstat.setString(1,seq);
+			int result = pstat.executeUpdate();
+			con.commit();
+			return result;
+		}
+	}
 	
 	
 	// 게시판 리스트 출력
@@ -360,17 +371,7 @@ public class BoardDAO {
 	
 	
 
-	//조회수 증가
-//	public int viewCountUp(String seq)  throws Exception {      
-//		String sql = "update all_board set view_count = view_count+1 all_board_seq seq =? ";
-//		try (Connection con = this.getConnection(); 
-//				PreparedStatement pstat = con.prepareStatement(sql);) {
-//			pstat.setString(1,seq);
-//			int result = pstat.executeUpdate();
-//			con.commit();
-//			return result;
-//		}
-//	}
+
 	
 	
 }

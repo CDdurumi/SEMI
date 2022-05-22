@@ -46,12 +46,12 @@ public class FilesDAO {
 	}
 
 	//파일 목록 리스트
-	public List<FilesDTO> selectAll(int pparent_seq) throws Exception {
+	public List<FilesDTO> selectByParentSeq(String pparent_seq) throws Exception {
 
-		String sql = "select * from files where parent_seq=? order by 1 ";
+		String sql = "select * from files where parent_seq=? order by 1 desc ";
 		try(Connection con = this.getConnection();
 				PreparedStatement pstat = con.prepareStatement(sql);) {
-			pstat.setInt(1, pparent_seq);
+			pstat.setString(1, pparent_seq);
 			List<FilesDTO> list = new ArrayList<>();
 
 			try(ResultSet rs = pstat.executeQuery()){

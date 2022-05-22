@@ -476,7 +476,7 @@
                 </div>
                 <div class="col-12 " style="text-align: right;">
                     <a href="/board/boardMain.jsp?cpage=1"><input type="button" value="목록으로" class="my-1"></a>
-                    <input type="submit" value="작성완료" class="mx-2">
+                    <input type="submit" value="작성완료" class="mx-2" >
                 </div>
             </div>
         </div>
@@ -565,7 +565,7 @@
             
 		});
 	    
-		//작성완료 버튼 클릭 시 서머노트 안 적었으면 경고창/////////////////////////////////////////////////////
+		//작성완료 버튼 클릭 시 서머노트 안 적었으면 경고창 & 로그인 안 했으면 경고창//////////////////////
 		let frm = document.getElementById("from");
 		frm.onsubmit = function(){
 			let summernote = document.getElementById("summernote").value;
@@ -573,6 +573,11 @@
 				alert("본문을 작성해주세요.");
 				return false;
 			}
+			
+	        if(${loginID == null}){
+	        	alert("로그인이 필요합니다.");
+	        	return false;
+	        }
 		}
 	    
 		//서머노트////////////////////////////////////////////////////////////////////////////

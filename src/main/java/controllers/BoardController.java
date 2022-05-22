@@ -56,7 +56,7 @@ public class BoardController extends HttpServlet {
 			}else if(uri.equals("/writeProcessing.board")) {//게시글 작성완료 처리 과정(boardWrite.jsp에서 작성완료 버튼 클릭 시 여기로.)
 				
 				int maxSize = 1024*1024*10;//파일허용 크기
-				String savePath = request.getServletContext().getRealPath("f_files");//자유게시판 업로드 파일 저장 경로	
+				String savePath = request.getServletContext().getRealPath("files");//자유게시판 업로드 파일 저장 경로	
 //				System.out.println(savePath);
 				File filePath = new File(savePath);
 				if(!filePath.exists()) {
@@ -66,9 +66,6 @@ public class BoardController extends HttpServlet {
 
 				String writer = (String) request.getSession().getAttribute("loginID");//로그인 id
 //				System.out.println(writer);
-				if(writer.equals("")||writer.isEmpty()) {
-					response.sendRedirect("error.jsp");//로그인 안하면 에러남. 추후 로그인 안했을 때 작성하기 못하게(버튼) 막아야 함.->해당 if문 필요 없음
-				}
 
 				String title = multi.getParameter("title");
 				String contents = multi.getParameter("contents");
@@ -95,13 +92,13 @@ public class BoardController extends HttpServlet {
 	
 			}else if(uri.equals("/detailView.board")) {//작성글 출력(게시판 목록에서 게시글 클릭 시 여기로.)
 				//테스트용 하드코딩
-				String seq = "f75";
-//				String seq = request.getParameter("seq"); //해당 게시글 고유seq
-				
-//				int cpage = Integer.parseInt(request.getParameter("cpage"));
-//				if(request.getHeader("referer").equals("http://localhost/list.board?cpage="+cpage)){//이전 주소가 이와 같다면, 조회 수 증가
-//					dao.viewCountUp(seq);//조회수 증가
-//				}
+//				String seq = "f75";
+				String seq = request.getParameter("seq"); //해당 게시글 고유seq
+//				
+				int cpage = Integer.parseInt(request.getParameter("cpage"));
+				if(request.getHeader("referer").equals("http://localhost/boardMainView.board?cpage="+cpage)){//이전 주소가 이와 같다면, 조회 수 증가
+					dao.viewCountUp(seq);//조회수 증가
+				}
 
 				BoardDTO dto = dao.selectBySeq(seq);//고유seq에 해당하는 게시글 정보get
 				request.setAttribute("dto", dto);
