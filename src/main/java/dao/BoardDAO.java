@@ -73,6 +73,20 @@ public class BoardDAO {
 		}
 	}
 
+	//게시글 삭제
+	public int delete(String seq) throws Exception {
+
+		String sql = "delete from all_board where all_board_seq = ? ";
+		try(Connection con = this.getConnection();
+				PreparedStatement pstat = con.prepareStatement(sql);) {
+			pstat.setString(1,seq);
+
+			int result = pstat.executeUpdate();
+			con.commit();
+			return result;
+		}
+	}
+
 	//게시글 정보 get(고유seq로 검색)
 	public BoardDTO selectBySeq(String sseq) throws Exception {
 		String sql = "select * from all_board where all_board_seq = ? ";

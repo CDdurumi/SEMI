@@ -114,9 +114,12 @@ public class BoardController extends HttpServlet {
 
 				request.getRequestDispatcher("/board/boardView.jsp").forward(request, response);//작성글 페이지 전환
 
-			}else if(uri.equals("/delete.board")) {//게시글 삭제 시
+			}else if(uri.equals("/delete.board")) {//게시글 삭제 시				
+				String seq = request.getParameter("seq");
+				dao.delete(seq);//게시글 삭제
 				
 				response.sendRedirect("/boardMainView.board?cpage=1");//자유게시판 메인화면으로 전환
+				
 			}else if(uri.equals("/modity.board")) {//게시글 수정 시
 				
 //				response.sendRedirect("/detailView.board?seq="+seq);//작성글 출력

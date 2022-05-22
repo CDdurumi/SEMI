@@ -569,11 +569,15 @@
                             ${dto.contents}
                         </div>
                     </div>
-                    
-
                 </div>
-                
             </div>
+            <div class="col-12" style="text-align: right; padding-top: 10px;padding-right: 100px;">
+<%--             	<c:if test="${loginID == dto.id}"> --%>
+	           	    <button class="btn btn-primary " type="button" id="boardModi">수정미완</button>
+	               	<button class="btn btn-primary " type="button" id="boardDel">삭제</button>
+<%--                	</c:if> --%>
+            </div>
+            
             <div class="row " id="heart" style="margin: auto;">
                 
                 <div class="col-1" id="goodcol">
@@ -583,7 +587,8 @@
                 <div class="col-1 text-center" id="jjimcol">
                     <i class="fa-solid fa-heart"></i>
                 </div>
-                <div class="col-9"></div>
+                <div class="col-9">
+                </div>
             </div>
 
             <div class="row " id="count" style="margin: auto;">
@@ -600,6 +605,7 @@
             
         </div>
         <br>
+        
         <div class="row msg " >
             <div class="col-10 border-bottom border-2 rounded">댓글</div>
             <div class="col-2  " style="text-align: center;">
@@ -685,10 +691,6 @@
 	    }
 	   
 	})
-	
-	
-	
-	
 	
     //좋아요
     let good = true;
@@ -791,6 +793,18 @@
         
     })
 
+
+   	//게시글 삭제
+   	$("#boardDel").on("click",function(){
+   		let del = confirm("해당 게시글을 삭제하시겠습니까?");
+   		if(del == true){
+   			location.href = "/delete.board?seq=${dto.all_board_seq}";
+   		}
+   	})
+    
+    
+    
+    
         document.addEventListener("DOMContentLoaded", function (event) {
 
             const show1Navbar = (toggleId, navId, bodyId, headerId) => {
