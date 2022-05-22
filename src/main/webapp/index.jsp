@@ -55,6 +55,7 @@
     
     body, header, .mainback {
         background-image: url('/imgsrc/mainthem.jpg');
+        background-size : cover;
    }
    #body-pd {
     margin: 0;
