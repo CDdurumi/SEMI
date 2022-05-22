@@ -326,7 +326,7 @@
       </div>
       <div class="modal-footer">
       <button type="button" class="btn btn-primary" id="modal_loginBtn">로그인</button>
-        <a href="/signup.jsp"><button type="button" class="btn btn-primary">회원가입</button></a>
+        <a href="/signup.jsp"><button type="button" class="btn btn-outline-primary">회원가입</button></a>
       </div>
     </div>
   </div>

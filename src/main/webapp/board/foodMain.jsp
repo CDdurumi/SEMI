@@ -465,11 +465,11 @@
             <div> <a href="/index.jsp" class="nav_logo"> <i class='bx bx-layer nav_logo-icon'></i> <span class="nav_logo-name">쉼표
                         <br>- 일상의 쉼표를 찍다</span> </a>
                 <div class="nav_list">
-                    <a href="#" class="nav_link active"> <i class='CurrIcon'></i> <span class="nav_name"><span class="weather">
+                    <a href="#" class="nav_link"> <i class='CurrIcon'></i> <span class="nav_name"><span class="weather">
                     <span class="CurrTemp"></span>
                     <span class="City"></span>
                     </span></span> </a>
-                    <a href="/board/communityMain.jsp" class="nav_link"> <i class='bx bx-message nav_icon'></i> <span
+                    <a href="/board/communityMain.jsp" class="nav_link active"> <i class='bx bx-message nav_icon'></i> <span
                             class="nav_name">커뮤니티</span> </a>
                     <a href="#" class="nav_link"> <i class='bx bx-bus nav_icon'></i> <span class="nav_name">여행정보</span>
                     </a>
@@ -509,8 +509,8 @@
         </div>
       </div>
       <div class="modal-footer">
-      <button type="button" class="btn btn-primary" id="modal_loginBtn">로그인</button>
-        <button type="button" class="btn btn-primary">회원가입</button>
+      	<button type="button" class="btn btn-primary" id="modal_loginBtn">로그인</button>
+        <button type="button" class="btn btn-outline-primary">회원가입</button>
       </div>
     </div>
   </div>
@@ -522,7 +522,7 @@
         <div class="row " id="freemain">
             <div class="col-12 col-md-6 bottom_board">
                 <div class="row border border-2 rounded">
-                    <div class="col-12 border-bottom hotboard_bottom text-center">맛집 화제</div>
+                    <div class="col-12 border-bottom hotboard_bottom text-center">맛집</div>
                     <div class="row  freeboard_bottom">
                         <div class="col-12 ">
                             <div class="row freeboard_bottom ">

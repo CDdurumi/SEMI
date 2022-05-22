@@ -89,7 +89,7 @@ body::-webkit-scrollbar{
         }
 
         .header_toggle {
-            color: var(--first-color);
+            color: black;
             font-size: 1.5rem;
             cursor: pointer
         }
@@ -526,7 +526,7 @@ body::-webkit-scrollbar{
       </div>
       <div class="modal-footer">
       	<button type="button" class="btn btn-primary" id="modal_loginBtn">로그인</button>
-        <button type="button" class="btn btn-primary">회원가입</button>
+        <button type="button" class="btn btn-outline-primary">회원가입</button>
       </div>
     </div>
   </div>

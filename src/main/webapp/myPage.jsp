@@ -526,8 +526,10 @@
             <div> <a href="/index.jsp" class="nav1_logo"> <i class='bx bx-layer nav1_logo-icon'></i> <span class="nav1_logo-name">쉼표
                         <br>- 일상의 쉼표를 찍다</span> </a>
                 <div class="nav1_list">
-                    <a href="#" class="nav1_link"> <i class='bx bx-wind nav1_icon'></i> <span
-                            class="nav1_name">날씨</span> </a>
+                    <a href="#" class="nav1_link"> <i class='CurrIcon'></i> <span class="nav1_name"><span class="weather">
+                    <span class="CurrTemp"></span>
+                    <span class="City"></span>
+                    </span></span> </a>
                     <a href="/board/communityMain.jsp" class="nav1_link"> <i class='bx bx-message nav1_icon'></i> <span
                             class="nav1_name">커뮤니티</span> </a>
                     <a href="/board/gallery.jsp" class="nav1_link"> <i class='bx bx-bus nav1_icon'></i> <span class="nav1_name">여행정보</span>
@@ -569,7 +571,7 @@
       </div>
       <div class="modal-footer">
       <button type="button" class="btn btn-primary" id="modal_loginBtn">로그인</button>
-        <button type="button" class="btn btn-primary">회원가입</button>
+        <button type="button" class="btn btn-outline-primary">회원가입</button>
       </div>
     </div>
   </div>
@@ -707,8 +709,21 @@
                                    </div>
                                    <div calss="row">
                                        <div class="col-12 text-center">
-                                           <br>
-                                           &lt; 1 2 3 4 5 6 7 8 9 10>
+                                           <nav aria-label="Page navigation example">
+  											<ul class="pagination justify-content-center">
+											    <li class="page-item">
+											      <a class="page-link" href="#" aria-label="Previous">
+											        <span aria-hidden="true">&laquo;</span>
+											      </a>
+											    </li>
+											    ${navi }
+											    <li class="page-item">
+											      <a class="page-link" href="#" aria-label="Next">
+											        <span aria-hidden="true">&raquo;</span>
+											      </a>
+											    </li>
+											  </ul>
+											</nav>
                                        </div>
                                    </div>
                                </div>
@@ -782,8 +797,21 @@
                                    </div>
                                    <div calss="row">
                                        <div class="col-12 text-center">
-                                           <br>
-                                           &lt; 1 2 3 4 5 6 7 8 9 10 >
+                                           <nav aria-label="Page navigation example">
+											  <ul class="pagination justify-content-center">
+											    <li class="page-item">
+											      <a class="page-link" href="#" aria-label="Previous">
+											        <span aria-hidden="true">&laquo;</span>
+											      </a>
+											    </li>
+											    ${navi }
+											    <li class="page-item">
+											      <a class="page-link" href="#" aria-label="Next">
+											        <span aria-hidden="true">&raquo;</span>
+											      </a>
+											    </li>
+											  </ul>
+											</nav>
                                        </div>
                                    </div>
                                </div>
@@ -870,7 +898,21 @@
                                 </div>
                                    <div calss="row">
                                        <div class="col-12 text-center">
-                                           < 1 2 3 4 5 6 7 8 9 >
+                                           <nav aria-label="Page navigation example">
+											  <ul class="pagination justify-content-center">
+											    <li class="page-item">
+											      <a class="page-link" href="#" aria-label="Previous">
+											        <span aria-hidden="true">&laquo;</span>
+											      </a>
+											    </li>
+											    ${navi }
+											    <li class="page-item">
+											      <a class="page-link" href="#" aria-label="Next">
+											        <span aria-hidden="true">&raquo;</span>
+											      </a>
+											    </li>
+											  </ul>
+											</nav>
                                        </div>
                                    </div>
                                </div>
@@ -943,7 +985,21 @@
                                  </div>
                                     <div calss="row">
                                         <div class="col-12 text-center">
-                                            < 1 2 3 4 5 6 7 8 9 >
+                                            <nav aria-label="Page navigation example">
+											  <ul class="pagination justify-content-center">
+											    <li class="page-item">
+											      <a class="page-link" href="#" aria-label="Previous">
+											        <span aria-hidden="true">&laquo;</span>
+											      </a>
+											    </li>
+											    ${navi }
+											    <li class="page-item">
+											      <a class="page-link" href="#" aria-label="Next">
+											        <span aria-hidden="true">&raquo;</span>
+											      </a>
+											    </li>
+											  </ul>
+											</nav>
                                         </div>
                                    
                  
@@ -1158,6 +1214,50 @@
 			calendar.render();
 			});
     </script>
+    <script type="text/javascript">
+ 	let city = ['Jeju City'];
+	
+	city.forEach(function(city){
+		$(document).ready(function() {
+			let weatherIcon = {
+			'01' : 'fas fa-sun',
+			'02' : 'fas fa-cloud-sun',
+			'03' : 'fas fa-cloud',
+			'04' : 'fas fa-cloud-meatball',
+			'09' : 'fas fa-cloud-sun-rain',
+			'10' : 'fas fa-cloud-showers-heavy',
+			'11' : 'fas fa-poo-storm',
+			'13' : 'far fa-snowflake',
+			'50' : 'fas fa-smog'
+			};
+			$.ajax({
+				url:'http://api.openweathermap.org/data/2.5/weather?q='+city+'&APPID=71199a5512c711405120f9710683654c&units=metric',
+				dataType:'json',
+				type:'GET',
+				success:function(data){
+					let $Icon = (data.weather[0].icon).substr(0,2);
+					let $Temp = Math.floor(data.main.temp) + 'º';
+					let $city = "제주도";
+					
+					$('.CurrIcon').append('<i class="' + weatherIcon[$Icon] +'"></i>');
+					$('.CurrTemp').prepend($Temp);
+					$('.City').append($city);
+					console.log(data);
+	                console.log("현재온도 : "+ (data.main.temp- 273.15) ); //섭씨온도를 만들기 위함
+	                console.log("현재습도 : "+ data.main.humidity);
+	                console.log("날씨 : "+ data.weather[0].main );
+	                console.log("상세날씨설명 : "+ data.weather[0].description );
+	                console.log("날씨 이미지 : "+ data.weather[0].icon );
+	                console.log("바람   : "+ data.wind.speed );
+	                console.log("나라   : "+ data.sys.country );
+	                console.log("도시이름  : "+ data.name );
+	                console.log("구름  : "+ (data.clouds.all) +"%" );  
+				}
+			})
+		});
+	});
+	
+</script>
 </body>
 
 </html>
