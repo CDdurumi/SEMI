@@ -553,7 +553,7 @@
         
         <div class="row " id="contentsRow">
            
-            <div class="col-12 p-0 border-borrom border-2 rounded h-100" id="contents">
+            <div class="col-12 p-0 border-bottom border-2 rounded h-100" id="contents">
                 <div class="row border-bottom border-2 rounded h-100" id="conMenu">
 <%--                     <div class="col-md-1 d-none d-md-block">${dto.all_board_seq}</div> --%>
                     <div class="col-12 col-md-12 ellipsis "  style="padding-left:15px" id="title">${dto.title} 제목제목</div>
