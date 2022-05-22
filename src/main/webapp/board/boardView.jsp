@@ -406,6 +406,11 @@
            margin: auto;
            height: 65px;
        }
+        #message{
+           margin: auto;
+           width: 90%;
+           padding-bottom: 10px;
+       }
        .message{
            min-height: 80px;
        }
@@ -566,7 +571,7 @@
                 <div class="col-12 text-center" id="cont" style="padding:0px;">
                     <div class="row " id="contentsdummy" style="padding:0px;" >
                         <div class="col-12" id="contentsdummy2" style="padding-top: 40px;padding-bottom: 40px;padding-left: 0px;padding-right: 0px;">
-                            ${dto.contents}
+                            ${dto.contents} 글내용내용내용
                         </div>
                     </div>
                     
@@ -600,8 +605,11 @@
             
         </div>
         <br>
+        <div class="col-12" id="message">댓글</div>
         <div class="row msg " >
-            <div class="col-10 border-bottom border-2 rounded">댓글</div>
+            <div class="col-10 p-0">
+         	   <input type="text" class="w-100 h-100 border border-2 rounded">
+            </div>
             <div class="col-2  " style="text-align: center;">
                 <button class="btn btn-primary h-100 " id="btn" type="submit">등록</button>
             </div>
