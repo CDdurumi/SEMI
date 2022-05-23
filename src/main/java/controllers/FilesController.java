@@ -66,7 +66,7 @@ public class FilesController extends HttpServlet {
 				String fileName = ""; // 파일명
 
 				int maxSize = 1024*1024*10;//파일허용 크기
-				String savePath = request.getServletContext().getRealPath("f_dummy_images");//자유게시판 더미 이미지 저장 경로
+				String savePath = request.getServletContext().getRealPath("dummy_images");//자유게시판 더미 이미지 저장 경로
 				//				System.out.println(savePath);
 				File filePath = new File(savePath);
 				if(!filePath.exists()) {
@@ -85,7 +85,7 @@ public class FilesController extends HttpServlet {
 
 				PrintWriter pw = response.getWriter();
 				// 업로드된 경로와 파일명을 통해 이미지의 경로를 생성
-				String uploadPath = "/f_dummy_images/" + fileName;
+				String uploadPath = "/dummy_images/" + fileName;
 
 				// 생성된 경로를 JSON 형식으로 보내주기 위한 설정
 				JsonObject jobj = new JsonObject();

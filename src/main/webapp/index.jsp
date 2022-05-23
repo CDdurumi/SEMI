@@ -53,9 +53,12 @@
    
     }
     
-    body, header, .mainback {
+      body, header, .mainback {
         background-image: url('/imgsrc/mainthem.jpg');
-        background-size : cover;
+        background-repeat: no-repeat;
+        background-attachment: fixed;
+  		background-position: center;
+  		background-size: cover;
    }
    #body-pd {
     margin: 0;
