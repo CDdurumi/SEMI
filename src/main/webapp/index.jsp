@@ -387,6 +387,8 @@ $("#modal_loginBtn").on("click",function(){
             
         </nav>
     </div>
+ <!-- 로그인모달  -->   
+  
     <!--Container Main start-->
     <div class="height-100 width-100 d-flex text-center text-black bg-white mainback">
         <div class="cover-container d-flex w-100 h-100 p-3 mx-auto flex-column">
