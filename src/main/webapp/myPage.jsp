@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+            
 <!DOCTYPE html>
 <html>
 
@@ -545,8 +546,18 @@
     <header class="header" id="header">
         <div class="header_toggle"><i class='bx bx-menu' id="header-toggle"></i></div>
         <div>
-           <a href="#" class="login"  data-bs-toggle="modal" data-bs-target="#exampleModal">login</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-             <a href="/signup.jsp" class="join">join</a>
+           
+            <c:choose>
+				<c:when test="${loginID !=null}">
+						${loginID }님 안녕하세요 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+					<a href="/logout.member" class=""  >logout</a>					
+				</c:when>
+		
+				<c:otherwise>
+					<a href="#" class="login" id="login"  data-bs-toggle="modal" data-bs-target="#exampleModal">login</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+          			 <a href="/signup.jsp" class="join">join</a>
+				</c:otherwise>
+			</c:choose>
         </div>
     </header>
     
@@ -573,7 +584,12 @@
                             class="nav1_name">쪽지</span> </a>
                 </div>
             </div>
-            <a href="#" class="nav1_link"> <i class='bx bx-log-out nav1_icon'></i> <span class="nav1_name">로그아웃</span> </a>
+            <c:choose>
+				<c:when test="${loginID !=null}">
+					<a href="/logout.member" class="nav1_link"> <i class='bx bx-log-out nav_icon'></i> <span class="nav1_name">로그아웃</span> </a>	
+				</c:when>
+			</c:choose>
+            
         </nav>
     </div>
     
