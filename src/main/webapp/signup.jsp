@@ -557,8 +557,8 @@
          	</div>
          	<div class="row">
          		<div class="col-12">
-         			<label><input type="radio" name="info" value="Y" checked name="info">동의</label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-         			<label><input type="radio" name="info" value="N" name="info">거부</label>
+         			<label><input type="radio" name="info" value="Y" checked name="info" class="positiveBtn">동의</label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+         			<label><input type="radio" name="info" value="N" name="info" class="negativeBtn">거부</label>
          		</div>
          	</div>
          	<br>
@@ -579,6 +579,15 @@
 
 
 <script>
+	
+	$(".negativeBtn").on("click",function(){
+		$("#signin_btn").attr("disabled",true);
+			
+	})
+	$(".positiveBtn").on("click",function(){
+		$("#signin_btn").attr("disabled",false);
+			
+	})
 	
 	//회원가입 관련 id_input , password1_input ,password_input , email_input
 	
