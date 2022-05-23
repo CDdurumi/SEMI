@@ -439,7 +439,7 @@ width: 100%; height: 100%;
         <a class="nav-link nav-link2" href="/board/foodMain.jsp">맛집</a>
     </li>
     <li class="nav-item">
-        <a class="nav-link nav-link2" href="/board/stayreview.jsp">숙소리뷰</a>
+        <a class="nav-link nav-link2" href="/board/houseMain.jsp">숙소리뷰</a>
     </li>
 </ul>
 <div class="l-navbar" id="nav-bar">
