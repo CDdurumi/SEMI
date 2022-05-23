@@ -434,7 +434,7 @@
     </header>
     <ul class="nav nav2">
         <li class="nav-item">
-            <a class="nav-link nav-link2" href="/board/boardMain.jsp">자유게시판</a>
+            <a class="nav-link nav-link2" href="/boardMainView.board?cpage=1">자유게시판</a>
         </li>
         <li class="nav-item">
             <a class="nav-link nav-link2" href="/board/gallery.jsp">여행후기</a>
