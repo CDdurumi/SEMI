@@ -509,6 +509,35 @@
             margin-top: 20px;
         }
 
+/*--top버튼----------------------------------------------------------------*/
+
+#myBtn {
+  display: none; 
+  position: fixed; 
+  bottom: 12px;
+  width: 45px;
+  height: 45px;
+  right: 10px; 
+  z-index: 99; 
+  border: none; 
+  outline: none; 
+  background-color:  #0080ff;
+  color: white; 
+  cursor: pointer; 
+  padding: 3px; 
+  border-radius: 50%; 
+  font-size: 32px; 
+  font-weight: bold;
+  padding-bottom:40px;
+  padding-top: 0px;
+}
+
+#myBtn:hover {
+  background-color: #555; 
+}
+
+
+
     </style>
 </head>
 
@@ -1018,70 +1047,78 @@
                 
                 
                 
-                <form action="/test" method="post">
-                <div class="row text-center" id="header_header">
-                    <div class="col-12" id="modi">
-                        <div class="row" id="name">
-                            <div class="col-12 col-md-4 content"><strong>아이디</strong> </div>
-                            <div class="col-12 col-md-8 modify content " id="id">
-                                아이디입니다
-                            </div>
-                        </div>
-                        <div class="row "  id="pw" >
-                            <div class="col-12 col-md-4 pw content" style="display:none;"><strong>비밀번호</strong> </div>
-                            <div class="col-12 col-md-8 modify content pw" style="display:none;">
-                                비밀입니다
-                            </div>
-                        </div>
-                        <div class="row" id="email">
-                            <div class="col-12 col-md-4 content"><strong>이메일</strong> </div>
-                            <div class="col-12 col-md-8 content">
-                                sefdswe@wadsaer.wer
-                            </div>
-                        </div>
-                        <div class="row" id="joinday">
-                            <div class="col-12 col-md-4 content"><strong>가입일</strong> </div>
-                            <div class="col-12 col-md-8 content">
-                                2022/05/19
-                            </div>
-                        </div>
-                        <div class="row" id="joinday">
-                            <div class="col-12 col-md-4 check" style="display:none;"><strong>비밀번호 확인</strong> </div>
-                            <div class="col-12 col-md-8 check" style="display:none;">
-                                <input type="text" placeholder="비밀번호를 입력하세요" id="pwtext">
+           			<form action="/test" method="post">
+                        <div class="row text-center" id="header_header">
+                            <div class="col-12" id="modi">
+                                <div class="row" id="name">
+                                    <div class="col-12 col-md-4 content"><strong>아이디</strong> </div>
+                                    <div class="col-12 col-md-8 modify content " id="id">
+                                       ${loginID }
+                                    </div>
+                                </div>
+                                <div class="row "  id="pw" >
+                                    <div class="col-12 col-md-4 pw content" style="display:none;"><strong>비밀번호</strong> </div>
+                                    <div class="col-12 col-md-8 modify content pw" style="display:none;">
+                                        비밀입니다
+                                    </div>
+                                </div>
+                                <div class="row" id="email">
+                                    <div class="col-12 col-md-4 content"><strong>이메일</strong> </div>
+                                    <div class="col-12 col-md-8 content">
+                                        ${loginEmail }
+                                    </div>
+                                </div>
+                                <div class="row" id="joinday">
+                                    <div class="col-12 col-md-4 content"><strong>가입일</strong> </div>
+                                    <div class="col-12 col-md-8 content">
+                                        ${loginJoinDate } 
+                                    </div>
+                                </div>
+                                <div class="row" id="joinday">
+                                    <div class="col-12 col-md-4 check" style="display:none;"><strong>비밀번호 확인</strong> </div>
+                                    <div class="col-12 col-md-8 check" style="display:none;">
+                                        <input type="text" placeholder="비밀번호를 입력하세요" id="pwtext">
+                                        
+                                    </div>
+                                </div>
+                                    <div class="row btn" id="btn">
+                                        <div class="col-12 text-center" >
+                                        <input type="button" class="btn btn-primary" value="수정하기" id="modify">
+                                        <button class="btn btn-primary " id="ok" style="display:none;">완료</button>
+                                        <button type="button" class="btn btn-primary check " id="checkpw" style="display:none;">확인</button>
+                                        <input type="button" class="btn btn-primary " value="취소" id="back" style="display:none;">
+                                        
+                                    </div>
+                                </div>
+                                
                                 
                             </div>
-                        </div>
-                            <div class="row btn" id="btn">
-                                <div class="col-12 text-center" >
-                                <input type="button" class="btn btn-primary" value="수정하기" id="modify">
-                                <button class="btn btn-primary " id="ok" style="display:none;">완료</button>
-                                <button type="button" class="btn btn-primary check " id="checkpw" style="display:none;">확인</button>
-                                <input type="button" class="btn btn-primary " value="취소" id="back" style="display:none;">
-                                
-                            </div>
-                        </div>
-                        
-                        
+                    
                     </div>
-            
-            </div>
-            </form>
-            
+                    </form>
+            			
+       
             
             
            
           </div>
 
     </div>
+    
+     <!--top 버튼-->
+    <button onclick="topFunction()" id="myBtn" title="Go to top">↑</button>
     <!-------------------------------------------------------------------------------------------------------------------Container Main end-->
 
 
 
 
     <script>
+    
+    
   //계정관리
-
+	
+  
+  //컨텐츠 숨김 나타냄
     $("#modify").on("click",function(){
         $(".content").css("display","none"); //모든 컨텐츠
         $("#back").css("display","inline"); //취소버튼
@@ -1256,6 +1293,29 @@
 			})
 		});
 	});
+	
+	
+	//top 버튼
+
+	mybutton = document.getElementById("myBtn");
+
+	window.onscroll = function() {scrollFunction()};
+
+	function scrollFunction() {
+	  if (document.body.scrollTop > 60 || document.documentElement.scrollTop > 60) {
+	    mybutton.style.display = "block";
+	  } else {
+	    mybutton.style.display = "none";
+	  }
+	}
+
+
+	function topFunction() {
+	  document.body.scrollTop = 0; 
+	  document.documentElement.scrollTop = 0; 
+	}
+
+	
 	
 </script>
 </body>

@@ -431,13 +431,20 @@
   background-color: #555; 
 }
 
+.comuview{
+       	color:rgb(0, 0, 0);
+       }
+.comuview:hover{
+       color:#0080ff;
+       }
+
     </style>
 </head>
 
 <body id="body-pd">
     <header class="header" id="header">
         <div class="header_toggle"><i class='bx bx-menu' id="header-toggle"></i></div>
-        <div>여행 커뮤니티</div>
+        <div><a href="/board/communityMain.jsp" class="comuview"> 여행 커뮤니티</a></div>
         <div>
             <a href="#" class="login"  data-bs-toggle="modal" data-bs-target="#exampleModal">login</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
         	<a href="/signup.jsp" class="join">join</a>
@@ -445,7 +452,7 @@
     </header>
     <ul class="nav nav2">
        <li class="nav-item">
-            <a class="nav-link nav-link2 "  href="/board/boardMain.jsp" id="page">자유게시판</a>
+            <a class="nav-link nav-link2 "  href="/board/boardMain.jsp">자유게시판</a>
         </li>
         <li class="nav-item">
             <a class="nav-link nav-link2" href="/board/gallery.jsp">여행후기</a>
@@ -454,7 +461,7 @@
             <a class="nav-link nav-link2" href="/board/jobMain.jsp">구인구직</a>
         </li>
         <li class="nav-item">
-            <a class="nav-link nav-link2" href="/board/foodMain.jsp">맛집</a>
+            <a class="nav-link nav-link2" href="/board/foodMain.jsp" id="page">맛집</a>
         </li>
         <li class="nav-item">
             <a class="nav-link nav-link2" href="/board/stayreview.jsp">숙소리뷰</a>

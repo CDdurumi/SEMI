@@ -2,7 +2,6 @@ package controllers;
 
 import java.io.IOException;
 import java.io.PrintWriter;
-import java.util.List;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -12,7 +11,6 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import com.google.gson.Gson;
-import com.google.gson.JsonNull;
 
 import dao.MemberDAO;
 import dto.MemberDTO;
@@ -48,7 +46,7 @@ public class MemberController extends HttpServlet {
 				System.out.println("들어온 이메일 주소 : "+email);
 				
 				
-				boolean result = dao.isIdExist(email);
+				boolean result = dao.isEmailExist(email);
 				PrintWriter pw = response.getWriter();
 				pw.append(g.toJson(result));
 				System.out.println(result);
@@ -74,6 +72,7 @@ public class MemberController extends HttpServlet {
 		MemberDTO dto =new MemberDTO();
 		Gson g= new Gson();
 		request.setCharacterEncoding("UTF-8");//post
+		System.out.println(uri);
 		try {
 			if(uri.equals("/signup.member")) {
 				String id = request.getParameter("id");
@@ -110,7 +109,7 @@ public class MemberController extends HttpServlet {
 					HttpSession session = request.getSession();
 					session.setAttribute("loginID",dto.getId());
 					session.setAttribute("loginEmail", dto.getEmail());
-					
+					session.setAttribute("loginJoinDate",dto.getFormdDate());
 					//request.setAttribute("userList", list); 유저정보 담아놓은거 
 					
 					//response.sendRedirect("/index.jsp");
@@ -122,6 +121,8 @@ public class MemberController extends HttpServlet {
 				
 				
 				
+			}else if(uri.equals("/modified.member")){
+				 //mypage 계정 수정 
 			}
 		}catch (Exception e) {
 			response.sendRedirect("errol.html");
