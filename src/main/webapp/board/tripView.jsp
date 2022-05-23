@@ -447,6 +447,34 @@
 .card-details span:hover{
     opacity:1;
 }
+
+/*--top버튼----------------------------------------------------------------*/
+
+#myBtn {
+  display: none; 
+  position: fixed; 
+  bottom: 12px;
+  width: 45px;
+  height: 45px;
+  right: 10px; 
+  z-index: 99; 
+  border: none; 
+  outline: none; 
+  background-color:  #0080ff;
+  color: white; 
+  cursor: pointer; 
+  padding: 3px; 
+  border-radius: 50%; 
+  font-size: 32px; 
+  font-weight: bold;
+  padding-bottom:40px;
+  padding-top: 0px;
+}
+
+
+
+
+
     </style>
 </head>
 
@@ -674,6 +702,9 @@
 </div>
         <div class="row dummy"></div>
     </div>
+    
+     <!--top 버튼-->
+    <button onclick="topFunction()" id="myBtn" title="Go to top">↑</button>
     <!--Container Main end-->
 
 
@@ -827,6 +858,27 @@
 			})
 		});
 	});
+	
+	//top 버튼
+
+	mybutton = document.getElementById("myBtn");
+
+	window.onscroll = function() {scrollFunction()};
+
+	function scrollFunction() {
+	  if (document.body.scrollTop > 60 || document.documentElement.scrollTop > 60) {
+	    mybutton.style.display = "block";
+	  } else {
+	    mybutton.style.display = "none";
+	  }
+	}
+
+
+	function topFunction() {
+	  document.body.scrollTop = 0; 
+	  document.documentElement.scrollTop = 0; 
+	}
+
 	
 </script>
 </body>
