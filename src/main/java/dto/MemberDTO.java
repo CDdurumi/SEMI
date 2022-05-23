@@ -2,6 +2,7 @@ package dto;
 
 import java.sql.Date;
 import java.sql.Timestamp;
+import java.text.SimpleDateFormat;
 
 public class MemberDTO {
 	public MemberDTO(String id, String pw, String email, Timestamp join_date, String information) {
@@ -52,4 +53,10 @@ public class MemberDTO {
 	public void setInformation(String information) {
 		this.information = information;
 	}
+	//날짜 format
+		public String getFormdDate() {
+			SimpleDateFormat sdf = new SimpleDateFormat("YYYY년 MM월 dd일 ");
+			return sdf.format(this.join_date);
+		}
+	
 }

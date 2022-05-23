@@ -53,7 +53,7 @@
    
     }
     
-     body, header, .mainback {
+      body, header, .mainback {
         background-image: url('/imgsrc/mainthem.jpg');
         background-repeat: no-repeat;
         background-attachment: fixed;
