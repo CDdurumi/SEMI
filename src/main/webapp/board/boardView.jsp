@@ -68,7 +68,7 @@
             padding: 0 1rem;
             font-family: var(--body-font);
             font-size: var(--normal-font-size);
-            transition: .5s
+            transition: .5s;
         }
 
         a {
@@ -491,9 +491,118 @@
 #myBtn:hover {
   background-color: #555; 
 }
-        
-        
+               
     </style>
+
+
+
+
+<!-- 화면 로딩 시 ------------------------------------------------------------------- -->
+    <script>
+	    let page = 1;  //페이징과 같은 방식이라고 생각하면 된다.
+
+    	$(function(){
+    	     getList(page);
+    	     page++;
+//     	     console.log(page);
+    	})
+    
+    	$(window).scroll(function(){   //스크롤이 최하단 으로 내려가면 리스트를 조회하고 page를 증가시킨다.
+     		if($(window).scrollTop() >= $(document).height() - $(window).height()){
+				getList(page);
+          	 	page++;   
+//           	 	console.log(page);
+    	 	} 
+		});
+
+	    
+	    function getList(pape){
+	    	
+	    	$.ajax({
+	    		url : '/list.reply',
+	            type : 'POST',
+	            data : {page : page, parnet_seq : '${dto.all_board_seq}'},
+	            dataType : 'json'
+
+	    	}).done(function(resp){
+// 				console.log(resp)
+				if(${totalPage}<pape){
+					alert("마지막 페이지 입니다.");
+				}else{
+					
+					for(let i = 0; i < resp.length; i++){
+						
+		 	            let row1 = $("<div>");
+		 	            row1.attr("class","row wrap");
+		 	            let col1 = $("<div>");
+		 	            col1.attr("class","col-12 wrap");
+		 	            let row2 = $("<div>");
+		 	            row2.attr("class","row pt-4 m-0");
+		 	            // 작성자 이름 
+		 	            let col2 = $("<div>");
+		 	            let rowDiv = $("<div>");
+		 	            col2.attr("class","col-3");
+		 	            col2.text(resp[i].id);
+	
+		 	            //작성날짜
+		 	            let col3 = $("<div>");
+		 	            col3.attr("class","col-3");    
+		 	            col3.text(resp[i].write_date);    
+		 	            let col4=$("<div>");
+		 	            col4.attr("class","col-6");
+		 	            col4.attr("style","text-align:right;");
+		 	            let row3 =$("<div>");
+		 	            row3.attr("class","row message border-bottom border-2 m-0");   
+		 	            //댓글내용
+		 	            let col5 =$("<div>");
+		 	            col5.attr("class","col-12");
+		 	            col5.text(resp[i].contents);
+	
+		 	            
+		 	            
+		//	             이부분 고쳐야함!
+		 				let my_id =col2.text();
+		 	             if(my_id =='${loginID}'){
+		 	            let btn1 = $("<button>");
+		 	                btn1.text("수정");
+		 	                btn1.attr("class","btn btn-outline-primary ");
+		 	                btn1.attr("type","submit");
+		 	            let btn2 = $("<button>");
+		 	                btn2.text("삭제");
+		 	                btn2.attr("class","btn btn-outline-primary ");
+		 	                btn2.attr("type","submit");
+			                
+		 	                col4.append(btn1);
+		 	                col4.append(btn2);
+		 	             }
+			                
+		 	            row1.hide();
+		 	            row1.fadeIn(2500);
+
+		 	            $("#dummy").append(row1);
+		 	            row1.append(col1);
+		 	            col1.append(row2);
+		 	            row2.append(col2);
+		 	            row2.append(col3);
+		 	            row2.append(col4);
+		 	            col1.append(row3);
+		 	            row3.append(col5);
+						
+						
+					}	    		
+					
+				}
+	    		
+
+	    	})
+	    		
+	    }
+
+	    		
+    </script>
+    
+    
+    
 </head>
 
 <body id="body-pd">
@@ -667,72 +776,68 @@
         		url : "/chat.board",
         		type : "post",
         		data : {parent_seq:parent_seq, chatContents:chatContents}
+        	}).done(function(resp){
+//         		$("#chatContents").val("");
+//         		$("#chatContents").focus();
+        		location.reload();
         	})
-        	
-        	$("#chatContents").val("");
-        	$("#chatContents").focus();
-        	
-        	
-        	
-            let row1 = $("<div>");
-            row1.attr("class","row wrap");
-            let col1 = $("<div>");
-            col1.attr("class","col-12 wrap");
-            let row2 = $("<div>");
-            row2.attr("class","row pt-4 m-0");
-            // 작성자 이름 
-            let col2 = $("<div>");
-            let rowDiv = $("<div>");
-            col2.attr("class","col-3");
-            col2.text("유자빵");
 
-            //작성날짜
-            let col3 = $("<div>");
-            col3.attr("class","col-3");    
-            col3.text("2022/05/13");    
-            let col4=$("<div>");
-            col4.attr("class","col-6");
-            col4.attr("style","text-align:right;");
-            let row3 =$("<div>");
-            row3.attr("class","row message border-bottom border-2 m-0");   
-            //댓글내용
-            let col5 =$("<div>");
-            col5.attr("class","col-12");
-            col5.text("댓글내용입니다~");
+        	
+        	
+//             let row1 = $("<div>");
+//             row1.attr("class","row wrap");
+//             let col1 = $("<div>");
+//             col1.attr("class","col-12 wrap");
+//             let row2 = $("<div>");
+//             row2.attr("class","row pt-4 m-0");
+//             // 작성자 이름 
+//             let col2 = $("<div>");
+//             let rowDiv = $("<div>");
+//             col2.attr("class","col-3");
+//             col2.text("유자빵");
 
-//             이부분 고쳐야함!
-			let my_id =col2.text();
-             if(my_id =='${loginID}'){
-            let btn1 = $("<button>");
-                btn1.text("수정");
-                btn1.attr("class","btn btn-outline-primary ");
-                btn1.attr("type","submit");
-            let btn2 = $("<button>");
-                btn2.text("삭제");
-                btn2.attr("class","btn btn-outline-primary ");
-                btn2.attr("type","submit");
+//             //작성날짜
+//             let col3 = $("<div>");
+//             col3.attr("class","col-3");    
+//             col3.text("2022/05/13");    
+//             let col4=$("<div>");
+//             col4.attr("class","col-6");
+//             col4.attr("style","text-align:right;");
+//             let row3 =$("<div>");
+//             row3.attr("class","row message border-bottom border-2 m-0");   
+//             //댓글내용
+//             let col5 =$("<div>");
+//             col5.attr("class","col-12");
+//             col5.text("댓글내용입니다~");
+
+// //             이부분 고쳐야함!
+// 			let my_id =col2.text();
+//              if(my_id =='${loginID}'){
+//             let btn1 = $("<button>");
+//                 btn1.text("수정");
+//                 btn1.attr("class","btn btn-outline-primary ");
+//                 btn1.attr("type","submit");
+//             let btn2 = $("<button>");
+//                 btn2.text("삭제");
+//                 btn2.attr("class","btn btn-outline-primary ");
+//                 btn2.attr("type","submit");
                 
-                col4.append(btn1);
-                col4.append(btn2);
-             }
+//                 col4.append(btn1);
+//                 col4.append(btn2);
+//              }
                 
-            $("#dummy").append(row1);
-            row1.append(col1);
-            col1.append(row2);
-            row2.append(col2);
-            row2.append(col3);
-            row2.append(col4);
-            col1.append(row3);
-            row3.append(col5);
-            
-           
-
+//             $("#dummy").append(row1);
+//             row1.append(col1);
+//             col1.append(row2);
+//             row2.append(col2);
+//             row2.append(col3);
+//             row2.append(col4);
+//             col1.append(row3);
+//             row3.append(col5);
 
         });
       
-        
     </script>
-    
     
         <div class="row dummy"></div>
     </div>

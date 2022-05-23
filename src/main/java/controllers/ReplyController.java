@@ -2,6 +2,7 @@ package controllers;
 
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.List;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -10,8 +11,11 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import com.google.gson.Gson;
+import com.google.gson.JsonArray;
+import com.google.gson.JsonObject;
 
 import dao.ReplyDAO;
+import dto.ReplyDTO;
 
 
 @WebServlet("*.reply")
@@ -40,7 +44,17 @@ public class ReplyController extends HttpServlet {
 				PrintWriter pw = response.getWriter();
 				pw.append(g.toJson(result));
 				
+				
+			}else if(uri.equals("/list.reply")) {//댓글 리스트
+				int capge = Integer.parseInt(request.getParameter("page"));
+				List<ReplyDTO> list = dao.selectByPage(capge);//해당 페이지의 댓글들 
+				
+				PrintWriter pw = response.getWriter();
+				
+				pw.append(g.toJson(list));
 			}
+			
+			
 		}catch(Exception e) {
 			e.printStackTrace();
 			response.sendRedirect("error.jsp");
