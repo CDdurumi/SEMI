@@ -122,18 +122,7 @@ public class MemberController extends HttpServlet {
 				
 				
 			}else if(uri.equals("/modified.member")){
-				
-//				CoffeeDTO dto = new CoffeeDTO(1005,"Americano",3000,"Y");
-//				PrintWriter pw = response.getWriter();
-//				pw.append(g.toJson(dto));
-				
-				System.out.println("유저 정보 가져오기");
-				String loginID = (String)(request.getSession().getAttribute("loginID"));
-				//유저 정보 가져오기
-				//dto = dao.getUser(loginID);
-				PrintWriter pw = response.getWriter();
-				pw.append(g.toJson(dto));
-				
+				 //mypage 계정 수정 
 			}
 		}catch (Exception e) {
 			response.sendRedirect("errol.html");
