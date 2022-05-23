@@ -649,43 +649,68 @@
                 <button class="btn btn-primary h-100 " id="btn" type="submit">등록</button>
             </div>
         </div>
-        <div class="row dummy"></div>
+        <div class="row dummy" id="dummy"></div>
         <!--         달린 댓글 반복문  -->
-        <div class="row wrap">
-        <div class="col-12 wrap">
-            <div class="row border-top border-1 pt-4 m-0" >
-            <div class="col-3 ">유자빵</div>
-            <div class="col-3 ">2022/05/13</div>
-            <div class="col-6 " style="text-align: right;">
-                <button class="btn btn-primary " type="submit">수정</button>
-                <button class="btn btn-primary " type="submit">삭제</button>
-            </div>
-           
-        </div>
-        <div class="row message border-bottom border-2 m-0">
-            <div class="col-12 ">버튼 그냥 기본으로 넣어봤습니다아아ㅏ </div>
-        </div>
-    </div>
-    </div>
+        <script>
+        $("#btn").on("click",function(){
+            
+            let row1 = $("<div>");
+            row1.attr("class","row wrap");
+            let col1 = $("<div>");
+            col1.attr("class","col-12 wrap");
+            let row2 = $("<div>");
+            row2.attr("class","row pt-4 m-0");
+            // 작성자 이름 
+            let col2 = $("<div>");
+            let rowDiv = $("<div>");
+            col2.attr("class","col-3");
+            col2.text("유자빵");
+
+            //작성날짜
+            let col3 = $("<div>");
+            col3.attr("class","col-3");    
+            col3.text("2022/05/13");    
+            let col4=$("<div>");
+            col4.attr("class","col-6");
+            col4.attr("style","text-align:right;");
+            let row3 =$("<div>");
+            row3.attr("class","row message border-bottom border-2 m-0");   
+            //댓글내용
+            let col5 =$("<div>");
+            col5.attr("class","col-12");
+            col5.text("댓글내용입니다~");
+
+//             이부분 고쳐야함!
+             if(${loginID}){
+            let btn1 = $("<button>");
+                btn1.text("수정");
+                btn1.attr("class","btn btn-outline-primary ");
+                btn1.attr("type","submit");
+            let btn2 = $("<button>");
+                btn2.text("삭제");
+                btn2.attr("class","btn btn-outline-primary ");
+                btn2.attr("type","submit");
+             }
+                
+            $("#dummy").append(row1);
+            row1.append(col1);
+            col1.append(row2);
+            row2.append(col2);
+            row2.append(col3);
+            row2.append(col4);
+            col1.append(row3);
+            row3.append(col5);
+            col4.append(btn1);
+            col4.append(btn2);
+
+
+
+        });
+      
+        
+    </script>
     
-<!--     밑에서부터 지우면 됩니다 -->
     
-    <div class="row wrap">
-        <div class="col-12 wrap">
-        <div class="row border-top border-1 pt-4 m-0" >
-            <div class="col-3 ">유자빵</div>
-            <div class="col-3 ">2022/05/13</div>
-            <div class="col-6 " style="text-align: right;">
-                <button class="btn btn-primary " type="submit">수정</button>
-                <button class="btn btn-primary " type="submit">삭제</button>
-            </div>
-           
-        </div>
-        <div class="row message border-bottom border-2 m-0">
-            <div class="col-12 ">버튼 그냥 기본으로 넣어봤습니다아아ㅏ </div>
-        </div>
-    </div>
-</div>
         <div class="row dummy"></div>
     </div>
     
