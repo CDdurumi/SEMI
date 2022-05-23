@@ -115,6 +115,11 @@ public class BoardController extends HttpServlet {
 					request.setAttribute("isBoardGood", dao.isBoardGood(seq, id));//해당 게시글에 좋아요 했는지 정보//해당 게시글에 찜 했는지 정보
 				}
 
+				
+				int totalPage = replyDao.getTotalPage();//댓글 총 페이지 수
+				request.setAttribute("totalPage", totalPage);
+				
+				
 				request.getRequestDispatcher("/board/boardView.jsp").forward(request, response);//작성글 페이지 전환
 
 			}else if(uri.equals("/delete.board")) {//게시글 삭제 시				
