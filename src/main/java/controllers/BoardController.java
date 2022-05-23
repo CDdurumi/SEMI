@@ -20,8 +20,10 @@ import dao.BoardDAO;
 import dao.FilesDAO;
 import dao.GoodDAO;
 import dao.JjimDAO;
+import dao.ReplyDAO;
 import dto.BoardDTO;
 import dto.FilesDTO;
+import dto.ReplyDTO;
 
 @WebServlet("*.board")
 public class BoardController extends HttpServlet {
@@ -35,6 +37,7 @@ public class BoardController extends HttpServlet {
 		FilesDAO filesDAO = FilesDAO.getInstance();
 		JjimDAO jjimDao = JjimDAO.getInstance();
 		GoodDAO goodDao = GoodDAO.getInstance();
+		ReplyDAO replyDao = ReplyDAO.getInstance();
 		
 		String uri = request.getRequestURI();
 		try {
@@ -124,9 +127,13 @@ public class BoardController extends HttpServlet {
 				
 //				response.sendRedirect("/detailView.board?seq="+seq);//작성글 출력
 			}else if(uri.equals("/chat.board")) {//댓글 등록 시(작성 글에서 댓글 등록 클릭 시 여기로)
-
+				
+				String parent_seq = request.getParameter("seq"); //해당 게시글 고유seq
+				String id = (String) request.getSession().getAttribute("loginID");
+				String contents = request.getParameter("chatContents");
+				
+				replyDao.insert(new ReplyDTO(null, id, contents, null, parent_seq));
 //				response.sendRedirect("/detailView.board?seq="+parent_seq);//작성글 출력
-			
 				
 			}else if(uri.equals("/goodClick.board")) {//좋아요 클릭 시
 				//테스트용 하드코딩
