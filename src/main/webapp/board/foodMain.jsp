@@ -445,7 +445,7 @@
     </header>
     <ul class="nav nav2">
        <li class="nav-item">
-            <a class="nav-link nav-link2 "  href="/board/boardMain.jsp" id="page">자유게시판</a>
+            <a class="nav-link nav-link2 "  href="/board/boardMain.jsp">자유게시판</a>
         </li>
         <li class="nav-item">
             <a class="nav-link nav-link2" href="/board/gallery.jsp">여행후기</a>
@@ -454,7 +454,7 @@
             <a class="nav-link nav-link2" href="/board/jobMain.jsp">구인구직</a>
         </li>
         <li class="nav-item">
-            <a class="nav-link nav-link2" href="/board/foodMain.jsp">맛집</a>
+            <a class="nav-link nav-link2" href="/board/foodMain.jsp" id="page">맛집</a>
         </li>
         <li class="nav-item">
             <a class="nav-link nav-link2" href="/board/stayreview.jsp">숙소리뷰</a>
