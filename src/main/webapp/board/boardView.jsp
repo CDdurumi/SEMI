@@ -769,7 +769,7 @@
         </div>
         <div class="row dummy" id="dummy"></div>
         
-        <!--         달린 댓글 반복문  -->
+        <!-- 댓글  -->
         <script>
         //댓글 등록 버튼
         $("#btn").on("click",function(){
@@ -790,59 +790,6 @@
 //         		$("#chatContents").focus();
         		location.reload();
         	})
-
-        	
-        	
-//             let row1 = $("<div>");
-//             row1.attr("class","row wrap");
-//             let col1 = $("<div>");
-//             col1.attr("class","col-12 wrap");
-//             let row2 = $("<div>");
-//             row2.attr("class","row pt-4 m-0");
-//             // 작성자 이름 
-//             let col2 = $("<div>");
-//             let rowDiv = $("<div>");
-//             col2.attr("class","col-3");
-//             col2.text("유자빵");
-
-//             //작성날짜
-//             let col3 = $("<div>");
-//             col3.attr("class","col-3");    
-//             col3.text("2022/05/13");    
-//             let col4=$("<div>");
-//             col4.attr("class","col-6");
-//             col4.attr("style","text-align:right;");
-//             let row3 =$("<div>");
-//             row3.attr("class","row message border-bottom border-2 m-0");   
-//             //댓글내용
-//             let col5 =$("<div>");
-//             col5.attr("class","col-12");
-//             col5.text("댓글내용입니다~");
-
-// //             이부분 고쳐야함!
-// 			let my_id =col2.text();
-//              if(my_id =='${loginID}'){
-//             let btn1 = $("<button>");
-//                 btn1.text("수정");
-//                 btn1.attr("class","btn btn-outline-primary ");
-//                 btn1.attr("type","submit");
-//             let btn2 = $("<button>");
-//                 btn2.text("삭제");
-//                 btn2.attr("class","btn btn-outline-primary ");
-//                 btn2.attr("type","submit");
-                
-//                 col4.append(btn1);
-//                 col4.append(btn2);
-//              }
-                
-//             $("#dummy").append(row1);
-//             row1.append(col1);
-//             col1.append(row2);
-//             row2.append(col2);
-//             row2.append(col3);
-//             row2.append(col4);
-//             col1.append(row3);
-//             row3.append(col5);
 
         });
       
