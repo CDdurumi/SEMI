@@ -652,17 +652,37 @@
 
         <div class="row msg " >
             <div class="col-10 p-0">
-         	   <input type="text" class="w-100 h-100 border border-2 rounded">
+         	   <textarea class="w-100 h-100 border border-2 rounded" id="chatContents"></textarea>
             </div>
             <div class="col-2  " style="text-align: center;">
-                <button class="btn btn-primary h-100 " id="btn" type="submit">등록</button>
+                <button class="btn btn-primary h-100 " id="btn" type="button">등록</button>
             </div>
         </div>
         <div class="row dummy" id="dummy"></div>
+        
         <!--         달린 댓글 반복문  -->
         <script>
+        //댓글 등록 버튼
         $("#btn").on("click",function(){
-            
+	        if(${loginID == null}){
+	        	alert("로그인이 필요합니다.");
+	        	return false;
+	        }
+        	
+        	let parent_seq = "${dto.all_board_seq}";
+        	let chatContents = $("#chatContents").val();
+        	//댓글 테이블 삽입
+        	$.ajax({
+        		url : "/chat.board",
+        		type : "post",
+        		data : {parent_seq:parent_seq, chatContents:chatContents}
+        	})
+        	
+        	$("#chatContents").val("");
+        	$("#chatContents").focus();
+        	
+        	
+        	
             let row1 = $("<div>");
             row1.attr("class","row wrap");
             let col1 = $("<div>");
