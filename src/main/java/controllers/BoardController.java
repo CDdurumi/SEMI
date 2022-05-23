@@ -133,7 +133,10 @@ public class BoardController extends HttpServlet {
 				String contents = request.getParameter("chatContents");
 				
 				replyDao.insert(new ReplyDTO(null, id, contents, null, parent_seq));
-//				response.sendRedirect("/detailView.board?seq="+parent_seq);//작성글 출력
+				response.sendRedirect("/detailView.board?seq="+parent_seq);//작성글 출력
+
+//				PrintWriter pw = response.getWriter();
+//				pw.append(g.toJson(result));
 				
 			}else if(uri.equals("/goodClick.board")) {//좋아요 클릭 시
 				//테스트용 하드코딩
