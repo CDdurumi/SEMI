@@ -379,7 +379,12 @@ $("#modal_loginBtn").on("click",function(){
                    <a href="#" class="nav_link"> <i class='bx bx-message-alt-detail nav_icon'></i> <span class="nav_name">쪽지</span> </a> 
                 </div>
             </div> 
-            <a href="/logout.member" class="nav_link"> <i class='bx bx-log-out nav_icon'></i> <span class="nav_name">로그아웃</span> </a>
+            <c:choose>
+				<c:when test="${loginID !=null}">
+					<a href="/logout.member" class="nav_link"> <i class='bx bx-log-out nav_icon'></i> <span class="nav_name">로그아웃</span> </a>	
+				</c:when>
+			</c:choose>
+            
         </nav>
     </div>
     <!--Container Main start-->

@@ -33,9 +33,9 @@ public class MemberController extends HttpServlet {
 		try {
 			if (uri.equals("/duplIDCheck.member")) {// 아이디 중복 확인
 				System.out.println("아이디 중복확인 수신확인");
-				String id = request.getParameter("id");
+				String nickname = request.getParameter("nickname");
 
-				boolean result = dao.isIdExist(id);
+				boolean result = dao.isNickNameExist(nickname);
 				PrintWriter pw = response.getWriter();
 				pw.append(g.toJson(result));
 				System.out.println(result);
@@ -75,19 +75,17 @@ public class MemberController extends HttpServlet {
 		System.out.println(uri);
 		try {
 			if(uri.equals("/signup.member")) {
-				String id = request.getParameter("id");
-				System.out.println(id);
+				String nickname = request.getParameter("nickname");
 				String pw = request.getParameter("pw");
-				System.out.println(pw);
 				pw = EncryptUtils.SHA512(pw);
 				String email = request.getParameter("email");
 				System.out.println(email);
 				String information = request.getParameter("info");
 				System.out.println(information);
-				int result = dao.insert(new MemberDTO(id,pw,email,null,information));
+				int result = dao.insert(new MemberDTO(nickname,pw,email,null,information));
 				
 				HttpSession session = request.getSession();
-				session.setAttribute("loginID", id);
+				session.setAttribute("loginID", nickname);
 					
 				
 				response.sendRedirect("/index.jsp");
@@ -98,8 +96,8 @@ public class MemberController extends HttpServlet {
 				System.out.println(pw);
 				pw = EncryptUtils.SHA512(pw);
 				
-				System.out.println("ID PW DB에서 체크");
-				boolean result = dao.isIdPwExist(email, pw);
+				System.out.println("EMAIL PW DB에서 체크");
+				boolean result = dao.isEmailPwExist(email, pw);
 				
 				if (result) {			
 					
