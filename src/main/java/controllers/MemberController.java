@@ -46,7 +46,7 @@ public class MemberController extends HttpServlet {
 				System.out.println("들어온 이메일 주소 : "+email);
 				
 				
-				boolean result = dao.isIdExist(email);
+				boolean result = dao.isEmailExist(email);
 				PrintWriter pw = response.getWriter();
 				pw.append(g.toJson(result));
 				System.out.println(result);
