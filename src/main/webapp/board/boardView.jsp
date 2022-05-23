@@ -681,7 +681,8 @@
             col5.text("댓글내용입니다~");
 
 //             이부분 고쳐야함!
-             if(${loginID}){
+			let my_id =col2.text();
+             if(my_id =='${loginID}'){
             let btn1 = $("<button>");
                 btn1.text("수정");
                 btn1.attr("class","btn btn-outline-primary ");
@@ -690,6 +691,9 @@
                 btn2.text("삭제");
                 btn2.attr("class","btn btn-outline-primary ");
                 btn2.attr("type","submit");
+                
+                col4.append(btn1);
+                col4.append(btn2);
              }
                 
             $("#dummy").append(row1);
@@ -700,9 +704,8 @@
             row2.append(col4);
             col1.append(row3);
             row3.append(col5);
-            col4.append(btn1);
-            col4.append(btn2);
-
+            
+           
 
 
         });
