@@ -1018,56 +1018,57 @@
                 
                 
                 
-                <form action="/test" method="post">
-                <div class="row text-center" id="header_header">
-                    <div class="col-12" id="modi">
-                        <div class="row" id="name">
-                            <div class="col-12 col-md-4 content"><strong>아이디</strong> </div>
-                            <div class="col-12 col-md-8 modify content " id="id">
-                                아이디입니다
-                            </div>
-                        </div>
-                        <div class="row "  id="pw" >
-                            <div class="col-12 col-md-4 pw content" style="display:none;"><strong>비밀번호</strong> </div>
-                            <div class="col-12 col-md-8 modify content pw" style="display:none;">
-                                비밀입니다
-                            </div>
-                        </div>
-                        <div class="row" id="email">
-                            <div class="col-12 col-md-4 content"><strong>이메일</strong> </div>
-                            <div class="col-12 col-md-8 content">
-                                sefdswe@wadsaer.wer
-                            </div>
-                        </div>
-                        <div class="row" id="joinday">
-                            <div class="col-12 col-md-4 content"><strong>가입일</strong> </div>
-                            <div class="col-12 col-md-8 content">
-                                2022/05/19
-                            </div>
-                        </div>
-                        <div class="row" id="joinday">
-                            <div class="col-12 col-md-4 check" style="display:none;"><strong>비밀번호 확인</strong> </div>
-                            <div class="col-12 col-md-8 check" style="display:none;">
-                                <input type="text" placeholder="비밀번호를 입력하세요" id="pwtext">
+           			<form action="/test" method="post">
+                        <div class="row text-center" id="header_header">
+                            <div class="col-12" id="modi">
+                                <div class="row" id="name">
+                                    <div class="col-12 col-md-4 content"><strong>아이디</strong> </div>
+                                    <div class="col-12 col-md-8 modify content " id="id">
+                                       ${loginID }
+                                    </div>
+                                </div>
+                                <div class="row "  id="pw" >
+                                    <div class="col-12 col-md-4 pw content" style="display:none;"><strong>비밀번호</strong> </div>
+                                    <div class="col-12 col-md-8 modify content pw" style="display:none;">
+                                        비밀입니다
+                                    </div>
+                                </div>
+                                <div class="row" id="email">
+                                    <div class="col-12 col-md-4 content"><strong>이메일</strong> </div>
+                                    <div class="col-12 col-md-8 content">
+                                        ${loginEmail }
+                                    </div>
+                                </div>
+                                <div class="row" id="joinday">
+                                    <div class="col-12 col-md-4 content"><strong>가입일</strong> </div>
+                                    <div class="col-12 col-md-8 content">
+                                        ${loginJoinDate } 
+                                    </div>
+                                </div>
+                                <div class="row" id="joinday">
+                                    <div class="col-12 col-md-4 check" style="display:none;"><strong>비밀번호 확인</strong> </div>
+                                    <div class="col-12 col-md-8 check" style="display:none;">
+                                        <input type="text" placeholder="비밀번호를 입력하세요" id="pwtext">
+                                        
+                                    </div>
+                                </div>
+                                    <div class="row btn" id="btn">
+                                        <div class="col-12 text-center" >
+                                        <input type="button" class="btn btn-primary" value="수정하기" id="modify">
+                                        <button class="btn btn-primary " id="ok" style="display:none;">완료</button>
+                                        <button type="button" class="btn btn-primary check " id="checkpw" style="display:none;">확인</button>
+                                        <input type="button" class="btn btn-primary " value="취소" id="back" style="display:none;">
+                                        
+                                    </div>
+                                </div>
+                                
                                 
                             </div>
-                        </div>
-                            <div class="row btn" id="btn">
-                                <div class="col-12 text-center" >
-                                <input type="button" class="btn btn-primary" value="수정하기" id="modify">
-                                <button class="btn btn-primary " id="ok" style="display:none;">완료</button>
-                                <button type="button" class="btn btn-primary check " id="checkpw" style="display:none;">확인</button>
-                                <input type="button" class="btn btn-primary " value="취소" id="back" style="display:none;">
-                                
-                            </div>
-                        </div>
-                        
-                        
+                    
                     </div>
-            
-            </div>
-            </form>
-            
+                    </form>
+            			
+       
             
             
            
@@ -1080,8 +1081,12 @@
 
 
     <script>
+    
+    
   //계정관리
-
+	
+  
+  //컨텐츠 숨김 나타냄
     $("#modify").on("click",function(){
         $(".content").css("display","none"); //모든 컨텐츠
         $("#back").css("display","inline"); //취소버튼
