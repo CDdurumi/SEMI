@@ -467,15 +467,26 @@
 	
 		<div class="row " id="cont">
             <div class="col">
+            <div class="row signup_input">
+         		<div class ="col-8 input">
+                    <div class="card-details">
+                        <input type="text" id="email_input" placeholder="이메일" name="email">
+                        <i class="fa fa-envelope"></i>
+                    </div>
+         		</div>
+         		<div class ="col-4">
+         			<div id="email_check_text"></div>
+         		</div>
+         	</div>
          	<div class="row signup_input">
          		<div class ="col-8 input">
                     <div class="card-details">
-                        <input type="text" id="id_input" placeholder="아이디" name="id">
+                        <input type="text" id="nickname_input" placeholder="닉네임" name="nickname">
                         <i class="fa fa-user"></i>
                     </div>
          		</div>
          		<div class ="col-4">
-         			<div id ="id_check_text"></div>
+         			<div id ="nickname_check_text"></div>
          		</div>
          	</div>
          	<div class="row signup_input">
@@ -501,17 +512,7 @@
          			<div></div>
          		</div>
          	</div>
-         	<div class="row signup_input">
-         		<div class ="col-8 input">
-                    <div class="card-details">
-                        <input type="text" id="email_input" placeholder="이메일" name="email">
-                        <i class="fa fa-envelope"></i>
-                    </div>
-         		</div>
-         		<div class ="col-4">
-         			<div id="email_check_text"></div>
-         		</div>
-         	</div>
+         	
          	<div class="row">
          		<div class="col" id="acodian">
                     <div class="accordion" id="accordionExample">
@@ -556,8 +557,8 @@
          	</div>
          	<div class="row">
          		<div class="col-12">
-         			<label><input type="radio" name="info" value="Y" checked name="info">동의</label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-         			<label><input type="radio" name="info" value="N" name="info">거부</label>
+         			<label><input type="radio" name="info" value="Y" checked name="info" class="positiveBtn">동의</label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+         			<label><input type="radio" name="info" value="N" name="info" class="negativeBtn">거부</label>
          		</div>
          	</div>
          	<br>
@@ -579,26 +580,35 @@
 
 <script>
 	
+	$(".negativeBtn").on("click",function(){
+		$("#signin_btn").attr("disabled",true);
+			
+	})
+	$(".positiveBtn").on("click",function(){
+		$("#signin_btn").attr("disabled",false);
+			
+	})
+	
 	//회원가입 관련 id_input , password1_input ,password_input , email_input
 	
 	//아이디 중복확인
-	$("#id_input").on("input",function(){
+	$("#nickname_input").on("input",function(){
 			$.ajax({
 				url:"/duplIDCheck.member",
 				type:"get",
-				data:{id:$("#id_input").val()},
+				data:{id:$("#nickname_input").val()},
 				dataType:"json"
 			}).done(function(resp){
 				
 				if(resp==false){
 					console.log(resp);
-					$("#id_check_text").text("사용 가능한 ID입니다!");
-					$("#id_check_text").css({ color: "blue" });
+					$("#nickname_check_text").text("사용 가능한 닉네임입니다!");
+					$("#nickname_check_text").css({ color: "blue" });
 					
 				}else if(resp==true){
 					console.log(resp);
-					$("#id_check_text").text("이미 사용중인 ID입니다!");
-					$("#id_check_text").css({ color: "red" });			
+					$("#nickname_check_text").text("사용중인 닉네임입니다!");
+					$("#nickname_check_text").css({ color: "red" });			
 				}				
 			});
 		})

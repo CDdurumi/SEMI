@@ -115,6 +115,11 @@ public class BoardController extends HttpServlet {
 					request.setAttribute("isBoardGood", dao.isBoardGood(seq, id));//해당 게시글에 좋아요 했는지 정보//해당 게시글에 찜 했는지 정보
 				}
 
+				
+				int totalPage = replyDao.getTotalPage();//댓글 총 페이지 수
+				request.setAttribute("totalPage", totalPage);
+				
+				
 				request.getRequestDispatcher("/board/boardView.jsp").forward(request, response);//작성글 페이지 전환
 
 			}else if(uri.equals("/delete.board")) {//게시글 삭제 시				
@@ -126,14 +131,16 @@ public class BoardController extends HttpServlet {
 			}else if(uri.equals("/modity.board")) {//게시글 수정 시
 				
 //				response.sendRedirect("/detailView.board?seq="+seq);//작성글 출력
+				
+				
+				
 			}else if(uri.equals("/chat.board")) {//댓글 등록 시(작성 글에서 댓글 등록 클릭 시 여기로)
 				
-				String parent_seq = request.getParameter("seq"); //해당 게시글 고유seq
+				String parent_seq = request.getParameter("parent_seq"); //해당 게시글 고유seq
 				String id = (String) request.getSession().getAttribute("loginID");
 				String contents = request.getParameter("chatContents");
 				
 				replyDao.insert(new ReplyDTO(null, id, contents, null, parent_seq));
-				response.sendRedirect("/detailView.board?seq="+parent_seq);//작성글 출력
 
 //				PrintWriter pw = response.getWriter();
 //				pw.append(g.toJson(result));

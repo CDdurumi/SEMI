@@ -44,7 +44,7 @@ private Connection getConnection() throws Exception {
 		}
 	}
 	//ID 중복검사
-	public boolean isIdExist(String id) throws Exception {
+	public boolean isNickNameExist(String id) throws Exception {
 
 		String sql = "select * from member where id=?";
 		try (Connection con = this.getConnection(); PreparedStatement pstat = con.prepareStatement(sql);) {
@@ -68,11 +68,11 @@ private Connection getConnection() throws Exception {
 		}
 	}
 	//로그인시 id PW 검사 
-	public boolean isIdPwExist(String id, String pw) throws Exception {
+	public boolean isEmailPwExist(String email, String pw) throws Exception {
 
-		String sql = "select * from member where id = ? and pw =?";
+		String sql = "select * from member where email = ? and pw =?";
 		try (Connection con = this.getConnection(); PreparedStatement pstat = con.prepareStatement(sql);) {
-			pstat.setString(1, id);
+			pstat.setString(1, email);
 			pstat.setString(2, pw);
 			try (ResultSet rs = pstat.executeQuery()) {
 				return rs.next();
