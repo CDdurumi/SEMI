@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
          pageEncoding="UTF-8"%>
          <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-        
+
 <!DOCTYPE html>
 <html>
 
@@ -377,7 +377,7 @@
             text-align: center;
         }
         #board_menu{
-            height: 50px;
+            height: 30px;
         }
         #board_menu_text{
             font-size: 18px;
@@ -450,17 +450,14 @@
       <div><a href="/board/communityMain.jsp" class="comuview"> 여행 커뮤니티</a></div>
         <div>
            
-            <c:choose>
-				<c:when test="${loginID !=null}">
-						${loginID }님 안녕하세요 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-					<a href="/logout.member" class=""  >logout</a>					
-				</c:when>
+            
+				
 		
-				<c:otherwise>
+				
 					<a href="#" class="login" id="login"  data-bs-toggle="modal" data-bs-target="#exampleModal">login</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
           			 <a href="/signup.jsp" class="join">join</a>
-				</c:otherwise>
-			</c:choose>
+				
+			
         </div>
     </header>
     <ul class="nav nav2">
@@ -537,10 +534,8 @@
 </div>
     <!--Container Main start-->
     <div class="height-100 ">
-
-
         <div class="row " id="freemain">
-            
+
             <div class="col-12 col-md-6 editor">
                 <div class="row border border-2 rounded">
                     <div class="col-12 border-bottom hotboard_bottom text-center">에디터 추천</div>
@@ -599,7 +594,21 @@
             </div>
         </div>
 
-        <div class="row m-0" id="board_menu" ></div>
+
+<!---------------------검색창---------------->
+        <div class="col-12" id="searchbar" >
+            <nav class="navbar bg">
+                <div class="container-fluid">
+                  <a class="navbar-brand"> </a>
+                  <form class="d-flex" role="search">
+                    <input class="form-control me-2" type="search" placeholder="작성자를 입력하세요" aria-label="Search">
+                    <button class="btn btn-primary" type="submit">Search</button>
+                  </form>
+                </div>
+              </nav>
+            </div>
+
+         <div class="row m-0" id="board_menu" ></div> 
 
         <div class="row m-0 ">
             <div class="col-12  ">
@@ -685,7 +694,7 @@
         <span aria-hidden="true">&laquo;</span>
       </a>
     </li>
-    ${navi }
+    
     <li class="page-item">
       <a class="page-link" href="#" aria-label="Next">
         <span aria-hidden="true">&raquo;</span>
