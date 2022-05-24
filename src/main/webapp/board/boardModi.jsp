@@ -428,19 +428,19 @@
     </header>
     <ul class="nav nav2">
         <li class="nav-item">
-            <a class="nav-link nav-link2" id="page" href="#">자유게시판</a>
+            <a class="nav-link nav-link2" href="/boardMainView.board?cpage=1">자유게시판</a>
         </li>
         <li class="nav-item">
-            <a class="nav-link nav-link2" href="#">여행후기</a>
+            <a class="nav-link nav-link2" href="/galleryMain.board?cpage=1">여행후기</a>
         </li>
         <li class="nav-item">
-            <a class="nav-link nav-link2" href="#">구인구직</a>
+            <a class="nav-link nav-link2" href="/jobMain.board?cpage=1">구인구직</a>
         </li>
         <li class="nav-item">
-            <a class="nav-link nav-link2" href="#">맛집</a>
+            <a class="nav-link nav-link2" href="/foodMain.board?cpage=1">맛집</a>
         </li>
         <li class="nav-item">
-            <a class="nav-link nav-link2" href="#">숙소리뷰</a>
+            <a class="nav-link nav-link2" href="/houseMain.board?cpage=1">숙소리뷰</a>
         </li>
     </ul>
     <div class="l-navbar" id="nav-bar">
