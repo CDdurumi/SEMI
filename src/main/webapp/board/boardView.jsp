@@ -771,7 +771,7 @@
             </div>
             <div class="col-12" style="text-align: right; padding-top: 10px;padding-right: 100px;">
 <%--             	<c:if test="${loginID == dto.id}"> --%>
-	           	    <button class="btn btn-primary " type="button" id="boardModi">수정미완</button>
+	           	    <button class="btn btn-primary " type="button" id="boardModi">수정</button>
 	               	<button class="btn btn-primary " type="button" id="boardDel">삭제</button>
 <%--                	</c:if> --%>
             </div>
@@ -997,7 +997,7 @@
     //게시슬 수정
     $("#boardModi").on("click",function(){
     	
-    	location.href = "/modiPage.board?seq=${dto.all_board_seq}";
+    	location.href = "/modiPage.board?cpage=${cpage}&seq=${dto.all_board_seq}";
     	
     })
     

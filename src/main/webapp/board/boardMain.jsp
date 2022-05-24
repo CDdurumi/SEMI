@@ -437,7 +437,9 @@
 .comuview:hover{
        color:#0080ff;
        }
-
+.fa-thumbs-up{
+	color:#0080ff;
+}
     </style>
 </head>
 
@@ -539,73 +541,19 @@
                     <div class="row  freeboard_bottom">
                         <div class="col-12 ">
                             <div class="row freeboard_bottom ">
+                            <c:forEach var="i" items="${hotlist }">
                                 <div class="col-12 border border-2 rounded">
                                     <div class="row m-0">
-                                        <div class="col-9 col-md-9 m-0 free_title ellipsis"><span>글 제목</span></div>
+                                        <div class="col-9 col-md-9 m-0 free_title ellipsis"><span><a href="/detailView.board?cpage=${cpage}&seq=${i.all_board_seq}">${i.title }</a></span></div>
                                         <!-- ellipsis 밑에 forEach로 하니까 한줄만 추가했습니다.  -->
-                                        <div class="col-3 col-md-3 m-0 p-0">
-                                            <div class="row m-0 p-0">
-                                                <div class="col-12 m-0 p-0 text-center">추천 20</div>
-                                                <div class="col-12 m-0 p-0 text-center">댓글 5</div>
+                                        <div class="col-3 col-md-3">
+                                            <div class="row ">
+                                                <div class="col-12 m-0" style="text-align:right"> <i class="fa-solid fa-thumbs-up"></i>&nbsp;${i.like_count }</div>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
-                                <div class="col-12 border border-2 rounded">
-                                    <div class="row m-0">
-                                        <div class="col-9 col-md-9 m-0 free_title">글 제목</div>
-                                        <div class="col-3 col-md-3 m-0 p-0">
-                                            <div class="row m-0 p-0">
-                                                <div class="col-12 m-0 p-0 text-center">추천 20</div>
-                                                <div class="col-12 m-0 p-0 text-center">댓글 5</div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-12 border border-2 rounded">
-                                    <div class="row m-0">
-                                        <div class="col-9 col-md-9 m-0 free_title">글 제목</div>
-                                        <div class="col-3 col-md-3 m-0 p-0">
-                                            <div class="row m-0 p-0">
-                                                <div class="col-12 m-0 p-0 text-center">추천 20</div>
-                                                <div class="col-12 m-0 p-0 text-center">댓글 5</div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-12 border border-2 rounded">
-                                    <div class="row m-0">
-                                        <div class="col-9 col-md-9 m-0 free_title">글 제목</div>
-                                        <div class="col-3 col-md-3 m-0 p-0">
-                                            <div class="row m-0 p-0">
-                                                <div class="col-12 m-0 p-0 text-center">추천 20</div>
-                                                <div class="col-12 m-0 p-0 text-center">댓글 5</div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-12 border border-2 rounded">
-                                    <div class="row m-0">
-                                        <div class="col-9 col-md-9 m-0 free_title">글 제목</div>
-                                        <div class="col-3 col-md-3 m-0 p-0">
-                                            <div class="row m-0 p-0">
-                                                <div class="col-12 m-0 p-0 text-center">추천 20</div>
-                                                <div class="col-12 m-0 p-0 text-center">댓글 5</div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-12 border border-2 rounded">
-                                    <div class="row m-0">
-                                        <div class="col-9 col-md-9 m-0 free_title">글 제목</div>
-                                        <div class="col-3 col-md-3 m-0 p-0">
-                                            <div class="row m-0 p-0">
-                                                <div class="col-12 m-0 p-0 text-center">추천 20</div>
-                                                <div class="col-12 m-0 p-0 text-center">댓글 5</div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
+                                </c:forEach>
                             </div>
                         </div>
 
