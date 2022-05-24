@@ -545,11 +545,11 @@
                         //작성자
                         let col3 = $("<div>");
                         col3.attr("class","col-12 pt-4 "); 
-                        col3.text("resp[i].id");   
+                        col3.text(resp[i].id);   
                         //작성날짜
                         let col4 = $("<div>");
                         col4.attr("class","col-12 ");    
-                        col4.text("resp[i].write_date");
+                        col4.text(resp[i].write_date);
                         //버튼
                         let col5=$("<div>");
                         col5.attr("class","col-3 btnbtn pt-4");
@@ -557,10 +557,10 @@
                          //댓글내용
                          let col6 =$("<div>");
                         col6.attr("class","col-12 message border-bottom border-2 m-0");
-                        col6.text("resp[i].contents");    
+                        col6.text(resp[i].contents);    
                        //버튼
                        
-                       let my_id =col2.text();
+                       let my_id =col3.text();
 		  	             if(my_id =='${loginID}'){
                         let btn1 = $("<button>");
                             btn1.text("수정");
