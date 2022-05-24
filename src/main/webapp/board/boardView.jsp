@@ -272,6 +272,9 @@
 /*     outline:none; */
     border:none;
 }
+.icon{
+  color:#ffe69a;
+}
 .card-details i{
     position:absolute;
     left:10px;
@@ -428,6 +431,7 @@
            position:absolute;
            left: 9px;
            right: 9px;
+           display:inline-block;
        }
        /* */
        .wrap{
@@ -747,8 +751,10 @@
             <div> <a href="/index.jsp" class="nav_logo"> <i class='bx bx-layer nav_logo-icon'></i> <span class="nav_logo-name">쉼표
                         <br>- 일상의 쉼표를 찍다</span> </a>
                 <div class="nav_list">
-                    <a href="#" class="nav_link"> <i class='bx bx-wind nav_icon'></i> <span
-                            class="nav_name">날씨</span> </a>
+                    <a href="#" class="nav_link"> <i class='CurrIcon'></i> <span class="nav_name"><span class="weather">
+                    <span class="CurrTemp"></span>
+                    <span class="City"></span>
+                    </span></span> </a>
                     <a href="/board/cummityMain.jsp" class="nav_link active"> <i class='bx bx-message nav_icon'></i> <span
                             class="nav_name">커뮤니티</span> </a>
                     <a href="/board/editorReMain.jsp" class="nav_link"> <i class='bx bx-bus nav_icon'></i> <span class="nav_name">에디터추천</span>
@@ -805,14 +811,20 @@
                 <div class="row border-bottom border-2 rounded h-100" id="conMenu">
 <%--                     <div class="col-md-1 d-none d-md-block">${dto.all_board_seq}</div> --%>
                     <div class="col-12 col-md-12 ellipsis "  style="padding-left:15px" id="title">${dto.title} 제목제목</div>
-                    <div class="col-3 col-md-3 ellipsis " ><span style="width: 90%; ">${dto.id} 글쓴이</span></div>
-                    <div class="col-9 ">${dto.formdDate} 2022/02/02</div>
+                    <div class="col-2 col-md-2 ellipsis " ><span style="width: 90%; ">${dto.id} <i class="fa-solid fa-envelope icon"></i></span>
+                    </div>
+                    <div class="col-1 col-md-1  " >
+                    
+                    </div>
+                    <div class="col-8 ">${dto.formdDate}</div>
                     <div class="col-3 " style="padding-left:8px;">${dto.view_count} 조회</div>
-                    <div class="col-9 ">${dto.like_count} 좋아요</div>
+                    <div class="col-9 like">${dto.like_count} 좋아요</div>
                     <div class="col-6 filebox"  style="padding-left:8px;">첨부파일
-	                    <button type="button" class="btn btn-outline-primary filebtn">보기</button>
-	                    <div class="filelist text-center"  style="display:none;  padding-top:10px; padding-bottom: 10px; ">파일명<br>파일명</div>
+	                    <button type="button" class="btn btn-outline-primary btn-sm filebtn">보기</button>
+	                     
+	                    <div class="filelist text-center"  style="display:none;  padding-top:10px; padding-bottom: 10px; "></div>
  						 </div>
+ 					
  						<div class="col-12" id="dummy3" style="height: 10px;"></div>                     
                    
                 </div>
@@ -826,7 +838,7 @@
             </div>
             <div class="col-12" style="text-align: right; padding-top: 10px;padding-right: 100px;">
 <%--             	<c:if test="${loginID == dto.id}"> --%>
-	           	    <button class="btn btn-primary " type="button" id="boardModi">수정미완</button>
+	           	    <button class="btn btn-primary " type="button" id="boardModi">수정</button>
 	               	<button class="btn btn-primary " type="button" id="boardDel">삭제</button>
 <%--                	</c:if> --%>
             </div>
@@ -987,7 +999,8 @@
 		}).done(function(resp){
 				console.log(resp.likeCount)//좋아요 갯수
 				$("#likecnt").text(resp.likeCount);
-				
+
+				$(".like").text(resp.likeCount);
 				
 			}).fail(function(a, b){ 
 				console.log(a);
@@ -1052,7 +1065,7 @@
     //게시슬 수정
     $("#boardModi").on("click",function(){
     	
-    	location.href = "/modiPage.board?seq=${dto.all_board_seq}";
+    	location.href = "/modiPage.board?cpage=${cpage}&seq=${dto.all_board_seq}";
     	
     })
     
@@ -1151,6 +1164,51 @@
 
     
     </script>
+    
+    <script type="text/javascript">
+ 	let city = ['Jeju City'];
+	
+	city.forEach(function(city){
+		$(document).ready(function() {
+			let weatherIcon = {
+			'01' : 'fas fa-sun',
+			'02' : 'fas fa-cloud-sun',
+			'03' : 'fas fa-cloud',
+			'04' : 'fas fa-cloud-meatball',
+			'09' : 'fas fa-cloud-sun-rain',
+			'10' : 'fas fa-cloud-showers-heavy',
+			'11' : 'fas fa-poo-storm',
+			'13' : 'far fa-snowflake',
+			'50' : 'fas fa-smog'
+			};
+			$.ajax({
+				url:'http://api.openweathermap.org/data/2.5/weather?q='+city+'&APPID=71199a5512c711405120f9710683654c&units=metric',
+				dataType:'json',
+				type:'GET',
+				success:function(data){
+					let $Icon = (data.weather[0].icon).substr(0,2);
+					let $Temp = Math.floor(data.main.temp) + 'º';
+					let $city = "제주도";
+					
+					$('.CurrIcon').append('<i class="' + weatherIcon[$Icon] +'"></i>');
+					$('.CurrTemp').prepend($Temp);
+					$('.City').append($city);
+					console.log(data);
+	                console.log("현재온도 : "+ (data.main.temp- 273.15) ); //섭씨온도를 만들기 위함
+	                console.log("현재습도 : "+ data.main.humidity);
+	                console.log("날씨 : "+ data.weather[0].main );
+	                console.log("상세날씨설명 : "+ data.weather[0].description );
+	                console.log("날씨 이미지 : "+ data.weather[0].icon );
+	                console.log("바람   : "+ data.wind.speed );
+	                console.log("나라   : "+ data.sys.country );
+	                console.log("도시이름  : "+ data.name );
+	                console.log("구름  : "+ (data.clouds.all) +"%" );  
+				}
+			})
+		});
+	});
+	
+</script>
 </body>
 
 </html>
