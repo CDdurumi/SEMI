@@ -531,7 +531,7 @@
 				}else{
 					
 					for(let i = 0; i < resp.length; i++){
-						
+
 						let row1 = $("<div>");
                         row1.attr("class","row wrap");
                         let col1 = $("<div>");
