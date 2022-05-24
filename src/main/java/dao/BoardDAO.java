@@ -353,7 +353,7 @@ public class BoardDAO {
 					int end = cpage * 10;
 
 					// 한 페이지에 게시글이 10개씩 보여지도록 하기 위해서 row_number를 활용하는데, 서브 쿼리를 활용해서 select 해준다.
-					String sql = "select * from (select row_number() over(order by all_board_seq desc) line, all_board.* from all_board) where line between ? and ?";
+					String sql = "select * from (select row_number() over(order by write_date desc) line, all_board.* from all_board) where line between ? and ?";
 
 					try(Connection con = this.getConnection();
 							PreparedStatement pstat = con.prepareStatement(sql);){

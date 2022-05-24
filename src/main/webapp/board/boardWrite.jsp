@@ -621,6 +621,10 @@
 	        	alert("로그인이 필요합니다.");
 	        	return false;
 	        }
+	        
+	        //서머노트 input type = file 부분 임시적으로 삭제.
+	        $("[class *='note-image-input form-control-file note-form-control note-input']").remove();
+	        
 		}
 	    
 		//서머노트////////////////////////////////////////////////////////////////////////////
