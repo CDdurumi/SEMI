@@ -488,7 +488,7 @@
                     </span></span> </a>
                     <a href="/board/community" class="nav_link active"> <i class='bx bx-message nav_icon'></i> <span
                             class="nav_name">커뮤니티</span> </a>
-                    <a href="/board/editorReMain.jsp" class="nav_link"> <i class='bx bx-bus nav_icon'></i> <span class="nav_name">에디터추천</span>
+                    <a href="/board/editorReMain.jsp" class="nav_link"> <i class='bx bx-book-bookmark nav_icon'></i> <span class="nav_name">에디터추천</span>
                     </a>
                     <a href="/myPage.jsp" class="nav_link"> <i class='bx bx-user nav_icon'></i> <span
                             class="nav_name">마이페이지</span> </a>
