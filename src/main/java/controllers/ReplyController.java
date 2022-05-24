@@ -29,17 +29,20 @@ public class ReplyController extends HttpServlet {
 		String uri = request.getRequestURI();
 		ReplyDAO dao = ReplyDAO.getInstance();
 		Gson g = new Gson();
-		
+		System.out.println(uri);
 		try {
 			if(uri.equals("/delete.reply")){//댓글 삭제
-				String reply_seq = request.getParameter("reply_seq");
+				String reply_seq = request.getParameter("seq");
+			
 				int result = dao.deleteByReplySeq(reply_seq);
 				PrintWriter pw = response.getWriter();
 				pw.append(g.toJson(result));
 
 			}else if(uri.equals("/modify.reply")) {//댓글 수정
 				String reply_seq = request.getParameter("reply_seq");
+				System.out.println(reply_seq);
 				String contents = request.getParameter("replyContentModify");
+				System.out.println(contents);
 				int result = dao.modify(reply_seq, contents);
 				PrintWriter pw = response.getWriter();
 				pw.append(g.toJson(result));

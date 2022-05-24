@@ -530,7 +530,8 @@
 				if(${totalPage}<pape){
 					alert("마지막 페이지 입니다.");
 				}else{
-					
+					  //총 댓글 갯수
+	  	            let count =0;
 					for(let i = 0; i < resp.length; i++){
 
 						let row1 = $("<div>");
@@ -559,8 +560,8 @@
                          let col6 =$("<div>");
                         col6.attr("class","col-12 message border-bottom border-2 m-0");
                         col6.text(resp[i].contents);    
-                       //버튼
-                       
+                      
+                        //버튼
                        let my_id =col3.text();
 		  	             if(my_id =='${loginID}'){
                         let btn1 = $("<button>");
@@ -571,10 +572,17 @@
                         
                         let btn2 = $("<button>");
                             btn2.text("삭제");
-                            btn2.attr("class","btn btn-outline-danger ");
+                            btn2.attr("class","btn btn-outline-danger delete ");
                             btn2.attr("type","button");
                             
+                            //수정하기 
                             btn1.on("click",function(){
+                            	
+                            	 
+                                 //다른버튼 수정 막기 	
+                                $(".modify").attr("disabled",true);
+                                   
+                            	
                                 col6.attr("contenteditable","true");
                                 col6.focus();
                                 btn1.css("display","none");
@@ -582,8 +590,9 @@
                                 
                                 let btn3 =$("<button>");
                                 btn3.text("완료");
-                                btn3.attr("class","btn btn-outline-primary ");
+                                btn3.attr("class","btn btn-outline-primary finish");
                                 btn3.attr("type","button");
+                                btn3.css("padding-left","10px");
                                 let btn4 =$("<button>");
                                 btn4.text("취소");
                                 btn4.attr("class","btn btn-outline-danger ");
@@ -595,18 +604,59 @@
                                     btn3.css("display","none");
                                     btn4.css("display","none");
                                     col6.attr("contenteditable","false");
+                                    $(".modify").attr("disabled",false);
                                 })
                                 
-                                col5.append(btn3);
+                                //댓글 수정
+                            btn3.on("click",function(){
+
+                        	  
+                        	    
+                            	
+                            	$.ajax({
+                            		url:"/modify.reply",
+                            		data:{reply_seq:resp[i].reply_seq, replyContentModify:col6.text()},
+                            		dataType:'json',
+                            		type:'POST'
+                            		
+                            	}).done(function(resp){
+                            		btn1.css("display","inline-block");
+                                    btn2.css("display","inline-block");
+                                    btn3.css("display","none");
+                                    btn4.css("display","none");
+                                    col6.attr("contenteditable","false");
+                                    $(".modify").attr("disabled",false);
+                            	})
+                            })
+                                
+                                
+                           		 col5.append(btn3);
+                                col5.append(' ');
                                 col5.append(btn4);
+                                
+                               
+                                
+                                
                             })
                             
+                            //댓글 삭제
                             btn2.on("click",function(){
-                                row1.remove();
-                             })
+                                
+                              let delrow = btn2.parent().parent().parent().parent();
+                              
+                              $.ajax({
+                            	  url:"/delete.reply",
+                            	  data:{seq : resp[i].reply_seq},
+                            	  type:'POST',
+                            	  dataType : 'json'
+                              }).done(function(resp){
+                            	  delrow.remove();
+                              })
+                              
+                            });
                             
                             col5.append(btn1);
-                            col5.append('                  ');
+                            col5.append(' ');
                             col5.append(btn2);
 		  	             }
                          
@@ -615,6 +665,10 @@
 		  	            row1.hide();
 		  	            row1.fadeIn(2500);
 
+		  	          
+		  	          
+		  	            
+		  	            
                         $("#dummy").append(row1);
                         row1.append(col1);
                         col1.append(row2);
@@ -628,7 +682,8 @@
                         row2.append(col5);
                         row1.append(col6);
 
-                      
+                      	count++;
+                      	$("#message").text("댓글 "+count+" 개");
             
 						
 						
@@ -804,7 +859,7 @@
         </div>
         <br>
 
-        <div class="col-12" id="message">댓글 2 개</div>
+        <div class="col-12" id="message"></div>
 
         <div class="row msg " >
             <div class="col-10 p-0">
@@ -932,6 +987,8 @@
 		}).done(function(resp){
 				console.log(resp.likeCount)//좋아요 갯수
 				$("#likecnt").text(resp.likeCount);
+				
+				
 			}).fail(function(a, b){ 
 				console.log(a);
 				console.log(b);
