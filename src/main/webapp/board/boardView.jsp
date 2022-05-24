@@ -651,7 +651,9 @@
                             
                             //댓글 삭제
                             btn2.on("click",function(){
-                                
+                            	let del=  confirm('댓글을 삭제하시겠습니까?');
+                                if(del){
+
                               let delrow = btn2.parent().parent().parent().parent();
                               
                               $.ajax({
@@ -662,7 +664,7 @@
                               }).done(function(resp){
                             	  delrow.remove();
                               })
-                              
+                                }
                             });
                             
                             col5.append(btn1);
@@ -821,7 +823,7 @@
                     
 <!--                     </div> -->
                     
-                    <div class="col-3 col-md-3 ellipsis ididid" style="padding-left:8px;"><i class="fa-solid fa-envelope icon"></i>&nbsp;&nbsp;${dto.id}가가가가가가가 </div>
+                    <div class="col-3 col-md-3 ellipsis ididid" style="padding-left:8px;"><i class="fa-solid fa-envelope icon"></i>&nbsp;&nbsp;${dto.id} </div>
                     
                     
                     <div class="col-9"><i class="fa-solid fa-calendar"></i>&nbsp;&nbsp;${dto.formdDate}</div>
@@ -839,7 +841,7 @@
                 <div class="col-12 text-center" id="cont" style="padding:0px;">
                     <div class="row " id="contentsdummy" style="padding:0px;" >
                         <div class="col-12" id="contentsdummy2" style="padding-top: 40px;padding-bottom: 40px;padding-left: 0px;padding-right: 0px;">
-                            ${dto.contents} 글내용내용내용
+                            ${dto.contents}
                         </div>
                     </div>
                 </div>

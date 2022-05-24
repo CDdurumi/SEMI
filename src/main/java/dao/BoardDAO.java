@@ -86,6 +86,22 @@ public class BoardDAO {
 			return result;
 		}
 	}
+	
+	//게시글 수정 //dao.modifyPost(new BoardDTO(seq, writer, title, contents, null, 0, 0, 0));
+	//update member set phone= ?, email = ? ,zipcode=?,address1=?,address2=?  where id =?
+		public int modifyPost(BoardDTO dto) throws Exception{
+			String sql = "update all_board set title = ? , contents = ? ,write_date = default where all_board_seq=?" ;
+			try (Connection con = this.getConnection(); PreparedStatement pstat = con.prepareStatement(sql);) {
+				
+				
+				pstat.setString(1, dto.getTitle());
+				pstat.setString(2, dto.getContents());
+				pstat.setString(3, dto.getAll_board_seq());
+				int result = pstat.executeUpdate();
+				con.commit();
+				return result;
+			}			
+		}
 
 	// 게시글 정보 get(고유seq로 검색)
 	public BoardDTO selectBySeq(String sseq) throws Exception {
@@ -410,4 +426,5 @@ public class BoardDAO {
 			}
 		}
 	}
+	
 }
