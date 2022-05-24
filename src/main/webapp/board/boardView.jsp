@@ -990,6 +990,16 @@
     })
 
 
+    
+    //게시슬 수정
+    $("#boardModi").on("click",function(){
+    	
+    	location.href = "/modiPage.board?seq=${dto.all_board_seq}";
+    	
+    })
+    
+    
+    
    	//게시글 삭제
    	$("#boardDel").on("click",function(){
    		let del = confirm("해당 게시글을 삭제하시겠습니까?");
@@ -998,7 +1008,7 @@
    		}
    	})
     
-    
+
     
     
         document.addEventListener("DOMContentLoaded", function (event) {

@@ -128,9 +128,16 @@ public class BoardController extends HttpServlet {
 				
 				response.sendRedirect("/boardMainView.board?cpage=1");//자유게시판 메인화면으로 전환
 				
-			}else if(uri.equals("/modity.board")) {//게시글 수정 시
+			}else if(uri.equals("/modiPage.board")) {//게시글 수정 버튼 클릭 시
+				String all_board_seq = request.getParameter("seq");//게시글 고유 넘버
+//				System.out.println(all_board_seq);
 				
-//				response.sendRedirect("/detailView.board?seq="+seq);//작성글 출력
+				BoardDTO dto = dao.selectBySeq(all_board_seq);//고유seq에 해당하는 게시글 정보get
+				request.setAttribute("dto", dto);
+				
+				request.getRequestDispatcher("/board/boardModi.jsp").forward(request, response);//수정하기 페이지로 전환
+
+			}else if(uri.equals("/modify.board")) {//게시글 수정 시(수정완료버튼)
 				
 				
 				
