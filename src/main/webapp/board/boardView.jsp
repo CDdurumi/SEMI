@@ -805,7 +805,32 @@
     </div>
   </div>
 </div>
-
+<script>
+$("#login").on("click",function(){
+	$("#idpw_check").text("");
+	$("#idpw_check").css({ color: "black" })
+})
+$("#modal_loginBtn").on("click",function(){
+			$.ajax({
+				url:"/login.member",
+				type:"post",
+				data:{email:$("#id-input").val(),pw:$("#password-input").val()},
+				dataType:"json"
+			}).done(function(resp){
+				console.log(resp);
+				if(resp==false){					
+					$("#idpw_check").text("Email 또는 비밀번호가 올바르지 않습니다!");
+					$("#idpw_check").css({ color: "red" })
+					$("#id-input").val("");
+					$("#id-input").focus();					
+					$("#password-input").val("");
+				}else if(resp==true){
+					location.reload();
+				}
+				
+			});
+		})
+</script>
 
 <!-- Modal -->
 <div class="modal fade" id="messageModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
