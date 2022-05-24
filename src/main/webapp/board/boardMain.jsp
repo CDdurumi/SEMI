@@ -438,7 +438,7 @@
        color:#0080ff;
        }
 .fa-thumbs-up{
-	color:#0080ff;
+	color:rgb(255,208,0);
 }
     </style>
 </head>
@@ -448,14 +448,9 @@
         <div class="header_toggle"><i class='bx bx-menu' id="header-toggle"></i></div>
         <div><a href="/board/communityMain.jsp" class="comuview"> 여행 커뮤니티</a></div>
         <div>
-            
-				
-		
-				
 					<a href="#" class="login" id="login"  data-bs-toggle="modal" data-bs-target="#exampleModal">login</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
           			 <a href="/signup.jsp" class="join">join</a>
-				
-			  
+	
         </div>
     </header>
     <ul class="nav nav2">
@@ -544,7 +539,7 @@
                             <c:forEach var="i" items="${hotlist }">
                                 <div class="col-12 border border-2 rounded">
                                     <div class="row m-0">
-                                        <div class="col-9 col-md-9 m-0 free_title ellipsis"><span><a href="/detailView.board?cpage=${cpage}&seq=${i.all_board_seq}">${i.title }</a></span></div>
+                                        <div class="col-9 col-md-9 m-0 free_title ellipsis"><span class=""><a href="/detailView.board?cpage=${cpage}&seq=${i.all_board_seq}" style="color:black; font-weight:bold;">${i.title }</a></span></div>
                                         <!-- ellipsis 밑에 forEach로 하니까 한줄만 추가했습니다.  -->
                                         <div class="col-3 col-md-3">
                                             <div class="row ">
@@ -658,7 +653,7 @@
             	
                 <div class="col-1 col-md-1 d-none d-md-block p-0">0</div>
                	<div class="col-7 col-md-6 m-0 title ellipsis">
-               		<span><a href="/detailView.board?cpage=${cpage}&seq=${i.all_board_seq}">${i. title }</a></span>
+               		<span><a href="/detailView.board?cpage=${cpage}&seq=${i.all_board_seq}" style="color:black">${i. title }</a></span>
                	</div>
                 <div class="col-3 col-md-2 p-0 ellipsis text-center"><span>${i.id }</span></div>
                 <div class="col-md-1 d-none d-md-block p-0 "><fmt:formatDate value="${i.write_date }" pattern="yy-MM-dd"/></div>
