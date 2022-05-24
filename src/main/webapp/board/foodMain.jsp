@@ -374,7 +374,7 @@
             text-align: center;
         }
         #board_menu{
-            height: 50px;
+            height: 30px;
         }
         #board_menu_text{
          text-align: center;
@@ -447,17 +447,14 @@
         <div><a href="/board/communityMain.jsp" class="comuview"> 여행 커뮤니티</a></div>
         <div>
             
-            <c:choose>
-				<c:when test="${loginID !=null}">
-						${loginID }님 안녕하세요 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-					<a href="/logout.member" class=""  >logout</a>					
-				</c:when>
+            
+				
 		
-				<c:otherwise>
+				
 					<a href="#" class="login" id="login"  data-bs-toggle="modal" data-bs-target="#exampleModal">login</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
           			 <a href="/signup.jsp" class="join">join</a>
-				</c:otherwise>
-			</c:choose>
+				
+			
         </div>
     </header>
     <ul class="nav nav2">
@@ -534,8 +531,6 @@
 </div>
     <!--Container Main start-->
     <div class="height-100 ">
-
-
         <div class="row " id="freemain">
             <div class="col-12 col-md-6 bottom_board">
                 <div class="row border border-2 rounded">
@@ -676,7 +671,18 @@
 
             </div>
         </div>
-
+<!---------------------검색창---------------->
+<div class="col-12" id="searchbar" >
+    <nav class="navbar bg">
+        <div class="container-fluid">
+          <a class="navbar-brand"> </a>
+          <form class="d-flex" role="search">
+            <input class="form-control me-2" type="search" placeholder="작성자를 입력하세요" aria-label="Search">
+            <button class="btn btn-primary" type="submit">Search</button>
+          </form>
+        </div>
+      </nav>
+    </div>
         <div class="row m-0" id="board_menu" ></div>
 
         <div class="row m-0 ">
@@ -692,20 +698,7 @@
              
             </div>
         </div>
-        <c:forEach var="i" items="${list }">
-        <div class="col-12  board">
-            <div class="row m-0 border border-2 rounded board_row ">
-            	
-                <div class="col-1 col-md-1 d-none d-md-block p-0">0</div>
-               	<div class="col-7 col-md-6 m-0 title ellipsis"><span>${i. title }</span></div>
-                <div class="col-3 col-md-2 p-0 ellipsis text-center"><span>${i.id }</span></div>
-                <div class="col-md-1 d-none d-md-block p-0 "><fmt:formatDate value="${i.write_date }" pattern="yy-MM-dd"/></div>
-                <div class="col-md-1 d-none d-md-block p-0">${i.view_count}</div>
-                <div class="col-2 col-md-1 p-0">${i.like_count}</div>
-                
-            </div>
-        </div>
-        </c:forEach>
+        
         
         <div calss="row">
             <div class="col-12 text-center">
@@ -716,7 +709,7 @@
         <span aria-hidden="true">&laquo;</span>
       </a>
     </li>
-    ${navi }
+    
     <li class="page-item">
       <a class="page-link" href="#" aria-label="Next">
         <span aria-hidden="true">&raquo;</span>
