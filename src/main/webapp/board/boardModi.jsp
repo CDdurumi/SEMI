@@ -387,7 +387,7 @@
             let boardOption = seq.substring(0,1);
             
             if(boardOption == 'f'){//자유게시판
-            	$("[value='f']").attr("selected","");
+            	$("[value='f']").attr("selected","selected");
             }else if(boardOption == 'g'){//여행후기
             	$("[value='g']").attr("selected","selected");
             }else if(boardOption == 'j'){//구인구작
