@@ -360,15 +360,15 @@ public class BoardDAO {
 	}
 
 	// boradlist에서 보여지는 게시글 개수를 정하기 위한 메소드
-	public List<BoardDTO> selectByPage(int cpage) throws Exception {
+	public List<BoardDTO> selectByPage(int cpage,String boardOption) throws Exception {
 
 		// 게시글의 번호를 세팅한다.
 		int start = cpage * 10 - 9;
 		int end = cpage * 10;
 
 		// 한 페이지에 게시글이 10개씩 보여지도록 하기 위해서 row_number를 활용하는데, 서브 쿼리를 활용해서 select 해준다.
-		String sql = "select * from (select row_number() over(order by write_date desc) line, all_board.* from all_board) where line between ? and ?";
-
+		String sql = "select * from (select row_number() over(order by write_date desc) line, all_board.* from all_board where all_board_seq like '"+boardOption+"%') where line between ? and ?";
+						
 		try (Connection con = this.getConnection(); PreparedStatement pstat = con.prepareStatement(sql);) {
 			pstat.setInt(1, start);
 			pstat.setInt(2, end);
@@ -396,12 +396,12 @@ public class BoardDAO {
 	}
 
 	// 화제글 list
-	public List<BoardDTO> selectByLikeCount() throws Exception {
+	public List<BoardDTO> selectByLikeCount(String boardOption) throws Exception {
 
 		int start = 1;
 		int end = 6;
-
-		String sql = "select * from (select row_number() over(order by like_count desc, view_count desc) line, all_board.* from all_board) where line between ? and ?";
+					  
+		String sql = "select * from (select row_number() over(order by like_count desc, view_count desc) line, all_board.* from all_board where all_board_seq like '"+boardOption+"%') where line between ? and ?";
 		try (Connection con = this.getConnection(); PreparedStatement pstat = con.prepareStatement(sql);) {
 			pstat.setInt(1, start);
 			pstat.setInt(2, end);

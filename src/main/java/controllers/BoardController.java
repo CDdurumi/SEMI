@@ -44,9 +44,9 @@ public class BoardController extends HttpServlet {
 			if(uri.equals("/boardMainView.board")) {//자유게시판 메인화면 출력(communityMain.jsp에서 자유게시판 메뉴 클릭 시 여기로.)
 				int cpage = Integer.parseInt(request.getParameter("cpage"));
 				request.setAttribute("cpage", cpage);
-				
-				List<BoardDTO> list = dao.selectByPage(cpage);
-				List<BoardDTO> hotlist = dao.selectByLikeCount();
+				String boardOption ="f";
+				List<BoardDTO> list = dao.selectByPage(cpage,boardOption);
+				List<BoardDTO> hotlist = dao.selectByLikeCount(boardOption);
 				
 				String pageNavi = dao.getPageNavi(cpage);
 				
