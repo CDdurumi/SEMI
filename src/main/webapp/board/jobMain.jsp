@@ -449,15 +449,17 @@
         <div class="header_toggle"><i class='bx bx-menu' id="header-toggle"></i></div>
       <div><a href="/board/communityMain.jsp" class="comuview"> 여행 커뮤니티</a></div>
         <div>
-           
-            
-				
+           <c:choose>
+				<c:when test="${loginID !=null}">
+						${loginID }님 안녕하세요 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+					<a href="/logout.member" class=""  >logout</a>					
+				</c:when>
 		
-				
+				<c:otherwise>
 					<a href="#" class="login" id="login"  data-bs-toggle="modal" data-bs-target="#exampleModal">login</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
           			 <a href="/signup.jsp" class="join">join</a>
-				
-			
+				</c:otherwise>
+			</c:choose>
         </div>
     </header>
     <ul class="nav nav2">
