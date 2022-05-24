@@ -807,6 +807,32 @@
     </div>
   </div>
 </div>
+
+<!-- Modal -->
+<div class="modal fade" id="messageModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">쪽지 보내기</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+      	받는 사람 | <input type="text" placeholder="받는 사람 ID">
+      	<p>
+      		
+      	</p>
+      	
+        <textarea style="width:100%; min-height:150px" placeholder="내용을 입력하세요"></textarea>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">닫기</button>
+        <button type="button" class="btn btn-primary">보내기</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+
     <!--Container Main start-->
     <div class="height-100 ">
         <div class="row width-100 dummy" ></div>
@@ -821,7 +847,7 @@
                     
 <!--                     </div> -->
                     
-                    <div class="col-3 col-md-3 ellipsis ididid" style="padding-left:8px;"><i class="fa-solid fa-envelope icon"></i>&nbsp;&nbsp;${dto.id}가가가가가가가 </div>
+                    <div class="col-3 col-md-3 ellipsis ididid" style="padding-left:8px;"><i class="fa-solid fa-envelope icon" data-bs-toggle="modal" data-bs-target="#messageModal"></i>&nbsp;&nbsp;${dto.id}가가가가가가가 </div>
                     
                     
                     <div class="col-9"><i class="fa-solid fa-calendar"></i>&nbsp;&nbsp;${dto.formdDate}</div>
