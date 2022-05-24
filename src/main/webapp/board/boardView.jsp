@@ -753,7 +753,7 @@
                     <div class="col-3 col-md-3 ellipsis " ><span style="width: 90%; ">${dto.id} 글쓴이</span></div>
                     <div class="col-9 ">${dto.formdDate} 2022/02/02</div>
                     <div class="col-3 " style="padding-left:8px;">${dto.view_count} 조회</div>
-                    <div class="col-9 ">${dto.like_count} 좋아요</div>
+                    <div class="col-9 like">${dto.like_count} 좋아요</div>
                     <div class="col-6 filebox"  style="padding-left:8px;">첨부파일
 	                    <button type="button" class="btn btn-outline-primary filebtn">보기</button>
 	                    <div class="filelist text-center"  style="display:none;  padding-top:10px; padding-bottom: 10px; ">파일명<br>파일명</div>
@@ -932,6 +932,8 @@
 		}).done(function(resp){
 				console.log(resp.likeCount)//좋아요 갯수
 				$("#likecnt").text(resp.likeCount);
+				$(".like").text(resp.likeCount);
+				
 			}).fail(function(a, b){ 
 				console.log(a);
 				console.log(b);
