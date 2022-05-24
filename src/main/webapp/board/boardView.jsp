@@ -272,6 +272,9 @@
 /*     outline:none; */
     border:none;
 }
+.icon{
+  color:#ffe69a;
+}
 .card-details i{
     position:absolute;
     left:10px;
@@ -428,6 +431,7 @@
            position:absolute;
            left: 9px;
            right: 9px;
+           display:inline-block;
        }
        /* */
        .wrap{
@@ -530,7 +534,8 @@
 				if(${totalPage}<pape){
 					alert("마지막 페이지 입니다.");
 				}else{
-					
+					  //총 댓글 갯수
+	  	            let count =0;
 					for(let i = 0; i < resp.length; i++){
 
 						let row1 = $("<div>");
@@ -559,8 +564,8 @@
                          let col6 =$("<div>");
                         col6.attr("class","col-12 message border-bottom border-2 m-0");
                         col6.text(resp[i].contents);    
-                       //버튼
-                       
+                      
+                        //버튼
                        let my_id =col3.text();
 		  	             if(my_id =='${loginID}'){
                         let btn1 = $("<button>");
@@ -571,10 +576,17 @@
                         
                         let btn2 = $("<button>");
                             btn2.text("삭제");
-                            btn2.attr("class","btn btn-outline-danger ");
+                            btn2.attr("class","btn btn-outline-danger delete ");
                             btn2.attr("type","button");
                             
+                            //수정하기 
                             btn1.on("click",function(){
+                            	
+                            	 
+                                 //다른버튼 수정 막기 	
+                                $(".modify").attr("disabled",true);
+                                   
+                            	
                                 col6.attr("contenteditable","true");
                                 col6.focus();
                                 btn1.css("display","none");
@@ -582,8 +594,9 @@
                                 
                                 let btn3 =$("<button>");
                                 btn3.text("완료");
-                                btn3.attr("class","btn btn-outline-primary ");
+                                btn3.attr("class","btn btn-outline-primary finish");
                                 btn3.attr("type","button");
+                                btn3.css("padding-left","10px");
                                 let btn4 =$("<button>");
                                 btn4.text("취소");
                                 btn4.attr("class","btn btn-outline-danger ");
@@ -595,18 +608,59 @@
                                     btn3.css("display","none");
                                     btn4.css("display","none");
                                     col6.attr("contenteditable","false");
+                                    $(".modify").attr("disabled",false);
                                 })
                                 
-                                col5.append(btn3);
+                                //댓글 수정
+                            btn3.on("click",function(){
+
+                        	  
+                        	    
+                            	
+                            	$.ajax({
+                            		url:"/modify.reply",
+                            		data:{reply_seq:resp[i].reply_seq, replyContentModify:col6.text()},
+                            		dataType:'json',
+                            		type:'POST'
+                            		
+                            	}).done(function(resp){
+                            		btn1.css("display","inline-block");
+                                    btn2.css("display","inline-block");
+                                    btn3.css("display","none");
+                                    btn4.css("display","none");
+                                    col6.attr("contenteditable","false");
+                                    $(".modify").attr("disabled",false);
+                            	})
+                            })
+                                
+                                
+                           		 col5.append(btn3);
+                                col5.append(' ');
                                 col5.append(btn4);
+                                
+                               
+                                
+                                
                             })
                             
+                            //댓글 삭제
                             btn2.on("click",function(){
-                                row1.remove();
-                             })
+                                
+                              let delrow = btn2.parent().parent().parent().parent();
+                              
+                              $.ajax({
+                            	  url:"/delete.reply",
+                            	  data:{seq : resp[i].reply_seq},
+                            	  type:'POST',
+                            	  dataType : 'json'
+                              }).done(function(resp){
+                            	  delrow.remove();
+                              })
+                              
+                            });
                             
                             col5.append(btn1);
-                            col5.append('                  ');
+                            col5.append(' ');
                             col5.append(btn2);
 		  	             }
                          
@@ -615,6 +669,10 @@
 		  	            row1.hide();
 		  	            row1.fadeIn(2500);
 
+		  	          
+		  	          
+		  	            
+		  	            
                         $("#dummy").append(row1);
                         row1.append(col1);
                         col1.append(row2);
@@ -628,7 +686,8 @@
                         row2.append(col5);
                         row1.append(col6);
 
-                      
+                      	count++;
+                      	$("#message").text("댓글 "+count+" 개");
             
 						
 						
@@ -752,14 +811,20 @@
                 <div class="row border-bottom border-2 rounded h-100" id="conMenu">
 <%--                     <div class="col-md-1 d-none d-md-block">${dto.all_board_seq}</div> --%>
                     <div class="col-12 col-md-12 ellipsis "  style="padding-left:15px" id="title">${dto.title} 제목제목</div>
-                    <div class="col-3 col-md-3 ellipsis " ><span style="width: 90%; ">${dto.id} 글쓴이</span></div>
-                    <div class="col-9 ">${dto.formdDate} 2022/02/02</div>
+                    <div class="col-2 col-md-2 ellipsis " ><span style="width: 90%; ">${dto.id} <i class="fa-solid fa-envelope icon"></i></span>
+                    </div>
+                    <div class="col-1 col-md-1  " >
+                    
+                    </div>
+                    <div class="col-8 ">${dto.formdDate}</div>
                     <div class="col-3 " style="padding-left:8px;">${dto.view_count} 조회</div>
                     <div class="col-9 like">${dto.like_count} 좋아요</div>
                     <div class="col-6 filebox"  style="padding-left:8px;">첨부파일
-	                    <button type="button" class="btn btn-outline-primary filebtn">보기</button>
-	                    <div class="filelist text-center"  style="display:none;  padding-top:10px; padding-bottom: 10px; ">파일명<br>파일명</div>
+	                    <button type="button" class="btn btn-outline-primary btn-sm filebtn">보기</button>
+	                     
+	                    <div class="filelist text-center"  style="display:none;  padding-top:10px; padding-bottom: 10px; "></div>
  						 </div>
+ 					
  						<div class="col-12" id="dummy3" style="height: 10px;"></div>                     
                    
                 </div>
@@ -806,7 +871,7 @@
         </div>
         <br>
 
-        <div class="col-12" id="message">댓글 2 개</div>
+        <div class="col-12" id="message"></div>
 
         <div class="row msg " >
             <div class="col-10 p-0">
@@ -934,6 +999,7 @@
 		}).done(function(resp){
 				console.log(resp.likeCount)//좋아요 갯수
 				$("#likecnt").text(resp.likeCount);
+
 				$(".like").text(resp.likeCount);
 				
 			}).fail(function(a, b){ 
