@@ -99,6 +99,7 @@ public class BoardController extends HttpServlet {
 				String seq = request.getParameter("seq"); //해당 게시글 고유seq
 //				
 				int cpage = Integer.parseInt(request.getParameter("cpage"));
+				request.setAttribute("cpage", cpage);
 				if(request.getHeader("referer").equals("http://localhost/boardMainView.board?cpage="+cpage)){//이전 주소가 이와 같다면, 조회 수 증가
 					dao.viewCountUp(seq);//조회수 증가
 				}
@@ -131,8 +132,10 @@ public class BoardController extends HttpServlet {
 			}else if(uri.equals("/modiPage.board")) {//게시글 수정 버튼 클릭 시
 				String all_board_seq = request.getParameter("seq");//게시글 고유 넘버
 //				System.out.println(all_board_seq);
+				int cpage = Integer.parseInt(request.getParameter("cpage"));
 				
 				BoardDTO dto = dao.selectBySeq(all_board_seq);//고유seq에 해당하는 게시글 정보get
+				request.setAttribute("cpage", cpage);
 				request.setAttribute("dto", dto);
 				
 				request.getRequestDispatcher("/board/boardModi.jsp").forward(request, response);//수정하기 페이지로 전환

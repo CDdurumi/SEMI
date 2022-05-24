@@ -549,7 +549,7 @@
                     <textarea class="summernote" name="contents" id="summernote">${dto.contents}</textarea>
                 </div>
                 <div class="col-12 " style="text-align: right;">
-                    <input type="button" value="취소미완" class="my-1"><%--아작스로 /detailView.board 로 seq같이 보내줘야 함. --%>
+                    <a href="/detailView.board?cpage=${cpage}&seq=${dto.all_board_seq }"><input type="button" value="취소" class="my-1"></a><%--아작스로 /detailView.board 로 seq같이 보내줘야 함. --%>
                     <input type="submit" value="수정완료미완" class="mx-2" >
                 </div>
             </div>
