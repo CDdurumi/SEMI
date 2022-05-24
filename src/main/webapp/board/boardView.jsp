@@ -419,21 +419,27 @@
        }
       
        /* 제목이 길어서 잘렸을 경우 밑의 두개 처리해준다 */
-       .ellipsis{
-           position: relative;
-           min-width: 50px;
+/*        .ellipsis{ */
+/*            position: relative; */
+/*            min-width: 50px; */
            
-       }
-       .ellipsis>span{
-        overflow: hidden;
-           white-space: nowrap;
-           text-overflow: ellipsis;
-           position:absolute;
-           left: 9px;
-           right: 9px;
-           display:inline-block;
-       }
+/*        } */
+/*        .ellipsis>span{ */
+/*         overflow: hidden; */
+/*            white-space: nowrap; */
+/*            text-overflow: ellipsis; */
+/*            position:absolute; */
+/*            left: 9px; */
+/*            right: 9px; */
+/*            display:inline-block; */
+/*        } */
        /* */
+       .ididid{
+       overflow:hidden;
+       text-overflow:ellipsis;
+       white-space:nowrap;
+       
+       }
        .wrap{
            padding: 0px;
            margin: auto;
@@ -810,15 +816,17 @@
             <div class="col-12 p-0 border-bottom border-2 rounded h-100" id="contents">
                 <div class="row border-bottom border-2 rounded h-100" id="conMenu">
 <%--                     <div class="col-md-1 d-none d-md-block">${dto.all_board_seq}</div> --%>
-                    <div class="col-12 col-md-12 ellipsis "  style="padding-left:15px" id="title">${dto.title} 제목제목</div>
-                    <div class="col-2 col-md-2 ellipsis " ><span style="width: 90%; ">${dto.id} <i class="fa-solid fa-envelope icon"></i></span>
-                    </div>
-                    <div class="col-1 col-md-1  " >
+                    <div class="col-12 col-md-12 ellipsis "  style="padding-left:15px" id="title">${dto.title}</div>
+<!--                     <div class="col-1"  > -->
                     
-                    </div>
-                    <div class="col-8 ">${dto.formdDate}</div>
-                    <div class="col-3 " style="padding-left:8px;">${dto.view_count} 조회</div>
-                    <div class="col-9 like">${dto.like_count} 좋아요</div>
+<!--                     </div> -->
+                    
+                    <div class="col-3 col-md-3 ellipsis ididid" style="padding-left:8px;"><i class="fa-solid fa-envelope icon"></i>&nbsp;&nbsp;${dto.id}가가가가가가가 </div>
+                    
+                    
+                    <div class="col-9"><i class="fa-solid fa-calendar"></i>&nbsp;&nbsp;${dto.formdDate}</div>
+                    <div class="col-3 " style="padding-left:8px;"><i class="fa-solid fa-eye"></i>&nbsp;&nbsp;${dto.view_count}</div>
+                    <div class="col-9 like"><i class="fa-solid fa-thumbs-up"></i> &nbsp;&nbsp;${dto.like_count}</div>
                     <div class="col-6 filebox"  style="padding-left:8px;">첨부파일
 	                    <button type="button" class="btn btn-outline-primary btn-sm filebtn">보기</button>
 	                     
