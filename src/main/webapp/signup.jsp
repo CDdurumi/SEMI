@@ -468,48 +468,52 @@
 		<div class="row " id="cont">
             <div class="col">
             <div class="row signup_input">
-         		<div class ="col-8 input">
+         		<div class ="col-12 input">
                     <div class="card-details">
                         <input type="text" id="email_input" placeholder="이메일" name="email">
                         <i class="fa fa-envelope"></i>
                     </div>
-         		</div>
-         		<div class ="col-4">
+         		</div>         		
+         	</div>
+         	<div class="row">
+         		<div class ="col-12">
          			<div id="email_check_text"></div>
          		</div>
          	</div>
          	<div class="row signup_input">
-         		<div class ="col-8 input">
+         		<div class ="col-12 input">
                     <div class="card-details">
                         <input type="text" id="nickname_input" placeholder="닉네임" name="nickname">
                         <i class="fa fa-user"></i>
                     </div>
-         		</div>
-         		<div class ="col-4">
+         		</div>         		
+         	</div>
+         	<div class="row">
+         		<div class ="col-12">
          			<div id ="nickname_check_text"></div>
          		</div>
          	</div>
          	<div class="row signup_input">
-         		<div class ="col-8 input">
+         		<div class ="col-12 input">
                     <div class="card-details">
                         <input type="password" class="passwords passwords1_input" placeholder="비밀번호" name="pw">
                         <i class="fa fa-lock"></i>
                     </div>
          		</div>
-         		<div class ="col-4">
-         			<div id="pw_check_text"></div>
-         		</div>
+         		
          	</div>
          	<div class="row signup_input">
-         		<div class ="col-8 input">
+         		<div class ="col-12 input">
                     <div class="card-details">
             			<input type="password" class="passwords passwords_input" id="password-input" placeholder="비밀번호 확인">
             				<i class="fa fa-lock-open"></i>
             			<span><small class="fa fa-eye-slash passcode"></small></span>
-        	</div>
+        			</div>
          		</div>
-         		<div class ="col-4">
-         			<div></div>
+         	</div>
+         	<div class="row">
+         		<div class ="col-12">
+         			<div id="pw_check_text"></div>
          		</div>
          	</div>
          	
@@ -590,28 +594,46 @@
 	})
 	
 	//회원가입 관련 id_input , password1_input ,password_input , email_input
-	
-	//아이디 중복확인
-	$("#nickname_input").on("input",function(){
-			$.ajax({
-				url:"/duplIDCheck.member",
-				type:"get",
-				data:{id:$("#nickname_input").val()},
-				dataType:"json"
-			}).done(function(resp){
-				
-				if(resp==false){
-					console.log(resp);
-					$("#nickname_check_text").text("사용 가능한 닉네임입니다!");
-					$("#nickname_check_text").css({ color: "blue" });
-					
-				}else if(resp==true){
-					console.log(resp);
-					$("#nickname_check_text").text("사용중인 닉네임입니다!");
-					$("#nickname_check_text").css({ color: "red" });			
-				}				
-			});
-		})
+	//정규식
+		//닉네임(한글,영문, 숫자 2-10자)
+		function isNickName(asValue) {
+			var regExp = /^[a-z가-힣0-9]{2,10}$/g;		
+			return regExp.test(asValue);
+			}
+		//비밀번호(숫자 영문 특문 조합 8~16자)
+		function isPw(asValue) {
+			var regExp = /^.{8,16}$/;
+			return regExp.test(asValue);
+		}
+		//이메일
+		function isEmail(asValue) {
+		var regExp = /^[A-Za-z0-9_\.\-]+@[a-z]+\.[a-z]/;
+		return regExp.test(asValue);
+		}
+		//아이디 중복확인
+		$("#nickname_input").on("input",function(){
+		$.ajax({
+		url:"/duplIDCheck.member",
+		type:"get",
+		data:{id:$("#nickname_input").val()},
+		dataType:"json"
+		}).done(function(resp){
+			
+					if(resp==false){						
+						if(isNickName($("#nickname_input").val())){
+							$("#nickname_check_text").text("사용 가능한 닉네임입니다!");
+							$("#nickname_check_text").css({ color: "blue" });
+						}else{
+							$("#nickname_check_text").text("닉네임은 한글,영문, 숫자 2-10자");
+							$("#nickname_check_text").css({ color: "red" });
+						}
+
+					}else if(resp==true){
+						$("#nickname_check_text").text("사용중인 닉네임입니다!");
+						$("#nickname_check_text").css({ color: "red" });
+					}
+				});
+			})
 	//비밀번호 확인 
 	$(".passwords").on("input", function () {
             let pw1 = $(".passwords1_input").val();
@@ -620,8 +642,15 @@
             
             if(pw2!=""){
             	if (pw1 == pw2) {
-                	check.text("비밀번호가 일치합니다");
-                    check.css({ color: "blue" });
+            		if(isPw(pw1)){
+            			check.text("비밀번호가 일치합니다");
+                        check.css({ color: "blue" });
+            		}else{
+            			check.text("비밀번호는 숫자,영문,특수문자 포함 8~16자");
+                        check.css({ color: "red" });
+                        
+            		}
+                	
                 }
                 else if(pw1!==pw2){
                     check.text("비밀번호가 일치하지 않습니다");
@@ -643,16 +672,25 @@
 				dataType:"json"
 			}).done(function(resp){
 				
-				if(resp==false){
-					console.log("사용가능한 이메일");
-					$("#email_check_text").text("사용 가능한 Email 입니다!");
-					$("#email_check_text").css({ color: "blue" });
-					
-				}else if(resp==true){
-					console.log("사용중인 이메일");
-					$("#email_check_text").text("이미 사용중인 Email 입니다!");
-					$("#email_check_text").css({ color: "red" });			
-				}
+				let email = $("#email_input").val();
+				let email_check = $("#email_check_text");
+				console.log(email);
+				if(email!=""){
+	            	if (isEmail(email)) {
+	            		console.log(isEmail(email));
+	            		email_check.text("사용가능한 이메일주소입니다");
+	                    email_check.css({ color: "blue" });               	
+	                }
+	                else{
+	                	console.log(isEmail(email));
+	                	email_check.text("양식에 맞지 않는 이메일주소입니다");
+	                    email_check.css({ color: "red" });
+	                }
+	            }else if(email==""){
+	    
+	            	email_check.text("이메일은 필수정보입니다");
+	            	email_check.css({ color: "black" });
+	            }
 				
 			});
 		})
