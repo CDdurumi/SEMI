@@ -435,7 +435,9 @@
            margin: auto;
            width: 90%;
        }
-       
+       .wrap div{
+           width: 100%;
+       }
        #btn{
           width: 100%;
        }
@@ -462,9 +464,6 @@
          #title{
             font-size: 40px;
            
-        }
-        .btnbtn{
-        text-align: right;
         }
         /*--top버튼----------------------------------------------------------------*/
 
@@ -546,11 +545,11 @@
                         //작성자
                         let col3 = $("<div>");
                         col3.attr("class","col-12 pt-4 "); 
-                        col3.text(resp[i].id);   
+                        col3.text("resp[i].id");   
                         //작성날짜
                         let col4 = $("<div>");
                         col4.attr("class","col-12 ");    
-                        col4.text(resp[i].write_date);
+                        col4.text("resp[i].write_date");
                         //버튼
                         let col5=$("<div>");
                         col5.attr("class","col-3 btnbtn pt-4");
@@ -558,55 +557,25 @@
                          //댓글내용
                          let col6 =$("<div>");
                         col6.attr("class","col-12 message border-bottom border-2 m-0");
-                        col6.text(resp[i].contents);    
+                        col6.text("resp[i].contents");    
                        //버튼
                        
-                       let my_id =col3.text();
+                       let my_id =col2.text();
 		  	             if(my_id =='${loginID}'){
                         let btn1 = $("<button>");
                             btn1.text("수정");
-                            btn1.attr("class","btn btn-outline-primary modify");
+                            btn1.attr("class","btn btn-outline-primary ");
                             btn1.attr("type","button");
                             
-                        
+//                             btn1.on("click",function(){
+//                                 col6.attr("contenteditable","true");
+//                             })
                         let btn2 = $("<button>");
                             btn2.text("삭제");
-                            btn2.attr("class","btn btn-outline-danger ");
+                            btn2.attr("class","btn btn-outline-primary ");
                             btn2.attr("type","button");
                             
-                            btn1.on("click",function(){
-                                col6.attr("contenteditable","true");
-                                col6.focus();
-                                btn1.css("display","none");
-                                btn2.css("display","none");
-                                
-                                let btn3 =$("<button>");
-                                btn3.text("완료");
-                                btn3.attr("class","btn btn-outline-primary ");
-                                btn3.attr("type","button");
-                                let btn4 =$("<button>");
-                                btn4.text("취소");
-                                btn4.attr("class","btn btn-outline-danger ");
-                                btn4.attr("type","button");
-                                
-                                btn4.on("click",function(){
-                                	btn1.css("display","inline-block");
-                                    btn2.css("display","inline-block");
-                                    btn3.css("display","none");
-                                    btn4.css("display","none");
-                                    col6.attr("contenteditable","false");
-                                })
-                                
-                                col5.append(btn3);
-                                col5.append(btn4);
-                            })
-                            
-                            btn2.on("click",function(){
-                                row1.remove();
-                             })
-                            
                             col5.append(btn1);
-                            col5.append('                  ');
                             col5.append(btn2);
 		  	             }
                          
@@ -641,7 +610,7 @@
 	    		
 	    }
 
-
+	    		
     </script>
     
     
@@ -681,10 +650,6 @@
         </li>
         <li class="nav-item">
             <a class="nav-link nav-link2" href="/board/stayreview.jsp">숙소리뷰</a>
-        </li>
-<!--         지우기 -->
-<li class="nav-item">
-            <a class="nav-link nav-link2" href="/board/boardWrite.jsp">숙소리뷰</a>
         </li>
     </ul>
     <div class="l-navbar" id="nav-bar">
@@ -752,12 +717,8 @@
                     <div class="col-12 col-md-12 ellipsis "  style="padding-left:15px" id="title">${dto.title} 제목제목</div>
                     <div class="col-3 col-md-3 ellipsis " ><span style="width: 90%; ">${dto.id} 글쓴이</span></div>
                     <div class="col-9 ">${dto.formdDate} 2022/02/02</div>
-                    <div class="col-3 " style="padding-left:8px;">${dto.view_count} 조회</div>
-                    <div class="col-9 ">${dto.like_count} 좋아요</div>
-                    <div class="col-6 filebox"  style="padding-left:8px;">첨부파일
-	                    <button type="button" class="btn btn-outline-primary filebtn">보기</button>
-	                    <div class="filelist text-center"  style="display:none;  padding-top:10px; padding-bottom: 10px; ">파일명<br>파일명</div>
- 						 </div>
+                    
+                    
  						<div class="col-12" id="dummy3" style="height: 10px;"></div>                     
                    
                 </div>
@@ -769,25 +730,14 @@
                     </div>
                 </div>
             </div>
-            <div class="col-12" style="text-align: right; padding-top: 10px;padding-right: 100px;">
+            <div class="col-12" style="text-align: right; padding-top: 10px;padding-right: 10px;">
 <%--             	<c:if test="${loginID == dto.id}"> --%>
-	           	    <button class="btn btn-primary " type="button" id="boardModi">수정미완</button>
-	               	<button class="btn btn-primary " type="button" id="boardDel">삭제</button>
+	           	    <button class="btn btn-primary " type="button" id="boardModi" data-bs-toggle="modal" data-bs-target="#exampleModal1">답장</button>
+	               	<button class="btn btn-outline-danger " type="button" id="boardDel">삭제</button>
 <%--                	</c:if> --%>
             </div>
             
-            <div class="row " id="heart" style="margin: auto;">
-                
-                <div class="col-1" id="goodcol">
-                    <i class="fa-solid fa-thumbs-up"></i>
-                </div>
-                <div class="col-1 jjimdummy " ></div>
-                <div class="col-1 text-center" id="jjimcol">
-                    <i class="fa-solid fa-heart"></i>
-                </div>
-                <div class="col-9">
-                </div>
-            </div>
+            
 
             <div class="row " id="count" style="margin: auto;">
                 
@@ -802,19 +752,34 @@
             </div>
             
         </div>
-        <br>
-
-        <div class="col-12" id="message">댓글 2 개</div>
-
-        <div class="row msg " >
-            <div class="col-10 p-0">
-         	   <textarea class="w-100 h-100 border border-2 rounded" id="chatContents"></textarea>
-            </div>
-            <div class="col-2  " style="text-align: center;">
-                <button class="btn btn-primary h-100 " id="btn" type="button">등록</button>
-            </div>
-        </div>
+        
         <div class="row dummy" id="dummy"></div>
+        
+<!-- Modal -->
+<div class="modal fade" id="exampleModal1" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header" >
+        <h5 class="modal-title" id="exampleModalLabel">쪽지 보내기</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+      	받는 사람 | <input type="text" placeholder="받는 사람 ID">
+      	<p>
+      		
+      	</p>
+      	
+        <textarea style="width:100%; min-height:150px" placeholder="내용을 입력하세요"></textarea>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">닫기</button>
+        <button type="button" class="btn btn-primary">보내기</button>
+      </div>
+    </div>
+  </div>
+</div>
+        
+        
         
         <!-- 댓글  -->
         <script>
@@ -991,16 +956,6 @@
     })
 
 
-    
-    //게시슬 수정
-    $("#boardModi").on("click",function(){
-    	
-    	location.href = "/modiPage.board?seq=${dto.all_board_seq}";
-    	
-    })
-    
-    
-    
    	//게시글 삭제
    	$("#boardDel").on("click",function(){
    		let del = confirm("해당 게시글을 삭제하시겠습니까?");
@@ -1009,7 +964,7 @@
    		}
    	})
     
-
+    
     
     
         document.addEventListener("DOMContentLoaded", function (event) {
