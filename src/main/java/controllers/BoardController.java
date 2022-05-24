@@ -46,9 +46,12 @@ public class BoardController extends HttpServlet {
 				request.setAttribute("cpage", cpage);
 				
 				List<BoardDTO> list = dao.selectByPage(cpage);
+				List<BoardDTO> hotlist = dao.selectByLikeCount();
 				
 				String pageNavi = dao.getPageNavi(cpage);
+				
 				request.setAttribute("list", list);
+				request.setAttribute("hotlist", hotlist);
 				request.setAttribute("navi", pageNavi);
 				
 				request.getRequestDispatcher("/board/boardMain.jsp").forward(request, response);//자유게시판 메인페이지
