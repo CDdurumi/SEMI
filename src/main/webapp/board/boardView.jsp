@@ -594,6 +594,7 @@
                                     btn2.css("display","inline-block");
                                     btn3.css("display","none");
                                     btn4.css("display","none");
+                                    col6.attr("contenteditable","false");
                                 })
                                 
                                 col5.append(btn3);
