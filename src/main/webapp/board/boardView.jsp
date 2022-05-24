@@ -560,21 +560,21 @@
 	
 		 	            
 		 	            
-		//	             이부분 고쳐야함!
+
 		 				let my_id =col2.text();
-		 	             if(my_id =='${loginID}'){
+// 		 	             if(my_id =='${loginID}'){
 		 	            let btn1 = $("<button>");
 		 	                btn1.text("수정");
 		 	                btn1.attr("class","btn btn-outline-primary ");
-		 	                btn1.attr("type","submit");
+		 	                btn1.attr("type","button");
 		 	            let btn2 = $("<button>");
 		 	                btn2.text("삭제");
 		 	                btn2.attr("class","btn btn-outline-primary ");
-		 	                btn2.attr("type","submit");
+		 	                btn2.attr("type","button");
 			                
 		 	                col4.append(btn1);
 		 	                col4.append(btn2);
-		 	             }
+// 		 	             }
 			                
 		 	            row1.hide();
 		 	            row1.fadeIn(2500);
