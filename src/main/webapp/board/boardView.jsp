@@ -435,9 +435,7 @@
            margin: auto;
            width: 90%;
        }
-       .wrap div{
-           width: 100%;
-       }
+       
        #btn{
           width: 100%;
        }
@@ -464,6 +462,9 @@
          #title{
             font-size: 40px;
            
+        }
+        .btnbtn{
+        text-align: right;
         }
         /*--top버튼----------------------------------------------------------------*/
 
@@ -564,18 +565,47 @@
 		  	             if(my_id =='${loginID}'){
                         let btn1 = $("<button>");
                             btn1.text("수정");
-                            btn1.attr("class","btn btn-outline-primary ");
+                            btn1.attr("class","btn btn-outline-primary modify");
                             btn1.attr("type","button");
                             
-//                             btn1.on("click",function(){
-//                                 col6.attr("contenteditable","true");
-//                             })
+                        
                         let btn2 = $("<button>");
                             btn2.text("삭제");
-                            btn2.attr("class","btn btn-outline-primary ");
+                            btn2.attr("class","btn btn-outline-danger ");
                             btn2.attr("type","button");
                             
+                            btn1.on("click",function(){
+                                col6.attr("contenteditable","true");
+                                col6.focus();
+                                btn1.css("display","none");
+                                btn2.css("display","none");
+                                
+                                let btn3 =$("<button>");
+                                btn3.text("완료");
+                                btn3.attr("class","btn btn-outline-primary ");
+                                btn3.attr("type","button");
+                                let btn4 =$("<button>");
+                                btn4.text("취소");
+                                btn4.attr("class","btn btn-outline-danger ");
+                                btn4.attr("type","button");
+                                
+                                btn4.on("click",function(){
+                                	btn1.css("display","inline-block");
+                                    btn2.css("display","inline-block");
+                                    btn3.css("display","none");
+                                    btn4.css("display","none");
+                                })
+                                
+                                col5.append(btn3);
+                                col5.append(btn4);
+                            })
+                            
+                            btn2.on("click",function(){
+                                row1.remove();
+                             })
+                            
                             col5.append(btn1);
+                            col5.append('                  ');
                             col5.append(btn2);
 		  	             }
                          
@@ -610,7 +640,7 @@
 	    		
 	    }
 
-	    		
+
     </script>
     
     
@@ -650,6 +680,10 @@
         </li>
         <li class="nav-item">
             <a class="nav-link nav-link2" href="/board/stayreview.jsp">숙소리뷰</a>
+        </li>
+<!--         지우기 -->
+<li class="nav-item">
+            <a class="nav-link nav-link2" href="/board/boardWrite.jsp">숙소리뷰</a>
         </li>
     </ul>
     <div class="l-navbar" id="nav-bar">
