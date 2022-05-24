@@ -569,7 +569,7 @@ pageEncoding="UTF-8"%>
                     </span></span> </a>
                     <a href="/board/communityMain.jsp" class="nav1_link"> <i class='bx bx-message nav1_icon'></i> <span
                             class="nav1_name">커뮤니티</span> </a>
-                    <a href="/board/editorReMain.jsp" class="nav1_link"> <i class='bx bx-bus nav1_icon'></i> <span class="nav1_name">에디터추천</span>
+                    <a href="/board/editorReMain.jsp" class="nav1_link"> <i class='bx bx-book-bookmark nav1_icon'></i> <span class="nav1_name">에디터추천</span>
                     </a>
                     <a href="/myPage.jsp" class="nav1_link active"> <i class='bx bx-user nav1_icon'></i> <span
                             class="nav1_name">마이페이지</span> </a>
