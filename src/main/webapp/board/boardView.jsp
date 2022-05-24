@@ -37,10 +37,10 @@
 
     <style>
         @import url("https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700&display=swap");
-		body::-webkit-scrollbar{
-   			display: none; /* Chrome, Safari, Opera*/
-  		}
-  		
+      body::-webkit-scrollbar{
+            display: none; /* Chrome, Safari, Opera*/
+        }
+        
         :root {
             --header-height: 3rem;
             --nav-width: 68px;
@@ -301,7 +301,7 @@
 }
 
 .fa{
-	color:black;
+   color:black;
 }
 
 .card-details span:hover{
@@ -454,10 +454,10 @@
            max-width: 5px;
        }
        
-     	img{
-			max-width:100% !important;
-			height: auto !important;
-		} 
+        img{
+         max-width:100% !important;
+         height: auto !important;
+      } 
         .filebox{
             position: relative;
         }
@@ -510,41 +510,41 @@
 
 <!-- 화면 로딩 시 ------------------------------------------------------------------- -->
     <script>
-	    let page = 1;  //페이징과 같은 방식이라고 생각하면 된다.
+       let page = 1;  //페이징과 같은 방식이라고 생각하면 된다.
 
-    	$(function(){
-    	     getList(page);
-    	     page++;
-//     	     console.log(page);
-    	})
+       $(function(){
+            getList(page);
+            page++;
+//             console.log(page);
+       })
     
-    	$(window).scroll(function(){   //스크롤이 최하단 으로 내려가면 리스트를 조회하고 page를 증가시킨다.
-     		if($(window).scrollTop() >= $(document).height() - $(window).height()){
-				getList(page);
-          	 	page++;   
-//           	 	console.log(page);
-    	 	} 
-		});
+       $(window).scroll(function(){   //스크롤이 최하단 으로 내려가면 리스트를 조회하고 page를 증가시킨다.
+           if($(window).scrollTop() >= $(document).height() - $(window).height()){
+            getList(page);
+                 page++;   
+//                  console.log(page);
+           } 
+      });
 
-	    
-	    function getList(pape){
-	    	
-	    	$.ajax({
-	    		url : '/list.reply',
-	            type : 'POST',
-	            data : {page : page, parnet_seq : '${dto.all_board_seq}'},
-	            dataType : 'json'
+       
+       function getList(pape){
+          
+          $.ajax({
+             url : '/list.reply',
+               type : 'POST',
+               data : {page : page, parnet_seq : '${dto.all_board_seq}'},
+               dataType : 'json'
 
-	    	}).done(function(resp){
-// 				console.log(resp)
-				if(${totalPage}<pape){
-					alert("마지막 페이지 입니다.");
-				}else{
-					  //총 댓글 갯수
-	  	            let count =0;
-					for(let i = 0; i < resp.length; i++){
+          }).done(function(resp){
+//             console.log(resp)
+            if(${totalPage}<pape){
+               alert("마지막 페이지 입니다.");
+            }else{
+                 //총 댓글 갯수
+                    let count =0;
+               for(let i = 0; i < resp.length; i++){
 
-						let row1 = $("<div>");
+                  let row1 = $("<div>");
                         row1.attr("class","row wrap");
                         let col1 = $("<div>");
                         col1.attr("class","col-12 wrap");
@@ -573,7 +573,7 @@
                       
                         //버튼
                        let my_id =col3.text();
-		  	             if(my_id =='${loginID}'){
+                        if(my_id =='${loginID}'){
                         let btn1 = $("<button>");
                             btn1.text("수정");
                             btn1.attr("class","btn btn-outline-primary modify");
@@ -587,12 +587,12 @@
                             
                             //수정하기 
                             btn1.on("click",function(){
-                            	
-                            	 
-                                 //다른버튼 수정 막기 	
+                               
+                                
+                                 //다른버튼 수정 막기    
                                 $(".modify").attr("disabled",true);
                                    
-                            	
+                               
                                 col6.attr("contenteditable","true");
                                 col6.focus();
                                 btn1.css("display","none");
@@ -609,7 +609,7 @@
                                 btn4.attr("type","button");
                                 
                                 btn4.on("click",function(){
-                                	btn1.css("display","inline-block");
+                                   btn1.css("display","inline-block");
                                     btn2.css("display","inline-block");
                                     btn3.css("display","none");
                                     btn4.css("display","none");
@@ -620,27 +620,27 @@
                                 //댓글 수정
                             btn3.on("click",function(){
 
-                        	  
-                        	    
-                            	
-                            	$.ajax({
-                            		url:"/modify.reply",
-                            		data:{reply_seq:resp[i].reply_seq, replyContentModify:col6.text()},
-                            		dataType:'json',
-                            		type:'POST'
-                            		
-                            	}).done(function(resp){
-                            		btn1.css("display","inline-block");
+                             
+                               
+                               
+                               $.ajax({
+                                  url:"/modify.reply",
+                                  data:{reply_seq:resp[i].reply_seq, replyContentModify:col6.text()},
+                                  dataType:'json',
+                                  type:'POST'
+                                  
+                               }).done(function(resp){
+                                  btn1.css("display","inline-block");
                                     btn2.css("display","inline-block");
                                     btn3.css("display","none");
                                     btn4.css("display","none");
                                     col6.attr("contenteditable","false");
                                     $(".modify").attr("disabled",false);
-                            	})
+                               })
                             })
                                 
                                 
-                           		 col5.append(btn3);
+                                  col5.append(btn3);
                                 col5.append(' ');
                                 col5.append(btn4);
                                 
@@ -651,18 +651,18 @@
                             
                             //댓글 삭제
                             btn2.on("click",function(){
-                            	let del=  confirm('댓글을 삭제하시겠습니까?');
+                               let del=  confirm('댓글을 삭제하시겠습니까?');
                                 if(del){
 
                               let delrow = btn2.parent().parent().parent().parent();
                               
                               $.ajax({
-                            	  url:"/delete.reply",
-                            	  data:{seq : resp[i].reply_seq},
-                            	  type:'POST',
-                            	  dataType : 'json'
+                                 url:"/delete.reply",
+                                 data:{seq : resp[i].reply_seq},
+                                 type:'POST',
+                                 dataType : 'json'
                               }).done(function(resp){
-                            	  delrow.remove();
+                                 delrow.remove();
                               })
                                 }
                             });
@@ -670,17 +670,17 @@
                             col5.append(btn1);
                             col5.append(' ');
                             col5.append(btn2);
-		  	             }
+                        }
                          
-		  	             
-		   
-		  	            row1.hide();
-		  	            row1.fadeIn(2500);
+                        
+         
+                       row1.hide();
+                       row1.fadeIn(2500);
 
-		  	          
-		  	          
-		  	            
-		  	            
+                     
+                     
+                       
+                       
                         $("#dummy").append(row1);
                         row1.append(col1);
                         col1.append(row2);
@@ -694,19 +694,19 @@
                         row2.append(col5);
                         row1.append(col6);
 
-                      	count++;
-                      	$("#message").text("댓글 "+count+" 개");
+                         count++;
+                         $("#message").text("댓글 "+count+" 개");
             
-						
-						
-					}	    		
-					
-				}
-	    		
+                  
+                  
+               }             
+               
+            }
+             
 
-	    	})
-	    		
-	    }
+          })
+             
+       }
 
 
     </script>
@@ -721,16 +721,16 @@
         <div>여행 커뮤니티</div>
         <div>
             <c:choose>
-				<c:when test="${loginID !=null}">
-						${loginID }님 안녕하세요 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-					<a href="/logout.member" class=""  >logout</a>					
-				</c:when>
-		
-				<c:otherwise>
-					<a href="#" class="login" id="login"  data-bs-toggle="modal" data-bs-target="#exampleModal">login</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-          			 <a href="/signup.jsp" class="join">join</a>
-				</c:otherwise>
-			</c:choose>
+            <c:when test="${loginID !=null}">
+                  ${loginID }님 안녕하세요 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+               <a href="/logout.member" class=""  >logout</a>               
+            </c:when>
+      
+            <c:otherwise>
+               <a href="#" class="login" id="login"  data-bs-toggle="modal" data-bs-target="#exampleModal">login</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                    <a href="/signup.jsp" class="join">join</a>
+            </c:otherwise>
+         </c:choose>
         </div>
     </header>
     <ul class="nav nav2">
@@ -795,16 +795,44 @@
             <span><small class="fa fa-eye-slash passcode"></small></span>
         </div>
         <div class="login_api" style="text-align:center">
-        	<a href="#"><img src="/imgsrc/google_signin_buttons/web/1x/btn_google_signin_dark_normal_web.png"></a>
+           <a href="#"><img src="/imgsrc/google_signin_buttons/web/1x/btn_google_signin_dark_normal_web.png"></a>
         </div>
       </div>
       <div class="modal-footer">
-      	<button type="button" class="btn btn-primary" id="modal_loginBtn">로그인</button>
+         <button type="button" class="btn btn-primary" id="modal_loginBtn">로그인</button>
         <button type="button" class="btn btn-outline-primary">회원가입</button>
       </div>
     </div>
   </div>
 </div>
+
+
+<!-- Modal -->
+<div class="modal fade" id="messageModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">쪽지 보내기</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+      	받는 사람 | <input type="text" placeholder="받는 사람 ID">
+      	<p>
+      		
+      	</p>
+      	
+        <textarea style="width:100%; min-height:150px" placeholder="내용을 입력하세요"></textarea>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">닫기</button>
+        <button type="button" class="btn btn-primary">보내기</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
     <!--Container Main start-->
     <div class="height-100 ">
         <div class="row width-100 dummy" ></div>
@@ -819,19 +847,19 @@
                     
 <!--                     </div> -->
                     
-                    <div class="col-3 col-md-3 ellipsis ididid" style="padding-left:8px;"><i class="fa-solid fa-envelope icon"></i>&nbsp;&nbsp;${dto.id} </div>
+                    <div class="col-3 col-md-3 ellipsis ididid" style="padding-left:8px;"><i class="fa-solid fa-envelope icon" data-bs-toggle="modal" data-bs-target="#messageModal"></i>&nbsp;&nbsp;${dto.id} </div>
                     
                     
                     <div class="col-9"><i class="fa-solid fa-calendar"></i>&nbsp;&nbsp;${dto.formdDate}</div>
                     <div class="col-3 " style="padding-left:8px;"><i class="fa-solid fa-eye"></i>&nbsp;&nbsp;${dto.view_count}</div>
                     <div class="col-9 like"><i class="fa-solid fa-thumbs-up"></i> &nbsp;&nbsp;${dto.like_count}</div>
                     <div class="col-6 filebox"  style="padding-left:8px;">첨부파일
-	                    <button type="button" class="btn btn-outline-primary btn-sm filebtn">보기</button>
-	                     
-	                    <div class="filelist text-center"  style="display:none;  padding-top:10px; padding-bottom: 10px; "></div>
- 						 </div>
- 					
- 						<div class="col-12" id="dummy3" style="height: 10px;"></div>                     
+                       <button type="button" class="btn btn-outline-primary btn-sm filebtn">보기</button>
+                        
+                       <div class="filelist text-center"  style="display:none;  padding-top:10px; padding-bottom: 10px; "></div>
+                    </div>
+                
+                   <div class="col-12" id="dummy3" style="height: 10px;"></div>                     
                    
                 </div>
                 <div class="col-12 text-center" id="cont" style="padding:0px;">
@@ -843,10 +871,10 @@
                 </div>
             </div>
             <div class="col-12" style="text-align: right; padding-top: 10px;padding-right: 100px;">
-<%--             	<c:if test="${loginID == dto.id}"> --%>
-	           	    <button class="btn btn-primary " type="button" id="boardModi">수정</button>
-	               	<button class="btn btn-primary " type="button" id="boardDel">삭제</button>
-<%--                	</c:if> --%>
+<%--                <c:if test="${loginID == dto.id}"> --%>
+                     <button class="btn btn-primary " type="button" id="boardModi">수정</button>
+                     <button class="btn btn-primary " type="button" id="boardDel">삭제</button>
+<%--                   </c:if> --%>
             </div>
             
             <div class="row " id="heart" style="margin: auto;">
@@ -881,7 +909,7 @@
 
         <div class="row msg " >
             <div class="col-10 p-0">
-         	   <textarea class="w-100 h-100 border border-2 rounded" id="chatContents"></textarea>
+               <textarea class="w-100 h-100 border border-2 rounded" id="chatContents"></textarea>
             </div>
             <div class="col-2  " style="text-align: center;">
                 <button class="btn btn-primary h-100 " id="btn" type="button">등록</button>
@@ -893,23 +921,23 @@
         <script>
         //댓글 등록 버튼
         $("#btn").on("click",function(){
-	        if(${loginID == null}){
-	        	alert("로그인이 필요합니다.");
-	        	return false;
-	        }
-        	
-        	let parent_seq = "${dto.all_board_seq}";
-        	let chatContents = $("#chatContents").val();
-        	//댓글 테이블 삽입
-        	$.ajax({
-        		url : "/chat.board",
-        		type : "post",
-        		data : {parent_seq:parent_seq, chatContents:chatContents}
-        	}).done(function(resp){
-//         		$("#chatContents").val("");
-//         		$("#chatContents").focus();
-        		location.reload();
-        	})
+           if(${loginID == null}){
+              alert("로그인이 필요합니다.");
+              return false;
+           }
+           
+           let parent_seq = "${dto.all_board_seq}";
+           let chatContents = $("#chatContents").val();
+           //댓글 테이블 삽입
+           $.ajax({
+              url : "/chat.board",
+              type : "post",
+              data : {parent_seq:parent_seq, chatContents:chatContents}
+           }).done(function(resp){
+//               $("#chatContents").val("");
+//               $("#chatContents").focus();
+              location.reload();
+           })
 
         });
       
@@ -927,56 +955,56 @@
 
 
     <script>
-	//누르면 파일 펼치기
-	let listExist = false;
-	
-	$(".filebtn").on("click",function(){
-	    let filelist = $(this).siblings();
-	    if(listExist==false){
-	        filelist.css("display","block");
-// 	        listExist = true;
-	        
-			$.ajax({
-				url:"/f_list.file",
-				data:{parent_seq:"${dto.all_board_seq}"},
-				dataType:"json"
-			}).done(function(resp){
-					for(let i=0; i<resp.length; i++){
-						let fileDiv = $("<div>");
-						
-						let anker = $("<a>");
-						anker.attr("href","/f_download.file?ori_name="+resp[i].ori_name+"&sys_name="+resp[i].sys_name);
-						anker.text(resp[i].ori_name);
-					
-						fileDiv.append(anker)
-						$(filelist).append(fileDiv);
-					}
-				})
-			listExist=true;
-	        
-	    } else{
-	        filelist.css("display","none");
+   //누르면 파일 펼치기
+   let listExist = false;
+   
+   $(".filebtn").on("click",function(){
+       let filelist = $(this).siblings();
+       if(listExist==false){
+           filelist.css("display","block");
+//            listExist = true;
+           
+         $.ajax({
+            url:"/f_list.file",
+            data:{parent_seq:"${dto.all_board_seq}"},
+            dataType:"json"
+         }).done(function(resp){
+               for(let i=0; i<resp.length; i++){
+                  let fileDiv = $("<div>");
+                  
+                  let anker = $("<a>");
+                  anker.attr("href","/f_download.file?ori_name="+resp[i].ori_name+"&sys_name="+resp[i].sys_name);
+                  anker.text(resp[i].ori_name);
+               
+                  fileDiv.append(anker)
+                  $(filelist).append(fileDiv);
+               }
+            })
+         listExist=true;
+           
+       } else{
+           filelist.css("display","none");
             $(filelist).children().remove();
-	        listExist = false;
-	    }
-	   
-	})
-	
+           listExist = false;
+       }
+      
+   })
+   
     //좋아요
     let good = true;
-	if(${isBoardGood!=null}){
-		if(${isBoardGood==true}){
-	        $("#goodcol").css("color", "#ffd000" );
-	        $("#goodcol").css("border","1px solid #ffd000" );
-	        good=false;
-		}
-	}
+   if(${isBoardGood!=null}){
+      if(${isBoardGood==true}){
+           $("#goodcol").css("color", "#ffd000" );
+           $("#goodcol").css("border","1px solid #ffd000" );
+           good=false;
+      }
+   }
 
     let gUpDown = 0;
     $("#goodcol").on("click", function () {
         if(${loginID == null}){
-        	alert("로그인이 필요합니다.");
-        	return false;
+           alert("로그인이 필요합니다.");
+           return false;
         }
         
         if (good) {
@@ -990,49 +1018,49 @@
         }
 
         if(good == false){
-        	gUpDown = 1;
+           gUpDown = 1;
         }else{
-        	gUpDown = 0;
+           gUpDown = 0;
         }
         
-		$.ajax({
-			url:"/goodClick.board",
-			data:{
-				seq:"${dto.all_board_seq}",
-				upDown:gUpDown
-			},
-			dataType:"json"
-		}).done(function(resp){
-				console.log(resp.likeCount)//좋아요 갯수
-				$("#likecnt").text(resp.likeCount);
+      $.ajax({
+         url:"/goodClick.board",
+         data:{
+            seq:"${dto.all_board_seq}",
+            upDown:gUpDown
+         },
+         dataType:"json"
+      }).done(function(resp){
+            console.log(resp.likeCount)//좋아요 갯수
+            $("#likecnt").text(resp.likeCount);
 
-				$(".like").text(resp.likeCount);
-				
-			}).fail(function(a, b){ 
-				console.log(a);
-				console.log(b);
-			})
-	
+            $(".like").text(resp.likeCount);
+            
+         }).fail(function(a, b){ 
+            console.log(a);
+            console.log(b);
+         })
+   
     })
     
     
     //heart-> 찜
     let heart = true;
     if(${isBoardJjim!=null}){
-    	if(${isBoardJjim==true}){
+       if(${isBoardJjim==true}){
             $("#jjimcol").css("color", "red" );
             $("#jjimcol").css("border","1px solid red" );
-    		heart=false;
-    	}
+          heart=false;
+       }
     }
-	let jUpDown = 0;
+   let jUpDown = 0;
     $("#jjimcol").on("click", function () {
         if(${loginID == null}){
-        	alert("로그인이 필요합니다.");
-        	return false;
+           alert("로그인이 필요합니다.");
+           return false;
         }
-    	
-        if (heart) {
+       
+        if (하트) {
             $("#jjimcol").css("color", "red" );
             $("#jjimcol").css("border","1px solid red" );
             heart=false;
@@ -1043,25 +1071,25 @@
         }
         
         if(heart == false){
-        	jUpDown = 1;
+           jUpDown = 1;
         }else{
-        	jUpDown = 0;
+           jUpDown = 0;
         }
         
-		$.ajax({
-			url:"/jjimClick.board",
-			data:{
-				seq:"${dto.all_board_seq}",
-				upDown:jUpDown
-			},
-			dataType:"json"
-		}).done(function(resp){
-				console.log(resp.jjimCount)//좋아요 갯수
-				$("#jjimcnt").text(resp.jjimCount);
-			}).fail(function(a, b){ 
-				console.log(a);
-				console.log(b);
-			})
+      $.ajax({
+         url:"/jjimClick.board",
+         data:{
+            seq:"${dto.all_board_seq}",
+            upDown:jUpDown
+         },
+         dataType:"json"
+      }).done(function(resp){
+            console.log(resp.jjimCount)//좋아요 갯수
+            $("#jjimcnt").text(resp.jjimCount);
+         }).fail(function(a, b){ 
+            console.log(a);
+            console.log(b);
+         })
 
         
     })
@@ -1070,20 +1098,20 @@
     
     //게시슬 수정
     $("#boardModi").on("click",function(){
-    	
-    	location.href = "/modiPage.board?cpage=${cpage}&seq=${dto.all_board_seq}";
-    	
+       
+       location.href = "/modiPage.board?cpage=${cpage}&seq=${dto.all_board_seq}";
+       
     })
     
     
     
-   	//게시글 삭제
-   	$("#boardDel").on("click",function(){
-   		let del = confirm("해당 게시글을 삭제하시겠습니까?");
-   		if(del == true){
-   			location.href = "/delete.board?seq=${dto.all_board_seq}";
-   		}
-   	})
+      //게시글 삭제
+      $("#boardDel").on("click",function(){
+         let del = confirm("해당 게시글을 삭제하시겠습니까?");
+         if(del == true){
+            location.href = "/delete.board?seq=${dto.all_board_seq}";
+         }
+      })
     
 
     
@@ -1172,48 +1200,48 @@
     </script>
     
     <script type="text/javascript">
- 	let city = ['Jeju City'];
-	
-	city.forEach(function(city){
-		$(document).ready(function() {
-			let weatherIcon = {
-			'01' : 'fas fa-sun',
-			'02' : 'fas fa-cloud-sun',
-			'03' : 'fas fa-cloud',
-			'04' : 'fas fa-cloud-meatball',
-			'09' : 'fas fa-cloud-sun-rain',
-			'10' : 'fas fa-cloud-showers-heavy',
-			'11' : 'fas fa-poo-storm',
-			'13' : 'far fa-snowflake',
-			'50' : 'fas fa-smog'
-			};
-			$.ajax({
-				url:'http://api.openweathermap.org/data/2.5/weather?q='+city+'&APPID=71199a5512c711405120f9710683654c&units=metric',
-				dataType:'json',
-				type:'GET',
-				success:function(data){
-					let $Icon = (data.weather[0].icon).substr(0,2);
-					let $Temp = Math.floor(data.main.temp) + 'º';
-					let $city = "제주도";
-					
-					$('.CurrIcon').append('<i class="' + weatherIcon[$Icon] +'"></i>');
-					$('.CurrTemp').prepend($Temp);
-					$('.City').append($city);
-					console.log(data);
-	                console.log("현재온도 : "+ (data.main.temp- 273.15) ); //섭씨온도를 만들기 위함
-	                console.log("현재습도 : "+ data.main.humidity);
-	                console.log("날씨 : "+ data.weather[0].main );
-	                console.log("상세날씨설명 : "+ data.weather[0].description );
-	                console.log("날씨 이미지 : "+ data.weather[0].icon );
-	                console.log("바람   : "+ data.wind.speed );
-	                console.log("나라   : "+ data.sys.country );
-	                console.log("도시이름  : "+ data.name );
-	                console.log("구름  : "+ (data.clouds.all) +"%" );  
-				}
-			})
-		});
-	});
-	
+    let city = ['Jeju City'];
+   
+   city.forEach(function(city){
+      $(document).ready(function() {
+         let weatherIcon = {
+         '01' : 'fas fa-sun',
+         '02' : 'fas fa-cloud-sun',
+         '03' : 'fas fa-cloud',
+         '04' : 'fas fa-cloud-meatball',
+         '09' : 'fas fa-cloud-sun-rain',
+         '10' : 'fas fa-cloud-showers-heavy',
+         '11' : 'fas fa-poo-storm',
+         '13' : 'far fa-snowflake',
+         '50' : 'fas fa-smog'
+         };
+         $.ajax({
+            url:'http://api.openweathermap.org/data/2.5/weather?q='+city+'&APPID=71199a5512c711405120f9710683654c&units=metric',
+            dataType:'json',
+            type:'GET',
+            success:function(data){
+               let $Icon = (data.weather[0].icon).substr(0,2);
+               let $Temp = Math.floor(data.main.temp) + 'º';
+               let $city = "제주도";
+               
+               $('.CurrIcon').append('<i class="' + weatherIcon[$Icon] +'"></i>');
+               $('.CurrTemp').prepend($Temp);
+               $('.City').append($city);
+               console.log(data);
+                   console.log("현재온도 : "+ (data.main.temp- 273.15) ); //섭씨온도를 만들기 위함
+                   console.log("현재습도 : "+ data.main.humidity);
+                   console.log("날씨 : "+ data.weather[0].main );
+                   console.log("상세날씨설명 : "+ data.weather[0].description );
+                   console.log("날씨 이미지 : "+ data.weather[0].icon );
+                   console.log("바람   : "+ data.wind.speed );
+                   console.log("나라   : "+ data.sys.country );
+                   console.log("도시이름  : "+ data.name );
+                   console.log("구름  : "+ (data.clouds.all) +"%" );  
+            }
+         })
+      });
+   });
+   
 </script>
 </body>
 
