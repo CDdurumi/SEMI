@@ -531,62 +531,74 @@
 				}else{
 					
 					for(let i = 0; i < resp.length; i++){
-						
-		 	            let row1 = $("<div>");
-		 	            row1.attr("class","row wrap");
-		 	            let col1 = $("<div>");
-		 	            col1.attr("class","col-12 wrap");
-		 	            let row2 = $("<div>");
-		 	            row2.attr("class","row pt-4 m-0");
-		 	            // 작성자 이름 
-		 	            let col2 = $("<div>");
-		 	            let rowDiv = $("<div>");
-		 	            col2.attr("class","col-3");
-		 	            col2.text(resp[i].id);
-	
-		 	            //작성날짜
-		 	            let col3 = $("<div>");
-		 	            col3.attr("class","col-3");    
-		 	            col3.text(resp[i].write_date);    
-		 	            let col4=$("<div>");
-		 	            col4.attr("class","col-6");
-		 	            col4.attr("style","text-align:right;");
-		 	            let row3 =$("<div>");
-		 	            row3.attr("class","row message border-bottom border-2 m-0");   
-		 	            //댓글내용
-		 	            let col5 =$("<div>");
-		 	            col5.attr("class","col-12");
-		 	            col5.text(resp[i].contents);
-	
-		 	            
-		 	            
 
-		 				let my_id =col2.text();
-// 		 	             if(my_id =='${loginID}'){
-		 	            let btn1 = $("<button>");
-		 	                btn1.text("수정");
-		 	                btn1.attr("class","btn btn-outline-primary ");
-		 	                btn1.attr("type","button");
-		 	            let btn2 = $("<button>");
-		 	                btn2.text("삭제");
-		 	                btn2.attr("class","btn btn-outline-primary ");
-		 	                btn2.attr("type","button");
-			                
-		 	                col4.append(btn1);
-		 	                col4.append(btn2);
-// 		 	             }
-			                
-		 	            row1.hide();
-		 	            row1.fadeIn(2500);
+						let row1 = $("<div>");
+                        row1.attr("class","row wrap");
+                        let col1 = $("<div>");
+                        col1.attr("class","col-12 wrap");
+                        let row2 = $("<div>");
+                        row2.attr("class","row");
+                        
+                        let col2 = $("<div>");
+                        col2.attr("class","col-9 p-0");
+                        let row3 = $("<div>");
+                        //작성자
+                        let col3 = $("<div>");
+                        col3.attr("class","col-12 pt-4 "); 
+                        col3.text("resp[i].id");   
+                        //작성날짜
+                        let col4 = $("<div>");
+                        col4.attr("class","col-12 ");    
+                        col4.text("resp[i].write_date");
+                        //버튼
+                        let col5=$("<div>");
+                        col5.attr("class","col-3 btnbtn pt-4");
+                        
+                         //댓글내용
+                         let col6 =$("<div>");
+                        col6.attr("class","col-12 message border-bottom border-2 m-0");
+                        col6.text("resp[i].contents");    
+                       //버튼
+                       
+                       let my_id =col2.text();
+		  	             if(my_id =='${loginID}'){
+                        let btn1 = $("<button>");
+                            btn1.text("수정");
+                            btn1.attr("class","btn btn-outline-primary ");
+                            btn1.attr("type","button");
+                            
+//                             btn1.on("click",function(){
+//                                 col6.attr("contenteditable","true");
+//                             })
+                        let btn2 = $("<button>");
+                            btn2.text("삭제");
+                            btn2.attr("class","btn btn-outline-primary ");
+                            btn2.attr("type","button");
+                            
+                            col5.append(btn1);
+                            col5.append(btn2);
+		  	             }
+                         
+		  	             
+		   
+		  	            row1.hide();
+		  	            row1.fadeIn(2500);
 
-		 	            $("#dummy").append(row1);
-		 	            row1.append(col1);
-		 	            col1.append(row2);
-		 	            row2.append(col2);
-		 	            row2.append(col3);
-		 	            row2.append(col4);
-		 	            col1.append(row3);
-		 	            row3.append(col5);
+                        $("#dummy").append(row1);
+                        row1.append(col1);
+                        col1.append(row2);
+                        row2.append(col2);
+                        col2.append(row3);
+
+                        row3.append(col3);
+                        row3.append(col4);
+
+
+                        row2.append(col5);
+                        row1.append(col6);
+
+                      
+            
 						
 						
 					}	    		
