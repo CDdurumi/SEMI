@@ -11,11 +11,11 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import com.google.gson.Gson;
-import com.google.gson.JsonArray;
-import com.google.gson.JsonObject;
 
 import dao.ReplyDAO;
+import dao.ReplyReDAO;
 import dto.ReplyDTO;
+import dto.ReplyReDTO;
 
 
 @WebServlet("*.reply")
@@ -28,6 +28,7 @@ public class ReplyController extends HttpServlet {
 
 		String uri = request.getRequestURI();
 		ReplyDAO dao = ReplyDAO.getInstance();
+		ReplyReDAO daoRe = ReplyReDAO.getInstance();
 		Gson g = new Gson();
 		
 		try {
@@ -52,6 +53,39 @@ public class ReplyController extends HttpServlet {
 				PrintWriter pw = response.getWriter();
 				
 				pw.append(g.toJson(list));
+				
+				
+			}else if(uri.equals("/reChatIN.reply")) {//re댓글 삽입(re댓글 등록 버튼 클릭 시 여기로)
+				
+				String parent_seq = request.getParameter("parent_seq"); //부모 댓글 고유seq
+				String id = (String) request.getSession().getAttribute("loginID");//작성자 id
+				String contents = request.getParameter("reChatContents");//re댓글 내용
+				
+				daoRe.insert(new ReplyReDTO(null, id, contents, null, parent_seq));//삽입
+				
+			}else if(uri.equals("/reDelete.reply")) {//re댓글 삭제
+
+				String reply_re_seq = request.getParameter("reply_re_seq");//re댓글 고유seq
+				int result = dao.deleteByReplySeq(reply_re_seq);//re댓글 삭제
+				PrintWriter pw = response.getWriter();
+				pw.append(g.toJson(result));
+				
+			}else if(uri.equals("/reModify.reply")) {//re댓글 수정
+
+				String reply_re_seq = request.getParameter("reply_re_seq");//re댓글 고유seq
+				String contents = request.getParameter("replyContentModify");//re댓글 내용
+				int result = dao.modify(reply_re_seq, contents);//re댓글 수정
+				PrintWriter pw = response.getWriter();
+				pw.append(g.toJson(result));
+				
+			}else if(uri.equals("/reList.reply")) {//re댓글 리스트
+
+				String parent_seq = request.getParameter("parent_seq"); //부모 댓글 고유seq
+				List<ReplyReDTO> list = daoRe.selectByParentSeq(parent_seq);//re댓글 리스트(부모 댓글 기준)
+				
+				PrintWriter pw = response.getWriter();
+				pw.append(g.toJson(list));
+				
 			}
 			
 			
