@@ -942,6 +942,20 @@ $("#modal_loginBtn").on("click",function(){
         </div>
         <div class="row dummy" id="dummy"></div>
         
+        <div class="toast-container position-fixed bottom-0 end-0 p-3">
+  <div id="liveToast" class="toast" role="alert" aria-live="assertive" aria-atomic="true">
+    <div class="toast-header">
+      <img src="..." class="rounded me-2" alt="...">
+      <strong class="me-auto">Bootstrap</strong>
+      <small>11 mins ago</small>
+      <button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close"></button>
+    </div>
+    <div class="toast-body">
+      Hello, world! This is a toast message.
+    </div>
+  </div>
+</div>
+        
         <!-- 댓글  -->
         <script>
         //댓글 등록 버튼
@@ -1014,6 +1028,17 @@ $("#modal_loginBtn").on("click",function(){
        }
       
    })
+   
+   //좋아요 토스트
+   	const toastTrigger = document.getElementById('goodcol')
+	const toastLiveExample = document.getElementById('liveToast')
+	if (toastTrigger) {
+  		toastTrigger.addEventListener('click', () => {
+    	const toast = new bootstrap.Toast(toastLiveExample)
+
+    	toast.show()
+  })
+}
    
     //좋아요
     let good = true;
