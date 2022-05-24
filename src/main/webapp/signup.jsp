@@ -462,7 +462,7 @@
 </div>
 
 <!--Container Main start-->
-<form action="/signup.member" method="post">
+<form action="/signup.member" method="post" id="signupFrm">
 <div class="height-100 " align ="center">
 	
 		<div class="row " id="cont">
@@ -595,6 +595,24 @@
 	
 	//회원가입 관련 id_input , password1_input ,password_input , email_input
 	//정규식
+	
+	$("#signupFrm").on("submit",function(){
+		let nickName = $("#nickname_input");
+		let pw1 = $(".passwords1_input");
+		let email = $("#email_input");
+		
+		 if(!isEmail(email.val())){
+			email.focus();
+			return false;
+		}
+		 else if(!isNickName(nickName.val())){
+			nickName.focus();
+			return false;
+		}else if(!isPw(pw1.val())){
+			pw1.focus();
+			return false;
+		}
+	})
 		//닉네임(한글,영문, 숫자 2-10자)
 		function isNickName(asValue) {
 			var regExp = /^[a-z가-힣0-9]{2,10}$/g;		
