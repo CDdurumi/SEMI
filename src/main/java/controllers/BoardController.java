@@ -175,6 +175,40 @@ public class BoardController extends HttpServlet {
 
 			}else if(uri.equals("/modify.board")) {//게시글 수정 시(수정완료버튼)
 				
+				int maxSize = 1024*1024*10;//파일허용 크기
+				String savePath = request.getServletContext().getRealPath("files");//자유게시판 업로드 파일 저장 경로	
+//				System.out.println(savePath);
+				File filePath = new File(savePath);
+				if(!filePath.exists()) {
+					filePath.mkdir();
+				}
+				MultipartRequest multi = new MultipartRequest(request, savePath, maxSize, "UTF8", new DefaultFileRenamePolicy() );
+
+				String writer = (String) request.getSession().getAttribute("loginID");//로그인 id
+//				System.out.println(writer);
+
+				String title = multi.getParameter("title");
+				String contents = multi.getParameter("contents");
+				
+				
+				String seq = multi.getParameter("seq"); //해당 작성글 넘버 가져오기
+				
+				//게시글 수정 //
+				dao.modifyPost(new BoardDTO(seq, writer, title, contents, null, 0, 0, 0));
+
+				//업로드 파일 정보 저장
+				Enumeration<String> e = multi.getFileNames();
+				while(e.hasMoreElements()){
+					String name = e.nextElement();
+					String oriName = multi.getOriginalFileName(name);//원본파일이름
+					String sysName = multi.getFilesystemName(name);//서버저장파일이름
+					if( !(sysName == null || sysName.isEmpty()) ) {
+						filesDAO.insert(new FilesDTO(0, oriName, sysName, seq));//파일 정보 저장
+					}	
+				}
+				
+				System.out.println(seq);
+				response.sendRedirect("/detailView.board?cpage=1&seq="+seq+"");//자유게시판 메인화면으로 전환
 				
 				
 			}else if(uri.equals("/chat.board")) {//댓글 등록 시(작성 글에서 댓글 등록 클릭 시 여기로)
