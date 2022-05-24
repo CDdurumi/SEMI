@@ -575,7 +575,7 @@ pageEncoding="UTF-8"%>
                             class="nav1_name">마이페이지</span> </a>
                     <a href="#" class="nav1_link"> <i class='bx bx-calendar nav1_icon'></i> <span
                             class="nav1_name">일정관리</span> </a>
-                    <a href="/board/stayreview.jsp" class="nav1_link"> <i class='bx bx-home nav1_icon'></i> <span class="nav1_name">숙소정보</span>
+                    <a href="/boardMainView.board?cpage=1" class="nav1_link"> <i class='bx bx-home nav1_icon'></i> <span class="nav1_name">숙소리뷰</span>
                     </a>
                     <a href="#" class="nav1_link"> <i class='bx bx-message-alt-detail nav1_icon'></i> <span
                             class="nav1_name">쪽지</span> </a>
