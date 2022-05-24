@@ -447,16 +447,16 @@
             <a class="nav-link nav-link2" href="/boardMainView.board?cpage=1">자유게시판</a>
         </li>
         <li class="nav-item">
-            <a class="nav-link nav-link2" href="/board/gallery.jsp">여행후기</a>
+            <a class="nav-link nav-link2" href="/galleryMain.board?cpage=1">여행후기</a>
         </li>
         <li class="nav-item">
-            <a class="nav-link nav-link2" href="/board/jobMain.jsp">구인구직</a>
+            <a class="nav-link nav-link2" href="/jobMain.board?cpage=1">구인구직</a>
         </li>
         <li class="nav-item">
-            <a class="nav-link nav-link2" href="/board/foodMain.jsp">맛집</a>
+            <a class="nav-link nav-link2" href="/foodMain.board?cpage=1">맛집</a>
         </li>
         <li class="nav-item">
-            <a class="nav-link nav-link2" href="/board/houseMain.jsp">숙소리뷰</a>
+            <a class="nav-link nav-link2" href="/houseMain.board?cpage=1">숙소리뷰</a>
         </li>
     </ul>
     <div class="l-navbar" id="nav-bar">
@@ -470,7 +470,7 @@
                     </span></span> </a>
                     <a href="/board/communityMain.jsp" class="nav_link active"> <i class='bx bx-message nav_icon'></i> <span
                             class="nav_name">커뮤니티</span> </a>
-                    <a href="/board/editorReMain.jsp" class="nav_link"> <i class='bx bx-bus nav_icon'></i> <span class="nav_name">에디터추천</span>
+                    <a href="/board/editorReMain.jsp" class="nav_link"> <i class='bx bx-book-bookmark nav_icon'></i> <span class="nav_name">에디터추천</span>
                     </a>
                     <a href="/myPage.jsp" class="nav_link"> <i class='bx bx-user nav_icon'></i> <span
                             class="nav_name">마이페이지</span> </a>
