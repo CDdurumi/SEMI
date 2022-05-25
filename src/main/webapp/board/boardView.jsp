@@ -545,9 +545,9 @@
                for(let i = 0; i < resp.length; i++){
 
                   let row1 = $("<div>");
-                        row1.attr("class","row wrap");
+                        row1.attr("class","row wrap border-bottom border-2");
                         let col1 = $("<div>");
-                        col1.attr("class","col-12 wrap");
+                        col1.attr("class","col-12 wwrap");
                         let row2 = $("<div>");
                         row2.attr("class","row");
                         
@@ -557,10 +557,12 @@
                         //작성자
                         let col3 = $("<div>");
                         col3.attr("class","col-12 pt-4 "); 
+                        col3.attr("style","padding-left : 10px");
                         col3.text(resp[i].id);   
                         //작성날짜
                         let col4 = $("<div>");
-                        col4.attr("class","col-12 ");    
+                        col4.attr("class","col-12 pl-2");   
+                        col4.attr("style","padding-left : 10px");
                         col4.text(resp[i].write_date);
                         //버튼
                         let col5=$("<div>");
@@ -568,7 +570,9 @@
                         
                          //댓글내용
                          let col6 =$("<div>");
-                        col6.attr("class","col-12 message border-bottom border-2 m-0");
+                        col6.attr("class","col-12 message  m-0");
+                        col6.attr("style","word-break:break-all");
+                        col6.attr("style","padding-right:30px");
                         col6.text(resp[i].contents);    
                       
                         //버튼
@@ -589,6 +593,67 @@
                         btn5.html(' <i class="fa-solid fa-message"></i>');
                         btn5.attr("class","btn btn-outline-primary btn-sm rereply ");
                         btn5.attr("type","button");   
+                        
+                      
+                        //대댓글 작성
+                        
+                        let replyOn=false;
+                        let recol1;
+                        let recol2;
+                        let recol3;
+                        let textarea;
+                        let rebtn1;
+                        
+                     	btn5.on("click",function(){
+                    	 if(replyOn==false){
+                 		let target = $(this).parent().parent().parent().siblings();
+                 		console.log(target);
+                 		
+                 		recol1 =$("<div>");
+                 		recol1.attr("class","col-1");
+                 		recol1.html('<i class="fa-solid fa-reply fa-rotate-180 "></i>');
+                 		recol1.css("display","inline-block");
+                 		 
+                 		recol2 =$("<div>");
+                 		recol2.attr("class","col-10");
+                 		
+                 		
+                 		textarea = $("<textarea>");
+                 		textarea.attr("class","w-100 h-100")
+                 		
+                 		recol3 =$("<div>");
+                 		recol3.attr("class","col-1 p-0 text-center");
+                 		
+                 		rebtn1 =$("<button>");
+                 		rebtn1.attr("type","button");
+                 		rebtn1.attr("class","btn btn-primary btn-sm h-100 w-100")
+                      	
+                 		
+                 		target.after(recol3);
+                 		target.after(recol2);
+                      	target.after(recol1);
+                      	recol2.append(textarea);
+                      	recol3.append(rebtn1);
+                      	
+                      	replyOn = true;
+                    	 }else{
+                    		 
+                    		 recol1.remove();
+                    		 recol2.remove();
+                    		 recol3.remove();
+                    		 rebtn1.remove();
+                    		 replyOn=false;
+                    	 }
+
+                 })
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
                             //수정하기 
                             btn1.on("click",function(){
                                
@@ -713,12 +778,9 @@
 
           })
             
-
-          $("#dummy").on("click",".rereply",function(){
-       	   console.log($(this).text());
-//        	   alert("d");
-          })
-          
+ 		  //대댓글
+ 		  
+ 		  
           
           
           
@@ -726,7 +788,11 @@
           
        }
 
-       //대댓글
+    
+     
+       
+       
+       
        
        
        
