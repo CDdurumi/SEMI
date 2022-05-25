@@ -32,13 +32,13 @@ public class MemberController extends HttpServlet {
 		response.setCharacterEncoding("UTF-8");//get
 		try {
 			if (uri.equals("/duplIDCheck.member")) {// 아이디 중복 확인
-				System.out.println("아이디 중복확인 수신확인");
+				System.out.println("닉네임 중복확인 수신확인");
 				String nickname = request.getParameter("nickname");
 
 				boolean result = dao.isNickNameExist(nickname);
 				PrintWriter pw = response.getWriter();
 				pw.append(g.toJson(result));
-				System.out.println(result);
+				System.out.println("멤버 컨트롤러에서 아이디(닉네임)"+nickname+"조회하고 나온 결과 : "+result);
 
 			}else if (uri.equals("/isEmailExist.member")) {// 이메일 중복 확인
 				String email = request.getParameter("email");
@@ -47,6 +47,7 @@ public class MemberController extends HttpServlet {
 				
 				
 				boolean result = dao.isEmailExist(email);
+				System.out.println("DAO에서 EMAIL 조회하고 나온 값 : "+result );
 				PrintWriter pw = response.getWriter();
 				pw.append(g.toJson(result));
 				System.out.println(result);
