@@ -11,6 +11,7 @@ import javax.naming.Context;
 import javax.naming.InitialContext;
 import javax.sql.DataSource;
 
+import dto.BoardDTO;
 import dto.FilesDTO;
 
 public class FilesDAO {
@@ -67,5 +68,30 @@ public class FilesDAO {
 		}
 	}
 
+	
+	//대표 프로필 sys_name, 해당 게시글 seq 얻어오기
+	public List<FilesDTO> selectSysName(String boardOption) throws Exception {
+		
+		String sql = "select sys_name, parent_seq "
+				+ "from(select files.* , ROW_NUMBER() over(partition by parent_seq order by seq desc ) row_num  "
+						+ "from files order by parent_seq desc) "
+				+ "where parent_seq like '"+boardOption+"%' and row_num = 1";
+
+		try (Connection con = this.getConnection();
+				PreparedStatement pstat = con.prepareStatement(sql);
+				ResultSet rs = pstat.executeQuery();) {
+			
+			List<FilesDTO> list = new ArrayList<FilesDTO>();
+
+			while (rs.next()) {
+				String sys_name = rs.getString("sys_name");
+				String parent_seq = rs.getString("parent_seq");
+
+				FilesDTO dto = new FilesDTO(0, null, sys_name, parent_seq);
+				list.add(dto);
+			}
+			return list;
+		}
+	}
 
 }

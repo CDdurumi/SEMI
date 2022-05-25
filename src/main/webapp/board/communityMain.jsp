@@ -896,7 +896,12 @@ $("#modal_loginBtn").on("click",function(){
 
 
     <script>
-
+    $("#password-input").on("keyup",function(e){
+        if(e.keyCode==13){
+            $("#modal_loginBtn").click();
+        }
+    })
+    
         document.addEventListener("DOMContentLoaded", function (event) {
 
             const show1Navbar = (toggleId, navId, bodyId, headerId) => {

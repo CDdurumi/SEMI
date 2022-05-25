@@ -862,7 +862,12 @@ $("#modal_loginBtn").on("click",function(){
           }
         });
 
-
+        $("#password-input").on("keyup",function(e){
+            if(e.keyCode==13){
+                $("#modal_loginBtn").click();
+            }
+        })
+        
         /////////////////////////////////////애디터 추천//////////////////////////////////////////
 
 

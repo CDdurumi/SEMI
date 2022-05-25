@@ -918,6 +918,8 @@ $("#modal_loginBtn").on("click",function(){
 				
 			});
 		})
+		
+		
 </script>
 
 <!-- Modal -->
@@ -1148,6 +1150,13 @@ $("#modal_loginBtn").on("click",function(){
 
 
     <script>
+    
+    $("#password-input").on("keyup",function(e){
+        if(e.keyCode==13){
+            $("#modal_loginBtn").click();
+        }
+    })
+    
    //누르면 파일 펼치기
    let listExist = false;
    

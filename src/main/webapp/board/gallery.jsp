@@ -1,8 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
-    <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-    <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
-        
+pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -305,62 +304,52 @@ opacity:1;
 }
 
     /* 메인내용 */
-         /* div {
+          /* div {
          border: 1px solid black; 
-    }       */
-    #cont{
-        height: 100%;
-    }
-    #title{
-font-size: 50px;
-text-align: center;
-font-weight:bold ;
-height: 10%;
-padding-top: 10px;
-padding-bottom: 10px;
+    }        */
+   
+#cont{
+    height: 100%;
+   
 }
-#searchbar{
-padding-top: 5px;
-padding-bottom: 5px;
+#titleg{
+    height: 10%;
+    font-size: 50px;
+    text-align: center;
 }
-#bar{
-height: 100px;
-}
-#mm{
+/* --------------이미지 스타일 -------------*/
 
-height: 90%;
-border: 2px solid #aaa9a9; 
-border-radius: 10px;
-padding-top: 20px;
-}
-#img{
- padding-left: 15px;
-padding-right: 15px;
-padding-top: 13px;
-padding-bottom: 20px; 
-float: left;
-height: 100%;
-text-align: center;
-}
 #imgmenu1{
-height: 350px;
+margin: 0%;
+padding: 0%;
+border: 3px solid #929090;
+    border-radius: 20px;
 }
-#ptitle{
-padding-top: 2px;
+
+#img{
+    float: left;
+    margin: 0%;
+    height: 400px;
+    padding: 0%;
+    padding-left: 15px;
+    padding-right: 15px;
+    padding-top: 15px;
+    padding-bottom: 15px;
+    position:relative;
 }
-#rev{
-color: #3b59dc;
+#nb{
+    margin: 0%;
+    padding: 0%;
 }
-#img {position:relative;
-}  
+
 
 p1{color: #fff;
- line-height:350px;
+ line-height:370px;
 }
 .mask{
 left: 0; top:0; 
 text-align: center;
-    width: 99%; height: 97%;
+    width: 100%; height: 100%;
    position: absolute;
      border-radius: 50%;
      background-color: rgba(32, 32, 32, 0.329); 
@@ -370,18 +359,15 @@ text-align: center;
 
 img:hover + .mask, .mask:hover {display: block;}
 
-/* .imgs{
-width: 100%; height: 100%;
+/*--------- 네비스타일--------- */
 
-} */
-#imgs{
-width: 100%; height: 100%;
-
-} 
 #page{
         color: #0080ff;
     }
 
+#nb{
+    padding-top: 10px;
+}
 /*--top버튼----------------------------------------------------------------*/
 
 #myBtn {
@@ -538,65 +524,62 @@ $("#modal_loginBtn").on("click",function(){
 </script>
 <!--Container Main start-->
 
-<div id="cont">
 
-    <div class="col-12" id="title">
-       TRAVEL LOUNGE
+<div id="cont"class="row">
+<div id="titleg" class="col-12">TRAVEL LOUNGE</div>
+<div class="col-12" id="searchbar" >
+    <nav class="navbar bg">
+        <div class="container-fluid">
+          <a class="navbar-brand"> </a>
+          <form class="d-flex" role="search">
+            <input class="form-control me-2" type="search" placeholder="작성자를 입력하세요" aria-label="Search">
+            <button class="btn btn-primary" type="submit">Search</button>
+          </form>
+        </div>
+      </nav>
     </div>
 
-    <div class="col-12" id="searchbar" >
-        <nav class="navbar bg">
-            <div class="container-fluid">
-              <a class="navbar-brand"> </a>
-              <form class="d-flex" role="search">
-                <input class="form-control me-2" type="search" placeholder="검색어를 입력하세요" aria-label="Search">
-                <button class="btn btn-primary" type="submit">Search</button>
-              </form>
-            </div>
-          </nav>
+    
+        <div id="imgmenu1" class="row">
+        <c:forEach var="i" items="${porfileList}">
+<!--         <img src="\files\test.png"> -->
+        <div class="col-12 col-sm-6 col-md-4" id="img"><img src="${profilePath}${i.sys_name}" alt=".." class="rounded-circle w-100 h-100"><div class="mask"><p1>한라산근처 - 남휘리조트</p1></div></div>
+        </c:forEach>
+<%--            <div class="col-12 col-sm-6 col-md-4" id="img"><img src="${profilePath}/${porfileList[0].sys_name}" alt=".." class="rounded-circle w-100 h-100"><div class="mask"><p1>한라산근처 - 남휘리조트</p1></div></div> --%>
+           <div class="col-12 col-sm-6 col-md-4" id="img"><img src="/imgsrc/mainthem.jpg" alt=".." class="rounded-circle w-100 h-100"><div class="mask"><p1>한라산근처 - 남휘리조트</p1></div></div>
+           <div class="col-12 col-sm-6 col-md-4" id="img"><img src="/imgsrc/mainthem.jpg" alt=".." class="rounded-circle w-100 h-100"><div class="mask"><p1>한라산근처 - 남휘리조트</p1></div></div>
+           <div class="col-12 col-sm-6 col-md-4" id="img"><img src="/imgsrc/mainthem.jpg" alt=".." class="rounded-circle w-100 h-100"><div class="mask"><p1>한라산근처 - 남휘리조트</p1></div></div>
+           <div class="col-12 col-sm-6 col-md-4" id="img"><img src="/imgsrc/mainthem.jpg" alt=".." class="rounded-circle w-100 h-100"><div class="mask"><p1>한라산근처 - 남휘리조트</p1></div></div>
+           <div class="col-12 col-sm-6 col-md-4" id="img"><img src="/imgsrc/mainthem.jpg" alt=".." class="rounded-circle w-100 h-100"><div class="mask"><p1>한라산근처 - 남휘리조트</p1></div></div>
+           <div class="col-12 col-sm-6 col-md-4" id="img"><img src="/imgsrc/mainthem.jpg" alt=".." class="rounded-circle w-100 h-100"><div class="mask"><p1>한라산근처 - 남휘리조트</p1></div></div>
+           <div class="col-12 col-sm-6 col-md-4" id="img"><img src="/imgsrc/mainthem.jpg" alt=".." class="rounded-circle w-100 h-100"><div class="mask"><p1>한라산근처 - 남휘리조트</p1></div></div>
+           <div class="col-12 col-sm-6 col-md-4" id="img"><img src="/imgsrc/mainthem.jpg" alt=".." class="rounded-circle w-100 h-100"><div class="mask"><p1>한라산근처 - 남휘리조트</p1></div></div>
         </div>
 
-        <div id="mm">
-             <div id="imgmenu1">
-                <div class=" col-12 col-sm-4" id="img"><img src="88.jpg" alt=".." class="rounded-circle w-100 h-100"><div class="mask"><p1>한라산근처 - 남휘리조트</p1></div></div>
-                <div class=" col-12 col-sm-4" id="img"><img src="88.jpg" alt=".." class="rounded-circle w-100 h-100"><div class="mask"><p1>한라산근처 - 남휘리조트</p1></div></div>
-                <div class=" col-12 col-sm-4" id="img"><img src="88.jpg" alt=".." class="rounded-circle w-100 h-100"><div class="mask"><p1>한라산근처 - 남휘리조트</p1></div></div>
-            </div>  
-            <div id="imgmenu1">
-                <div class=" col-12 col-sm-4" id="img"><img src="88.jpg" alt=".." class="rounded-circle w-100 h-100"><div class="mask"><p1>한라산근처 - 남휘리조트</p1></div></div>
-                <div class=" col-12 col-sm-4" id="img"><img src="88.jpg" alt=".." class="rounded-circle w-100 h-100"><div class="mask"><p1>한라산근처 - 남휘리조트</p1></div></div>
-                <div class=" col-12 col-sm-4" id="img"><img src="88.jpg" alt=".."  class="rounded-circle w-100 h-100"><div class="mask"><p1>한라산근처 - 남휘리조트</p1></div></div>
-                    </div>  
-                        <div id="imgmenu1">
-                            <div class=" col-12 col-sm-4" id="img"><img src="88.jpg" alt=".." class="rounded-circle w-100 h-100"><div class="mask"><p1>한라산근처 - 남휘리조트</p1></div></div>
-                            <div class=" col-12 col-sm-4" id="img"><img src="88.jpg" alt=".."  class="rounded-circle w-100 h-100"><div class="mask"><p1>한라산근처 - 남휘리조트</p1></div></div>
-                            <div class=" col-12 col-sm-4" id="img"><img src="88.jpg" alt=".." class="rounded-circle w-100 h-100"><div class="mask"><p1>한라산근처 - 남휘리조트</p1></div></div>
+<div class="row" id="nb">
 
-                        </div>
-                                </header>
-                                <div calss="bar">
-                                    <div class="col-12 text-center">
-                                        <nav aria-label="Page navigation example">
-  <ul class="pagination justify-content-center">
-    <li class="page-item">
-      <a class="page-link" href="#" aria-label="Previous">
+
+    <nav aria-label="Page navigation example">
+        <ul class="pagination justify-content-center">
+     <li class="page-item">
+     <a class="page-link" href="#" aria-label="Previous">
         <span aria-hidden="true">&laquo;</span>
-      </a>
-    </li>
-    ${navi }
-    <li class="page-item">
-      <a class="page-link" href="#" aria-label="Next">
-        <span aria-hidden="true">&raquo;</span>
-      </a>
-    </li>
-  </ul>
-</nav>
-                                    </div>
-                                <footer class="mt-auto text-black-50">                   
-                              
-                                </footer>
-                            </div>
-                        </div>
+        </a>
+            </li>
+
+<li class="page-item">
+<a class="page-link" href="#" aria-label="Next">
+<span aria-hidden="true">&raquo;</span>
+</a>
+</li>
+</ul>
+ </nav>
+
+
+
+</div>
+</div>
+
                         <button onclick="topFunction()" id="myBtn" title="Go to top">↑</button>
                     </div>
 <!--Container Main end-->
@@ -722,7 +705,11 @@ function topFunction() {
   document.documentElement.scrollTop = 0; 
 }
 
-
+$("#password-input").on("keyup",function(e){
+    if(e.keyCode==13){
+        $("#modal_loginBtn").click();
+    }
+})
 
 </script>
 </body>
