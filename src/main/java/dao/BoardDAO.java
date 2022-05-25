@@ -279,8 +279,8 @@ public class BoardDAO {
 	}
 
 	// DB의 총 record 개수를 알아내기 위한 메소드
-	private int getRecordTotalCount() throws Exception {
-		String sql = "select count(*) from all_board";
+	private int getRecordTotalCount(String boardOption) throws Exception {
+		String sql = "select count(*) from all_board where all_board_seq like '"+boardOption+"%'";
 
 		try (Connection con = this.getConnection();
 				PreparedStatement pstat = con.prepareStatement(sql);
@@ -310,7 +310,7 @@ public class BoardDAO {
 		}
 		
 		
-		int recordTotalCount = this.getRecordTotalCount(); // 총 게시글의 개수 -> 향후 실제 데이터베이스의 개수를 세어와야함
+		int recordTotalCount = this.getRecordTotalCount(boardOption); // 총 게시글의 개수 -> 향후 실제 데이터베이스의 개수를 세어와야함
 
 		int recordCountPerPage = 10; // 한 페이지에 몇 개의 게시글을 보여줄 건지
 
@@ -340,7 +340,7 @@ public class BoardDAO {
 		if (endNavi > pageTotalCount) { // 전체 페이지수 보다 endNavi 의 수가 클 수는 없다.
 			endNavi = pageTotalCount;
 		}
-
+		
 		boolean needNext = true;
 		boolean needPrev = true;
 
@@ -350,7 +350,7 @@ public class BoardDAO {
 		if (endNavi == pageTotalCount) {
 			needNext = false;
 		}
-
+		
 		StringBuilder sb = new StringBuilder();
 
 		if (needPrev) {
