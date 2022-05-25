@@ -295,7 +295,7 @@
 				</c:when>
 		
 				<c:otherwise>
-					<a href="#" class="login" id="login"  data-bs-toggle="modal" data-bs-target="#exampleModal">login</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+					<a href="#" class="login" id="login"  data-bs-toggle="modal" data-bs-target="#exampleModal" onkeyup="enterkey()">login</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
           			 <a href="/signup.jsp" class="join">join</a>
           			 
 				</c:otherwise>
@@ -502,6 +502,12 @@ $("#modal_loginBtn").on("click",function(){
           input.classList.remove('warning');
       }
     });
+    
+    $("#password-input").on("keyup",function(e){
+        if(e.keyCode==13){
+            $("#modal_loginBtn").click();
+        }
+    })
     </script>
     <script type="text/javascript">
  	let city = ['Jeju City'];
