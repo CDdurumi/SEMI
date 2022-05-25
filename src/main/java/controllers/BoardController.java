@@ -70,9 +70,8 @@ public class BoardController extends HttpServlet {
 				request.setAttribute("navi", pageNavi);
 				
 				List<FilesDTO> filesDao = filesDAO.selectSysName(boardOption);//후기 게시글 프로필 - sys_name get(해당게시글seq와 sys_name담겨 있음).
-				String profilePath = request.getServletContext().getRealPath("files");//파일저장된 폴더경로
 				request.setAttribute("porfileList", filesDao);
-				request.setAttribute("profilePath", profilePath);
+				request.setAttribute("profilePath", "/files/");
 				
 				request.getRequestDispatcher("/board/gallery.jsp").forward(request, response);//여행후기 메인페이지
 				

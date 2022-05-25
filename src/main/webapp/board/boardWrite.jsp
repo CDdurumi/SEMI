@@ -640,7 +640,7 @@ $("#modal_loginBtn").on("click",function(){
 				let text = $("<i>");
 				
 				div.attr("id","profileDiv");
-				file.attr({type:"file",name:"file0",id:"profile",required:"required"});
+				file.attr({type:"file",name:"file0",id:"profile",required:"required", accept:"image/*"});
 				text.text("프로필 사진")
 				
 				div.append(file);

@@ -541,7 +541,11 @@ $("#modal_loginBtn").on("click",function(){
 
     
         <div id="imgmenu1" class="row">
-           <div class="col-12 col-sm-6 col-md-4" id="img"><img src="/imgsrc/mainthem.jpg" alt=".." class="rounded-circle w-100 h-100"><div class="mask"><p1>한라산근처 - 남휘리조트</p1></div></div>
+        <c:forEach var="i" items="${porfileList}">
+<!--         <img src="\files\test.png"> -->
+        <div class="col-12 col-sm-6 col-md-4" id="img"><img src="${profilePath}${i.sys_name}" alt=".." class="rounded-circle w-100 h-100"><div class="mask"><p1>한라산근처 - 남휘리조트</p1></div></div>
+        </c:forEach>
+<%--            <div class="col-12 col-sm-6 col-md-4" id="img"><img src="${profilePath}/${porfileList[0].sys_name}" alt=".." class="rounded-circle w-100 h-100"><div class="mask"><p1>한라산근처 - 남휘리조트</p1></div></div> --%>
            <div class="col-12 col-sm-6 col-md-4" id="img"><img src="/imgsrc/mainthem.jpg" alt=".." class="rounded-circle w-100 h-100"><div class="mask"><p1>한라산근처 - 남휘리조트</p1></div></div>
            <div class="col-12 col-sm-6 col-md-4" id="img"><img src="/imgsrc/mainthem.jpg" alt=".." class="rounded-circle w-100 h-100"><div class="mask"><p1>한라산근처 - 남휘리조트</p1></div></div>
            <div class="col-12 col-sm-6 col-md-4" id="img"><img src="/imgsrc/mainthem.jpg" alt=".." class="rounded-circle w-100 h-100"><div class="mask"><p1>한라산근처 - 남휘리조트</p1></div></div>
