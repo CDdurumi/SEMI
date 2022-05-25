@@ -69,6 +69,11 @@ public class BoardController extends HttpServlet {
 				request.setAttribute("hotlist", hotlist);
 				request.setAttribute("navi", pageNavi);
 				
+				List<FilesDTO> filesDao = filesDAO.selectSysName(boardOption);//후기 게시글 프로필 - sys_name get(해당게시글seq와 sys_name담겨 있음).
+				String profilePath = request.getServletContext().getRealPath("files");//파일저장된 폴더경로
+				request.setAttribute("porfileList", filesDao);
+				request.setAttribute("profilePath", profilePath);
+				
 				request.getRequestDispatcher("/board/gallery.jsp").forward(request, response);//여행후기 메인페이지
 				
 			}else if(uri.equals("/jobMain.board")) {//구인구직 메인화면 출력
@@ -131,13 +136,13 @@ public class BoardController extends HttpServlet {
 
 				request.getRequestDispatcher("/board/editorReMain.jsp").forward(request, response);//애디터추천 메인페이지
 				
-			}else if(uri.equals("/writeboard.board")) {//자유게시판 글 작성하기 폼 출력(boardMain.jsp에서 글 작성하기 버튼 클릭 시 여기로.)
-				response.sendRedirect("/board/boardWrite.jsp");//자유게시판 글 작성 페이지 전환
+			}else if(uri.equals("/writeboard.board")) {//게시판 글 작성하기 폼 출력(boardMain.jsp에서 글 작성하기 버튼 클릭 시 여기로.)
+				response.sendRedirect("/board/boardWrite.jsp");//게시판 글 작성 페이지 전환
 				
 			}else if(uri.equals("/writeProcessing.board")) {//게시글 작성완료 처리 과정(boardWrite.jsp에서 작성완료 버튼 클릭 시 여기로.)
 				
 				int maxSize = 1024*1024*10;//파일허용 크기
-				String savePath = request.getServletContext().getRealPath("files");//자유게시판 업로드 파일 저장 경로	
+				String savePath = request.getServletContext().getRealPath("files");//게시판 업로드 파일 저장 경로	
 //				System.out.println(savePath);
 				File filePath = new File(savePath);
 				if(!filePath.exists()) {
