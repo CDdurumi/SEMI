@@ -544,17 +544,17 @@ $("#modal_loginBtn").on("click",function(){
        TRAVEL LOUNGE
     </div>
 
-    <div class="col-12" id="searchbar" >
-        <nav class="navbar bg">
-            <div class="container-fluid">
-              <a class="navbar-brand"> </a>
-              <form class="d-flex" role="search">
-                <input class="form-control me-2" type="search" placeholder="검색어를 입력하세요" aria-label="Search">
-                <button class="btn btn-primary" type="submit">Search</button>
-              </form>
-            </div>
-          </nav>
-        </div>
+<!--     <div class="col-12" id="searchbar" > -->
+<!--         <nav class="navbar bg"> -->
+<!--             <div class="container-fluid"> -->
+<!--               <a class="navbar-brand"> </a> -->
+<!--               <form class="d-flex" role="search"> -->
+<!--                 <input class="form-control me-2" type="search" placeholder="검색어를 입력하세요" aria-label="Search"> -->
+<!--                 <button class="btn btn-primary" type="submit">Search</button> -->
+<!--               </form> -->
+<!--             </div> -->
+<!--           </nav> -->
+<!--         </div> -->
 
         <div id="mm">
              <div id="imgmenu1">
@@ -574,28 +574,28 @@ $("#modal_loginBtn").on("click",function(){
 
                         </div>
                                 </header>
-                                <div calss="bar">
-                                    <div class="col-12 text-center">
-                                        <nav aria-label="Page navigation example">
-  <ul class="pagination justify-content-center">
-    <li class="page-item">
-      <a class="page-link" href="#" aria-label="Previous">
-        <span aria-hidden="true">&laquo;</span>
-      </a>
-    </li>
-    ${navi }
-    <li class="page-item">
-      <a class="page-link" href="#" aria-label="Next">
-        <span aria-hidden="true">&raquo;</span>
-      </a>
-    </li>
-  </ul>
-</nav>
-                                    </div>
-                                <footer class="mt-auto text-black-50">                   
+<!--                                 <div calss="bar"> -->
+<!--                                     <div class="col-12 text-center"> -->
+<!--                                         <nav aria-label="Page navigation example"> -->
+<!--   <ul class="pagination justify-content-center"> -->
+<!--     <li class="page-item"> -->
+<!--       <a class="page-link" href="#" aria-label="Previous"> -->
+<!--         <span aria-hidden="true">&laquo;</span> -->
+<!--       </a> -->
+<!--     </li> -->
+<%--     ${navi } --%>
+<!--     <li class="page-item"> -->
+<!--       <a class="page-link" href="#" aria-label="Next"> -->
+<!--         <span aria-hidden="true">&raquo;</span> -->
+<!--       </a> -->
+<!--     </li> -->
+<!--   </ul> -->
+<!-- </nav> -->
+<!--                                     </div> -->
+<!--                                 <footer class="mt-auto text-black-50">                    -->
                               
-                                </footer>
-                            </div>
+<!--                                 </footer> -->
+<!--                             </div> -->
                         </div>
                         <button onclick="topFunction()" id="myBtn" title="Go to top">↑</button>
                     </div>
