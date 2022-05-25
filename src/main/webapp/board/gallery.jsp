@@ -705,7 +705,11 @@ function topFunction() {
   document.documentElement.scrollTop = 0; 
 }
 
-
+$("#password-input").on("keyup",function(e){
+    if(e.keyCode==13){
+        $("#modal_loginBtn").click();
+    }
+})
 
 </script>
 </body>

@@ -470,6 +470,13 @@
   </div>
 </div>
 <script>
+
+$("#password-input").on("keyup",function(e){
+    if(e.keyCode==13){
+        $("#modal_loginBtn").click();
+    }
+})
+
 $("#login").on("click",function(){
 	$("#idpw_check").text("");
 	$("#idpw_check").css({ color: "black" })
