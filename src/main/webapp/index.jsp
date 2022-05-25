@@ -289,12 +289,15 @@
 	        <c:choose>
 				<c:when test="${loginID !=null}">
 						${loginID }님 안녕하세요 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-					<a href="/logout.member" class=""  >logout</a>					
+						
+					<a href="/logout.member" class=""  >logout</a>
+							
 				</c:when>
 		
 				<c:otherwise>
 					<a href="#" class="login" id="login"  data-bs-toggle="modal" data-bs-target="#exampleModal">login</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
           			 <a href="/signup.jsp" class="join">join</a>
+          			 
 				</c:otherwise>
 			</c:choose>
            
@@ -388,7 +391,35 @@ $("#modal_loginBtn").on("click",function(){
         </nav>
     </div>
  <!-- 로그인모달  -->   
-  
+ 
+ <!--login toast-->
+ <div class="toast-container position-fixed bottom-0 end-0 p-3">
+  <div id="liveToast1" class="toast" role="alert" aria-live="assertive" aria-atomic="true">
+    <div class="toast-header">
+      <img src="/imgsrc/smlogo.png" class="rounded me-2" alt="...">
+      <strong class="me-auto">쉼표 | 지친 일상에 쉼표를 찍다 </strong>
+      <small>방금 전</small>
+      <button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close"></button>
+    </div>
+    <div class="toast-body">
+      로그인되었습니다
+    </div>
+  </div>
+
+  <div id="liveToast2" class="toast" role="alert" aria-live="assertive" aria-atomic="true">
+    <div class="toast-header">
+      <img src="/imgsrc/smlogo.png" class="rounded me-2" alt="...">
+      <strong class="me-auto">쉼표 | 지친 일상에 쉼표를 찍다 </strong>
+      <small>방금 전</small>
+      <button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close"></button>
+    </div>
+    <div class="toast-body">
+      로그아웃되었습니다
+    </div>
+  </div>
+ </div>
+ <!--login toast-->
+ 
     <!--Container Main start-->
     <div class="height-100 width-100 d-flex text-center text-black bg-white mainback">
         <div class="cover-container d-flex w-100 h-100 p-3 mx-auto flex-column">
