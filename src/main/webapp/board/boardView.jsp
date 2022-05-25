@@ -575,16 +575,20 @@
                        let my_id =col3.text();
                         if(my_id =='${loginID}'){
                         let btn1 = $("<button>");
-                            btn1.text("수정");
-                            btn1.attr("class","btn btn-outline-primary modify");
+                            btn1.html(' <i class="fa-solid fa-pen-clip"></i>');
+                            btn1.attr("class","btn btn-outline-primary btn-sm modify");
                             btn1.attr("type","button");
                             
                         
                         let btn2 = $("<button>");
-                            btn2.text("삭제");
-                            btn2.attr("class","btn btn-outline-danger delete ");
+                            btn2.html('<i class="fa-solid fa-trash"></i>');
+                            btn2.attr("class","btn btn-outline-danger btn-sm delete ");
                             btn2.attr("type","button");
                             
+                        let btn5 =  $("<button>");
+                        btn5.html(' <i class="fa-solid fa-message"></i>');
+                        btn5.attr("class","btn btn-outline-primary btn-sm rereply ");
+                        btn5.attr("type","button");   
                             //수정하기 
                             btn1.on("click",function(){
                                
@@ -597,20 +601,21 @@
                                 col6.focus();
                                 btn1.css("display","none");
                                 btn2.css("display","none");
-                                
+                                btn5.css("display","none");
                                 let btn3 =$("<button>");
                                 btn3.text("완료");
-                                btn3.attr("class","btn btn-outline-primary finish");
+                                btn3.attr("class","btn btn-outline-primary btn-sm finish");
                                 btn3.attr("type","button");
                                 btn3.css("padding-left","10px");
                                 let btn4 =$("<button>");
                                 btn4.text("취소");
-                                btn4.attr("class","btn btn-outline-danger ");
+                                btn4.attr("class","btn btn-outline-danger btn-sm ");
                                 btn4.attr("type","button");
                                 
                                 btn4.on("click",function(){
                                    btn1.css("display","inline-block");
                                     btn2.css("display","inline-block");
+                                    btn5.css("display","inline-block");
                                     btn3.css("display","none");
                                     btn4.css("display","none");
                                     col6.attr("contenteditable","false");
@@ -632,6 +637,7 @@
                                }).done(function(resp){
                                   btn1.css("display","inline-block");
                                     btn2.css("display","inline-block");
+                                    btn5.css("display","inline-block");
                                     btn3.css("display","none");
                                     btn4.css("display","none");
                                     col6.attr("contenteditable","false");
@@ -667,6 +673,7 @@
                                 }
                             });
                             
+                            col5.append(btn5);
                             col5.append(btn1);
                             col5.append(' ');
                             col5.append(btn2);
@@ -705,9 +712,24 @@
              
 
           })
-             
+            
+
+          $("#dummy").on("click",".rereply",function(){
+       	   console.log($(this).text());
+//        	   alert("d");
+          })
+          
+          
+          
+          
+          
+          
        }
 
+       //대댓글
+       
+       
+       
 
     </script>
     
