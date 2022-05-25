@@ -60,31 +60,31 @@ public class BoardController extends HttpServlet {
 				int cpage = Integer.parseInt(request.getParameter("cpage"));
 				request.setAttribute("cpage", cpage);
 				
-				request.getRequestDispatcher("/board/gallery.jsp.jsp").forward(request, response);//여행후기 메인페이지
+				request.getRequestDispatcher("/board/gallery.jsp").forward(request, response);//여행후기 메인페이지
 				
 			}else if(uri.equals("/jobMain.board")) {//구인구직 메인화면 출력
 				int cpage = Integer.parseInt(request.getParameter("cpage"));
 				request.setAttribute("cpage", cpage);
 				
-				request.getRequestDispatcher("/board/jobMain.jsp.jsp").forward(request, response);//구인구직 메인페이지
+				request.getRequestDispatcher("/board/jobMain.jsp").forward(request, response);//구인구직 메인페이지
 				
 			}else if(uri.equals("/foodMain.board")) {//맛집 메인화면 출력
 				int cpage = Integer.parseInt(request.getParameter("cpage"));
 				request.setAttribute("cpage", cpage);
 				
-				request.getRequestDispatcher("/board/foodMain.jsp.jsp").forward(request, response);//맛집 메인페이지
+				request.getRequestDispatcher("/board/foodMain.jsp").forward(request, response);//맛집 메인페이지
 				
 			}else if(uri.equals("/houseMain.board")) {//숙소리뷰 메인화면 출력
 				int cpage = Integer.parseInt(request.getParameter("cpage"));
 				request.setAttribute("cpage", cpage);
 				
-				request.getRequestDispatcher("/board/houseMain.jsp.jsp").forward(request, response);//숙소리뷰 메인페이지
+				request.getRequestDispatcher("/board/houseMain.jsp").forward(request, response);//숙소리뷰 메인페이지
 				
 			}else if(uri.equals("/editorReMain.board")) {//애디터 추천글 메인화면 출력
 				int cpage = Integer.parseInt(request.getParameter("cpage"));
 				request.setAttribute("cpage", cpage);
 
-				request.getRequestDispatcher("/board/editorReMain.jsp.jsp").forward(request, response);//애디터추천 메인페이지
+				request.getRequestDispatcher("/board/editorReMain.jsp").forward(request, response);//애디터추천 메인페이지
 				
 			}else if(uri.equals("/writeboard.board")) {//자유게시판 글 작성하기 폼 출력(boardMain.jsp에서 글 작성하기 버튼 클릭 시 여기로.)
 				response.sendRedirect("/board/boardWrite.jsp");//자유게시판 글 작성 페이지 전환
