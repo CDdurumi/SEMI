@@ -373,7 +373,10 @@
   background-color: #555; 
 }
 			
-			
+#profile{
+	padding-top: 2px;
+	padding-left: 2px;
+}			
         </style>
     </head>
 
@@ -503,7 +506,7 @@ $("#modal_loginBtn").on("click",function(){
                     - 게시판 글 작성하기 -
                 </div> -->
                 <div class="col-12 ">
-					<select name="boardOption">
+					<select name="boardOption" id="select">
                         <option value="f">
                             자유게시판
                         </option>
@@ -519,17 +522,16 @@ $("#modal_loginBtn").on("click",function(){
                         <option value="h">
                             숙소리뷰
                         </option>
-                        <c:if test="${loginID eq 'admin'}">
+<%--                         <c:if test="${loginID eq 'admin'}"> --%>
 	                        <option value="e">
 	                            애디터추천
 	                        </option>
-                        </c:if>
+<%--                         </c:if> --%>
                     </select>
                     <input type="text" placeholder="글 제목을 입력하세요" name="title" class="title" required>
                 </div>
                 
                 <div class="col-12 " id="fileArea" style="border-top:1px solid #aaa9a9">
-                    <!-- <input type="hidden" name="fileCount" id="fileCount" value=1>  -->
                     <input type="file" name="file1" id="firstFile">
                     <button id="plusBtn" type="button">+</button>
                     <button id="minusBtn" type="button">-</button>
@@ -612,6 +614,40 @@ $("#modal_loginBtn").on("click",function(){
 
 
         //게시글 작성하기/////////////////////////////////////////////////////////////////////////////////////////
+        
+        //게시글 콤보박스 선택 시 이벤트
+        let previous = "";
+        $("#select").on('focus', function () {
+    		previous  = this.value;
+		}).change(function() {
+			let option = $("#select").val();
+// 			alert(previous);
+// 			alert(option);
+			
+			if((option == 'g' || option == 'e')){
+				if(!(previous == 'g' || previous == 'e') && (option == 'g' || option == 'e')){
+					$("#fileArea").children("#profileDiv").remove();
+				} 
+				let div = $("<div>");
+				let file = $("<input>");
+				let text = $("<i>");
+				
+				div.attr("id","profileDiv");
+				file.attr({type:"file",name:"file0",id:"profile",required:"required"});
+				text.text("프로필 사진")
+				
+				div.append(file);
+				div.append(text);
+				div.append("<br>");
+				$("#fileArea").prepend(div);
+// 				$("#fileArea").prepend('<div id="profileDiv"><input type="file" name="file0" id="profile" required><i>-> 프로필 사진</i><br></div>');				
+			}else{
+				$("#fileArea").children("#profileDiv").remove();
+			}
+		});
+
+
+        
 		let i = 2;
         //+버튼 클릭시 type=file 추가
 		$("#plusBtn").on("click",function(){
