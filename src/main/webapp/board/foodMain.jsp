@@ -404,6 +404,9 @@
            width:100%;
            height:100%;
        }
+       .fa-thumbs-up{
+       	color: rgb(255,208,0);
+       }
        /*--top버튼----------------------------------------------------------------*/
 
 #myBtn {
@@ -655,7 +658,8 @@ $("#modal_loginBtn").on("click",function(){
           <a class="navbar-brand"> </a>
           <form class="d-flex" role="search">
             <input class="form-control me-2" type="search" placeholder="작성자를 입력하세요" aria-label="Search">
-            <button class="btn btn-primary" type="submit">Search</button>
+            <button class="btn btn-outline-secondary btn-sm" type="submit">Search</button>&nbsp;
+            <button type="button" class="btn btn-primary btn-sm" id="writeBtn" style="white-space:nowrap;"><i class="fa-solid fa-pen-to-square"></i>글 작성하기</button>
           </form>
         </div>
       </nav>
@@ -781,6 +785,10 @@ $("#modal_loginBtn").on("click",function(){
               input.classList.remove('warning');
           }
         });
+      
+        $("#writeBtn").on("click",function(){
+        	location.href="/writeboard.board";
+        })
     </script>
     
     <script type="text/javascript">
