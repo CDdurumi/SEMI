@@ -24,7 +24,7 @@ pageEncoding="UTF-8"%>
     <!-- Bootstrap core CSS -->
     <link href="/docs/5.1/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
-
+	<script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <!-- Favicons -->
     <link rel="apple-touch-icon" href="/docs/5.1/assets/img/favicons/apple-touch-icon.png" sizes="180x180">
     <link rel="icon" href="/docs/5.1/assets/img/favicons/favicon-32x32.png" sizes="32x32" type="image/png">
@@ -631,6 +631,17 @@ pageEncoding="UTF-8"%>
   </div>
 </div>
 <script>
+window.onload = function(){
+	if(${loginID == null}){
+		Swal.fire({
+			  icon: 'error',
+			  title: 'Oops...',
+			  text: 'Something went wrong!',
+			  footer: '<a href="">Why do I have this issue?</a>'
+			})
+	}
+}
+
 $("#login").on("click",function(){
 	$("#idpw_check").text("");
 	$("#idpw_check").css({ color: "black" })
