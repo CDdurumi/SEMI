@@ -133,6 +133,11 @@ public class BoardController extends HttpServlet {
 				request.setAttribute("hotlist", hotlist);
 				request.setAttribute("navi", pageNavi);
 
+				List<FilesDTO> filesDao = filesDAO.selectSysName(boardOption);//후기 게시글 프로필 - sys_name get(해당게시글seq와 sys_name담겨 있음).
+				request.setAttribute("porfileList", filesDao);
+				request.setAttribute("profilePath", "/files/");
+				
+				
 				request.getRequestDispatcher("/board/editorReMain.jsp").forward(request, response);//애디터추천 메인페이지
 				
 			}else if(uri.equals("/writeboard.board")) {//게시판 글 작성하기 폼 출력(boardMain.jsp에서 글 작성하기 버튼 클릭 시 여기로.)
