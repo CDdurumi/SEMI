@@ -560,7 +560,7 @@ $("#modal_loginBtn").on("click",function(){
         <span aria-hidden="true">&laquo;</span>
         </a>
             </li>
-
+${navi }
 <li class="page-item">
 <a class="page-link" href="#" aria-label="Next">
 <span aria-hidden="true">&raquo;</span>
