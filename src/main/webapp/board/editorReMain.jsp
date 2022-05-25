@@ -370,7 +370,7 @@
           
           
        }
-       .jjimcol{
+       .goodcol{
         font-size: 25px;
            color: #b1b1b1;
            text-align: right;
@@ -379,7 +379,7 @@
           
  
        }
-       .jjimcnt{
+       .goodcnt{
           text-align: right;
        }
        /*--top버튼----------------------------------------------------------------*/
@@ -550,220 +550,63 @@ $("#modal_loginBtn").on("click",function(){
 
 
         </div>
+        
         <div class="row">
-            <div class="col-12 col-md-6 content ">
-                <div class="row h-100 wrapper">
-                    <div class="col-12 main" >
-                        <div class="row h-100">
-                            <div class="col-2 h-100">
-                                <img src="img/라이언.jpg" class="w-100 h-100 userimg" alt="">
-                            </div>
-                            <div class="col-3 h-100 username">
-                                <div class="row h-100">
-                                     <div class="col-12">user</div>
-                                    <div class="col-12">2022-02-02</div>
-                                    <div class="col-12">view count</div>
-                                     
-                                </div>
-                            </div>
-                            <div class="col-7 h-100 title">
-                                제목제목제목제목제목제목제목제목제목제
-                            </div>
-                        </div>
-                       
-                    </div>
-                    <div class="col-12 img">
-                        <img src="img/다운로드 (1).jpg" class="w-100 h-100 imgimg" alt="">
-                    </div>
-                    <div class="col-12">
-                        <div class="row  heart"  style="margin: auto;">
-                           
-                            <div class="col-6 jjimcol">
-                                <i class="fa-solid fa-thumbs-up"></i>
-                            </div>
-                           
-                            <div class="col-6 heartcol" >
-                                <i class="fa-solid fa-heart"></i>
-                            </div>
-                           
-                        </div>
-            
-                        <div class="row " id="count" style="margin: auto;">
-                           
-                            <div class="col-6 jjimcnt" >
-                                32
-                            </div>
-                           
-                            <div class="col-6 heartcnt" >
-                               24
-                            </div>
-                          
-                        </div>
-                    </div>
-                </div>
-                
-            </div>
+        
+				<c:forEach var="i" items="${list}">
+					<c:forEach var="j" items="${porfileList}">
+						<c:if test="${j.parent_seq eq i.all_board_seq}">
 
+							<div class="col-12 col-md-6 content ">
+								<div class="row h-100 wrapper">
+									<div class="col-12 main">
+										<div class="row h-100">
+<!-- 											<div class="col-2 h-100"> -->
+<%-- 												<img src="${profilePath}${j.sys_name}" class="w-100 h-100 userimg" alt=""> --%>
+<!-- 											</div> -->
+											<div class="col-4 h-100 username">
+												<div class="row h-100">
+													<div class="col-12">${i.id}</div>
+													<div class="col-12">${i.formdDate}</div>
+													<div class="col-12">${i.view_count}</div>
 
+												</div>
+											</div>
+											<div class="col-8 h-100 title">${i.title}</div>
+										</div>
 
-            <div class="col-12 col-md-6 content ">
-                <div class="row h-100 wrapper">
-                    <div class="col-12 main" >
-                        <div class="row h-100">
-                            <div class="col-2 h-100">
-                                <img src="img/라이언.jpg" class="w-100 h-100 userimg" alt="">
-                            </div>
-                            <div class="col-3 h-100 username">
-                                <div class="row h-100">
-                                     <div class="col-12">user</div>
-                                    <div class="col-12">2022-02-02</div>
-                                    <div class="col-12">view count</div>
-                                     
-                                </div>
-                            </div>
-                            <div class="col-7 h-100 title">
-                                제목제목제목제목제목제목제목제목제목제
-                            </div>
-                        </div>
-                       
-                    </div>
-                    <div class="col-12 img">
-                        <img src="img/다운로드 (1).jpg" class="w-100 h-100 imgimg" alt="">
-                    </div>
-                    <div class="col-12">
-                        <div class="row  heart"  style="margin: auto;">
-                           
-                            <div class="col-6 jjimcol">
-                                <i class="fa-solid fa-thumbs-up"></i>
-                            </div>
-                           
-                            <div class="col-6 heartcol" >
-                                <i class="fa-solid fa-heart"></i>
-                            </div>
-                           
-                        </div>
-            
-                        <div class="row " id="count" style="margin: auto;">
-                           
-                            <div class="col-6 jjimcnt" >
-                                32
-                            </div>
-                           
-                            <div class="col-6 heartcnt" >
-                               24
-                            </div>
-                          
-                        </div>
-                    </div>
-                </div>
-                
-            </div>
-            <div class="col-12 col-md-6 content ">
-                <div class="row h-100 wrapper">
-                    <div class="col-12 main" >
-                        <div class="row h-100">
-                            <div class="col-2 h-100">
-                                <img src="img/라이언.jpg" class="w-100 h-100 userimg" alt="">
-                            </div>
-                            <div class="col-3 h-100 username">
-                                <div class="row h-100">
-                                     <div class="col-12">user</div>
-                                    <div class="col-12">2022-02-02</div>
-                                    <div class="col-12">view count</div>
-                                     
-                                </div>
-                            </div>
-                            <div class="col-7 h-100 title">
-                                제목제목제목제목제목제목제목제목제목제
-                            </div>
-                        </div>
-                       
-                    </div>
-                    <div class="col-12 img">
-                        <img src="img/다운로드 (1).jpg" class="w-100 h-100" alt="">
-                    </div>
-                    <div class="col-12">
-                        <div class="row  heart"  style="margin: auto;">
-                           
-                            <div class="col-6 jjimcol">
-                                <i class="fa-solid fa-thumbs-up"></i>
-                            </div>
-                           
-                            <div class="col-6 heartcol" >
-                                <i class="fa-solid fa-heart"></i>
-                            </div>
-                           
-                        </div>
-            
-                        <div class="row " id="count" style="margin: auto;">
-                           
-                            <div class="col-6 jjimcnt" >
-                                32
-                            </div>
-                           
-                            <div class="col-6 heartcnt" >
-                               24
-                            </div>
-                          
-                        </div>
-                    </div>
-                </div>
-                
-            </div>
-            <div class="col-12 col-md-6 content ">
-                <div class="row h-100 wrapper">
-                    <div class="col-12 main" >
-                        <div class="row h-100">
-                            <div class="col-2 h-100">
-                                <img src="img/라이언.jpg" class="w-100 h-100 userimg" alt="">
-                            </div>
-                            <div class="col-3 h-100 username">
-                                <div class="row h-100">
-                                     <div class="col-12">user</div>
-                                    <div class="col-12">2022-02-02</div>
-                                    <div class="col-12">view count</div>
-                                     
-                                </div>
-                            </div>
-                            <div class="col-7 h-100 title">
-                                제목제목제목제목제목제목제목제목제목제
-                            </div>
-                        </div>
-                       
-                    </div>
-                    <div class="col-12 img">
-                        <img src="img/다운로드 (1).jpg" class="w-100 h-100" alt="">
-                    </div>
-                    <div class="col-12">
-                        <div class="row  heart"  style="margin: auto;">
-                           
-                            <div class="col-6 jjimcol">
-                                <i class="fa-solid fa-thumbs-up"></i>
-                            </div>
-                           
-                            <div class="col-6 heartcol" >
-                                <i class="fa-solid fa-heart"></i>
-                            </div>
-                           
-                        </div>
-            
-                        <div class="row " id="count" style="margin: auto;">
-                           
-                            <div class="col-6 jjimcnt" >
-                                32
-                            </div>
-                           
-                            <div class="col-6 heartcnt" >
-                               24
-                            </div>
-                          
-                        </div>
-                    </div>
-                </div>
-                
-            </div>
+									</div>
+									<div class="col-12 img">
+										<img src="${profilePath}${j.sys_name}" class="w-100 h-100 imgimg" alt="">
+									</div>
+									<div class="col-12">
+										<div class="row  heart" style="margin: auto;">
 
+											<div class="col-6 goodcol" seq="${i.all_board_seq}">
+												<i class="fa-solid fa-thumbs-up"></i>
+											</div>
 
+											<div class="col-6 heartcol" seq="${i.all_board_seq}">
+												<i class="fa-solid fa-heart"></i>
+											</div>
+
+										</div>
+
+										<div class="row " id="count" style="margin: auto;">
+
+											<div class="col-6 goodcnt">${i.like_count}</div>
+
+											<div class="col-6 heartcnt">${i.jjim_count}</div>
+
+										</div>
+									</div>
+								</div>
+
+							</div>
+			
+						</c:if>
+					</c:forEach>
+				</c:forEach>
 
         </div>
 
@@ -772,10 +615,65 @@ $("#modal_loginBtn").on("click",function(){
 
 
     <script>
- //heart
- let heart = true;
-    $(".heartcol").on("click", function () {
+    
+    //good(좋아요)
+    let good = true;
+    let gUpDown = 0;
+    $(".goodcol").on("click", function () {
+        if(${loginID == null}){
+            alert("로그인이 필요합니다.");
+            return false;
+         }
         
+        let currnetLocation = $(this);
+        if (good) {
+            $(this).css("color", "#ffd000" );
+           
+            good=false;
+        } else {
+            $(this).css("color", "#b1b1b1");
+           
+            good=true;
+        }
+        
+        if(good == false){
+            gUpDown = 1;
+        }else{
+            gUpDown = 0;
+        }
+         
+        let seq = $(this).attr("seq");
+		$.ajax({
+		   url:"/goodClick.board",
+		   data:{
+		      seq: seq,
+		      upDown:gUpDown
+		   },
+		   dataType:"json"
+		}).done(function(resp){
+		      console.log(resp.likeCount)//좋아요 갯수
+		      let goodCntLocation = $(currnetLocation.parent().siblings()[0]).children()[0];
+		      console.log($(currnetLocation.parent().siblings()[0]).children()[0])
+		      $(goodCntLocation).html('<i class="fa-solid fa-thumbs-up"></i> &nbsp;&nbsp;'+resp.likeCount);
+		      
+		   }).fail(function(a, b){ 
+		      console.log(a);
+		      console.log(b);
+		   })
+    
+     })   
+    
+    
+ 	//heart(찜)
+	let heart = true;
+    let jUpDown = 0;
+    $(".heartcol").on("click", function () {
+        if(${loginID == null}){
+            alert("로그인이 필요합니다.");
+            return false;
+         }
+        
+    	let currnetLocation = $(this);
         if (heart) {
             $(this).css("color", "red" );
             
@@ -785,23 +683,33 @@ $("#modal_loginBtn").on("click",function(){
             
             heart=true;
         }
-
-    })
-    //jjim
-    let jjim = true;
-    $(".jjimcol").on("click", function () {
         
-        if (jjim) {
-            $(this).css("color", "#ffd000" );
-           
-            jjim=false;
-        } else {
-            $(this).css("color", "#b1b1b1");
-           
-            jjim=true;
-        }
+        if(heart == false){
+            jUpDown = 1;
+         }else{
+            jUpDown = 0;
+         }
+		
+		let seq = $(this).attr("seq");
+		$.ajax({
+		   url:"/jjimClick.board",
+		   data:{
+		      seq:seq,
+		      upDown:jUpDown
+		   },
+		   dataType:"json"
+		}).done(function(resp){
+		      console.log(resp.jjimCount)//좋아요 갯수
+		      let jjimCntLocation = $(currnetLocation.parent().siblings()[0]).children()[1];
+		      $(jjimCntLocation).html('<i class="fa-solid fa-thumbs-up"></i> &nbsp;&nbsp;'+resp.jjimCount);
+		   }).fail(function(a, b){ 
+		      console.log(a);
+		      console.log(b);
+		   })
 
-    })
+         
+     })
+
 
 
         document.addEventListener("DOMContentLoaded", function (event) {
