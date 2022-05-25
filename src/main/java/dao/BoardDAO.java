@@ -279,8 +279,8 @@ public class BoardDAO {
 	}
 
 	// DB의 총 record 개수를 알아내기 위한 메소드
-	private int getRecordTotalCount() throws Exception {
-		String sql = "select count(*) from all_board";
+	private int getRecordTotalCount(String boardOption) throws Exception {
+		String sql = "select count(*) from all_board where all_board_seq like '"+boardOption+"%'";
 
 		try (Connection con = this.getConnection();
 				PreparedStatement pstat = con.prepareStatement(sql);
@@ -291,8 +291,26 @@ public class BoardDAO {
 	}
 
 	// Page Navigator
-	public String getPageNavi(int currentPage) throws Exception {
-		int recordTotalCount = this.getRecordTotalCount(); // 총 게시글의 개수 -> 향후 실제 데이터베이스의 개수를 세어와야함
+	public String getPageNavi(int currentPage, String boardOption) throws Exception {
+		
+		
+		String url = "";
+		if (boardOption.equals("f")) {// 자유게시판
+		url = "/boardMainView.board?cpage=";
+		} else if (boardOption.equals("g")) {// 여행후기
+		url = "/galleryMain.board?cpage=";
+		} else if (boardOption.equals("j")) {// 구인구직
+		url = "/jobMain.board?cpage=";
+		} else if (boardOption.equals("r")) {// 맛집
+		url = "/foodMain.board?cpage=";
+		} else if (boardOption.equals("h")) {// 숙소리뷰
+		url = "/houseMain.board?cpage=";
+		} else if (boardOption.equals("e")) {// 에디터
+		url = "/editorReMain.board?cpage=";
+		}
+		
+		
+		int recordTotalCount = this.getRecordTotalCount(boardOption); // 총 게시글의 개수 -> 향후 실제 데이터베이스의 개수를 세어와야함
 
 		int recordCountPerPage = 10; // 한 페이지에 몇 개의 게시글을 보여줄 건지
 
@@ -322,7 +340,7 @@ public class BoardDAO {
 		if (endNavi > pageTotalCount) { // 전체 페이지수 보다 endNavi 의 수가 클 수는 없다.
 			endNavi = pageTotalCount;
 		}
-
+		
 		boolean needNext = true;
 		boolean needPrev = true;
 
@@ -332,27 +350,27 @@ public class BoardDAO {
 		if (endNavi == pageTotalCount) {
 			needNext = false;
 		}
-
+		
 		StringBuilder sb = new StringBuilder();
 
 		if (needPrev) {
-			sb.append("<li class='page-item'><a class= 'page-link' href='boardMainView.board?cpage=" + (startNavi - 1)
+			sb.append("<li class='page-item'><a class= 'page-link' href='"+url+"" + (startNavi - 1)
 					+ "'> < </a></li>");
 		}
 
 		for (int i = startNavi; i <= endNavi; i++) {
 			if (currentPage == i) {
-				sb.append("<li class='page-item active'><a class= 'page-link' href='/boardMainView.board?cpage=" + i
+				sb.append("<li class='page-item active'><a class= 'page-link' href='"+url+"" + i
 						+ "'>" + i + " </a></li>"); // 페이지 당 10개씩 보이도록 해야하기 때문에 현재 페이지를 매개변수로 보냄으로써 페이지 네비를 클릭할 때 어디로
 													// 가야하는지 알아야한다.
 			} else {
-				sb.append("<li class='page-item'><a class= 'page-link' href='/boardMainView.board?cpage=" + i + "'>" + i
+				sb.append("<li class='page-item'><a class= 'page-link' href='"+url+"" + i + "'>" + i
 						+ " </a></li>");
 			}
 		}
 
 		if (needNext) {
-			sb.append("<li class='page-item'><a class= 'page-link' href='boardMainView.board?cpage=" + (endNavi + 1)
+			sb.append("<li class='page-item'><a class= 'page-link' href='"+url+"" + (endNavi + 1)
 					+ "'> > </a></li>");
 		}
 

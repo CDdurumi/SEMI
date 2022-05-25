@@ -404,6 +404,9 @@
            width:100%;
            height:100%;
        }
+       .fa-thumbs-up{
+       	color: rgb(255,208,0);
+       }
        /*--top버튼----------------------------------------------------------------*/
 
 #myBtn {
@@ -566,73 +569,22 @@ $("#modal_loginBtn").on("click",function(){
                     <div class="row  freeboard_bottom">
                         <div class="col-12 ">
                             <div class="row freeboard_bottom ">
+                            
+                                <c:forEach var="i" items="${hotlist }">
                                 <div class="col-12 border border-2 rounded">
                                     <div class="row m-0">
-                                        <div class="col-9 col-md-9 m-0 free_title ellipsis"><span>글 제목</span></div>
+                                        <div class="col-9 col-md-9 m-0 free_title ellipsis"><span class=""><a href="/detailView.board?cpage=${cpage}&seq=${i.all_board_seq}" style="color:black; font-weight:bold;">${i.title }</a></span></div>
                                         <!-- ellipsis 밑에 forEach로 하니까 한줄만 추가했습니다.  -->
-                                        <div class="col-3 col-md-3 m-0 p-0">
-                                            <div class="row m-0 p-0">
-                                                <div class="col-12 m-0 p-0 text-center">추천 20</div>
-                                                <div class="col-12 m-0 p-0 text-center">댓글 5</div>
+                                        <div class="col-3 col-md-3">
+                                            <div class="row ">
+                                                <div class="col-12 m-0" style="text-align:right"> <i class="fa-solid fa-thumbs-up"></i>&nbsp;${i.like_count }</div>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
-                                <div class="col-12 border border-2 rounded">
-                                    <div class="row m-0">
-                                        <div class="col-9 col-md-9 m-0 free_title">글 제목</div>
-                                        <div class="col-3 col-md-3 m-0 p-0">
-                                            <div class="row m-0 p-0">
-                                                <div class="col-12 m-0 p-0 text-center">추천 20</div>
-                                                <div class="col-12 m-0 p-0 text-center">댓글 5</div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-12 border border-2 rounded">
-                                    <div class="row m-0">
-                                        <div class="col-9 col-md-9 m-0 free_title">글 제목</div>
-                                        <div class="col-3 col-md-3 m-0 p-0">
-                                            <div class="row m-0 p-0">
-                                                <div class="col-12 m-0 p-0 text-center">추천 20</div>
-                                                <div class="col-12 m-0 p-0 text-center">댓글 5</div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-12 border border-2 rounded">
-                                    <div class="row m-0">
-                                        <div class="col-9 col-md-9 m-0 free_title">글 제목</div>
-                                        <div class="col-3 col-md-3 m-0 p-0">
-                                            <div class="row m-0 p-0">
-                                                <div class="col-12 m-0 p-0 text-center">추천 20</div>
-                                                <div class="col-12 m-0 p-0 text-center">댓글 5</div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-12 border border-2 rounded">
-                                    <div class="row m-0">
-                                        <div class="col-9 col-md-9 m-0 free_title">글 제목</div>
-                                        <div class="col-3 col-md-3 m-0 p-0">
-                                            <div class="row m-0 p-0">
-                                                <div class="col-12 m-0 p-0 text-center">추천 20</div>
-                                                <div class="col-12 m-0 p-0 text-center">댓글 5</div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-12 border border-2 rounded">
-                                    <div class="row m-0">
-                                        <div class="col-9 col-md-9 m-0 free_title">글 제목</div>
-                                        <div class="col-3 col-md-3 m-0 p-0">
-                                            <div class="row m-0 p-0">
-                                                <div class="col-12 m-0 p-0 text-center">추천 20</div>
-                                                <div class="col-12 m-0 p-0 text-center">댓글 5</div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
+                                </c:forEach>
+                                
+                                
                             </div>
                         </div>
 
@@ -706,7 +658,8 @@ $("#modal_loginBtn").on("click",function(){
           <a class="navbar-brand"> </a>
           <form class="d-flex" role="search">
             <input class="form-control me-2" type="search" placeholder="작성자를 입력하세요" aria-label="Search">
-            <button class="btn btn-primary" type="submit">Search</button>
+            <button class="btn btn-outline-secondary btn-sm" type="submit">Search</button>&nbsp;
+            <button type="button" class="btn btn-primary btn-sm" id="writeBtn" style="white-space:nowrap;"><i class="fa-solid fa-pen-to-square"></i>글 작성하기</button>
           </form>
         </div>
       </nav>
@@ -726,7 +679,22 @@ $("#modal_loginBtn").on("click",function(){
              
             </div>
         </div>
-        
+        <c:forEach var="i" items="${list }">
+        <div class="col-12  board">
+            <div class="row m-0 border border-2 rounded board_row ">
+            	
+                <div class="col-1 col-md-1 d-none d-md-block p-0">0</div>
+               	<div class="col-7 col-md-6 m-0 title ellipsis">
+               		<span><a href="/detailView.board?cpage=${cpage}&seq=${i.all_board_seq}" style="color:black">${i. title }</a></span>
+               	</div>
+                <div class="col-3 col-md-2 p-0 ellipsis text-center"><span>${i.id }</span></div>
+                <div class="col-md-1 d-none d-md-block p-0 "><fmt:formatDate value="${i.write_date }" pattern="yy-MM-dd"/></div>
+                <div class="col-md-1 d-none d-md-block p-0">${i.view_count}</div>
+                <div class="col-2 col-md-1 p-0">${i.like_count}</div>
+                
+            </div>
+        </div>
+        </c:forEach>
         
         <div calss="row">
             <div class="col-12 text-center">
@@ -737,7 +705,7 @@ $("#modal_loginBtn").on("click",function(){
         <span aria-hidden="true">&laquo;</span>
       </a>
     </li>
-    
+    ${navi }
     <li class="page-item">
       <a class="page-link" href="#" aria-label="Next">
         <span aria-hidden="true">&raquo;</span>
@@ -817,6 +785,10 @@ $("#modal_loginBtn").on("click",function(){
               input.classList.remove('warning');
           }
         });
+      
+        $("#writeBtn").on("click",function(){
+        	location.href="/writeboard.board";
+        })
     </script>
     
     <script type="text/javascript">
