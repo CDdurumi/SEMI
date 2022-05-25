@@ -541,19 +541,13 @@ $("#modal_loginBtn").on("click",function(){
 
     
         <div id="imgmenu1" class="row">
-        <c:forEach var="i" items="${porfileList}">
-<!--         <img src="\files\test.png"> -->
-        <div class="col-12 col-sm-6 col-md-4" id="img"><img src="${profilePath}${i.sys_name}" alt=".." class="rounded-circle w-100 h-100"><div class="mask"><p1>한라산근처 - 남휘리조트</p1></div></div>
+        <c:forEach var="i" items="${list}">
+        	<c:forEach var="j" items="${porfileList}">
+				<c:if test="${j.parent_seq eq i.all_board_seq}">
+					<div class="col-12 col-sm-6 col-md-4" id="img"><img src="${profilePath}${j.sys_name}" alt=".." class="rounded-circle w-100 h-100"><div class="mask"><p1>${i.title}</p1></div></div>
+				</c:if>
+        	</c:forEach>
         </c:forEach>
-<%--            <div class="col-12 col-sm-6 col-md-4" id="img"><img src="${profilePath}/${porfileList[0].sys_name}" alt=".." class="rounded-circle w-100 h-100"><div class="mask"><p1>한라산근처 - 남휘리조트</p1></div></div> --%>
-           <div class="col-12 col-sm-6 col-md-4" id="img"><img src="/imgsrc/mainthem.jpg" alt=".." class="rounded-circle w-100 h-100"><div class="mask"><p1>한라산근처 - 남휘리조트</p1></div></div>
-           <div class="col-12 col-sm-6 col-md-4" id="img"><img src="/imgsrc/mainthem.jpg" alt=".." class="rounded-circle w-100 h-100"><div class="mask"><p1>한라산근처 - 남휘리조트</p1></div></div>
-           <div class="col-12 col-sm-6 col-md-4" id="img"><img src="/imgsrc/mainthem.jpg" alt=".." class="rounded-circle w-100 h-100"><div class="mask"><p1>한라산근처 - 남휘리조트</p1></div></div>
-           <div class="col-12 col-sm-6 col-md-4" id="img"><img src="/imgsrc/mainthem.jpg" alt=".." class="rounded-circle w-100 h-100"><div class="mask"><p1>한라산근처 - 남휘리조트</p1></div></div>
-           <div class="col-12 col-sm-6 col-md-4" id="img"><img src="/imgsrc/mainthem.jpg" alt=".." class="rounded-circle w-100 h-100"><div class="mask"><p1>한라산근처 - 남휘리조트</p1></div></div>
-           <div class="col-12 col-sm-6 col-md-4" id="img"><img src="/imgsrc/mainthem.jpg" alt=".." class="rounded-circle w-100 h-100"><div class="mask"><p1>한라산근처 - 남휘리조트</p1></div></div>
-           <div class="col-12 col-sm-6 col-md-4" id="img"><img src="/imgsrc/mainthem.jpg" alt=".." class="rounded-circle w-100 h-100"><div class="mask"><p1>한라산근처 - 남휘리조트</p1></div></div>
-           <div class="col-12 col-sm-6 col-md-4" id="img"><img src="/imgsrc/mainthem.jpg" alt=".." class="rounded-circle w-100 h-100"><div class="mask"><p1>한라산근처 - 남휘리조트</p1></div></div>
         </div>
 
 <div class="row" id="nb">
