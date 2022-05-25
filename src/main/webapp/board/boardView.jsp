@@ -536,10 +536,10 @@
                dataType : 'json'
 
           }).done(function(resp){
-//             console.log(resp)
-            if(${totalPage}<pape){
-               alert("마지막 페이지 입니다.");
-            }else{
+// //             console.log(resp)
+//             if(${totalPage}<pape){
+//                alert("마지막 페이지 입니다.");
+//             }else{
                  //총 댓글 갯수
                     let count =0;
                for(let i = 0; i < resp.length; i++){
@@ -701,12 +701,12 @@
                   
                }             
                
-            }
+    //         }
              
 
-          })
+    //       })
              
-       }
+    //    }
 
 
     </script>
@@ -723,7 +723,7 @@
             <c:choose>
             <c:when test="${loginID !=null}">
                   ${loginID }님 안녕하세요 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-               <a href="/logout.member" class=""  >logout</a>               
+               <a href="/logout.member" class=""  >logout</a>     
             </c:when>
       
             <c:otherwise>
@@ -941,7 +941,87 @@ $("#modal_loginBtn").on("click",function(){
             </div>
         </div>
         <div class="row dummy" id="dummy"></div>
-        
+
+<!-- jjim toast -->        
+<div class="toast-container position-fixed bottom-0 end-0 p-3">
+  <div id="liveToast1" class="toast" role="alert" aria-live="assertive" aria-atomic="true">
+    <div class="toast-header">
+      <img src="/imgsrc/smlogo.png" class="rounded me-2" alt="...">
+      <strong class="me-auto">쉼표 | 지친 일상에 쉼표를 찍다 </strong>
+      <small>방금 전</small>
+      <button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close"></button>
+    </div>
+    <div class="toast-body">
+      좋아요가 등록되었습니다
+    </div>
+  </div>
+
+  <div id="liveToast2" class="toast" role="alert" aria-live="assertive" aria-atomic="true">
+    <div class="toast-header">
+      <img src="/imgsrc/smlogo.png" class="rounded me-2" alt="...">
+      <strong class="me-auto">쉼표 | 지친 일상에 쉼표를 찍다 </strong>
+      <small>방금 전</small>
+      <button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close"></button>
+    </div>
+    <div class="toast-body">
+      좋아요가 취소되었습니다
+    </div>
+  </div>
+<!-- jjim toast -->  
+
+<!-- heart toast -->
+  <div id="liveToast3" class="toast" role="alert" aria-live="assertive" aria-atomic="true">
+    <div class="toast-header">
+      <img src="/imgsrc/smlogo.png" class="rounded me-2" alt="...">
+      <strong class="me-auto">쉼표 | 지친 일상에 쉼표를 찍다 </strong>
+      <small>방금 전</small>
+      <button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close"></button>
+    </div>
+    <div class="toast-body">
+      찜이 등록되었습니다
+    </div>
+  </div>
+
+  <div id="liveToast4" class="toast" role="alert" aria-live="assertive" aria-atomic="true">
+    <div class="toast-header">
+      <img src="/imgsrc/smlogo.png" class="rounded me-2" alt="...">
+      <strong class="me-auto">쉼표 | 지친 일상에 쉼표를 찍다 </strong>
+      <small>방금 전</small>
+      <button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close"></button>
+    </div>
+    <div class="toast-body">
+      찜이 취소되었습니다
+    </div>
+  </div>
+</div>
+<!--  heart toast -->
+
+<!-- login toast -->
+	<div id="liveToast5" class="toast" role="alert" aria-live="assertive" aria-atomic="true">
+    <div class="toast-header">
+      <img src="/imgsrc/smlogo.png" class="rounded me-2" alt="...">
+      <strong class="me-auto">쉼표 | 지친 일상에 쉼표를 찍다 </strong>
+      <small>방금 전</small>
+      <button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close"></button>
+    </div>
+    <div class="toast-body">
+      로그인되었습니다
+    </div>
+  </div>
+
+  <div id="liveToast6" class="toast" role="alert" aria-live="assertive" aria-atomic="true">
+    <div class="toast-header">
+      <img src="/imgsrc/smlogo.png" class="rounded me-2" alt="...">
+      <strong class="me-auto">쉼표 | 지친 일상에 쉼표를 찍다 </strong>
+      <small>방금 전</small>
+      <button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close"></button>
+    </div>
+    <div class="toast-body">
+      로그아웃되었습니다
+    </div>
+  </div>
+</div>
+<!-- login toast -->        
         <!-- 댓글  -->
         <script>
         //댓글 등록 버튼
@@ -1015,6 +1095,9 @@ $("#modal_loginBtn").on("click",function(){
       
    })
    
+   //좋아요 토스트
+   	
+   
     //좋아요
     let good = true;
    if(${isBoardGood!=null}){
@@ -1026,6 +1109,11 @@ $("#modal_loginBtn").on("click",function(){
    }
 
     let gUpDown = 0;
+	const toastLiveExample1 = document.getElementById('liveToast1');
+	const toastLiveExample2 = document.getElementById('liveToast2');
+	const toastLiveExample3 = document.getElementById('liveToast3');
+	const toastLiveExample4 = document.getElementById('liveToast4');
+	
     $("#goodcol").on("click", function () {
         if(${loginID == null}){
            alert("로그인이 필요합니다.");
@@ -1036,10 +1124,16 @@ $("#modal_loginBtn").on("click",function(){
             $("#goodcol").css("color", "#ffd000" );
             $("#goodcol").css("border","1px solid #ffd000" );
             good=false;
+            const toast = new bootstrap.Toast(toastLiveExample1)
+
+        	toast.show();
         } else {
             $("#goodcol").css("color", "#b1b1b1");
             $("#goodcol").css("border","1px solid #b1b1b1" );
             good=true;
+            const toast = new bootstrap.Toast(toastLiveExample2)
+
+        	toast.show();
         }
 
         if(good == false){
@@ -1079,20 +1173,29 @@ $("#modal_loginBtn").on("click",function(){
        }
     }
    let jUpDown = 0;
+   	const toastTrigger = document.getElementById('jjimcol')
     $("#jjimcol").on("click", function () {
         if(${loginID == null}){
            alert("로그인이 필요합니다.");
            return false;
         }
        
-        if (하트) {
+        if (heart) {
             $("#jjimcol").css("color", "red" );
             $("#jjimcol").css("border","1px solid red" );
             heart=false;
+            
+            const toast = new bootstrap.Toast(toastLiveExample3)
+
+        	toast.show();
         } else {
             $("#jjimcol").css("color", "#b1b1b1");
             $("#jjimcol").css("border","1px solid #b1b1b1" );
             heart=true;
+            
+            const toast = new bootstrap.Toast(toastLiveExample4)
+
+        	toast.show();
         }
         
         if(heart == false){
