@@ -1153,7 +1153,7 @@ $("#modal_loginBtn").on("click",function(){
             console.log(resp.likeCount)//좋아요 갯수
             $("#likecnt").text(resp.likeCount);
 
-            $(".like").text(resp.likeCount);
+            $(".like").html('<i class="fa-solid fa-thumbs-up"></i> &nbsp;&nbsp;'+resp.likeCount);
             
          }).fail(function(a, b){ 
             console.log(a);
