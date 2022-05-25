@@ -536,11 +536,11 @@
                dataType : 'json'
 
           }).done(function(resp){
-// //             console.log(resp)
+             console.log(resp)
 //             if(${totalPage}<pape){
 //                alert("마지막 페이지 입니다.");
 //             }else{
-                 //총 댓글 갯수
+//                  총 댓글 갯수
                     let count =0;
                for(let i = 0; i < resp.length; i++){
 
@@ -704,9 +704,9 @@
     //         }
              
 
-    //       })
+          })
              
-    //    }
+       }
 
 
     </script>
