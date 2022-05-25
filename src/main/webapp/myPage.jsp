@@ -1505,7 +1505,7 @@ $("#modal_loginBtn").on("click",function(){
                                 <div class="row" id="joinday">
                                     <div class="col-12 col-md-4 check" style="display:none;"><strong>비밀번호 확인</strong> </div>
                                     <div class="col-12 col-md-8 check" style="display:none;">
-                                        <input type="text" placeholder="비밀번호를 입력하세요" id="pwtext">
+                                        <input type="password" placeholder="비밀번호를 입력하세요" id="pwtext">
                                         
                                     </div>
                                 </div>

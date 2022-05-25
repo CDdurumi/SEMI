@@ -34,7 +34,8 @@
     <link rel="icon" href="/docs/5.1/assets/img/favicons/favicon.ico">
     <meta name="theme-color" content="#7952b3">
     <script src="https://kit.fontawesome.com/247b201f79.js" crossorigin="anonymous"></script>
-
+	<script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    
     <style>
         @import url("https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700&display=swap");
 		body::-webkit-scrollbar{
@@ -499,6 +500,17 @@
 
 <!-- 화면 로딩 시 ------------------------------------------------------------------- -->
     <script>
+    window.onload = function(){
+    	if(${loginId == null}){
+    		Swal.fire({
+    			  icon: 'error',
+    			  title: 'Oops...',
+    			  text: 'Something went wrong!',
+    			  footer: '<a href="">Why do I have this issue?</a>'
+    			})
+    	}
+    }
+    
 	    let page = 1;  //페이징과 같은 방식이라고 생각하면 된다.
 
     	$(function(){
@@ -1078,6 +1090,8 @@ $("#modal_loginBtn").on("click",function(){
           $("#modal_loginBtn").click();
       }
   })
+  
+ 
     </script>
 </body>
 
