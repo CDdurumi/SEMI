@@ -20,7 +20,7 @@
             crossorigin="anonymous"></script>
         <script src="https://code.jquery.com/jquery-3.6.0.js"></script>
         <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/boxicons@latest/css/boxicons.min.css">
-
+	<script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
         <!--  -->
         <link rel="canonical" href="https://getbootstrap.com/docs/5.1/examples/cover/">
         <!-- Bootstrap core CSS -->
@@ -381,6 +381,7 @@
     </head>
 
 <body id="body-pd">
+
     <header class="header" id="header">
         <div class="header_toggle"><i class='bx bx-menu' id="header-toggle"></i></div>
         <div><h3>게시판 글 작성하기</h3></div>
@@ -394,6 +395,7 @@
 				<c:otherwise>
 					<a href="#" class="login" id="login"  data-bs-toggle="modal" data-bs-target="#exampleModal">login</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
           			 <a href="/signup.jsp" class="join">join</a>
+          			
 				</c:otherwise>
 			</c:choose>        </div>
     </header>
@@ -470,6 +472,16 @@
   </div>
 </div>
 <script>
+window.onload = function(){
+	if(${loginID == null}){
+		Swal.fire({
+			  icon: 'error',
+			  title: 'Oops...',
+			  text: 'Something went wrong!',
+			  footer: '<a href="">Why do I have this issue?</a>'
+			})
+	}
+}
 
 $("#password-input").on("keyup",function(e){
     if(e.keyCode==13){
@@ -561,6 +573,7 @@ $("#modal_loginBtn").on("click",function(){
     <!--  ----------------------------------------------------------게시글 작성하기 메인------------->
 
     <script>
+    
         document.addEventListener("DOMContentLoaded", function (event) {
 
             const show1Navbar = (toggleId, navId, bodyId, headerId) => {

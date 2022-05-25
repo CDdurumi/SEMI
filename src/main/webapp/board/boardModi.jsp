@@ -37,6 +37,7 @@
         <link rel="mask-icon" href="/docs/5.1/assets/img/favicons/safari-pinned-tab.svg" color="#7952b3">
         <link rel="icon" href="/docs/5.1/assets/img/favicons/favicon.ico">
         <meta name="theme-color" content="#7952b3">
+        <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
         
         <!-- SummerNote -->
 <!--         <link href="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote.min.css" rel="stylesheet"> -->
@@ -499,6 +500,18 @@
   </div>
 </div>
 <script>
+
+window.onload = function(){
+	if(${loginID == null}){
+		Swal.fire({
+			  icon: 'error',
+			  title: 'Oops...',
+			  text: 'Something went wrong!',
+			  footer: '<a href="">Why do I have this issue?</a>'
+			})
+	}
+}
+
 $("#login").on("click",function(){
 	$("#idpw_check").text("");
 	$("#idpw_check").css({ color: "black" })
@@ -885,6 +898,7 @@ $("#modal_loginBtn").on("click",function(){
 	  document.documentElement.scrollTop = 0; 
 	}
 
+	
 	
 </script>
 </body>

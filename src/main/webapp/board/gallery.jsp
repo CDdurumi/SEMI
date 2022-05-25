@@ -544,7 +544,7 @@ $("#modal_loginBtn").on("click",function(){
         <c:forEach var="i" items="${list}">
         	<c:forEach var="j" items="${porfileList}">
 				<c:if test="${j.parent_seq eq i.all_board_seq}">
-					<div class="col-12 col-sm-6 col-md-4" id="img"><img src="${profilePath}${j.sys_name}" alt=".." class="rounded-circle w-100 h-100"><div class="mask"><p1>${i.title}</p1></div></div>
+					<div class="col-12 col-sm-6 col-md-3" id="img"><img src="${profilePath}${j.sys_name}" alt=".." class="rounded-circle w-100 h-100"><div class="mask"><p1>${i.title}</p1></div></div>
 				</c:if>
         	</c:forEach>
         </c:forEach>
@@ -560,7 +560,7 @@ $("#modal_loginBtn").on("click",function(){
         <span aria-hidden="true">&laquo;</span>
         </a>
             </li>
-
+${navi }
 <li class="page-item">
 <a class="page-link" href="#" aria-label="Next">
 <span aria-hidden="true">&raquo;</span>

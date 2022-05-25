@@ -24,7 +24,7 @@ pageEncoding="UTF-8"%>
     <!-- Bootstrap core CSS -->
     <link href="/docs/5.1/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
-
+	<script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <!-- Favicons -->
     <link rel="apple-touch-icon" href="/docs/5.1/assets/img/favicons/apple-touch-icon.png" sizes="180x180">
     <link rel="icon" href="/docs/5.1/assets/img/favicons/favicon-32x32.png" sizes="32x32" type="image/png">
@@ -469,6 +469,18 @@ pageEncoding="UTF-8"%>
             margin-bottom: 3px;
             padding: 0px;
         }
+         .receive_msgboard2{
+            /* text-align: center; */
+            height: 50px;
+            margin-bottom: 3px;
+            padding: 0px;
+        }
+        .send_msgboard2{
+            /* text-align: center; */
+            height: 50px;
+            margin-bottom: 3px;
+            padding: 0px;
+        }
         .board_row2{
             padding-top: 10px;
             height: 100%;
@@ -619,6 +631,17 @@ pageEncoding="UTF-8"%>
   </div>
 </div>
 <script>
+window.onload = function(){
+	if(${loginID == null}){
+		Swal.fire({
+			  icon: 'error',
+			  title: 'Oops...',
+			  text: 'Something went wrong!',
+			  footer: '<a href="">Why do I have this issue?</a>'
+			})
+	}
+}
+
 $("#login").on("click",function(){
 	$("#idpw_check").text("");
 	$("#idpw_check").css({ color: "black" })
@@ -714,7 +737,7 @@ $("#modal_loginBtn").on("click",function(){
                             <div class="container2">
     
                                 <div class="row m-0 ">
-                                    <div class="col-12  ">
+                                    <div class="col-12 receive_msgtext">
                                         <div class="row " id="board_menu_text">
                                             <div class="col-md-2 col-lg-1 d-none d-md-block ">번호</div>
                                             <div class="col-8 col-md-6 col-lg-7">제목</div>
@@ -722,59 +745,8 @@ $("#modal_loginBtn").on("click",function(){
                                             <div class="col-md-2 col-lg-2 d-none  d-md-block text-center">날짜</div>
                                         </div>
                                     </div>
-
-                                   <div class="col-12  board2">
-                                       <div class="row m-0 border border-2 rounded board_row ">
-                                           <div class="col-md-2 col-lg-1 d-none d-md-block p-0">번호</div>
-                                           <div class="col-8 col-md-6 col-lg-7 m-0 title ellipsis p-0"><span>글 제목글 제목</span></div>
-                                           <!-- ellipsis"><span>글 제목</span></div> 밑에 forEach 작업이라 한줄만 추가했습니다. -->
-                                           <div class="col-4 col-md-2 col-lg-2 p-0 ellipsis text-center"><span>글쓴이글쓴이글쓴이</span></div>
-                                           <!-- 글제목 글쓴이 col 밑에랑 달라요 반복이라 한줄만 추가합니다 -->
-                                           <div class="col-md-2 col-lg-2 d-none d-md-block p-0 text-center">날짜</div>
-
-                                           
-                                       </div>
-                                   </div>
-                                   <div class="col-12  board2">
-                                       <div class="row m-0 border border-2 rounded board_row">
-                                           <div class="col-md-2 col-lg-1 d-none d-md-block p-0 ">번호</div>
-                                           <div class="col-8 col-md-6 col-lg-7 m-0 title ellipsis p-0">글 제목</div>
-                                           <div class="col-4 col-md-2 col-lg-2 p-0 ellipsis text-center"><span>글쓴이글쓴이글쓴이</span></div>
-                                           <div class="col-md-2 col-lg-2 d-none d-md-block p-0 text-center">날짜</div>
-                                       </div>
-                                   </div>
-                                   <div class="col-12  board2">
-                                       <div class="row m-0 border border-2 rounded board_row">
-                                           <div class="col-md-2 col-lg-1 d-none d-md-block p-0">번호</div>
-                                           <div class="col-8 col-md-6 col-lg-7 m-0 title ellipsis p-0">글 제목</div>
-                                           <div class="col-4 col-md-2 col-lg-2 p-0 ellipsis text-center"><span>글쓴이글쓴이글쓴이</span></div>
-                                           <div class="col-md-2 col-lg-2 d-none d-md-block p-0 text-center">날짜</div>
-                                       </div>
-                                   </div>
-                                   <div class="col-12  board2">
-                                       <div class="row m-0 border border-2 rounded board_row">
-                                           <div class="col-md-2 col-lg-1 d-none d-md-block p-0">번호</div>
-                                           <div class="col-8 col-md-6 col-lg-7 m-0 title ellipsis p-0">글 제목</div>
-                                           <div class="col-4 col-md-2 col-lg-2 p-0 ellipsis text-center"><span>글쓴이글쓴이글쓴이</span></div>
-                                           <div class="col-md-2 col-lg-2 d-none d-md-block p-0 text-center">날짜</div>
-                                       </div>
-                                   </div>
-                                   <div class="col-12  board2">
-                                       <div class="row m-0 border border-2 rounded board_row">
-                                           <div class="col-md-2 col-lg-1 d-none d-md-block p-0">번호</div>
-                                           <div class="col-8 col-md-6 col-lg-7 m-0 title ellipsis p-0">글 제목</div>
-                                           <div class="col-4 col-md-2 col-lg-2 p-0 ellipsis text-center"><span>글쓴이글쓴이글쓴이</span></div>
-                                           <div class="col-md-2 col-lg-2 d-none d-md-block p-0 text-center">날짜</div>
-                                       </div>
-                                   </div>
-                                   <div class="col-12  board2">
-                                       <div class="row m-0 border border-2 rounded board_row">
-                                           <div class="col-md-2 col-lg-1 d-none d-md-block p-0">번호</div>
-                                           <div class="col-8 col-md-6 col-lg-7 m-0 title ellipsis p-0">글 제목</div>
-                                           <div class="col-4 col-md-2 col-lg-2 p-0 ellipsis text-center"><span>글쓴이글쓴이글쓴이</span></div>
-                                           <div class="col-md-2 col-lg-2 d-none d-md-block p-0 text-center">날짜</div>
-                                       </div>
-                                   </div>
+								<!-- 받은 쪽지함 반복문위치 -->
+                                   
                                    <div calss="row">
                                        <div class="col-12 text-center">
                                            <nav aria-label="Page navigation example">
@@ -802,7 +774,7 @@ $("#modal_loginBtn").on("click",function(){
                         <div class="tab-pane fade" id="v-pills-send" role="tabpanel" aria-labelledby="v-pills-send-tab">
                             <div class="container2">
                                 <div class="row m-0">
-                                    <div class="col-12  ">
+                                    <div class="col-12 send_msgtext">
                                         <div class="row " id="board_menu_text">
                                             <div class="col-md-2 col-lg-1 d-none d-md-block ">번호</div>
                                             <div class="col-8 col-md-6 col-lg-7">제목</div>
@@ -810,57 +782,8 @@ $("#modal_loginBtn").on("click",function(){
                                             <div class="col-md-2 col-lg-2 d-none  d-md-block text-center">날짜</div>
                                         </div>
                                     </div>
+								<!-- 보낸 쪽지함 반복문위치 -->
 
-                                   <div class="col-12  board2">
-                                       <div class="row m-0 border border-2 rounded board_row ">
-                                           <div class="col-md-2 col-lg-1 d-none d-md-block p-0">번호</div>
-                                           <div class="col-8 col-md-6 col-lg-7 m-0 title ellipsis p-0"><span>글 제목글 제목</span></div>
-                                           <!-- ellipsis"><span>글 제목</span></div> 밑에 forEach 작업이라 한줄만 추가했습니다. -->
-                                           <div class="col-4 col-md-2 col-lg-2 p-0 ellipsis text-center"><span>글쓴이글쓴이글쓴이</span></div>
-                                           <!-- 글제목 글쓴이 col 밑에랑 달라요 반복이라 한줄만 추가합니다 -->
-                                           <div class="col-md-2 col-lg-2 d-none d-md-block p-0 text-center">날짜</div>
-                                       </div>
-                                   </div>
-                                   <div class="col-12  board2">
-                                    <div class="row m-0 border border-2 rounded board_row">
-                                        <div class="col-md-2 col-lg-1 d-none d-md-block p-0">번호</div>
-                                        <div class="col-8 col-md-6 col-lg-7 m-0 title ellipsis p-0">글 제목</div>
-                                        <div class="col-4 col-md-2 col-lg-2 p-0 ellipsis text-center"><span>글쓴이글쓴이글쓴이</span></div>
-                                        <div class="col-md-2 col-lg-2 d-none d-md-block p-0 text-center">날짜</div>
-                                    </div>
-                                </div>
-                                   <div class="col-12  board2">
-                                       <div class="row m-0 border border-2 rounded board_row">
-                                           <div class="col-md-2 col-lg-1 d-none d-md-block p-0">번호</div>
-                                           <div class="col-8 col-md-6 col-lg-7 m-0 title ellipsis p-0">글 제목</div>
-                                           <div class="col-4 col-md-2 col-lg-2 p-0 ellipsis text-center"><span>글쓴이글쓴이글쓴이</span></div>
-                                           <div class="col-md-2 col-lg-2 d-none d-md-block p-0 text-center">날짜</div>
-                                       </div>
-                                   </div>
-                                   <div class="col-12  board2">
-                                       <div class="row m-0 border border-2 rounded board_row">
-                                           <div class="col-md-2 col-lg-1 d-none d-md-block p-0">번호</div>
-                                           <div class="col-8 col-md-6 col-lg-7 m-0 title ellipsis p-0">글 제목</div>
-                                           <div class="col-4 col-md-2 col-lg-2 p-0 ellipsis text-center"><span>글쓴이글쓴이글쓴이</span></div>
-                                           <div class="col-md-2 col-lg-2 d-none d-md-block p-0 text-center">날짜</div>
-                                       </div>
-                                   </div>
-                                   <div class="col-12  board2">
-                                       <div class="row m-0 border border-2 rounded board_row">
-                                           <div class="col-md-2 col-lg-1 d-none d-md-block p-0">번호</div>
-                                           <div class="col-8 col-md-6 col-lg-7 m-0 title ellipsis p-0">글 제목</div>
-                                           <div class="col-4 col-md-2 col-lg-2 p-0 ellipsis text-center"><span>글쓴이글쓴이글쓴이</span></div>
-                                           <div class="col-md-2 col-lg-2 d-none d-md-block p-0 text-center">날짜</div>
-                                       </div>
-                                   </div>
-                                   <div class="col-12  board2">
-                                       <div class="row m-0 border border-2 rounded board_row">
-                                           <div class="col-md-2 col-lg-1 d-none d-md-block p-0">번호</div>
-                                           <div class="col-8 col-md-6 col-lg-7 m-0 title ellipsis p-0">글 제목</div>
-                                           <div class="col-4 col-md-2 col-lg-2 p-0 ellipsis text-center"><span>글쓴이글쓴이글쓴이</span></div>
-                                           <div class="col-md-2 col-lg-2 d-none d-md-block p-0 text-center">날짜</div>
-                                       </div>
-                                   </div>
                                    <div calss="row">
                                        <div class="col-12 text-center">
                                            <nav aria-label="Page navigation example">
@@ -1505,7 +1428,7 @@ $("#modal_loginBtn").on("click",function(){
                                 <div class="row" id="joinday">
                                     <div class="col-12 col-md-4 check" style="display:none;"><strong>비밀번호 확인</strong> </div>
                                     <div class="col-12 col-md-8 check" style="display:none;">
-                                        <input type="text" placeholder="비밀번호를 입력하세요" id="pwtext">
+                                        <input type="password" placeholder="비밀번호를 입력하세요" id="pwtext">
                                         
                                     </div>
                                 </div>
@@ -1748,7 +1671,83 @@ $("#modal_loginBtn").on("click",function(){
      document.body.scrollTop = 0; 
      document.documentElement.scrollTop = 0; 
    }
-
+	//쪽지 스크립트(인피티니스크롤미적용)
+		$("#message-tab").on("click", function(){
+		$.ajax({
+			url:"receiveMsgBox.mpg",
+			dataType: "json"
+		}).done(function(resp){
+			$(".receive_msgboard2").remove();
+			
+			for(let i = 0; resp.length; i++){
+				
+				let msgDiv = $("<div class='col-12 receive_msgboard2'>");
+				let msgDiv1 = $("<div class='row m-0 border border-2 rounded board_row '>");
+				
+				let msgDiv2 = $("<div class='col-md-2 col-lg-1 d-none d-lg-block p-0'>");
+				msgDiv2.text(resp[i].line);
+				
+				let msgDiv3 = $("<div class='col-8 col-md-8 col-lg-5 m-0 title ellipsis p-0'>");
+				let msgSpan = $("<span>")
+				msgSpan.text(resp[i].title);
+				
+				let msgDiv4 = $("<div class='col-4 col-md-4 col-lg-2 p-0 ellipsis text-center'>");
+				let msgSpan2 = $("<span>")
+				msgSpan2.text(resp[i].sender);
+				
+				let msgDiv5 = $("<div class='col-md-2 col-lg-4 d-none d-lg-block p-0 text-center'>");
+				msgDiv5.text(resp[i].date);
+				
+				$(".receive_msgtext").after(msgDiv);
+				msgDiv.append(msgDiv1);
+				msgDiv1.append(msgDiv2);
+				msgDiv1.append(msgDiv3);
+				msgDiv3.append(msgSpan);
+				msgDiv1.append(msgDiv4);
+				msgDiv4.append(msgSpan2);
+				msgDiv1.append(msgDiv5);
+				
+			}
+		})
+	});
+	$("#v-pills-send-tab").on("click", function(){
+		$.ajax({
+			url:"sendMsgBox.mpg",
+			dataType:"json"
+		}).done(function(resp){
+			$(".send_msgboard2").remove();
+			
+			for(let i = 0; resp.length; i++){
+				
+				let msgDiv = $("<div class='col-12 send_msgboard2'>");
+				let msgDiv1 = $("<div class='row m-0 border border-2 rounded board_row '>");
+				
+				let msgDiv2 = $("<div class='col-md-2 col-lg-1 d-none d-lg-block p-0'>");
+				msgDiv2.text(resp[i].line);
+				
+				let msgDiv3 = $("<div class='col-8 col-md-8 col-lg-5 m-0 title ellipsis p-0'>");
+				let msgSpan = $("<span>")
+				msgSpan.text(resp[i].title);
+				
+				let msgDiv4 = $("<div class='col-4 col-md-4 col-lg-2 p-0 ellipsis text-center'>");
+				let msgSpan2 = $("<span>")
+				msgSpan2.text('${loginID}');
+				
+				let msgDiv5 = $("<div class='col-md-2 col-lg-4 d-none d-lg-block p-0 text-center'>");
+				msgDiv5.text(resp[i].date);
+				
+				$(".send_msgtext").after(msgDiv);
+				msgDiv.append(msgDiv1);
+				msgDiv1.append(msgDiv2);
+				msgDiv1.append(msgDiv3);
+				msgDiv3.append(msgSpan);
+				msgDiv1.append(msgDiv4);
+				msgDiv4.append(msgSpan2);
+				msgDiv1.append(msgDiv5);
+				
+			}
+		})
+	});
    
    
 </script>

@@ -312,7 +312,7 @@ public class BoardDAO {
 		
 		int recordTotalCount = this.getRecordTotalCount(boardOption); // 총 게시글의 개수 -> 향후 실제 데이터베이스의 개수를 세어와야함
 
-		int recordCountPerPage = 10; // 한 페이지에 몇 개의 게시글을 보여줄 건지
+		int recordCountPerPage = 20; // 한 페이지에 몇 개의 게시글을 보여줄 건지
 
 		int naviCountPerPage = 5; // 한 페이지에 몇 개의 네비를 보여 줄 건지
 
@@ -382,7 +382,7 @@ public class BoardDAO {
 
 		// 게시글의 번호를 세팅한다.
 		int start = cpage * 10 - 9;
-		int end = cpage * 10;
+		int end = cpage * 20;
 
 		// 한 페이지에 게시글이 10개씩 보여지도록 하기 위해서 row_number를 활용하는데, 서브 쿼리를 활용해서 select 해준다.
 		String sql = "select * from (select row_number() over(order by write_date desc) line, all_board.* from all_board where all_board_seq like '"+boardOption+"%') where line between ? and ?";
