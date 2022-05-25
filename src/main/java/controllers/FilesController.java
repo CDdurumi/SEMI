@@ -115,7 +115,21 @@ public class FilesController extends HttpServlet {
 				//					System.out.println("폴더가 존재하지 않습니다."); 
 				//				}
 
+			}else if(uri.equals("/modiFile.file")) {//수정한 게시글의 파일 삭제 
+				System.out.println("modFile.file 수신확인");
+				String[] delFileList = request.getParameterValues("delFileList");
+				String pseq = request.getParameter("pseq");
+				
+				System.out.println(pseq);
+				
+				if(delFileList != null) {
+					for(int i= 0; i<delFileList.length; i++) {
+					System.out.println(delFileList[i]);
+					dao.remove(pseq,delFileList[i]);
+				}
+				
 			}
+		}
 
 
 		}catch(Exception e) {

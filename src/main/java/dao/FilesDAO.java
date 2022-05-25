@@ -11,7 +11,6 @@ import javax.naming.Context;
 import javax.naming.InitialContext;
 import javax.sql.DataSource;
 
-import dto.BoardDTO;
 import dto.FilesDTO;
 
 public class FilesDAO {
@@ -67,31 +66,44 @@ public class FilesDAO {
 			}
 		}
 	}
+	   //대표 프로필 sys_name, 해당 게시글 seq 얻어오기
+	   public List<FilesDTO> selectSysName(String boardOption) throws Exception {
+	      
+	      String sql = "select sys_name, parent_seq "
+	            + "from(select files.* , ROW_NUMBER() over(partition by parent_seq order by seq desc ) row_num  "
+	                  + "from files order by parent_seq desc) "
+	            + "where parent_seq like '"+boardOption+"%' and row_num = 1";
 
-	
-	//대표 프로필 sys_name, 해당 게시글 seq 얻어오기
-	public List<FilesDTO> selectSysName(String boardOption) throws Exception {
-		
-		String sql = "select sys_name, parent_seq "
-				+ "from(select files.* , ROW_NUMBER() over(partition by parent_seq order by seq desc ) row_num  "
-						+ "from files order by parent_seq desc) "
-				+ "where parent_seq like '"+boardOption+"%' and row_num = 1";
+	      try (Connection con = this.getConnection();
+	            PreparedStatement pstat = con.prepareStatement(sql);
+	            ResultSet rs = pstat.executeQuery();) {
+	         
+	         List<FilesDTO> list = new ArrayList<FilesDTO>();
 
-		try (Connection con = this.getConnection();
-				PreparedStatement pstat = con.prepareStatement(sql);
-				ResultSet rs = pstat.executeQuery();) {
+	         while (rs.next()) {
+	            String sys_name = rs.getString("sys_name");
+	            String parent_seq = rs.getString("parent_seq");
+
+	            FilesDTO dto = new FilesDTO(0, null, sys_name, parent_seq);
+	            list.add(dto);
+	         }
+	         return list;
+	      }
+	   }
+	   //파일 수정시 삭제 
+	public int remove(String parent_seq,String filename) throws Exception {
+		String sql = "delete from files where parent_seq = ? and ori_name = ?";
+		try(Connection con = this.getConnection();
+				PreparedStatement pstat = con.prepareStatement(sql);) {
+			pstat.setString(1, parent_seq);
+			pstat.setString(2, filename);
 			
-			List<FilesDTO> list = new ArrayList<FilesDTO>();
 
-			while (rs.next()) {
-				String sys_name = rs.getString("sys_name");
-				String parent_seq = rs.getString("parent_seq");
-
-				FilesDTO dto = new FilesDTO(0, null, sys_name, parent_seq);
-				list.add(dto);
-			}
-			return list;
+			int result = pstat.executeUpdate();
+			con.commit();
+			return result;
 		}
 	}
+
 
 }

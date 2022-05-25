@@ -562,7 +562,12 @@ $("#modal_loginBtn").on("click",function(){
                     </select>
                     <input type="text" placeholder="글 제목을 입력하세요" name="title" class="title" required value="${dto.title}">
                 </div>
-
+				<!-- 기존파일 보기 -->
+				<div class="col-12 " id="upfiles" style="border-top:1px solid #aaa9a9">
+					<div class="col-6 filebox"  style="padding-left:8px;">
+						기존에 선택된 파일					
+                 	</div>
+                </div>
                 
                 <div class="col-12 " id="fileArea" style="border-top:1px solid #aaa9a9">
                     <!-- <input type="hidden" name="fileCount" id="fileCount" value=1>  -->
@@ -678,6 +683,15 @@ $("#modal_loginBtn").on("click",function(){
 		//작성완료 버튼 클릭 시 서머노트 안 적었으면 경고창 & 로그인 안 했으면 경고창//////////////////////
 		let frm = document.getElementById("from");
 		frm.onsubmit = function(){
+			$.ajax({ // ajax를 통해 파일 업로드 처리
+	 	        data : {delFileList : delFileList ,pseq:"${dto.all_board_seq }"},
+	 	      	 traditional: true,
+	 	        type : "GET",
+	 	        url : "/modiFile.file",
+	 	        dataType:"json"
+	 	        
+	 	    });
+			
 			let summernote = document.getElementById("summernote").value;
 			if(summernote == "" || summernote =="<p><br></p>"){
 				alert("본문을 작성해주세요.");
@@ -766,6 +780,46 @@ $("#modal_loginBtn").on("click",function(){
 // 	 	    });
 // 	 	}
          //////////////////////////////////////////////////////////////////////서머노트////////
+         
+                   //파일목록
+    $.ajax({
+            url:"/f_list.file",
+            data:{parent_seq:"${dto.all_board_seq}"},
+            dataType:"json"
+         }).done(function(resp){
+        	 console.log("파일있음");
+               for(let i=0; i<resp.length; i++){
+                  let fileDiv = $("<div>");
+                  
+                  let anker = $("<a>");
+                  anker.attr("href","/f_download.file?ori_name="+resp[i].ori_name+"&sys_name="+resp[i].sys_name);
+                  anker.text(resp[i].ori_name);
+               	  let delBtn = $("<button type="+"button"+	">");
+               	  delBtn.attr("id","delBtn"+i);
+                  delBtn.text("ㅡ");
+               	  
+                  fileDiv.append(anker);
+                  fileDiv.append(delBtn);
+                  $("#upfiles").append(fileDiv);
+                  
+                  
+                  $("#delBtn"+i).on("click",function(){               	  
+               	   console.log($(this).siblings().text()+"삭제");
+               		delFileName($(this).siblings().text());
+               	   $(this).parent().remove();
+               	   
+               	   
+                  })
+               }
+           })
+   		let delFileList=[];
+         
+        function delFileName(fileName){
+        	
+        	 delFileList.push(fileName);
+        	console.log(fileName+"콜백파일이름");
+        	console.log(delFileList);
+        }
     </script>
     
     <script type="text/javascript">
