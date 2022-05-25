@@ -647,7 +647,12 @@ $("#modal_loginBtn").on("click",function(){
           }
         });
 
-
+        $("#password-input").on("keyup",function(e){
+            if(e.keyCode==13){
+                $("#modal_loginBtn").click();
+            }
+        })
+        
         //게시글 작성하기/////////////////////////////////////////////////////////////////////////////////////////
 		let i = 2;
         //+버튼 클릭시 type=file 추가
