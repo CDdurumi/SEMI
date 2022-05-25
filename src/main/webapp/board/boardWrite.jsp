@@ -47,7 +47,7 @@
         <script src="/summernote-0.8.18-dist/summernote-lite.js"></script>
         <script src="/summernote-0.8.18-dist/lang/summernote-ko-KR.js"></script>
         <link rel="stylesheet" href="/summernote-0.8.18-dist/summernote-lite.css">
-        
+        <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
         <style>
             @import url("https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700&display=swap");
 
@@ -470,6 +470,17 @@
   </div>
 </div>
 <script>
+window.onload = function(){
+	if(${loginId == null}){
+		Swal.fire({
+			  icon: 'error',
+			  title: 'Oops...',
+			  text: 'Something went wrong!',
+			  footer: '<a href="">Why do I have this issue?</a>'
+			})
+	}
+}
+
 
 $("#password-input").on("keyup",function(e){
     if(e.keyCode==13){
