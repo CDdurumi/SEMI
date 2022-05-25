@@ -48,7 +48,7 @@ public class BoardController extends HttpServlet {
 				List<BoardDTO> list = dao.selectByPage(cpage,boardOption);
 				List<BoardDTO> hotlist = dao.selectByLikeCount(boardOption);
 				
-				String pageNavi = dao.getPageNavi(cpage);
+				String pageNavi = dao.getPageNavi(cpage, boardOption);
 				
 				request.setAttribute("list", list);
 				request.setAttribute("hotlist", hotlist);
@@ -59,30 +59,75 @@ public class BoardController extends HttpServlet {
 			}else if(uri.equals("/galleryMain.board")) {//여행후기 메인화면 출력
 				int cpage = Integer.parseInt(request.getParameter("cpage"));
 				request.setAttribute("cpage", cpage);
+				String boardOption ="g";
+				List<BoardDTO> list = dao.selectByPage(cpage,boardOption);
+				List<BoardDTO> hotlist = dao.selectByLikeCount(boardOption);
+				
+				String pageNavi = dao.getPageNavi(cpage, boardOption);
+				
+				request.setAttribute("list", list);
+				request.setAttribute("hotlist", hotlist);
+				request.setAttribute("navi", pageNavi);
 				
 				request.getRequestDispatcher("/board/gallery.jsp").forward(request, response);//여행후기 메인페이지
 				
 			}else if(uri.equals("/jobMain.board")) {//구인구직 메인화면 출력
 				int cpage = Integer.parseInt(request.getParameter("cpage"));
 				request.setAttribute("cpage", cpage);
+				String boardOption ="j";
+				List<BoardDTO> list = dao.selectByPage(cpage,boardOption);
+				List<BoardDTO> hotlist = dao.selectByLikeCount(boardOption);
+				
+				String pageNavi = dao.getPageNavi(cpage, boardOption);
+				
+				request.setAttribute("list", list);
+				request.setAttribute("hotlist", hotlist);
+				request.setAttribute("navi", pageNavi);
 				
 				request.getRequestDispatcher("/board/jobMain.jsp").forward(request, response);//구인구직 메인페이지
 				
 			}else if(uri.equals("/foodMain.board")) {//맛집 메인화면 출력
 				int cpage = Integer.parseInt(request.getParameter("cpage"));
 				request.setAttribute("cpage", cpage);
+				String boardOption ="r";
+				List<BoardDTO> list = dao.selectByPage(cpage,boardOption);
+				List<BoardDTO> hotlist = dao.selectByLikeCount(boardOption);
+				
+				String pageNavi = dao.getPageNavi(cpage, boardOption);
+				
+				request.setAttribute("list", list);
+				request.setAttribute("hotlist", hotlist);
+				request.setAttribute("navi", pageNavi);
 				
 				request.getRequestDispatcher("/board/foodMain.jsp").forward(request, response);//맛집 메인페이지
 				
 			}else if(uri.equals("/houseMain.board")) {//숙소리뷰 메인화면 출력
 				int cpage = Integer.parseInt(request.getParameter("cpage"));
 				request.setAttribute("cpage", cpage);
+				String boardOption ="h";
+				List<BoardDTO> list = dao.selectByPage(cpage,boardOption);
+				List<BoardDTO> hotlist = dao.selectByLikeCount(boardOption);
+				
+				String pageNavi = dao.getPageNavi(cpage, boardOption);
+				
+				request.setAttribute("list", list);
+				request.setAttribute("hotlist", hotlist);
+				request.setAttribute("navi", pageNavi);
 				
 				request.getRequestDispatcher("/board/houseMain.jsp").forward(request, response);//숙소리뷰 메인페이지
 				
 			}else if(uri.equals("/editorReMain.board")) {//애디터 추천글 메인화면 출력
 				int cpage = Integer.parseInt(request.getParameter("cpage"));
 				request.setAttribute("cpage", cpage);
+				String boardOption ="e";
+				List<BoardDTO> list = dao.selectByPage(cpage,boardOption);
+				List<BoardDTO> hotlist = dao.selectByLikeCount(boardOption);
+				
+				String pageNavi = dao.getPageNavi(cpage, boardOption);
+				
+				request.setAttribute("list", list);
+				request.setAttribute("hotlist", hotlist);
+				request.setAttribute("navi", pageNavi);
 
 				request.getRequestDispatcher("/board/editorReMain.jsp").forward(request, response);//애디터추천 메인페이지
 				
