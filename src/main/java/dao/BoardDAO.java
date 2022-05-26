@@ -12,6 +12,8 @@ import javax.naming.InitialContext;
 import javax.sql.DataSource;
 
 import dto.BoardDTO;
+import dto.GoodDTO;
+import dto.JjimDTO;
 
 public class BoardDAO {
 
@@ -217,6 +219,51 @@ public class BoardDAO {
 		}
 	}
 
+	
+	// 애디터추천 All게시글 로그인id가 찜한 정보
+	public List<JjimDTO> selectEditorJjim(String id) throws Exception {
+
+		String sql = "select * from jjim where jjim_id = ? and board_seq like 'e%'";
+		try (Connection con = this.getConnection();
+				PreparedStatement pstat = con.prepareStatement(sql);
+				ResultSet rs = pstat.executeQuery();) {
+			
+			List<JjimDTO> list = new ArrayList<JjimDTO>();
+			while (rs.next()) {
+				String board_seq = rs.getString("board_seq");
+				String jjim_id = rs.getString("jjim_id");
+				Timestamp jjim_date = rs.getTimestamp("jjimm_date");
+
+				JjimDTO dto = new JjimDTO(board_seq, jjim_id, jjim_date);
+				list.add(dto);
+			}
+			return list;
+		}
+	}
+
+	// 애디터추천 All게시글 로그인id가 좋아요 한 정보
+	public List<GoodDTO> selectEditorGood(String id) throws Exception {
+
+		String sql = "select * from good where good_id = ? and board_seq like 'e%'";
+		try (Connection con = this.getConnection();
+				PreparedStatement pstat = con.prepareStatement(sql);
+				ResultSet rs = pstat.executeQuery();) {
+			
+			List<GoodDTO> list = new ArrayList<GoodDTO>();
+			while (rs.next()) {
+				String board_seq = rs.getString("board_seq");
+				String good_id = rs.getString("good_id");
+				Timestamp good_date = rs.getTimestamp("good_date");
+
+				GoodDTO dto = new GoodDTO(board_seq, good_id, good_date);
+				list.add(dto);
+			}
+			return list;
+		}
+	}
+	
+	
+	
 	// 조회수 증가
 	public int viewCountUp(String seq) throws Exception {
 		String sql = "update all_board set view_count = view_count+1 where all_board_seq =? ";

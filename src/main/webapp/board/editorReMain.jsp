@@ -616,6 +616,14 @@ $("#modal_loginBtn").on("click",function(){
 
     <script>
     
+    $(function(){
+    	$(".goodcol").each(function(i,item){
+    		alert(i)
+    	})
+    })
+    
+    
+    
     //good(좋아요)
     $(".goodcol").on("click", function () {
         if(${loginID == null}){
