@@ -1381,7 +1381,6 @@ $("#modal_loginBtn").on("click",function(){
                 
                 
                 
-                    <form action="/test" method="post">
                         <div class="row text-center" id="header_header">
                             <div class="col-12" id="modi">
                                 <div class="row" id="name">
@@ -1417,7 +1416,7 @@ $("#modal_loginBtn").on("click",function(){
                                 </div>
                                     <div class="row btn" id="btn">
                                         <div class="col-12 text-center" >
-                                        <input type="button" class="btn btn-primary" value="수정하기" id="modify">
+                                        <button class="btn btn-primary " id="modify">수정하기</button>
                                         <button class="btn btn-primary " id="ok" style="display:none;">완료</button>
                                         <button type="button" class="btn btn-primary check " id="checkpw" style="display:none;">확인</button>
                                         <input type="button" class="btn btn-primary " value="취소" id="back" style="display:none;">
@@ -1429,7 +1428,6 @@ $("#modal_loginBtn").on("click",function(){
                             </div>
                     
                     </div>
-                    </form>
                      
        
             
@@ -1460,6 +1458,7 @@ $("#modal_loginBtn").on("click",function(){
   
   //컨텐츠 숨김 나타냄
     $("#modify").on("click",function(){
+    	alert(1);
         $(".content").css("display","none"); //모든 컨텐츠
         $("#back").css("display","inline"); //취소버튼
         $("#modify").css("display","none");   //수정하기 버튼
@@ -1467,13 +1466,17 @@ $("#modal_loginBtn").on("click",function(){
         
         
         $("#checkpw").on("click",function(){
+        	alert(2);
             $.ajax({
-            url:"/#",
-            data:{pw:$("#pwtext").text()},
-            dataType:"json"
+            url:"/modified.member",
+            data:{pw:$("#pwtext").val()},
+            dataType:"json",
+            type:"post"
         }).done(function(resp){
-            resp=true;
-            if(resp){
+        	alert(2);
+        	console.log(resp);
+            
+        	if(resp){
                 $(".content").css("display","inline");
                 $("#ok").css("display","inline");    //완료버튼
                 $(".pw").css("display","block");    //비번 수정
