@@ -45,12 +45,13 @@ public class MyPageController extends HttpServlet {
 				System.out.println("받은 쪽지함 수신확인");
 				String receiver = (String)request.getSession().getAttribute("loginID");
 				
-//				int cpage = Integer.parseInt(request.getParameter("cpage"));
-//				request.setAttribute("cpage", cpage);
+				int cpage = Integer.parseInt(request.getParameter("page"));
+//				System.out.println(cpage);
+
 				PrintWriter pw = response.getWriter();
 				System.out.println(receiver);
 				
-				List<MessageDTO> list = dao.selectByReceivePage(receiver);
+				List<MessageDTO> list = dao.selectByReceivePage(cpage,receiver);
 				System.out.println(list);
 				String result = g.toJson(list);
 				pw.append(result);
@@ -70,10 +71,10 @@ public class MyPageController extends HttpServlet {
 				PrintWriter pw = response.getWriter();
 				System.out.println(sender);
 				
-//				int cpage = Integer.parseInt(request.getParameter("cpage"));
+				int cpage = Integer.parseInt(request.getParameter("page"));
 //				request.setAttribute("cpage", cpage);
 				
-				List<MessageDTO> list = dao.selectBySendPage(sender);
+				List<MessageDTO> list = dao.selectBySendPage(cpage,sender);
 				System.out.println(list);
 				
 				String result = g.toJson(list);
@@ -81,10 +82,29 @@ public class MyPageController extends HttpServlet {
 //				String pageNavi = dao.getPageNavi(cpage);
 //				request.setAttribute("pageNavi", pageNavi);
 //				request.getRequestDispatcher("/myPage.jsp").forward(request, response);
-			}else if(uri.equals("detailView.mpg")) { // 쪽지 상세내용
+			}else if(uri.equals("/detailMsg.mpg")) { // 쪽지 상세내용
+				System.out.println("디테일메시지 수신확인");
+				
+				int seq = Integer.parseInt(request.getParameter("message_seq"));
+				
+				System.out.println("seq 확인 : "+ seq);
+				
+				MessageDTO dto = dao.selectBySeq(seq);
+				
+				System.out.println(dto);
+				
+				request.setAttribute("dto", dto);
+				
+				request.getRequestDispatcher("/board/messageView.jsp").forward(request, response);
 				
 			}else if(uri.equals("/deleteMsg.mpg")) { // 쪽지삭제
+				int message_seq = Integer.parseInt(request.getParameter("message_seq"));
 				
+				System.out.println("메세지 삭제 응답 확인");
+				
+				dao.delete(message_seq);
+				
+				response.sendRedirect("/myPage.jsp");
 			}
 		}catch(Exception e) {
 			e.printStackTrace();
