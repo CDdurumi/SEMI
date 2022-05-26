@@ -414,10 +414,22 @@
            width: 90%;
            padding-bottom: 10px;
        }
-       .message{
-           min-height: 80px;
-       }
-      
+     
+        .rebtn{
+            text-align: right;
+        }
+            .padding{
+            padding-bottom:10px ;
+
+        }
+         .writer{
+            font-weight: bold;
+        }
+        .message{
+        min-height:40px;
+        padding-top:13px;
+        word-break:break-all;
+        }
        /* 제목이 길어서 잘렸을 경우 밑의 두개 처리해준다 */
 /*        .ellipsis{ */
 /*            position: relative; */
@@ -556,13 +568,14 @@
                         let row3 = $("<div>");
                         //작성자
                         let col3 = $("<div>");
-                        col3.attr("class","col-12 pt-4 "); 
+                        col3.attr("class","col-12 pt-4 writer"); 
                         col3.attr("style","padding-left : 10px");
                         col3.text(resp[i].id);   
                         //작성날짜
                         let col4 = $("<div>");
-                        col4.attr("class","col-12 pl-2");   
-                        col4.attr("style","padding-left : 10px");
+                        col4.attr("class","col-12 ");   
+                        col4.css("padding-left","10px");
+                        col4.css("font-size",  "11px");
                         col4.text(resp[i].write_date);
                         //버튼
                         let col5=$("<div>");
@@ -591,24 +604,26 @@
                             
                         let btn5 =  $("<button>");
                         btn5.html(' <i class="fa-solid fa-message"></i>');
-                        btn5.attr("class","btn btn-outline-primary btn-sm rereply ");
+                        btn5.attr("class","btn btn-outline-secondary btn-sm rereply ");
                         btn5.attr("type","button");   
                         
                       
                         //대댓글 작성
                         
-                        let replyOn=false;
+                        let replyOn =false;
                         let recol1;
                         let recol2;
                         let recol3;
                         let textarea;
                         let rebtn1;
+                        let recol4; 
                         
                      	btn5.on("click",function(){
+                     		
                     	 if(replyOn==false){
                  		let target = $(this).parent().parent().parent().siblings();
                  		console.log(target);
-                 		
+                 		//대댓글 작성
                  		recol1 =$("<div>");
                  		recol1.attr("class","col-1");
                  		recol1.html('<i class="fa-solid fa-reply fa-rotate-180 "></i>');
@@ -619,7 +634,7 @@
                  		
                  		
                  		textarea = $("<textarea>");
-                 		textarea.attr("class","w-100 h-100")
+                 		textarea.attr("class","w-100 h-100 textarea")
                  		
                  		recol3 =$("<div>");
                  		recol3.attr("class","col-1 p-0 text-center");
@@ -627,20 +642,123 @@
                  		rebtn1 =$("<button>");
                  		rebtn1.attr("type","button");
                  		rebtn1.attr("class","btn btn-primary btn-sm h-100 w-100")
-                      	
+                      	rebtn1.text("등록");
                  		
-                 		target.after(recol3);
-                 		target.after(recol2);
-                      	target.after(recol1);
-                      	recol2.append(textarea);
-                      	recol3.append(rebtn1);
-                      	
+                 		//대댓글 보기
+                 		recol4 =$("<div>");
+                 		recol4.attr("class","col-12");
+                 		
+                 		let rerow1= $("<div>");
+                 		rerow1.attr("class","row padding");
+                 		
+                 		let recol5 =$("<div>");
+                 		recol5.attr("class","col-1");
+                 		recol5.html('<i class="fa-solid fa-reply fa-rotate-180 "></i>');
+                 		
+                 		let recol6=$("<div>");
+                 		recol6.attr("class","col-11 rounded");
+                 		recol6.css("background-color","#fff9e5d2");
+                 		
+                 		let rerow2 =$("<div>");
+                 		rerow2.attr("class","row");
+                 		
+                 		let recol7=$("<div>");
+                 		recol7.attr("class","col-12");
+                 		
+                 		let rerow3 =$("<div>");
+                 		rerow3.attr("class","row");
+                 		
+                 		let recol8=$("<div>");
+                 		recol8.attr("class","col-9");
+                 		
+                 		let rerow4 =$("<div>");
+                 		rerow4.attr("class","row");
+                 		
+                 		//대댓글 작성자
+                 		let recol9=$("<div>");
+                 		recol9.attr("class","col-12 writer");
+                 		recol9.text("작성자");
+                 		//대댓글 날짜
+                 		let recol10=$("<div>");
+                 		recol10.attr("class","col-12");
+                 		recol10.text("2022/03/01");
+                 		recol10.css("font-size","11px");
+                 		
+                 		let recol11=$("<div>");
+                 		recol11.attr("class","col-3 rebtn");
+                 		//대댓글 수정 버튼
+                 		let rebtn2 =$("<button>");
+                 		rebtn2.html('<i class="fa-solid fa-pen-clip" ></i>')
+                 		rebtn2.attr("class","btn btn-outline-primary btn-sm remodify");
+//                  		rebtn2.css("background-color","white");
+                 		//대댓글 삭제 버튼
+                 		let rebtn3=$("<button>");
+                 		rebtn3.html('<i class="fa-solid fa-trash"></i>');
+                 		rebtn3.attr("class","btn btn-outline-danger btn-sm redelete");
+                 		
+                 		//대댓글 내용
+                 		let recol12=$("<div>");
+                 		recol12.attr("class","col-12 message m-0");
+                 		recol12.css("word-break","break-all");
+                 		recol12.css( "padding-right","30px");
+                 		recol12.text("대댓글 내용입니다")
+                 		
+                 		
+                 		
+                 		recol4.append(rerow1);
+                 		rerow1.append(recol5);
+                 		rerow1.append(recol6);
+                 		recol6.append(rerow2);
+                 		rerow2.append(recol7);
+                 		recol7.append(rerow3);
+                 		rerow3.append(recol8);
+                 		recol8.append(rerow4);
+                 		rerow4.append(recol9);
+                 		rerow4.append(recol10);
+                 		rerow3.append(recol11);
+                 		recol11.append(rebtn2);
+                 		recol11.append(' ');
+                 		recol11.append(rebtn3);
+                 		rerow3.append(recol12);
+                 		
+                 		
+                 		//대댓글 작성
+                 		
+                  		target.after(recol3);
+                  		target.after(recol2);
+                       	target.after(recol1);
+                      	target.after(recol4);
+                       	recol2.append(textarea);
+                       	recol3.append(rebtn1);
                       	replyOn = true;
+                      	
+                      rebtn1.on("click",function(){
+                     	  console.log($($(this).parent().siblings()[4]).children().val());
+                    	  console.log($($(this).parent().siblings()[4]).children());
+                    	  $.ajax({
+                           	url : '/reChatIN.reply',
+                            type : 'POST',
+                            data : {parent_seq :resp[i].reply_seq ,loginID:'${loginID}', reChatContents: $($(this).parent().siblings()[4]).children().val() },
+                            dataType : 'json'
+               		}).done(function(resp){
+               			console.log(resp);
+               				console.log()
+                			$($(this).parent().siblings()[4]).children().val("");
+//                			$(".textarea").val("");
+               		
+            		 replyOn=false;
+               		});
+                    	 });
+                      	
+                      	
+                      	
+                      	
                     	 }else{
                     		 
                     		 recol1.remove();
                     		 recol2.remove();
                     		 recol3.remove();
+                    		 recol4.remove();
                     		 rebtn1.remove();
                     		 replyOn=false;
                     	 }
@@ -739,6 +857,7 @@
                             });
                             
                             col5.append(btn5);
+                            col5.append(' ');
                             col5.append(btn1);
                             col5.append(' ');
                             col5.append(btn2);
