@@ -1473,7 +1473,7 @@ $("#modal_loginBtn").on("click",function(){
             dataType:"json",
             type:"post"
         }).done(function(resp){
-        	alert(2);
+        	alert(3);
         	console.log(resp);
             
         	if(resp){
