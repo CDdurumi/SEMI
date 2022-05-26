@@ -87,6 +87,7 @@ public class ReplyController extends HttpServlet {
 			}else if(uri.equals("/reList.reply")) {//re댓글 리스트
 
 				String parent_seq = request.getParameter("parent_seq"); //부모 댓글 고유seq
+				System.out.println(parent_seq);;
 				List<ReplyReDTO> list = daoRe.selectByParentSeq(parent_seq);//re댓글 리스트(부모 댓글 기준)
 				
 				PrintWriter pw = response.getWriter();
