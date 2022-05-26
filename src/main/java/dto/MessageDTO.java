@@ -18,6 +18,16 @@ public class MessageDTO {
 		super();
 	}
 	public MessageDTO(int message_seq, String title, String sender, String receiver, String contents,
+			String date) {
+		super();
+		this.message_seq = message_seq;
+		this.title = title;
+		this.sender = sender;
+		this.receiver = receiver;
+		this.contents = contents;
+		this.date = date;
+	}
+	public MessageDTO(int message_seq, String title, String sender, String receiver, String contents,
 			Timestamp write_date) {
 		super();
 		this.message_seq = message_seq;

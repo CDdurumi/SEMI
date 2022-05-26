@@ -370,7 +370,7 @@ pageEncoding="UTF-8"%>
             margin-bottom: 20px;
         }
 
-
+		
 
         /* 제목이 길어서 잘렸을 경우 밑의 두개 처리해준다 */
        .ellipsis{
@@ -405,7 +405,12 @@ pageEncoding="UTF-8"%>
         #v-pills-tabContent >div{
             color: black;
         }
-
+		.title{
+			font-weight:bold;
+			text-decoration: none;
+			color:black;
+		}
+		a{color:black;}
         /*쪽지함 메인-----------------------------------*/
         #board_menu_text{
             font-size: 18px;
@@ -548,6 +553,20 @@ pageEncoding="UTF-8"%>
 
 
     </style>
+	<script>
+// 	 let page = 1;  //페이징과 같은 방식이라고 생각하면 된다.
+
+//  	  $(window).scroll(function(){   //스크롤이 최하단 으로 내려가면 리스트를 조회하고 page를 증가시킨다.
+//   	  	if($(window).scrollTop() >= $(document).height() - $(window).height()){
+//   	        getList(page);
+//    	        page++;   
+// //                console.log(page);
+//     	 } 
+//  	   });
+	
+	</script>
+
+
 
 </head>
 
@@ -739,33 +758,15 @@ $("#modal_loginBtn").on("click",function(){
                                 <div class="row m-0 ">
                                     <div class="col-12 receive_msgtext">
                                         <div class="row " id="board_menu_text">
-                                            <div class="col-md-2 col-lg-1 d-none d-md-block ">번호</div>
-                                            <div class="col-8 col-md-6 col-lg-7">제목</div>
-                                            <div class="col-4 col-md-2 col-lg-2 text-center">보낸이</div>
-                                            <div class="col-md-2 col-lg-2 d-none  d-md-block text-center">날짜</div>
+                                            <div class="col-md-2 col-lg-1 d-none d-lg-block ">번호</div>
+                                            <div class="col-8 col-md-8 col-lg-5">제목</div>
+                                            <div class="col-4 col-md-4 col-lg-2 text-center">보낸이</div>
+                                            <div class="col-md-2 col-lg-4 d-none d-lg-block text-center">날짜</div>
                                         </div>
                                     </div>
 								<!-- 받은 쪽지함 반복문위치 -->
                                    
-                                   <div calss="row">
-                                       <div class="col-12 text-center">
-                                           <nav aria-label="Page navigation example">
-                                   <ul class="pagination justify-content-center">
-                                     <li class="page-item">
-                                       <a class="page-link" href="#" aria-label="Previous">
-                                         <span aria-hidden="true">&laquo;</span>
-                                       </a>
-                                     </li>
-                                     ${navi }
-                                     <li class="page-item">
-                                       <a class="page-link" href="#" aria-label="Next">
-                                         <span aria-hidden="true">&raquo;</span>
-                                       </a>
-                                     </li>
-                                   </ul>
-                                 </nav>
-                                       </div>
-                                   </div>
+                                   
                                </div>
                             </div>
                         </div>
@@ -776,33 +777,15 @@ $("#modal_loginBtn").on("click",function(){
                                 <div class="row m-0">
                                     <div class="col-12 send_msgtext">
                                         <div class="row " id="board_menu_text">
-                                            <div class="col-md-2 col-lg-1 d-none d-md-block ">번호</div>
-                                            <div class="col-8 col-md-6 col-lg-7">제목</div>
-                                            <div class="col-4 col-md-2 col-lg-2 text-center">받는이</div>
-                                            <div class="col-md-2 col-lg-2 d-none  d-md-block text-center">날짜</div>
+                                            <div class="col-md-2 col-lg-1 d-none d-lg-block ">번호</div>
+                                            <div class="col-8 col-md-8 col-lg-5">제목</div>
+                                            <div class="col-4 col-md-4 col-lg-2 text-center">받는이</div>
+                                            <div class="col-md-2 col-lg-4 d-none  d-lg-block text-center">날짜</div>
                                         </div>
                                     </div>
 								<!-- 보낸 쪽지함 반복문위치 -->
 
-                                   <div calss="row">
-                                       <div class="col-12 text-center">
-                                           <nav aria-label="Page navigation example">
-                                   <ul class="pagination justify-content-center">
-                                     <li class="page-item">
-                                       <a class="page-link" href="#" aria-label="Previous">
-                                         <span aria-hidden="true">&laquo;</span>
-                                       </a>
-                                     </li>
-                                     ${navi }
-                                     <li class="page-item">
-                                       <a class="page-link" href="#" aria-label="Next">
-                                         <span aria-hidden="true">&raquo;</span>
-                                       </a>
-                                     </li>
-                                   </ul>
-                                 </nav>
-                                       </div>
-                                   </div>
+                                   
                                </div>
                             </div>
                         </div>
@@ -1398,7 +1381,6 @@ $("#modal_loginBtn").on("click",function(){
                 
                 
                 
-                    <form action="/test" method="post">
                         <div class="row text-center" id="header_header">
                             <div class="col-12" id="modi">
                                 <div class="row" id="name">
@@ -1434,7 +1416,7 @@ $("#modal_loginBtn").on("click",function(){
                                 </div>
                                     <div class="row btn" id="btn">
                                         <div class="col-12 text-center" >
-                                        <input type="button" class="btn btn-primary" value="수정하기" id="modify">
+                                        <button class="btn btn-primary " id="modify">수정하기</button>
                                         <button class="btn btn-primary " id="ok" style="display:none;">완료</button>
                                         <button type="button" class="btn btn-primary check " id="checkpw" style="display:none;">확인</button>
                                         <input type="button" class="btn btn-primary " value="취소" id="back" style="display:none;">
@@ -1446,7 +1428,6 @@ $("#modal_loginBtn").on("click",function(){
                             </div>
                     
                     </div>
-                    </form>
                      
        
             
@@ -1477,6 +1458,7 @@ $("#modal_loginBtn").on("click",function(){
   
   //컨텐츠 숨김 나타냄
     $("#modify").on("click",function(){
+    	alert(1);
         $(".content").css("display","none"); //모든 컨텐츠
         $("#back").css("display","inline"); //취소버튼
         $("#modify").css("display","none");   //수정하기 버튼
@@ -1484,13 +1466,17 @@ $("#modal_loginBtn").on("click",function(){
         
         
         $("#checkpw").on("click",function(){
+        	alert(2);
             $.ajax({
-            url:"/#",
-            data:{pw:$("#pwtext").text()},
-            dataType:"json"
+            url:"/modified.member",
+            data:{pw:$("#pwtext").val()},
+            dataType:"json",
+            type:"post"
         }).done(function(resp){
-            resp=true;
-            if(resp){
+        	alert(2);
+        	console.log(resp);
+            
+        	if(resp){
                 $(".content").css("display","inline");
                 $("#ok").css("display","inline");    //완료버튼
                 $(".pw").css("display","block");    //비번 수정
@@ -1673,13 +1659,42 @@ $("#modal_loginBtn").on("click",function(){
    }
 	//쪽지 스크립트(인피티니스크롤미적용)
 		$("#message-tab").on("click", function(){
-		$.ajax({
-			url:"receiveMsgBox.mpg",
-			dataType: "json"
-		}).done(function(resp){
 			$(".receive_msgboard2").remove();
 			
-			for(let i = 0; resp.length; i++){
+		
+			let page = 1;  //페이징과 같은 방식이라고 생각하면 된다.
+            getReceiveList(page);
+            page++;
+// 			if(isAjaxing){
+// 				return;
+// 			}
+// 			isAjaxing = true;
+// 		alert(page)
+		 	  $(window).scroll(function(){   //스크롤이 최하단 으로 내려가면 리스트를 조회하고 page를 증가시킨다.
+		  	  	if($(window).scrollTop() >= $(document).height() - $(window).height()){
+// 		  	        alert(page)
+		  	  		getReceiveList(page);
+		   	        page++;   
+//		                console.log(page);
+		    	 } 
+		 	   });
+			
+		});
+		
+		
+		
+		 function getReceiveList(pape){
+			let page = pape;
+
+			$.ajax({
+               url : '/receiveMsgBox.mpg',
+               type : 'POST',
+               data : {page : page},
+               dataType : 'json'
+          }).done(function(resp){
+// 			$(".receive_msgboard2").remove();
+			
+			for(let i = 0; i < resp.length; i++){
 				
 				let msgDiv = $("<div class='col-12 receive_msgboard2'>");
 				let msgDiv1 = $("<div class='row m-0 border border-2 rounded board_row '>");
@@ -1688,8 +1703,9 @@ $("#modal_loginBtn").on("click",function(){
 				msgDiv2.text(resp[i].line);
 				
 				let msgDiv3 = $("<div class='col-8 col-md-8 col-lg-5 m-0 title ellipsis p-0'>");
-				let msgSpan = $("<span>")
-				msgSpan.text(resp[i].title);
+				let msgSpan = $("<span>");
+				let msgHref = $("<a href='detailMsg.mpg?message_seq="+resp[i].message_seq+"'>");
+				msgHref.text(resp[i].title);
 				
 				let msgDiv4 = $("<div class='col-4 col-md-4 col-lg-2 p-0 ellipsis text-center'>");
 				let msgSpan2 = $("<span>")
@@ -1698,56 +1714,91 @@ $("#modal_loginBtn").on("click",function(){
 				let msgDiv5 = $("<div class='col-md-2 col-lg-4 d-none d-lg-block p-0 text-center'>");
 				msgDiv5.text(resp[i].date);
 				
-				$(".receive_msgtext").after(msgDiv);
+				
+				
+				$(".receive_msgtext").append(msgDiv);
 				msgDiv.append(msgDiv1);
 				msgDiv1.append(msgDiv2);
 				msgDiv1.append(msgDiv3);
 				msgDiv3.append(msgSpan);
+				msgSpan.append(msgHref);
 				msgDiv1.append(msgDiv4);
 				msgDiv4.append(msgSpan2);
 				msgDiv1.append(msgDiv5);
 				
+				msgDiv.hide();
+                msgDiv.fadeIn(1500);
+                
 			}
+// 			setTimeout(function(){isAjaxing = false;}, 100000);
 		})
-	});
+	};
 	$("#v-pills-send-tab").on("click", function(){
-		$.ajax({
-			url:"sendMsgBox.mpg",
-			dataType:"json"
-		}).done(function(resp){
-			$(".send_msgboard2").remove();
-			
-			for(let i = 0; resp.length; i++){
-				
-				let msgDiv = $("<div class='col-12 send_msgboard2'>");
-				let msgDiv1 = $("<div class='row m-0 border border-2 rounded board_row '>");
-				
-				let msgDiv2 = $("<div class='col-md-2 col-lg-1 d-none d-lg-block p-0'>");
-				msgDiv2.text(resp[i].line);
-				
-				let msgDiv3 = $("<div class='col-8 col-md-8 col-lg-5 m-0 title ellipsis p-0'>");
-				let msgSpan = $("<span>")
-				msgSpan.text(resp[i].title);
-				
-				let msgDiv4 = $("<div class='col-4 col-md-4 col-lg-2 p-0 ellipsis text-center'>");
-				let msgSpan2 = $("<span>")
-				msgSpan2.text('${loginID}');
-				
-				let msgDiv5 = $("<div class='col-md-2 col-lg-4 d-none d-lg-block p-0 text-center'>");
-				msgDiv5.text(resp[i].date);
-				
-				$(".send_msgtext").after(msgDiv);
-				msgDiv.append(msgDiv1);
-				msgDiv1.append(msgDiv2);
-				msgDiv1.append(msgDiv3);
-				msgDiv3.append(msgSpan);
-				msgDiv1.append(msgDiv4);
-				msgDiv4.append(msgSpan2);
-				msgDiv1.append(msgDiv5);
-				
-			}
-		})
+		$(".send_msgboard2").remove();
+		 let page = 1;  //페이징과 같은 방식이라고 생각하면 된다.
+       getSendList(page);
+       page++;
+	
+//	alert(page)
+	 	  $(window).scroll(function(){   //스크롤이 최하단 으로 내려가면 리스트를 조회하고 page를 증가시킨다.
+	  	  	if($(window).scrollTop() >= $(document).height() - $(window).height()){
+//	  	        alert(page)
+	  	  		getSendList(page);
+	   	        page++;   
+//	                console.log(page);
+	    	 } 
+	 	   });
+		
 	});
+	
+	
+	
+	 function getSendList(pape){
+		let page = pape;
+		$.ajax({
+          url : '/sendMsgBox.mpg',
+          type : 'POST',
+          data : {page : page},
+          dataType : 'json'
+     }).done(function(resp){
+		
+		
+		for(let i = 0; i < resp.length; i++){
+			
+			let msgDiv = $("<div class='col-12 send_msgboard2'>");
+			let msgDiv1 = $("<div class='row m-0 border border-2 rounded board_row '>");
+			
+			let msgDiv2 = $("<div class='col-md-2 col-lg-1 d-none d-lg-block p-0'>");
+			msgDiv2.text(resp[i].line);
+			
+			let msgDiv3 = $("<div class='col-8 col-md-8 col-lg-5 m-0 title ellipsis p-0'>");
+			let msgHref = $("<a href='detailMsg.mpg?message_seq="+resp[i].message_seq+"'>");
+			let msgSpan = $("<span>")
+			msgHref.text(resp[i].title);
+			
+			let msgDiv4 = $("<div class='col-4 col-md-4 col-lg-2 p-0 ellipsis text-center'>");
+			let msgSpan2 = $("<span>")
+			msgSpan2.text('${loginID}');
+			
+			let msgDiv5 = $("<div class='col-md-2 col-lg-4 d-none d-lg-block p-0 text-center'>");
+			msgDiv5.text(resp[i].date);
+			
+			$(".send_msgtext").after(msgDiv);
+			msgDiv.append(msgDiv1);
+			msgDiv1.append(msgDiv2);
+			msgDiv1.append(msgDiv3);
+			msgDiv3.append(msgSpan);
+			msgSpan.append(msgHref);
+			msgDiv1.append(msgDiv4);
+			msgDiv4.append(msgSpan2);
+			msgDiv1.append(msgDiv5);
+			
+			msgDiv.hide();
+            msgDiv.fadeIn(1500);
+		}
+	})
+};
+
    
    
 </script>
