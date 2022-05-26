@@ -548,6 +548,20 @@ pageEncoding="UTF-8"%>
 
 
     </style>
+	<script>
+// 	 let page = 1;  //페이징과 같은 방식이라고 생각하면 된다.
+
+//  	  $(window).scroll(function(){   //스크롤이 최하단 으로 내려가면 리스트를 조회하고 page를 증가시킨다.
+//   	  	if($(window).scrollTop() >= $(document).height() - $(window).height()){
+//   	        getList(page);
+//    	        page++;   
+// //                console.log(page);
+//     	 } 
+//  	   });
+	
+	</script>
+
+
 
 </head>
 
@@ -1662,10 +1676,32 @@ $("#modal_loginBtn").on("click",function(){
    }
 	//쪽지 스크립트(인피티니스크롤미적용)
 		$("#message-tab").on("click", function(){
-		$.ajax({
-			url:"receiveMsgBox.mpg",
-			dataType: "json"
-		}).done(function(resp){
+			 let page = 1;  //페이징과 같은 방식이라고 생각하면 된다.
+            getReceiveList(page);
+            page++;
+		
+// 		alert(page)
+		 	  $(window).scroll(function(){   //스크롤이 최하단 으로 내려가면 리스트를 조회하고 page를 증가시킨다.
+		  	  	if($(window).scrollTop() >= $(document).height() - $(window).height()){
+// 		  	        alert(page)
+		  	  		getReceiveList(page);
+		   	        page++;   
+//		                console.log(page);
+		    	 } 
+		 	   });
+			
+		});
+		
+		
+		
+		 function getReceiveList(pape){
+			let page = pape;
+			$.ajax({
+               url : '/receiveMsgBox.mpg',
+               type : 'POST',
+               data : {page : page},
+               dataType : 'json'
+          }).done(function(resp){
 			$(".receive_msgboard2").remove();
 			
 			for(let i = 0; resp.length; i++){
@@ -1698,45 +1734,68 @@ $("#modal_loginBtn").on("click",function(){
 				
 			}
 		})
-	});
+	};
 	$("#v-pills-send-tab").on("click", function(){
-		$.ajax({
-			url:"sendMsgBox.mpg",
-			dataType:"json"
-		}).done(function(resp){
-			$(".send_msgboard2").remove();
-			
-			for(let i = 0; resp.length; i++){
-				
-				let msgDiv = $("<div class='col-12 send_msgboard2'>");
-				let msgDiv1 = $("<div class='row m-0 border border-2 rounded board_row '>");
-				
-				let msgDiv2 = $("<div class='col-md-2 col-lg-1 d-none d-lg-block p-0'>");
-				msgDiv2.text(resp[i].line);
-				
-				let msgDiv3 = $("<div class='col-8 col-md-8 col-lg-5 m-0 title ellipsis p-0'>");
-				let msgSpan = $("<span>")
-				msgSpan.text(resp[i].title);
-				
-				let msgDiv4 = $("<div class='col-4 col-md-4 col-lg-2 p-0 ellipsis text-center'>");
-				let msgSpan2 = $("<span>")
-				msgSpan2.text('${loginID}');
-				
-				let msgDiv5 = $("<div class='col-md-2 col-lg-4 d-none d-lg-block p-0 text-center'>");
-				msgDiv5.text(resp[i].date);
-				
-				$(".send_msgtext").after(msgDiv);
-				msgDiv.append(msgDiv1);
-				msgDiv1.append(msgDiv2);
-				msgDiv1.append(msgDiv3);
-				msgDiv3.append(msgSpan);
-				msgDiv1.append(msgDiv4);
-				msgDiv4.append(msgSpan2);
-				msgDiv1.append(msgDiv5);
-				
-			}
-		})
+		 let page = 1;  //페이징과 같은 방식이라고 생각하면 된다.
+       getSendList(page);
+       page++;
+	
+//	alert(page)
+	 	  $(window).scroll(function(){   //스크롤이 최하단 으로 내려가면 리스트를 조회하고 page를 증가시킨다.
+	  	  	if($(window).scrollTop() >= $(document).height() - $(window).height()){
+//	  	        alert(page)
+	  	  		getSendList(page);
+	   	        page++;   
+//	                console.log(page);
+	    	 } 
+	 	   });
+		
 	});
+	
+	
+	
+	 function getSendList(pape){
+		let page = pape;
+		$.ajax({
+          url : '/sendMsgBox.mpg',
+          type : 'POST',
+          data : {page : page},
+          dataType : 'json'
+     }).done(function(resp){
+		$(".send_msgboard2").remove();
+		
+		for(let i = 0; resp.length; i++){
+			
+			let msgDiv = $("<div class='col-12 send_msgboard2'>");
+			let msgDiv1 = $("<div class='row m-0 border border-2 rounded board_row '>");
+			
+			let msgDiv2 = $("<div class='col-md-2 col-lg-1 d-none d-lg-block p-0'>");
+			msgDiv2.text(resp[i].line);
+			
+			let msgDiv3 = $("<div class='col-8 col-md-8 col-lg-5 m-0 title ellipsis p-0'>");
+			let msgSpan = $("<span>")
+			msgSpan.text(resp[i].title);
+			
+			let msgDiv4 = $("<div class='col-4 col-md-4 col-lg-2 p-0 ellipsis text-center'>");
+			let msgSpan2 = $("<span>")
+			msgSpan2.text('${loginID}');
+			
+			let msgDiv5 = $("<div class='col-md-2 col-lg-4 d-none d-lg-block p-0 text-center'>");
+			msgDiv5.text(resp[i].date);
+			
+			$(".send_msgtext").after(msgDiv);
+			msgDiv.append(msgDiv1);
+			msgDiv1.append(msgDiv2);
+			msgDiv1.append(msgDiv3);
+			msgDiv3.append(msgSpan);
+			msgDiv1.append(msgDiv4);
+			msgDiv4.append(msgSpan2);
+			msgDiv1.append(msgDiv5);
+			
+		}
+	})
+};
+
    
    
 </script>
