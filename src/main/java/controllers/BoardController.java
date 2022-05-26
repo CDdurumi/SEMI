@@ -12,6 +12,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import com.google.gson.Gson;
 import com.google.gson.JsonObject;
 import com.oreilly.servlet.MultipartRequest;
 import com.oreilly.servlet.multipart.DefaultFileRenamePolicy;
@@ -40,6 +41,7 @@ public class BoardController extends HttpServlet {
 		JjimDAO jjimDao = JjimDAO.getInstance();
 		GoodDAO goodDao = GoodDAO.getInstance();
 		ReplyDAO replyDao = ReplyDAO.getInstance();
+		Gson g = new Gson();
 		
 		String uri = request.getRequestURI();
 		try {
@@ -123,6 +125,7 @@ public class BoardController extends HttpServlet {
 				request.getRequestDispatcher("/board/houseMain.jsp").forward(request, response);//숙소리뷰 메인페이지
 				
 			}else if(uri.equals("/editorReMain.board")) {//애디터 추천글 메인화면 출력
+				
 				int cpage = Integer.parseInt(request.getParameter("cpage"));
 				request.setAttribute("cpage", cpage);
 				String boardOption ="e";
@@ -130,7 +133,7 @@ public class BoardController extends HttpServlet {
 				List<BoardDTO> hotlist = dao.selectByLikeCount(boardOption);
 				
 				String pageNavi = dao.getPageNavi(cpage, boardOption);
-				
+//				
 				request.setAttribute("list", list);
 				request.setAttribute("hotlist", hotlist);
 				request.setAttribute("navi", pageNavi);
@@ -138,10 +141,22 @@ public class BoardController extends HttpServlet {
 				List<FilesDTO> filesDao = filesDAO.selectSysName(boardOption);//애디터추천 게시글 프로필 - sys_name get(해당게시글seq와 sys_name담겨 있음).
 				request.setAttribute("porfileList", filesDao);
 				request.setAttribute("profilePath", "/files/");
-				
-				
+	
 				request.getRequestDispatcher("/board/editorReMain.jsp").forward(request, response);//애디터추천 메인페이지
+		
+			}else if(uri.equals("/editorLoad.board")) {//애디터추천게시글 메인 로드 시 찜,좋아요 정보 긁어오기
+				String table = request.getParameter("table");
+				String id = request.getSession().getAttribute("loginID").toString();//로그인 id
 
+				PrintWriter pw = response.getWriter();
+				if(table.equals("jjim")) {
+					List<JjimDTO> jjimDTO = jjimDao.selectEditorJjim(id);//애디터 추천 all게시글에 찜 했는지 정보
+					pw.append(g.toJson(jjimDTO));
+				}else if(table.equals("good")) {
+					List<GoodDTO> goodDTO = goodDao.selectEditorGood(id);//애디터 추천 all게시글에 좋아요 했는지 정보
+					pw.append(g.toJson(goodDTO));
+				}
+				
 			}else if(uri.equals("/writeboard.board")) {//게시판 글 작성하기 폼 출력(boardMain.jsp에서 글 작성하기 버튼 클릭 시 여기로.)
 				response.sendRedirect("/board/boardWrite.jsp");//게시판 글 작성 페이지 전환
 				

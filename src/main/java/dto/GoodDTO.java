@@ -33,6 +33,7 @@ public class GoodDTO {
 	public void setGood_date(Timestamp good_date) {
 		this.good_date = good_date;
 	}
+
 	
 	
 }

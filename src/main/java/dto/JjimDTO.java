@@ -9,6 +9,7 @@ public class JjimDTO {
 	private Timestamp jjim_date;
 	
 	public JjimDTO() {
+
 	}
 	public JjimDTO(String board_seq, String jjim_id, Timestamp jjim_date) {
 		super();
@@ -34,12 +35,12 @@ public class JjimDTO {
 	public void setJjim_date(Timestamp jjim_date) {
 		this.jjim_date = jjim_date;
 	}
-	
-	
+
 	//날짜 format
 	public String getFormdDate() {
 		SimpleDateFormat sdf = new SimpleDateFormat("YYYY년 MM월 dd일 HH:mm");
 		return sdf.format(this.jjim_date);
 	}	
-	
+
+
 }
