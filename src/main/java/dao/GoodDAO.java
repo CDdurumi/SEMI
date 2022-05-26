@@ -2,6 +2,7 @@ package dao;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 
 import javax.naming.Context;
 import javax.naming.InitialContext;
@@ -50,6 +51,21 @@ public class GoodDAO {
 			con.commit();
 			return result;
 
+		}
+	}
+	
+
+	// 해당 게시글 좋아요 상태인지 확인
+	public boolean isBoardGood(String seq, String id) throws Exception {
+
+		String sql = "select * from good where board_seq = ?  and good_id = ?";
+		try (Connection con = this.getConnection(); PreparedStatement pstat = con.prepareStatement(sql)) {
+			pstat.setString(1, seq);
+			pstat.setString(2, id);
+
+			try (ResultSet rs = pstat.executeQuery();) {
+				return rs.next();
+			}
 		}
 	}
 }

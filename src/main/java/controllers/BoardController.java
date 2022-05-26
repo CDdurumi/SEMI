@@ -23,6 +23,8 @@ import dao.JjimDAO;
 import dao.ReplyDAO;
 import dto.BoardDTO;
 import dto.FilesDTO;
+import dto.GoodDTO;
+import dto.JjimDTO;
 import dto.ReplyDTO;
 
 @WebServlet("*.board")
@@ -139,7 +141,7 @@ public class BoardController extends HttpServlet {
 				
 				
 				request.getRequestDispatcher("/board/editorReMain.jsp").forward(request, response);//애디터추천 메인페이지
-				
+
 			}else if(uri.equals("/writeboard.board")) {//게시판 글 작성하기 폼 출력(boardMain.jsp에서 글 작성하기 버튼 클릭 시 여기로.)
 				response.sendRedirect("/board/boardWrite.jsp");//게시판 글 작성 페이지 전환
 				
@@ -215,8 +217,8 @@ public class BoardController extends HttpServlet {
 				
 				if((String) request.getSession().getAttribute("loginID") != null) {
 					String id = (String) request.getSession().getAttribute("loginID");//로그인 id
-					request.setAttribute("isBoardJjim", dao.isBoardJjim(seq, id));//해당 게시글에 좋아요 했는지 정보
-					request.setAttribute("isBoardGood", dao.isBoardGood(seq, id));//해당 게시글에 좋아요 했는지 정보//해당 게시글에 찜 했는지 정보
+					request.setAttribute("isBoardJjim", jjimDao.isBoardJjim(seq, id));//해당 게시글에 찜 했는지 정보
+					request.setAttribute("isBoardGood", goodDao.isBoardGood(seq, id));//해당 게시글에 좋아요 했는지 정보
 				}
 
 				
