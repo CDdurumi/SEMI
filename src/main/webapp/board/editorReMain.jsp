@@ -723,8 +723,7 @@ $("#modal_loginBtn").on("click",function(){
     
     
  	//heart(찜)
-	let heart = true;
-	let jUpDown = 0;
+
     $(".heartcol").on("click", function () {
         if(${loginID == null}){
             alert("로그인이 필요합니다.");

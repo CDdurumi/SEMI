@@ -598,6 +598,7 @@
                        let btn5 =  $("<button>");
                        btn5.html(' <i class="fa-solid fa-message"></i>');
                        btn5.attr("class","btn btn-outline-secondary btn-sm rereply ");
+                       btn5.attr("good","false");
                        btn5.attr("type","button"); 
                         
                         if(my_id =='${loginID}'){
@@ -711,44 +712,60 @@
                              		recol12.css( "padding-right","30px");
                              		recol12.text(resp[i].contents);
                              		
-//                              		//대댓글 수정하기
-//                              		let btnview = false;
-//                              		$(rebtn2).on("click",function(){
+                             		//대댓글 수정하기
+                             		
+                             		$(rebtn2).on("click",function(){
+                             			let btnview = $(this).closest(".padding").find("rebtn").;
                              			
-//                              			if(btnview==false){
-//                              			rebtn2.css("display","none");
-//                              			rebtn3.css("display","none");
                              			
-//                              			//대댓글 수정 확인,취소버튼
-//                              			let rebtn4 = $("<button>");
-//                              				rebtn4.attr("class","btn btn-outline-primary btn-sm reok");
-//                              				rebtn4.text("완료");
-//                              			let rebtn5 = $("<button>");
-//                              				rebtn5.attr("class","btn btn-outline-danger btn-sm recancel");
-//                              				rebtn5.text("취소");
+                             			thisrebtn3=$(this).siblings();
+                             			thisrecol11=$(this).parent();
+                             			thisbtn=$(this);
+                             			thiscontents=$(this).parent().siblings()[1];
+                             			console.log(thiscontents);
+                             			
+                             			if(btnview==false){
                              				
-//                              				recol11.append(rebtn4);
-//                                      		recol11.append(' ');
-//                                      		recol11.append(rebtn5);
+                             			$(this).css("display","none");
+                             			thisrebtn3.css("display","none");
+                             			$(".remodify").attr("disabled",true);
+                             			$(thiscontents).attr("contenteditable",true);
+                             			$(thiscontents).focus();
+                             			
+                             			
+                             			//대댓글 수정 확인,취소버튼
+                             			let rebtn4 = $("<button>");
+                             				rebtn4.attr("class","btn btn-outline-primary btn-sm reok");
+                             				rebtn4.text("완료");
+                             			let rebtn5 = $("<button>");
+                             				rebtn5.attr("class","btn btn-outline-danger btn-sm recancel");
                              				
-//                                      		//대댓글 수정 취소
-//                                      		$(rebtn5).on("click",function(){
-//                                      			rebtn2.css("display","inline-block");
-//                                      			rebtn3.css("display","inline-block");
-//                                      			rebtn4.css("display","none");
-//                                      			rebtn5.css("display","none");
-//                                      			btnview=true;
-//                                      		})
+                             				rebtn5.text("취소");
+                             				
+                             				thisrecol11.append(rebtn4);
+                             				thisrecol11.append(' ');
+                             				thisrecol11.append(rebtn5);
+                             				
+                                     		//대댓글 수정 취소
+                                     		$(rebtn5).on("click",function(){
+                                     			thisbtn.css("display","inline-block");
+                                     			thisrebtn3.css("display","inline-block");
+                                     			rebtn4.remove();
+                                     			rebtn5.remove();
+                                     			$(thiscontents).attr("contenteditable",false);
+                                     			$(".remodify").attr("disabled",false);
+                                     			btnview=false;
+                                     		})
                                      		
-                             				
-//                              			}else{
-//                              				rebtn2.css("display","inline-block");
-//                                  			rebtn3.css("display","inline-block");
+                                     		btnview=true;
+                             			}else{
+                             				$(this).css("display","inline-block");
+                             				thisrebtn3.css("display","inline-block");
                                  			
-//                              				btnview=false;
-//                              			}
+                             				btnview=false;
+                             			}
                              			
-//                              		})
+                             		})
                              		
                              		
                              	   //대댓글 삭제하기
