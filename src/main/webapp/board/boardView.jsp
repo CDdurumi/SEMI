@@ -625,6 +625,8 @@
                       //대댓글 보기
                         btn5.on("click",function(){
                         	let the = $(this);
+                        	//대댓 삭제버튼
+                        	let rebtn3;
                         	$.ajax({
                         		url:"/reList.reply",
                                 type : 'POST',
@@ -683,7 +685,7 @@
                              		rebtn2.attr("class","btn btn-outline-primary btn-sm remodify");
 //                              		rebtn2.css("background-color","white");
                              		//대댓글 삭제 버튼
-                             		let rebtn3=$("<button>");
+                             		rebtn3=$("<button>");
                              		rebtn3.html('<i class="fa-solid fa-trash"></i>');
                              		rebtn3.attr("class","btn btn-outline-danger btn-sm redelete");
                              		
@@ -694,6 +696,24 @@
                              		recol12.css( "padding-right","30px");
                              		recol12.text(resp[i].contents);
                              		
+                             		
+                             	   //대댓글 삭제하기
+                                    $(rebtn3).on("click",function(){
+                                    	 let del=  confirm('댓글을 삭제하시겠습니까?');
+                                         if(del){
+                                    	
+                                    let target2 = $(this).closest(".padding").parent();
+                                    console.log(target2);
+                                    	$.ajax({
+                                    		url:"/reDelete.reply",
+                                    		data:{reply_re_seq:resp[i].reply_re_seq },
+                                    		type:'POST',
+                                    		dataType:'json'
+                                    	}).done(function(resp){
+                                    		target2.remove();
+                                    	})
+                                         }
+                                    });
                              		
                              		
                              		recol4.append(rerow1);
@@ -721,15 +741,18 @@
                         		
                         	})
                         	
+                        	
+                        	
+                        	
                         })
                         
-                        
+                        //대댓글 작성
                      	btn5.on("click",function(){
                      		
                     	 if(replyOn==false){
                  		let target = $($(this).parent().parent().parent().siblings()[1]);
                  		console.log(target);
-                 		//대댓글 작성
+                 		
                  		recol1 =$("<div>");
                  		recol1.attr("class","col-1");
                  		recol1.html('<i class="fa-solid fa-reply fa-rotate-180 "></i>');
@@ -750,10 +773,6 @@
                  		rebtn1.attr("class","btn btn-primary btn-sm h-100 w-100")
                       	rebtn1.text("등록");
                  		
-                 		
-                 		
-                 		
-                 		//대댓글 작성
                  		
                   		target.after(recol3);
                   		target.after(recol2);
@@ -797,6 +816,7 @@
 
                  })
                         
+              
                         
                         
                         
@@ -804,7 +824,8 @@
                         
                         
                         
-                            //수정하기 
+                        
+                            //댓글 수정하기 
                             btn1.on("click",function(){
                                
                                 
