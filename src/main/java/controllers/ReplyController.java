@@ -63,8 +63,11 @@ public class ReplyController extends HttpServlet {
 				String parent_seq = request.getParameter("parent_seq"); //부모 댓글 고유seq
 				String id = (String) request.getSession().getAttribute("loginID");//작성자 id
 				String contents = request.getParameter("reChatContents");//re댓글 내용
+				System.out.println(parent_seq + ":" + id + ":" + contents);
+				int result = daoRe.insert(new ReplyReDTO(null, id, contents, null, parent_seq));//삽입
 				
-				daoRe.insert(new ReplyReDTO(null, id, contents, null, parent_seq));//삽입
+				PrintWriter pw = response.getWriter();
+				pw.append(g.toJson(result));
 				
 			}else if(uri.equals("/reDelete.reply")) {//re댓글 삭제
 
