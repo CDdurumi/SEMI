@@ -136,6 +136,37 @@ public class BoardController extends HttpServlet {
 	
 				request.getRequestDispatcher("/board/editorReMain.jsp").forward(request, response);//애디터추천 메인페이지
 		
+			}else if(uri.equals("/search.board")) {//게시글 검색
+				int cpage = Integer.parseInt(request.getParameter("cpage"));//페이징네비 페이지 넘버
+				String boardOption = request.getParameter("boardOption"); //게시판 옵션(f:자유게시판, g:여행후기, j:구인구직, r:맛집, h:숙소리뷰, e:애디터추천글)
+				String serchOption = request.getParameter("serchOption"); //검색 옵션(id, title, contents)
+				String contents = request.getParameter("contents"); //검색 내용
+				
+				
+				List<BoardDTO> list = dao.search(cpage, serchOption, contents, boardOption);//검색 결과 게시글 리스트
+				List<BoardDTO> hotlist = dao.selectByLikeCount(boardOption);//화제글
+				String pageNavi = dao.getPageNavi(cpage, boardOption);//페이징네비
+				
+				request.setAttribute("cpage", cpage);
+				request.setAttribute("list", list);
+				request.setAttribute("hotlist", hotlist);
+				request.setAttribute("navi", pageNavi);
+				
+				String absolutePath = "";
+				if(boardOption.equals("f")) {//자유게시판 메인페이지
+					absolutePath = "/board/boardMain.jsp";
+				}else if(boardOption.equals("g")) {//여행후기 메인페이지
+					absolutePath = "/board/gallery.jsp";
+				}else if(boardOption.equals("j")) {//구인구직 메인페이지
+					absolutePath = "/jobMain.board";
+				}else if(boardOption.equals("r")) {//맛집 메인페이지
+					absolutePath = "/houseMain.board";
+				}else if(boardOption.equals("h")) {//숙소리뷰 메인페이지
+					absolutePath = "/houseMain.board";
+				}
+				
+				request.getRequestDispatcher(absolutePath).forward(request, response);//메인페이지 전환
+				
 			}else if(uri.equals("/editorLoad.board")) {//애디터추천게시글 메인 로드 시 찜,좋아요 정보 긁어오기
 				String table = request.getParameter("table");
 				String id = request.getSession().getAttribute("loginID").toString();//로그인 id
