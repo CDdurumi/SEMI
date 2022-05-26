@@ -644,8 +644,8 @@ $("#modal_loginBtn").on("click",function(){
 // 			alert(previous);
 // 			alert(option);
 			
-			if((option == 'g' || option == 'e')){
-				if(!(previous == 'g' || previous == 'e') && (option == 'g' || option == 'e')){
+			if((option == 'g' || option == 'e' || option == 'h' )){
+				if(!(previous == 'g' || previous == 'e' || previous == 'h') && (option == 'g' || option == 'e' || option == 'h')){
 					$("#fileArea").children("#profileDiv").remove();
 				} 
 				let div = $("<div>");
