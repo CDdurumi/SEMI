@@ -132,6 +132,9 @@ public class MemberController extends HttpServlet {
 				 System.out.println(pw);
 				 System.out.println(result);
 				 System.out.println((String)request.getSession().getAttribute("loginID"));
+				 
+				 PrintWriter pr = response.getWriter();
+				 pr.append(g.toJson(result));
 			}
 		}catch (Exception e) {
 			response.sendRedirect("errol.html");
