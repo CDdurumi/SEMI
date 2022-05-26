@@ -3,10 +3,15 @@ package dao;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.sql.Timestamp;
+import java.util.ArrayList;
+import java.util.List;
 
 import javax.naming.Context;
 import javax.naming.InitialContext;
 import javax.sql.DataSource;
+
+import dto.GoodDTO;
 
 public class GoodDAO {
 	//싱글턴
@@ -65,6 +70,30 @@ public class GoodDAO {
 
 			try (ResultSet rs = pstat.executeQuery();) {
 				return rs.next();
+			}
+		}
+	}
+	
+	// 애디터추천 All게시글 로그인id가 좋아요 한 정보
+	public List<GoodDTO> selectEditorGood(String id) throws Exception {
+
+		String sql = "select * from good where good_id = ? and board_seq like 'e%'";
+		try (Connection con = this.getConnection();
+				PreparedStatement pstat = con.prepareStatement(sql);) {
+			
+			pstat.setString(1, id);
+			List<GoodDTO> list = new ArrayList<GoodDTO>();
+			
+			try(ResultSet rs = pstat.executeQuery();){
+				while (rs.next()) {
+					String board_seq = rs.getString("board_seq");
+					String good_id = rs.getString("good_id");
+					Timestamp good_date = rs.getTimestamp("good_date");
+
+					GoodDTO dto = new GoodDTO(board_seq, good_id, good_date);
+					list.add(dto);
+				}
+				return list;
 			}
 		}
 	}
