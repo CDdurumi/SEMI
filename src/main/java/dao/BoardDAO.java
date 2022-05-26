@@ -12,6 +12,8 @@ import javax.naming.InitialContext;
 import javax.sql.DataSource;
 
 import dto.BoardDTO;
+import dto.GoodDTO;
+import dto.JjimDTO;
 
 public class BoardDAO {
 
@@ -189,34 +191,7 @@ public class BoardDAO {
 		}
 	}
 
-	// 해당 게시글 찜한 상태인지 확인
-	public boolean isBoardJjim(String seq, String id) throws Exception {
-
-		String sql = "select * from jjim where board_seq = ?  and jjim_id = ?";
-		try (Connection con = this.getConnection(); PreparedStatement pstat = con.prepareStatement(sql)) {
-			pstat.setString(1, seq);
-			pstat.setString(2, id);
-
-			try (ResultSet rs = pstat.executeQuery();) {
-				return rs.next();
-			}
-		}
-	}
-
-	// 해당 게시글 좋아요 상태인지 확인
-	public boolean isBoardGood(String seq, String id) throws Exception {
-
-		String sql = "select * from good where board_seq = ?  and good_id = ?";
-		try (Connection con = this.getConnection(); PreparedStatement pstat = con.prepareStatement(sql)) {
-			pstat.setString(1, seq);
-			pstat.setString(2, id);
-
-			try (ResultSet rs = pstat.executeQuery();) {
-				return rs.next();
-			}
-		}
-	}
-
+	
 	// 조회수 증가
 	public int viewCountUp(String seq) throws Exception {
 		String sql = "update all_board set view_count = view_count+1 where all_board_seq =? ";

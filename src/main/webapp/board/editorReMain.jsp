@@ -23,8 +23,7 @@
     <!--  -->
     <link rel="canonical" href="https://getbootstrap.com/docs/5.1/examples/cover/">
     <!-- Bootstrap core CSS -->
-    <link href="/docs/5.1/dist/css/bootstrap.min.css" rel="stylesheet"
-        integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+
 
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css" integrity="sha512-KfkfwYDsLkIlwQp6LFnl8zNdLGxu9YAA1QvwINks4PhcElQSvqcyVLLD9aMhXd13uQjoXtEKNosOWaZqXgel0g==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 	
@@ -32,7 +31,6 @@
     <link rel="apple-touch-icon" href="/docs/5.1/assets/img/favicons/apple-touch-icon.png" sizes="180x180">
     <link rel="icon" href="/docs/5.1/assets/img/favicons/favicon-32x32.png" sizes="32x32" type="image/png">
     <link rel="icon" href="/docs/5.1/assets/img/favicons/favicon-16x16.png" sizes="16x16" type="image/png">
-    <link rel="manifest" href="/docs/5.1/assets/img/favicons/manifest.json">
     <link rel="mask-icon" href="/docs/5.1/assets/img/favicons/safari-pinned-tab.svg" color="#7952b3">
     <link rel="icon" href="/docs/5.1/assets/img/favicons/favicon.ico">
     <meta name="theme-color" content="#7952b3">
@@ -582,11 +580,11 @@ $("#modal_loginBtn").on("click",function(){
 									<div class="col-12">
 										<div class="row  heart" style="margin: auto;">
 
-											<div class="col-6 goodcol" seq="${i.all_board_seq}">
+											<div class="col-6 goodcol" seq="${i.all_board_seq}" good="true"  gUpDown="0">
 												<i class="fa-solid fa-thumbs-up"></i>
 											</div>
 
-											<div class="col-6 heartcol" seq="${i.all_board_seq}">
+											<div class="col-6 heartcol" seq="${i.all_board_seq}" heart="true"  jUpDown="0">
 												<i class="fa-solid fa-heart"></i>
 											</div>
 
@@ -616,9 +614,45 @@ $("#modal_loginBtn").on("click",function(){
 
     <script>
     
+    $(function(){
+
+		$.ajax({
+			   url:"/editorLoad.board",
+			   data:{
+				   table: "jjim"
+			   },
+			   dataType:"json"
+			}).done(function(resp){//jjimDTO
+			      
+			   }).fail(function(a, b){ 
+			      console.log(a);
+			      console.log(b);
+			   });
+			   
+			   
+		$.ajax({
+		   url:"/editorLoad.board",
+		   data:{
+			   table: "good"
+		   },
+		   dataType:"json"
+		}).done(function(resp){//goodDTO
+
+		   }).fail(function(a, b){ 
+		      console.log(a);
+		      console.log(b);
+		   })	   
+//     	$(".goodcol").each(function(i,item){
+  
+    		
+    		
+//     	})
+    	
+    })
+    
+    
+    
     //good(좋아요)
-    let good = true;
-    let gUpDown = 0;
     $(".goodcol").on("click", function () {
         if(${loginID == null}){
             alert("로그인이 필요합니다.");
@@ -626,17 +660,19 @@ $("#modal_loginBtn").on("click",function(){
          }
         
         let currnetLocation = $(this);
-        if (good) {
+        let good = $(this).attr("good");//true,false 가져오기
+
+        if (good == 'true') {
             $(this).css("color", "#ffd000" );
-           
-            good=false;
+            $(this).attr("good","false");//good에 flase set.
         } else {
             $(this).css("color", "#b1b1b1");
-           
-            good=true;
+            $(this).attr("good","true");
         }
         
-        if(good == false){
+        good = $(this).attr("good");//true,false 다시 가져오기
+        let gUpDown ;
+        if(good == 'false'){
             gUpDown = 1;
         }else{
             gUpDown = 0;
@@ -651,10 +687,9 @@ $("#modal_loginBtn").on("click",function(){
 		   },
 		   dataType:"json"
 		}).done(function(resp){
-		      console.log(resp.likeCount)//좋아요 갯수
+// 		      console.log(resp.likeCount)//좋아요 갯수
 		      let goodCntLocation = $(currnetLocation.parent().siblings()[0]).children()[0];
-		      console.log($(currnetLocation.parent().siblings()[0]).children()[0])
-		      $(goodCntLocation).html('<i class="fa-solid fa-thumbs-up"></i> &nbsp;&nbsp;'+resp.likeCount);
+		      $(goodCntLocation).html(resp.likeCount);
 		      
 		   }).fail(function(a, b){ 
 		      console.log(a);
@@ -666,25 +701,27 @@ $("#modal_loginBtn").on("click",function(){
     
  	//heart(찜)
 	let heart = true;
-    let jUpDown = 0;
+	let jUpDown = 0;
     $(".heartcol").on("click", function () {
         if(${loginID == null}){
             alert("로그인이 필요합니다.");
             return false;
          }
         
-    	let currnetLocation = $(this);
-        if (heart) {
+        let currnetLocation = $(this);
+        let heart = $(this).attr("heart");//true,false 가져오기
+
+        if (heart == 'true') {
             $(this).css("color", "red" );
-            
-            heart=false;
+            $(this).attr("heart","false");//heart에 flase set.
         } else {
             $(this).css("color", "#b1b1b1");
-            
-            heart=true;
+            $(this).attr("heart","true");
         }
         
-        if(heart == false){
+        heart = $(this).attr("heart");//true,false 다시 가져오기
+        let jUpDown ;
+        if(heart == 'false'){
             jUpDown = 1;
          }else{
             jUpDown = 0;
@@ -699,9 +736,9 @@ $("#modal_loginBtn").on("click",function(){
 		   },
 		   dataType:"json"
 		}).done(function(resp){
-		      console.log(resp.jjimCount)//좋아요 갯수
+// 		      console.log(resp.jjimCount)//좋아요 갯수
 		      let jjimCntLocation = $(currnetLocation.parent().siblings()[0]).children()[1];
-		      $(jjimCntLocation).html('<i class="fa-solid fa-thumbs-up"></i> &nbsp;&nbsp;'+resp.jjimCount);
+		      $(jjimCntLocation).html(resp.jjimCount);
 		   }).fail(function(a, b){ 
 		      console.log(a);
 		      console.log(b);
