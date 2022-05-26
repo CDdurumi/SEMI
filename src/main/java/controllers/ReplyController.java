@@ -72,7 +72,8 @@ public class ReplyController extends HttpServlet {
 			}else if(uri.equals("/reDelete.reply")) {//re댓글 삭제
 
 				String reply_re_seq = request.getParameter("reply_re_seq");//re댓글 고유seq
-				int result = dao.deleteByReplySeq(reply_re_seq);//re댓글 삭제
+				System.out.println(reply_re_seq);
+				int result = daoRe.deleteByReplySeq(reply_re_seq);//re댓글 삭제
 				PrintWriter pw = response.getWriter();
 				pw.append(g.toJson(result));
 				
@@ -80,14 +81,14 @@ public class ReplyController extends HttpServlet {
 
 				String reply_re_seq = request.getParameter("reply_re_seq");//re댓글 고유seq
 				String contents = request.getParameter("replyContentModify");//re댓글 내용
-				int result = dao.modify(reply_re_seq, contents);//re댓글 수정
+				int result = daoRe.modify(reply_re_seq, contents);//re댓글 수정
 				PrintWriter pw = response.getWriter();
 				pw.append(g.toJson(result));
 				
 			}else if(uri.equals("/reList.reply")) {//re댓글 리스트
 
 				String parent_seq = request.getParameter("parent_seq"); //부모 댓글 고유seq
-				System.out.println(parent_seq);;
+				
 				List<ReplyReDTO> list = daoRe.selectByParentSeq(parent_seq);//re댓글 리스트(부모 댓글 기준)
 				
 				PrintWriter pw = response.getWriter();
