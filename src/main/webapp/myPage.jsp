@@ -1386,13 +1386,13 @@ $("#modal_loginBtn").on("click",function(){
                                 <div class="row" id="name">
                                     <div class="col-12 col-md-4 content"><strong>아이디</strong> </div>
                                     <div class="col-12 col-md-8 modify content " id="id">
-                                       ${loginID }
+                                       <input type="text" value="${loginID }" id="editID" style="text-align:center" disabled/>
                                     </div>
                                 </div>
                                 <div class="row "  id="pw" >
                                     <div class="col-12 col-md-4 pw content" style="display:none;"><strong>비밀번호</strong> </div>
                                     <div class="col-12 col-md-8 modify content pw" style="display:none;">
-                                        비밀입니다
+                                        <input type="password" value="비밀번호를 입력해주세요">
                                     </div>
                                 </div>
                                 <div class="row" id="email">
@@ -1483,7 +1483,8 @@ $("#modal_loginBtn").on("click",function(){
                 $(".check").css("display","none");  //비밀번호 확인 입력창
                
 
-                $(".modify").attr("contenteditable","true");
+//                 $(".modify").attr("contenteditable","true");
+                $("#editID").removeAttr("disabled");
                 $(".modify").css("color","#0089ff");
                 $("#id").focus();
             }else{
