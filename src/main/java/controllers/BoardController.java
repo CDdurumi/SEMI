@@ -141,8 +141,7 @@ public class BoardController extends HttpServlet {
 				String boardOption = request.getParameter("boardOption"); //게시판 옵션(f:자유게시판, g:여행후기, j:구인구직, r:맛집, h:숙소리뷰, e:애디터추천글)
 				String serchOption = request.getParameter("serchOption"); //검색 옵션(id, title, contents)
 				String contents = request.getParameter("contents"); //검색 내용
-				
-				
+					
 				List<BoardDTO> list = dao.search(cpage, serchOption, contents, boardOption);//검색 결과 게시글 리스트
 				List<BoardDTO> hotlist = dao.selectByLikeCount(boardOption);//화제글
 				String pageNavi = dao.getPageNavi(cpage, boardOption);//페이징네비
