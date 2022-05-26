@@ -204,8 +204,8 @@ public class BoardDAO {
 	}
 
 	// 게시판 리스트 출력
-	public List<BoardDTO> selectAll() throws Exception {
-		String sql = "select * from all_board order by all_board_seq desc";
+	public List<BoardDTO> selectAll(String boardOption) throws Exception {
+		String sql = "select * from all_board where all_board_seq like '"+boardOption+"%' order by write_date desc";
 
 		try (Connection con = this.getConnection();
 				PreparedStatement pstat = con.prepareStatement(sql);
@@ -213,7 +213,7 @@ public class BoardDAO {
 			List<BoardDTO> list = new ArrayList<BoardDTO>();
 
 			while (rs.next()) {
-				String seq = rs.getString("free_board_seq");
+				String all_board_seq = rs.getString("all_board_seq");
 				String id = rs.getString("id");
 				String title = rs.getString("title");
 				String contents = rs.getString("contents");
@@ -222,7 +222,7 @@ public class BoardDAO {
 				int jjim_count = rs.getInt("jjim_count");
 				int view_count = rs.getInt("view_count");
 
-				BoardDTO dto = new BoardDTO(seq, id, title, contents, write_date, like_count, jjim_count, view_count);
+				BoardDTO dto = new BoardDTO(all_board_seq, id, title, contents, write_date, like_count, jjim_count, view_count);
 				list.add(dto);
 			}
 			return list;
