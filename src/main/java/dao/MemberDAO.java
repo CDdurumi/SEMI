@@ -14,14 +14,14 @@ import javax.sql.DataSource;
 import dto.MemberDTO;
 
 public class MemberDAO {
-public MemberDAO() {
-		
+	public MemberDAO() {
+
 	}
-	
-private Connection getConnection() throws Exception {
-		
+
+	private Connection getConnection() throws Exception {
+
 		Context ctx = new InitialContext();
-		DataSource ds = (DataSource)ctx.lookup("java:comp/env/jdbc/orcl");
+		DataSource ds = (DataSource) ctx.lookup("java:comp/env/jdbc/orcl");
 		return ds.getConnection();
 	}
 
@@ -34,7 +34,6 @@ private Connection getConnection() throws Exception {
 			pstat.setString(2, dto.getPw());
 			pstat.setString(3, dto.getEmail());
 			pstat.setString(4, dto.getInformation());
-			
 
 			int result = pstat.executeUpdate();
 			con.commit();
@@ -43,7 +42,8 @@ private Connection getConnection() throws Exception {
 
 		}
 	}
-	//ID 중복검사
+
+	// ID 중복검사
 	public boolean isNickNameExist(String id) throws Exception {
 
 		String sql = "select * from member where id=?";
@@ -55,7 +55,8 @@ private Connection getConnection() throws Exception {
 			}
 		}
 	}
-	//email 중복검사
+
+	// email 중복검사
 	public boolean isEmailExist(String email) throws Exception {
 
 		String sql = "select * from member where email=?";
@@ -67,7 +68,8 @@ private Connection getConnection() throws Exception {
 			}
 		}
 	}
-	//로그인시 id PW 검사 
+
+	// 로그인시 id PW 검사
 	public boolean isEmailPwExist(String email, String pw) throws Exception {
 
 		String sql = "select * from member where email = ? and pw =?";
@@ -79,25 +81,37 @@ private Connection getConnection() throws Exception {
 			}
 		}
 	}
-	
-	//사용자 정보 뽑기
-	
+
+	// 사용자 정보 뽑기
+
 	public MemberDTO searchUser(String email) throws Exception {
 
 		String sql = "select * from member where email =?";
 		try (Connection con = this.getConnection(); PreparedStatement pstat = con.prepareStatement(sql);) {
 			pstat.setString(1, email);
 			try (ResultSet rs = pstat.executeQuery()) {
-				
+
 				rs.next();
 				String id = rs.getString("id");
 				email = rs.getString("email");
 				Timestamp join_date = rs.getTimestamp("join_date");
 				String information = rs.getString("information");
-				return(new MemberDTO(id,null,email,join_date,information));
-				
+				return (new MemberDTO(id, null, email, join_date, information));
+
 			}
 		}
 	}
 
+	public boolean isModifiedPossible(String id, String pw) throws Exception {
+		String sql = "select * from member where id = ? and pw = ?";
+		try (Connection con = this.getConnection(); PreparedStatement pstat = con.prepareStatement(sql);) {
+			pstat.setString(1, id);
+			pstat.setString(2, pw);
+			try (ResultSet rs = pstat.executeQuery()) {
+
+				return rs.next();
+			}
+
+		}
+	}
 }

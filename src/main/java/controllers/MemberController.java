@@ -121,7 +121,17 @@ public class MemberController extends HttpServlet {
 				
 				
 			}else if(uri.equals("/modified.member")){
-				 //mypage 계정 수정 
+				 String id = (String)request.getSession().getAttribute("loginID");
+				 String pw = request.getParameter("pw");
+				 System.out.println(pw);
+				 pw = EncryptUtils.SHA512(pw);
+				 
+				 boolean result = dao.isModifiedPossible(id, pw);
+				 
+				 System.out.println(id);
+				 System.out.println(pw);
+				 System.out.println(result);
+				 System.out.println((String)request.getSession().getAttribute("loginID"));
 			}
 		}catch (Exception e) {
 			response.sendRedirect("errol.html");
