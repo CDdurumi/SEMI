@@ -618,7 +618,7 @@ $("#modal_loginBtn").on("click",function(){
     
     $(function(){
     	$(".goodcol").each(function(i,item){
-    		alert(i)
+
     	})
     })
     
