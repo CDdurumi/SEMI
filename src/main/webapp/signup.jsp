@@ -633,10 +633,10 @@
 		$.ajax({
 		url:"/duplIDCheck.member",
 		type:"get",
-		data:{id:$("#nickname_input").val()},
+		data:{nickname:$("#nickname_input").val()},
 		dataType:"json"
 		}).done(function(resp){
-			
+				
 					if(resp==false){						
 						if(isNickName($("#nickname_input").val())){
 							$("#nickname_check_text").text("사용 가능한 닉네임입니다!");
@@ -693,23 +693,29 @@
 				let email = $("#email_input").val();
 				let email_check = $("#email_check_text");
 				console.log(email);
-				if(email!=""){
-	            	if (isEmail(email)) {
-	            		console.log(isEmail(email));
-	            		email_check.text("사용가능한 이메일주소입니다");
-	                    email_check.css({ color: "blue" });               	
-	                }
-	                else{
-	                	console.log(isEmail(email));
-	                	email_check.text("양식에 맞지 않는 이메일주소입니다");
-	                    email_check.css({ color: "red" });
-	                }
-	            }else if(email==""){
-	    
-	            	email_check.text("이메일은 필수정보입니다");
-	            	email_check.css({ color: "black" });
-	            }
+				if(resp==false){
+
+					if(email!=""){
+		            	if (isEmail(email)) {
+		            		console.log(isEmail(email));
+		            		email_check.text("사용가능한 이메일주소입니다");
+		                    email_check.css({ color: "blue" });               	
+		                }
+		                else{
+		                	console.log(isEmail(email));
+		                	email_check.text("양식에 맞지 않는 이메일주소입니다");
+		                    email_check.css({ color: "red" });
+		                }
+		            }else if(email==""){
+		    
+		            	email_check.text("이메일은 필수정보입니다");
+		            	email_check.css({ color: "black" });
+		            }
 				
+				}else if(resp==true){
+					email_check.text("이미 사용중인 이메일입니다");
+	            	email_check.css({ color: "red" });
+				}		
 			});
 		})
 	//회원가입 끝	
