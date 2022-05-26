@@ -51,11 +51,6 @@
             --normal-font-size: 1rem;
             --z-fixed: 100
         }
-
-        div {
-            /* border:1px solid black; */
-        }
-
         *,
         ::before,
         ::after {
@@ -307,12 +302,10 @@
 .card-details span:hover{
     opacity:1;
 }
-
-
         /* 메인내용 */
-        div {
-            /* border: 1px solid black; */
-        }
+              /* div {
+             border: 1px solid black; 
+        }        */
 
         #page {
             color: #0080ff;
@@ -353,7 +346,7 @@
         }
 
         #conMenu {
-            height: 50px;
+             height: 50px;
              margin: 40px;
            
         }
@@ -364,35 +357,40 @@
             padding-top: 6px;
         }
        #heart{
-           width: 82%;
-           text-align: right;
-           padding-top: 30px;
-       }
+           width:94%;
+           padding-top: 20px;
+           padding-left: 20px;
+           flex-wrap: nowrap; 
+       }        
+      #ht{
+         float: left;
+      }
        #count{
            padding-top: 5px;
-        width: 82%;
+           width: 86%;
            text-align: center;
            padding-right: 5px;
        }
        #jjimcol{
-           font-size: 30px;
+           font-size: 27px;
            color: #b1b1b1;
            text-align: center;
            padding: 0px;
-           border-radius: 100px;
-           border: 1px solid rgb(177, 177, 177);
-           max-width: 47px;
-           min-width: 47px;
+            max-width: 56px;
+            min-width: 56px; 
+            float: left;
+            text-align: center;      
        }
        #goodcol{
-        font-size: 30px;
+           font-size: 27px;
            color: #b1b1b1;
            text-align: center;
            padding: 0px;
-           border-radius: 100px;
-           border: 1px solid rgb(177, 177, 177);
-           max-width: 47px;
-           min-width: 47px;
+           max-width: 56px;
+           min-width: 56px; 
+           float: left;
+           text-align: center;
+           
        }
        #likecnt{
            padding: 0px;
@@ -414,22 +412,21 @@
            width: 90%;
            padding-bottom: 10px;
        }
-     
-        .rebtn{
-            text-align: right;
-        }
-            .padding{
-            padding-bottom:10px ;
+       .message{
+           min-height: 80px;
+       }
+      
+       .fa-border{
+  border-radius: 50%; 
+  height: 50px;
+  width:50px;
+  padding-top: 9px;
+        
+     }
 
-        }
-         .writer{
-            font-weight: bold;
-        }
-        .message{
-        min-height:40px;
-        padding-top:13px;
-        word-break:break-all;
-        }
+
+
+
        /* 제목이 길어서 잘렸을 경우 밑의 두개 처리해준다 */
 /*        .ellipsis{ */
 /*            position: relative; */
@@ -438,7 +435,7 @@
 /*        } */
 /*        .ellipsis>span{ */
 /*         overflow: hidden; */
-/*            white-space: nowrap; */
+/*           white-space: nowrap; */
 /*            text-overflow: ellipsis; */
 /*            position:absolute; */
 /*            left: 9px; */
@@ -490,34 +487,32 @@
         }
         /*--top버튼----------------------------------------------------------------*/
 
-#myBtn {
-  display: none; 
-  position: fixed; 
-  bottom: 12px;
-  width: 45px;
-  height: 45px;
-  right: 10px; 
-  z-index: 99; 
-  border: none; 
-  outline: none; 
-  background-color:  #0080ff;
-  color: white; 
-  cursor: pointer; 
-  padding: 3px; 
-  border-radius: 50%; 
-  font-size: 32px; 
-  font-weight: bold;
-  padding-bottom:40px;
-  padding-top: 0px;
+     #myBtn {
+     display: none; 
+     position: fixed; 
+     bottom: 12px;
+     width: 45px;
+     height: 45px;
+     right: 10px; 
+     z-index: 99; 
+     border: none; 
+     outline: none; 
+     background-color:  #0080ff;
+     color: white; 
+     cursor: pointer; 
+     padding: 3px; 
+     border-radius: 50%; 
+     font-size: 32px; 
+     font-weight: bold;
+     padding-bottom:40px;
+     padding-top: 0px;
 }
 
 #myBtn:hover {
   background-color: #555; 
 }
-               
+
     </style>
-
-
 
 
 <!-- 화면 로딩 시 ------------------------------------------------------------------- -->
@@ -568,14 +563,13 @@
                         let row3 = $("<div>");
                         //작성자
                         let col3 = $("<div>");
-                        col3.attr("class","col-12 pt-4 writer"); 
+                        col3.attr("class","col-12 pt-4 "); 
                         col3.attr("style","padding-left : 10px");
                         col3.text(resp[i].id);   
                         //작성날짜
                         let col4 = $("<div>");
-                        col4.attr("class","col-12 ");   
-                        col4.css("padding-left","10px");
-                        col4.css("font-size",  "11px");
+                        col4.attr("class","col-12 pl-2");   
+                        col4.attr("style","padding-left : 10px");
                         col4.text(resp[i].write_date);
                         //버튼
                         let col5=$("<div>");
@@ -587,10 +581,7 @@
                         col6.attr("style","word-break:break-all");
                         col6.attr("style","padding-right:30px");
                         col6.text(resp[i].contents);    
-                      //대댓 작성창 넣을 곳
-                        let col7=$("<div>");
-                      col7.attr("class","col-12 ");
-                        
+                      
                         //버튼
                        let my_id =col3.text();
                         if(my_id =='${loginID}'){
@@ -607,150 +598,22 @@
                             
                         let btn5 =  $("<button>");
                         btn5.html(' <i class="fa-solid fa-message"></i>');
-                        btn5.attr("class","btn btn-outline-secondary btn-sm rereply ");
+                        btn5.attr("class","btn btn-outline-primary btn-sm rereply ");
                         btn5.attr("type","button");   
                         
                       
                         //대댓글 작성
                         
-                        let replyOn =false;
-                        let replyView=false;
+                        let replyOn=false;
                         let recol1;
                         let recol2;
                         let recol3;
                         let textarea;
                         let rebtn1;
-                        let recol4; 
                         
-                      //대댓글 보기
-                        btn5.on("click",function(){
-                        	let the = $(this);
-                        	//대댓 삭제버튼
-                        	let rebtn3;
-                        	$.ajax({
-                        		url:"/reList.reply",
-                                type : 'POST',
-                                data : {parent_seq :resp[i].reply_seq },
-                                dataType : 'json'
-                        	}).done(function(resp){
-                        		let target1 = $(the.parent().parent().parent().siblings()[0]);
-                        		console.log(resp.length);
-                        		if(replyView==false){
-                        		for(let i = 0; i<resp.length;i++){
-                        		
-                                	recol4 =$("<div>");
-                             		recol4.attr("class","col-12");
-                             		
-                             		let rerow1= $("<div>");
-                             		rerow1.attr("class","row padding");
-                             		
-                             		let recol5 =$("<div>");
-                             		recol5.attr("class","col-1");
-                             		recol5.html('<i class="fa-solid fa-reply fa-rotate-180 "></i>');
-                             		
-                             		let recol6=$("<div>");
-                             		recol6.attr("class","col-11 rounded");
-                             		recol6.css("background-color","#fff9e5d2");
-                             		
-                             		let rerow2 =$("<div>");
-                             		rerow2.attr("class","row");
-                             		
-                             		let recol7=$("<div>");
-                             		recol7.attr("class","col-12");
-                             		
-                             		let rerow3 =$("<div>");
-                             		rerow3.attr("class","row");
-                             		
-                             		let recol8=$("<div>");
-                             		recol8.attr("class","col-9");
-                             		
-                             		let rerow4 =$("<div>");
-                             		rerow4.attr("class","row");
-                             		
-                             		//대댓글 작성자
-                             		let recol9=$("<div>");
-                             		recol9.attr("class","col-12 writer");
-                             		recol9.text(resp[i].id);
-                             		//대댓글 날짜
-                             		let recol10=$("<div>");
-                             		recol10.attr("class","col-12");
-                             		recol10.text(resp[i].write_date);
-                             		recol10.css("font-size","11px");
-                             		
-                             		let recol11=$("<div>");
-                             		recol11.attr("class","col-3 rebtn");
-                             		//대댓글 수정 버튼
-                             		let rebtn2 =$("<button>");
-                             		rebtn2.html('<i class="fa-solid fa-pen-clip" ></i>')
-                             		rebtn2.attr("class","btn btn-outline-primary btn-sm remodify");
-//                              		rebtn2.css("background-color","white");
-                             		//대댓글 삭제 버튼
-                             		rebtn3=$("<button>");
-                             		rebtn3.html('<i class="fa-solid fa-trash"></i>');
-                             		rebtn3.attr("class","btn btn-outline-danger btn-sm redelete");
-                             		
-                             		//대댓글 내용
-                             		let recol12=$("<div>");
-                             		recol12.attr("class","col-12 message m-0");
-                             		recol12.css("word-break","break-all");
-                             		recol12.css( "padding-right","30px");
-                             		recol12.text(resp[i].contents);
-                             		
-                             		
-                             	   //대댓글 삭제하기
-                                    $(rebtn3).on("click",function(){
-                                    	 let del=  confirm('댓글을 삭제하시겠습니까?');
-                                         if(del){
-                                    	
-                                    let target2 = $(this).closest(".padding").parent();
-                                    console.log(target2);
-                                    	$.ajax({
-                                    		url:"/reDelete.reply",
-                                    		data:{reply_re_seq:resp[i].reply_re_seq },
-                                    		type:'POST',
-                                    		dataType:'json'
-                                    	}).done(function(resp){
-                                    		target2.remove();
-                                    	})
-                                         }
-                                    });
-                             		
-                             		
-                             		recol4.append(rerow1);
-                             		rerow1.append(recol5);
-                             		rerow1.append(recol6);
-                             		recol6.append(rerow2);
-                             		rerow2.append(recol7);
-                             		recol7.append(rerow3);
-                             		rerow3.append(recol8);
-                             		recol8.append(rerow4);
-                             		rerow4.append(recol9);
-                             		rerow4.append(recol10);
-                             		rerow3.append(recol11);
-                             		recol11.append(rebtn2);
-                             		recol11.append(' ');
-                             		recol11.append(rebtn3);
-                             		rerow3.append(recol12);
-                             		target1.after(recol4);
-                             		replyView=true;
-                                	}
-                        		}else{
-                                		recol4.remove();
-                                		replyView = false;
-                                	}
-                        		
-                        	})
-                        	
-                        	
-                        	
-                        	
-                        })
-                        
-                        //대댓글 작성
                      	btn5.on("click",function(){
-                     		
                     	 if(replyOn==false){
-                 		let target = $($(this).parent().parent().parent().siblings()[1]);
+                 		let target = $(this).parent().parent().parent().siblings();
                  		console.log(target);
                  		
                  		recol1 =$("<div>");
@@ -759,11 +622,11 @@
                  		recol1.css("display","inline-block");
                  		 
                  		recol2 =$("<div>");
-                 		recol2.attr("class","col-10 text");
+                 		recol2.attr("class","col-10");
                  		
                  		
                  		textarea = $("<textarea>");
-                 		textarea.attr("class","w-100 h-100 textarea")
+                 		textarea.attr("class","w-100 h-100")
                  		
                  		recol3 =$("<div>");
                  		recol3.attr("class","col-1 p-0 text-center");
@@ -771,61 +634,28 @@
                  		rebtn1 =$("<button>");
                  		rebtn1.attr("type","button");
                  		rebtn1.attr("class","btn btn-primary btn-sm h-100 w-100")
-                      	rebtn1.text("등록");
-                 		
-                 		
-                  		target.after(recol3);
-                  		target.after(recol2);
-                       	target.after(recol1);
                       	
-                       	recol2.append(textarea);
-                       	recol3.append(rebtn1);
+                 		
+                 		target.after(recol3);
+                 		target.after(recol2);
+                      	target.after(recol1);
+                      	recol2.append(textarea);
+                      	recol3.append(rebtn1);
+                      	
                       	replyOn = true;
-                      	
-                      rebtn1.on("click",function(){
-                    	  let the = $(this);
-                     	  console.log($(this).parent().siblings(".text").children().val());
-                    	  console.log($(this).parent().siblings(".text").children());
-                    	  console.log($(".textarea"));
-                    	  $.ajax({
-                           	url : '/reChatIN.reply',
-                            type : 'POST',
-                            data : {parent_seq :resp[i].reply_seq ,loginID:'${loginID}', reChatContents: $(this).parent().siblings(".text").children().val() },
-                            dataType : 'json'
-               		}).done(function(resp){
-               			console.log(resp);
-               				console.log()
-                			the.parent().siblings(".text").children().val(" ");
-               		
-            		 replyOn=false;
-               		});
-                    	 });
-                      	
-                      	
-                      	
-                      	
                     	 }else{
                     		 
                     		 recol1.remove();
                     		 recol2.remove();
                     		 recol3.remove();
-                    		 
                     		 rebtn1.remove();
                     		 replyOn=false;
                     	 }
 
                  })
                         
-              
-                        
-                        
-                        
-                        
-                        
-                        
-                        
-                        
-                            //댓글 수정하기 
+                           
+                            //수정하기 
                             btn1.on("click",function(){
                                
                                 
@@ -860,10 +690,7 @@
                                 
                                 //댓글 수정
                             btn3.on("click",function(){
-
-                             
-                               
-                               
+  
                                $.ajax({
                                   url:"/modify.reply",
                                   data:{reply_seq:resp[i].reply_seq, replyContentModify:col6.text()},
@@ -910,7 +737,6 @@
                             });
                             
                             col5.append(btn5);
-                            col5.append(' ');
                             col5.append(btn1);
                             col5.append(' ');
                             col5.append(btn2);
@@ -937,7 +763,6 @@
 
                         row2.append(col5);
                         row1.append(col6);
-                        row1.append(col7);
 
                          count++;
                          $("#message").text("댓글 "+count+" 개");
@@ -952,23 +777,8 @@
           })
             
  		  //대댓글
- 		  
- 		  
-          
-          
-          
-          
-          
+ 		  	                   
        }
-
-    
-     
-       
-       
-       
-       
-       
-       
 
     </script>
     
@@ -1020,7 +830,7 @@
                     <span class="CurrTemp"></span>
                     <span class="City"></span>
                     </span></span> </a>
-                    <a href="/board/communityMain.jsp" class="nav_link active"> <i class='bx bx-message nav_icon'></i> <span
+                    <a href="/board/cummityMain.jsp" class="nav_link active"> <i class='bx bx-message nav_icon'></i> <span
                             class="nav_name">커뮤니티</span> </a>
                     <a href="/board/editorReMain.jsp" class="nav_link"> <i class='bx bx-book-bookmark nav_icon'></i> <span class="nav_name">에디터추천</span>
                     </a>
@@ -1129,7 +939,7 @@ $("#modal_loginBtn").on("click",function(){
            
             <div class="col-12 p-0 border-bottom border-2 rounded h-100" id="contents">
                 <div class="row border-bottom border-2 rounded h-100" id="conMenu">
-<%--                     <div class="col-md-1 d-none d-md-block">${dto.all_board_seq}</div> --%>
+        <%--     <div class="col-md-1 d-none d-md-block">${dto.all_board_seq}</div> --%>
                     <div class="col-12 col-md-12 ellipsis "  style="padding-left:15px" id="title">${dto.title}</div>
 <!--                     <div class="col-1"  > -->
                     
@@ -1158,26 +968,26 @@ $("#modal_loginBtn").on("click",function(){
                     </div>
                 </div>
             </div>
-            <div class="col-12" style="text-align: right; padding-top: 10px;padding-right: 100px;">
-<%--                <c:if test="${loginID == dto.id}"> --%>
-                     <button class="btn btn-primary " type="button" id="boardModi">수정</button>
-                     <button class="btn btn-primary " type="button" id="boardDel">삭제</button>
-<%--                   </c:if> --%>
-            </div>
-            
-            <div class="row " id="heart" style="margin: auto;">
-                
-                <div class="col-1" id="goodcol">
-                    <i class="fa-solid fa-thumbs-up"></i>
-                </div>
-                <div class="col-1 jjimdummy " ></div>
-                <div class="col-1 text-center" id="jjimcol">
-                    <i class="fa-solid fa-heart"></i>
-                </div>
-                <div class="col-9">
-                </div>
-            </div>
 
+            <div class="col-12"  id="heart" style="margin: auto;">
+
+        <div class="col-6" id="ht" >
+            <div class="col-3" id="goodcol">
+                <i class="fa-solid fa-border fa-thumbs-up"></i>
+            </div>
+            <div class="col-3" id="jjimcol">
+                <i class="fa-solid fa-border fa-star"></i>
+            </div>
+        </div>
+
+        <div class="col-6" id="ht" style="text-align: right; padding-top:13px; padding-right: 20px;">
+            <%--<c:if test="${loginID == dto.id}"> --%>
+            <button class="btn btn-primary " type="button" id="boardModi">수정</button>
+         <button class="btn btn-primary " type="button" id="boardDel">삭제</button>
+         <%--  </c:if> --%>
+        </div>
+    
+            </div>
             <div class="row " id="count" style="margin: auto;">
                 
                 <div class="col-1" id="likecnt">
@@ -1190,7 +1000,8 @@ $("#modal_loginBtn").on("click",function(){
                 <div class="col-9"></div>
             </div>
             
-        </div>
+        </div> 
+
         <br>
 
         <div class="col-12" id="message"></div>
@@ -1315,6 +1126,7 @@ $("#modal_loginBtn").on("click",function(){
     </div>
     
      <!--top 버튼-->
+
     <button onclick="topFunction()" id="myBtn" title="Go to top">↑</button>
     
     <!--Container Main end-->
@@ -1391,15 +1203,15 @@ $("#modal_loginBtn").on("click",function(){
         }
         
         if (good) {
-            $("#goodcol").css("color", "#ffd000" );
-            $("#goodcol").css("border","1px solid #ffd000" );
+            $("#goodcol").css("color", "#blue");
+            $(".fa-thumbs-up").css("--fa-border-color","blue");
             good=false;
             const toast = new bootstrap.Toast(toastLiveExample1)
 
         	toast.show();
         } else {
             $("#goodcol").css("color", "#b1b1b1");
-            $("#goodcol").css("border","1px solid #b1b1b1" );
+            $(".fa-thumbs-up").css("--fa-border-color","#b1b1b1");
             good=true;
             const toast = new bootstrap.Toast(toastLiveExample2)
 
@@ -1437,8 +1249,8 @@ $("#modal_loginBtn").on("click",function(){
     let heart = true;
     if(${isBoardJjim!=null}){
        if(${isBoardJjim==true}){
-            $("#jjimcol").css("color", "red" );
-            $("#jjimcol").css("border","1px solid red" );
+            $("#jjimcol").css("color", "yellow" );
+            $(".fa-star").css("--fa-border-color","yellow");
           heart=false;
        }
     }
@@ -1451,8 +1263,8 @@ $("#modal_loginBtn").on("click",function(){
         }
        
         if (heart) {
-            $("#jjimcol").css("color", "red" );
-            $("#jjimcol").css("border","1px solid red" );
+            $("#jjimcol").css("color", "yellow" );
+            $(".fa-star").css("--fa-border-color","yellow");
             heart=false;
             
             const toast = new bootstrap.Toast(toastLiveExample3)
@@ -1460,7 +1272,7 @@ $("#modal_loginBtn").on("click",function(){
         	toast.show();
         } else {
             $("#jjimcol").css("color", "#b1b1b1");
-            $("#jjimcol").css("border","1px solid #b1b1b1" );
+            $(".fa-star").css("--fa-border-color","#b1b1b1");
             heart=true;
             
             const toast = new bootstrap.Toast(toastLiveExample4)
@@ -1573,28 +1385,6 @@ $("#modal_loginBtn").on("click",function(){
     });
     
     
-
-  //top 버튼
-
-  mybutton = document.getElementById("myBtn");
-
-  window.onscroll = function() {scrollFunction()};
-
-  function scrollFunction() {
-    if (document.body.scrollTop > 60 || document.documentElement.scrollTop > 60) {
-      mybutton.style.display = "block";
-    } else {
-      mybutton.style.display = "none";
-    }
-  }
-
-
-  function topFunction() {
-    document.body.scrollTop = 0; 
-    document.documentElement.scrollTop = 0; 
-  }
-
-    
     </script>
     
     <script type="text/javascript">
@@ -1640,7 +1430,34 @@ $("#modal_loginBtn").on("click",function(){
       });
    });
    
+
+
+
+  //top 버튼
+
+  mybutton = document.getElementById("myBtn");
+
+  window.onscroll = function() {scrollFunction()};
+
+  function scrollFunction() {
+    if (document.body.scrollTop > 60 || document.documentElement.scrollTop > 60) {
+      mybutton.style.display = "block";
+    } else {
+      mybutton.style.display = "none";
+    }
+  }
+
+
+  function topFunction() {
+    document.body.scrollTop = 0; 
+    document.documentElement.scrollTop = 0; 
+  }
+
+
+
+
 </script>
+
 </body>
 
 </html>
