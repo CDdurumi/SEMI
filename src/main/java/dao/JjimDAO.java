@@ -2,6 +2,7 @@ package dao;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 
 import javax.naming.Context;
 import javax.naming.InitialContext;
@@ -52,4 +53,20 @@ public class JjimDAO {
 
 		}
 	}
+	
+	
+	// 해당 게시글 찜한 상태인지 확인
+	public boolean isBoardJjim(String seq, String id) throws Exception {
+
+		String sql = "select * from jjim where board_seq = ?  and jjim_id = ?";
+		try (Connection con = this.getConnection(); PreparedStatement pstat = con.prepareStatement(sql)) {
+			pstat.setString(1, seq);
+			pstat.setString(2, id);
+
+			try (ResultSet rs = pstat.executeQuery();) {
+				return rs.next();
+			}
+		}
+	}
+
 }

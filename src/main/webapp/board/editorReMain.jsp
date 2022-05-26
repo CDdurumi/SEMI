@@ -618,7 +618,8 @@ $("#modal_loginBtn").on("click",function(){
     
     $(function(){
     	$(".goodcol").each(function(i,item){
-
+// 			alert(${jjimDTO.id})
+// 			alert(${goodDTO.id})
     	})
     })
     
