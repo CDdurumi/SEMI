@@ -501,7 +501,7 @@
 <!-- 화면 로딩 시 ------------------------------------------------------------------- -->
     <script>
     window.onload = function(){
-    	if(${loginId == null}){
+    	if(${loginID == null}){
     		Swal.fire({
     			  icon: 'error',
     			  title: 'Oops...',
@@ -511,118 +511,7 @@
     	}
     }
     
-	    let page = 1;  //페이징과 같은 방식이라고 생각하면 된다.
 
-    	$(function(){
-    	     getList(page);
-    	     page++;
-//     	     console.log(page);
-    	})
-    
-    	$(window).scroll(function(){   //스크롤이 최하단 으로 내려가면 리스트를 조회하고 page를 증가시킨다.
-     		if($(window).scrollTop() >= $(document).height() - $(window).height()){
-				getList(page);
-          	 	page++;   
-//           	 	console.log(page);
-    	 	} 
-		});
-
-	    
-	    function getList(pape){
-	    	
-	    	$.ajax({
-	    		url : '/list.reply',
-	            type : 'POST',
-	            data : {page : page, parnet_seq : '${dto.all_board_seq}'},
-	            dataType : 'json'
-
-	    	}).done(function(resp){
-// 				console.log(resp)
-				if(${totalPage}<pape){
-					alert("마지막 페이지 입니다.");
-				}else{
-					
-					for(let i = 0; i < resp.length; i++){
-
-						let row1 = $("<div>");
-                        row1.attr("class","row wrap");
-                        let col1 = $("<div>");
-                        col1.attr("class","col-12 wrap");
-                        let row2 = $("<div>");
-                        row2.attr("class","row");
-                        
-                        let col2 = $("<div>");
-                        col2.attr("class","col-9 p-0");
-                        let row3 = $("<div>");
-                        //작성자
-                        let col3 = $("<div>");
-                        col3.attr("class","col-12 pt-4 "); 
-                        col3.text("resp[i].id");   
-                        //작성날짜
-                        let col4 = $("<div>");
-                        col4.attr("class","col-12 ");    
-                        col4.text("resp[i].write_date");
-                        //버튼
-                        let col5=$("<div>");
-                        col5.attr("class","col-3 btnbtn pt-4");
-                        
-                         //댓글내용
-                         let col6 =$("<div>");
-                        col6.attr("class","col-12 message border-bottom border-2 m-0");
-                        col6.text("resp[i].contents");    
-                       //버튼
-                       
-                       let my_id =col2.text();
-		  	             if(my_id =='${loginID}'){
-                        let btn1 = $("<button>");
-                            btn1.text("수정");
-                            btn1.attr("class","btn btn-outline-primary ");
-                            btn1.attr("type","button");
-                            
-//                             btn1.on("click",function(){
-//                                 col6.attr("contenteditable","true");
-//                             })
-                        let btn2 = $("<button>");
-                            btn2.text("삭제");
-                            btn2.attr("class","btn btn-outline-primary ");
-                            btn2.attr("type","button");
-                            
-                            col5.append(btn1);
-                            col5.append(btn2);
-		  	             }
-                         
-		  	             
-		   
-		  	            row1.hide();
-		  	            row1.fadeIn(2500);
-
-                        $("#dummy").append(row1);
-                        row1.append(col1);
-                        col1.append(row2);
-                        row2.append(col2);
-                        col2.append(row3);
-
-                        row3.append(col3);
-                        row3.append(col4);
-
-
-                        row2.append(col5);
-                        row1.append(col6);
-
-                      
-            
-						
-						
-					}	    		
-					
-				}
-	    		
-
-	    	})
-	    		
-	    }
-
-	    		
     </script>
     
     
@@ -751,10 +640,9 @@ $("#modal_loginBtn").on("click",function(){
            
             <div class="col-12 p-0 border-bottom border-2 rounded h-100" id="contents">
                 <div class="row border-bottom border-2 rounded h-100" id="conMenu">
-<%--                     <div class="col-md-1 d-none d-md-block">${dto.all_board_seq}</div> --%>
-                    <div class="col-12 col-md-12 ellipsis "  style="padding-left:15px" id="title">${dto.title} 제목제목</div>
-                    <div class="col-3 col-md-3 ellipsis " ><span style="width: 90%; ">${dto.id} 글쓴이</span></div>
-                    <div class="col-9 ">${dto.formdDate} 2022/02/02</div>
+                    <div class="col-12 col-md-12 ellipsis "  style="padding-left:15px" id="title">${dto.title}</div>
+                    <div class="col-3 col-md-3 ellipsis " ><span style="width: 90%; ">${loginID}</span></div>
+                    <div class="col-9 ">${dto.date }</div>
                     
                     
  						<div class="col-12" id="dummy3" style="height: 10px;"></div>                     
@@ -763,31 +651,18 @@ $("#modal_loginBtn").on("click",function(){
                 <div class="col-12 text-center" id="cont" style="padding:0px;">
                     <div class="row " id="contentsdummy" style="padding:0px;" >
                         <div class="col-12" id="contentsdummy2" style="padding-top: 40px;padding-bottom: 40px;padding-left: 0px;padding-right: 0px;">
-                            ${dto.contents} 글내용내용내용
+                            ${dto.contents}
                         </div>
                     </div>
                 </div>
             </div>
             <div class="col-12" style="text-align: right; padding-top: 10px;padding-right: 10px;">
-<%--             	<c:if test="${loginID == dto.id}"> --%>
-	           	    <button class="btn btn-primary " type="button" id="boardModi" data-bs-toggle="modal" data-bs-target="#exampleModal1">답장</button>
-	               	<button class="btn btn-outline-danger " type="button" id="boardDel">삭제</button>
-<%--                	</c:if> --%>
+	           	    <button class="btn btn-primary " type="button" id="MessageSend" data-bs-toggle="modal" data-bs-target="#exampleModal1">답장</button>
+	               	<button class="btn btn-outline-danger " type="button" id="MessageDel">삭제</button>
             </div>
             
             
 
-            <div class="row " id="count" style="margin: auto;">
-                
-                <div class="col-1" id="likecnt">
-                    ${dto.like_count}
-                </div>
-                <div class="col-1 jjimdummy" ></div>
-                <div class="col-1 text-center" id="jjimcnt">
-                   ${dto.jjim_count}
-                </div>
-                <div class="col-9"></div>
-            </div>
             
         </div>
         
@@ -818,190 +693,17 @@ $("#modal_loginBtn").on("click",function(){
 </div>
         
         
-        
-        <!-- 댓글  -->
-        <script>
-        //댓글 등록 버튼
-        $("#btn").on("click",function(){
-	        if(${loginID == null}){
-	        	alert("로그인이 필요합니다.");
-	        	return false;
-	        }
-        	
-        	let parent_seq = "${dto.all_board_seq}";
-        	let chatContents = $("#chatContents").val();
-        	//댓글 테이블 삽입
-        	$.ajax({
-        		url : "/chat.board",
-        		type : "post",
-        		data : {parent_seq:parent_seq, chatContents:chatContents}
-        	}).done(function(resp){
-//         		$("#chatContents").val("");
-//         		$("#chatContents").focus();
-        		location.reload();
-        	})
-
-        });
-      
-    </script>
     
-        <div class="row dummy"></div>
     </div>
     
      <!--top 버튼-->
     <button onclick="topFunction()" id="myBtn" title="Go to top">↑</button>
     
-    <!--Container Main end-->
-
-
-
-
-    <script>
-	//누르면 파일 펼치기
-	let listExist = false;
-	
-	$(".filebtn").on("click",function(){
-	    let filelist = $(this).siblings();
-	    if(listExist==false){
-	        filelist.css("display","block");
-// 	        listExist = true;
-	        
-			$.ajax({
-				url:"/f_list.file",
-				data:{parent_seq:"${dto.all_board_seq}"},
-				dataType:"json"
-			}).done(function(resp){
-					for(let i=0; i<resp.length; i++){
-						let fileDiv = $("<div>");
-						
-						let anker = $("<a>");
-						anker.attr("href","/f_download.file?ori_name="+resp[i].ori_name+"&sys_name="+resp[i].sys_name);
-						anker.text(resp[i].ori_name);
-					
-						fileDiv.append(anker)
-						$(filelist).append(fileDiv);
-					}
-				})
-			listExist=true;
-	        
-	    } else{
-	        filelist.css("display","none");
-            $(filelist).children().remove();
-	        listExist = false;
-	    }
-	   
-	})
-	
-    //좋아요
-    let good = true;
-	if(${isBoardGood!=null}){
-		if(${isBoardGood==true}){
-	        $("#goodcol").css("color", "#ffd000" );
-	        $("#goodcol").css("border","1px solid #ffd000" );
-	        good=false;
-		}
-	}
-
-    let gUpDown = 0;
-    $("#goodcol").on("click", function () {
-        if(${loginID == null}){
-        	alert("로그인이 필요합니다.");
-        	return false;
-        }
-        
-        if (good) {
-            $("#goodcol").css("color", "#ffd000" );
-            $("#goodcol").css("border","1px solid #ffd000" );
-            good=false;
-        } else {
-            $("#goodcol").css("color", "#b1b1b1");
-            $("#goodcol").css("border","1px solid #b1b1b1" );
-            good=true;
-        }
-
-        if(good == false){
-        	gUpDown = 1;
-        }else{
-        	gUpDown = 0;
-        }
-        
-		$.ajax({
-			url:"/goodClick.board",
-			data:{
-				seq:"${dto.all_board_seq}",
-				upDown:gUpDown
-			},
-			dataType:"json"
-		}).done(function(resp){
-				console.log(resp.likeCount)//좋아요 갯수
-				$("#likecnt").text(resp.likeCount);
-			}).fail(function(a, b){ 
-				console.log(a);
-				console.log(b);
-			})
-	
+	<script>
+    // 쪽지 삭제
+    $("#MessageDel").on("click", function(){
+    	location.href = "deleteMsg.mpg?message_seq="+${dto.message_seq};
     })
-    
-    
-    //heart-> 찜
-    let heart = true;
-    if(${isBoardJjim!=null}){
-    	if(${isBoardJjim==true}){
-            $("#jjimcol").css("color", "red" );
-            $("#jjimcol").css("border","1px solid red" );
-    		heart=false;
-    	}
-    }
-	let jUpDown = 0;
-    $("#jjimcol").on("click", function () {
-        if(${loginID == null}){
-        	alert("로그인이 필요합니다.");
-        	return false;
-        }
-    	
-        if (heart) {
-            $("#jjimcol").css("color", "red" );
-            $("#jjimcol").css("border","1px solid red" );
-            heart=false;
-        } else {
-            $("#jjimcol").css("color", "#b1b1b1");
-            $("#jjimcol").css("border","1px solid #b1b1b1" );
-            heart=true;
-        }
-        
-        if(heart == false){
-        	jUpDown = 1;
-        }else{
-        	jUpDown = 0;
-        }
-        
-		$.ajax({
-			url:"/jjimClick.board",
-			data:{
-				seq:"${dto.all_board_seq}",
-				upDown:jUpDown
-			},
-			dataType:"json"
-		}).done(function(resp){
-				console.log(resp.jjimCount)//좋아요 갯수
-				$("#jjimcnt").text(resp.jjimCount);
-			}).fail(function(a, b){ 
-				console.log(a);
-				console.log(b);
-			})
-
-        
-    })
-
-
-   	//게시글 삭제
-   	$("#boardDel").on("click",function(){
-   		let del = confirm("해당 게시글을 삭제하시겠습니까?");
-   		if(del == true){
-   			location.href = "/delete.board?seq=${dto.all_board_seq}";
-   		}
-   	})
-    
     
     
     
