@@ -401,6 +401,12 @@ img:hover + .mask, .mask:hover {display: block;}
        color:#0080ff;
        }
 
+select{
+    border-radius: 5px;
+    margin-right: 8px;
+    font-size: 18px;
+    font-weight: bold;
+}
 </style>
 </head>
 
@@ -531,20 +537,40 @@ $("#modal_loginBtn").on("click",function(){
     <nav class="navbar bg">
         <div class="container-fluid">
           <a class="navbar-brand"> </a>
-          <form class="d-flex" role="search">
-            <input class="form-control me-2" type="search" placeholder="작성자를 입력하세요" aria-label="Search">
+          <form action="/search.board" method="post" class="d-flex" role="search">
+          		<input type="hidden" value="g" name="boardOption">
+          		<input type="hidden" value="1" name="cpage">
+				<select name="serchOption" id="select">
+                        <option value="title">
+                            제목
+                        </option>
+                        <option value="id">
+                            작성자
+                        </option>
+                        <option value="contents">
+                            내용
+                        </option>
+				</select>
+          	
+          	
+            <input class="form-control me-2" type="search" placeholder="검색어를 입력해주세요." aria-label="Search" name="contents">
             <button class="btn btn-primary" type="submit">Search</button>
           </form>
         </div>
       </nav>
     </div>
 
-    
+    ${list[1].title}
         <div id="imgmenu1" class="row">
         <c:forEach var="i" items="${list}">
         	<c:forEach var="j" items="${porfileList}">
 				<c:if test="${j.parent_seq eq i.all_board_seq}">
-					<div class="col-12 col-sm-6 col-md-3" id="img"><img src="${profilePath}${j.sys_name}" alt=".." class="rounded-circle w-100 h-100" style="box-shadow: 5px 5px 5px 5px gray"><div class="mask"><p1>${i.title}</p1></div></div>
+					<div class="col-12 col-sm-6 col-md-3" id="img">
+						<a href = "/detailView.board?cpage=1&seq=${i.all_board_seq}">
+							<img src="${profilePath}${j.sys_name}" alt=".." class="rounded-circle w-100 h-100" style="box-shadow: 5px 5px 5px 5px gray">
+						</a>
+						<div class="mask"><p1>${i.title}</p1></div>
+					</div>
 				</c:if>
         	</c:forEach>
         </c:forEach>
