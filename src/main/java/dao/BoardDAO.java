@@ -72,7 +72,7 @@ public class BoardDAO {
 								+ "where all_board_seq like '"+boardOption+"%' and "+serchOption+" like '%"+ccontents+"%') "
 					+ "where line between ? and ?";
 
-//		System.out.println(sql);
+		System.out.println(sql);
 		try (Connection con = this.getConnection();
 				PreparedStatement pstat = con.prepareStatement(sql);) {
 			pstat.setInt(1, start);
