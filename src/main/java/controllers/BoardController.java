@@ -125,18 +125,10 @@ public class BoardController extends HttpServlet {
 				request.getRequestDispatcher("/board/houseMain.jsp").forward(request, response);//숙소리뷰 메인페이지
 				
 			}else if(uri.equals("/editorReMain.board")) {//애디터 추천글 메인화면 출력
-				
-				int cpage = Integer.parseInt(request.getParameter("cpage"));
-				request.setAttribute("cpage", cpage);
 				String boardOption ="e";
-				List<BoardDTO> list = dao.selectByPage(cpage,boardOption);
-				List<BoardDTO> hotlist = dao.selectByLikeCount(boardOption);
-				
-				String pageNavi = dao.getPageNavi(cpage, boardOption);
-//				
+				List<BoardDTO> list = dao.selectAll(boardOption);
+
 				request.setAttribute("list", list);
-				request.setAttribute("hotlist", hotlist);
-				request.setAttribute("navi", pageNavi);
 
 				List<FilesDTO> filesDao = filesDAO.selectSysName(boardOption);//애디터추천 게시글 프로필 - sys_name get(해당게시글seq와 sys_name담겨 있음).
 				request.setAttribute("porfileList", filesDao);
@@ -144,6 +136,36 @@ public class BoardController extends HttpServlet {
 	
 				request.getRequestDispatcher("/board/editorReMain.jsp").forward(request, response);//애디터추천 메인페이지
 		
+			}else if(uri.equals("/search.board")) {//게시글 검색
+				int cpage = Integer.parseInt(request.getParameter("cpage"));//페이징네비 페이지 넘버
+				String boardOption = request.getParameter("boardOption"); //게시판 옵션(f:자유게시판, g:여행후기, j:구인구직, r:맛집, h:숙소리뷰, e:애디터추천글)
+				String serchOption = request.getParameter("serchOption"); //검색 옵션(id, title, contents)
+				String contents = request.getParameter("contents"); //검색 내용
+					
+				List<BoardDTO> list = dao.search(cpage, serchOption, contents, boardOption);//검색 결과 게시글 리스트
+				List<BoardDTO> hotlist = dao.selectByLikeCount(boardOption);//화제글
+				String pageNavi = dao.getPageNavi(cpage, boardOption);//페이징네비
+				
+				request.setAttribute("cpage", cpage);
+				request.setAttribute("list", list);
+				request.setAttribute("hotlist", hotlist);
+				request.setAttribute("navi", pageNavi);
+				
+				String absolutePath = "";
+				if(boardOption.equals("f")) {//자유게시판 메인페이지
+					absolutePath = "/board/boardMain.jsp";
+				}else if(boardOption.equals("g")) {//여행후기 메인페이지
+					absolutePath = "/board/gallery.jsp";
+				}else if(boardOption.equals("j")) {//구인구직 메인페이지
+					absolutePath = "/jobMain.board";
+				}else if(boardOption.equals("r")) {//맛집 메인페이지
+					absolutePath = "/houseMain.board";
+				}else if(boardOption.equals("h")) {//숙소리뷰 메인페이지
+					absolutePath = "/houseMain.board";
+				}
+				
+				request.getRequestDispatcher(absolutePath).forward(request, response);//메인페이지 전환
+				
 			}else if(uri.equals("/editorLoad.board")) {//애디터추천게시글 메인 로드 시 찜,좋아요 정보 긁어오기
 				String table = request.getParameter("table");
 				String id = request.getSession().getAttribute("loginID").toString();//로그인 id
@@ -220,15 +242,20 @@ public class BoardController extends HttpServlet {
 				}else if(BoardGubun.equals("e")) {//애디터추천
 					url = "http://localhost/editorReMain.board";
 				}
-				if(request.getHeader("referer").equals(url+"?cpage="+cpage)){//이전 주소가 이와 같다면, 조회 수 증가
-					dao.viewCountUp(seq);//조회수 증가
-				}
 
+				if(BoardGubun.equals("e")) {
+					if(request.getHeader("referer").equals(url)){//이전 주소가 이와 같다면, 조회 수 증가
+						dao.viewCountUp(seq);//조회수 증가
+					}
+				}else {
+					if(request.getHeader("referer").equals(url+"?cpage="+cpage)){//이전 주소가 이와 같다면, 조회 수 증가
+						dao.viewCountUp(seq);//조회수 증가
+					}
+				}
+				
+				
 				BoardDTO dto = dao.selectBySeq(seq);//고유seq에 해당하는 게시글 정보get
 				request.setAttribute("dto", dto);
-
-//				List<ReplyDTO> replyList = replayDAO.selectAll();//댓글 정보 가져오기 All
-//				request.setAttribute("replyList", replyList);
 				
 				if((String) request.getSession().getAttribute("loginID") != null) {
 					String id = (String) request.getSession().getAttribute("loginID");//로그인 id

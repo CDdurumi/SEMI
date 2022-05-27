@@ -615,39 +615,62 @@ $("#modal_loginBtn").on("click",function(){
     <script>
     
     $(function(){
-
-		$.ajax({
-			   url:"/editorLoad.board",
-			   data:{
-				   table: "jjim"
-			   },
-			   dataType:"json"
-			}).done(function(resp){//jjimDTO
-			      
-			   }).fail(function(a, b){ 
-			      console.log(a);
-			      console.log(b);
-			   });
-			   
-			   
-		$.ajax({
-		   url:"/editorLoad.board",
-		   data:{
-			   table: "good"
-		   },
-		   dataType:"json"
-		}).done(function(resp){//goodDTO
-
-		   }).fail(function(a, b){ 
-		      console.log(a);
-		      console.log(b);
-		   })	   
-//     	$(".goodcol").each(function(i,item){
-  
-    		
-    		
-//     	})
     	
+        if(${loginID != null}){//로그인 했을 시
+			//로그인 id 좋아요 정보 가져오기
+			$.ajax({
+				   url:"/editorLoad.board",
+				   data:{
+					   table: "good"
+				   },
+				   dataType:"json"
+				}).done(function(resp){//goodDTO
+	
+					$(".goodcol").each(function(i,item){
+						
+						let seq = $(this).attr("seq");
+						for(let i =0; i< resp.length; i++){
+							if(seq == resp[i].board_seq){
+					            $(this).css("color", "#ffd000" );
+					            $(this).attr("good","false");//good에 flase set.
+							}
+						}
+					})
+					
+				   }).fail(function(a, b){ 
+				      console.log(a);
+				      console.log(b);
+				   })	
+  
+			//로그인 id 찜 정보 가져오기	   
+			$.ajax({
+				   url:"/editorLoad.board",
+				   data:{
+					   table: "jjim"
+				   },
+				   dataType:"json"
+				}).done(function(resp){//jjimDTO
+				      		
+			     	$(".heartcol").each(function(i,item){
+					  
+						let seq = $(this).attr("seq");
+						for(let i =0; i< resp.length; i++){
+							if(seq == resp[i].board_seq){
+					            $(this).css("color", "red" );
+					            $(this).attr("heart","false");//heart에 flase set.
+							}
+						}
+			     		
+		    		
+			     	})
+					
+
+				   }).fail(function(a, b){ 
+				      console.log(a);
+				      console.log(b);
+				   });
+			   
+        }
     })
     
     
@@ -700,8 +723,7 @@ $("#modal_loginBtn").on("click",function(){
     
     
  	//heart(찜)
-	let heart = true;
-	let jUpDown = 0;
+
     $(".heartcol").on("click", function () {
         if(${loginID == null}){
             alert("로그인이 필요합니다.");

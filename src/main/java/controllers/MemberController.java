@@ -121,7 +121,35 @@ public class MemberController extends HttpServlet {
 				
 				
 			}else if(uri.equals("/modified.member")){
-				 //mypage 계정 수정 
+				 String id = (String)request.getSession().getAttribute("loginID");
+				 String pw = request.getParameter("pw");
+				 System.out.println(pw);
+				 pw = EncryptUtils.SHA512(pw);
+				 
+				 boolean result = dao.isModifiedPossible(id, pw);
+				 
+				 System.out.println("입력아이디 : " + id);
+				 System.out.println("입력 패스워드 : " + pw);
+				 System.out.println("비밀번호 확인 결과" + result);
+				 System.out.println((String)request.getSession().getAttribute("loginID"));
+				 
+				 PrintWriter pr = response.getWriter();
+				 pr.append(g.toJson(result));
+			
+			}else if(uri.equals("/modifiedOk.member")) {
+				String id = request.getParameter("id");
+				String pw = request.getParameter("pw");
+				String email = (String)request.getSession().getAttribute("loginEmail");
+				pw = EncryptUtils.SHA512(pw);
+				
+				int result = dao.modifiedUser(id, pw, email);
+				
+				System.out.println("수정을 원하는 아이디" + id);
+				System.out.println("수정을 원하는 패스워드" + pw);
+				System.out.println("수정 결과값" + result);
+				
+				 PrintWriter pr = response.getWriter();
+				 pr.append(g.toJson(result));
 			}
 		}catch (Exception e) {
 			response.sendRedirect("errol.html");

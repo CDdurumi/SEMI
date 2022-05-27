@@ -60,6 +60,50 @@ public class BoardDAO {
 		}
 	}
 
+	//게시글 검색
+	public List<BoardDTO> search(int cpage, String serchOption, String ccontents , String boardOption) throws Exception {
+		// 페이지 당 게시글의 번호 세팅.(한 페이지에 20개의 게시글 씩)
+		int start = cpage * 10 - 9;
+		int end = cpage * 20;
+		
+		String sql = "select * from "
+								+ "(select row_number() over(order by write_date desc) line, all_board.* "
+								+ "from all_board "
+								+ "where all_board_seq like '"+boardOption+"%' and "+serchOption+" like '%"+ccontents+"%') "
+					+ "where line between ? and ?";
+
+		System.out.println(sql);
+		try (Connection con = this.getConnection();
+				PreparedStatement pstat = con.prepareStatement(sql);) {
+			pstat.setInt(1, start);
+			pstat.setInt(2, end);
+
+			try (ResultSet rs = pstat.executeQuery();) {
+				List<BoardDTO> list = new ArrayList<BoardDTO>();
+
+				while (rs.next()) {
+					String seq = rs.getString("all_board_seq");
+					String id = rs.getString("id");
+					String title = rs.getString("title");
+					String contents = rs.getString("contents");
+					Timestamp write_date = rs.getTimestamp("write_date");
+					int like_count = rs.getInt("jjim_count");
+					int jjim_count = rs.getInt("like_count");
+					int view_count = rs.getInt("view_count");
+
+					BoardDTO dto = new BoardDTO(seq, id, title, contents, write_date, jjim_count, like_count, view_count);
+					list.add(dto);
+				}
+				return list;
+			}
+		}
+	}
+	
+	
+	
+	
+	
+	
 	// 삽입
 	public int insert(BoardDTO dto) throws Exception {
 
@@ -204,8 +248,8 @@ public class BoardDAO {
 	}
 
 	// 게시판 리스트 출력
-	public List<BoardDTO> selectAll() throws Exception {
-		String sql = "select * from all_board order by all_board_seq desc";
+	public List<BoardDTO> selectAll(String boardOption) throws Exception {
+		String sql = "select * from all_board where all_board_seq like '"+boardOption+"%' order by write_date desc";
 
 		try (Connection con = this.getConnection();
 				PreparedStatement pstat = con.prepareStatement(sql);
@@ -213,7 +257,7 @@ public class BoardDAO {
 			List<BoardDTO> list = new ArrayList<BoardDTO>();
 
 			while (rs.next()) {
-				String seq = rs.getString("free_board_seq");
+				String all_board_seq = rs.getString("all_board_seq");
 				String id = rs.getString("id");
 				String title = rs.getString("title");
 				String contents = rs.getString("contents");
@@ -222,7 +266,7 @@ public class BoardDAO {
 				int jjim_count = rs.getInt("jjim_count");
 				int view_count = rs.getInt("view_count");
 
-				BoardDTO dto = new BoardDTO(seq, id, title, contents, write_date, like_count, jjim_count, view_count);
+				BoardDTO dto = new BoardDTO(all_board_seq, id, title, contents, write_date, like_count, jjim_count, view_count);
 				list.add(dto);
 			}
 			return list;

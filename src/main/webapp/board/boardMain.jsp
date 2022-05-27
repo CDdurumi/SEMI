@@ -440,6 +440,14 @@
 .fa-thumbs-up{
 	color:rgb(255,208,0);
 }
+
+
+select{
+    border-radius: 5px;
+    margin-right: 8px;
+    font-size: 18px;
+    font-weight: bold;
+}
     </style>
 </head>
 
@@ -657,8 +665,23 @@ $("#modal_loginBtn").on("click",function(){
     <nav class="navbar bg">
         <div class="container-fluid">
           <a class="navbar-brand"> </a>
-          <form class="d-flex" role="search">
-            <input class="form-control me-2" type="search" placeholder="작성자를 입력하세요" aria-label="Search">
+          <form action="/search.board" method="post" class="d-flex" role="search">
+          		<input type="hidden" value="f" name="boardOption">
+          		<input type="hidden" value="1" name="cpage">
+				<select name="serchOption" id="select">
+                        <option value="title">
+                            제목
+                        </option>
+                        <option value="id">
+                            작성자
+                        </option>
+                        <option value="contents">
+                            내용
+                        </option>
+				</select>
+          	
+          	
+            <input class="form-control me-2" type="search" placeholder="검색어를 입력해주세요." aria-label="Search" name="contents">
             <button class="btn btn-outline-secondary btn-sm" type="submit">Search</button>&nbsp;
             <button type="button" class="btn btn-primary btn-sm" id="writeBtn" style="white-space:nowrap;"><i class="fa-solid fa-pen-to-square"></i>글 작성하기</button>
           </form>

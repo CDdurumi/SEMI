@@ -14,8 +14,8 @@ import javax.sql.DataSource;
 import dto.MemberDTO;
 
 public class MemberDAO {
-public MemberDAO() {
-		
+	public MemberDAO() {
+
 	}
 	
 	private static MemberDAO instance = null;
@@ -28,9 +28,9 @@ public MemberDAO() {
 	}
 
 	private Connection getConnection() throws Exception {
-		
+
 		Context ctx = new InitialContext();
-		DataSource ds = (DataSource)ctx.lookup("java:comp/env/jdbc/orcl");
+		DataSource ds = (DataSource) ctx.lookup("java:comp/env/jdbc/orcl");
 		return ds.getConnection();
 	}
 
@@ -43,7 +43,6 @@ public MemberDAO() {
 			pstat.setString(2, dto.getPw());
 			pstat.setString(3, dto.getEmail());
 			pstat.setString(4, dto.getInformation());
-			
 
 			int result = pstat.executeUpdate();
 			con.commit();
@@ -52,7 +51,8 @@ public MemberDAO() {
 
 		}
 	}
-	//ID 중복검사
+
+	// ID 중복검사
 	public boolean isNickNameExist(String id) throws Exception {
 
 		String sql = "select * from member where id=?";
@@ -64,7 +64,8 @@ public MemberDAO() {
 			}
 		}
 	}
-	//email 중복검사
+
+	// email 중복검사
 	public boolean isEmailExist(String email) throws Exception {
 
 		String sql = "select * from member where email=?";
@@ -76,7 +77,8 @@ public MemberDAO() {
 			}
 		}
 	}
-	//로그인시 id PW 검사 
+
+	// 로그인시 id PW 검사
 	public boolean isEmailPwExist(String email, String pw) throws Exception {
 
 		String sql = "select * from member where email = ? and pw =?";
@@ -88,25 +90,51 @@ public MemberDAO() {
 			}
 		}
 	}
-	
-	//사용자 정보 뽑기
-	
+
+	// 사용자 정보 뽑기
+
 	public MemberDTO searchUser(String email) throws Exception {
 
 		String sql = "select * from member where email =?";
 		try (Connection con = this.getConnection(); PreparedStatement pstat = con.prepareStatement(sql);) {
 			pstat.setString(1, email);
 			try (ResultSet rs = pstat.executeQuery()) {
-				
+
 				rs.next();
 				String id = rs.getString("id");
 				email = rs.getString("email");
 				Timestamp join_date = rs.getTimestamp("join_date");
 				String information = rs.getString("information");
-				return(new MemberDTO(id,null,email,join_date,information));
-				
+				return (new MemberDTO(id, null, email, join_date, information));
+
 			}
 		}
 	}
 
+	public boolean isModifiedPossible(String id, String pw) throws Exception {
+		String sql = "select * from member where id = ? and pw = ?";
+		try (Connection con = this.getConnection(); PreparedStatement pstat = con.prepareStatement(sql);) {
+			pstat.setString(1, id);
+			pstat.setString(2, pw);
+			try (ResultSet rs = pstat.executeQuery()) {
+
+				return rs.next();
+			}
+
+		}
+	}
+	
+	public int modifiedUser(String id, String pw, String email) throws Exception {
+		String sql = "update from member set id = ?, pw = ? where email = ?";
+		try(Connection con = this.getConnection();
+				PreparedStatement pstat = con.prepareStatement(sql);){
+			pstat.setString(1, id);
+			pstat.setString(2, pw);
+			pstat.setString(3, email);
+			
+			int result = pstat.executeUpdate();
+			con.commit();
+			return result;
+		}
+	}
 }
