@@ -100,6 +100,14 @@ public class BoardController extends HttpServlet {
 				request.setAttribute("hotlist", hotlist);
 				request.setAttribute("navi", pageNavi);
 				
+				///////애디터 추천 게시글///////
+				boardOption ="e";
+				List<BoardDTO> editorList = dao.selectAll(boardOption);
+				request.setAttribute("editorList", editorList);//애디터추천게시글 리스트
+				List<FilesDTO> filesDao = filesDAO.selectSysName(boardOption);//애디터추천 게시글 프로필 - sys_name get(해당게시글seq와 sys_name담겨 있음).
+				request.setAttribute("porfileList", filesDao);
+				request.setAttribute("profilePath", "/files/");
+				
 				request.getRequestDispatcher("/board/jobMain.jsp").forward(request, response);//구인구직 메인페이지
 				
 			}else if(uri.equals("/foodMain.board")) {//맛집 메인화면 출력
@@ -238,6 +246,7 @@ public class BoardController extends HttpServlet {
 				String BoardGubun = seq.substring(0, 1);
 				String url = "";
 				String url1 = "";
+				String url2 = "";
 				if(BoardGubun.equals("f")) {//자유게시판
 					url = "http://localhost/boardMainView.board";
 				}else if(BoardGubun.equals("g")) {//여행후기
@@ -251,10 +260,12 @@ public class BoardController extends HttpServlet {
 				}else if(BoardGubun.equals("e")) {//애디터추천
 					url = "http://localhost/editorReMain.board";
 					url1 = "http://localhost/boardMainView.board?cpage=1";
+					url2 = "http://localhost/jobMain.board?cpage=1" ;
 				}
 
 				if(BoardGubun.equals("e")) {
-					if(request.getHeader("referer").equals(url) || request.getHeader("referer").equals(url1)){//이전 주소가 이와 같다면, 조회 수 증가
+					if(request.getHeader("referer").equals(url) || request.getHeader("referer").equals(url1) 
+							|| request.getHeader("referer").equals(url2)){//이전 주소가 이와 같다면, 조회 수 증가
 						dao.viewCountUp(seq);//조회수 증가
 					}
 				}else {

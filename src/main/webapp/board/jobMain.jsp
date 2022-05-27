@@ -2,6 +2,8 @@
          pageEncoding="UTF-8"%>
  <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
 <html>
 
@@ -568,43 +570,61 @@ $("#modal_loginBtn").on("click",function(){
                 <div class="row border border-2 rounded">
                     <div class="col-12 border-bottom hotboard_bottom text-center">에디터 추천</div>
                     <div id="carouselExampleIndicators" class="carousel slide" data-bs-ride="carousel">
+                       
+                       
                         <div class="carousel-indicators">
-                            <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0"
-                                class="active" aria-current="true" aria-label="Slide 1"></button>
-                            <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1"
-                                aria-label="Slide 2"></button>
-                            <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="2"
-                                aria-label="Slide 3"></button>
+
+                            <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active" aria-current="true" 
+                            	aria-label="Slide 1"></button>
+                            	
+                            <c:forEach var="i" items="${editorList}" varStatus="status">   
+                            	<c:if test="${status.index lt fn:length(editorList)-1}">
+	                            	<button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="${status.count}"
+	                                aria-label="Slide ${status.count + 1}"></button>
+                            	</c:if>
+                            </c:forEach>	
+                                
                         </div>
+                        
                         <div class="carousel-inner text-center">
-                            <div class="carousel-item active ">
-                                <div class="card w-100 border-0" style="width: 18rem;">
-                                   
-                                    <div class="card-body">
-                                        <p class="card-text text-black">Some quick example text to build on the card
-                                            title
-                                            and make up
-                                            the bulk of the card's content.</p>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="carousel-item">
-                                <div class="card w-100 border-0" style="width: 18rem;">
-                                    <div class="card-body">
-                                        <p class="card-text text-black">Some quick example text to build on the card
-                                            title
-                                            and make up
-                                            the bulk of the card's content.</p>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="carousel-item">
-                                <div class="card w-100 border-0" style="width: 18rem;">
-                                    <div class="card-body">
-                                        <p class="card-text text-black">웁스덜아널다ㅓㄴㅇㄹ</p>
-                                    </div>
-                                </div>
-                            </div>
+                        
+							<c:set var="count" value="0"/>
+					        <c:forEach var="i" items="${editorList}">
+
+					        	<c:forEach var="j" items="${porfileList}">
+
+									<c:if test="${j.parent_seq eq i.all_board_seq}">
+										<c:set var="count" value="${count+1}"/>
+										<c:choose>
+											<c:when test="${count eq 1}">
+												<div class="carousel-item active ">
+					                                <div class="card w-100 border-0" style="width: 18rem;">
+					                                    <a href = "/detailView.board?cpage=1&seq=${i.all_board_seq}"><img src="${profilePath}${j.sys_name}" class="card-img-top" alt="..."></a>
+					                                    <div class="card-body">
+					                                        <p class="card-text text-black">${i.title}</p>
+					                                    </div>
+					                                </div>
+				                            	</div>
+											</c:when>
+											
+											<c:otherwise>
+												<div class="carousel-item ">
+					                                <div class="card w-100 border-0" style="width: 18rem;">
+					                                    <a href = "/detailView.board?cpage=1&seq=${i.all_board_seq}"><img src="${profilePath}${j.sys_name}" class="card-img-top" alt="..."></a>
+					                                    <div class="card-body">
+					                                        <p class="card-text text-black">${i.title}</p>
+					                                    </div>
+					                                </div>
+				                            	</div>
+											</c:otherwise>
+										</c:choose>
+										
+									</c:if>
+									
+								</c:forEach>
+					        </c:forEach>
+                            
+                            
                         </div>
                         <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators"
                             data-bs-slide="prev">
