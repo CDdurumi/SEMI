@@ -18,7 +18,16 @@ public MemberDAO() {
 		
 	}
 	
-private Connection getConnection() throws Exception {
+	private static MemberDAO instance = null;
+	
+	public synchronized static MemberDAO getInstance(){
+		if(instance == null) {
+			instance = new MemberDAO();
+		}
+		return instance;
+	}
+
+	private Connection getConnection() throws Exception {
 		
 		Context ctx = new InitialContext();
 		DataSource ds = (DataSource)ctx.lookup("java:comp/env/jdbc/orcl");

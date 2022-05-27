@@ -94,7 +94,7 @@
         .header_toggle {
             color: black;
             font-size: 1.5rem;
-            cursor: pointer
+            cursor: pointer;
         }
 
         .login, .join {
@@ -520,7 +520,7 @@
 
 <body id="body-pd">
     <header class="header" id="header">
-        <div class="header_toggle"><i class='bx bx-menu' id="header-toggle"></i></div>
+       <i class='bx bx-menu' id="header-toggle"></i>
         <div>여행 커뮤니티</div>
         <div>
             <c:choose>
@@ -658,7 +658,7 @@ $("#modal_loginBtn").on("click",function(){
             </div>
             <div class="col-12" style="text-align: right; padding-top: 10px;padding-right: 10px;">
 	           	    <button class="btn btn-primary " type="button" id="MessageSend" data-bs-toggle="modal" data-bs-target="#exampleModal1">답장</button>
-	               	<button class="btn btn-outline-danger " type="button" id="MessageDel">삭제</button>
+	               	<button class="btn btn-outline-danger " type="button" id="deleteMsg">삭제</button>
             </div>
             
             
@@ -677,21 +677,22 @@ $("#modal_loginBtn").on("click",function(){
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
       <div class="modal-body">
-      	받는 사람 | <input type="text" placeholder="받는 사람 ID">
+      	 
+      	받는 사람 | <input type="text" placeholder="받는 사람 ID" id="receiver"><p></p>
+      	<input type="text" placeholder="제목을 입력하세요" id="title1" name="title" style="width:100%">
       	<p>
       		
       	</p>
       	
-        <textarea style="width:100%; min-height:150px" placeholder="내용을 입력하세요"></textarea>
+        <textarea style="width:100%; min-height:150px" placeholder="내용을 입력하세요" id="msgContents"></textarea>
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">닫기</button>
-        <button type="button" class="btn btn-primary">보내기</button>
+        <button type="button" class="btn btn-primary" id="sendMsg">보내기</button>
       </div>
     </div>
   </div>
 </div>
-        
         
     
     </div>
@@ -700,12 +701,47 @@ $("#modal_loginBtn").on("click",function(){
     <button onclick="topFunction()" id="myBtn" title="Go to top">↑</button>
     
 	<script>
-    // 쪽지 삭제
-    $("#MessageDel").on("click", function(){
+//     쪽지 삭제
+    $("#deleteMsg").on("click", function(){
     	location.href = "deleteMsg.mpg?message_seq="+${dto.message_seq};
+    });
+//	     쪽지보내기
+    $("#sendMsg").on("click", function(){
+    	if($("#receiver").val()==""){
+        	alert("받는 사람의 닉네임를 입력해주세요.");
+        	$("#receiver").focus();
+        	return false;
+        }else if($("#title1").val()==""){
+        	alert("제목를 입력해주세요.");
+        	$("#title1").focus();
+        	return false;
+        }else if($("#msgContents").val()==""){
+        	alert("내용를 입력해주세요.");
+        	$("#msgContents").focus();
+        	return false;
+        }else{
+        	$.ajax({
+        		url:"sendMsg.mpg",
+        		type:"post",
+        		data:{
+        			message_seq:${dto.message_seq},
+        			receiver:$("#receiver").val(),
+        			title:$("#title1").val(),
+        			contents:$("#msgContents").val()
+        			},
+        		dataType:"json"
+        	}).done(function(resp){
+        		console.log(resp);
+        		if(resp==0){
+        			alert("존재하지 않는 닉네임입니다.");
+        		}else{
+        			location.reload();
+        		}
+        	})
+        }
+        
     })
-    
-    
+
     
         document.addEventListener("DOMContentLoaded", function (event) {
 

@@ -12,6 +12,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import com.google.gson.Gson;
 
+import dao.MemberDAO;
 import dao.MessageDAO;
 import dto.MessageDTO;
 
@@ -28,18 +29,29 @@ public class MyPageController extends HttpServlet {
 		String uri = request.getRequestURI();
 		
 		MessageDAO dao = MessageDAO.getInstance();
+		MemberDAO mdao = MemberDAO.getInstance();
 		Gson g= new Gson();
 		try {
 			if(uri.equals("/sendMsg.mpg")) { // 쪽지보내기
+				System.out.println("메세지 보내기 수신확인");
+				int result;
 				String sender = (String) request.getSession().getAttribute("loginID");
-				
+				int message_seq = Integer.parseInt(request.getParameter("message_seq"));
 				String title = request.getParameter("title");
 				String contents = request.getParameter("contents");
 				String receiver = request.getParameter("receiver");
+				if(mdao.isNickNameExist(receiver)) {
+					result = dao.insert(new MessageDTO(0,0,title,sender,receiver,contents,""));
+					
+				}else {
+					result = 0;
+				}
+				PrintWriter pw = response.getWriter();
 				
-				dao.insert(new MessageDTO(0, 0, title, sender, receiver, contents, ""));
+				System.out.println(message_seq +" : " +title+ " : " + contents + " : "+ receiver +" : " + sender);
 				
-				
+				pw.append(g.toJson(result));
+//				dao.insert(new MessageDTO(0, 0, title, sender, receiver, contents, ""));
 			}else if(uri.equals("/receiveMsgBox.mpg")) { //받은쪽지함
 				
 				System.out.println("받은 쪽지함 수신확인");
