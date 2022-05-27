@@ -39,7 +39,7 @@ public class MessageDAO {
 
 	// 메세지 입력
 	public int insert(MessageDTO dto) throws Exception {
-		String sql = "insert into message value(message_seq.nextval,?,?,?,?,sysdate)";
+		String sql = "insert into message values(message_seq.nextval,?,?,?,?,sysdate)";
 
 		try (Connection con = this.getConnection(); PreparedStatement pstat = con.prepareStatement(sql)) {
 			pstat.setString(1, dto.getTitle());

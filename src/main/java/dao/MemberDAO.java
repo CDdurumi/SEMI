@@ -17,6 +17,15 @@ public class MemberDAO {
 	public MemberDAO() {
 
 	}
+	
+	private static MemberDAO instance = null;
+	
+	public synchronized static MemberDAO getInstance(){
+		if(instance == null) {
+			instance = new MemberDAO();
+		}
+		return instance;
+	}
 
 	private Connection getConnection() throws Exception {
 
@@ -112,6 +121,20 @@ public class MemberDAO {
 				return rs.next();
 			}
 
+		}
+	}
+	
+	public int modifiedUser(String id, String pw, String email) throws Exception {
+		String sql = "update from member set id = ?, pw = ? where email = ?";
+		try(Connection con = this.getConnection();
+				PreparedStatement pstat = con.prepareStatement(sql);){
+			pstat.setString(1, id);
+			pstat.setString(2, pw);
+			pstat.setString(3, email);
+			
+			int result = pstat.executeUpdate();
+			con.commit();
+			return result;
 		}
 	}
 }
