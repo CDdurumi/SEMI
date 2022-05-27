@@ -1392,11 +1392,11 @@ $("#modal_loginBtn").on("click",function(){
                                 <div class="row "  id="pw" >
                                     <div class="col-12 col-md-4 pw content" style="display:none;"><strong>비밀번호</strong> </div>
                                     <div class="col-12 col-md-8 modify content pw" style="display:none;">
-                                        <input type="password" value="비밀번호를 입력하세요" id="pwtext1">
+                                        <input type="password" placeholder="비밀번호" id="pw1" name="pw">
                                     </div>
                                     <div class="col-12 col-md-4 check2" style="display:none;"><strong>비밀번호 확인</strong> </div>
                                     <div class="col-12 col-md-8 check2" style="display:none;">
-                                        <input type="password" placeholder="비밀번호 확인" id="pwtext2" name="pw2">
+                                        <input type="password" placeholder="비밀번호 확인" id="pw2">
                                         
                                     </div>
                                 </div>
@@ -1415,7 +1415,7 @@ $("#modal_loginBtn").on("click",function(){
                                 <div class="row" id="joinday">
                                     <div class="col-12 col-md-4 check" style="display:none;"><strong>비밀번호</strong> </div>
                                     <div class="col-12 col-md-8 check" style="display:none;">
-                                        <input type="password" placeholder="비밀번호를 입력하세요" id="pwtext" name="pw1">
+                                        <input type="password" placeholder="비밀번호를 입력하세요" id="pwtext">
                                         
                                     </div>
                                     
@@ -1423,7 +1423,7 @@ $("#modal_loginBtn").on("click",function(){
                                     <div class="row btn" id="btn">
                                         <div class="col-12 text-center" >
                                         <button type="button" class="btn btn-primary " id="modify">수정하기</button>
-                                        <button class="btn btn-primary " id="ok" style="display:none;">완료</button>
+                                        <button type="button" class="btn btn-primary " id="ok" style="display:none;">완료</button>
                                         <button type="button" class="btn btn-primary check " id="checkpw" style="display:none;">확인</button>
                                         <input type="button" class="btn btn-primary " value="취소" id="back" style="display:none;">
                                         
@@ -1434,8 +1434,7 @@ $("#modal_loginBtn").on("click",function(){
                             </div>
                     
                     </div>
-                     
-       
+                    
             
             
            
@@ -1459,7 +1458,6 @@ $("#modal_loginBtn").on("click",function(){
     })
     //컨텐츠 숨김 나타냄
     $("#modify").on("click",function(){
-    	alert(1);
         $(".content").css("display","none"); //모든 컨텐츠
         $("#back").css("display","inline"); //취소버튼
         $("#modify").css("display","none");   //수정하기 버튼
@@ -1467,14 +1465,12 @@ $("#modal_loginBtn").on("click",function(){
         
         
         $("#checkpw").on("click",function(){
-        	alert(2);
             $.ajax({
             url:"/modified.member",
             data:{pw:$("#pwtext").val()},
             dataType:"json",
             type:"post"
         }).done(function(resp){
-        	alert(3);
         	console.log(resp);
             
         	if(resp){
@@ -1484,7 +1480,7 @@ $("#modal_loginBtn").on("click",function(){
                 $(".check").css("display","none");  //비밀번호 확인 입력창
                 $(".check2").css("display","block");
 				$("#check2").css("display","block");
-				$("#pwtext1").val(null);
+				$("#pw1").val(null);
 //                 $(".modify").attr("contenteditable","true");
                 $("#editID").removeAttr("disabled");
                 $(".modify").css("color","#0089ff");
@@ -1499,12 +1495,30 @@ $("#modal_loginBtn").on("click",function(){
 
         })
     
-    //회원가입 관련 id_input , password1_input ,password_input , email_input
-	//정규식
-	
-/* 	  $("#ok").on("click",function(){
+        
+        $("#ok").on("click",function(){
+        	alert(1);
+        	console.log($("#editID").val());
+        	console.log($("#pw1").val());
+        	$.ajax({
+        		url:"/modifiedOk.member",
+                data:{id:$("#editID").val(), pw:$("#pw1").val()},
+                dataType:"json",
+                type:"post"
+        	}).done(function(resp){
+        		alert(2);
+        		if(resp){
+        			alert("변경완료");	
+        		}else{
+        			alert("error");
+        		}
+        		
+        	})
+        })
+        
+    /*     $("#signupFrm").on("submit",function(){
 		let nickName = $("#editID");
-		let pw1 = $("#pwtext1");
+		let pw1 = $("#pw1");
 		
 		if(!isNickName(nickName.val())){
 			nickName.focus();
@@ -1513,12 +1527,9 @@ $("#modal_loginBtn").on("click",function(){
 			pw1.focus();
 			return false;
 		}
-		
-		
 	})
- 	
 		//닉네임(한글,영문, 숫자 2-10자)
- 		function isNickName(asValue) {
+		function isNickName(asValue) {
 			var regExp = /^[a-z가-힣0-9]{2,10}$/g;		
 			return regExp.test(asValue);
 			}
@@ -1527,9 +1538,8 @@ $("#modal_loginBtn").on("click",function(){
 			var regExp = /^.{8,16}$/;
 			return regExp.test(asValue);
 		}
-	
 		//아이디 중복확인
-		$("#ok").on("click",function(){
+		$("#editID").on("input",function(){
 		$.ajax({
 		url:"/duplIDCheck.member",
 		type:"get",
@@ -1537,45 +1547,33 @@ $("#modal_loginBtn").on("click",function(){
 		dataType:"json"
 		}).done(function(resp){
 				
-					if(resp==false){						
-						if(isNickName($("#editID").val())){
-							alert("사용 가능한 닉네임입니다!");
-						}else{
-							alert("닉네임은 한글,영문, 숫자 2-10자");
-						}
+// 					if(resp==false){						
+// 						if(isNickName($("#editID").val())){
+// 							$("#nickname_check_text").text("사용 가능한 닉네임입니다!");
+// 							$("#nickname_check_text").css({ color: "blue" });
+// 						}else{
+// 							$("#nickname_check_text").text("닉네임은 한글,영문, 숫자 2-10자");
+// 							$("#nickname_check_text").css({ color: "red" });
+// 						}
 
-					}else if(resp==true){
-						alert("사용중인 닉네임입니다!");
-					}
+// 					}else if(resp==true){
+// 						$("#nickname_check_text").text("사용중인 닉네임입니다!");
+// 						$("#nickname_check_text").css({ color: "red" });
+// 					}
 				});
 			})
-			
-		$("#ok").on("click",function(){
-			$.ajax({
-				url:"/modifiedOk.member",
-				type:"post",
-				data:{id:$("#editID").val(), pw:$("#pwtext1").val(), email:${loginEmail} },
-				dataType:"json"
-				}).done(function(resp){
-						
-							if(resp==1){						
-								alert(수정되었습니다);
-							}else if(resp==2){
-								alert(수정에 실패했습니다);
-							}
-						});
-		})
 	//비밀번호 확인 
-	$("#ok").on("click", function () {
-            let pw1 = $("#pwtext1").val();
-            let pw2 = $("#pwtext2").val();
+	$("#pw1").on("input", function () {
+            let pw1 = $("#pw1").val();
+            let pw2 = $("#pw2").val();
             
             if(pw2!=""){
             	if (pw1 == pw2) {
             		if(isPw(pw1)){
             			alert("비밀번호가 일치합니다");
             		}else{
-            			alert("비밀번호는 숫자,영문,특수문자 포함 8~16자");                        
+            			alert("비밀번호는 숫자,영문,특수문자 포함 8~16자");
+                        
             		}
                 	
                 }
@@ -1583,12 +1581,15 @@ $("#modal_loginBtn").on("click",function(){
                     alert("비밀번호가 일치하지 않습니다");
                 }
             }else if(pw2==""){
+    
             	alert("비밀번호는 필수정보입니다");
             }
             
-        });
-	 */
-		
+        }); */
+        
+       
+        
+  
     
   //계정관리
    
@@ -1604,7 +1605,8 @@ $("#modal_loginBtn").on("click",function(){
         $("#ok").css("display","none");
         $(".pw").css("display","none");
         $(".check").css("display","none");
-
+        $("#check2").css("display","none");
+        
         $(".modify").attr("contenteditable","false");
         $(".modify").css("color","black");
     })

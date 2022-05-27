@@ -264,7 +264,7 @@ public class BoardController extends HttpServlet {
 				//테스트용 하드코딩
 //				String seq = "f75";
 				String seq = request.getParameter("seq"); //해당 게시글 고유seq
-//				
+			System.out.println("요기 : " + seq);	
 				int cpage = Integer.parseInt(request.getParameter("cpage"));
 				request.setAttribute("cpage", cpage);
 				
@@ -312,6 +312,13 @@ public class BoardController extends HttpServlet {
 				
 				int totalPage = replyDao.getTotalPage();//댓글 총 페이지 수
 				request.setAttribute("totalPage", totalPage);
+				
+				//총댓글 수
+				int reTotalCnt = replyDao.selectReTotalCnt(seq);
+				request.setAttribute("reTotalCnt", reTotalCnt);
+				//리댓글 수
+				List<ReplyDTO> reList = replyDao.selectReCountByRe(seq);
+				request.setAttribute("reList", reList);
 				
 				
 				request.getRequestDispatcher("/board/boardView.jsp").forward(request, response);//작성글 페이지 전환
@@ -377,7 +384,7 @@ public class BoardController extends HttpServlet {
 				String id = (String) request.getSession().getAttribute("loginID");
 				String contents = request.getParameter("chatContents");
 				
-				replyDao.insert(new ReplyDTO(null, id, contents, null, parent_seq));
+				replyDao.insert(new ReplyDTO(null, id, contents, null, parent_seq, 0));
 
 //				PrintWriter pw = response.getWriter();
 //				pw.append(g.toJson(result));
