@@ -114,4 +114,18 @@ public class MemberDAO {
 
 		}
 	}
+	
+	public int modifiedUser(String id, String pw, String email) throws Exception {
+		String sql = "update from member set id = ?, pw = ? where email = ?";
+		try(Connection con = this.getConnection();
+				PreparedStatement pstat = con.prepareStatement(sql);){
+			pstat.setString(1, id);
+			pstat.setString(2, pw);
+			pstat.setString(3, email);
+			
+			int result = pstat.executeUpdate();
+			con.commit();
+			return result;
+		}
+	}
 }
