@@ -165,10 +165,10 @@ public class BoardController extends HttpServlet {
 				String boardOption = request.getParameter("boardOption"); //게시판 옵션(f:자유게시판, g:여행후기, j:구인구직, r:맛집, h:숙소리뷰, e:애디터추천글)
 				String serchOption = request.getParameter("serchOption"); //검색 옵션(id, title, contents)
 				String contents = request.getParameter("contents"); //검색 내용
-				System.out.println(cpage);
-				System.out.println(boardOption);
-				System.out.println(serchOption);
-				System.out.println(contents);
+//				System.out.println(cpage);
+//				System.out.println(boardOption);
+//				System.out.println(serchOption);
+//				System.out.println(contents);
 				
 				List<BoardDTO> list = dao.search(cpage, serchOption, contents, boardOption);//검색 결과 게시글 리스트				
 				List<BoardDTO> hotlist = dao.selectByLikeCount(boardOption);//화제글
@@ -178,7 +178,6 @@ public class BoardController extends HttpServlet {
 				request.setAttribute("list", list);
 				request.setAttribute("hotlist", hotlist);
 				request.setAttribute("navi", pageNavi);
-				
 
 				String absolutePath = "";
 				if(boardOption.equals("f")) {//자유게시판 메인페이지
@@ -198,6 +197,13 @@ public class BoardController extends HttpServlet {
 					request.setAttribute("profilePath", "/files/");
 				}else if(boardOption.equals("j")) {//구인구직 메인페이지
 					absolutePath = "/board/jobMain.jsp";
+					///////애디터 추천 게시글///////
+					boardOption ="e";
+					List<BoardDTO> editorList = dao.selectAll(boardOption);
+					request.setAttribute("editorList", editorList);//애디터추천게시글 리스트
+					List<FilesDTO> filesDao = filesDAO.selectSysName(boardOption);//애디터추천 게시글 프로필 - sys_name get(해당게시글seq와 sys_name담겨 있음).
+					request.setAttribute("porfileList", filesDao);
+					request.setAttribute("profilePath", "/files/");
 				}else if(boardOption.equals("r")) {//맛집 메인페이지
 					absolutePath = "/board/foodMain.jsp";
 					///////애디터 추천 게시글///////
@@ -275,7 +281,7 @@ public class BoardController extends HttpServlet {
 				request.setAttribute("cpage", cpage);
 				
 				String BoardGubun = seq.substring(0, 1);
-				String url = ""; String url1 = ""; String url2 = ""; String url3 = ""; String url4 = "";
+				String url = ""; String url1 = ""; String url2 = ""; String url3 = ""; String url4 = ""; String url5 = "";
 				if(BoardGubun.equals("f")) {//자유게시판
 					url = "http://localhost/boardMainView.board";
 					url1 = "http://localhost/search.board";
@@ -297,12 +303,13 @@ public class BoardController extends HttpServlet {
 					url2 = "http://localhost/boardMainView.board?cpage=1";
 					url3 = "http://localhost/jobMain.board?cpage=1" ;
 					url4 = "http://localhost/foodMain.board?cpage=1";
+					url5 = "http://localhost/jobMain.board?cpage=1";
 				}
 
 				if(BoardGubun.equals("e")) {
 					if(request.getHeader("referer").equals(url) || request.getHeader("referer").equals(url1) 
 							|| request.getHeader("referer").equals(url2) || request.getHeader("referer").equals(url3)
-							|| request.getHeader("referer").equals(url4)){//이전 주소가 이와 같다면, 조회 수 증가
+							|| request.getHeader("referer").equals(url4) || request.getHeader("referer").equals(url5)){//이전 주소가 이와 같다면, 조회 수 증가
 						dao.viewCountUp(seq);//조회수 증가
 					}
 				}else {
