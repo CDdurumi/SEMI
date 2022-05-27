@@ -561,7 +561,7 @@
            $.ajax({
                 url:'/list.reply',
                 type:'POST',
-               data : {page : page, parnet_seq : '${dto.all_board_seq}'},
+               data : {page : page, parent_seq : '${dto.all_board_seq}'},
                dataType : 'json'
              }).done(function(resp){
             	 
