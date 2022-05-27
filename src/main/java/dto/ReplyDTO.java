@@ -9,16 +9,18 @@ public class ReplyDTO {
 	private String contents;
 	private Timestamp write_date;
 	private String parnet_seq;
+	private int reReCount;
 	
-	public ReplyDTO() {
-	}
-	public ReplyDTO(String reply_seq, String id, String contents, Timestamp write_date, String parnet_seq) {
+	public ReplyDTO() {}
+	public ReplyDTO(String reply_seq, String id, String contents, Timestamp write_date, String parnet_seq,
+			int reReCount) {
 		super();
 		this.reply_seq = reply_seq;
 		this.id = id;
 		this.contents = contents;
 		this.write_date = write_date;
 		this.parnet_seq = parnet_seq;
+		this.reReCount = reReCount;
 	}
 	public String getReply_seq() {
 		return reply_seq;
@@ -49,11 +51,18 @@ public class ReplyDTO {
 	}
 	public void setParnet_seq(String parnet_seq) {
 		this.parnet_seq = parnet_seq;
-	} 
+	}
+	public int getReReCount() {
+		return reReCount;
+	}
+	public void setReReCount(int reReCount) {
+		this.reReCount = reReCount;
+	}
 	
 	//날짜 format
 	public String getFormdDate() {
 		SimpleDateFormat sdf = new SimpleDateFormat("YYYY년 MM월 dd일 HH:mm");
 		return sdf.format(this.write_date);
-	}	
+	}
+	
 }

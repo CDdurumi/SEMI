@@ -13,6 +13,7 @@ import javax.sql.DataSource;
 
 import dto.BoardDTO;
 import dto.ReplyDTO;
+import dto.ReplyReDTO;
 
 public class ReplyDAO {
 	//싱글턴
@@ -63,7 +64,7 @@ public class ReplyDAO {
 					Timestamp write_date = rs.getTimestamp("write_date");
 					String parent_seq = rs.getString("parent_seq");
 
-					list.add(new ReplyDTO(reply_seq, id, contents, write_date, parent_seq));
+					list.add(new ReplyDTO(reply_seq, id, contents, write_date, parent_seq ,0));
 				}
 				return list;
 			}
@@ -143,7 +144,30 @@ public class ReplyDAO {
 					Timestamp write_date = rs.getTimestamp("write_date");
 					String parent_seq = rs.getString("parent_seq");
 
-					list.add(new ReplyDTO(reply_seq, id, contents, write_date, parent_seq));
+					list.add(new ReplyDTO(reply_seq, id, contents, write_date, parent_seq, 0));
+				}
+				return list;
+			}
+		}
+	}
+	
+//	select B.reply_seq, count(*) from reply_re A join reply B on (A.parent_seq = B.reply_seq) where B.parent_seq = 'f2' group by B.reply_seq;
+	//re댓글 수(부모 댓글에 대한)
+	public List<ReplyDTO> selectReCountByRe(String sseq) throws Exception {//seq : 해당 게시글 넘버
+		String sql = "select B.reply_seq, count(A.parent_seq) cnt "
+				+ "from reply_re A right join reply B on (A.parent_seq = B.reply_seq) "
+				+ "where B.parent_seq = '"+sseq+"' group by B.reply_seq";
+		try(Connection con = this.getConnection();
+				PreparedStatement pstat = con.prepareStatement(sql);) {
+			
+			List<ReplyDTO> list = new ArrayList<>();
+			
+			try(ResultSet rs = pstat.executeQuery()){
+				while(rs.next()) {
+					String reply_seq = rs.getString("reply_seq");
+					int reReCount = rs.getInt("cnt");
+
+					list.add(new ReplyDTO(reply_seq, null, null, null, null, reReCount));
 				}
 				return list;
 			}
@@ -151,4 +175,19 @@ public class ReplyDAO {
 	}
 	
 	
+	public int selectReTotalCnt(String sseq) throws Exception {//seq : 해당 게시글 넘버
+		String sql = "select count(*) from reply where parent_seq = ? ";
+		try(Connection con = this.getConnection();
+				PreparedStatement pstat = con.prepareStatement(sql);) {
+			
+			pstat.setString(1, sseq);
+			
+			try(ResultSet rs = pstat.executeQuery()){
+				
+				rs.next();
+				return rs.getInt(1);
+			}
+		}
+	}
+
 }

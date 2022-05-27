@@ -51,10 +51,9 @@ public class ReplyController extends HttpServlet {
 				
 			}else if(uri.equals("/list.reply")) {//댓글 리스트
 				int capge = Integer.parseInt(request.getParameter("page"));
+
 				List<ReplyDTO> list = dao.selectByPage(capge);//해당 페이지의 댓글들 
-				
 				PrintWriter pw = response.getWriter();
-				
 				pw.append(g.toJson(list));
 				
 				
