@@ -778,6 +778,7 @@
                                    thiswrap=$(this).closest(".hi").find(".remodify");
                                    thisborder=$(this).closest(".bordermodi");
                                    console.log(thiswrap);
+                                   //댓글 하나의 대댓글 전체 수정 방지
                                    if(dummyremodify=='false'){
                                       
                                    $(this).css("display","none");
@@ -800,7 +801,21 @@
                                       thisrecol11.append(rebtn4);
                                         thisrecol11.append(' ');
                                         thisrecol11.append(rebtn5);
-                                      
+                                      //대댓글 수정 완료
+                                        $(rebtn4).on("click",function(){
+                                        	let contents = $($(this).parent().siblings()[1]);
+                                        	
+                                        	$.ajax({
+                                        		url:"/reModify.reply",
+                                        		data:{reply_re_seq:resp[i].reply_re_seq, replyContentModify:contents.text()  },
+                                        		dataType:'json',
+                                        		type:'POST'
+                                        		  
+                                        	}).done(function(resp){
+                                        		contents.attr("contenteditable",false);
+                                        	})
+                                        })
+                                        
                                         //대댓글 수정 취소
                                         $(rebtn5).on("click",function(){
                                            console.log("오오오");
@@ -815,6 +830,7 @@
                                            $($(this).siblings()[2]).remove();
                                            $(this).remove();
                                            thisborder.css("box-shadow","");
+                                           
                                            dummyremodify=false;
                                         })
                                         
