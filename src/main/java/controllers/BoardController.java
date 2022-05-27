@@ -58,6 +58,14 @@ public class BoardController extends HttpServlet {
 				request.setAttribute("hotlist", hotlist);
 				request.setAttribute("navi", pageNavi);
 				
+				///////애디터 추천 게시글///////
+				boardOption ="e";
+				List<BoardDTO> editorList = dao.selectAll(boardOption);
+				request.setAttribute("editorList", editorList);//애디터추천게시글 리스트
+				List<FilesDTO> filesDao = filesDAO.selectSysName(boardOption);//애디터추천 게시글 프로필 - sys_name get(해당게시글seq와 sys_name담겨 있음).
+				request.setAttribute("porfileList", filesDao);
+				request.setAttribute("profilePath", "/files/");
+				
 				request.getRequestDispatcher("/board/boardMain.jsp").forward(request, response);//자유게시판 메인페이지
 
 			}else if(uri.equals("/galleryMain.board")) {//여행후기 메인화면 출력
