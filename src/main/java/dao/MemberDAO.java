@@ -125,7 +125,7 @@ public class MemberDAO {
 	}
 	
 	public int modifiedUser(String id, String pw, String email) throws Exception {
-		String sql = "update from member set id = ?, pw = ? where email = ?";
+		String sql = "update member set id = ?, pw = ? where email = ?";
 		try(Connection con = this.getConnection();
 				PreparedStatement pstat = con.prepareStatement(sql);){
 			pstat.setString(1, id);
