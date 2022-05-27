@@ -280,45 +280,10 @@ public class BoardController extends HttpServlet {
 				int cpage = Integer.parseInt(request.getParameter("cpage"));
 				request.setAttribute("cpage", cpage);
 				
-				String BoardGubun = seq.substring(0, 1);
-				String url = ""; String url1 = ""; String url2 = ""; String url3 = ""; String url4 = ""; String url5 = "";
-				if(BoardGubun.equals("f")) {//자유게시판
-					url = "http://localhost/boardMainView.board";
-					url1 = "http://localhost/search.board";
-				}else if(BoardGubun.equals("g")) {//여행후기
-					url = "http://localhost/galleryMain.board";
-					url1 = "http://localhost/search.board";
-				}else if(BoardGubun.equals("j")) {//구인구직
-					url = "http://localhost/jobMain.board";
-					url1 = "http://localhost/search.board";
-				}else if(BoardGubun.equals("r")) {//맛집
-					url = "http://localhost/foodMain.board";
-					url1 = "http://localhost/search.board";
-				}else if(BoardGubun.equals("h")) {//숙소리뷰
-					url = "http://localhost/houseMain.board";
-					url1 = "http://localhost/search.board";
-				}else if(BoardGubun.equals("e")) {//애디터추천
-					url = "http://localhost/editorReMain.board";
-					url1 = "http://localhost/search.board";
-					url2 = "http://localhost/boardMainView.board?cpage=1";
-					url3 = "http://localhost/jobMain.board?cpage=1" ;
-					url4 = "http://localhost/foodMain.board?cpage=1";
-					url5 = "http://localhost/jobMain.board?cpage=1";
+				String click = request.getParameter("click");
+				if(click.equals("ok")){
+					dao.viewCountUp(seq);//조회수 증가
 				}
-
-				if(BoardGubun.equals("e")) {
-					if(request.getHeader("referer").equals(url) || request.getHeader("referer").equals(url1) 
-							|| request.getHeader("referer").equals(url2) || request.getHeader("referer").equals(url3)
-							|| request.getHeader("referer").equals(url4) || request.getHeader("referer").equals(url5)){//이전 주소가 이와 같다면, 조회 수 증가
-						dao.viewCountUp(seq);//조회수 증가
-					}
-				}else {
-					if(request.getHeader("referer").equals(url+"?cpage="+cpage) 
-							|| request.getHeader("referer").equals(url1) ){//이전 주소가 이와 같다면, 조회 수 증가
-						dao.viewCountUp(seq);//조회수 증가
-					}
-				}
-				
 				
 				BoardDTO dto = dao.selectBySeq(seq);//고유seq에 해당하는 게시글 정보get
 				request.setAttribute("dto", dto);
