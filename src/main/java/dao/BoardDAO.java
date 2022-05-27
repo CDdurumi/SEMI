@@ -396,6 +396,82 @@ public class BoardDAO {
 		return sb.toString();
 	}
 
+	
+	//검색 전용 페이징
+	public String getPageNavi(int currentPage, String boardOption, String serchOption, String contents) throws Exception {
+		String url = "/search.board?boardOption="+boardOption+"&serchOption="+serchOption+"&contents="+contents+"&cpage=";
+		
+		int recordTotalCount = this.getRecordTotalCount(boardOption); // 총 게시글의 개수 -> 향후 실제 데이터베이스의 개수를 세어와야함
+
+		int recordCountPerPage = 20; // 한 페이지에 몇 개의 게시글을 보여줄 건지
+
+		int naviCountPerPage = 5; // 한 페이지에 몇 개의 네비를 보여 줄 건지
+
+		int pageTotalCount = 0; // 총 몇 개의 페이지가 필요한가?(우리가 정하는게 아니라 설정한 개수에 맞게 정해저야함)
+
+		// 전체 페이지 수는 총 게시글에서 한 페이지에 보여지는 게시글의 개수를 나눈 값. 근데 나머지가 존재하면, +1 을 해줘야한다.
+		if (recordTotalCount % recordCountPerPage > 0) { // 전체 페이지 + 1 해야함(나머지가 존재할 때만)
+			pageTotalCount = recordTotalCount / recordCountPerPage + 1;
+		} else {
+			pageTotalCount = recordTotalCount / recordCountPerPage;
+		}
+
+		// 현재 페이지가 비정상일 때 처리
+		if (currentPage < 1) {
+			currentPage = 1;
+		} else if (currentPage > pageTotalCount) {
+			currentPage = pageTotalCount;
+		}
+
+		// Page Navigator
+		int startNavi = (currentPage - 1) / naviCountPerPage * naviCountPerPage + 1; // navi 시작의 공식 -> 현재 페이지의 십의 자리만
+																						// 구해서 * naviPerPage +1 해주면 된다.
+		int endNavi = startNavi + (naviCountPerPage - 1);
+
+		if (endNavi > pageTotalCount) { // 전체 페이지수 보다 endNavi 의 수가 클 수는 없다.
+			endNavi = pageTotalCount;
+		}
+		
+		boolean needNext = true;
+		boolean needPrev = true;
+
+		if (startNavi == 1) {
+			needPrev = false;
+		}
+		if (endNavi == pageTotalCount) {
+			needNext = false;
+		}
+		
+		StringBuilder sb = new StringBuilder();
+
+		if (needPrev) {
+			sb.append("<li class='page-item'><a class= 'page-link' href='"+url+"" + (startNavi - 1)
+					+ "'> < </a></li>");
+		}
+
+		for (int i = startNavi; i <= endNavi; i++) {
+			if (currentPage == i) {
+				sb.append("<li class='page-item active'><a class= 'page-link' href='"+url+"" + i
+						+ "'>" + i + " </a></li>"); // 페이지 당 10개씩 보이도록 해야하기 때문에 현재 페이지를 매개변수로 보냄으로써 페이지 네비를 클릭할 때 어디로
+													// 가야하는지 알아야한다.
+			} else {
+				sb.append("<li class='page-item'><a class= 'page-link' href='"+url+"" + i + "'>" + i
+						+ " </a></li>");
+			}
+		}
+
+		if (needNext) {
+			sb.append("<li class='page-item'><a class= 'page-link' href='"+url+"" + (endNavi + 1)
+					+ "'> > </a></li>");
+		}
+
+		return sb.toString();
+	}
+	
+	
+	
+	
+	
 	// boradlist에서 보여지는 게시글 개수를 정하기 위한 메소드
 	public List<BoardDTO> selectByPage(int cpage,String boardOption) throws Exception {
 

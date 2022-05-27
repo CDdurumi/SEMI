@@ -560,7 +560,7 @@ $("#modal_loginBtn").on("click",function(){
       </nav>
     </div>
 
-    ${list[1].title}
+
         <div id="imgmenu1" class="row">
         <c:forEach var="i" items="${list}">
         	<c:forEach var="j" items="${porfileList}">
@@ -568,8 +568,9 @@ $("#modal_loginBtn").on("click",function(){
 					<div class="col-12 col-sm-6 col-md-3" id="img">
 						<a href = "/detailView.board?cpage=1&seq=${i.all_board_seq}">
 							<img src="${profilePath}${j.sys_name}" alt=".." class="rounded-circle w-100 h-100" style="box-shadow: 5px 5px 5px 5px gray">
+							<div class="mask"><p1>${i.title}</p1></div>
 						</a>
-						<div class="mask"><p1>${i.title}</p1></div>
+						
 					</div>
 				</c:if>
         	</c:forEach>
