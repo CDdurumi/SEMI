@@ -237,6 +237,7 @@ public class BoardController extends HttpServlet {
 				
 				String BoardGubun = seq.substring(0, 1);
 				String url = "";
+				String url1 = "";
 				if(BoardGubun.equals("f")) {//자유게시판
 					url = "http://localhost/boardMainView.board";
 				}else if(BoardGubun.equals("g")) {//여행후기
@@ -249,10 +250,11 @@ public class BoardController extends HttpServlet {
 					url = "http://localhost/houseMain.board";
 				}else if(BoardGubun.equals("e")) {//애디터추천
 					url = "http://localhost/editorReMain.board";
+					url1 = "http://localhost/boardMainView.board?cpage=1";
 				}
 
 				if(BoardGubun.equals("e")) {
-					if(request.getHeader("referer").equals(url)){//이전 주소가 이와 같다면, 조회 수 증가
+					if(request.getHeader("referer").equals(url) || request.getHeader("referer").equals(url1)){//이전 주소가 이와 같다면, 조회 수 증가
 						dao.viewCountUp(seq);//조회수 증가
 					}
 				}else {

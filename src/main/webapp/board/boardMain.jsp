@@ -633,7 +633,7 @@ $("#modal_loginBtn").on("click",function(){
 														<c:when test="${count eq 1}">
 															<div class="carousel-item active ">
 								                                <div class="card w-100 border-0" style="width: 18rem;">
-								                                    <img src="${profilePath}${j.sys_name}" class="card-img-top" alt="...">
+								                                    <a href = "/detailView.board?cpage=1&seq=${i.all_board_seq}"><img src="${profilePath}${j.sys_name}" class="card-img-top" alt="..."></a>
 								                                    <div class="card-body">
 								                                        <p class="card-text text-black">${i.title}</p>
 								                                    </div>
@@ -644,7 +644,7 @@ $("#modal_loginBtn").on("click",function(){
 														<c:otherwise>
 															<div class="carousel-item ">
 								                                <div class="card w-100 border-0" style="width: 18rem;">
-								                                    <img src="${profilePath}${j.sys_name}" class="card-img-top" alt="...">
+								                                    <a href = "/detailView.board?cpage=1&seq=${i.all_board_seq}"><img src="${profilePath}${j.sys_name}" class="card-img-top" alt="..."></a>
 								                                    <div class="card-body">
 								                                        <p class="card-text text-black">${i.title}</p>
 								                                    </div>
