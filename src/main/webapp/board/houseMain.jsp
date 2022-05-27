@@ -714,7 +714,7 @@ $("#modal_loginBtn").on("click",function(){
             	
                 <div class="col-1 col-md-1 d-none d-md-block p-0">0</div>
                	<div class="col-7 col-md-6 m-0 title ellipsis">
-               		<span><a href="/detailView.board?cpage=${cpage}&seq=${i.all_board_seq}" style="color:black">${i. title }</a></span>
+               		<span><a href="/detailView.board?cpage=${cpage}&seq=${i.all_board_seq}&click=ok" style="color:black">${i. title }</a></span>
                	</div>
                 <div class="col-3 col-md-2 p-0 ellipsis text-center"><span>${i.id }</span></div>
                 <div class="col-md-1 d-none d-md-block p-0 "><fmt:formatDate value="${i.write_date }" pattern="yy-MM-dd"/></div>
