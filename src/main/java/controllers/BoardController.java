@@ -172,7 +172,7 @@ public class BoardController extends HttpServlet {
 				
 				List<BoardDTO> list = dao.search(cpage, serchOption, contents, boardOption);//검색 결과 게시글 리스트				
 				List<BoardDTO> hotlist = dao.selectByLikeCount(boardOption);//화제글
-				String pageNavi = dao.getPageNavi(cpage, boardOption);//페이징네비
+				String pageNavi = dao.getPageNavi(cpage, boardOption, serchOption, contents);//검색 전용 페이징네비
 				
 				request.setAttribute("cpage", cpage);
 				request.setAttribute("list", list);
