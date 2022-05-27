@@ -430,6 +430,21 @@
         padding-top:13px;
         word-break:break-all;
         }
+/*         대댓글 버튼 수정 */
+.remodify {
+	background-color: white !important;
+} 
+.remodify:hover {
+	background-color: #0d72ff !important;
+}        
+
+        .redelete {
+	background-color: white !important;
+} 
+.redelete:hover{
+	background-color: #dc3545 !important;
+}      
+        
        /* 제목이 길어서 잘렸을 경우 밑의 두개 처리해준다 */
 /*        .ellipsis{ */
 /*            position: relative; */
@@ -598,7 +613,6 @@
                        let btn5 =  $("<button>");
                        btn5.html(' <i class="fa-solid fa-message"></i>');
                        btn5.attr("class","btn btn-outline-secondary btn-sm rereply ");
-                       btn5.attr("good","false");
                        btn5.attr("type","button"); 
                         
                         if(my_id =='${loginID}'){
@@ -665,7 +679,7 @@
                              		recol5.html('<i class="fa-solid fa-reply fa-rotate-180 "></i>');
                              		
                              		let recol6=$("<div>");
-                             		recol6.attr("class","col-11 rounded");
+                             		recol6.attr("class","col-11 rounded bordermodi");
                              		recol6.css("background-color","#fff9e5d2");
                              		
                              		let rerow2 =$("<div>");
@@ -698,12 +712,14 @@
                              		//대댓글 수정 버튼
                              		rebtn2 =$("<button>");
                              		rebtn2.html('<i class="fa-solid fa-pen-clip" ></i>')
-                             		rebtn2.attr("class","btn btn-outline-primary btn-sm remodify");
+                             		rebtn2.attr("class","btn btn-outline-primary btn-sm opacity-100 remodify");
+                             		
 //                              		rebtn2.css("background-color","white");
                              		//대댓글 삭제 버튼
                              		rebtn3=$("<button>");
                              		rebtn3.html('<i class="fa-solid fa-trash"></i>');
                              		rebtn3.attr("class","btn btn-outline-danger btn-sm redelete");
+                             		
                              		
                              		//대댓글 내용
                              		let recol12=$("<div>");
@@ -714,58 +730,75 @@
                              		
                              		//대댓글 수정하기
                              		
+                             		
+                             		
+                             		let rebtn4;
+                             		let rebtn5
+                             		let thisrecol11;
                              		$(rebtn2).on("click",function(){
-                             			let btnview = $(this).closest(".padding").find("rebtn").;
+                             			dummyremodify=$("#dummy").attr("modify");
+                             			console.log(dummyremodify);
+                             			let btnview = $(this).closest(".padding").find("rebtn");
                              			
                              			
                              			thisrebtn3=$(this).siblings();
                              			thisrecol11=$(this).parent();
                              			thisbtn=$(this);
                              			thiscontents=$(this).parent().siblings()[1];
-                             			console.log(thiscontents);
-                             			
-                             			if(btnview==false){
+                             			thiswrap=$(this).closest(".hi").find(".remodify");
+                             			thisborder=$(this).closest(".bordermodi");
+                             			console.log(thiswrap);
+                             			if(dummyremodify=='false'){
                              				
                              			$(this).css("display","none");
                              			thisrebtn3.css("display","none");
-                             			$(".remodify").attr("disabled",true);
+                             			thiswrap.attr("disabled",true);
                              			$(thiscontents).attr("contenteditable",true);
+                             			thisborder.css("box-shadow","10px 5px 5px #dcdcdcd2");
                              			$(thiscontents).focus();
                              			
                              			
                              			//대댓글 수정 확인,취소버튼
-                             			let rebtn4 = $("<button>");
+                             			rebtn4 = $("<button>");
                              				rebtn4.attr("class","btn btn-outline-primary btn-sm reok");
                              				rebtn4.text("완료");
-                             			let rebtn5 = $("<button>");
+                             			rebtn5 = $("<button>");
                              				rebtn5.attr("class","btn btn-outline-danger btn-sm recancel");
                              				
                              				rebtn5.text("취소");
                              				
                              				thisrecol11.append(rebtn4);
-                             				thisrecol11.append(' ');
-                             				thisrecol11.append(rebtn5);
+                                     		thisrecol11.append(' ');
+                                     		thisrecol11.append(rebtn5);
                              				
                                      		//대댓글 수정 취소
                                      		$(rebtn5).on("click",function(){
-                                     			thisbtn.css("display","inline-block");
-                                     			thisrebtn3.css("display","inline-block");
-                                     			rebtn4.remove();
-                                     			rebtn5.remove();
+                                     			console.log("오오오");
+                                     			$($(this).siblings()[0]).css("display","inline-block");
+                                     			$($(this).siblings()[1]).css("display","inline-block");
+                                     			thisborder=$(this).closest(".bordermodi");
+                                     			
+                                     			let thiscontents=$(this).parent().siblings()[1];
+                                     			
                                      			$(thiscontents).attr("contenteditable",false);
                                      			$(".remodify").attr("disabled",false);
-                                     			btnview=false;
+                                     			$($(this).siblings()[2]).remove();
+                                     			$(this).remove();
+                                     			thisborder.css("box-shadow","");
+                                     			dummyremodify=false;
                                      		})
                                      		
-                                     		btnview=true;
+                                     		dummyremodify='true';
                              			}else{
                              				$(this).css("display","inline-block");
                              				thisrebtn3.css("display","inline-block");
                                  			
-                             				btnview=false;
+                             				dummyremodify='false';
                              			}
                              			
                              		})
+                             		
+                             		
                              		
                              		
                              	   //대댓글 삭제하기
@@ -1294,7 +1327,7 @@ $("#modal_loginBtn").on("click",function(){
                 <button class="btn btn-primary h-100 " id="btn" type="button">등록</button>
             </div>
         </div>
-        <div class="row dummy" id="dummy"></div>
+        <div class="row dummy" id="dummy" modify="false"></div>
 
 <!-- jjim toast -->        
 <div class="toast-container position-fixed bottom-0 end-0 p-3">
