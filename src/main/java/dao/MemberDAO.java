@@ -17,6 +17,15 @@ public class MemberDAO {
 	public MemberDAO() {
 
 	}
+	
+	private static MemberDAO instance = null;
+	
+	public synchronized static MemberDAO getInstance(){
+		if(instance == null) {
+			instance = new MemberDAO();
+		}
+		return instance;
+	}
 
 	private Connection getConnection() throws Exception {
 
