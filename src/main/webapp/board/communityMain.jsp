@@ -497,7 +497,7 @@ font-weight: bold;
 				</span>
 				</a>
 				<div class="nav_list">
-					<a class="nav_link active"> <i class='CurrIcon'></i> <span
+					<a class="nav_link" style="color:white;"> <i class='CurrIcon'></i> <span
 						class="nav_name"><span class="weather"> <span
 								class="CurrTemp"></span> <span class="City"></span>
 						</span></span>

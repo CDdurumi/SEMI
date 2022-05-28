@@ -460,7 +460,7 @@ select{
         <div> <a href="/index.jsp" class="nav_logo"> <i class='bx bx-layer nav_logo-icon'></i> <span class="nav_logo-name">쉼표
                     <br>- 일상의 쉼표를 찍다</span> </a>
             <div class="nav_list">
-               <a class="nav_link active"> <i class='CurrIcon'></i> <span class="nav_name"><span class="weather">
+               <a class="nav_link" style="color:white;"> <i class='CurrIcon'></i> <span class="nav_name"><span class="weather">
                 <span class="CurrTemp"></span>
                 <span class="City"></span>
                 </span></span> </a>

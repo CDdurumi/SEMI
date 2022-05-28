@@ -434,7 +434,7 @@ font-weight: bold;
 <body id="body-pd">
     <header class="header" id="header" style="background-color:#f5f5f7">
         <div class="header_toggle"><i class='bx bx-menu' id="header-toggle"></i></div>
-        <div><a href="/board/communityMain.jsp" class="comuview"> 여행 커뮤니티</a></div>
+        <div><a href="/board/communityMain.jsp" class="comuview">에디터가 엄선한 오늘의 추천!</a></div>
         <div>
             
             <c:choose>
@@ -472,7 +472,7 @@ font-weight: bold;
             <div> <a href="/index.jsp" class="nav_logo"> <i class='bx bx-layer nav_logo-icon'></i> <span class="nav_logo-name">쉼표
                         <br>- 일상의 쉼표를 찍다</span> </a>
                 <div class="nav_list">
-                    <a class="nav_link active"> <i class='CurrIcon'></i> <span class="nav_name"><span class="weather">
+                    <a class="nav_link" style="color:white;"> <i class='CurrIcon'></i> <span class="nav_name"><span class="weather">
                     <span class="CurrTemp"></span>
                     <span class="City"></span>
                     </span></span> </a>
@@ -554,7 +554,7 @@ $("#modal_loginBtn").on("click",function(){
     <div class="container">
         <div class="row">
             <div class="col-12 text-center display-6" style="height: 100px; line-height: 95px; border:0px;">
-               - 애디터 추천글 -
+<!--                - 애디터 추천글 - -->
             </div>
             <div class="col-12" id="btn">
                 <button type="button" class="btn btn-primary">수정
