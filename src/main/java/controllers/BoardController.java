@@ -227,6 +227,19 @@ public class BoardController extends HttpServlet {
 					request.setAttribute("profilePath", "/files/");
 				}else if(boardOption.equals("h")) {//숙소리뷰 메인페이지
 					absolutePath = "/board/houseMain.jsp";
+					
+					///////숙소 화제 게시글///////
+					List<FilesDTO> hFilesDao = filesDAO.selectSysName(boardOption);//애디터추천 게시글 프로필 - sys_name get(해당게시글seq와 sys_name담겨 있음).
+					request.setAttribute("housePorfileList", hFilesDao);
+					
+					///////애디터 추천 게시글///////
+					boardOption ="e";
+					List<BoardDTO> editorList = dao.selectAll(boardOption);
+					request.setAttribute("editorList", editorList);//애디터추천게시글 리스트
+					List<FilesDTO> filesDao = filesDAO.selectSysName(boardOption);//애디터추천 게시글 프로필 - sys_name get(해당게시글seq와 sys_name담겨 있음).
+					request.setAttribute("porfileList", filesDao);
+					request.setAttribute("profilePath", "/files/");
+
 				}
 				
 				request.getRequestDispatcher(absolutePath).forward(request, response);//메인페이지 전환
