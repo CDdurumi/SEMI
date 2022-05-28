@@ -752,7 +752,7 @@ $("#modal_loginBtn").on("click",function(){
             <div class="tab-pane fade" id="message" role="tabpanel" aria-labelledby="message-tab">
             
             <div style="text-align:right; padding-right:38px; padding-bottom:10px;">
-                <button type="button" class="btn btn-primary" id="sendMsgBtn">쪽지쓰기</button></div>
+                <button type="button" class="btn btn-primary" id="sendMsgBtn" data-bs-toggle="modal" data-bs-target="#exampleModalsend">쪽지쓰기</button></div>
                 <div class="d-flex align-items-start">
                     <div class="nav flex-column nav-pills" id="v-pills-tab" role="tablist" aria-orientation="vertical">
                       <button class="nav-link active" id="v-pills-receive-tab" data-bs-toggle="pill" data-bs-target="#v-pills-receive" type="button" role="tab" aria-controls="v-pills-receive" aria-selected="true">받은<br>쪽지함</button>
@@ -1446,6 +1446,34 @@ $("#modal_loginBtn").on("click",function(){
 
     </div>
     
+<!-- Message Modal -->
+<div class="modal fade" id="exampleModalsend" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header" >
+        <h5 class="modal-title" id="exampleModalLabel">쪽지 보내기</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+      	 
+      	받는 사람 | <input type="text" placeholder="받는 사람 ID" id="receiver"><p></p>
+      	<input type="text" placeholder="제목을 입력하세요" id="title1" name="title" style="width:100%">
+      	<p>
+      		
+      	</p>
+      	
+        <textarea style="width:100%; min-height:150px" placeholder="내용을 입력하세요" id="msgContents"></textarea>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">닫기</button>
+        <button type="button" class="btn btn-primary" id="modal_sendMsg">보내기</button>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+    
      <!--top 버튼-->
     <button onclick="topFunction()" id="myBtn" title="Go to top">↑</button>
     <!-------------------------------------------------------------------------------------------------------------------Container Main end-->
@@ -1901,9 +1929,43 @@ $("#modal_loginBtn").on("click",function(){
 		}
 	})
 };
-
-   
-   
+</script>
+<script>
+//	     쪽지보내기
+    $("#modal_sendMsg").on("click", function(){
+    	if($("#receiver").val()==""){
+        	alert("받는 사람의 닉네임를 입력해주세요.");
+        	$("#receiver").focus();
+        	return false;
+        }else if($("#title1").val()==""){
+        	alert("제목를 입력해주세요.");
+        	$("#title1").focus();
+        	return false;
+        }else if($("#msgContents").val()==""){
+        	alert("내용를 입력해주세요.");
+        	$("#msgContents").focus();
+        	return false;
+        }else{
+        	$.ajax({
+        		url:"sendMsg.mpg",
+        		type:"post",
+        		data:{
+        			message_seq:${dto.message_seq},
+        			receiver:$("#receiver").val(),
+        			title:$("#title1").val(),
+        			contents:$("#msgContents").val()
+        			},
+        		dataType:"json"
+        	}).done(function(resp){
+        		console.log(resp);
+        		if(resp==0){
+        			alert("존재하지 않는 닉네임입니다.");
+        		}else{
+        			location.reload();
+        		}
+        	})
+        }
+    })
 </script>
 </body>
 

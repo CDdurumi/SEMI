@@ -657,6 +657,7 @@ $("#modal_loginBtn").on("click",function(){
                 </div>
             </div>
             <div class="col-12" style="text-align: right; padding-top: 10px;padding-right: 10px;">
+            		<button type="button" class="btn btn-primary" id="previousBtn">이전으로</button>
 	           	    <button class="btn btn-primary " type="button" id="MessageSend" data-bs-toggle="modal" data-bs-target="#exampleModal1">답장</button>
 	               	<button class="btn btn-outline-danger " type="button" id="deleteMsg">삭제</button>
             </div>
@@ -668,7 +669,7 @@ $("#modal_loginBtn").on("click",function(){
         
         <div class="row dummy" id="dummy"></div>
         
-<!-- Modal -->
+<!-- Message Modal -->
 <div class="modal fade" id="exampleModal1" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
   <div class="modal-dialog">
     <div class="modal-content">
@@ -705,6 +706,11 @@ $("#modal_loginBtn").on("click",function(){
     $("#deleteMsg").on("click", function(){
     	location.href = "deleteMsg.mpg?message_seq="+${dto.message_seq};
     });
+//   이전으로
+	$("#previousBtn").on("click", function(){
+		history.back();
+	})
+    
 //	     쪽지보내기
     $("#sendMsg").on("click", function(){
     	if($("#receiver").val()==""){
