@@ -554,7 +554,8 @@ $("#modal_loginBtn").on("click",function(){
           	
           	
             <input class="form-control me-2" type="search" placeholder="검색어를 입력해주세요." aria-label="Search" name="contents">
-            <button class="btn btn-primary" type="submit">Search</button>
+            <button class="btn btn-primary" type="submit">Search</button>&nbsp;
+            <button type="button" class="btn btn-primary btn-sm" id="writeBtn" style="white-space:nowrap;"><i class="fa-solid fa-pen-to-square"></i>글 작성하기</button>
           </form>
         </div>
       </nav>
@@ -725,6 +726,10 @@ function topFunction() {
   document.body.scrollTop = 0; 
   document.documentElement.scrollTop = 0; 
 }
+
+$("#writeBtn").on("click",function(){
+	location.href="/writeboard.board?boardOption=g";
+})
 
 $("#password-input").on("keyup",function(e){
     if(e.keyCode==13){
