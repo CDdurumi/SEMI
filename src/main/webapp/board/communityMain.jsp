@@ -589,7 +589,7 @@ $("#modal_loginBtn").on("click",function(){
 										<div class="col-7   title ellipsis"
 											style="padding-left: 7px; padding-right: 0px;">
 											<a
-												href="/detailView.board?cpage=${cpage}&seq=${j.all_board_seq}&click=ok"
+												href="/detailView.board?cpage=1&seq=${j.all_board_seq}&click=ok"
 												style="color: black">${j.title }</a>
 										</div>
 										<div class="col-3  p-0 ellipsis text-center">${j.id}</div>
@@ -824,8 +824,7 @@ $("#modal_loginBtn").on("click",function(){
 										<div class="row m-0" id="board_menu_text">
 											<div class="col-7  ">제목</div>
 											<div class="col-3 p-0 text-center">글쓴이</div>
-											<div class="col-md-1 d-none d-md-block p-0 text-center">조회</div>
-											<div class="col-2 col-md-1 p-0 text-center">추천</div>
+											<div class="col-2 d-none d-md-block p-0 text-center">조회</div>
 										</div>
 
 									</div>
@@ -838,7 +837,7 @@ $("#modal_loginBtn").on("click",function(){
 										<div class="col-7   title ellipsis"
 											style="padding-left: 7px; padding-right: 0px;">
 											<a
-												href="/detailView.board?cpage=${cpage}&seq=${h.all_board_seq}&click=ok"
+												href="/detailView.board?cpage=1&seq=${h.all_board_seq}&click=ok"
 												style="color: black">${h.title }</a>
 										</div>
 										<div class="col-3  p-0 ellipsis text-center">${h.id}</div>
@@ -886,8 +885,7 @@ $("#modal_loginBtn").on("click",function(){
 										<div class="row m-0" id="board_menu_text">
 											<div class="col-7  ">제목</div>
 											<div class="col-3 p-0 text-center">글쓴이</div>
-											<div class="col-md-1 d-none d-md-block p-0 text-center">조회</div>
-											<div class="col-2 col-md-1 p-0 text-center">추천</div>
+											<div class="col-2 d-none d-md-block p-0 text-center">조회</div>
 										</div>
 
 									</div>
@@ -900,7 +898,7 @@ $("#modal_loginBtn").on("click",function(){
 										<div class="col-7   title ellipsis"
 											style="padding-left: 7px; padding-right: 0px;">
 											<a
-												href="/detailView.board?cpage=${cpage}&seq=${a.all_board_seq}&click=ok"
+												href="/detailView.board?cpage=1&seq=${a.all_board_seq}&click=ok"
 												style="color: black">${a.title }</a>
 										</div>
 										<div class="col-3  p-0 ellipsis text-center">${a.id}</div>
