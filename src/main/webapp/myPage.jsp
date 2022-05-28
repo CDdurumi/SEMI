@@ -1406,12 +1406,12 @@ $("#modal_loginBtn").on("click",function(){
                                         ${loginEmail }
                                     </div>
                                 </div>
-                                <div class="row" id="joinday">
+                                <%-- <div class="row" id="joinday">
                                     <div class="col-12 col-md-4 content"><strong>가입일</strong> </div>
                                     <div class="col-12 col-md-8 content">
                                         ${loginJoinDate } 
                                     </div>
-                                </div>
+                                </div> --%>
                                 <div class="row" id="joinday">
                                     <div class="col-12 col-md-4 check" style="display:none;"><strong>비밀번호</strong> </div>
                                     <div class="col-12 col-md-8 check" style="display:none;">
@@ -1479,10 +1479,10 @@ $("#modal_loginBtn").on("click",function(){
                 $(".pw").css("display","block");    //비번 수정
                 $(".check").css("display","none");  //비밀번호 확인 입력창
                 $(".check2").css("display","block");
-				$("#check2").css("display","block");
-				$("#pw1").val(null);
+                $("#back").css("display","none"); //취소버튼
+				$("#pw1").val(null); 
 //                 $(".modify").attr("contenteditable","true");
-                $("#editID").removeAttr("disabled");
+                $("#editID").attr("disabled", false);
                 $(".modify").css("color","#0089ff");
                 $("#id").focus();
             }else{
@@ -1509,6 +1509,10 @@ $("#modal_loginBtn").on("click",function(){
         		alert(2);
         		if(resp){
         			alert("변경완료");	
+        			 $("#pw").css("display","none"); //모든 컨텐츠
+        			 $("#ok").css("display","none");    //완료버튼
+        			 $("#modify").css("display","block");   //수정하기 버튼
+        			 $("#editID").attr("disabled", true);
         		}else{
         			alert("error");
         		}
@@ -1605,7 +1609,7 @@ $("#modal_loginBtn").on("click",function(){
         $("#ok").css("display","none");
         $(".pw").css("display","none");
         $(".check").css("display","none");
-        $("#check2").css("display","none");
+        $(".check2").css("display","none");
         
         $(".modify").attr("contenteditable","false");
         $(".modify").css("color","black");
