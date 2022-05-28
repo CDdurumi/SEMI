@@ -569,7 +569,6 @@
             	 
             	 
            
-           console.log(resp)
 //           if(${totalPage}<pape){
 //              alert("마지막 페이지 입니다.");
 //           }else{
@@ -676,7 +675,6 @@
                         let the2 = $($(this).parent().parent().parent().siblings()[1]).children();
 //                         let the2 = $(this).parent().parent().parent();
                         
-                        console.log(the2);
                         //대댓 삭제버튼
                         let rebtn3;
                         
@@ -689,12 +687,10 @@
                         }).done(function(resp){
                            let rereply;
                            let target1 = $(the.parent().parent().parent().siblings()[1]);
-                           console.log(target1);
                            if(replyView==false){
                               
                          rereply=$("<div>");
                               rereply.attr("class","row hi");
-                              console.log(rereply);
                               let object={};
                            for(let i = 0; i<resp.length;i++){
                            
@@ -731,6 +727,7 @@
                                 let recol9=$("<div>");
                                 recol9.attr("class","col-12 writer");
                                 recol9.text(resp[i].id);
+                                let relogin_id = recol9.text();
                                 //대댓글 날짜
                                 let recol10=$("<div>");
                                 recol10.attr("class","col-12");
@@ -767,7 +764,6 @@
                                 let thisrecol11;
                                 $(rebtn2).on("click",function(){
                                    dummyremodify=$("#dummy").attr("modify");
-                                   console.log(dummyremodify);
                                    let btnview = $(this).closest(".padding").find("rebtn");
                                    
                                    
@@ -775,9 +771,9 @@
                                    thisrecol11=$(this).parent();
                                    thisbtn=$(this);
                                    thiscontents=$(this).parent().siblings()[1];
+
                                    thiswrap=$(this).closest(".hi").find(".remodify");
                                    thisborder=$(this).closest(".bordermodi");
-                                   console.log(thiswrap);
                                    //댓글 하나의 대댓글 전체 수정 방지
                                    if(dummyremodify=='false'){
                                       
@@ -789,22 +785,30 @@
                                    $(thiscontents).focus();
                                    
                                    
+                                 
                                    //대댓글 수정 확인,취소버튼
                                    rebtn4 = $("<button>");
                                       rebtn4.attr("class","btn btn-outline-primary btn-sm reok");
                                       rebtn4.text("완료");
                                    rebtn5 = $("<button>");
                                       rebtn5.attr("class","btn btn-outline-danger btn-sm recancel");
-                                      
+                                      console.log('${loginID}');
                                       rebtn5.text("취소");
-                                      
+                             
                                       thisrecol11.append(rebtn4);
                                         thisrecol11.append(' ');
                                         thisrecol11.append(rebtn5);
+                                      
                                       //대댓글 수정 완료
                                         $(rebtn4).on("click",function(){
                                         	let contents = $($(this).parent().siblings()[1]);
+                                        	let the = $(this);
+                                        	let thismodify =$($(this).siblings()[0]);
+                                        	let thisdelete = $($(this).siblings()[1]);
+                                        	let thiscancel = $($(this).siblings()[2]);
+                                        	let thiswrap = $(this).closest(".hi").find(".remodify");
                                         	
+                                        	console.log(thiswrap);
                                         	$.ajax({
                                         		url:"/reModify.reply",
                                         		data:{reply_re_seq:resp[i].reply_re_seq, replyContentModify:contents.text()  },
@@ -813,7 +817,13 @@
                                         		  
                                         	}).done(function(resp){
                                         		contents.attr("contenteditable",false);
+                                        		thismodify.css("display","inline-block");
+                                        		thiswrap.attr("disabled",false);
+                                        		thisdelete.css("display","inline-block");
+                                        		thiscancel.remove();
+                                        		the.remove();
                                         	})
+                                        	dummyremodify='false';
                                         })
                                         
                                         //대댓글 수정 취소
@@ -826,6 +836,8 @@
                                            let thiscontents=$(this).parent().siblings()[1];
                                            
                                            $(thiscontents).attr("contenteditable",false);
+                                           $(thiscontents).text(resp[i].contents);
+                                           
                                            $(".remodify").attr("disabled",false);
                                            $($(this).siblings()[2]).remove();
                                            $(this).remove();
@@ -835,7 +847,9 @@
                                         })
                                         
                                         dummyremodify='true';
-                                   }else{
+                                   }
+                                   
+                                   else{
                                       $(this).css("display","inline-block");
                                       thisrebtn3.css("display","inline-block");
                                        
@@ -853,7 +867,6 @@
                                       if(del){
                                     
                                  let target2 = $(this).closest(".padding").parent();
-                                 console.log(target2);
                                     $.ajax({
                                        url:"/reDelete.reply",
                                        data:{reply_re_seq:resp[i].reply_re_seq },
@@ -877,9 +890,13 @@
                                 rerow4.append(recol9);
                                 rerow4.append(recol10);
                                 rerow3.append(recol11);
+                                
+                                if(relogin_id=='${loginID}'){
                                 recol11.append(rebtn2);
                                 recol11.append(' ');
                                 recol11.append(rebtn3);
+                                }
+                                
                                 rerow3.append(recol12);
 //                                 target1.append(recol4);
 
@@ -938,6 +955,7 @@
                     rebtn1 =$("<button>");
                     rebtn1.attr("type","button");
                     rebtn1.attr("class","btn btn-primary btn-sm h-100 w-100")
+                    rebtn1.css("padding","0px");
                       rebtn1.text("등록");
                     
                     
@@ -954,17 +972,12 @@
                       //대댓글 등록
                    rebtn1.on("click",function(){
                       let the = $(this);
-                       console.log($(this).parent().siblings(".text").children().val());
-                      console.log($(this).parent().siblings(".text").children());
-                      console.log($(".textarea"));
                       $.ajax({
                            url : '/reChatIN.reply',
                          type : 'POST',
                          data : {parent_seq :resp[i].reply_seq ,loginID:'${loginID}', reChatContents: $(this).parent().siblings(".text").children().val() },
                          dataType : 'json'
                   }).done(function(resp){
-                     console.log(resp);
-                        console.log()
                       the.parent().siblings(".text").children().val(" ");
                       location.reload();
                       
@@ -1049,6 +1062,7 @@
                                   btn3.css("display","none");
                                   btn4.css("display","none");
                                   col6.attr("contenteditable","false");
+                                  col6.text(resp[i].contents);
                                   $(".modify").attr("disabled",false);
                               })
                               
@@ -1274,7 +1288,6 @@ $("#modal_loginBtn").on("click",function(){
 				data:{email:$("#id-input").val(),pw:$("#password-input").val()},
 				dataType:"json"
 			}).done(function(resp){
-				console.log(resp);
 				if(resp==false){					
 					$("#idpw_check").text("Email 또는 비밀번호가 올바르지 않습니다!");
 					$("#idpw_check").css({ color: "red" })
@@ -1396,7 +1409,7 @@ $("#modal_loginBtn").on("click",function(){
                <textarea class="w-100 h-100 border border-2 rounded" id="chatContents"></textarea>
             </div>
             <div class="col-2  " style="text-align: center;">
-                <button class="btn btn-primary h-100 " id="btn" type="button">등록</button>
+                <button class="btn btn-primary h-100 " id="btn" type="button" style="padding:0px">등록</button>
             </div>
         </div>
         <div class="row dummy" id="dummy" modify="false"></div>
