@@ -432,6 +432,10 @@
         padding-top:13px;
         word-break:break-all;
         }
+        [contenteditable]{
+        outline: 0px solid transparent;
+        border-radius:8px;
+        }
 /*         대댓글 버튼 수정 */
 .remodify {
 	background-color: white !important;
@@ -1035,7 +1039,9 @@
                           //댓글 수정하기 
                           btn1.on("click",function(){
                              
-                              
+                        	  let add =  $($(this).parent().parent().parent().siblings()[0]);
+  							console.log(add);
+  							add.css("border","2px solid #0d72ff");
                                //다른버튼 수정 막기    
                               $(".modify").attr("disabled",true);
                                  
@@ -1044,7 +1050,6 @@
                               col6.focus();
                               btn1.css("display","none");
                               btn2.css("display","none");
-                              btn5.css("display","none");
                               let btn3 =$("<button>");
                               btn3.text("완료");
                               btn3.attr("class","btn btn-outline-primary btn-sm finish");
@@ -1064,13 +1069,13 @@
                                   col6.attr("contenteditable","false");
                                   col6.text(resp[i].contents);
                                   $(".modify").attr("disabled",false);
+                                  add.css("border","0px solid black");
                               })
                               
                               //댓글 수정
                           btn3.on("click",function(){
-
-                           
-                             
+							console.log(add);
+                        	  add.css("border","0px solid black");
                              
                              $.ajax({
                                 url:"/modify.reply",
