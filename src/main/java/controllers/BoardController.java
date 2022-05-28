@@ -74,8 +74,9 @@ public class BoardController extends HttpServlet {
 				request.setAttribute("navi", pageNavi);
 				
 				///////애디터 추천 게시글///////
+				String editor_type = boardOption;
 				boardOption ="e";
-				List<BoardDTO> editorList = dao.selectAll(boardOption);
+				List<BoardDTO> editorList = dao.selectByEditorType(boardOption,editor_type);
 				request.setAttribute("editorList", editorList);//애디터추천게시글 리스트
 				List<FilesDTO> filesDao = filesDAO.selectSysName(boardOption);//애디터추천 게시글 프로필 - sys_name get(해당게시글seq와 sys_name담겨 있음).
 				request.setAttribute("porfileList", filesDao);
@@ -116,8 +117,9 @@ public class BoardController extends HttpServlet {
 				request.setAttribute("navi", pageNavi);
 				
 				///////애디터 추천 게시글///////
+				String editor_type = boardOption;
 				boardOption ="e";
-				List<BoardDTO> editorList = dao.selectAll(boardOption);
+				List<BoardDTO> editorList = dao.selectByEditorType(boardOption,editor_type);
 				request.setAttribute("editorList", editorList);//애디터추천게시글 리스트
 				List<FilesDTO> filesDao = filesDAO.selectSysName(boardOption);//애디터추천 게시글 프로필 - sys_name get(해당게시글seq와 sys_name담겨 있음).
 				request.setAttribute("porfileList", filesDao);
@@ -139,8 +141,9 @@ public class BoardController extends HttpServlet {
 				request.setAttribute("navi", pageNavi);
 				
 				///////애디터 추천 게시글///////
+				String editor_type = boardOption;
 				boardOption ="e";
-				List<BoardDTO> editorList = dao.selectAll(boardOption);
+				List<BoardDTO> editorList = dao.selectByEditorType(boardOption,editor_type);
 				request.setAttribute("editorList", editorList);//애디터추천게시글 리스트
 				List<FilesDTO> filesDao = filesDAO.selectSysName(boardOption);//애디터추천 게시글 프로필 - sys_name get(해당게시글seq와 sys_name담겨 있음).
 				request.setAttribute("porfileList", filesDao);
@@ -166,8 +169,9 @@ public class BoardController extends HttpServlet {
 				request.setAttribute("housePorfileList", hFilesDao);
 
 				///////애디터 추천 게시글///////
+				String editor_type = boardOption;
 				boardOption ="e";
-				List<BoardDTO> editorList = dao.selectAll(boardOption);
+				List<BoardDTO> editorList = dao.selectByEditorType(boardOption,editor_type);
 				request.setAttribute("editorList", editorList);//애디터추천게시글 리스트
 				List<FilesDTO> filesDao = filesDAO.selectSysName(boardOption);//애디터추천 게시글 프로필 - sys_name get(해당게시글seq와 sys_name담겨 있음).
 				request.setAttribute("porfileList", filesDao);
@@ -176,6 +180,7 @@ public class BoardController extends HttpServlet {
 				request.getRequestDispatcher("/board/houseMain.jsp").forward(request, response);//숙소리뷰 메인페이지
 				
 			}else if(uri.equals("/editorReMain.board")) {//애디터 추천글 메인화면 출력
+				
 				String boardOption ="e";
 				List<BoardDTO> list = dao.selectAll(boardOption);
 
@@ -210,8 +215,9 @@ public class BoardController extends HttpServlet {
 				if(boardOption.equals("f")) {//자유게시판 메인페이지
 					absolutePath = "/board/boardMain.jsp";
 					///////애디터 추천 게시글///////
+					String editor_type = boardOption;
 					boardOption ="e";
-					List<BoardDTO> editorList = dao.selectAll(boardOption);
+					List<BoardDTO> editorList = dao.selectByEditorType(boardOption,editor_type);
 					request.setAttribute("editorList", editorList);//애디터추천게시글 리스트
 					List<FilesDTO> filesDao = filesDAO.selectSysName(boardOption);//애디터추천 게시글 프로필 - sys_name get(해당게시글seq와 sys_name담겨 있음).
 					request.setAttribute("porfileList", filesDao);
@@ -225,8 +231,9 @@ public class BoardController extends HttpServlet {
 				}else if(boardOption.equals("j")) {//구인구직 메인페이지
 					absolutePath = "/board/jobMain.jsp";
 					///////애디터 추천 게시글///////
+					String editor_type = boardOption;
 					boardOption ="e";
-					List<BoardDTO> editorList = dao.selectAll(boardOption);
+					List<BoardDTO> editorList = dao.selectByEditorType(boardOption,editor_type);
 					request.setAttribute("editorList", editorList);//애디터추천게시글 리스트
 					List<FilesDTO> filesDao = filesDAO.selectSysName(boardOption);//애디터추천 게시글 프로필 - sys_name get(해당게시글seq와 sys_name담겨 있음).
 					request.setAttribute("porfileList", filesDao);
@@ -234,8 +241,9 @@ public class BoardController extends HttpServlet {
 				}else if(boardOption.equals("r")) {//맛집 메인페이지
 					absolutePath = "/board/foodMain.jsp";
 					///////애디터 추천 게시글///////
+					String editor_type = boardOption;
 					boardOption ="e";
-					List<BoardDTO> editorList = dao.selectAll(boardOption);
+					List<BoardDTO> editorList = dao.selectByEditorType(boardOption,editor_type);
 					request.setAttribute("editorList", editorList);//애디터추천게시글 리스트
 					List<FilesDTO> filesDao = filesDAO.selectSysName(boardOption);//애디터추천 게시글 프로필 - sys_name get(해당게시글seq와 sys_name담겨 있음).
 					request.setAttribute("porfileList", filesDao);
@@ -248,8 +256,9 @@ public class BoardController extends HttpServlet {
 					request.setAttribute("housePorfileList", hFilesDao);
 					
 					///////애디터 추천 게시글///////
+					String editor_type = boardOption;
 					boardOption ="e";
-					List<BoardDTO> editorList = dao.selectAll(boardOption);
+					List<BoardDTO> editorList = dao.selectByEditorType(boardOption,editor_type);
 					request.setAttribute("editorList", editorList);//애디터추천게시글 리스트
 					List<FilesDTO> filesDao = filesDAO.selectSysName(boardOption);//애디터추천 게시글 프로필 - sys_name get(해당게시글seq와 sys_name담겨 있음).
 					request.setAttribute("porfileList", filesDao);
