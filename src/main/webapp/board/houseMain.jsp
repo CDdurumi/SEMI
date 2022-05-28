@@ -2,6 +2,8 @@
     pageEncoding="UTF-8"%>
     <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>   
     <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>    
 <!DOCTYPE html>
 <html>
 
@@ -566,52 +568,93 @@ $("#modal_loginBtn").on("click",function(){
     <!--Container Main start-->
     <div class="height-100 ">
         <div class="row " id="freemain">
+        
+        
+<!--         	여기는 숙소 BEST -->
             <div class="col-12 col-md-6 bottom_board">
                 <div class="row border border-2 rounded">
-                    <div class="col-12 border-bottom hotboard_bottom text-center">BEST</div>
+                    <div class="col-12 border-bottom hotboard_bottom text-center">숙소 BEST</div>
                     <div id="carouselExampleIndicators1" class="carousel slide" data-bs-ride="carousel">
                     
+                    
                         <div class="carousel-inner text-center">
-                            <div class="carousel-item active">
-                                <div class="card w-100 border-0" style="width: 18rem;">
-                                    <img src="숙소3.jpeg" class="card-img-top " alt="...">
-                                    <div class="card-body">
-                                        <p class="card-text text-black">
-                                            가격대비 정말 좋아요!
-                                            숙소도 사진에 비해서 더 깔끔하고 넓어요
-                                            근처에 24시간 마트가 있어서 이용하기 편리하고
-                                            호스트의 세심함이 보였던 숙소였습니다
-                                            이 가격에 이런 인테리어 청결을 갖춘 숙소는 없습니다.
-                                          </p>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="carousel-item">
-                                <div class="card w-100 border-0" style="width: 18rem;">
-                                    <img src="t.jpg" class="card-img-top w-100" alt="...">
-                                    <div class="card-body">
-                                        <p class="card-text text-black">
-                                            진짜 너무너무 좋아요 !!! 예약 비어있음 무조건 예약 하세요 ㅠㅠ 가는순간 다시 일상생활로 가기 싫어 질껍니다.... 
-                                            강아지도 사람도 너무 행복하게 해주는 숙소 였어요 감사합니다 ㅠㅠ
-                                        </p>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="carousel-item">
-                                <div class="card w-100 border-0" style="width: 18rem;">
-                                    <img src="img/다운로드.jpg" class="card-img-top" alt="...">
-                                    <div class="card-body">
-                                        <p class="card-text text-black">
-                                            휴식이 필요할 때 집보다 더 잘 쉴수 있는 공간입니다. 
-                                            숙소에는 항상 따스한 분위기가 깃들어 있고, 
-                                            너무 좋으신 사장님과 게스트 분들 덕에 한달을 알차게 보내다가 왔어요.
-                                            혼자 여행하신다면 더더욱 추천드립니다
+                        
+							<c:set var="count" value="0"/>
+					        <c:forEach var="i" items="${hotlist}">
 
-                                        </p>
-                                    </div>
-                                </div>
-                            </div>
+					        	<c:forEach var="j" items="${housePorfileList}">
+	
+									<c:if test="${j.parent_seq eq i.all_board_seq}">
+										<c:set var="count" value="${count+1}"/>
+										<c:choose>
+											<c:when test="${count eq 1}">
+												<div class="carousel-item active ">
+					                                <div class="card w-100 border-0" style="width: 18rem;">
+					                                    <a href = "/detailView.board?cpage=1&seq=${i.all_board_seq}&click=ok"><img src="${profilePath}${j.sys_name}" class="card-img-top" alt="..."></a>
+					                                    <div class="card-body">
+					                                        <p class="card-text text-black">${i.title}</p>
+					                                    </div>
+					                                </div>
+				                            	</div>
+											</c:when>
+											
+											<c:otherwise>
+												<div class="carousel-item ">
+					                                <div class="card w-100 border-0" style="width: 18rem;">
+					                                    <a href = "/detailView.board?cpage=1&seq=${i.all_board_seq}&click=ok"><img src="${profilePath}${j.sys_name}" class="card-img-top" alt="..."></a>
+					                                    <div class="card-body">
+					                                        <p class="card-text text-black">${i.title}</p>
+					                                    </div>
+					                                </div>
+				                            	</div>
+											</c:otherwise>
+										</c:choose>
+										
+									</c:if>
+									
+					        	</c:forEach>
+					        </c:forEach>
+                            
                         </div>
+                    
+                    
+                    
+<!--                         <div class="carousel-inner text-center"> -->
+<!--                             <div class="carousel-item active"> -->
+<!--                                 <div class="card w-100 border-0" style="width: 18rem;"> -->
+<!--                                     <img src="숙소3.jpeg" class="card-img-top " alt="..."> -->
+<!--                                     <div class="card-body"> -->
+<!--                                         <p class="card-text text-black"> -->
+<!-- 												하나 -->
+<!--                                         </p> -->
+<!--                                     </div> -->
+<!--                                 </div> -->
+<!--                             </div> -->
+<!--                             <div class="carousel-item"> -->
+<!--                                 <div class="card w-100 border-0" style="width: 18rem;"> -->
+<!--                                     <img src="t.jpg" class="card-img-top w-100" alt="..."> -->
+<!--                                     <div class="card-body"> -->
+<!--                                         <p class="card-text text-black"> -->
+<!-- 													둘 -->
+<!--                                         </p> -->
+<!--                                     </div> -->
+<!--                                 </div> -->
+<!--                             </div> -->
+<!--                             <div class="carousel-item"> -->
+<!--                                 <div class="card w-100 border-0" style="width: 18rem;"> -->
+<!--                                     <img src="img/다운로드.jpg" class="card-img-top" alt="..."> -->
+<!--                                     <div class="card-body"> -->
+<!--                                         <p class="card-text text-black"> -->
+<!--                                         셋 -->
+<!--                                         </p> -->
+<!--                                     </div> -->
+<!--                                 </div> -->
+<!--                             </div> -->
+                            
+                            
+<!--                         </div> -->
+                        
+                        
                         <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators1"
                             data-bs-slide="prev">
                             <span class="carousel-control-prev-icon" aria-hidden="true"></span>
@@ -626,48 +669,54 @@ $("#modal_loginBtn").on("click",function(){
                 </div>              
             </div>
 
+
+
+<!-- 				여기는 애디터 추천글 -->
                 <div class="col-12 col-md-6 bottom_board">
                     <div class="row border border-2 rounded">
-                        <div class="col-12 border-bottom hotboard_bottom text-center">BEST</div>
+                        <div class="col-12 border-bottom hotboard_bottom text-center">애디터 추천</div>
                         <div id="carouselExampleIndicators2" class="carousel slide" data-bs-ride="carousel"> 
-                            <div class="carousel-inner text-center">
-                                <div class="carousel-item active ">
-                                    <div class="card w-100 border-0" style="width: 18rem;">
-                                        <img src="img/다운로드 (1).jpg" class="card-img-top " alt="...">
-                                        <div class="card-body">
-                                            <p class="card-text text-black">
-                                                위치가 너무 좋아서 일출,한라산, 바다가 보이고 공항과 관광지로 움직이기도 좋았어요
-                                                호스트님께 여쭤봐서 갔던 맛집들도 대박이구 친절하시고 재밌으셔서 너무 편안하게 머물렀습니다!
-                                                덕분에 즐겁게 제주생활하고갑니다!
-                                              </p>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="carousel-item">
-                                    <div class="card w-100 border-0" style="width: 18rem;">
-                                        <img src="img/다운로드 (2).jpg" class="card-img-top w-100" alt="...">
-                                        <div class="card-body">
-                                            <p class="card-text text-black">
-                                                장기로 묵었는데 더할 나위 없엇습니다! 일을 해야 하는 때가 많았는데 호스트님께서
-                                                 필요한 물건 항상 구비해주시고 공간도 항상 깨끗하게 만들어주셨어요. 
-                                                 제주 다시 가게 된다면 꼭 다시 여기서 머무르고 싶습니다 :)
-                                            </p>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="carousel-item">
-                                    <div class="card w-100 border-0" style="width: 18rem;">
-                                        <img src="img/다운로드.jpg" class="card-img-top" alt="...">
-                                        <div class="card-body">
-                                            <p class="card-text text-black">
-                                                위치는 제주시에 위치하여 어디든 근접성이 좋았고
-                                                숙소도 청결하고 주방이 따로 분리가되어서 좋았습니다
-                                                오래 여행하시는분들은 세탁기도 있어서 유용하게 사용할 것 같아요. 추천합니다^^
-                                            </p>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
+                            
+                        <div class="carousel-inner text-center">
+                        
+							<c:set var="count" value="0"/>
+					        <c:forEach var="i" items="${editorList}">
+
+					        	<c:forEach var="j" items="${porfileList}">
+
+									<c:if test="${j.parent_seq eq i.all_board_seq}">
+										<c:set var="count" value="${count+1}"/>
+										<c:choose>
+											<c:when test="${count eq 1}">
+												<div class="carousel-item active ">
+					                                <div class="card w-100 border-0" style="width: 18rem;">
+					                                    <a href = "/detailView.board?cpage=1&seq=${i.all_board_seq}&click=ok"><img src="${profilePath}${j.sys_name}" class="card-img-top" alt="..."></a>
+					                                    <div class="card-body">
+					                                        <p class="card-text text-black">${i.title}</p>
+					                                    </div>
+					                                </div>
+				                            	</div>
+											</c:when>
+											
+											<c:otherwise>
+												<div class="carousel-item ">
+					                                <div class="card w-100 border-0" style="width: 18rem;">
+					                                    <a href = "/detailView.board?cpage=1&seq=${i.all_board_seq}&click=ok"><img src="${profilePath}${j.sys_name}" class="card-img-top" alt="..."></a>
+					                                    <div class="card-body">
+					                                        <p class="card-text text-black">${i.title}</p>
+					                                    </div>
+					                                </div>
+				                            	</div>
+											</c:otherwise>
+										</c:choose>
+										
+									</c:if>
+									
+					        	</c:forEach>
+					        </c:forEach>
+                            
+                        </div>
+                            
                              <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators2"
                                 data-bs-slide="prev">
                                 <span class="carousel-control-prev-icon" aria-hidden="true"></span>
