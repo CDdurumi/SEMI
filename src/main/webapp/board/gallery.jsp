@@ -326,6 +326,8 @@ border: 3px solid #929090;
     border-radius: 20px;
 }
 
+
+
 #img{
     float: left;
     margin: 0%;
@@ -354,7 +356,6 @@ text-align: center;
      border-radius: 50%;
      background-color: rgba(32, 32, 32, 0.329); 
      display: none;
-   
     }
 
 img:hover + .mask, .mask:hover {display: block;}
@@ -562,7 +563,7 @@ $("#modal_loginBtn").on("click",function(){
           	
           	
             <input class="form-control me-2" type="search" placeholder="검색어를 입력해주세요." aria-label="Search" name="contents">
-            <button class="btn btn-primary" type="submit">Search</button>&nbsp;
+            <button class="btn btn-outline-secondary" type="submit">Search</button>&nbsp;
             <c:choose>
 					<c:when test="${loginID !=null}">
 							<button type="button" class="btn btn-primary btn-sm" id="writeBtn" style="white-space:nowrap;"><i class="fa-solid fa-pen-to-square"></i>글 작성하기</button>
@@ -578,13 +579,13 @@ $("#modal_loginBtn").on("click",function(){
     </div>
 
 
-        <div id="imgmenu1" class="row">
+        <div id="imgmenu1" class="row" >
         <c:forEach var="i" items="${list}">
         	<c:forEach var="j" items="${porfileList}">
 				<c:if test="${j.parent_seq eq i.all_board_seq}">
 					<div class="col-12 col-sm-6 col-md-3" id="img">
-						<a href = "/detailView.board?cpage=1&seq=${i.all_board_seq}&click=ok">
-							<img src="${profilePath}${j.sys_name}" alt=".." class="rounded-circle w-100 h-100" style="box-shadow: 5px 5px 5px 5px gray">
+						<a href = "/detailView.board?cpage=1&seq=${i.all_board_seq}&click=ok" >
+							<img src="${profilePath}${j.sys_name}" alt=".." class="rounded-circle w-100 h-100" style="box-shadow: 5px 5px 5px 5px gray;">
 							<div class="mask"><p1>${i.title}</p1></div>
 						</a>
 						

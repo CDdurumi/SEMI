@@ -587,7 +587,7 @@ $("#modal_loginBtn").on("click",function(){
         <div class="row " id="freemain">
             <div class="col-12 col-md-6 bottom_board">
                 <div class="row border border-2 rounded">
-                    <div class="col-12 border-bottom hotboard_bottom text-center">자유게시판 화제</div>
+                    <div class="col-12 border-bottom hotboard_bottom text-center" style="font-weight:bold; font-size:18px;">자유게시판 화제</div>
                     <div class="row  freeboard_bottom">
                         <div class="col-12 ">
                             <div class="row freeboard_bottom ">
@@ -613,7 +613,7 @@ $("#modal_loginBtn").on("click",function(){
             </div>
             <div class="col-12 col-md-6 bottom_board">
                 <div class="row border border-2 rounded">
-                    <div class="col-12 border-bottom hotboard_bottom text-center">에디터 추천</div>
+                    <div class="col-12 border-bottom hotboard_bottom text-center" style="font-weight:bold; font-size:18px;">에디터 추천</div>
                     <div id="carouselExampleIndicators" class="carousel slide" data-bs-ride="carousel">
                         <div class="carousel-indicators">
 
