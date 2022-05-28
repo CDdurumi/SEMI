@@ -42,7 +42,9 @@ pageEncoding="UTF-8"%>
     
     <style>
         @import url("https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700&display=swap");
-
+  body::-webkit-scrollbar{
+       display: none; /* Chrome, Safari, Opera*/
+     }   
         :root {
             --header-height: 3rem;
             --nav1-width: 68px;
@@ -392,7 +394,7 @@ pageEncoding="UTF-8"%>
         /*--쪽지-------------------------------------------------------------------------------------------*/
         /*쪽지 탭*/
         #message{
-            padding-top: 100px;
+            padding-top: 50px;
         }
         /*탭 내용*/
         #v-pills-tabContent{
@@ -550,6 +552,11 @@ pageEncoding="UTF-8"%>
   background-color: #555; 
 }
 
+ 메세지보내기버튼 
+ #sendMsgBtn{ 
+ 	min-width:90px; 
+/* 	padding-right:25px;  */
+ }
 
 
     </style>
@@ -743,7 +750,9 @@ $("#modal_loginBtn").on("click",function(){
 
             <!--쪽지 UI--------------------------------------------------------------------------------------->
             <div class="tab-pane fade" id="message" role="tabpanel" aria-labelledby="message-tab">
-                
+            
+            <div style="text-align:right; padding-right:38px; padding-bottom:10px;">
+                <button type="button" class="btn btn-primary" id="sendMsgBtn" data-bs-toggle="modal" data-bs-target="#exampleModalsend">쪽지쓰기</button></div>
                 <div class="d-flex align-items-start">
                     <div class="nav flex-column nav-pills" id="v-pills-tab" role="tablist" aria-orientation="vertical">
                       <button class="nav-link active" id="v-pills-receive-tab" data-bs-toggle="pill" data-bs-target="#v-pills-receive" type="button" role="tab" aria-controls="v-pills-receive" aria-selected="true">받은<br>쪽지함</button>
@@ -754,19 +763,16 @@ $("#modal_loginBtn").on("click",function(){
                         <div class="tab-pane fade show active" id="v-pills-receive" role="tabpanel" aria-labelledby="v-pills-receive-tab" >
                             
                             <div class="container2">
-    
-                                <div class="row m-0 ">
-                                    <div class="col-12 receive_msgtext">
-                                        <div class="row " id="board_menu_text">
-                                            <div class="col-md-2 col-lg-1 d-none d-lg-block ">번호</div>
-                                            <div class="col-8 col-md-8 col-lg-5">제목</div>
-                                            <div class="col-4 col-md-4 col-lg-2 text-center">보낸이</div>
-                                            <div class="col-md-2 col-lg-4 d-none d-lg-block text-center">날짜</div>
-                                        </div>
+   									<div class="row " id="board_menu_text">
+                                        <div class="col-md-2 col-lg-1 d-none d-lg-block ">번호</div>
+                                        <div class="col-8 col-md-8 col-lg-5">제목</div>
+                                        <div class="col-4 col-md-4 col-lg-2 text-center">보낸이</div>
+                                        <div class="col-md-2 col-lg-4 d-none d-lg-block text-center">날짜</div>
                                     </div>
-								<!-- 받은 쪽지함 반복문위치 -->
-                                   
-                                   
+                                <div class="row m-0 receive_msgbox">
+                                    <div class="col-12 receive_msgtext">
+                                        <!-- 받은 쪽지함 반복문위치 -->
+                                    </div>
                                </div>
                             </div>
                         </div>
@@ -774,18 +780,16 @@ $("#modal_loginBtn").on("click",function(){
                         <!--보낸 쪽지함-->
                         <div class="tab-pane fade" id="v-pills-send" role="tabpanel" aria-labelledby="v-pills-send-tab">
                             <div class="container2">
-                                <div class="row m-0">
-                                    <div class="col-12 send_msgtext">
-                                        <div class="row " id="board_menu_text">
-                                            <div class="col-md-2 col-lg-1 d-none d-lg-block ">번호</div>
-                                            <div class="col-8 col-md-8 col-lg-5">제목</div>
-                                            <div class="col-4 col-md-4 col-lg-2 text-center">받는이</div>
-                                            <div class="col-md-2 col-lg-4 d-none  d-lg-block text-center">날짜</div>
-                                        </div>
+                            		<div class="row " id="board_menu_text">
+                                        <div class="col-md-2 col-lg-1 d-none d-lg-block ">번호</div>
+                                        <div class="col-8 col-md-8 col-lg-5">제목</div>
+                                        <div class="col-4 col-md-4 col-lg-2 text-center">받는이</div>
+                                        <div class="col-md-2 col-lg-4 d-none  d-lg-block text-center">날짜</div>
                                     </div>
-								<!-- 보낸 쪽지함 반복문위치 -->
-
-                                   
+                                <div class="row m-0 send_msgbox">
+                                    <div class="col-12 send_msgtext">
+                                        <!-- 보낸 쪽지함 반복문위치 -->
+                                    </div>
                                </div>
                             </div>
                         </div>
@@ -1442,6 +1446,34 @@ $("#modal_loginBtn").on("click",function(){
 
     </div>
     
+<!-- Message Modal -->
+<div class="modal fade" id="exampleModalsend" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header" >
+        <h5 class="modal-title" id="exampleModalLabel">쪽지 보내기</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+      	 
+      	받는 사람 | <input type="text" placeholder="받는 사람 ID" id="receiver"><p></p>
+      	<input type="text" placeholder="제목을 입력하세요" id="title1" name="title" style="width:100%">
+      	<p>
+      		
+      	</p>
+      	
+        <textarea style="width:100%; min-height:150px" placeholder="내용을 입력하세요" id="msgContents"></textarea>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">닫기</button>
+        <button type="button" class="btn btn-primary" id="modal_sendMsg">보내기</button>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+    
      <!--top 버튼-->
     <button onclick="topFunction()" id="myBtn" title="Go to top">↑</button>
     <!-------------------------------------------------------------------------------------------------------------------Container Main end-->
@@ -1732,96 +1764,121 @@ $("#modal_loginBtn").on("click",function(){
      document.documentElement.scrollTop = 0; 
    }
 	//쪽지 스크립트(인피티니스크롤미적용)
-		$("#message-tab").on("click", function(){
-			$(".receive_msgboard2").remove();
-			
+	
+	let isReceiveClick = true;
+	
+	
+	$("#message-tab").on("click", function(){
+		if(isReceiveClick){
+			$(".receive_msgtext").remove();
+			let msgText = $("<div class='col-12 receive_msgtext'>");
+			$(".receive_msgbox").append(msgText);
 		
 			let page = 1;  //페이징과 같은 방식이라고 생각하면 된다.
-            getReceiveList(page);
-            page++;
-// 			if(isAjaxing){
-// 				return;
-// 			}
-// 			isAjaxing = true;
-// 		alert(page)
+	        getReceiveList(page);
+	        page++;
+//				if(isAjaxing){
+//					return;
+//				}
+//				isAjaxing = true;
+//			alert(page)
 		 	  $(window).scroll(function(){   //스크롤이 최하단 으로 내려가면 리스트를 조회하고 page를 증가시킨다.
 		  	  	if($(window).scrollTop() >= $(document).height() - $(window).height()){
-// 		  	        alert(page)
+//			  	        alert(page)
 		  	  		getReceiveList(page);
 		   	        page++;   
 //		                console.log(page);
 		    	 } 
 		 	   });
+		 	   
+		 	   isReceiveClick = false;
+		}else{
 			
-		});
-		
-		
-		
-		 function getReceiveList(pape){
-			let page = pape;
+		}
 
-			$.ajax({
-               url : '/receiveMsgBox.mpg',
-               type : 'POST',
-               data : {page : page},
-               dataType : 'json'
-          }).done(function(resp){
-// 			$(".receive_msgboard2").remove();
-			
-			for(let i = 0; i < resp.length; i++){
-				
-				let msgDiv = $("<div class='col-12 receive_msgboard2'>");
-				let msgDiv1 = $("<div class='row m-0 border border-2 rounded board_row '>");
-				
-				let msgDiv2 = $("<div class='col-md-2 col-lg-1 d-none d-lg-block p-0'>");
-				msgDiv2.text(resp[i].line);
-				
-				let msgDiv3 = $("<div class='col-8 col-md-8 col-lg-5 m-0 title ellipsis p-0'>");
-				let msgSpan = $("<span>");
-				let msgHref = $("<a href='detailMsg.mpg?message_seq="+resp[i].message_seq+"'>");
-				msgHref.text(resp[i].title);
-				
-				let msgDiv4 = $("<div class='col-4 col-md-4 col-lg-2 p-0 ellipsis text-center'>");
-				let msgSpan2 = $("<span>")
-				msgSpan2.text(resp[i].sender);
-				
-				let msgDiv5 = $("<div class='col-md-2 col-lg-4 d-none d-lg-block p-0 text-center'>");
-				msgDiv5.text(resp[i].date);
-				
-				
-				
-				$(".receive_msgtext").append(msgDiv);
-				msgDiv.append(msgDiv1);
-				msgDiv1.append(msgDiv2);
-				msgDiv1.append(msgDiv3);
-				msgDiv3.append(msgSpan);
-				msgSpan.append(msgHref);
-				msgDiv1.append(msgDiv4);
-				msgDiv4.append(msgSpan2);
-				msgDiv1.append(msgDiv5);
-				
-				msgDiv.hide();
-                msgDiv.fadeIn(1500);
-                
-			}
-// 			setTimeout(function(){isAjaxing = false;}, 100000);
-		})
-	};
-	$("#v-pills-send-tab").on("click", function(){
-		$(".send_msgboard2").remove();
-		 let page = 1;  //페이징과 같은 방식이라고 생각하면 된다.
-       getSendList(page);
-       page++;
+		
+	});
 	
-//	alert(page)
-	 	  $(window).scroll(function(){   //스크롤이 최하단 으로 내려가면 리스트를 조회하고 page를 증가시킨다.
-	  	  	if($(window).scrollTop() >= $(document).height() - $(window).height()){
-//	  	        alert(page)
-	  	  		getSendList(page);
-	   	        page++;   
-//	                console.log(page);
-	    	 } 
-	 	   });
+	
+	
+	 function getReceiveList(pape){
+		let page = pape;
+
+		$.ajax({
+           url : '/receiveMsgBox.mpg',
+           type : 'POST',
+           data : {page : page},
+           dataType : 'json'
+      }).done(function(resp){
+//			$(".receive_msgboard2").remove();
+		console.log(resp);
+//			if()
+		for(let i = 0; i < resp.length; i++){
+			
+			let msgDiv = $("<div class='col-12 receive_msgboard2'>");
+			let msgDiv1 = $("<div class='row m-0 border border-2 rounded board_row '>");
+			
+			let msgDiv2 = $("<div class='col-md-2 col-lg-1 d-none d-lg-block p-0'>");
+			msgDiv2.text(resp[i].line);
+			
+			let msgDiv3 = $("<div class='col-8 col-md-8 col-lg-5 m-0 title ellipsis p-0'>");
+			let msgSpan = $("<span>");
+			let msgHref = $("<a href='detailMsg.mpg?message_seq="+resp[i].message_seq+"'>");
+			msgHref.text(resp[i].title);
+			
+			let msgDiv4 = $("<div class='col-4 col-md-4 col-lg-2 p-0 ellipsis text-center'>");
+			let msgSpan2 = $("<span>")
+			msgSpan2.text(resp[i].sender);
+			
+			let msgDiv5 = $("<div class='col-md-2 col-lg-4 d-none d-lg-block p-0 text-center'>");
+			msgDiv5.text(resp[i].date);
+			
+			
+			
+			$(".receive_msgtext").append(msgDiv);
+			msgDiv.append(msgDiv1);
+			msgDiv1.append(msgDiv2);
+			msgDiv1.append(msgDiv3);
+			msgDiv3.append(msgSpan);
+			msgSpan.append(msgHref);
+			msgDiv1.append(msgDiv4);
+			msgDiv4.append(msgSpan2);
+			msgDiv1.append(msgDiv5);
+			
+			msgDiv.hide();
+            msgDiv.fadeIn(1500);
+            
+		}
+//			setTimeout(function(){isAjaxing = false;}, 100000);
+	})
+};
+	
+	
+	isSendClick= true;
+	$("#v-pills-send-tab").on("click", function(){
+		if(isSendClick){
+			console.log(123);
+			$(".send_msgtext").remove();
+			let msgText = $("<div class='col-12 send_msgtext'>");
+			$(".send_msgbox").append(msgText);
+			
+			let page = 1;  //페이징과 같은 방식이라고 생각하면 된다.
+	        getSendList(page);
+	        page++;
+		
+//		alert(page)
+		 	  $(window).scroll(function(){   //스크롤이 최하단 으로 내려가면 리스트를 조회하고 page를 증가시킨다.
+		  	  	if($(window).scrollTop() >= $(document).height() - $(window).height()){
+//		  	        alert(page)
+		  	  		getSendList(page);
+		   	        page++;   
+//		                console.log(page);
+		    	 } 
+		 	   });
+		 	   isSendClick = false;
+		}else{
+			
+		}
 		
 	});
 	
@@ -1829,6 +1886,7 @@ $("#modal_loginBtn").on("click",function(){
 	
 	 function getSendList(pape){
 		let page = pape;
+		
 		$.ajax({
           url : '/sendMsgBox.mpg',
           type : 'POST',
@@ -1857,7 +1915,7 @@ $("#modal_loginBtn").on("click",function(){
 			let msgDiv5 = $("<div class='col-md-2 col-lg-4 d-none d-lg-block p-0 text-center'>");
 			msgDiv5.text(resp[i].date);
 			
-			$(".send_msgtext").after(msgDiv);
+			$(".send_msgtext").append(msgDiv);
 			msgDiv.append(msgDiv1);
 			msgDiv1.append(msgDiv2);
 			msgDiv1.append(msgDiv3);
@@ -1872,9 +1930,43 @@ $("#modal_loginBtn").on("click",function(){
 		}
 	})
 };
-
-   
-   
+</script>
+<script>
+//	     쪽지보내기
+    $("#modal_sendMsg").on("click", function(){
+    	if($("#receiver").val()==""){
+        	alert("받는 사람의 닉네임를 입력해주세요.");
+        	$("#receiver").focus();
+        	return false;
+        }else if($("#title1").val()==""){
+        	alert("제목를 입력해주세요.");
+        	$("#title1").focus();
+        	return false;
+        }else if($("#msgContents").val()==""){
+        	alert("내용를 입력해주세요.");
+        	$("#msgContents").focus();
+        	return false;
+        }else{
+        	$.ajax({
+        		url:"sendMsg.mpg",
+        		type:"post",
+        		data:{
+        			message_seq:${dto.message_seq},
+        			receiver:$("#receiver").val(),
+        			title:$("#title1").val(),
+        			contents:$("#msgContents").val()
+        			},
+        		dataType:"json"
+        	}).done(function(resp){
+        		console.log(resp);
+        		if(resp==0){
+        			alert("존재하지 않는 닉네임입니다.");
+        		}else{
+        			location.reload();
+        		}
+        	})
+        }
+    })
 </script>
 </body>
 

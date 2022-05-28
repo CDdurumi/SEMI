@@ -109,7 +109,8 @@ public class MessageDAO {
 		int end = cpage * 15;//해당 페이지의 끝 게시글 번호
 
 		// 한 페이지에 게시글이 15개씩 보여지도록 하기 위해서 row_number를 활용하는데, 서브 쿼리를 활용해서 select 해준다.
-		String sql = "select * from (select row_number() over(order by write_date desc) line, message.* from message where sender=?) where (line between ? and ?) and (sender=?)";
+		String sql = "select * from (select (row_number() over(order by write_date desc)) line, message.* from message where sender=?) where (line between ? and ?) and (sender=?) order by line";
+
 
 		try(Connection con = this.getConnection();
 				PreparedStatement pstat = con.prepareStatement(sql);){
@@ -147,7 +148,8 @@ public class MessageDAO {
 		int end = cpage * 15;//해당 페이지의 끝 게시글 번호 15 30 45 
 
 		// 한 페이지에 게시글이 15개씩 보여지도록 하기 위해서 row_number를 활용하는데, 서브 쿼리를 활용해서 select 해준다.
-		String sql = "select * from (select row_number() over(order by write_date desc) line, message.* from message where receiver=?) where (line between ? and ?) and (receiver=?)";
+		String sql = "select * from (select (row_number() over(order by write_date desc)) line, message.* from message where receiver=?) where (line between ? and ?) and (receiver=?) order by line";
+		
 
 		try(Connection con = this.getConnection();
 				PreparedStatement pstat = con.prepareStatement(sql);){

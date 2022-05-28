@@ -600,6 +600,7 @@
 		let nickName = $("#nickname_input");
 		let pw1 = $(".passwords1_input");
 		let email = $("#email_input");
+		let bool_check;
 		
 		 if(!isEmail(email.val())){
 			email.focus();
@@ -612,6 +613,38 @@
 			pw1.focus();
 			return false;
 		}
+		
+		 $.ajax({
+				url:"/isEmailExist.member",
+				type:"get",
+				data:{email:$("#email_input").val()},
+				dataType:"json",
+				async:false
+			}).done(function(resp){
+				$("#email_input").focus();
+				bool_check = !resp;						
+			}); 
+		
+		 if(bool_check){
+			 $.ajax({
+					url:"/duplIDCheck.member",
+					type:"get",
+					data:{nickname:$("#nickname_input").val()},
+					dataType:"json",
+					async:false
+					}).done(function(resp){
+						$("#nickname_input").focus();
+						bool_check = !resp;
+					}); 
+		 }
+		 
+		 
+		
+				
+		 
+		
+				
+		 return bool_check;
 	})
 		//닉네임(한글,영문, 숫자 2-10자)
 		function isNickName(asValue) {
