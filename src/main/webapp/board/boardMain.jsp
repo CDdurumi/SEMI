@@ -494,17 +494,29 @@ select{
             <div> <a href="/index.jsp" class="nav_logo"> <i class='bx bx-layer nav_logo-icon'></i> <span class="nav_logo-name">쉼표
                         <br>- 일상의 쉼표를 찍다</span> </a>
                 <div class="nav_list">
-                    <a href="#" class="nav_link"> <i class='CurrIcon'></i> <span class="nav_name"><span class="weather">
+                    <a class="nav_link active"> <i class='CurrIcon'></i> <span class="nav_name"><span class="weather">
                     <span class="CurrTemp"></span>
                     <span class="City"></span>
                     </span></span> </a>
                     <a href="/communityMain.board" class="nav_link active"> <i class='bx bx-message nav_icon'></i> <span class="nav_name">커뮤니티</span> </a> 
                    <a href="/editorReMain.board?" class="nav_link"> <i class='bx bx-book-bookmark nav_icon'></i> <span class="nav_name">에디터추천</span> </a> 
                    <a href="/boardMainView.board?cpage=1" class="nav_link"> <i class='bx bx-home nav_icon'></i> <span class="nav_name">숙소리뷰</span> </a>
-               		<a href="/myPage.jsp" class="nav_link"> <i class='bx bx-user nav_icon'></i> <span class="nav_name">마이페이지</span> </a> 
+               		<c:choose>
+						<c:when test="${loginID !=null}">
+							<a href="/myPage.jsp" class="nav_link"> <i class='bx bx-user nav_icon'></i> <span class="nav_name">마이페이지</span> </a>
+						</c:when>
+		
+						<c:otherwise>
+							<a href="/myPage.jsp" class="nav_link" data-bs-toggle="modal" data-bs-target="#exampleModal"> <i class='bx bx-user nav_icon'></i> <span class="nav_name">마이페이지</span> </a>
+						</c:otherwise>
+					</c:choose> 
                  </div>
             </div>
-            <a href="#" class="nav_link"> <i class='bx bx-log-out nav_icon'></i> <span class="nav_name">로그아웃</span> </a>
+            <c:choose>
+				<c:when test="${loginID !=null}">
+					<a href="/logout.member" class="nav_link"> <i class='bx bx-log-out nav_icon'></i> <span class="nav_name">로그아웃</span> </a>	
+				</c:when>
+			</c:choose>
         </nav>
     </div>
     

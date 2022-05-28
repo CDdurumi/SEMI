@@ -604,7 +604,7 @@ pageEncoding="UTF-8"%>
             <div> <a href="/index.jsp" class="nav1_logo"> <i class='bx bx-layer nav1_logo-icon'></i> <span class="nav1_logo-name">쉼표
                         <br>- 일상의 쉼표를 찍다</span> </a>
                 <div class="nav1_list">
-                    <a href="#" class="nav1_link"> <i class='CurrIcon'></i> <span class="nav1_name"><span class="weather">
+                    <a class="nav_link active"> <i class='CurrIcon'></i> <span class="nav1_name"><span class="weather">
                     <span class="CurrTemp"></span>
                     <span class="City"></span>
                     </span></span> </a>
@@ -616,8 +616,15 @@ pageEncoding="UTF-8"%>
                    
                     <a href="/boardMainView.board?cpage=1" class="nav1_link"> <i class='bx bx-home nav1_icon'></i> <span class="nav1_name">숙소리뷰</span>
                     </a>
-                    <a href="/myPage.jsp" class="nav1_link active"> <i class='bx bx-user nav1_icon'></i> <span
-                            class="nav1_name">마이페이지</span> </a>
+                    <c:choose>
+						<c:when test="${loginID !=null}">
+							<a href="/myPage.jsp" class="nav_link"> <i class='bx bx-user nav_icon'></i> <span class="nav_name">마이페이지</span> </a>
+						</c:when>
+		
+						<c:otherwise>
+							<a href="/myPage.jsp" class="nav_link" data-bs-toggle="modal" data-bs-target="#exampleModal"> <i class='bx bx-user nav_icon'></i> <span class="nav_name">마이페이지</span> </a>
+						</c:otherwise>
+					</c:choose>
                 </div>
             </div>
             <c:choose>
