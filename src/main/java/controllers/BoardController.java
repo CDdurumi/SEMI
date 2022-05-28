@@ -296,8 +296,23 @@ public class BoardController extends HttpServlet {
 						filesDAO.insert(new FilesDTO(0, oriName, sysName, seq));//파일 정보 저장
 					}	
 				}
+
+				String url = "";
+				if(boardOption.equals("f")) {//자유게시판
+					url = "/boardMainView.board?";
+				}else if(boardOption.equals("g")) {//여행후기
+					url = "/galleryMain.board?";
+				}else if(boardOption.equals("j")) {//구인구직
+					url = "/jobMain.board?";
+				}else if(boardOption.equals("r")) {//맛집
+					url = "/foodMain.board?";
+				}else if(boardOption.equals("h")) {//숙소
+					url = "/houseMain.board?";
+				}else if(boardOption.equals("e")) {//애디터추천
+					url = "/editorReMain.board?";
+				}
 				
-				response.sendRedirect("/boardMainView.board?cpage=1");//자유게시판 메인화면으로 전환
+				response.sendRedirect(url+"cpage=1");//해당 게시판 메인화면으로 전환
 	
 			}else if(uri.equals("/detailView.board")) {//작성글 출력(게시판 목록에서 게시글 클릭 시 여기로.)
 				//테스트용 하드코딩
