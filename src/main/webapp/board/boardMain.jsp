@@ -729,7 +729,7 @@ $("#modal_loginBtn").on("click",function(){
         <div class="col-12  board">
             <div class="row m-0 border border-2 rounded board_row ">
             	
-                <div class="col-1 col-md-1 d-none d-md-block p-0">0</div>
+                <div class="col-1 col-md-1 d-none d-md-block p-0">${i.line}</div>
                	<div class="col-7 col-md-6 m-0 title ellipsis">
                		<span><a href="/detailView.board?cpage=${cpage}&seq=${i.all_board_seq}&click=ok" style="color:black">${i. title }</a></span>
                	</div>
