@@ -731,6 +731,7 @@
                                 let recol9=$("<div>");
                                 recol9.attr("class","col-12 writer");
                                 recol9.text(resp[i].id);
+                                let relogin_id = recol9.text();
                                 //대댓글 날짜
                                 let recol10=$("<div>");
                                 recol10.attr("class","col-12");
@@ -795,12 +796,13 @@
                                       rebtn4.text("완료");
                                    rebtn5 = $("<button>");
                                       rebtn5.attr("class","btn btn-outline-danger btn-sm recancel");
-                                      
+                                      console.log('${loginID}');
                                       rebtn5.text("취소");
-                                      
+                                      if(relogin_id=='${loginID}'){
                                       thisrecol11.append(rebtn4);
                                         thisrecol11.append(' ');
                                         thisrecol11.append(rebtn5);
+                                      }
                                       //대댓글 수정 완료
                                         $(rebtn4).on("click",function(){
                                         	let contents = $($(this).parent().siblings()[1]);
