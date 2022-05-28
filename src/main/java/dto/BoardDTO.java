@@ -12,11 +12,12 @@ public class BoardDTO {
 	private int like_count;
 	private int jjim_count;
 	private int view_count;
-	
+	private int line;
 	public BoardDTO() {
+		// TODO Auto-generated constructor stub
 	}
 	public BoardDTO(String all_board_seq, String id, String title, String contents, Timestamp write_date,
-			int like_count, int jjim_count, int view_count) {
+			int like_count, int jjim_count, int view_count, int line) {
 		super();
 		this.all_board_seq = all_board_seq;
 		this.id = id;
@@ -26,6 +27,7 @@ public class BoardDTO {
 		this.like_count = like_count;
 		this.jjim_count = jjim_count;
 		this.view_count = view_count;
+		this.line = line;
 	}
 	public String getAll_board_seq() {
 		return all_board_seq;
@@ -75,10 +77,18 @@ public class BoardDTO {
 	public void setView_count(int view_count) {
 		this.view_count = view_count;
 	}
-
+	public int getLine() {
+		return line;
+	}
+	public void setLine(int line) {
+		this.line = line;
+	}
+	
 	//날짜 format
 	public String getFormdDate() {
 		SimpleDateFormat sdf = new SimpleDateFormat("YYYY년 MM월 dd일 HH:mm");
 		return sdf.format(this.write_date);
 	}	
+
+
 }
