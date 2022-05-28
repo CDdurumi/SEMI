@@ -91,7 +91,7 @@ public class BoardDAO {
 					int jjim_count = rs.getInt("like_count");
 					int view_count = rs.getInt("view_count");
 
-					BoardDTO dto = new BoardDTO(seq, id, title, contents, write_date, jjim_count, like_count, view_count);
+					BoardDTO dto = new BoardDTO(seq, id, title, contents, write_date, jjim_count, like_count, view_count, 0);
 					list.add(dto);
 				}
 				return list;
@@ -167,7 +167,7 @@ public class BoardDAO {
 				int jjim_count = rs.getInt("jjim_count");
 				int view_count = rs.getInt("view_count");
 				return (new BoardDTO(all_board_seq, id, title, contents, write_date, like_count, jjim_count,
-						view_count));
+						view_count, 0));
 			}
 		}
 	}
@@ -266,7 +266,7 @@ public class BoardDAO {
 				int jjim_count = rs.getInt("jjim_count");
 				int view_count = rs.getInt("view_count");
 
-				BoardDTO dto = new BoardDTO(all_board_seq, id, title, contents, write_date, like_count, jjim_count, view_count);
+				BoardDTO dto = new BoardDTO(all_board_seq, id, title, contents, write_date, like_count, jjim_count, view_count, 0);
 				list.add(dto);
 			}
 			return list;
@@ -291,7 +291,7 @@ public class BoardDAO {
 				int jjim_count = rs.getInt("jjim_count");
 				int view_count = rs.getInt("view_count");
 
-				BoardDTO dto = new BoardDTO(seq, id, title, contents, write_date, like_count, jjim_count, view_count);
+				BoardDTO dto = new BoardDTO(seq, id, title, contents, write_date, like_count, jjim_count, view_count,0);
 				return dto;
 			}
 		}
@@ -498,9 +498,10 @@ public class BoardDAO {
 					int like_count = rs.getInt("jjim_count");
 					int jjim_count = rs.getInt("like_count");
 					int view_count = rs.getInt("view_count");
+					int line = rs.getInt("line");
 
 					BoardDTO dto = new BoardDTO(seq, id, title, contents, write_date, jjim_count, like_count,
-							view_count);
+							view_count, line);
 					list.add(dto);
 				}
 				return list;
@@ -530,9 +531,10 @@ public class BoardDAO {
 					int like_count = rs.getInt("jjim_count");
 					int jjim_count = rs.getInt("like_count");
 					int view_count = rs.getInt("view_count");
-
+					int line = rs.getInt("line");
+					
 					BoardDTO dto = new BoardDTO(seq, id, title, contents, write_date, jjim_count, like_count,
-							view_count);
+							view_count, line);
 					list.add(dto);
 				}
 				return list;
