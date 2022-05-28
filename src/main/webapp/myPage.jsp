@@ -1501,43 +1501,57 @@ $("#modal_loginBtn").on("click",function(){
         })
     
         
-        $("#ok").on("click",function(){
-        	alert(1);
-        	console.log($("#editID").val());
-        	console.log($("#pw1").val());
-        	$.ajax({
-        		url:"/modifiedOk.member",
-                data:{id:$("#editID").val(), pw:$("#pw1").val()},
-                dataType:"json",
-                type:"post"
-        	}).done(function(resp){
-        		alert(2);
-        		if(resp){
-        			alert("변경완료");	
-        			 $("#pw").css("display","none"); //모든 컨텐츠
-        			 $("#ok").css("display","none");    //완료버튼
-        			 $("#modify").css("display","block");   //수정하기 버튼
-        			 $("#editID").attr("disabled", true);
-        		}else{
-        			alert("error");
-        		}
-        		
-        	})
-        })
+       
+        	$("#ok").on("click",function(){
+        		$.ajax({
+        		url:"/duplIDCheck.member",
+        		type:"get",
+        		data:{nickname:$("#editID").val()},
+        		dataType:"json"
+        		}).done(function(resp){
+        				console.log("닉네임 조회 resp : " + resp)
+        					if(resp==false){						
+        			        	if(isNickName($("#editID").val())) {
+        			        		if(isPw($("#pw1").val())){
+
+        			            		alert(1);
+        			                	console.log($("#editID").val());
+        			                	console.log($("#pw1").val());
+        			                	$.ajax({
+        			                		url:"/modifiedOk.member",
+        			                        data:{id:$("#editID").val(), pw:$("#pw1").val()},
+        			                        dataType:"json",
+        			                        type:"post"
+        			                	}).done(function(resp){
+        			                		alert(2);
+        			                		if(resp){
+        			                			alert("변경완료");	
+        			                			 $("#pw").css("display","none"); //모든 컨텐츠
+        			                			 $("#ok").css("display","none");    //완료버튼
+        			                			 $("#modify").css("display","block");   //수정하기 버튼
+        			                			 $("#editID").attr("disabled", true);
+        			                		}else{
+        			                			alert("error");
+        			                		}
+        			                		
+        			                	})	
+        			        		}else{
+        			        			alert("비밀번호 양실이 틀립니다")
+        			        		}
+        			        	}else{
+        			        		alert("닉네임이 양식이 틀립니다")
+        			        	}
+        					}else if(resp==true){
+        						alert("이미 사용중인 닉네임입니다")
+        					}
+        					
+        				});
+        			})        	
+      
         
-    /*     $("#signupFrm").on("submit",function(){
-		let nickName = $("#editID");
-		let pw1 = $("#pw1");
-		
-		if(!isNickName(nickName.val())){
-			nickName.focus();
-			return false;
-		}else if(!isPw(pw1.val())){
-			pw1.focus();
-			return false;
-		}
-	})
-		//닉네임(한글,영문, 숫자 2-10자)
+//정규식
+
+//닉네임(한글,영문, 숫자 2-10자)
 		function isNickName(asValue) {
 			var regExp = /^[a-z가-힣0-9]{2,10}$/g;		
 			return regExp.test(asValue);
@@ -1547,57 +1561,6 @@ $("#modal_loginBtn").on("click",function(){
 			var regExp = /^.{8,16}$/;
 			return regExp.test(asValue);
 		}
-		//아이디 중복확인
-		$("#editID").on("input",function(){
-		$.ajax({
-		url:"/duplIDCheck.member",
-		type:"get",
-		data:{nickname:$("#editID").val()},
-		dataType:"json"
-		}).done(function(resp){
-				
-// 					if(resp==false){						
-// 						if(isNickName($("#editID").val())){
-// 							$("#nickname_check_text").text("사용 가능한 닉네임입니다!");
-// 							$("#nickname_check_text").css({ color: "blue" });
-// 						}else{
-// 							$("#nickname_check_text").text("닉네임은 한글,영문, 숫자 2-10자");
-// 							$("#nickname_check_text").css({ color: "red" });
-// 						}
-
-// 					}else if(resp==true){
-// 						$("#nickname_check_text").text("사용중인 닉네임입니다!");
-// 						$("#nickname_check_text").css({ color: "red" });
-// 					}
-				});
-			})
-	//비밀번호 확인 
-	$("#pw1").on("input", function () {
-            let pw1 = $("#pw1").val();
-            let pw2 = $("#pw2").val();
-            
-            if(pw2!=""){
-            	if (pw1 == pw2) {
-            		if(isPw(pw1)){
-            			alert("비밀번호가 일치합니다");
-            		}else{
-            			alert("비밀번호는 숫자,영문,특수문자 포함 8~16자");
-                        
-            		}
-                	
-                }
-                else if(pw1!==pw2){
-                    alert("비밀번호가 일치하지 않습니다");
-                }
-            }else if(pw2==""){
-    
-            	alert("비밀번호는 필수정보입니다");
-            }
-            
-        }); */
-        
-       
-        
   
     
   //계정관리

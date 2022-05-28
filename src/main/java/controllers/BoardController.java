@@ -242,6 +242,19 @@ public class BoardController extends HttpServlet {
 					request.setAttribute("profilePath", "/files/");
 				}else if(boardOption.equals("h")) {//숙소리뷰 메인페이지
 					absolutePath = "/board/houseMain.jsp";
+					
+					///////숙소 화제 게시글///////
+					List<FilesDTO> hFilesDao = filesDAO.selectSysName(boardOption);//애디터추천 게시글 프로필 - sys_name get(해당게시글seq와 sys_name담겨 있음).
+					request.setAttribute("housePorfileList", hFilesDao);
+					
+					///////애디터 추천 게시글///////
+					boardOption ="e";
+					List<BoardDTO> editorList = dao.selectAll(boardOption);
+					request.setAttribute("editorList", editorList);//애디터추천게시글 리스트
+					List<FilesDTO> filesDao = filesDAO.selectSysName(boardOption);//애디터추천 게시글 프로필 - sys_name get(해당게시글seq와 sys_name담겨 있음).
+					request.setAttribute("porfileList", filesDao);
+					request.setAttribute("profilePath", "/files/");
+
 				}
 				
 				request.getRequestDispatcher(absolutePath).forward(request, response);//메인페이지 전환
@@ -260,7 +273,9 @@ public class BoardController extends HttpServlet {
 				}
 				
 			}else if(uri.equals("/writeboard.board")) {//게시판 글 작성하기 폼 출력(boardMain.jsp에서 글 작성하기 버튼 클릭 시 여기로.)
-				response.sendRedirect("/board/boardWrite.jsp");//게시판 글 작성 페이지 전환
+				String boardOption = request.getParameter("boardOption");
+				request.setAttribute("boardOption", boardOption);
+				request.getRequestDispatcher("/board/boardWrite.jsp").forward(request, response);
 				
 			}else if(uri.equals("/writeProcessing.board")) {//게시글 작성완료 처리 과정(boardWrite.jsp에서 작성완료 버튼 클릭 시 여기로.)
 				
@@ -284,7 +299,7 @@ public class BoardController extends HttpServlet {
 				String seq = dao.getSeqNextVal(boardOption); //해당 작성글 넘버 가져오기(해당 게시판의 seq)
 				
 				//게시글 저장 //
-				dao.insert(new BoardDTO(seq, writer, title, contents, null, 0, 0, 0));
+				dao.insert(new BoardDTO(seq, writer, title, contents, null, 0, 0, 0, 0));
 
 				//업로드 파일 정보 저장
 				Enumeration<String> e = multi.getFileNames();
@@ -296,8 +311,23 @@ public class BoardController extends HttpServlet {
 						filesDAO.insert(new FilesDTO(0, oriName, sysName, seq));//파일 정보 저장
 					}	
 				}
+
+				String url = "";
+				if(boardOption.equals("f")) {//자유게시판
+					url = "/boardMainView.board?";
+				}else if(boardOption.equals("g")) {//여행후기
+					url = "/galleryMain.board?";
+				}else if(boardOption.equals("j")) {//구인구직
+					url = "/jobMain.board?";
+				}else if(boardOption.equals("r")) {//맛집
+					url = "/foodMain.board?";
+				}else if(boardOption.equals("h")) {//숙소
+					url = "/houseMain.board?";
+				}else if(boardOption.equals("e")) {//애디터추천
+					url = "/editorReMain.board?";
+				}
 				
-				response.sendRedirect("/boardMainView.board?cpage=1");//자유게시판 메인화면으로 전환
+				response.sendRedirect(url+"cpage=1");//해당 게시판 메인화면으로 전환
 	
 			}else if(uri.equals("/detailView.board")) {//작성글 출력(게시판 목록에서 게시글 클릭 시 여기로.)
 				//테스트용 하드코딩
@@ -373,7 +403,7 @@ public class BoardController extends HttpServlet {
 				String seq = multi.getParameter("seq"); //해당 작성글 넘버 가져오기
 				
 				//게시글 수정 //
-				dao.modifyPost(new BoardDTO(seq, writer, title, contents, null, 0, 0, 0));
+				dao.modifyPost(new BoardDTO(seq, writer, title, contents, null, 0, 0, 0, 0));
 
 				//업로드 파일 정보 저장
 				Enumeration<String> e = multi.getFileNames();

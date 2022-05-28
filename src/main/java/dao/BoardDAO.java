@@ -90,8 +90,9 @@ public class BoardDAO {
 					int like_count = rs.getInt("jjim_count");
 					int jjim_count = rs.getInt("like_count");
 					int view_count = rs.getInt("view_count");
-
-					BoardDTO dto = new BoardDTO(seq, id, title, contents, write_date, jjim_count, like_count, view_count);
+					int line = rs.getInt("line");
+					
+					BoardDTO dto = new BoardDTO(seq, id, title, contents, write_date, jjim_count, like_count, view_count, line);
 					list.add(dto);
 				}
 				return list;
@@ -167,7 +168,7 @@ public class BoardDAO {
 				int jjim_count = rs.getInt("jjim_count");
 				int view_count = rs.getInt("view_count");
 				return (new BoardDTO(all_board_seq, id, title, contents, write_date, like_count, jjim_count,
-						view_count));
+						view_count, 0));
 			}
 		}
 	}
@@ -249,7 +250,7 @@ public class BoardDAO {
 
 	// 게시판 리스트 출력
 	public List<BoardDTO> selectAll(String boardOption) throws Exception {
-		String sql = "select * from all_board where all_board_seq like '"+boardOption+"%' order by write_date desc";
+		String sql = "select row_number() over(order by write_date desc) line, all_board.* from all_board where all_board_seq like '"+boardOption+"%'";
 
 		try (Connection con = this.getConnection();
 				PreparedStatement pstat = con.prepareStatement(sql);
@@ -265,8 +266,9 @@ public class BoardDAO {
 				int like_count = rs.getInt("like_count");
 				int jjim_count = rs.getInt("jjim_count");
 				int view_count = rs.getInt("view_count");
+				int line = rs.getInt("line");
 
-				BoardDTO dto = new BoardDTO(all_board_seq, id, title, contents, write_date, like_count, jjim_count, view_count);
+				BoardDTO dto = new BoardDTO(all_board_seq, id, title, contents, write_date, like_count, jjim_count, view_count, line);
 				list.add(dto);
 			}
 			return list;
@@ -291,7 +293,7 @@ public class BoardDAO {
 				int jjim_count = rs.getInt("jjim_count");
 				int view_count = rs.getInt("view_count");
 
-				BoardDTO dto = new BoardDTO(seq, id, title, contents, write_date, like_count, jjim_count, view_count);
+				BoardDTO dto = new BoardDTO(seq, id, title, contents, write_date, like_count, jjim_count, view_count,0);
 				return dto;
 			}
 		}
@@ -476,7 +478,7 @@ public class BoardDAO {
 	public List<BoardDTO> selectByPage(int cpage,String boardOption) throws Exception {
 
 		// 게시글의 번호를 세팅한다.
-		int start = cpage * 10 - 9;
+		int start = (cpage-1) * 20 +1;
 		int end = cpage * 20;
 
 		// 한 페이지에 게시글이 10개씩 보여지도록 하기 위해서 row_number를 활용하는데, 서브 쿼리를 활용해서 select 해준다.
@@ -498,9 +500,10 @@ public class BoardDAO {
 					int like_count = rs.getInt("jjim_count");
 					int jjim_count = rs.getInt("like_count");
 					int view_count = rs.getInt("view_count");
+					int line = rs.getInt("line");
 
 					BoardDTO dto = new BoardDTO(seq, id, title, contents, write_date, jjim_count, like_count,
-							view_count);
+							view_count, line);
 					list.add(dto);
 				}
 				return list;
@@ -530,9 +533,10 @@ public class BoardDAO {
 					int like_count = rs.getInt("jjim_count");
 					int jjim_count = rs.getInt("like_count");
 					int view_count = rs.getInt("view_count");
-
+					int line = rs.getInt("line");
+					
 					BoardDTO dto = new BoardDTO(seq, id, title, contents, write_date, jjim_count, like_count,
-							view_count);
+							view_count, line);
 					list.add(dto);
 				}
 				return list;
