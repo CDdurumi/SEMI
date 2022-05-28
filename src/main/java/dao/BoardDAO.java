@@ -478,7 +478,7 @@ public class BoardDAO {
 	public List<BoardDTO> selectByPage(int cpage,String boardOption) throws Exception {
 
 		// 게시글의 번호를 세팅한다.
-		int start = cpage * 10 - 9;
+		int start = (cpage-1) * 20 +1;
 		int end = cpage * 20;
 
 		// 한 페이지에 게시글이 10개씩 보여지도록 하기 위해서 row_number를 활용하는데, 서브 쿼리를 활용해서 select 해준다.
