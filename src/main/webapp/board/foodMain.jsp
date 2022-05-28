@@ -467,8 +467,8 @@ select{
         <div>
         <c:choose>
 				<c:when test="${loginID !=null}">
-						${loginID }님 안녕하세요 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-					<a href="/logout.member" class=""  >logout</a>					
+						<div class="d-md-inline d-none">${loginID }님 안녕하세요 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</div>
+						<a href="/logout.member" class="d-md-inline d-none">logout</a>					
 				</c:when>
 		
 				<c:otherwise>
@@ -582,7 +582,7 @@ $("#modal_loginBtn").on("click",function(){
         <div class="row " id="freemain">
             <div class="col-12 col-md-6 bottom_board">
                 <div class="row border border-2 rounded">
-                    <div class="col-12 border-bottom hotboard_bottom text-center">맛집</div>
+                    <div class="col-12 border-bottom hotboard_bottom text-center" style="font-weight:bold; font-size:18px;">맛집</div>
                     <div class="row  freeboard_bottom">
                         <div class="col-12 ">
                             <div class="row freeboard_bottom ">
@@ -611,7 +611,7 @@ $("#modal_loginBtn").on("click",function(){
             </div>
             <div class="col-12 col-md-6 bottom_board">
                 <div class="row border border-2 rounded">
-                    <div class="col-12 border-bottom hotboard_bottom text-center">에디터 추천</div>
+                    <div class="col-12 border-bottom hotboard_bottom text-center" style="font-weight:bold; font-size:18px;">에디터 추천</div>
                     <div id="carouselExampleIndicators" class="carousel slide" data-bs-ride="carousel">
                         <div class="carousel-indicators">
                             <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active" aria-current="true" 

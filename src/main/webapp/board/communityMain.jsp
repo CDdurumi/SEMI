@@ -459,8 +459,8 @@ font-weight: bold;
 		<div>
 			<c:choose>
 				<c:when test="${loginID !=null}">
-						${loginID }님 안녕하세요 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-					<a href="/logout.member" class="">logout</a>
+						<div class="d-md-inline d-none">${loginID }님 안녕하세요 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</div>
+						<a href="/logout.member" class="d-md-inline d-none">logout</a>
 				</c:when>
 
 				<c:otherwise>
@@ -484,6 +484,7 @@ font-weight: bold;
 			href="/foodMain.board?cpage=1">맛집</a></li>
 		<li class="nav-item"><a class="nav-link nav-link2"
 			href="/houseMain.board?cpage=1">숙소리뷰</a></li>
+			
 	</ul>
 
 
@@ -590,7 +591,7 @@ font-weight: bold;
 					<div class="col-10 border-bottom hotboard text-center" style="font-weight:bold; font-size:18px;">자유게시판
 						화제글</div>
 					<div class="col-2 border-bottom hotboard text-center">
-						<a class="allview" href="/boardMainView.board?cpage=1">전체보기</a>
+						<a class="allview" href="/boardMainView.board?cpage=1"><button type="button" class="btn btn-outline-primary btn-sm">전체보기</button></a>
 					</div>
 
 					<div class="col-12 mt-0">
@@ -599,7 +600,7 @@ font-weight: bold;
 							<div class="row m-0 ">
 								<div class="col-12  m-0 p-0" style="height: 40px">
 									<div class="row m-0" id="board_menu_text">
-										<div class="col-7  ">제목</div>
+										<div class="col-7 text-center">제목</div>
 										<div class="col-3 p-0 text-center">글쓴이</div>
 										<div class="col-md-1 d-none d-md-block p-0 text-center">조회</div>
 										<div class="col-2 col-md-1 p-0 text-center">추천</div>
@@ -736,7 +737,7 @@ font-weight: bold;
 				<div class="row border border-2 rounded">
 					<div class="col-10 border-bottom hotboard_bottom text-center" style="font-weight:bold; font-size:18px;">구인구직</div>
 					<div class="col-2 border-bottom hotboard_bottom text-center">
-						<a class="allview" href="/jobMain.board?cpage=1">전체보기</a>
+						<a class="allview" href="/jobMain.board?cpage=1"><button type="button" class="btn btn-outline-primary btn-sm">전체보기</button></a>
 					</div>
 					<div class="col-12 ">
 						<div class="row freeboard_bottom ">
@@ -744,7 +745,7 @@ font-weight: bold;
 							<div class="row m-0 ">
 								<div class="col-12  m-0 p-0" style="height: 40px">
 									<div class="row m-0" id="board_menu_text">
-										<div class="col-7  ">제목</div>
+										<div class="col-7  text-center">제목</div>
 										<div class="col-3 p-0 text-center">글쓴이</div>
 										<div class="col-2 d-none d-md-block p-0 text-center">조회</div>
 									</div>
@@ -783,7 +784,7 @@ font-weight: bold;
 				<div class="row border border-2 rounded">
 					<div class="col-10 border-bottom hotboard_bottom text-center" style="font-weight:bold; font-size:18px;">맛집</div>
 					<div class="col-2 border-bottom hotboard_bottom text-center">
-						<a class="allview" href="/foodMain.board?cpage=1">전체보기</a>
+						<a class="allview" href="/foodMain.board?cpage=1"><button type="button" class="btn btn-outline-primary btn-sm">전체보기</button></a>
 					</div>
 
 					<div class="col-12 ">
@@ -793,7 +794,7 @@ font-weight: bold;
 							<div class="row m-0 ">
 								<div class="col-12  m-0 p-0" style="height: 40px">
 									<div class="row m-0" id="board_menu_text">
-										<div class="col-7  ">제목</div>
+										<div class="col-7 text-center">제목</div>
 										<div class="col-3 p-0 text-center">글쓴이</div>
 										<div class="col-2 d-none d-md-block p-0 text-center">조회</div>
 									</div>
