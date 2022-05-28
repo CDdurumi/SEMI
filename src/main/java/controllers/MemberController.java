@@ -87,6 +87,8 @@ public class MemberController extends HttpServlet {
 				
 				HttpSession session = request.getSession();
 				session.setAttribute("loginID", nickname);
+				session.setAttribute("loginEmail", email);
+//				session.setAttribute("loginJoinDate",dto.getFormdDate());
 					
 				
 				response.sendRedirect("/index.jsp");
@@ -154,7 +156,8 @@ public class MemberController extends HttpServlet {
 				System.out.println("수정 결과값" + result);
 				System.out.println(email);
 				
-				
+				HttpSession session = request.getSession();
+				session.setAttribute("loginID",id);
 				
 				
 				
