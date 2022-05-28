@@ -1,6 +1,9 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-    <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
 <html>
 
@@ -22,15 +25,11 @@
     <!--  -->
     <link rel="canonical" href="https://getbootstrap.com/docs/5.1/examples/cover/">
     <!-- Bootstrap core CSS -->
-    <link href="/docs/5.1/dist/css/bootstrap.min.css" rel="stylesheet"
-        integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
-
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css" integrity="sha512-KfkfwYDsLkIlwQp6LFnl8zNdLGxu9YAA1QvwINks4PhcElQSvqcyVLLD9aMhXd13uQjoXtEKNosOWaZqXgel0g==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <!-- Favicons -->
     <link rel="apple-touch-icon" href="/docs/5.1/assets/img/favicons/apple-touch-icon.png" sizes="180x180">
     <link rel="icon" href="/docs/5.1/assets/img/favicons/favicon-32x32.png" sizes="32x32" type="image/png">
     <link rel="icon" href="/docs/5.1/assets/img/favicons/favicon-16x16.png" sizes="16x16" type="image/png">
-    <link rel="manifest" href="/docs/5.1/assets/img/favicons/manifest.json">
     <link rel="mask-icon" href="/docs/5.1/assets/img/favicons/safari-pinned-tab.svg" color="#7952b3">
     <link rel="icon" href="/docs/5.1/assets/img/favicons/favicon.ico">
     <meta name="theme-color" content="#7952b3">
@@ -436,152 +435,157 @@
 </head>
 
 <body id="body-pd">
-    <header class="header" id="header">
-        <div class="header_toggle"><i class='bx bx-menu' id="header-toggle"></i></div>
-        <div><a href="/board/communityMain.jsp" class="comuview"> 여행 커뮤니티</a></div>
-        <div>
-            <c:choose>
+	<header class="header" id="header">
+		<div class="header_toggle">
+			<i class='bx bx-menu' id="header-toggle"></i>
+		</div>
+		<div>
+			<a href="/board/communityMain.jsp" class="comuview"> 여행 커뮤니티</a>
+		</div>
+		<div>
+			<c:choose>
 				<c:when test="${loginID !=null}">
 						${loginID }님 안녕하세요 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-					<a href="/logout.member" class=""  >logout</a>					
+					<a href="/logout.member" class="">logout</a>
 				</c:when>
-		
+
 				<c:otherwise>
-					<a href="#" class="login" id="login"  data-bs-toggle="modal" data-bs-target="#exampleModal">login</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+					<a href="#" class="login" id="login" data-bs-toggle="modal"
+						data-bs-target="#exampleModal">login</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
           			 <a href="/signup.jsp" class="join">join</a>
 				</c:otherwise>
-			</c:choose>  
-        </div>
-    </header>
-    <ul class="nav nav2">
-        <li class="nav-item">
-            <a class="nav-link nav-link2" href="/boardMainView.board?cpage=1">자유게시판</a>
-        </li>
-        <li class="nav-item">
-            <a class="nav-link nav-link2" href="/galleryMain.board?cpage=1">여행후기</a>
-        </li>
-        <li class="nav-item">
-            <a class="nav-link nav-link2" href="/jobMain.board?cpage=1">구인구직</a>
-        </li>
-        <li class="nav-item">
-            <a class="nav-link nav-link2" href="/foodMain.board?cpage=1">맛집</a>
-        </li>
-        <li class="nav-item">
-            <a class="nav-link nav-link2" href="/houseMain.board?cpage=1">숙소리뷰</a>
-        </li>
-    </ul>
-    <div class="l-navbar" id="nav-bar">
-        <nav class="nav">
-            <div> <a href="/index.jsp" class="nav_logo"> <i class='bx bx-layer nav_logo-icon'></i> <span class="nav_logo-name">쉼표
-                        <br>- 일상의 쉼표를 찍다</span> </a>
-                <div class="nav_list">
-                    <a href="#" class="nav_link"> <i class='CurrIcon'></i> <span class="nav_name"><span class="weather">
-                    <span class="CurrTemp"></span>
-                    <span class="City"></span>
-                    </span></span> </a>
-                      <a href="/communityMain.board" class="nav_link active"> <i class='bx bx-message nav_icon'></i> <span class="nav_name">커뮤니티</span> </a> 
-                   <a href="/editorReMain.board?" class="nav_link"> <i class='bx bx-book-bookmark nav_icon'></i> <span class="nav_name">에디터추천</span> </a> 
-                   <a href="/boardMainView.board?cpage=1" class="nav_link"> <i class='bx bx-home nav_icon'></i> <span class="nav_name">숙소리뷰</span> </a>
-               		<a href="/myPage.jsp" class="nav_link"> <i class='bx bx-user nav_icon'></i> <span class="nav_name">마이페이지</span> </a> 
-                 </div>
-            </div>
-            <a href="#" class="nav_link"> <i class='bx bx-log-out nav_icon'></i> <span class="nav_name">로그아웃</span> </a>
-        </nav>
-    </div>
-    
-    <div class="modal" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-  <div class="modal-dialog modal-right" role="document">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title text-center" id="exampleModalLabel">로그인</h5>
-        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-      </div>
-      <div class="modal-body">
-        <div class="card-details">
-            <input type="text" id="id-input" placeholder="id">
-            <i class="fa fa-envelope"></i>
-        </div>
-        <div class="card-details">
-            <input type="password" id="password-input" placeholder="password">
-            <i class="fa fa-lock"></i>
-            <span><small class="fa fa-eye-slash passcode"></small></span>
-        </div>
-      </div>
-      <div class="modal-footer">
-      <button type="button" class="btn btn-primary" id="modal_loginBtn">로그인</button>
-        <button type="button" class="btn btn-outline-primary" id="modal_joinBtn">회원가입</button>
-      </div>
-    </div>
-  </div>
-</div>
-<script>
-$("#login").on("click",function(){
-	$("#idpw_check").text("");
-	$("#idpw_check").css({ color: "black" })
-})
-$("#modal_loginBtn").on("click",function(){
-			$.ajax({
-				url:"/login.member",
-				type:"post",
-				data:{email:$("#id-input").val(),pw:$("#password-input").val()},
-				dataType:"json"
-			}).done(function(resp){
-				console.log(resp);
-				if(resp==false){					
-					$("#idpw_check").text("Email 또는 비밀번호가 올바르지 않습니다!");
-					$("#idpw_check").css({ color: "red" })
-					$("#id-input").val("");
-					$("#id-input").focus();					
-					$("#password-input").val("");
-				}else if(resp==true){
-					location.reload();
-				}
-				
-			});
-		})
-		
-$("#modal_joinBtn").on("click",function(){
-	location.href="/signup.jsp";
-	
-})		
-</script>
-    <!--Container Main start-->
-    <div class="height-85 ">
-        <div class="row " id="freemain">
-            <div class="col-12 " id="freemain_col">
-                <div class="row border border-2 rounded">
-                    <div class="col-9 border-bottom hotboard text-center">자유게시판 화제글</div>
-                    <div class="col-3 border-bottom hotboard text-center"><a class="allview" href="/board/boardMain.jsp">전체보기</a></div>
-                   
-                        <div class="col-12 mt-0">
-                            <div class="row freeboard_bottom ">
-                            
-                            
-                            
-                            
-<!--                                 <div class="col-12 border border-2 rounded"> -->
-<!--                                     <div class="row m-0"> -->
-<!--                                         <div class="col-9 col-md-9 m-0 free_title ellipsis"><span>글 제목</span></div> -->
-<!--                                         <div class="col-3 col-md-3 m-0 p-0"> -->
-<!--                                             <div class="row m-0 p-0"> -->
-<!--                                                 <div class="col-12 m-0 p-0 text-center">추천 20</div> -->
-<!--                                                 <div class="col-12 m-0 p-0 text-center">댓글 5</div> -->
-<!--                                             </div> -->
-<!--                                         </div> -->
-<!--                                     </div> -->
-<!--                                 </div> -->
-								<div class="row m-0 ">
-									<div class="col-12  m-0 p-0" style="height: 40px">
-										<div class="row m-0" id="board_menu_text">
-											<div class="col-7  ">제목</div>
-											<div class="col-3 p-0 text-center">글쓴이</div>
-											<div class="col-md-1 d-none d-md-block p-0 text-center">조회</div>
-											<div class="col-2 col-md-1 p-0 text-center">추천</div>
-										</div>
+			</c:choose>
+		</div>
+	</header>
 
+
+	<ul class="nav nav2">
+		<li class="nav-item"><a class="nav-link nav-link2"
+			href="/boardMainView.board?cpage=1">자유게시판</a></li>
+		<li class="nav-item"><a class="nav-link nav-link2"
+			href="/galleryMain.board?cpage=1">여행후기</a></li>
+		<li class="nav-item"><a class="nav-link nav-link2"
+			href="/jobMain.board?cpage=1">구인구직</a></li>
+		<li class="nav-item"><a class="nav-link nav-link2"
+			href="/foodMain.board?cpage=1">맛집</a></li>
+		<li class="nav-item"><a class="nav-link nav-link2"
+			href="/houseMain.board?cpage=1">숙소리뷰</a></li>
+	</ul>
+
+
+	<div class="l-navbar" id="nav-bar">
+		<nav class="nav">
+			<div>
+				<a href="/index.jsp" class="nav_logo"> <i
+					class='bx bx-layer nav_logo-icon'></i> <span class="nav_logo-name">쉼표
+						<br>- 일상의 쉼표를 찍다
+				</span>
+				</a>
+				<div class="nav_list">
+					<a href="#" class="nav_link"> <i class='CurrIcon'></i> <span
+						class="nav_name"><span class="weather"> <span
+								class="CurrTemp"></span> <span class="City"></span>
+						</span></span>
+					</a> <a href="/communityMain.board" class="nav_link active"> <i
+						class='bx bx-message nav_icon'></i> <span class="nav_name">커뮤니티</span>
+					</a> <a href="/editorReMain.board?" class="nav_link"> <i
+						class='bx bx-book-bookmark nav_icon'></i> <span class="nav_name">에디터추천</span>
+					</a> <a href="/boardMainView.board?cpage=1" class="nav_link"> <i
+						class='bx bx-home nav_icon'></i> <span class="nav_name">숙소리뷰</span>
+					</a> <a href="/myPage.jsp" class="nav_link"> <i
+						class='bx bx-user nav_icon'></i> <span class="nav_name">마이페이지</span>
+					</a>
+				</div>
+			</div>
+			<a href="#" class="nav_link"> <i class='bx bx-log-out nav_icon'></i>
+				<span class="nav_name">로그아웃</span>
+			</a>
+		</nav>
+	</div>
+
+	<div class="modal" id="exampleModal" tabindex="-1"
+		aria-labelledby="exampleModalLabel" aria-hidden="true">
+		<div class="modal-dialog modal-right" role="document">
+			<div class="modal-content">
+				<div class="modal-header">
+					<h5 class="modal-title text-center" id="exampleModalLabel">로그인</h5>
+					<button type="button" class="btn-close" data-bs-dismiss="modal"
+						aria-label="Close"></button>
+				</div>
+				<div class="modal-body">
+					<div class="card-details">
+						<input type="text" id="id-input" placeholder="id"> <i
+							class="fa fa-envelope"></i>
+					</div>
+					<div class="card-details">
+						<input type="password" id="password-input" placeholder="password">
+						<i class="fa fa-lock"></i> <span><small
+							class="fa fa-eye-slash passcode"></small></span>
+					</div>
+				</div>
+				<div class="modal-footer">
+					<button type="button" class="btn btn-primary" id="modal_loginBtn">로그인</button>
+					<button type="button" class="btn btn-outline-primary">회원가입</button>
+				</div>
+			</div>
+		</div>
+	</div>
+	<script>
+		$("#login").on("click",function(){
+			$("#idpw_check").text("");
+			$("#idpw_check").css({ color: "black" })
+		});
+		
+		
+		$("#modal_loginBtn").on("click",function(){
+					$.ajax({
+						url:"/login.member",
+						type:"post",
+						data:{email:$("#id-input").val(),pw:$("#password-input").val()},
+						dataType:"json"
+					}).done(function(resp){
+						console.log(resp);
+						if(resp==false){					
+							$("#idpw_check").text("Email 또는 비밀번호가 올바르지 않습니다!");
+							$("#idpw_check").css({ color: "red" })
+							$("#id-input").val("");
+							$("#id-input").focus();					
+							$("#password-input").val("");
+						}else if(resp==true){
+							location.reload();
+						}
+						
+					});
+		});
+	</script>
+	
+	
+	<!--Container Main start-->
+	<div class="height-85 ">
+		<div class="row " id="freemain">
+			<div class="col-12 " id="freemain_col">
+				<div class="row border border-2 rounded">
+					<div class="col-9 border-bottom hotboard text-center">자유게시판
+						화제글</div>
+					<div class="col-3 border-bottom hotboard text-center">
+						<a class="allview" href="/boardMainView.board?cpage=1">전체보기</a>
+					</div>
+
+					<div class="col-12 mt-0">
+						<div class="row freeboard_bottom ">
+
+							<div class="row m-0 ">
+								<div class="col-12  m-0 p-0" style="height: 40px">
+									<div class="row m-0" id="board_menu_text">
+										<div class="col-7  ">제목</div>
+										<div class="col-3 p-0 text-center">글쓴이</div>
+										<div class="col-md-1 d-none d-md-block p-0 text-center">조회</div>
+										<div class="col-2 col-md-1 p-0 text-center">추천</div>
 									</div>
+
 								</div>
-								<c:forEach var="j" items="${fHotlist}">
+							</div>
+							<c:forEach var="j" items="${fHotlist}">
 								<div class="col-12  board">
 									<div class="row m-0 border border-2 rounded board_row ">
 
@@ -594,229 +598,124 @@ $("#modal_joinBtn").on("click",function(){
 										</div>
 										<div class="col-3  p-0 ellipsis text-center">${j.id}</div>
 										<%--                 <div class="col-sm-2 col-md-1 d-none d-md-block p-0 text-center"><fmt:formatDate value="${i.write_date }" pattern="yy-MM-dd"/>날짜</div> --%>
-										<div class="col-md-1 d-none d-md-block p-0 text-center"> ${j.view_count}</div>
-										<div class="col-2 col-md-1 p-0 text-center"> ${j.like_count}</div>
+										<div class="col-md-1 d-none d-md-block p-0 text-center">
+											${j.view_count}</div>
+										<div class="col-2 col-md-1 p-0 text-center">
+											${j.like_count}</div>
 
 									</div>
 								</div>
 
+							</c:forEach>
+
+
+
+						</div>
+					</div>
+
+
+				</div>
+			</div>
+		</div>
+
+	</div>
+
+
+
+	<div class="row">
+		<div class="col " id="hugi"><a href ="/galleryMain.board?cpage=1">여행 후기</a></div>
+
+		<div class="row">
+			<div class="col-12" id="carousel">
+				<div id="carouselExampleIndicators" class="carousel slide"
+					data-bs-ride="carousel">
+
+					<div class="carousel-indicators">
+
+						<button type="button" data-bs-target="#carouselExampleIndicators"
+							data-bs-slide-to="0" class="active" aria-current="true"
+							aria-label="Slide 1"></button>
+
+						<c:forEach var="i" items="${gHotlist}" varStatus="status">
+							<c:if test="${status.index lt fn:length(gHotlist)-1}">
+								<button type="button"
+									data-bs-target="#carouselExampleIndicators"
+									data-bs-slide-to="${status.count}"
+									aria-label="Slide ${status.count + 1}"></button>
+							</c:if>
+						</c:forEach>
+
+					</div>
+
+
+					<div class="carousel-inner text-center">
+
+						<c:set var="count" value="0" />
+						<c:forEach var="i" items="${gHotlist}">
+
+							<c:forEach var="j" items="${jobPorfileList}">
+
+								<c:if test="${j.parent_seq eq i.all_board_seq}">
+									<c:set var="count" value="${count+1}" />
+									<c:choose>
+										<c:when test="${count eq 1}">
+											<div class="carousel-item active ">
+												<div class="card w-100 border-0" style="width: 18rem;">
+													<a
+														href="/detailView.board?cpage=1&seq=${i.all_board_seq}&click=ok"><img
+														src="${profilePath}${j.sys_name}" class="card-img-top"
+														alt="..."></a>
+													<div class="card-body">
+														<p class="card-text text-black">${i.title}</p>
+													</div>
+												</div>
+											</div>
+										</c:when>
+
+										<c:otherwise>
+											<div class="carousel-item ">
+												<div class="card w-100 border-0" style="width: 18rem;">
+													<a
+														href="/detailView.board?cpage=1&seq=${i.all_board_seq}&click=ok"><img
+														src="${profilePath}${j.sys_name}" class="card-img-top"
+														alt="..."></a>
+													<div class="card-body">
+														<p class="card-text text-black">${i.title}</p>
+													</div>
+												</div>
+											</div>
+										</c:otherwise>
+									</c:choose>
+
+								</c:if>
+
+							</c:forEach>
 						</c:forEach>
 
 
-<!-- 								<div class="col-12 border border-2 rounded"> -->
-<!--                                     <div class="row m-0"> -->
-<!--                                         <div class="col-9 col-md-9 m-0 free_title ellipsis"><span>글 제목</span></div> -->
-<!--                                         <div class="col-3 col-md-3 m-0 p-0"> -->
-<!--                                             <div class="row m-0 p-0"> -->
-<!--                                                 <div class="col-12 m-0 p-0 text-center">추천 20</div> -->
-<!--                                                 <div class="col-12 m-0 p-0 text-center">댓글 5</div> -->
-<!--                                             </div> -->
-<!--                                         </div> -->
-<!--                                     </div> -->
-<!--                                 </div> -->
-                                
-<!--                                 <div class="col-12 border border-2 rounded"> -->
-<!--                                     <div class="row m-0"> -->
-<!--                                         <div class="col-9 col-md-9 m-0 free_title ellipsis"><span>글 제목</span></div> -->
-<!--                                         <div class="col-3 col-md-3 m-0 p-0"> -->
-<!--                                             <div class="row m-0 p-0"> -->
-<!--                                                 <div class="col-12 m-0 p-0 text-center">추천 20</div> -->
-<!--                                                 <div class="col-12 m-0 p-0 text-center">댓글 5</div> -->
-<!--                                             </div> -->
-<!--                                         </div> -->
-<!--                                     </div> -->
-<!--                                 </div> -->
-                                
-                                
-                                
-<!--                                 <div class="col-12 border border-2 rounded"> -->
-<!--                                     <div class="row m-0"> -->
-<!--                                         <div class="col-9 col-md-9 m-0 free_title ellipsis"><span>글 제목</span></div> -->
-<!--                                         <div class="col-3 col-md-3 m-0 p-0"> -->
-<!--                                             <div class="row m-0 p-0"> -->
-<!--                                                 <div class="col-12 m-0 p-0 text-center">추천 20</div> -->
-<!--                                                 <div class="col-12 m-0 p-0 text-center">댓글 5</div> -->
-<!--                                             </div> -->
-<!--                                         </div> -->
-<!--                                     </div> -->
-<!--                                 </div> -->
-<!--                                 <div class="col-12 border border-2 rounded"> -->
-<!--                                     <div class="row m-0"> -->
-<!--                                         <div class="col-9 col-md-9 m-0 free_title ellipsis"><span>글 제목</span></div> -->
-<!--                                         <div class="col-3 col-md-3 m-0 p-0"> -->
-<!--                                             <div class="row m-0 p-0"> -->
-<!--                                                 <div class="col-12 m-0 p-0 text-center">추천 20</div> -->
-<!--                                                 <div class="col-12 m-0 p-0 text-center">댓글 5</div> -->
-<!--                                             </div> -->
-<!--                                         </div> -->
-<!--                                     </div> -->
-<!--                                 </div> -->
-<!--                                 <div class="col-12 border border-2 rounded"> -->
-<!--                                     <div class="row m-0"> -->
-<!--                                         <div class="col-9 col-md-9 m-0 free_title ellipsis"><span>글 제목</span></div> -->
-<!--                                         <div class="col-3 col-md-3 m-0 p-0"> -->
-<!--                                             <div class="row m-0 p-0"> -->
-<!--                                                 <div class="col-12 m-0 p-0 text-center">추천 20</div> -->
-<!--                                                 <div class="col-12 m-0 p-0 text-center">댓글 5</div> -->
-<!--                                             </div> -->
-<!--                                         </div> -->
-<!--                                     </div> -->
-<!--                                 </div> -->
-                                
-                                
-<!--                                 <div class="col-12 d-block d-md-none border border-2 rounded"> -->
-<!--                                     <div class="row m-0"> -->
-<!--                                         <div class="col-9 col-md-9 d-block d-md-none m-0 free_title ellipsis"><span>글 제목</span></div> -->
-<!--                                         <div class="col-3 col-md-3 m-0 p-0"> -->
-<!--                                             <div class="row m-0 p-0"> -->
-<!--                                                 <div class="col-12 m-0 p-0 text-center">추천 20</div> -->
-<!--                                                 <div class="col-12 m-0 p-0 text-center">댓글 5</div> -->
-<!--                                             </div> -->
-<!--                                         </div> -->
-<!--                                     </div> -->
-<!--                                 </div> -->
-<!--                                 <div class="col-12 d-block d-md-none border border-2 rounded"> -->
-<!--                                     <div class="row m-0"> -->
-<!--                                         <div class="col-9 col-md-9 d-block d-md-none m-0 free_title ellipsis"><span>글 제목</span></div> -->
-<!--                                         <div class="col-3 col-md-3 m-0 p-0"> -->
-<!--                                             <div class="row m-0 p-0"> -->
-<!--                                                 <div class="col-12 m-0 p-0 text-center">추천 20</div> -->
-<!--                                                 <div class="col-12 m-0 p-0 text-center">댓글 5</div> -->
-<!--                                             </div> -->
-<!--                                         </div> -->
-<!--                                     </div> -->
-<!--                                 </div> -->
-                                
-                                
-<!--                                 <div class="col-12 d-block d-md-none border border-2 rounded"> -->
-<!--                                     <div class="row m-0"> -->
-<!--                                         <div class="col-9 col-md-9 d-block d-md-none m-0 free_title ellipsis"><span>글 제목</span></div> -->
-<!--                                         <div class="col-3 col-md-3 m-0 p-0"> -->
-<!--                                             <div class="row m-0 p-0"> -->
-<!--                                                 <div class="col-12 m-0 p-0 text-center">추천 20</div> -->
-<!--                                                 <div class="col-12 m-0 p-0 text-center">댓글 5</div> -->
-<!--                                             </div> -->
-<!--                                         </div> -->
-<!--                                     </div> -->
-<!--                                 </div> -->
-                                
-                                
-                            </div>
-                        </div>
-<!--                         <div class="col-md-6 "> -->
-<!--                             <div class="row freeboard_bottom"> -->
-<!--                                 <div class="col-12 border border-2 rounded"> -->
-<!--                                     <div class="row m-0"> -->
-<!--                                         <div class="col-12 col-md-9 m-0 free_title ellipsis"><span>글 제목</span></div> -->
-<!--                                         <div class="col-3 col-md-3 m-0 p-0"> -->
-<!--                                             <div class="row m-0 p-0"> -->
-<!--                                                 <div class="col-12 m-0 p-0 text-center">추천 20</div> -->
-<!--                                                 <div class="col-12 m-0 p-0 text-center">댓글 5</div> -->
-<!--                                             </div> -->
-<!--                                         </div> -->
-                                        
-<!--                                     </div> -->
-<!--                                 </div> -->
-<!--                                 <div class="col-12 border border-2 rounded"> -->
-<!--                                     <div class="row m-0"> -->
-<!--                                         <div class="col-12 col-md-9 m-0 free_title ellipsis"><span>글 제목</span></div> -->
-<!--                                         <div class="col-3 col-md-3 m-0 p-0"> -->
-<!--                                             <div class="row m-0 p-0"> -->
-<!--                                                 <div class="col-12 m-0 p-0 text-center">추천 20</div> -->
-<!--                                                 <div class="col-12 m-0 p-0 text-center">댓글 5</div> -->
-<!--                                             </div> -->
-<!--                                         </div> -->
-<!--                                     </div> -->
-<!--                                 </div> -->
-<!--                                 <div class="col-12 border border-2 rounded"> -->
-<!--                                     <div class="row m-0"> -->
-<!--                                         <div class="col-12 col-md-9 m-0 free_title ellipsis"><span>글 제목</span></div> -->
-<!--                                         <div class="col-3 col-md-3 m-0 p-0"> -->
-<!--                                             <div class="row m-0 p-0"> -->
-<!--                                                 <div class="col-12 m-0 p-0 text-center">추천 20</div> -->
-<!--                                                 <div class="col-12 m-0 p-0 text-center">댓글 5</div> -->
-<!--                                             </div> -->
-<!--                                         </div> -->
-<!--                                     </div> -->
-<!--                                 </div> -->
-                                
-                                
-<!--                             </div> -->
-                            
-                        </div>
-                    </div>
-                </div>
+					</div>
 
-            </div>
-        </div>
-        
-        
-        <div class="row">
-            <div class="col " id="hugi">
-                여행 후기
-            </div>
-        </div>
-        <div class="row">
-            <div class="col-12" id="carousel">
-                <div id="carouselExampleIndicators" class="carousel slide" data-bs-ride="carousel">
-                    <div class="carousel-indicators">
-                        <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0"
-                            class="active" aria-current="true" aria-label="Slide 1"></button>
-                        <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1"
-                            aria-label="Slide 2"></button>
-                        <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="2"
-                            aria-label="Slide 3"></button>
-                    </div>
-                    <div class="carousel-inner text-center">
-                        <div class="carousel-item active ">
-                            <div class="card w-100" style="width: 18rem;">
-                                <img src="img/다운로드 (1).jpg" class="card-img-top " alt="...">
-                                <div class="card-body">
-                                    <p class="card-text text-black">Some quick example text to build on the card title
-                                        and make up
-                                        the bulk of the card's content.</p>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="carousel-item">
-                            <div class="card w-100" style="width: 18rem;">
-                                <img src="img/다운로드 (2).jpg" class="card-img-top w-100" alt="...">
-                                <div class="card-body">
-                                    <p class="card-text text-black">Some quick example text to build on the card title
-                                        and make up
-                                        the bulk of the card's content.</p>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="carousel-item">
-                            <div class="card w-100" style="width: 18rem;">
-                                <img src="img/다운로드.jpg " class="card-img-top" alt="...">
-                                <div class="card-body">
-                                    <p class="card-text text-black">웁스덜아널다ㅓㄴㅇㄹ</p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators"
-                        data-bs-slide="prev">
-                        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                        <span class="visually-hidden">Previous</span>
-                    </button>
-                    <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators"
-                        data-bs-slide="next">
-                        <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                        <span class="visually-hidden">Next</span>
-                    </button>
-                </div>
-            </div>
-        </div>
-	<div class="row " id="freemain">
-		<div class="col-12 col-md-6 bottom_board">
-			<div class="row border border-2 rounded">
-				<div class="col-9 border-bottom hotboard_bottom text-center">구인구직</div>
-				<div class="col-3 border-bottom hotboard_bottom text-center">
-					<a class="allview" href="/board/jobMain.jsp">전체보기</a>
+
+					<button class="carousel-control-prev" type="button"
+						data-bs-target="#carouselExampleIndicators" data-bs-slide="prev">
+						<span class="carousel-control-prev-icon" aria-hidden="true"></span>
+						<span class="visually-hidden">Previous</span>
+					</button>
+					<button class="carousel-control-next" type="button"
+						data-bs-target="#carouselExampleIndicators" data-bs-slide="next">
+						<span class="carousel-control-next-icon" aria-hidden="true"></span>
+						<span class="visually-hidden">Next</span>
+					</button>
 				</div>
+			</div>
+		</div>
+		<div class="row " id="freemain">
+			<div class="col-12 col-md-6 bottom_board">
+				<div class="row border border-2 rounded">
+					<div class="col-9 border-bottom hotboard_bottom text-center">구인구직</div>
+					<div class="col-3 border-bottom hotboard_bottom text-center">
+						<a class="allview" href="/jobMain.board?cpage=1">전체보기</a>
+					</div>
 					<div class="col-12 ">
 						<div class="row freeboard_bottom ">
 
@@ -843,39 +742,28 @@ $("#modal_joinBtn").on("click",function(){
 										</div>
 										<div class="col-3  p-0 ellipsis text-center">${h.id}</div>
 										<%-- 										<div class="col-md-1 d-none d-md-block p-0 text-center"> ${j.view_count}</div> --%>
-										<div class="col-2 p-0 text-center">
-											${h.like_count}</div>
+										<div class="col-2 p-0 text-center">${h.like_count}</div>
 
 									</div>
 								</div>
 							</c:forEach>
 
-							<!--                                 <div class="col-12 border border-2 rounded"> -->
-							<!--                                     <div class="row m-0"> -->
-							<!--                                         <div class="col-9 col-md-9 m-0 free_title ellipsis"><span>글 제목</span></div> -->
-							<!--                                         <div class="col-3 col-md-3 m-0 p-0"> -->
-							<!--                                             <div class="row m-0 p-0"> -->
-							<!--                                                 <div class="col-12 m-0 p-0 text-center">추천 20</div> -->
-							<!--                                                 <div class="col-12 m-0 p-0 text-center">댓글 5</div> -->
-							<!--                                             </div> -->
-							<!--                                         </div> -->
-							<!--                                     </div> -->
-							<!--                                 </div> -->
+
 
 						</div>
 					</div>
 
-			
-			</div>
 
-		</div>
-		<div class="col-12 col-md-6 bottom_board">
-			<div class="row border border-2 rounded">
-				<div class="col-9 border-bottom hotboard_bottom text-center">맛집</div>
-				<div class="col-3 border-bottom hotboard_bottom text-center">
-					<a class="allview" href="/board/foodMain.jsp">전체보기</a>
 				</div>
-				
+
+			</div>
+			<div class="col-12 col-md-6 bottom_board">
+				<div class="row border border-2 rounded">
+					<div class="col-9 border-bottom hotboard_bottom text-center">맛집</div>
+					<div class="col-3 border-bottom hotboard_bottom text-center">
+						<a class="allview" href="/foodMain.board?cpage=1">전체보기</a>
+					</div>
+
 					<div class="col-12 ">
 						<div class="row freeboard_bottom ">
 
@@ -903,83 +791,28 @@ $("#modal_joinBtn").on("click",function(){
 										</div>
 										<div class="col-3  p-0 ellipsis text-center">${a.id}</div>
 										<%-- 										<div class="col-md-1 d-none d-md-block p-0 text-center"> ${j.view_count}</div> --%>
-										<div class="col-2 p-0 text-center">
-											${a.like_count}</div>
+										<div class="col-2 p-0 text-center">${a.like_count}</div>
 
 									</div>
 								</div>
 							</c:forEach>
 
 
-							<!--                                 <div class="col-12 border border-2 rounded"> -->
-							<!--                                     <div class="row m-0"> -->
-							<!--                                         <div class="col-9 col-md-9 m-0 free_title ellipsis"><span>글 제목</span></div> -->
-							<!--                                         <div class="col-3 col-md-3 m-0 p-0"> -->
-							<!--                                             <div class="row m-0 p-0"> -->
-							<!--                                                 <div class="col-12 m-0 p-0 text-center">추천 20</div> -->
-							<!--                                                 <div class="col-12 m-0 p-0 text-center">댓글 5</div> -->
-							<!--                                             </div> -->
-							<!--                                         </div> -->
-							<!--                                     </div> -->
-							<!--                                 </div> -->
-							<!--                                 <div class="col-12 border border-2 rounded"> -->
-							<!--                                     <div class="row m-0"> -->
-							<!--                                         <div class="col-9 col-md-9 m-0 free_title ellipsis"><span>글 제목</span></div> -->
-							<!--                                         <div class="col-3 col-md-3 m-0 p-0"> -->
-							<!--                                             <div class="row m-0 p-0"> -->
-							<!--                                                 <div class="col-12 m-0 p-0 text-center">추천 20</div> -->
-							<!--                                                 <div class="col-12 m-0 p-0 text-center">댓글 5</div> -->
-							<!--                                             </div> -->
-							<!--                                         </div> -->
-							<!--                                     </div> -->
-							<!--                                 </div> -->
-							<!--                                 <div class="col-12 border border-2 rounded"> -->
-							<!--                                     <div class="row m-0"> -->
-							<!--                                         <div class="col-9 col-md-9 m-0 free_title ellipsis"><span>글 제목</span></div> -->
-							<!--                                         <div class="col-3 col-md-3 m-0 p-0"> -->
-							<!--                                             <div class="row m-0 p-0"> -->
-							<!--                                                 <div class="col-12 m-0 p-0 text-center">추천 20</div> -->
-							<!--                                                 <div class="col-12 m-0 p-0 text-center">댓글 5</div> -->
-							<!--                                             </div> -->
-							<!--                                         </div> -->
-							<!--                                     </div> -->
-							<!--                                 </div> -->
-							<!--                                 <div class="col-12 border border-2 rounded"> -->
-							<!--                                     <div class="row m-0"> -->
-							<!--                                         <div class="col-9 col-md-9 m-0 free_title ellipsis"><span>글 제목</span></div> -->
-							<!--                                         <div class="col-3 col-md-3 m-0 p-0"> -->
-							<!--                                             <div class="row m-0 p-0"> -->
-							<!--                                                 <div class="col-12 m-0 p-0 text-center">추천 20</div> -->
-							<!--                                                 <div class="col-12 m-0 p-0 text-center">댓글 5</div> -->
-							<!--                                             </div> -->
-							<!--                                         </div> -->
-							<!--                                     </div> -->
-							<!--                                 </div> -->
-							<!--                                 <div class="col-12 border border-2 rounded"> -->
-							<!--                                     <div class="row m-0"> -->
-							<!--                                         <div class="col-9 col-md-9 m-0 free_title ellipsis"><span>글 제목</span></div> -->
-							<!--                                         <div class="col-3 col-md-3 m-0 p-0"> -->
-							<!--                                             <div class="row m-0 p-0"> -->
-							<!--                                                 <div class="col-12 m-0 p-0 text-center">추천 20</div> -->
-							<!--                                                 <div class="col-12 m-0 p-0 text-center">댓글 5</div> -->
-							<!--                                             </div> -->
-							<!--                                         </div> -->
-							<!--                                     </div> -->
-							<!--                                 </div> -->
+
 
 
 						</div>
 					</div>
 
-	
-			</div>
 
+				</div>
+
+			</div>
 		</div>
 	</div>
-	</header>
 
-        <footer class="mt-auto text-black-50"></footer>
-    </div>
+	<footer class="mt-auto text-black-50"></footer>
+
     
      <!--top 버튼-->
     <button onclick="topFunction()" id="myBtn" title="Go to top">↑</button>
@@ -989,7 +822,7 @@ $("#modal_joinBtn").on("click",function(){
 
 
 
-    <script>
+	<script>
     $("#password-input").on("keyup",function(e){
         if(e.keyCode==13){
             $("#modal_loginBtn").click();
@@ -1054,73 +887,73 @@ $("#modal_joinBtn").on("click",function(){
           }
         });
     </script>
-    
-    <script type="text/javascript">
- 	let city = ['Jeju City'];
-	
-	city.forEach(function(city){
-		$(document).ready(function() {
-			let weatherIcon = {
-			'01' : 'fas fa-sun',
-			'02' : 'fas fa-cloud-sun',
-			'03' : 'fas fa-cloud',
-			'04' : 'fas fa-cloud-meatball',
-			'09' : 'fas fa-cloud-sun-rain',
-			'10' : 'fas fa-cloud-showers-heavy',
-			'11' : 'fas fa-poo-storm',
-			'13' : 'far fa-snowflake',
-			'50' : 'fas fa-smog'
-			};
-			$.ajax({
-				url:'http://api.openweathermap.org/data/2.5/weather?q='+city+'&APPID=71199a5512c711405120f9710683654c&units=metric',
-				dataType:'json',
-				type:'GET',
-				success:function(data){
-					let $Icon = (data.weather[0].icon).substr(0,2);
-					let $Temp = Math.floor(data.main.temp) + 'º';
-					let $city = "제주도";
-					
-					$('.CurrIcon').append('<i class="' + weatherIcon[$Icon] +'"></i>');
-					$('.CurrTemp').prepend($Temp);
-					$('.City').append($city);
-					console.log(data);
-	                console.log("현재온도 : "+ (data.main.temp- 273.15) ); //섭씨온도를 만들기 위함
-	                console.log("현재습도 : "+ data.main.humidity);
-	                console.log("날씨 : "+ data.weather[0].main );
-	                console.log("상세날씨설명 : "+ data.weather[0].description );
-	                console.log("날씨 이미지 : "+ data.weather[0].icon );
-	                console.log("바람   : "+ data.wind.speed );
-	                console.log("나라   : "+ data.sys.country );
-	                console.log("도시이름  : "+ data.name );
-	                console.log("구름  : "+ (data.clouds.all) +"%" );  
-				}
-			})
+
+	<script type="text/javascript">
+		let city = ['Jeju City'];
+		
+		city.forEach(function(city){
+			$(document).ready(function() {
+				let weatherIcon = {
+				'01' : 'fas fa-sun',
+				'02' : 'fas fa-cloud-sun',
+				'03' : 'fas fa-cloud',
+				'04' : 'fas fa-cloud-meatball',
+				'09' : 'fas fa-cloud-sun-rain',
+				'10' : 'fas fa-cloud-showers-heavy',
+				'11' : 'fas fa-poo-storm',
+				'13' : 'far fa-snowflake',
+				'50' : 'fas fa-smog'
+				};
+				$.ajax({
+					url:'http://api.openweathermap.org/data/2.5/weather?q='+city+'&APPID=71199a5512c711405120f9710683654c&units=metric',
+					dataType:'json',
+					type:'GET',
+					success:function(data){
+						let $Icon = (data.weather[0].icon).substr(0,2);
+						let $Temp = Math.floor(data.main.temp) + 'º';
+						let $city = "제주도";
+						
+						$('.CurrIcon').append('<i class="' + weatherIcon[$Icon] +'"></i>');
+						$('.CurrTemp').prepend($Temp);
+						$('.City').append($city);
+						console.log(data);
+		                console.log("현재온도 : "+ (data.main.temp- 273.15) ); //섭씨온도를 만들기 위함
+		                console.log("현재습도 : "+ data.main.humidity);
+		                console.log("날씨 : "+ data.weather[0].main );
+		                console.log("상세날씨설명 : "+ data.weather[0].description );
+		                console.log("날씨 이미지 : "+ data.weather[0].icon );
+		                console.log("바람   : "+ data.wind.speed );
+		                console.log("나라   : "+ data.sys.country );
+		                console.log("도시이름  : "+ data.name );
+		                console.log("구름  : "+ (data.clouds.all) +"%" );  
+					}
+				})
+			});
 		});
-	});
+		
+		//top 버튼
+		
+		mybutton = document.getElementById("myBtn");
+		
+		window.onscroll = function() {scrollFunction()};
+		
+		function scrollFunction() {
+		  if (document.body.scrollTop > 60 || document.documentElement.scrollTop > 60) {
+		    mybutton.style.display = "block";
+		  } else {
+		    mybutton.style.display = "none";
+		  }
+		}
+		
+		
+		function topFunction() {
+		  document.body.scrollTop = 0; 
+		  document.documentElement.scrollTop = 0; 
+		}
 	
-	//top 버튼
-
-	mybutton = document.getElementById("myBtn");
-
-	window.onscroll = function() {scrollFunction()};
-
-	function scrollFunction() {
-	  if (document.body.scrollTop > 60 || document.documentElement.scrollTop > 60) {
-	    mybutton.style.display = "block";
-	  } else {
-	    mybutton.style.display = "none";
-	  }
-	}
-
-
-	function topFunction() {
-	  document.body.scrollTop = 0; 
-	  document.documentElement.scrollTop = 0; 
-	}
-
-
+	</script>
 	
-</script>
+	
 </body>
 
 </html>

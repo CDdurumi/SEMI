@@ -47,19 +47,28 @@ public class BoardController extends HttpServlet {
 		try {
 			if(uri.equals("/communityMain.board")) {
 				
+				///////자유게시판 화제 게시글///////
 				String boardOption ="f";
 				List<BoardDTO> fHotlist = dao.selectByLikeCount(boardOption);
+				request.setAttribute("fHotlist", fHotlist);
+				///////구인구직 화제 게시글///////
 				boardOption ="j";
 				List<BoardDTO> jHotlist = dao.selectByLikeCount(boardOption);
+				request.setAttribute("jHotlist", jHotlist);
+				///////맛집 화제 게시글///////
 				boardOption ="r";
 				List<BoardDTO> rHotlist = dao.selectByLikeCount(boardOption);
-				request.setAttribute("fHotlist", fHotlist);
-				request.setAttribute("jHotlist", jHotlist);
 				request.setAttribute("rHotlist", rHotlist);
-				
+
+				///////여행후기 화제 게시글///////
+				boardOption ="g";
+				List<BoardDTO> gHotlist = dao.selectByLikeCount(boardOption);
+				request.setAttribute("gHotlist", gHotlist);
+				List<FilesDTO> gFilesDao = filesDAO.selectSysName(boardOption);//여행후기 게시글 프로필 - sys_name get(해당게시글seq와 sys_name담겨 있음).
+				request.setAttribute("jobPorfileList", gFilesDao);
+				request.setAttribute("profilePath", "/files/");
 				request.getRequestDispatcher("/board/communityMain.jsp").forward(request, response);//커뮤니티 메인페이지
 
-				
 			}else if(uri.equals("/boardMainView.board")) {//자유게시판 메인화면 출력(communityMain.jsp에서 자유게시판 메뉴 클릭 시 여기로.)
 				int cpage = Integer.parseInt(request.getParameter("cpage"));
 				request.setAttribute("cpage", cpage);
@@ -165,7 +174,7 @@ public class BoardController extends HttpServlet {
 				
 				///////숙소 화제 게시글///////
 				request.setAttribute("hotlist", hotlist);
-				List<FilesDTO> hFilesDao = filesDAO.selectSysName(boardOption);//애디터추천 게시글 프로필 - sys_name get(해당게시글seq와 sys_name담겨 있음).
+				List<FilesDTO> hFilesDao = filesDAO.selectSysName(boardOption);//숙소 게시글 프로필 - sys_name get(해당게시글seq와 sys_name담겨 있음).
 				request.setAttribute("housePorfileList", hFilesDao);
 
 				///////애디터 추천 게시글///////

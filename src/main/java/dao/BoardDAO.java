@@ -549,7 +549,7 @@ public class BoardDAO {
 		}
 	}
 
-	// 화제글 list
+	// 화제글 list(좋아요, 조회수 정렬)
 	public List<BoardDTO> selectByLikeCount(String boardOption) throws Exception {
 
 		int start = 1;
