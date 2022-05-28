@@ -289,6 +289,19 @@ pageEncoding="UTF-8"%>
                 font-size: 3.5rem;
             }
         }
+        .comuview{
+       	color:rgb(0, 0, 0);
+       	width: 300px;
+    	position: absolute;
+    	left: 50%;
+    	transform: translate(-50%, -50%);
+    	text-align:center;
+    	font-weight: bold;
+    	font-size:20px;
+       }
+.comuview:hover{
+       color:#0080ff;
+       }
 
 
         /*마이페이지 ------------------------------------------------------------------------------------------------*/
@@ -581,10 +594,10 @@ pageEncoding="UTF-8"%>
 </head>
 
 <body id="body-pd">
-    <header class="header" id="header">
+    <header class="header" id="header" style="background-color:#f5f5f7">
         <div class="header_toggle"><i class='bx bx-menu' id="header-toggle"></i></div>
+        <div><a href="/myPage.jsp" class="comuview">마이페이지</a></div>
         <div>
-           
             <c:choose>
             <c:when test="${loginID !=null}">
                   ${loginID }님 안녕하세요 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
@@ -604,7 +617,7 @@ pageEncoding="UTF-8"%>
             <div> <a href="/index.jsp" class="nav1_logo"> <i class='bx bx-layer nav1_logo-icon'></i> <span class="nav1_logo-name">쉼표
                         <br>- 일상의 쉼표를 찍다</span> </a>
                 <div class="nav1_list">
-                    <a class="nav1_link active"> <i class='CurrIcon'></i> <span class="nav1_name"><span class="weather">
+                    <a class="nav1_link" style="color:white;"> <i class='CurrIcon'></i> <span class="nav1_name"><span class="weather">
                     <span class="CurrTemp"></span>
                     <span class="City"></span>
                     </span></span> </a>
@@ -618,11 +631,11 @@ pageEncoding="UTF-8"%>
                     </a>
                     <c:choose>
 						<c:when test="${loginID !=null}">
-							<a href="/goMyPage.mpg" class="nav1_link"> <i class='bx bx-user nav_icon'></i> <span class="nav_name">마이페이지</span> </a>
+							<a href="/goMyPage.mpg" class="nav1_link"> <i class='bx bx-user nav1_icon'></i> <span class="nav1_name">마이페이지</span> </a>
 						</c:when>
 		
 						<c:otherwise>
-							<a href="/goMyPage.mpg" class="nav1_link" data-bs-toggle="modal" data-bs-target="#exampleModal"> <i class='bx bx-user nav_icon'></i> <span class="nav_name">마이페이지</span> </a>
+							<a href="/goMyPage.mpg" class="nav1_link" data-bs-toggle="modal" data-bs-target="#exampleModal"> <i class='bx bx-user nav1_icon'></i> <span class="nav_name">마이페이지</span> </a>
 						</c:otherwise>
 					</c:choose>
                 </div>
