@@ -801,7 +801,7 @@ $("#modal_loginBtn").on("click",function(){
         });
         
         $("#writeBtn").on("click",function(){
-        	location.href="/writeboard.board";
+        	location.href="/writeboard.board?boardOption=j";
         })
     </script>
     
