@@ -1456,17 +1456,17 @@ $("#modal_loginBtn").on("click",function(){
       </div>
       <div class="modal-body">
       	 
-      	받는 사람 | <input type="text" placeholder="받는 사람 ID" id="receiver"><p></p>
-      	<input type="text" placeholder="제목을 입력하세요" id="title1" name="title" style="width:100%">
+      	받는 사람 | <input type="text" placeholder="받는 사람 ID" id="modal_receiver"><p></p>
+      	<input type="text" placeholder="제목을 입력하세요" id="modal_title" name="title" style="width:100%">
       	<p>
       		
       	</p>
       	
-        <textarea style="width:100%; min-height:150px" placeholder="내용을 입력하세요" id="msgContents"></textarea>
+        <textarea style="width:100%; min-height:150px" placeholder="내용을 입력하세요" id="modal_msgContents"></textarea>
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">닫기</button>
-        <button type="button" class="btn btn-primary" id="modal_sendMsg">보내기</button>
+        <button type="button" class="btn btn-primary" id="modal_sendmsg">보내기</button>
       </div>
     </div>
   </div>
@@ -1930,43 +1930,42 @@ $("#modal_loginBtn").on("click",function(){
 		}
 	})
 };
+
+//쪽지보내기
+$("#modal_sendmsg").on("click", function(){
+	if($("#modal_receiver").val()==""){
+		alert("받는 사람의 닉네임을 입력하세요.");
+		$("#modal_receiver").focus();
+		return false;
+	}else if($("#modal_title").val()==""){
+		alert("제목을 입력해주세요.");
+		$("#modal_title").focus();
+	}else if($("#modal_msgContents").val()==""){
+		alert("내용을 입력해주세요.");
+		$("#modal_msgContents").focus();
+	}else{
+    	$.ajax({
+    		url:"sendMsg.mpg",
+    		type:"post",
+    		data:{
+    			receiver:$("#modal_receiver").val(),
+    			title:$("#modal_title").val(),
+    			contents:$("#modal_msgContents").val()
+    			},
+    		dataType:"json"
+    	}).done(function(resp){
+    		console.log(resp);
+    		if(resp==0){
+    			alert("존재하지 않는 닉네임입니다.");
+    		}else{
+    			location.reload();
+    		}
+    	})
+    }
+})
 </script>
 <script>
-//	     쪽지보내기
-    $("#modal_sendMsg").on("click", function(){
-    	if($("#receiver").val()==""){
-        	alert("받는 사람의 닉네임를 입력해주세요.");
-        	$("#receiver").focus();
-        	return false;
-        }else if($("#title1").val()==""){
-        	alert("제목를 입력해주세요.");
-        	$("#title1").focus();
-        	return false;
-        }else if($("#msgContents").val()==""){
-        	alert("내용를 입력해주세요.");
-        	$("#msgContents").focus();
-        	return false;
-        }else{
-        	$.ajax({
-        		url:"sendMsg.mpg",
-        		type:"post",
-        		data:{
-        			message_seq:${dto.message_seq},
-        			receiver:$("#receiver").val(),
-        			title:$("#title1").val(),
-        			contents:$("#msgContents").val()
-        			},
-        		dataType:"json"
-        	}).done(function(resp){
-        		console.log(resp);
-        		if(resp==0){
-        			alert("존재하지 않는 닉네임입니다.");
-        		}else{
-        			location.reload();
-        		}
-        	})
-        }
-    })
+
 </script>
 </body>
 
