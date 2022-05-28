@@ -1544,33 +1544,39 @@ $("#modal_loginBtn").on("click",function(){
         				console.log("닉네임 조회 resp : " + resp)
         					if(resp==false){						
         			        	if(isNickName($("#editID").val())) {
-        			        		if(isPw($("#pw1").val())){
+        			        		if($("#pw1").val()==$("#pw2").val()){
+        			        			if(isPw($("#pw1").val())){
 
-        			            		alert(1);
-        			                	console.log($("#editID").val());
-        			                	console.log($("#pw1").val());
-        			                	$.ajax({
-        			                		url:"/modifiedOk.member",
-        			                        data:{id:$("#editID").val(), pw:$("#pw1").val()},
-        			                        dataType:"json",
-        			                        type:"post"
-        			                	}).done(function(resp){
-        			                		alert(2);
-        			                		if(resp){
-        			                			alert("변경완료");	
-        			                			 $(".pw").css("display","none"); //모든 컨텐츠
-        			                			 $(".check2").css("display","none"); //모든 컨텐츠
-        			                			 $("#ok").css("display","none");    //완료버튼
-        			                			 $("#modify").css("display","block");   //수정하기 버튼
-        			                			 $("#editID").attr("disabled", true);
-        			                		}else{
-        			                			alert("error");
-        			                		}
-        			                		
-        			                	})	
+            			            		alert(1);
+            			                	console.log($("#editID").val());
+            			                	console.log($("#pw1").val());
+            			                	$.ajax({
+            			                		url:"/modifiedOk.member",
+            			                        data:{id:$("#editID").val(), pw:$("#pw1").val()},
+            			                        dataType:"json",
+            			                        type:"post"
+            			                	}).done(function(resp){
+            			                		alert(2);
+            			                		if(resp){
+            			                			alert("변경완료");	
+            			                			 $(".pw").css("display","none"); //모든 컨텐츠
+            			                			 $(".check2").css("display","none"); //모든 컨텐츠
+            			                			 $("#ok").css("display","none");    //완료버튼
+            			                			 $("#modify").css("display","block");   //수정하기 버튼
+            			                			 $("#editID").attr("disabled", true);
+            			                			 location.reload();
+            			                		}else{
+            			                			alert("error");
+            			                		}
+            			                		
+            			                	})	
+            			        		}else{
+            			        			alert("비밀번호 양실이 틀립니다");
+            			        		}
         			        		}else{
-        			        			alert("비밀번호 양실이 틀립니다")
+        			        			alert("비밀번호와 비밀번호 확인이 다릅니다");
         			        		}
+        			        		
         			        	}else{
         			        		alert("닉네임이 양식이 틀립니다")
         			        	}
