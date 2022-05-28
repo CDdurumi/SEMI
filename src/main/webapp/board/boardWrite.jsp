@@ -533,7 +533,7 @@ $(function(){
                     </a>
                    
                     
-                    <a href="/boardMainView.board?cpage=1" class="nav_link"> <i class='bx bx-home nav_icon'></i> <span class="nav_name">숙소정보</span>
+                    <a href="/houseMain.board?cpage=1" class="nav_link"> <i class='bx bx-home nav_icon'></i> <span class="nav_name">숙소정보</span>
                     </a>
                     <c:choose>
 						<c:when test="${loginID !=null}">
