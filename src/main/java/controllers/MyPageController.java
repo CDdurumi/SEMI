@@ -117,6 +117,9 @@ public class MyPageController extends HttpServlet {
 				dao.delete(message_seq);
 				
 				response.sendRedirect("/myPage.jsp");
+				
+			}else if(uri.equals("/goMyPage.mpg")) {
+				response.sendRedirect("/myPage.jsp");
 			}
 		}catch(Exception e) {
 			e.printStackTrace();
