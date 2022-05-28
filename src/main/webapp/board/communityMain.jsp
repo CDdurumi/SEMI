@@ -587,9 +587,9 @@ font-weight: bold;
 		<div class="row " id="freemain">
 			<div class="col-12 " id="freemain_col">
 				<div class="row border border-2 rounded">
-					<div class="col-9 border-bottom hotboard text-center">자유게시판
+					<div class="col-10 border-bottom hotboard text-center" style="font-weight:bold; font-size:18px;">자유게시판
 						화제글</div>
-					<div class="col-3 border-bottom hotboard text-center">
+					<div class="col-2 border-bottom hotboard text-center">
 						<a class="allview" href="/boardMainView.board?cpage=1">전체보기</a>
 					</div>
 
@@ -645,7 +645,7 @@ font-weight: bold;
 
 
 	<div class="row">
-		<div class="col " id="hugi"><a href ="/galleryMain.board?cpage=1">여행 후기</a></div>
+		<div class="col " id="hugi"><a href ="/galleryMain.board?cpage=1" style="font-weight:bold; font-size:18px;">여행 후기</a></div>
 
 		<div class="row">
 			<div class="col-12" id="carousel">
@@ -734,8 +734,8 @@ font-weight: bold;
 		<div class="row " id="freemain">
 			<div class="col-12 col-md-6 bottom_board">
 				<div class="row border border-2 rounded">
-					<div class="col-9 border-bottom hotboard_bottom text-center">구인구직</div>
-					<div class="col-3 border-bottom hotboard_bottom text-center">
+					<div class="col-10 border-bottom hotboard_bottom text-center" style="font-weight:bold; font-size:18px;">구인구직</div>
+					<div class="col-2 border-bottom hotboard_bottom text-center">
 						<a class="allview" href="/jobMain.board?cpage=1">전체보기</a>
 					</div>
 					<div class="col-12 ">
@@ -781,8 +781,8 @@ font-weight: bold;
 			</div>
 			<div class="col-12 col-md-6 bottom_board">
 				<div class="row border border-2 rounded">
-					<div class="col-9 border-bottom hotboard_bottom text-center">맛집</div>
-					<div class="col-3 border-bottom hotboard_bottom text-center">
+					<div class="col-10 border-bottom hotboard_bottom text-center" style="font-weight:bold; font-size:18px;">맛집</div>
+					<div class="col-2 border-bottom hotboard_bottom text-center">
 						<a class="allview" href="/foodMain.board?cpage=1">전체보기</a>
 					</div>
 
