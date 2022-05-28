@@ -297,9 +297,9 @@ public class BoardController extends HttpServlet {
 				//게시판 옵션(게시판 선택 값 cf.f:자유게시판, g:여행후기, j:구인구직, r:맛집, h:숙소리뷰, e:애디터추천글(관리자만 사용))
 				String boardOption = multi.getParameter("boardOption");
 				String seq = dao.getSeqNextVal(boardOption); //해당 작성글 넘버 가져오기(해당 게시판의 seq)
-				
+				String editor_type = multi.getParameter("editor_type");//에디터 게시글 분류(자유게시판:f,구인구직:s,숙소리뷰:h)
 				//게시글 저장 //
-				dao.insert(new BoardDTO(seq, writer, title, contents, null, 0, 0, 0, null, 0));
+				dao.insert(new BoardDTO(seq, writer, title, contents, null, 0, 0, 0, editor_type, 0));
 
 				//업로드 파일 정보 저장
 				Enumeration<String> e = multi.getFileNames();
