@@ -495,7 +495,10 @@ pageEncoding="UTF-8"%>
         
 
         /*--계정관리---------------------------------------------------------------------------------------*/
-
+	.newcheck{
+	text-align:center;
+	display:none;
+	}
          #header_header {
            height: 100%;
           padding-top: 80px;
@@ -1392,17 +1395,26 @@ $("#modal_loginBtn").on("click",function(){
                                     <div class="col-12 col-md-8 modify content " id="id">
                                        <input type="text" value="${loginID }" id="editID" style="text-align:center" name = "id" disabled/>
                                     </div>
+                                    
+                                    <div class="col-12 newcheck" id="testID" >아이디:</div>
+                                    
                                 </div>
                                 <div class="row "  id="pw" >
                                     <div class="col-12 col-md-4 pw content" style="display:none;"><strong>비밀번호</strong> </div>
                                     <div class="col-12 col-md-8 modify content pw" style="display:none;">
                                         <input type="password" placeholder="비밀번호" id="pw1" name="pw">
                                     </div>
+                                    
+                                    <div class="col-12 newcheck" id="testPW" >비밀번호:</div>
+                                    
                                     <div class="col-12 col-md-4 check2" style="display:none;"><strong>비밀번호 확인</strong> </div>
                                     <div class="col-12 col-md-8 check2" style="display:none;">
                                         <input type="password" placeholder="비밀번호 확인" id="pw2">
                                         
                                     </div>
+                                    
+                                    <div class="col-12 newcheck" id="testPWok" >비밀번호확인:</div>
+                                    
                                 </div>
                                 <div class="row" id="email">
                                     <div class="col-12 col-md-4 content"><strong>이메일</strong> </div>
@@ -1494,7 +1506,7 @@ $("#modal_loginBtn").on("click",function(){
         $("#back").css("display","inline"); //취소버튼
         $("#modify").css("display","none");   //수정하기 버튼
         $(".check").css("display","inline"); //비밀번호 확인 입력창
-        
+       
         
         $("#checkpw").on("click",function(){
             $.ajax({
@@ -1506,13 +1518,14 @@ $("#modal_loginBtn").on("click",function(){
         	console.log(resp);
             
         	if(resp){
+        		 $(".newcheck").css("display","block"); //정규식 확인 보이기
                 $(".content").css("display","inline");
                 $("#ok").css("display","inline");    //완료버튼
                 $(".pw").css("display","block");    //비번 수정
                 $(".check").css("display","none");  //비밀번호 확인 입력창
-                $(".check2").css("display","block");
+                $(".check2").css("display","inline-block");
 //                 $("#pw").css("display","block");
-                $("#back").css("display","none"); //취소버튼
+                $("#back").css("display","inline-block"); //취소버튼
                 $("#pw1").val("");
 				$("#pw2").val(""); 
 				$("#pw1").attr("placeholder","변경하실 비밀번호");
@@ -1547,38 +1560,42 @@ $("#modal_loginBtn").on("click",function(){
         			        		if($("#pw1").val()==$("#pw2").val()){
         			        			if(isPw($("#pw1").val())){
 
-            			            		alert(1);
-            			                	console.log($("#editID").val());
-            			                	console.log($("#pw1").val());
-            			                	$.ajax({
-            			                		url:"/modifiedOk.member",
-            			                        data:{id:$("#editID").val(), pw:$("#pw1").val()},
-            			                        dataType:"json",
-            			                        type:"post"
-            			                	}).done(function(resp){
-            			                		alert(2);
-            			                		if(resp){
-            			                			alert("변경완료");	
-            			                			 $(".pw").css("display","none"); //모든 컨텐츠
-            			                			 $(".check2").css("display","none"); //모든 컨텐츠
-            			                			 $("#ok").css("display","none");    //완료버튼
-            			                			 $("#modify").css("display","block");   //수정하기 버튼
-            			                			 $("#editID").attr("disabled", true);
-            			                			 location.reload();
-            			                		}else{
-            			                			alert("error");
-            			                		}
-            			                		
-            			                	})	
-            			        		}else{
-            			        			alert("비밀번호 양실이 틀립니다");
-            			        		}
+
+        			            		alert(1);
+        			                	console.log($("#editID").val());
+        			                	console.log($("#pw1").val());
+        			                	$.ajax({
+        			                		url:"/modifiedOk.member",
+        			                        data:{id:$("#editID").val(), pw:$("#pw1").val()},
+        			                        dataType:"json",
+        			                        type:"post"
+        			                	}).done(function(resp){
+        			                		alert(2);
+        			                		if(resp){
+        			                			alert("변경완료");	
+        			                			 $(".pw").css("display","none"); //모든 컨텐츠
+        			                			 $(".check2").css("display","none"); //모든 컨텐츠
+        			                			 $("#ok").css("display","none");    //완료버튼
+        			                			 $("#modify").css("display","block");   //수정하기 버튼
+        			                			 $("#editID").attr("disabled", true);
+        			                			 $(".newcheck").css("display","none");//정규식 확인 버튼
+        			                			 $("#back").css("display","none");
+        			                		     $("#pwtext").val("");
+        			                		     $("#pwtext").attr("placeholder","비밀번호를 입력하세요.");
+        			                		}else{
+        			                			alert("error");
+        			                		}
+        			                		
+        			                	})	
         			        		}else{
-        			        			alert("비밀번호와 비밀번호 확인이 다릅니다");
+        			        			
+        			        			alert("비밀번호 양실이 틀립니다")
         			        		}
         			        		
         			        	}else{
-        			        		alert("닉네임이 양식이 틀립니다")
+        			        		$("#testID").text("닉네임 양식이 틀립니다.");
+    			        			$("#testID").css("color:red");
+//         			        		alert("닉네임이 양식이 틀립니다")
         			        	}
         					}else if(resp==true){
         						alert("이미 사용중인 닉네임입니다")
@@ -1617,8 +1634,12 @@ $("#modal_loginBtn").on("click",function(){
         $(".pw").css("display","none");
         $(".check").css("display","none");
         $(".check2").css("display","none");
+        $("#pwtext").val("");
+        $("#pwtext").attr("placeholder","비밀번호를 입력하세요.");
+        $(".newcheck").css("display","none");//정규식 확인 
         
         $(".modify").attr("contenteditable","false");
+        $("#editID").attr("disabled", true);
         $(".modify").css("color","black");
     })
 
