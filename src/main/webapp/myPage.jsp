@@ -608,18 +608,16 @@ pageEncoding="UTF-8"%>
                     <span class="CurrTemp"></span>
                     <span class="City"></span>
                     </span></span> </a>
-                    <a href="/board/communityMain.jsp" class="nav1_link"> <i class='bx bx-message nav1_icon'></i> <span
+                    <a href="/communityMain.board" class="nav1_link"> <i class='bx bx-message nav1_icon'></i> <span
                             class="nav1_name">커뮤니티</span> </a>
-                    <a href="/board/editorReMain.jsp" class="nav1_link"> <i class='bx bx-book-bookmark nav1_icon'></i> <span class="nav1_name">에디터추천</span>
+                    <a href="/editorReMain.board?" class="nav1_link"> <i class='bx bx-book-bookmark nav1_icon'></i> <span class="nav1_name">에디터추천</span>
+                    </a>
+                    
+                   
+                    <a href="/boardMainView.board?cpage=1" class="nav1_link"> <i class='bx bx-home nav1_icon'></i> <span class="nav1_name">숙소리뷰</span>
                     </a>
                     <a href="/myPage.jsp" class="nav1_link active"> <i class='bx bx-user nav1_icon'></i> <span
                             class="nav1_name">마이페이지</span> </a>
-                    <a href="#" class="nav1_link"> <i class='bx bx-calendar nav1_icon'></i> <span
-                            class="nav1_name">일정관리</span> </a>
-                    <a href="/boardMainView.board?cpage=1" class="nav1_link"> <i class='bx bx-home nav1_icon'></i> <span class="nav1_name">숙소리뷰</span>
-                    </a>
-                    <a href="#" class="nav1_link"> <i class='bx bx-message-alt-detail nav1_icon'></i> <span
-                            class="nav1_name">쪽지</span> </a>
                 </div>
             </div>
             <c:choose>
@@ -647,9 +645,6 @@ pageEncoding="UTF-8"%>
             <input type="password" id="password-input" placeholder="password">
             <i class="fa fa-lock"></i>
             <span><small class="fa fa-eye-slash passcode"></small></span>
-        </div>
-        <div class="login_api" style="text-align:center">
-           <a href="#"><img src="/imgsrc/google_signin_buttons/web/1x/btn_google_signin_dark_normal_web.png"></a>
         </div>
       </div>
       <div class="modal-footer">
