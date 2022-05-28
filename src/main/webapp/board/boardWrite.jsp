@@ -378,6 +378,28 @@
 	padding-left: 2px;
 }			
         </style>
+        
+<script>
+$(function(){
+	
+	//게시판 콤보박스 자동 set.
+    let boardOption = "${boardOption}";
+
+    if(boardOption == 'f'){//자유게시판
+    	$("[value='f']").attr("selected","selected");
+    }else if(boardOption == 'g'){//여행후기
+    	$("[value='g']").attr("selected","selected");
+    }else if(boardOption == 'j'){//구인구작
+    	$("[value='j']").attr("selected","selected");
+    }else if(boardOption == 'r'){//맛집
+    	$("[value='r']").attr("selected","selected");
+    }else if(boardOption == 'h'){//숙소리뷰
+    	$("[value='h']").attr("selected","selected");
+    }else if(boardOption == 'e'){//애디터추천
+    	$("[value='e']").attr("selected","selected");
+    }
+}) 
+</script>        
     </head>
 
 <body id="body-pd">

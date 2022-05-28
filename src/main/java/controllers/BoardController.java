@@ -259,8 +259,8 @@ public class BoardController extends HttpServlet {
 				
 			}else if(uri.equals("/writeboard.board")) {//게시판 글 작성하기 폼 출력(boardMain.jsp에서 글 작성하기 버튼 클릭 시 여기로.)
 				String boardOption = request.getParameter("boardOption");
+				request.setAttribute("boardOption", boardOption);
 				request.getRequestDispatcher("/board/boardWrite.jsp").forward(request, response);
-//				response.sendRedirect("/board/boardWrite.jsp");//게시판 글 작성 페이지 전환
 				
 			}else if(uri.equals("/writeProcessing.board")) {//게시글 작성완료 처리 과정(boardWrite.jsp에서 작성완료 버튼 클릭 시 여기로.)
 				
