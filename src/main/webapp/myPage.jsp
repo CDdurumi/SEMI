@@ -1479,7 +1479,7 @@ $("#modal_loginBtn").on("click",function(){
                 $(".pw").css("display","block");    //비번 수정
                 $(".check").css("display","none");  //비밀번호 확인 입력창
                 $(".check2").css("display","block");
-                $("#pw").css("display","block");
+//                 $("#pw").css("display","block");
                 $("#back").css("display","none"); //취소버튼
                 $("#pw1").val("");
 				$("#pw2").val(""); 
@@ -1526,7 +1526,8 @@ $("#modal_loginBtn").on("click",function(){
         			                		alert(2);
         			                		if(resp){
         			                			alert("변경완료");	
-        			                			 $("#pw").css("display","none"); //모든 컨텐츠
+        			                			 $(".pw").css("display","none"); //모든 컨텐츠
+        			                			 $(".check2").css("display","none"); //모든 컨텐츠
         			                			 $("#ok").css("display","none");    //완료버튼
         			                			 $("#modify").css("display","block");   //수정하기 버튼
         			                			 $("#editID").attr("disabled", true);
