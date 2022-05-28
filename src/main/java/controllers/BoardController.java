@@ -45,7 +45,22 @@ public class BoardController extends HttpServlet {
 		
 		String uri = request.getRequestURI();
 		try {
-			if(uri.equals("/boardMainView.board")) {//자유게시판 메인화면 출력(communityMain.jsp에서 자유게시판 메뉴 클릭 시 여기로.)
+			if(uri.equals("/communityMain.board")) {
+				
+				String boardOption ="f";
+				List<BoardDTO> fHotlist = dao.selectByLikeCount(boardOption);
+				boardOption ="j";
+				List<BoardDTO> jHotlist = dao.selectByLikeCount(boardOption);
+				boardOption ="r";
+				List<BoardDTO> rHotlist = dao.selectByLikeCount(boardOption);
+				request.setAttribute("fHotlist", fHotlist);
+				request.setAttribute("jHotlist", jHotlist);
+				request.setAttribute("rHotlist", rHotlist);
+				
+				request.getRequestDispatcher("/board/communityMain.jsp").forward(request, response);//커뮤니티 메인페이지
+
+				
+			}else if(uri.equals("/boardMainView.board")) {//자유게시판 메인화면 출력(communityMain.jsp에서 자유게시판 메뉴 클릭 시 여기로.)
 				int cpage = Integer.parseInt(request.getParameter("cpage"));
 				request.setAttribute("cpage", cpage);
 				String boardOption ="f";
@@ -282,9 +297,9 @@ public class BoardController extends HttpServlet {
 				//게시판 옵션(게시판 선택 값 cf.f:자유게시판, g:여행후기, j:구인구직, r:맛집, h:숙소리뷰, e:애디터추천글(관리자만 사용))
 				String boardOption = multi.getParameter("boardOption");
 				String seq = dao.getSeqNextVal(boardOption); //해당 작성글 넘버 가져오기(해당 게시판의 seq)
-				
+				String editor_type = multi.getParameter("editor_type");//에디터 게시글 분류(자유게시판:f,구인구직:s,숙소리뷰:h)
 				//게시글 저장 //
-				dao.insert(new BoardDTO(seq, writer, title, contents, null, 0, 0, 0, 0));
+				dao.insert(new BoardDTO(seq, writer, title, contents, null, 0, 0, 0, editor_type, 0));
 
 				//업로드 파일 정보 저장
 				Enumeration<String> e = multi.getFileNames();
@@ -388,7 +403,7 @@ public class BoardController extends HttpServlet {
 				String seq = multi.getParameter("seq"); //해당 작성글 넘버 가져오기
 				
 				//게시글 수정 //
-				dao.modifyPost(new BoardDTO(seq, writer, title, contents, null, 0, 0, 0, 0));
+				dao.modifyPost(new BoardDTO(seq, writer, title, contents, null, 0, 0, 0, null, 0));
 
 				//업로드 파일 정보 저장
 				Enumeration<String> e = multi.getFileNames();

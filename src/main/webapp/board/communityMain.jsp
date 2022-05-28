@@ -311,6 +311,7 @@
         }
 
         .freeboard_bottom {
+        	padding-top:0px;
             margin: 10px;
         }
 
@@ -365,19 +366,29 @@
             padding-right: 30px;
             padding-bottom: 30px;
         }
+            #board_menu_text{
+            line-height:35px;
+            font-weight:bold ;
+        }
           /* 제목이 길어서 잘렸을 경우 밑의 두개 처리해준다 */
-       .ellipsis{
-           position: relative;
-           min-width: 50px;
+/*        .ellipsis{ */
+/*            position: relative; */
+/*            min-width: 50px; */
            
-       }
-       .ellipsis>span{
-        overflow: hidden;
-           white-space: nowrap;
-           text-overflow: ellipsis;
-           position:absolute;
-           left: 9px;
-           right: 9px;
+/*        } */
+/*        .ellipsis>span{ */
+/*         overflow: hidden; */
+/*            white-space: nowrap; */
+/*            text-overflow: ellipsis; */
+/*            position:absolute; */
+/*            left: 9px; */
+/*            right: 9px; */
+/*        } */
+ 		.ellipsis{
+       overflow:hidden;
+       text-overflow:ellipsis;
+       white-space:nowrap;
+       
        }
        .allview{
        	color:black;
@@ -541,126 +552,211 @@ $("#modal_loginBtn").on("click",function(){
 		})
 </script>
     <!--Container Main start-->
-    <div class="height-100 ">
+    <div class="height-85 ">
         <div class="row " id="freemain">
             <div class="col-12 " id="freemain_col">
                 <div class="row border border-2 rounded">
                     <div class="col-9 border-bottom hotboard text-center">자유게시판 화제글</div>
                     <div class="col-3 border-bottom hotboard text-center"><a class="allview" href="/board/boardMain.jsp">전체보기</a></div>
-                    <div class="row  freeboard_bottom">
-                        <div class="col-12 col-md-6 ">
+                   
+                        <div class="col-12 mt-0">
                             <div class="row freeboard_bottom ">
-                                <div class="col-12 border border-2 rounded">
-                                    <div class="row m-0">
-                                        <div class="col-9 col-md-9 m-0 free_title ellipsis"><span>글 제목</span></div>
-                                        <div class="col-3 col-md-3 m-0 p-0">
-                                            <div class="row m-0 p-0">
-                                                <div class="col-12 m-0 p-0 text-center">추천 20</div>
-                                                <div class="col-12 m-0 p-0 text-center">댓글 5</div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-12 border border-2 rounded">
-                                    <div class="row m-0">
-                                        <div class="col-9 col-md-9 m-0 free_title ellipsis"><span>글 제목</span></div>
-                                        <div class="col-3 col-md-3 m-0 p-0">
-                                            <div class="row m-0 p-0">
-                                                <div class="col-12 m-0 p-0 text-center">추천 20</div>
-                                                <div class="col-12 m-0 p-0 text-center">댓글 5</div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-12 border border-2 rounded">
-                                    <div class="row m-0">
-                                        <div class="col-9 col-md-9 m-0 free_title ellipsis"><span>글 제목</span></div>
-                                        <div class="col-3 col-md-3 m-0 p-0">
-                                            <div class="row m-0 p-0">
-                                                <div class="col-12 m-0 p-0 text-center">추천 20</div>
-                                                <div class="col-12 m-0 p-0 text-center">댓글 5</div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-12 d-block d-md-none border border-2 rounded">
-                                    <div class="row m-0">
-                                        <div class="col-9 col-md-9 d-block d-md-none m-0 free_title ellipsis"><span>글 제목</span></div>
-                                        <div class="col-3 col-md-3 m-0 p-0">
-                                            <div class="row m-0 p-0">
-                                                <div class="col-12 m-0 p-0 text-center">추천 20</div>
-                                                <div class="col-12 m-0 p-0 text-center">댓글 5</div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-12 d-block d-md-none border border-2 rounded">
-                                    <div class="row m-0">
-                                        <div class="col-9 col-md-9 d-block d-md-none m-0 free_title ellipsis"><span>글 제목</span></div>
-                                        <div class="col-3 col-md-3 m-0 p-0">
-                                            <div class="row m-0 p-0">
-                                                <div class="col-12 m-0 p-0 text-center">추천 20</div>
-                                                <div class="col-12 m-0 p-0 text-center">댓글 5</div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-12 d-block d-md-none border border-2 rounded">
-                                    <div class="row m-0">
-                                        <div class="col-9 col-md-9 d-block d-md-none m-0 free_title ellipsis"><span>글 제목</span></div>
-                                        <div class="col-3 col-md-3 m-0 p-0">
-                                            <div class="row m-0 p-0">
-                                                <div class="col-12 m-0 p-0 text-center">추천 20</div>
-                                                <div class="col-12 m-0 p-0 text-center">댓글 5</div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
+                            
+                            
+                            
+                            
+<!--                                 <div class="col-12 border border-2 rounded"> -->
+<!--                                     <div class="row m-0"> -->
+<!--                                         <div class="col-9 col-md-9 m-0 free_title ellipsis"><span>글 제목</span></div> -->
+<!--                                         <div class="col-3 col-md-3 m-0 p-0"> -->
+<!--                                             <div class="row m-0 p-0"> -->
+<!--                                                 <div class="col-12 m-0 p-0 text-center">추천 20</div> -->
+<!--                                                 <div class="col-12 m-0 p-0 text-center">댓글 5</div> -->
+<!--                                             </div> -->
+<!--                                         </div> -->
+<!--                                     </div> -->
+<!--                                 </div> -->
+								<div class="row m-0 ">
+									<div class="col-12  m-0 p-0" style="height: 40px">
+										<div class="row m-0" id="board_menu_text">
+											<div class="col-7  ">제목</div>
+											<div class="col-3 p-0 text-center">글쓴이</div>
+											<div class="col-md-1 d-none d-md-block p-0 text-center">조회</div>
+											<div class="col-2 col-md-1 p-0 text-center">추천</div>
+										</div>
+
+									</div>
+								</div>
+								<c:forEach var="j" items="${fHotlist}">
+								<div class="col-12  board">
+									<div class="row m-0 border border-2 rounded board_row ">
+
+
+										<div class="col-7   title ellipsis"
+											style="padding-left: 7px; padding-right: 0px;">
+											<a
+												href="/detailView.board?cpage=1&seq=${j.all_board_seq}&click=ok"
+												style="color: black">${j.title }</a>
+										</div>
+										<div class="col-3  p-0 ellipsis text-center">${j.id}</div>
+										<%--                 <div class="col-sm-2 col-md-1 d-none d-md-block p-0 text-center"><fmt:formatDate value="${i.write_date }" pattern="yy-MM-dd"/>날짜</div> --%>
+										<div class="col-md-1 d-none d-md-block p-0 text-center"> ${j.view_count}</div>
+										<div class="col-2 col-md-1 p-0 text-center"> ${j.like_count}</div>
+
+									</div>
+								</div>
+
+						</c:forEach>
+
+
+<!-- 								<div class="col-12 border border-2 rounded"> -->
+<!--                                     <div class="row m-0"> -->
+<!--                                         <div class="col-9 col-md-9 m-0 free_title ellipsis"><span>글 제목</span></div> -->
+<!--                                         <div class="col-3 col-md-3 m-0 p-0"> -->
+<!--                                             <div class="row m-0 p-0"> -->
+<!--                                                 <div class="col-12 m-0 p-0 text-center">추천 20</div> -->
+<!--                                                 <div class="col-12 m-0 p-0 text-center">댓글 5</div> -->
+<!--                                             </div> -->
+<!--                                         </div> -->
+<!--                                     </div> -->
+<!--                                 </div> -->
+                                
+<!--                                 <div class="col-12 border border-2 rounded"> -->
+<!--                                     <div class="row m-0"> -->
+<!--                                         <div class="col-9 col-md-9 m-0 free_title ellipsis"><span>글 제목</span></div> -->
+<!--                                         <div class="col-3 col-md-3 m-0 p-0"> -->
+<!--                                             <div class="row m-0 p-0"> -->
+<!--                                                 <div class="col-12 m-0 p-0 text-center">추천 20</div> -->
+<!--                                                 <div class="col-12 m-0 p-0 text-center">댓글 5</div> -->
+<!--                                             </div> -->
+<!--                                         </div> -->
+<!--                                     </div> -->
+<!--                                 </div> -->
+                                
+                                
+                                
+<!--                                 <div class="col-12 border border-2 rounded"> -->
+<!--                                     <div class="row m-0"> -->
+<!--                                         <div class="col-9 col-md-9 m-0 free_title ellipsis"><span>글 제목</span></div> -->
+<!--                                         <div class="col-3 col-md-3 m-0 p-0"> -->
+<!--                                             <div class="row m-0 p-0"> -->
+<!--                                                 <div class="col-12 m-0 p-0 text-center">추천 20</div> -->
+<!--                                                 <div class="col-12 m-0 p-0 text-center">댓글 5</div> -->
+<!--                                             </div> -->
+<!--                                         </div> -->
+<!--                                     </div> -->
+<!--                                 </div> -->
+<!--                                 <div class="col-12 border border-2 rounded"> -->
+<!--                                     <div class="row m-0"> -->
+<!--                                         <div class="col-9 col-md-9 m-0 free_title ellipsis"><span>글 제목</span></div> -->
+<!--                                         <div class="col-3 col-md-3 m-0 p-0"> -->
+<!--                                             <div class="row m-0 p-0"> -->
+<!--                                                 <div class="col-12 m-0 p-0 text-center">추천 20</div> -->
+<!--                                                 <div class="col-12 m-0 p-0 text-center">댓글 5</div> -->
+<!--                                             </div> -->
+<!--                                         </div> -->
+<!--                                     </div> -->
+<!--                                 </div> -->
+<!--                                 <div class="col-12 border border-2 rounded"> -->
+<!--                                     <div class="row m-0"> -->
+<!--                                         <div class="col-9 col-md-9 m-0 free_title ellipsis"><span>글 제목</span></div> -->
+<!--                                         <div class="col-3 col-md-3 m-0 p-0"> -->
+<!--                                             <div class="row m-0 p-0"> -->
+<!--                                                 <div class="col-12 m-0 p-0 text-center">추천 20</div> -->
+<!--                                                 <div class="col-12 m-0 p-0 text-center">댓글 5</div> -->
+<!--                                             </div> -->
+<!--                                         </div> -->
+<!--                                     </div> -->
+<!--                                 </div> -->
+                                
+                                
+<!--                                 <div class="col-12 d-block d-md-none border border-2 rounded"> -->
+<!--                                     <div class="row m-0"> -->
+<!--                                         <div class="col-9 col-md-9 d-block d-md-none m-0 free_title ellipsis"><span>글 제목</span></div> -->
+<!--                                         <div class="col-3 col-md-3 m-0 p-0"> -->
+<!--                                             <div class="row m-0 p-0"> -->
+<!--                                                 <div class="col-12 m-0 p-0 text-center">추천 20</div> -->
+<!--                                                 <div class="col-12 m-0 p-0 text-center">댓글 5</div> -->
+<!--                                             </div> -->
+<!--                                         </div> -->
+<!--                                     </div> -->
+<!--                                 </div> -->
+<!--                                 <div class="col-12 d-block d-md-none border border-2 rounded"> -->
+<!--                                     <div class="row m-0"> -->
+<!--                                         <div class="col-9 col-md-9 d-block d-md-none m-0 free_title ellipsis"><span>글 제목</span></div> -->
+<!--                                         <div class="col-3 col-md-3 m-0 p-0"> -->
+<!--                                             <div class="row m-0 p-0"> -->
+<!--                                                 <div class="col-12 m-0 p-0 text-center">추천 20</div> -->
+<!--                                                 <div class="col-12 m-0 p-0 text-center">댓글 5</div> -->
+<!--                                             </div> -->
+<!--                                         </div> -->
+<!--                                     </div> -->
+<!--                                 </div> -->
+                                
+                                
+<!--                                 <div class="col-12 d-block d-md-none border border-2 rounded"> -->
+<!--                                     <div class="row m-0"> -->
+<!--                                         <div class="col-9 col-md-9 d-block d-md-none m-0 free_title ellipsis"><span>글 제목</span></div> -->
+<!--                                         <div class="col-3 col-md-3 m-0 p-0"> -->
+<!--                                             <div class="row m-0 p-0"> -->
+<!--                                                 <div class="col-12 m-0 p-0 text-center">추천 20</div> -->
+<!--                                                 <div class="col-12 m-0 p-0 text-center">댓글 5</div> -->
+<!--                                             </div> -->
+<!--                                         </div> -->
+<!--                                     </div> -->
+<!--                                 </div> -->
+                                
+                                
                             </div>
                         </div>
-                        <div class="col-md-6 d-none d-md-block">
-                            <div class="row freeboard_bottom">
-                                <div class="col-12 border border-2 rounded">
-                                    <div class="row m-0">
-                                        <div class="col-12 col-md-9 m-0 free_title ellipsis"><span>글 제목</span></div>
-                                        <div class="col-3 col-md-3 m-0 p-0">
-                                            <div class="row m-0 p-0">
-                                                <div class="col-12 m-0 p-0 text-center">추천 20</div>
-                                                <div class="col-12 m-0 p-0 text-center">댓글 5</div>
-                                            </div>
-                                        </div>
+<!--                         <div class="col-md-6 "> -->
+<!--                             <div class="row freeboard_bottom"> -->
+<!--                                 <div class="col-12 border border-2 rounded"> -->
+<!--                                     <div class="row m-0"> -->
+<!--                                         <div class="col-12 col-md-9 m-0 free_title ellipsis"><span>글 제목</span></div> -->
+<!--                                         <div class="col-3 col-md-3 m-0 p-0"> -->
+<!--                                             <div class="row m-0 p-0"> -->
+<!--                                                 <div class="col-12 m-0 p-0 text-center">추천 20</div> -->
+<!--                                                 <div class="col-12 m-0 p-0 text-center">댓글 5</div> -->
+<!--                                             </div> -->
+<!--                                         </div> -->
                                         
-                                    </div>
-                                </div>
-                                <div class="col-12 border border-2 rounded">
-                                    <div class="row m-0">
-                                        <div class="col-12 col-md-9 m-0 free_title ellipsis"><span>글 제목</span></div>
-                                        <div class="col-3 col-md-3 m-0 p-0">
-                                            <div class="row m-0 p-0">
-                                                <div class="col-12 m-0 p-0 text-center">추천 20</div>
-                                                <div class="col-12 m-0 p-0 text-center">댓글 5</div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-12 border border-2 rounded">
-                                    <div class="row m-0">
-                                        <div class="col-12 col-md-9 m-0 free_title ellipsis"><span>글 제목</span></div>
-                                        <div class="col-3 col-md-3 m-0 p-0">
-                                            <div class="row m-0 p-0">
-                                                <div class="col-12 m-0 p-0 text-center">추천 20</div>
-                                                <div class="col-12 m-0 p-0 text-center">댓글 5</div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
+<!--                                     </div> -->
+<!--                                 </div> -->
+<!--                                 <div class="col-12 border border-2 rounded"> -->
+<!--                                     <div class="row m-0"> -->
+<!--                                         <div class="col-12 col-md-9 m-0 free_title ellipsis"><span>글 제목</span></div> -->
+<!--                                         <div class="col-3 col-md-3 m-0 p-0"> -->
+<!--                                             <div class="row m-0 p-0"> -->
+<!--                                                 <div class="col-12 m-0 p-0 text-center">추천 20</div> -->
+<!--                                                 <div class="col-12 m-0 p-0 text-center">댓글 5</div> -->
+<!--                                             </div> -->
+<!--                                         </div> -->
+<!--                                     </div> -->
+<!--                                 </div> -->
+<!--                                 <div class="col-12 border border-2 rounded"> -->
+<!--                                     <div class="row m-0"> -->
+<!--                                         <div class="col-12 col-md-9 m-0 free_title ellipsis"><span>글 제목</span></div> -->
+<!--                                         <div class="col-3 col-md-3 m-0 p-0"> -->
+<!--                                             <div class="row m-0 p-0"> -->
+<!--                                                 <div class="col-12 m-0 p-0 text-center">추천 20</div> -->
+<!--                                                 <div class="col-12 m-0 p-0 text-center">댓글 5</div> -->
+<!--                                             </div> -->
+<!--                                         </div> -->
+<!--                                     </div> -->
+<!--                                 </div> -->
+                                
+                                
+<!--                             </div> -->
+                            
                         </div>
                     </div>
                 </div>
 
             </div>
         </div>
+        
+        
         <div class="row">
             <div class="col " id="hugi">
                 여행 후기
@@ -720,169 +816,173 @@ $("#modal_loginBtn").on("click",function(){
                 </div>
             </div>
         </div>
-        <div class="row " id="freemain">
-            <div class="col-12 col-md-6 bottom_board" >
-                <div class="row border border-2 rounded">
-                    <div class="col-9 border-bottom hotboard_bottom text-center">구인구직</div>
-                    <div class="col-3 border-bottom hotboard_bottom text-center"><a class="allview" href="/board/jobMain.jsp">전체보기</a></div>
-                    <div class="row  freeboard_bottom">
-                        <div class="col-12 ">
-                            <div class="row freeboard_bottom ">
-                                <div class="col-12 border border-2 rounded">
-                                    <div class="row m-0">
-                                        <div class="col-9 col-md-9 m-0 free_title ellipsis"><span>글 제목</span></div>
-                                        <div class="col-3 col-md-3 m-0 p-0">
-                                            <div class="row m-0 p-0">
-                                                <div class="col-12 m-0 p-0 text-center">추천 20</div>
-                                                <div class="col-12 m-0 p-0 text-center">댓글 5</div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-12 border border-2 rounded">
-                                    <div class="row m-0">
-                                        <div class="col-9 col-md-9 m-0 free_title ellipsis"><span>글 제목</span></div>
-                                        <div class="col-3 col-md-3 m-0 p-0">
-                                            <div class="row m-0 p-0">
-                                                <div class="col-12 m-0 p-0 text-center">추천 20</div>
-                                                <div class="col-12 m-0 p-0 text-center">댓글 5</div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-12 border border-2 rounded">
-                                    <div class="row m-0">
-                                        <div class="col-9 col-md-9 m-0 free_title ellipsis"><span>글 제목</span></div>
-                                        <div class="col-3 col-md-3 m-0 p-0">
-                                            <div class="row m-0 p-0">
-                                                <div class="col-12 m-0 p-0 text-center">추천 20</div>
-                                                <div class="col-12 m-0 p-0 text-center">댓글 5</div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-12 border border-2 rounded">
-                                    <div class="row m-0">
-                                        <div class="col-9 col-md-9 m-0 free_title ellipsis"><span>글 제목</span></div>
-                                        <div class="col-3 col-md-3 m-0 p-0">
-                                            <div class="row m-0 p-0">
-                                                <div class="col-12 m-0 p-0 text-center">추천 20</div>
-                                                <div class="col-12 m-0 p-0 text-center">댓글 5</div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-12 border border-2 rounded">
-                                    <div class="row m-0">
-                                        <div class="col-9 col-md-9 m-0 free_title ellipsis"><span>글 제목</span></div>
-                                        <div class="col-3 col-md-3 m-0 p-0">
-                                            <div class="row m-0 p-0">
-                                                <div class="col-12 m-0 p-0 text-center">추천 20</div>
-                                                <div class="col-12 m-0 p-0 text-center">댓글 5</div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-12 border border-2 rounded">
-                                    <div class="row m-0">
-                                        <div class="col-9 col-md-9 m-0 free_title ellipsis"><span>글 제목</span></div>
-                                        <div class="col-3 col-md-3 m-0 p-0">
-                                            <div class="row m-0 p-0">
-                                                <div class="col-12 m-0 p-0 text-center">추천 20</div>
-                                                <div class="col-12 m-0 p-0 text-center">댓글 5</div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        
-                    </div>
-                </div>
+	<div class="row " id="freemain">
+		<div class="col-12 col-md-6 bottom_board">
+			<div class="row border border-2 rounded">
+				<div class="col-9 border-bottom hotboard_bottom text-center">구인구직</div>
+				<div class="col-3 border-bottom hotboard_bottom text-center">
+					<a class="allview" href="/board/jobMain.jsp">전체보기</a>
+				</div>
+					<div class="col-12 ">
+						<div class="row freeboard_bottom ">
 
-            </div>
-            <div class="col-12 col-md-6 bottom_board" >
-                <div class="row border border-2 rounded">
-                    <div class="col-9 border-bottom hotboard_bottom text-center">맛집</div>
-                    <div class="col-3 border-bottom hotboard_bottom text-center"><a class="allview" href="/board/foodMain.jsp">전체보기</a></div>
-                    <div class="row  freeboard_bottom">
-                        <div class="col-12 ">
-                            <div class="row freeboard_bottom ">
-                                <div class="col-12 border border-2 rounded">
-                                    <div class="row m-0">
-                                        <div class="col-9 col-md-9 m-0 free_title ellipsis"><span>글 제목</span></div>
-                                        <div class="col-3 col-md-3 m-0 p-0">
-                                            <div class="row m-0 p-0">
-                                                <div class="col-12 m-0 p-0 text-center">추천 20</div>
-                                                <div class="col-12 m-0 p-0 text-center">댓글 5</div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-12 border border-2 rounded">
-                                    <div class="row m-0">
-                                        <div class="col-9 col-md-9 m-0 free_title ellipsis"><span>글 제목</span></div>
-                                        <div class="col-3 col-md-3 m-0 p-0">
-                                            <div class="row m-0 p-0">
-                                                <div class="col-12 m-0 p-0 text-center">추천 20</div>
-                                                <div class="col-12 m-0 p-0 text-center">댓글 5</div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-12 border border-2 rounded">
-                                    <div class="row m-0">
-                                        <div class="col-9 col-md-9 m-0 free_title ellipsis"><span>글 제목</span></div>
-                                        <div class="col-3 col-md-3 m-0 p-0">
-                                            <div class="row m-0 p-0">
-                                                <div class="col-12 m-0 p-0 text-center">추천 20</div>
-                                                <div class="col-12 m-0 p-0 text-center">댓글 5</div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-12 border border-2 rounded">
-                                    <div class="row m-0">
-                                        <div class="col-9 col-md-9 m-0 free_title ellipsis"><span>글 제목</span></div>
-                                        <div class="col-3 col-md-3 m-0 p-0">
-                                            <div class="row m-0 p-0">
-                                                <div class="col-12 m-0 p-0 text-center">추천 20</div>
-                                                <div class="col-12 m-0 p-0 text-center">댓글 5</div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-12 border border-2 rounded">
-                                    <div class="row m-0">
-                                        <div class="col-9 col-md-9 m-0 free_title ellipsis"><span>글 제목</span></div>
-                                        <div class="col-3 col-md-3 m-0 p-0">
-                                            <div class="row m-0 p-0">
-                                                <div class="col-12 m-0 p-0 text-center">추천 20</div>
-                                                <div class="col-12 m-0 p-0 text-center">댓글 5</div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-12 border border-2 rounded">
-                                    <div class="row m-0">
-                                        <div class="col-9 col-md-9 m-0 free_title ellipsis"><span>글 제목</span></div>
-                                        <div class="col-3 col-md-3 m-0 p-0">
-                                            <div class="row m-0 p-0">
-                                                <div class="col-12 m-0 p-0 text-center">추천 20</div>
-                                                <div class="col-12 m-0 p-0 text-center">댓글 5</div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        
-                    </div>
-                </div>
+							<div class="row m-0 ">
+								<div class="col-12  m-0 p-0" style="height: 40px">
+									<div class="row m-0" id="board_menu_text">
+										<div class="col-7  ">제목</div>
+										<div class="col-3 p-0 text-center">글쓴이</div>
+										<div class="col-2 d-none d-md-block p-0 text-center">조회</div>
+									</div>
 
-            </div>
-        </div>
-        </header>
+								</div>
+							</div>
+							<c:forEach var="h" items="${jHotlist}">
+								<div class="col-12  board">
+									<div class="row m-0 border border-2 rounded board_row ">
+
+
+										<div class="col-7   title ellipsis"
+											style="padding-left: 7px; padding-right: 0px;">
+											<a
+												href="/detailView.board?cpage=1&seq=${h.all_board_seq}&click=ok"
+												style="color: black">${h.title }</a>
+										</div>
+										<div class="col-3  p-0 ellipsis text-center">${h.id}</div>
+										<%-- 										<div class="col-md-1 d-none d-md-block p-0 text-center"> ${j.view_count}</div> --%>
+										<div class="col-2 p-0 text-center">
+											${h.like_count}</div>
+
+									</div>
+								</div>
+							</c:forEach>
+
+							<!--                                 <div class="col-12 border border-2 rounded"> -->
+							<!--                                     <div class="row m-0"> -->
+							<!--                                         <div class="col-9 col-md-9 m-0 free_title ellipsis"><span>글 제목</span></div> -->
+							<!--                                         <div class="col-3 col-md-3 m-0 p-0"> -->
+							<!--                                             <div class="row m-0 p-0"> -->
+							<!--                                                 <div class="col-12 m-0 p-0 text-center">추천 20</div> -->
+							<!--                                                 <div class="col-12 m-0 p-0 text-center">댓글 5</div> -->
+							<!--                                             </div> -->
+							<!--                                         </div> -->
+							<!--                                     </div> -->
+							<!--                                 </div> -->
+
+						</div>
+					</div>
+
+			
+			</div>
+
+		</div>
+		<div class="col-12 col-md-6 bottom_board">
+			<div class="row border border-2 rounded">
+				<div class="col-9 border-bottom hotboard_bottom text-center">맛집</div>
+				<div class="col-3 border-bottom hotboard_bottom text-center">
+					<a class="allview" href="/board/foodMain.jsp">전체보기</a>
+				</div>
+				
+					<div class="col-12 ">
+						<div class="row freeboard_bottom ">
+
+
+							<div class="row m-0 ">
+								<div class="col-12  m-0 p-0" style="height: 40px">
+									<div class="row m-0" id="board_menu_text">
+										<div class="col-7  ">제목</div>
+										<div class="col-3 p-0 text-center">글쓴이</div>
+										<div class="col-2 d-none d-md-block p-0 text-center">조회</div>
+									</div>
+
+								</div>
+							</div>
+							<c:forEach var="a" items="${rHotlist}">
+								<div class="col-12  board">
+									<div class="row m-0 border border-2 rounded board_row ">
+
+
+										<div class="col-7   title ellipsis"
+											style="padding-left: 7px; padding-right: 0px;">
+											<a
+												href="/detailView.board?cpage=1&seq=${a.all_board_seq}&click=ok"
+												style="color: black">${a.title }</a>
+										</div>
+										<div class="col-3  p-0 ellipsis text-center">${a.id}</div>
+										<%-- 										<div class="col-md-1 d-none d-md-block p-0 text-center"> ${j.view_count}</div> --%>
+										<div class="col-2 p-0 text-center">
+											${a.like_count}</div>
+
+									</div>
+								</div>
+							</c:forEach>
+
+
+							<!--                                 <div class="col-12 border border-2 rounded"> -->
+							<!--                                     <div class="row m-0"> -->
+							<!--                                         <div class="col-9 col-md-9 m-0 free_title ellipsis"><span>글 제목</span></div> -->
+							<!--                                         <div class="col-3 col-md-3 m-0 p-0"> -->
+							<!--                                             <div class="row m-0 p-0"> -->
+							<!--                                                 <div class="col-12 m-0 p-0 text-center">추천 20</div> -->
+							<!--                                                 <div class="col-12 m-0 p-0 text-center">댓글 5</div> -->
+							<!--                                             </div> -->
+							<!--                                         </div> -->
+							<!--                                     </div> -->
+							<!--                                 </div> -->
+							<!--                                 <div class="col-12 border border-2 rounded"> -->
+							<!--                                     <div class="row m-0"> -->
+							<!--                                         <div class="col-9 col-md-9 m-0 free_title ellipsis"><span>글 제목</span></div> -->
+							<!--                                         <div class="col-3 col-md-3 m-0 p-0"> -->
+							<!--                                             <div class="row m-0 p-0"> -->
+							<!--                                                 <div class="col-12 m-0 p-0 text-center">추천 20</div> -->
+							<!--                                                 <div class="col-12 m-0 p-0 text-center">댓글 5</div> -->
+							<!--                                             </div> -->
+							<!--                                         </div> -->
+							<!--                                     </div> -->
+							<!--                                 </div> -->
+							<!--                                 <div class="col-12 border border-2 rounded"> -->
+							<!--                                     <div class="row m-0"> -->
+							<!--                                         <div class="col-9 col-md-9 m-0 free_title ellipsis"><span>글 제목</span></div> -->
+							<!--                                         <div class="col-3 col-md-3 m-0 p-0"> -->
+							<!--                                             <div class="row m-0 p-0"> -->
+							<!--                                                 <div class="col-12 m-0 p-0 text-center">추천 20</div> -->
+							<!--                                                 <div class="col-12 m-0 p-0 text-center">댓글 5</div> -->
+							<!--                                             </div> -->
+							<!--                                         </div> -->
+							<!--                                     </div> -->
+							<!--                                 </div> -->
+							<!--                                 <div class="col-12 border border-2 rounded"> -->
+							<!--                                     <div class="row m-0"> -->
+							<!--                                         <div class="col-9 col-md-9 m-0 free_title ellipsis"><span>글 제목</span></div> -->
+							<!--                                         <div class="col-3 col-md-3 m-0 p-0"> -->
+							<!--                                             <div class="row m-0 p-0"> -->
+							<!--                                                 <div class="col-12 m-0 p-0 text-center">추천 20</div> -->
+							<!--                                                 <div class="col-12 m-0 p-0 text-center">댓글 5</div> -->
+							<!--                                             </div> -->
+							<!--                                         </div> -->
+							<!--                                     </div> -->
+							<!--                                 </div> -->
+							<!--                                 <div class="col-12 border border-2 rounded"> -->
+							<!--                                     <div class="row m-0"> -->
+							<!--                                         <div class="col-9 col-md-9 m-0 free_title ellipsis"><span>글 제목</span></div> -->
+							<!--                                         <div class="col-3 col-md-3 m-0 p-0"> -->
+							<!--                                             <div class="row m-0 p-0"> -->
+							<!--                                                 <div class="col-12 m-0 p-0 text-center">추천 20</div> -->
+							<!--                                                 <div class="col-12 m-0 p-0 text-center">댓글 5</div> -->
+							<!--                                             </div> -->
+							<!--                                         </div> -->
+							<!--                                     </div> -->
+							<!--                                 </div> -->
+
+
+						</div>
+					</div>
+
+	
+			</div>
+
+		</div>
+	</div>
+	</header>
 
         <footer class="mt-auto text-black-50"></footer>
     </div>

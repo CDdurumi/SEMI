@@ -90,9 +90,10 @@ public class BoardDAO {
 					int like_count = rs.getInt("jjim_count");
 					int jjim_count = rs.getInt("like_count");
 					int view_count = rs.getInt("view_count");
+					String editor_type = rs.getString("editor_type");
 					int line = rs.getInt("line");
 					
-					BoardDTO dto = new BoardDTO(seq, id, title, contents, write_date, jjim_count, like_count, view_count, line);
+					BoardDTO dto = new BoardDTO(seq, id, title, contents, write_date, jjim_count, like_count, view_count, editor_type, line);
 					list.add(dto);
 				}
 				return list;
@@ -108,12 +109,13 @@ public class BoardDAO {
 	// 삽입
 	public int insert(BoardDTO dto) throws Exception {
 
-		String sql = "insert into all_board values(?, ?, ?, ?, default, default, default, default)";
+		String sql = "insert into all_board values(?, ?, ?, ?, default, default, default, default, ?)";
 		try (Connection con = this.getConnection(); PreparedStatement pstat = con.prepareStatement(sql);) {
 			pstat.setString(1, dto.getAll_board_seq());
 			pstat.setString(2, dto.getId());
 			pstat.setString(3, dto.getTitle());
 			pstat.setString(4, dto.getContents());
+			pstat.setString(5, dto.getEditor_type());
 
 			int result = pstat.executeUpdate();
 			con.commit();
@@ -167,8 +169,9 @@ public class BoardDAO {
 				int like_count = rs.getInt("like_count");
 				int jjim_count = rs.getInt("jjim_count");
 				int view_count = rs.getInt("view_count");
+				String editor_type = rs.getString("editor_type");
 				return (new BoardDTO(all_board_seq, id, title, contents, write_date, like_count, jjim_count,
-						view_count, 0));
+						view_count, editor_type, 0));
 			}
 		}
 	}
@@ -266,9 +269,10 @@ public class BoardDAO {
 				int like_count = rs.getInt("like_count");
 				int jjim_count = rs.getInt("jjim_count");
 				int view_count = rs.getInt("view_count");
+				String editor_type = rs.getString("editor_type");
 				int line = rs.getInt("line");
 
-				BoardDTO dto = new BoardDTO(all_board_seq, id, title, contents, write_date, like_count, jjim_count, view_count, line);
+				BoardDTO dto = new BoardDTO(all_board_seq, id, title, contents, write_date, like_count, jjim_count, view_count, editor_type, line);
 				list.add(dto);
 			}
 			return list;
@@ -292,8 +296,9 @@ public class BoardDAO {
 				int like_count = rs.getInt("like_count");
 				int jjim_count = rs.getInt("jjim_count");
 				int view_count = rs.getInt("view_count");
-
-				BoardDTO dto = new BoardDTO(seq, id, title, contents, write_date, like_count, jjim_count, view_count,0);
+				String editor_type = rs.getString("editor_type");
+ 
+				BoardDTO dto = new BoardDTO(seq, id, title, contents, write_date, like_count, jjim_count, view_count, editor_type, 0);
 				return dto;
 			}
 		}
@@ -500,10 +505,11 @@ public class BoardDAO {
 					int like_count = rs.getInt("jjim_count");
 					int jjim_count = rs.getInt("like_count");
 					int view_count = rs.getInt("view_count");
+					String editor_type = rs.getString("editor_type");
 					int line = rs.getInt("line");
 
 					BoardDTO dto = new BoardDTO(seq, id, title, contents, write_date, jjim_count, like_count,
-							view_count, line);
+							view_count, editor_type, line);
 					list.add(dto);
 				}
 				return list;
@@ -533,10 +539,11 @@ public class BoardDAO {
 					int like_count = rs.getInt("jjim_count");
 					int jjim_count = rs.getInt("like_count");
 					int view_count = rs.getInt("view_count");
+					String editor_type = rs.getString("editor_type");
 					int line = rs.getInt("line");
 					
 					BoardDTO dto = new BoardDTO(seq, id, title, contents, write_date, jjim_count, like_count,
-							view_count, line);
+							view_count, editor_type, line);
 					list.add(dto);
 				}
 				return list;
