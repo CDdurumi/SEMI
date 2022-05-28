@@ -284,6 +284,26 @@
 .card-details span:hover{
     opacity:1;
 }
+.comuview{
+
+color:rgb(0, 0, 0);
+
+width: 300px;
+
+position:absolute;
+
+left: 50%;
+
+transform: translate(-50%, -50%);
+
+text-align:center;
+font-weight: bold;
+    	font-size:20px;
+
+}
+.comuview:hover{
+       color:#0080ff;
+       }
 
             /*  */
             /* .bd-placeholder-img {
@@ -464,9 +484,9 @@ $(function(){
 
 <body id="body-pd">
 
-    <header class="header" id="header">
+    <header class="header" id="header" style="background-color:#f5f5f7">
         <div class="header_toggle"><i class='bx bx-menu' id="header-toggle"></i></div>
-        <div><h3>게시판 글 작성하기</h3></div>
+        <div><a href="/board/communityMain.jsp" class="comuview"> 게시판 글 작성하기</a></div>
         <div>
             <c:choose>
 				<c:when test="${loginID !=null}">
