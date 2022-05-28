@@ -90,8 +90,9 @@ public class BoardDAO {
 					int like_count = rs.getInt("jjim_count");
 					int jjim_count = rs.getInt("like_count");
 					int view_count = rs.getInt("view_count");
-
-					BoardDTO dto = new BoardDTO(seq, id, title, contents, write_date, jjim_count, like_count, view_count, 0);
+					int line = rs.getInt("line");
+					
+					BoardDTO dto = new BoardDTO(seq, id, title, contents, write_date, jjim_count, like_count, view_count, line);
 					list.add(dto);
 				}
 				return list;
