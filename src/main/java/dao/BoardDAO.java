@@ -250,7 +250,7 @@ public class BoardDAO {
 
 	// 게시판 리스트 출력
 	public List<BoardDTO> selectAll(String boardOption) throws Exception {
-		String sql = "select * from all_board where all_board_seq like '"+boardOption+"%' order by write_date desc";
+		String sql = "select row_number() over(order by write_date desc) line, all_board.* from all_board where all_board_seq like '"+boardOption+"%'";
 
 		try (Connection con = this.getConnection();
 				PreparedStatement pstat = con.prepareStatement(sql);
@@ -266,8 +266,9 @@ public class BoardDAO {
 				int like_count = rs.getInt("like_count");
 				int jjim_count = rs.getInt("jjim_count");
 				int view_count = rs.getInt("view_count");
+				int line = rs.getInt("line");
 
-				BoardDTO dto = new BoardDTO(all_board_seq, id, title, contents, write_date, like_count, jjim_count, view_count, 0);
+				BoardDTO dto = new BoardDTO(all_board_seq, id, title, contents, write_date, like_count, jjim_count, view_count, line);
 				list.add(dto);
 			}
 			return list;
