@@ -124,16 +124,20 @@ public class ReplyDAO {
 	}
 	
 	//해당 페이지의 댓글 가져오기
-	public List<ReplyDTO> selectByPage(int cpage) throws Exception{
+	public List<ReplyDTO> selectByPage(int cpage, String pparent_seq) throws Exception{
 		int start = (cpage-1) *10 +1;//해당 페이지의 첫 게시글 번호
 		int end = cpage * 10;//해당 페이지의 끝 게시글 번호
 
-		String sql = "select *from( select row_number() over(order by write_date desc ) line, reply.* from reply ) where line between ? and ?";
-
+		String sql = "select *from( select row_number() over(order by write_date desc ) line, reply.* "
+									+ "from reply "
+									+ "where parent_seq = ? ) "
+				+ "where line between ? and ?";
+		
 		try(Connection con = this.getConnection();
 				PreparedStatement pstat = con.prepareStatement(sql);) {
-			pstat.setInt(1, start);
-			pstat.setInt(2, end);
+			pstat.setString(1, pparent_seq);
+			pstat.setInt(2, start);
+			pstat.setInt(3, end);
 			
 			List<ReplyDTO> list = new ArrayList<>();
 			try(ResultSet rs = pstat.executeQuery()){

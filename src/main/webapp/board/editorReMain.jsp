@@ -559,9 +559,6 @@ $("#modal_loginBtn").on("click",function(){
 								<div class="row h-100 wrapper">
 									<div class="col-12 main">
 										<div class="row h-100">
-<!-- 											<div class="col-2 h-100"> -->
-<%-- 												<img src="${profilePath}${j.sys_name}" class="w-100 h-100 userimg" alt=""> --%>
-<!-- 											</div> -->
 											<div class="col-4 h-100 username">
 												<div class="row h-100">
 													<div class="col-12">${i.id}</div>
@@ -570,12 +567,18 @@ $("#modal_loginBtn").on("click",function(){
 
 												</div>
 											</div>
-											<div class="col-8 h-100 title">${i.title}</div>
+											<div class="col-8 h-100 title">
+												<a href = "/detailView.board?cpage=1&seq=${i.all_board_seq}&click=ok">
+													${i.title}
+												</a>
+											</div>
 										</div>
 
 									</div>
 									<div class="col-12 img">
-										<img src="${profilePath}${j.sys_name}" class="w-100 h-100 imgimg" alt="">
+										<a href = "/detailView.board?cpage=1&seq=${i.all_board_seq}&click=ok">
+											<img src="${profilePath}${j.sys_name}" class="w-100 h-100 imgimg" alt="">
+										</a>
 									</div>
 									<div class="col-12">
 										<div class="row  heart" style="margin: auto;">

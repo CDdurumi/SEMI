@@ -443,6 +443,13 @@
        color:#0080ff;
        }
 
+
+select{
+    border-radius: 5px;
+    margin-right: 8px;
+    font-size: 18px;
+    font-weight: bold;
+}
     </style>
 </head>
 
@@ -599,7 +606,7 @@ $("#modal_loginBtn").on("click",function(){
 											<c:when test="${count eq 1}">
 												<div class="carousel-item active ">
 					                                <div class="card w-100 border-0" style="width: 18rem;">
-					                                    <a href = "/detailView.board?cpage=1&seq=${i.all_board_seq}"><img src="${profilePath}${j.sys_name}" class="card-img-top" alt="..."></a>
+					                                    <a href = "/detailView.board?cpage=1&seq=${i.all_board_seq}&click=ok"><img src="${profilePath}${j.sys_name}" class="card-img-top" alt="..."></a>
 					                                    <div class="card-body">
 					                                        <p class="card-text text-black">${i.title}</p>
 					                                    </div>
@@ -610,7 +617,7 @@ $("#modal_loginBtn").on("click",function(){
 											<c:otherwise>
 												<div class="carousel-item ">
 					                                <div class="card w-100 border-0" style="width: 18rem;">
-					                                    <a href = "/detailView.board?cpage=1&seq=${i.all_board_seq}"><img src="${profilePath}${j.sys_name}" class="card-img-top" alt="..."></a>
+					                                    <a href = "/detailView.board?cpage=1&seq=${i.all_board_seq}&click=ok"><img src="${profilePath}${j.sys_name}" class="card-img-top" alt="..."></a>
 					                                    <div class="card-body">
 					                                        <p class="card-text text-black">${i.title}</p>
 					                                    </div>
@@ -648,10 +655,24 @@ $("#modal_loginBtn").on("click",function(){
             <nav class="navbar bg">
                 <div class="container-fluid">
                   <a class="navbar-brand"> </a>
-                  <form class="d-flex" role="search">
-                    <input class="form-control me-2" type="search" placeholder="작성자를 입력하세요" aria-label="Search">
+		          <form action="/search.board" method="post" class="d-flex" role="search">
+		          		<input type="hidden" value="j" name="boardOption">
+		          		<input type="hidden" value="1" name="cpage">
+						<select name="serchOption" id="select">
+		                        <option value="title">
+		                            제목
+		                        </option>
+		                        <option value="id">
+		                            작성자
+		                        </option>
+		                        <option value="contents">
+		                            내용
+		                        </option>
+						</select>
+          	
+            		<input class="form-control me-2" type="search" placeholder="검색어를 입력해주세요." aria-label="Search" name="contents">
                     <button class="btn btn-outline-secondary btn-sm" type="submit">Search</button>&nbsp;
-            <button type="button" class="btn btn-primary btn-sm" id="writeBtn" style="white-space:nowrap;"><i class="fa-solid fa-pen-to-square"></i>글 작성하기</button>
+            		<button type="button" class="btn btn-primary btn-sm" id="writeBtn" style="white-space:nowrap;"><i class="fa-solid fa-pen-to-square"></i>글 작성하기</button>
                   </form>
                 </div>
               </nav>
@@ -678,7 +699,7 @@ $("#modal_loginBtn").on("click",function(){
             	
                 <div class="col-1 col-md-1 d-none d-md-block p-0">0</div>
                	<div class="col-7 col-md-6 m-0 title ellipsis">
-               		<span><a href="/detailView.board?cpage=${cpage}&seq=${i.all_board_seq}" style="color:black">${i. title }</a></span>
+               		<span><a href="/detailView.board?cpage=${cpage}&seq=${i.all_board_seq}&click=ok" style="color:black">${i. title }</a></span>
                	</div>
                 <div class="col-3 col-md-2 p-0 ellipsis text-center"><span>${i.id }</span></div>
                 <div class="col-md-1 d-none d-md-block p-0 "><fmt:formatDate value="${i.write_date }" pattern="yy-MM-dd"/></div>

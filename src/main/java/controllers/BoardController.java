@@ -165,21 +165,23 @@ public class BoardController extends HttpServlet {
 				String boardOption = request.getParameter("boardOption"); //게시판 옵션(f:자유게시판, g:여행후기, j:구인구직, r:맛집, h:숙소리뷰, e:애디터추천글)
 				String serchOption = request.getParameter("serchOption"); //검색 옵션(id, title, contents)
 				String contents = request.getParameter("contents"); //검색 내용
-					
-				List<BoardDTO> list = dao.search(cpage, serchOption, contents, boardOption);//검색 결과 게시글 리스트
+//				System.out.println(cpage);
+//				System.out.println(boardOption);
+//				System.out.println(serchOption);
+//				System.out.println(contents);
+				
+				List<BoardDTO> list = dao.search(cpage, serchOption, contents, boardOption);//검색 결과 게시글 리스트				
 				List<BoardDTO> hotlist = dao.selectByLikeCount(boardOption);//화제글
-				String pageNavi = dao.getPageNavi(cpage, boardOption);//페이징네비
+				String pageNavi = dao.getPageNavi(cpage, boardOption, serchOption, contents);//검색 전용 페이징네비
 				
 				request.setAttribute("cpage", cpage);
 				request.setAttribute("list", list);
 				request.setAttribute("hotlist", hotlist);
 				request.setAttribute("navi", pageNavi);
-				
 
 				String absolutePath = "";
 				if(boardOption.equals("f")) {//자유게시판 메인페이지
 					absolutePath = "/board/boardMain.jsp";
-					
 					///////애디터 추천 게시글///////
 					boardOption ="e";
 					List<BoardDTO> editorList = dao.selectAll(boardOption);
@@ -189,12 +191,30 @@ public class BoardController extends HttpServlet {
 					request.setAttribute("profilePath", "/files/");
 				}else if(boardOption.equals("g")) {//여행후기 메인페이지
 					absolutePath = "/board/gallery.jsp";
+					
+					List<FilesDTO> filesDao = filesDAO.selectSysName(boardOption);//후기 게시글 프로필 - sys_name get(해당게시글seq와 sys_name담겨 있음).
+					request.setAttribute("porfileList", filesDao);
+					request.setAttribute("profilePath", "/files/");
 				}else if(boardOption.equals("j")) {//구인구직 메인페이지
-					absolutePath = "/jobMain.board";
+					absolutePath = "/board/jobMain.jsp";
+					///////애디터 추천 게시글///////
+					boardOption ="e";
+					List<BoardDTO> editorList = dao.selectAll(boardOption);
+					request.setAttribute("editorList", editorList);//애디터추천게시글 리스트
+					List<FilesDTO> filesDao = filesDAO.selectSysName(boardOption);//애디터추천 게시글 프로필 - sys_name get(해당게시글seq와 sys_name담겨 있음).
+					request.setAttribute("porfileList", filesDao);
+					request.setAttribute("profilePath", "/files/");
 				}else if(boardOption.equals("r")) {//맛집 메인페이지
-					absolutePath = "/houseMain.board";
+					absolutePath = "/board/foodMain.jsp";
+					///////애디터 추천 게시글///////
+					boardOption ="e";
+					List<BoardDTO> editorList = dao.selectAll(boardOption);
+					request.setAttribute("editorList", editorList);//애디터추천게시글 리스트
+					List<FilesDTO> filesDao = filesDAO.selectSysName(boardOption);//애디터추천 게시글 프로필 - sys_name get(해당게시글seq와 sys_name담겨 있음).
+					request.setAttribute("porfileList", filesDao);
+					request.setAttribute("profilePath", "/files/");
 				}else if(boardOption.equals("h")) {//숙소리뷰 메인페이지
-					absolutePath = "/houseMain.board";
+					absolutePath = "/board/houseMain.jsp";
 				}
 				
 				request.getRequestDispatcher(absolutePath).forward(request, response);//메인페이지 전환
@@ -256,41 +276,14 @@ public class BoardController extends HttpServlet {
 				//테스트용 하드코딩
 //				String seq = "f75";
 				String seq = request.getParameter("seq"); //해당 게시글 고유seq
-			System.out.println("요기 : " + seq);	
+//			System.out.println("요기 : " + seq);	
 				int cpage = Integer.parseInt(request.getParameter("cpage"));
 				request.setAttribute("cpage", cpage);
 				
-				String BoardGubun = seq.substring(0, 1);
-				String url = "";
-				String url1 = "";
-				String url2 = "";
-				if(BoardGubun.equals("f")) {//자유게시판
-					url = "http://localhost/boardMainView.board";
-				}else if(BoardGubun.equals("g")) {//여행후기
-					url = "http://localhost/galleryMain.board";
-				}else if(BoardGubun.equals("j")) {//구인구직
-					url = "http://localhost/jobMain.board";
-				}else if(BoardGubun.equals("r")) {//맛집
-					url = "http://localhost/foodMain.board";
-				}else if(BoardGubun.equals("h")) {//숙소리뷰
-					url = "http://localhost/houseMain.board";
-				}else if(BoardGubun.equals("e")) {//애디터추천
-					url = "http://localhost/editorReMain.board";
-					url1 = "http://localhost/boardMainView.board?cpage=1";
-					url2 = "http://localhost/jobMain.board?cpage=1" ;
+				String click = request.getParameter("click");
+				if(click.equals("ok")){
+					dao.viewCountUp(seq);//조회수 증가
 				}
-
-				if(BoardGubun.equals("e")) {
-					if(request.getHeader("referer").equals(url) || request.getHeader("referer").equals(url1) 
-							|| request.getHeader("referer").equals(url2)){//이전 주소가 이와 같다면, 조회 수 증가
-						dao.viewCountUp(seq);//조회수 증가
-					}
-				}else {
-					if(request.getHeader("referer").equals(url+"?cpage="+cpage)){//이전 주소가 이와 같다면, 조회 수 증가
-						dao.viewCountUp(seq);//조회수 증가
-					}
-				}
-				
 				
 				BoardDTO dto = dao.selectBySeq(seq);//고유seq에 해당하는 게시글 정보get
 				request.setAttribute("dto", dto);
