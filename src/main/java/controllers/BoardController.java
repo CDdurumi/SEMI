@@ -426,7 +426,7 @@ public class BoardController extends HttpServlet {
 				}
 				
 				System.out.println(seq);
-				response.sendRedirect("/detailView.board?cpage=1&seq="+seq+"");//자유게시판 메인화면으로 전환
+				response.sendRedirect("/detailView.board?cpage=1&seq="+seq+"&click=no");//자유게시판 메인화면으로 전환
 				
 				
 			}else if(uri.equals("/chat.board")) {//댓글 등록 시(작성 글에서 댓글 등록 클릭 시 여기로)

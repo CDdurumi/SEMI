@@ -414,7 +414,7 @@
 </header>
 <div class="l-navbar" id="nav-bar">
     <nav class="nav">
-        <div> <a href="/index.jsp" class="nav_logo"> <i class='bx bx-layer nav_logo-icon'></i> <span class="nav_logo-name">쉼표 <br>- 일상의 쉼표를 찍다</span> </a>
+        <div> <a href="/index.jsp" class="nav_logo active"> <i class='bx bx-layer nav_logo-icon'></i> <span class="nav_logo-name">쉼표 <br>- 일상의 쉼표를 찍다</span> </a>
             <div class="nav_list">
                 <a href="#" class="nav_link active"> <i class='CurrIcon'></i> <span class="nav_name"><span class="weather">
                     <span class="CurrTemp"></span>
@@ -449,9 +449,7 @@
             <i class="fa fa-lock"></i>
             <span><small class="fa fa-eye-slash passcode1"></small></span>
         </div>
-        <div class="login_api" style="text-align:center">
-           <a href="#"><img src="/imgsrc/google_signin_buttons/web/1x/btn_google_signin_dark_normal_web.png"></a>
-        </div>
+        
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-primary" id="modal_loginBtn">로그인</button>
