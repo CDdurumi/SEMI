@@ -45,7 +45,22 @@ public class BoardController extends HttpServlet {
 		
 		String uri = request.getRequestURI();
 		try {
-			if(uri.equals("/boardMainView.board")) {//자유게시판 메인화면 출력(communityMain.jsp에서 자유게시판 메뉴 클릭 시 여기로.)
+			if(uri.equals("/communityMain.board")) {
+				
+				String boardOption ="f";
+				List<BoardDTO> fHotlist = dao.selectByLikeCount(boardOption);
+				boardOption ="j";
+				List<BoardDTO> jHotlist = dao.selectByLikeCount(boardOption);
+				boardOption ="r";
+				List<BoardDTO> rHotlist = dao.selectByLikeCount(boardOption);
+				request.setAttribute("fHotlist", fHotlist);
+				request.setAttribute("jHotlist", jHotlist);
+				request.setAttribute("rHotlist", rHotlist);
+				
+				request.getRequestDispatcher("/board/communityMain.jsp").forward(request, response);//커뮤니티 메인페이지
+
+				
+			}else if(uri.equals("/boardMainView.board")) {//자유게시판 메인화면 출력(communityMain.jsp에서 자유게시판 메뉴 클릭 시 여기로.)
 				int cpage = Integer.parseInt(request.getParameter("cpage"));
 				request.setAttribute("cpage", cpage);
 				String boardOption ="f";
