@@ -389,14 +389,50 @@ $(function(){
     	$("[value='f']").attr("selected","selected");
     }else if(boardOption == 'g'){//여행후기
     	$("[value='g']").attr("selected","selected");
+		let div = $("<div>");
+		let file = $("<input>");
+		let text = $("<i>");
+		
+		div.attr("id","profileDiv");
+		file.attr({type:"file",name:"file0",id:"profile",required:"required", accept:"image/*"});
+		text.text("프로필 사진")
+		
+		div.append(file);
+		div.append(text);
+		div.append("<br>");
+		$("#fileArea").prepend(div);
     }else if(boardOption == 'j'){//구인구작
     	$("[value='j']").attr("selected","selected");
     }else if(boardOption == 'r'){//맛집
     	$("[value='r']").attr("selected","selected");
     }else if(boardOption == 'h'){//숙소리뷰
     	$("[value='h']").attr("selected","selected");
+		let div = $("<div>");
+		let file = $("<input>");
+		let text = $("<i>");
+		
+		div.attr("id","profileDiv");
+		file.attr({type:"file",name:"file0",id:"profile",required:"required", accept:"image/*"});
+		text.text("프로필 사진")
+		
+		div.append(file);
+		div.append(text);
+		div.append("<br>");
+		$("#fileArea").prepend(div);
     }else if(boardOption == 'e'){//애디터추천
     	$("[value='e']").attr("selected","selected");
+		let div = $("<div>");
+		let file = $("<input>");
+		let text = $("<i>");
+		
+		div.attr("id","profileDiv");
+		file.attr({type:"file",name:"file0",id:"profile",required:"required", accept:"image/*"});
+		text.text("프로필 사진")
+		
+		div.append(file);
+		div.append(text);
+		div.append("<br>");
+		$("#fileArea").prepend(div);
     }
 }) 
 </script>        
@@ -667,22 +703,40 @@ $("#modal_loginBtn").on("click",function(){
 // 			alert(option);
 			
 			if((option == 'g' || option == 'e' || option == 'h' )){
-				if(!(previous == 'g' || previous == 'e' || previous == 'h') && (option == 'g' || option == 'e' || option == 'h')){
+				if((previous == 'g' || previous == 'e' || previous == 'h') && (option == 'g' || option == 'e' || option == 'h')){
 					$("#fileArea").children("#profileDiv").remove();
-				} 
-				let div = $("<div>");
-				let file = $("<input>");
-				let text = $("<i>");
-				
-				div.attr("id","profileDiv");
-				file.attr({type:"file",name:"file0",id:"profile",required:"required", accept:"image/*"});
-				text.text("프로필 사진")
-				
-				div.append(file);
-				div.append(text);
-				div.append("<br>");
-				$("#fileArea").prepend(div);
-// 				$("#fileArea").prepend('<div id="profileDiv"><input type="file" name="file0" id="profile" required><i>-> 프로필 사진</i><br></div>');				
+
+					let div = $("<div>");
+					let file = $("<input>");
+					let text = $("<i>");
+					
+					div.attr("id","profileDiv");
+					file.attr({type:"file",name:"file0",id:"profile",required:"required", accept:"image/*"});
+					text.text("프로필 사진")
+					
+					div.append(file);
+					div.append(text);
+					div.append("<br>");
+					$("#fileArea").prepend(div);
+	// 				$("#fileArea").prepend('<div id="profileDiv"><input type="file" name="file0" id="profile" required><i>-> 프로필 사진</i><br></div>');				
+				}else{
+					$("#fileArea").children("#profileDiv").remove();
+
+					let div = $("<div>");
+					let file = $("<input>");
+					let text = $("<i>");
+					
+					div.attr("id","profileDiv");
+					file.attr({type:"file",name:"file0",id:"profile",required:"required", accept:"image/*"});
+					text.text("프로필 사진")
+					
+					div.append(file);
+					div.append(text);
+					div.append("<br>");
+					$("#fileArea").prepend(div);
+				}
+			
+			
 			}else{
 				$("#fileArea").children("#profileDiv").remove();
 			}
