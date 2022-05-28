@@ -35,20 +35,26 @@ public class MyPageController extends HttpServlet {
 			if(uri.equals("/sendMsg.mpg")) { // 쪽지보내기
 				System.out.println("메세지 보내기 수신확인");
 				int result;
-				String sender = (String) request.getSession().getAttribute("loginID");
+				String sender = (String)request.getSession().getAttribute("loginID");
+				String sender_email = (String)request.getSession().getAttribute("loginEmail");
 //				int message_seq = Integer.parseInt(request.getParameter("message_seq"));
 				String title = request.getParameter("title");
 				String contents = request.getParameter("contents");
 				String receiver = request.getParameter("receiver");
-				if(mdao.isNickNameExist(receiver)) {
-					result = dao.insert(new MessageDTO(0,0,title,sender,receiver,contents,""));
+				
+				String receiver_email = dao.searchEmail(receiver);
+				
+				System.out.println(receiver_email + " : " +title+ " : " + contents + " : "+ receiver +" : " + sender);
+				
+				if(mdao.isEmailExist(receiver_email)) {
+					result = dao.insert(new MessageDTO(0,0,title,sender,receiver,sender_email,receiver_email,contents,""));
 					
 				}else {
 					result = 0;
 				}
 				PrintWriter pw = response.getWriter();
 				
-				System.out.println(" : " +title+ " : " + contents + " : "+ receiver +" : " + sender);
+				
 				
 				pw.append(g.toJson(result));
 //				dao.insert(new MessageDTO(0, 0, title, sender, receiver, contents, ""));
@@ -56,6 +62,7 @@ public class MyPageController extends HttpServlet {
 				
 				System.out.println("받은 쪽지함 수신확인");
 				String receiver = (String)request.getSession().getAttribute("loginID");
+				String receiver_email = (String) request.getSession().getAttribute("loginEmail");
 				
 				int cpage = Integer.parseInt(request.getParameter("page"));
 //				System.out.println(cpage);
@@ -63,7 +70,7 @@ public class MyPageController extends HttpServlet {
 				PrintWriter pw = response.getWriter();
 				System.out.println(receiver);
 				
-				List<MessageDTO> list = dao.selectByReceivePage(cpage,receiver);
+				List<MessageDTO> list = dao.selectByReceivePage(cpage,receiver_email);
 				System.out.println(list);
 				String result = g.toJson(list);
 				pw.append(result);
@@ -80,13 +87,14 @@ public class MyPageController extends HttpServlet {
 			}else if(uri.equals("/sendMsgBox.mpg")) { // 보낸쪽지함
 				System.out.println("보낸 쪽지함 수신확인");
 				String sender = (String)request.getSession().getAttribute("loginID");
+				String sender_email = (String) request.getSession().getAttribute("loginEmail");
 				PrintWriter pw = response.getWriter();
 				System.out.println(sender);
 				
 				int cpage = Integer.parseInt(request.getParameter("page"));
 //				request.setAttribute("cpage", cpage);
 				
-				List<MessageDTO> list = dao.selectBySendPage(cpage,sender);
+				List<MessageDTO> list = dao.selectBySendPage(cpage,sender_email);
 				System.out.println(list);
 				
 				String result = g.toJson(list);

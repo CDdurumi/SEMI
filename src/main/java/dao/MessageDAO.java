@@ -12,6 +12,7 @@ import javax.naming.Context;
 import javax.naming.InitialContext;
 import javax.sql.DataSource;
 
+import dto.MemberDTO;
 import dto.MessageDTO;
 
 public class MessageDAO {
@@ -36,17 +37,33 @@ public class MessageDAO {
 		DataSource ds = (DataSource) ctx.lookup("java:comp/env/jdbc/orcl");
 		return ds.getConnection();
 	}
+	// 닉네임으로 이메일 검색
+	public String searchEmail(String nick) throws Exception {
 
+		String sql = "select * from member where id=?";
+		try (Connection con = this.getConnection(); PreparedStatement pstat = con.prepareStatement(sql);) {
+			pstat.setString(1, nick);
+			try (ResultSet rs = pstat.executeQuery()) {
+
+				rs.next();
+				String email = rs.getString("email");
+				
+				return email;
+			}
+		}
+	}
 	// 메세지 입력
 	public int insert(MessageDTO dto) throws Exception {
-		String sql = "insert into message values(message_seq.nextval,?,?,?,?,sysdate)";
+		String sql = "insert into message values(message_seq.nextval,?,?,?,?,?,?,sysdate)";
 
 		try (Connection con = this.getConnection(); PreparedStatement pstat = con.prepareStatement(sql)) {
 			pstat.setString(1, dto.getTitle());
 			pstat.setString(2, dto.getSender());
 			pstat.setString(3, dto.getReceiver());
-			pstat.setString(4, dto.getContents());
-
+			pstat.setString(4, dto.getSender_email());
+			pstat.setString(5, dto.getReceiver_email());
+			pstat.setString(6, dto.getContents());
+			
 			int result = pstat.executeUpdate();
 
 			con.commit();
@@ -73,13 +90,15 @@ public class MessageDAO {
 				String title = rs.getString("title");
 				String sender = rs.getString("sender");
 				String receiver = rs.getString("receiver");
+				String sender_email = rs.getString("sender_email");
+				String receiver_email = rs.getString("receiver_email");
 				String contents = rs.getString("contents");
 				Timestamp write_date = rs.getTimestamp("write_date");
 				
 				SimpleDateFormat sdf = new SimpleDateFormat("YY년 MM월 dd일 HH:mm");
 				String date = sdf.format(write_date);
 				
-				MessageDTO dto = new MessageDTO(seq, title, sender, receiver, contents, date);
+				MessageDTO dto = new MessageDTO(seq, title, sender, receiver, sender_email, receiver_email, contents, date);
 				return dto;
 			}
 		}
@@ -102,22 +121,22 @@ public class MessageDAO {
 
 	
 	// Message에서 보여지는 게시글 개수를 정하기 위한 메소드
-	public List<MessageDTO> selectBySendPage(int cpage, String id) throws Exception{
+	public List<MessageDTO> selectBySendPage(int cpage, String email) throws Exception{
 
 		// 게시글의 번호를 세팅한다.
 		int start = (cpage-1) *15 +1;//해당 페이지의 첫 게시글 번호
 		int end = cpage * 15;//해당 페이지의 끝 게시글 번호
 
 		// 한 페이지에 게시글이 15개씩 보여지도록 하기 위해서 row_number를 활용하는데, 서브 쿼리를 활용해서 select 해준다.
-		String sql = "select * from (select (row_number() over(order by write_date desc)) line, message.* from message where sender=?) where (line between ? and ?) and (sender=?) order by line";
+		String sql = "select * from (select (row_number() over(order by write_date desc)) line, message.* from message where sender_email=?) where (line between ? and ?) and (sender_email=?) order by line";
 
 
 		try(Connection con = this.getConnection();
 				PreparedStatement pstat = con.prepareStatement(sql);){
-			pstat.setString(1, id);
+			pstat.setString(1, email);
 			pstat.setInt(2, start);
 			pstat.setInt(3, end);
-			pstat.setString(4, id);
+			pstat.setString(4, email);
 			
 			try(ResultSet rs = pstat.executeQuery();){
 				List<MessageDTO> list = new ArrayList<MessageDTO>();
@@ -128,35 +147,37 @@ public class MessageDAO {
 					String title = rs.getString("title");
 					String sender = rs.getString("sender");
 					String receiver = rs.getString("receiver");
+					String sender_email = rs.getString("sender_email");
+					String receiver_email = rs.getString("receiver_email");
 					String contents = rs.getString("contents");
 					Timestamp write_date = rs.getTimestamp("write_date");
 					
 					SimpleDateFormat sdf = new SimpleDateFormat("YY년 MM월 dd일 HH:mm");
 					String date = sdf.format(write_date);
 					
-					MessageDTO dto = new MessageDTO(line, seq, title, sender, receiver, contents, date);
+					MessageDTO dto = new MessageDTO(line, seq, title, sender, receiver, sender_email, receiver_email, contents, date);
 					list.add(dto);
 				}
 				return list;
 			}
 		}
 	}
-	public List<MessageDTO> selectByReceivePage(int cpage, String id) throws Exception{
+	public List<MessageDTO> selectByReceivePage(int cpage, String email) throws Exception{
 
 		// 게시글의 번호를 세팅한다.
 		int start = (cpage-1) *15 +1;//해당 페이지의 첫 게시글 번호 1 16 31 
 		int end = cpage * 15;//해당 페이지의 끝 게시글 번호 15 30 45 
 
 		// 한 페이지에 게시글이 15개씩 보여지도록 하기 위해서 row_number를 활용하는데, 서브 쿼리를 활용해서 select 해준다.
-		String sql = "select * from (select (row_number() over(order by write_date desc)) line, message.* from message where receiver=?) where (line between ? and ?) and (receiver=?) order by line";
+		String sql = "select * from (select (row_number() over(order by write_date desc)) line, message.* from message where receiver_email=?) where (line between ? and ?) and (receiver_email=?) order by line";
 		
 
 		try(Connection con = this.getConnection();
 				PreparedStatement pstat = con.prepareStatement(sql);){
-			pstat.setString(1, id);
+			pstat.setString(1, email);
 			pstat.setInt(2, start);
 			pstat.setInt(3, end);
-			pstat.setString(4, id);
+			pstat.setString(4, email);
 
 			try(ResultSet rs = pstat.executeQuery();){
 				List<MessageDTO> list = new ArrayList<MessageDTO>();
@@ -167,13 +188,15 @@ public class MessageDAO {
 					String title = rs.getString("title");
 					String sender = rs.getString("sender");
 					String receiver = rs.getString("receiver");
+					String sender_email = rs.getString("sender_email");
+					String receiver_email = rs.getString("receiver_email");
 					String contents = rs.getString("contents");
 					Timestamp write_date = rs.getTimestamp("write_date");
 					
 					SimpleDateFormat sdf = new SimpleDateFormat("YY년 MM월 dd일 HH:mm");
 					String date = sdf.format(write_date);
 
-					MessageDTO dto = new MessageDTO(line, seq, title, sender, receiver, contents, date);
+					MessageDTO dto = new MessageDTO(line, seq, title, sender, receiver, sender_email, receiver_email, contents, date);
 					
 					
 					list.add(dto);
