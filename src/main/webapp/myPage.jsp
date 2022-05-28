@@ -1479,8 +1479,13 @@ $("#modal_loginBtn").on("click",function(){
                 $(".pw").css("display","block");    //비번 수정
                 $(".check").css("display","none");  //비밀번호 확인 입력창
                 $(".check2").css("display","block");
+                $("#pw").css("display","block");
                 $("#back").css("display","none"); //취소버튼
-				$("#pw1").val(null); 
+                $("#pw1").val("");
+				$("#pw2").val(""); 
+				$("#pw1").attr("placeholder","변경하실 비밀번호");
+				$("#pw2").attr("placeholder","변경하실 비밀번호 확인");
+				 
 //                 $(".modify").attr("contenteditable","true");
                 $("#editID").attr("disabled", false);
                 $(".modify").css("color","#0089ff");
