@@ -109,12 +109,13 @@ public class BoardDAO {
 	// 삽입
 	public int insert(BoardDTO dto) throws Exception {
 
-		String sql = "insert into all_board values(?, ?, ?, ?, default, default, default, default)";
+		String sql = "insert into all_board values(?, ?, ?, ?, default, default, default, default, ?)";
 		try (Connection con = this.getConnection(); PreparedStatement pstat = con.prepareStatement(sql);) {
 			pstat.setString(1, dto.getAll_board_seq());
 			pstat.setString(2, dto.getId());
 			pstat.setString(3, dto.getTitle());
 			pstat.setString(4, dto.getContents());
+			pstat.setString(5, dto.getEditor_type());
 
 			int result = pstat.executeUpdate();
 			con.commit();
