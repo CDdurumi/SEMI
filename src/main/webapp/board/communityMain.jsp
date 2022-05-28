@@ -424,8 +424,22 @@
 }
        
 .comuview{
-       	color:rgb(0, 0, 0);
-       }
+
+color:rgb(0, 0, 0);
+
+width: 300px;
+
+position: absolute;
+
+left: 50%;
+
+transform: translate(-50%, -50%);
+
+text-align:center;
+font-weight: bold;
+    	font-size:20px;
+
+}
 .comuview:hover{
        color:#0080ff;
        }       
@@ -435,7 +449,7 @@
 </head>
 
 <body id="body-pd">
-	<header class="header" id="header">
+	<header class="header" id="header" style="background-color:#f5f5f7">
 		<div class="header_toggle">
 			<i class='bx bx-menu' id="header-toggle"></i>
 		</div>
