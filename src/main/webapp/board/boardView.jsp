@@ -1431,6 +1431,27 @@ $("#modal_loginBtn").on("click",function(){
             </div>
         </div>
         <div class="row dummy" id="dummy" modify="false"></div>
+        
+        <footer class="mt-auto text-black-50" style="background-color:#f5f5f7">
+        	<hr>
+        	<div class="row">
+        		<div class="col-5" style=" text-align:right;">
+        			<img src="/imgsrc/footerlogo2.png">
+        		</div>
+        		<div class="col-7">
+        			<div class="col-12">
+        				프로젝트 쉼표
+        			</div>
+        			<div class="col-12">
+        				강석원 | 강정윤 | 박한길 | 어 현 | 임혜경 | 조양기
+        			</div>
+        			<div class="col-12">
+        				Designed by Catch the Java
+        			</div>
+        		</div>
+        	</div>
+        	<hr>
+        </footer>
 
 <!-- jjim toast -->        
 <div class="toast-container position-fixed bottom-0 end-0 p-3">
