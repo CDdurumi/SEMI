@@ -36,7 +36,7 @@ public class MyPageController extends HttpServlet {
 				System.out.println("메세지 보내기 수신확인");
 				int result;
 				String sender = (String) request.getSession().getAttribute("loginID");
-				int message_seq = Integer.parseInt(request.getParameter("message_seq"));
+//				int message_seq = Integer.parseInt(request.getParameter("message_seq"));
 				String title = request.getParameter("title");
 				String contents = request.getParameter("contents");
 				String receiver = request.getParameter("receiver");
@@ -48,7 +48,7 @@ public class MyPageController extends HttpServlet {
 				}
 				PrintWriter pw = response.getWriter();
 				
-				System.out.println(message_seq +" : " +title+ " : " + contents + " : "+ receiver +" : " + sender);
+				System.out.println(" : " +title+ " : " + contents + " : "+ receiver +" : " + sender);
 				
 				pw.append(g.toJson(result));
 //				dao.insert(new MessageDTO(0, 0, title, sender, receiver, contents, ""));
