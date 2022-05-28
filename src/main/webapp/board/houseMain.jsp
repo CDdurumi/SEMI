@@ -469,8 +469,8 @@ select{
         <div>
             <c:choose>
 				<c:when test="${loginID !=null}">
-						${loginID }님 안녕하세요 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-					<a href="/logout.member" class=""  >logout</a>					
+						<div class="d-md-inline d-none">${loginID }님 안녕하세요 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</div>
+						<a href="/logout.member" class="d-md-inline d-none">logout</a>					
 				</c:when>
 		
 				<c:otherwise>
