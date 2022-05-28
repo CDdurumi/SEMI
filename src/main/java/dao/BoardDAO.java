@@ -279,6 +279,38 @@ public class BoardDAO {
 		}
 	}
 
+	
+	// 애디터 추천 게시판 리스트 출력(by editor_type)
+	public List<BoardDTO> selectByEditorType(String boardOption, String eeditor_type) throws Exception {
+		String sql = "select row_number() over(order by write_date desc) line, all_board.* from all_board where all_board_seq like '"+boardOption+"%' and editor_type = ?";
+
+		try (Connection con = this.getConnection();
+				PreparedStatement pstat = con.prepareStatement(sql);) {
+			pstat.setString(1, eeditor_type);
+			List<BoardDTO> list = new ArrayList<BoardDTO>();
+
+			try(ResultSet rs = pstat.executeQuery();){
+				while (rs.next()) {
+					String all_board_seq = rs.getString("all_board_seq");
+					String id = rs.getString("id");
+					String title = rs.getString("title");
+					String contents = rs.getString("contents");
+					Timestamp write_date = rs.getTimestamp("write_date");
+					int like_count = rs.getInt("like_count");
+					int jjim_count = rs.getInt("jjim_count");
+					int view_count = rs.getInt("view_count");
+					String editor_type = rs.getString("editor_type");
+					int line = rs.getInt("line");
+
+					BoardDTO dto = new BoardDTO(all_board_seq, id, title, contents, write_date, like_count, jjim_count, view_count, editor_type, line);
+					list.add(dto);
+				}
+				return list;
+			}
+
+		}
+	}
+	
 	// 제목 클릭시 게시글 출력 //// 아직 시도 안해봄(조양기)
 	public BoardDTO selectBySeq(int cseq) throws Exception {
 		String sql = "select * from all_board where all_board_seq=?";

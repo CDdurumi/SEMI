@@ -327,7 +327,7 @@
                 font-weight: bold;
             }
             .title{
-                border: 0px; width: 85%; 
+                border: 0px; width: 75%; 
                 margin: 2px; margin-left: 3px;
                 font-size: 20px;
                 font-weight: bold;
@@ -433,6 +433,30 @@ $(function(){
 		div.append(text);
 		div.append("<br>");
 		$("#fileArea").prepend(div);
+		
+		
+		let div2 = $("<select>");
+		let option1 = $("<option>");
+		let option2 = $("<option>");
+		let option3 = $("<option>");
+		let option4 = $("<option>");
+		
+		div2.attr({id:"editorSelect", name:"editor_type"});
+		option1.attr("value","f");
+		option1.text("자유게시판-추천");
+		option2.attr("value","j");
+		option2.text("구인구직-추천");
+		option3.attr("value","r");
+		option3.text("맛집-추천");
+		option4.attr("value","h");
+		option4.text("숙소리뷰-추천");
+
+		div2.append(option1);
+		div2.append(option2);
+		div2.append(option3);
+		div2.append(option4);
+		
+		$("#select").after(div2);
     }
 }) 
 </script>        
@@ -739,6 +763,39 @@ $("#modal_loginBtn").on("click",function(){
 			
 			}else{
 				$("#fileArea").children("#profileDiv").remove();
+			}
+			
+			
+			if(option == 'e' ){
+				if((previous == 'e')){
+					$(this).siblings("#editorSelect").remove();
+				}
+			
+				let div = $("<select>");
+				let option1 = $("<option>");
+				let option2 = $("<option>");
+				let option3 = $("<option>");
+				let option4 = $("<option>");
+				
+				div.attr({id:"editorSelect", name:"editor_type"});
+				option1.attr("value","f");
+				option1.text("자유게시판-추천");
+				option2.attr("value","j");
+				option2.text("구인구직-추천");
+				option3.attr("value","r");
+				option3.text("맛집-추천");
+				option4.attr("value","h");
+				option4.text("숙소리뷰-추천");
+
+				div.append(option1);
+				div.append(option2);
+				div.append(option3);
+				div.append(option4);
+				
+				$(this).after(div);
+
+			}else{
+				$(this).siblings("#editorSelect").remove();
 			}
 		});
 
