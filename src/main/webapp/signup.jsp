@@ -449,9 +449,7 @@
             <i class="fa fa-lock"></i>
             <span><small class="fa fa-eye-slash passcode1"></small></span>
         </div>
-        <div class="login_api" style="text-align:center">
-           <a href="#"><img src="/imgsrc/google_signin_buttons/web/1x/btn_google_signin_dark_normal_web.png"></a>
-        </div>
+        
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-primary" id="modal_loginBtn">로그인</button>
