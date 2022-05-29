@@ -588,8 +588,7 @@
 //           if(${totalPage}<pape){
 //              alert("마지막 페이지 입니다.");
 //           }else{
-//                총 댓글 갯수
-                  let count =0;
+
              for(let i = 0; i < resp.length; i++){
 //console.log(${reList[0].reply_seq});
 				
@@ -1167,7 +1166,7 @@
                       
 
                        
-                       $("#message").text("댓글 ${reTotalCnt}개");
+                      
           
                 
                 
@@ -1420,7 +1419,10 @@ $("#modal_loginBtn").on("click",function(){
         </div>
         <br>
 
-        <div class="col-12" id="message"></div>
+        <div class="col-12" id="message">
+<%--          $("#message").text("댓글 ${reTotalCnt}개"); --%>
+			댓글 ${reTotalCnt}개
+        </div>
 
         <div class="row msg " >
             <div class="col-10 p-0">
