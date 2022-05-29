@@ -747,9 +747,7 @@ $("#modal_loginBtn").on("click",function(){
         </div>
         </header>
 
-        
-    </div>
-<footer class="mt-auto text-black-50" style="background-color:#f5f5f7">
+        <footer class="mt-auto text-black-50" style="background-color:#f5f5f7">
         	<hr>
         	<div class="row">
         		<div class="col-5" style=" text-align:right;">
@@ -769,6 +767,8 @@ $("#modal_loginBtn").on("click",function(){
         	</div>
         	<hr>
         </footer>
+    </div>
+
     <!--Container Main end-->
  <!--top 버튼-->
  <button onclick="topFunction()" id="myBtn" title="Go to top">↑</button>
