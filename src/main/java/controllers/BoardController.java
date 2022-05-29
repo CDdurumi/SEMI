@@ -159,6 +159,9 @@ public class BoardController extends HttpServlet {
 				request.setAttribute("hotlist", hotlist);
 				request.setAttribute("navi", pageNavi);
 				
+				//공지글 리스트
+				List<BoardDTO> noticeList = dao.selectNotice(boardOption);
+				request.setAttribute("noticeList", noticeList);
 				///////애디터 추천 게시글///////
 				String editor_type = boardOption;
 				boardOption ="e";
@@ -265,6 +268,9 @@ public class BoardController extends HttpServlet {
 					request.setAttribute("profilePath", "/files/");
 				}else if(boardOption.equals("r")) {//맛집 메인페이지
 					absolutePath = "/board/foodMain.jsp";
+					//공지글 리스트
+					List<BoardDTO> noticeList = dao.selectNotice(boardOption);
+					request.setAttribute("noticeList", noticeList);
 					///////애디터 추천 게시글///////
 					String editor_type = boardOption;
 					boardOption ="e";
