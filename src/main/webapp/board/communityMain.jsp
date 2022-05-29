@@ -597,9 +597,9 @@ font-weight: bold;
 		<div class="row " id="freemain">
 			<div class="col-12 " id="freemain_col">
 				<div class="row border border-2 rounded">
-					<div class="col-10 border-bottom hotboard text-center" style="font-weight:bold; font-size:18px;">자유게시판
+					<div class="col-9 border-bottom hotboard text-center" style="font-weight:bold; font-size:18px;">자유게시판
 						화제글</div>
-					<div class="col-2 border-bottom hotboard text-center">
+					<div class="col-3 border-bottom hotboard text-center">
 						<a class="allview" href="/boardMainView.board?cpage=1"><button type="button" class="btn btn-outline-primary btn-sm" style="white-space:nowrap;">전체보기</button></a>
 					</div>
 
@@ -650,7 +650,7 @@ font-weight: bold;
 			</div>
 		</div>
 
-	</div>
+	
 
 
 
@@ -840,8 +840,11 @@ font-weight: bold;
 				</div>
 
 			</div>
+			
 		</div>
-		<footer class="mt-auto text-black-50" style="background-color:#f5f5f7">
+		
+	</div>
+	<footer class="mt-auto text-black-50" style="background-color:#f5f5f7">
         	<hr>
         	<div class="row">
         		<div class="col-5" style=" text-align:right;">
@@ -862,8 +865,7 @@ font-weight: bold;
         	<hr>
         </footer>
 	</div>
-
-	
+       
 
     
      <!--top 버튼-->
