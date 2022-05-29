@@ -611,7 +611,7 @@ pageEncoding="UTF-8"%>
     
     <div class="l-navbar" id="nav1-bar">
         <nav class="nav1">
-            <div> <a href="//goIndex.board" class="nav1_logo"> <i class='bx bx-layer nav1_logo-icon'></i> <span class="nav1_logo-name">쉼표
+            <div> <a href="/goindex.board" class="nav1_logo"> <i class='bx bx-layer nav1_logo-icon'></i> <span class="nav1_logo-name">쉼표
                         <br>- 일상의 쉼표를 찍다</span> </a>
                 <div class="nav1_list">
                     <a class="nav1_link" style="color:white;"> <i class='CurrIcon'></i> <span class="nav1_name"><span class="weather">

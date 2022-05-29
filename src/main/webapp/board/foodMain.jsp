@@ -337,9 +337,9 @@
             margin-top: 20px;
         }
 
-        .hotboard_bottom {
-            margin-top: 20px;
-            padding-bottom: 10px;
+         .hotboard_bottom {
+        	height:50px;
+            margin-top: 15px;
         }
 
         #freemain {
@@ -358,7 +358,7 @@
         }
 
         .card-body {
-            height: 133px;
+            height: 100px;
         }
 
         .bottom_board {
@@ -459,6 +459,14 @@ select{
     margin-right: 8px;
     font-size: 18px;
     font-weight: bold;
+}
+.wrap12{
+
+height:500px;
+}
+#notice{
+color:red;
+font-weight:bold;
 }
     </style>
 </head>
@@ -587,9 +595,9 @@ $("#modal_loginBtn").on("click",function(){
     <div class="height-100 ">
         <div class="row " id="freemain">
             <div class="col-12 col-md-6 bottom_board">
-                <div class="row border border-2 rounded">
+                <div class="row border border-2 rounded wrap12 d-flex flex-wrap align-content-start">
                     <div class="col-12 border-bottom hotboard_bottom text-center" style="font-weight:bold; font-size:18px;">맛집</div>
-                    <div class="row  freeboard_bottom">
+                  
                         <div class="col-12 ">
                             <div class="row freeboard_bottom ">
                             
@@ -611,12 +619,11 @@ $("#modal_loginBtn").on("click",function(){
                             </div>
                         </div>
 
-                    </div>
                 </div>
 
             </div>
             <div class="col-12 col-md-6 bottom_board">
-                <div class="row border border-2 rounded">
+                <div class="row border border-2 rounded wrap12 ">
                     <div class="col-12 border-bottom hotboard_bottom text-center" style="font-weight:bold; font-size:18px;">에디터 추천</div>
                     <div id="carouselExampleIndicators" class="carousel slide" data-bs-ride="carousel">
                         <div class="carousel-indicators">
@@ -730,9 +737,9 @@ $("#modal_loginBtn").on("click",function(){
              <div class="col-12  ">
                 <div class="row " id="board_menu_text">
                     <div class="col-md-1 d-none d-md-block p-0">번호</div>
-                    <div class="col-7 col-md-6 ">제목</div>
+                    <div class="col-7 col-md-5 ">제목</div>
                     <div class="col-3 col-md-2 p-0 text-center">글쓴이</div>
-                    <div class="col-md-1 d-none d-md-block p-0">날짜</div>
+                    <div class="col-md-2 d-none d-md-block p-0">날짜</div>
                     <div class="col-md-1 d-none d-md-block p-0">조회</div>
                     <div class="col-2 col-md-1 p-0">추천</div>
                 </div>
@@ -745,12 +752,14 @@ $("#modal_loginBtn").on("click",function(){
         <div class="col-12  board">
             <div class="row m-0 border border-2 rounded board_row ">
             	
-                <div class="col-1 col-md-1 d-none d-md-block p-0">공지</div>
-               	<div class="col-7 col-md-6 m-0 title ellipsis">
+                <div class="col-1 col-md-1 d-none d-md-block p-0">
+                <p id="notice">공지</p>
+                </div>
+               	<div class="col-7 col-md-5 m-0 title ellipsis">
                		<span><a href="/detailView.board?cpage=${cpage}&seq=${i.all_board_seq}&click=ok" style="color:black">${i. title }</a></span>
                	</div>
                 <div class="col-3 col-md-2 p-0 ellipsis text-center"><span>${i.id }</span></div>
-                <div class="col-md-1 d-none d-md-block p-0 "><fmt:formatDate value="${i.write_date }" pattern="yy-MM-dd"/></div>
+                <div class="col-md-2 d-none d-md-block p-0 "><fmt:formatDate value="${i.write_date }" pattern="yy-MM-dd"/></div>
                 <div class="col-md-1 d-none d-md-block p-0">${i.view_count}</div>
                 <div class="col-2 col-md-1 p-0">${i.like_count}</div>
                 
@@ -764,11 +773,11 @@ $("#modal_loginBtn").on("click",function(){
             <div class="row m-0 border border-2 rounded board_row ">
             	
                 <div class="col-1 col-md-1 d-none d-md-block p-0">${i.line}</div>
-               	<div class="col-7 col-md-6 m-0 title ellipsis">
+               	<div class="col-7 col-md-5 m-0 title ellipsis">
                		<span><a href="/detailView.board?cpage=${cpage}&seq=${i.all_board_seq}&click=ok" style="color:black">${i. title }</a></span>
                	</div>
                 <div class="col-3 col-md-2 p-0 ellipsis text-center"><span>${i.id }</span></div>
-                <div class="col-md-1 d-none d-md-block p-0 "><fmt:formatDate value="${i.write_date }" pattern="yy-MM-dd"/></div>
+                <div class="col-md-2 d-none d-md-block p-0 "><fmt:formatDate value="${i.write_date }" pattern="yy-MM-dd"/></div>
                 <div class="col-md-1 d-none d-md-block p-0">${i.view_count}</div>
                 <div class="col-2 col-md-1 p-0">${i.like_count}</div>
                 
