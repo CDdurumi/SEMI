@@ -22,14 +22,11 @@ pageEncoding="UTF-8"%>
     <!--  -->
     <link rel="canonical" href="https://getbootstrap.com/docs/5.1/examples/cover/">
     <!-- Bootstrap core CSS -->
-    <link href="/docs/5.1/dist/css/bootstrap.min.css" rel="stylesheet"
-        integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
-	<script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    
     <!-- Favicons -->
     <link rel="apple-touch-icon" href="/docs/5.1/assets/img/favicons/apple-touch-icon.png" sizes="180x180">
     <link rel="icon" href="/docs/5.1/assets/img/favicons/favicon-32x32.png" sizes="32x32" type="image/png">
     <link rel="icon" href="/docs/5.1/assets/img/favicons/favicon-16x16.png" sizes="16x16" type="image/png">
-    <link rel="manifest" href="/docs/5.1/assets/img/favicons/manifest.json">
     <link rel="mask-icon" href="/docs/5.1/assets/img/favicons/safari-pinned-tab.svg" color="#7952b3">
     <link rel="icon" href="/docs/5.1/assets/img/favicons/favicon.ico">
     <meta name="theme-color" content="#7952b3">
@@ -1618,7 +1615,7 @@ $("#modal_loginBtn").on("click",function(){
         					
         				};
         			})        	
-      
+        	})
         
 //정규식
 
@@ -1626,12 +1623,12 @@ $("#modal_loginBtn").on("click",function(){
 		function isNickName(asValue) {
 			var regExp = /^[a-z가-힣0-9]{2,10}$/g;		
 			return regExp.test(asValue);
-			}
+			};
 		//비밀번호(숫자 영문 특문 조합 8~16자)
 		function isPw(asValue) {
 			var regExp = /^.{8,16}$/;
 			return regExp.test(asValue);
-		}
+		};
   
     
   //계정관리
@@ -1656,7 +1653,7 @@ $("#modal_loginBtn").on("click",function(){
         $(".modify").attr("contenteditable","false");
         $("#editID").attr("disabled", true);
         $(".modify").css("color","black");
-    })
+    });
 
    
  // input id, input pw, password eyes
