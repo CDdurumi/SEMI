@@ -398,7 +398,7 @@ font-weight: bold;
 	padding-left: 2px;
 }			
 
-#page{
+.page{
 	font-weight:bold;
             color: #0080ff;
             text-decoration: underline;
@@ -423,6 +423,9 @@ $(function(){
 
     if(boardOption == 'f'){//자유게시판
     	$("[value='f']").attr("selected","selected");
+		$("#f").addClass("page");
+		
+		
     }else if(boardOption == 'g'){//여행후기
     	$("[value='g']").attr("selected","selected");
 		let div = $("<div>");
@@ -437,10 +440,14 @@ $(function(){
 		div.append(text);
 		div.append("<br>");
 		$("#fileArea").prepend(div);
+		
+		$("#g").addClass("page");
     }else if(boardOption == 'j'){//구인구작
     	$("[value='j']").attr("selected","selected");
+    	$("#j").addClass("page")
     }else if(boardOption == 'r'){//맛집
     	$("[value='r']").attr("selected","selected");
+    	$("#r").addClass("page")
     }else if(boardOption == 'h'){//숙소리뷰
     	$("[value='h']").attr("selected","selected");
 		let div = $("<div>");
@@ -455,6 +462,7 @@ $(function(){
 		div.append(text);
 		div.append("<br>");
 		$("#fileArea").prepend(div);
+		$("#h").addClass("page");
     }else if(boardOption == 'e'){//애디터추천
     	$("[value='e']").attr("selected","selected");
 		let div = $("<div>");
@@ -535,19 +543,19 @@ $(function(){
     </header>
     <ul class="nav nav2">
         <li class="nav-item">
-            <a class="nav-link nav-link2" href="/boardMainView.board?cpage=1">자유게시판</a>
+            <a class="nav-link nav-link2" href="/boardMainView.board?cpage=1" id="f">자유게시판</a>
         </li>
         <li class="nav-item">
-            <a class="nav-link nav-link2" href="/galleryMain.board?cpage=1">여행후기</a>
+            <a class="nav-link nav-link2" href="/galleryMain.board?cpage=1" id="g">여행후기</a>
         </li>
         <li class="nav-item">
-            <a class="nav-link nav-link2" href="/jobMain.board?cpage=1">구인구직</a>
+            <a class="nav-link nav-link2" href="/jobMain.board?cpage=1" id="j">구인구직</a>
         </li>
         <li class="nav-item">
-            <a class="nav-link nav-link2" href="/foodMain.board?cpage=1">맛집</a>
+            <a class="nav-link nav-link2" href="/foodMain.board?cpage=1" id="r">맛집</a>
         </li>
         <li class="nav-item">
-            <a class="nav-link nav-link2" href="/houseMain.board?cpage=1">숙소리뷰</a>
+            <a class="nav-link nav-link2" href="/houseMain.board?cpage=1" id="h"  >숙소리뷰</a>
         </li>
     </ul>
     <div class="l-navbar" id="nav-bar">
@@ -805,9 +813,9 @@ $("#modal_loginBtn").on("click",function(){
     		previous  = this.value;
 		}).change(function() {
 			let option = $("#select").val();
-// 			alert(previous);
-// 			alert(option);
-			
+// 			alert("바꾸기전 : "+previous);
+// 			alert("바꾼 후 : "+option);
+
 			//대표 사진 업로드 하도록 input type file 넣어줌
 			if((option == 'g' || option == 'e' || option == 'h' )){
 				if((previous == 'g' || previous == 'e' || previous == 'h') && (option == 'g' || option == 'e' || option == 'h')){
