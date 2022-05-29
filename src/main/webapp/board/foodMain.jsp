@@ -358,7 +358,7 @@
         }
 
         .card-body {
-            height: 133px;
+            height: 100px;
         }
 
         .bottom_board {
@@ -461,7 +461,7 @@ select{
     font-weight: bold;
 }
 .wrap12{
-flex-direction:column;
+
 height:500px;
 }
 #notice{
@@ -595,7 +595,7 @@ $("#modal_loginBtn").on("click",function(){
     <div class="height-100 ">
         <div class="row " id="freemain">
             <div class="col-12 col-md-6 bottom_board">
-                <div class="row border border-2 rounded wrap12">
+                <div class="row border border-2 rounded wrap12 d-flex flex-wrap align-content-start">
                     <div class="col-12 border-bottom hotboard_bottom text-center" style="font-weight:bold; font-size:18px;">맛집</div>
                   
                         <div class="col-12 ">
@@ -623,7 +623,7 @@ $("#modal_loginBtn").on("click",function(){
 
             </div>
             <div class="col-12 col-md-6 bottom_board">
-                <div class="row border border-2 rounded wrap12">
+                <div class="row border border-2 rounded wrap12 ">
                     <div class="col-12 border-bottom hotboard_bottom text-center" style="font-weight:bold; font-size:18px;">에디터 추천</div>
                     <div id="carouselExampleIndicators" class="carousel slide" data-bs-ride="carousel">
                         <div class="carousel-indicators">

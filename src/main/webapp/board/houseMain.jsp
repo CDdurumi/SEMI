@@ -361,7 +361,7 @@
         }
 
         .card-body {
-            height: 174px;
+            height: 100px;
          
         }
 
@@ -464,7 +464,7 @@ select{
     font-weight: bold;
 }     
 .wrap12{
-flex-direction:column;
+
 height:500px;
 }  
 #notice{
@@ -645,7 +645,6 @@ $("#modal_loginBtn").on("click",function(){
 					        </c:forEach>
                             
                         </div>
-                    
                     
                     
 <!--                         <div class="carousel-inner text-center"> -->

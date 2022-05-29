@@ -337,12 +337,17 @@
         }
 
         .hotboard {
+        	
             padding-bottom: 10px;
             margin-top: 20px;
         }
-        .hotboard_bottom{
-            margin-top: 20px;
-            padding-bottom: 10px;
+      
+         .hotboard_bottom {
+         padding:0px;
+        	height:50px;
+            margin-top: 15px;
+            margin-right: 0px;
+            
         }
         #freemain {
             padding-top: 60px;
@@ -369,7 +374,7 @@
             padding-top: 35px;
         }
         .bottom_board{
-            padding-right: 30px;
+            padding-right: 15px;
             padding-bottom: 30px;
         }
             #board_menu_text{
@@ -450,7 +455,12 @@ font-weight: bold;
 .comuview:hover{
        color:#0080ff;
        }       
-       
+      .wrap12{
+
+	
+ 		
+ 		height:470px; 
+}
        
     </style>
 </head>
@@ -596,29 +606,28 @@ font-weight: bold;
 	<div class="height-85 ">
 		<div class="row " id="freemain">
 			<div class="col-12 " id="freemain_col">
-				<div class="row border border-2 rounded">
-					<div class="col-9 border-bottom hotboard text-center" style="font-weight:bold; font-size:18px;">자유게시판
+				<div class="row border border-2 rounded wrap12 d-flex flex-wrap align-content-start"">
+					<div class="col-9 border-bottom hotboard_bottom text-center" style="font-weight:bold; font-size:18px;">자유게시판
 						화제글</div>
-					<div class="col-3 border-bottom hotboard text-center">
+					<div class="col-3 border-bottom hotboard_bottom text-center">
 						<a class="allview" href="/boardMainView.board?cpage=1"><button type="button" class="btn btn-outline-primary btn-sm" style="white-space:nowrap;">전체보기</button></a>
 					</div>
 
-					<div class="col-12 mt-0">
-						<div class="row freeboard_bottom ">
-
-							<div class="row m-0 ">
-								<div class="col-12  m-0 p-0" style="height: 40px">
+				<div class="col-12 ">
+ 						<div class="row  freeboard_bottom">
+ 						
+ 								<div class="col-12  m-0 p-0" style="height: 40px">
 									<div class="row m-0" id="board_menu_text">
-										<div class="col-7 text-center">제목</div>
+										<div class="col-7 ">제목</div>
 										<div class="col-3 p-0 text-center">글쓴이</div>
-										<div class="col-md-1 d-none d-md-block p-0 text-center">조회</div>
-										<div class="col-2 col-md-1 p-0 text-center">추천</div>
+										<div class="col-2 d-none d-md-block p-0 text-center">조회</div>
 									</div>
 
 								</div>
-							</div>
+ 						
+                       		
 							<c:forEach var="j" items="${fHotlist}">
-								<div class="col-12  board">
+								<div class="col-12  board p-0">
 									<div class="row m-0 border border-2 rounded board_row ">
 
 
@@ -639,11 +648,6 @@ font-weight: bold;
 								</div>
 
 							</c:forEach>
-
-
-
-						</div>
-					</div>
 
 
 				</div>
@@ -743,26 +747,28 @@ font-weight: bold;
 		</div>
 		<div class="row " id="freemain">
 			<div class="col-12 col-md-6 bottom_board">
-				<div class="row border border-2 rounded">
-					<div class="col-9 border-bottom hotboard_bottom text-center" style="font-weight:bold; font-size:18px;">구인구직</div>
-					<div class="col-3 border-bottom hotboard_bottom text-center">
-						<a class="allview" href="/jobMain.board?cpage=1"><button type="button" class="btn btn-outline-primary btn-sm" style="white-space:nowrap;">전체보기</button></a>
+				<div class="row border border-2 rounded wrap12 w-100 d-flex flex-wrap align-content-start" >
+					<div class="col-9 border-bottom hotboard_bottom text-center" style="font-weight:bold; font-size:18px; flex-direction: row;">구인구직</div>
+					<div class="col-3 border-bottom hotboard_bottom text-center" >
+						<a class="allview" href="/jobMain.board?cpage=1" ><button type="button" class="btn btn-outline-primary btn-sm" style="white-space:nowrap; ">전체보기</button></a>
 					</div>
 					<div class="col-12 ">
-						<div class="row freeboard_bottom ">
-
-							<div class="row m-0 ">
-								<div class="col-12  m-0 p-0" style="height: 40px">
+ 						<div class="row  freeboard_bottom">
+ 						
+ 								<div class="col-12  m-0 p-0" style="height: 40px">
 									<div class="row m-0" id="board_menu_text">
-										<div class="col-7  text-center">제목</div>
+										<div class="col-7 ">제목</div>
 										<div class="col-3 p-0 text-center">글쓴이</div>
 										<div class="col-2 d-none d-md-block p-0 text-center">조회</div>
 									</div>
 
 								</div>
-							</div>
-							<c:forEach var="h" items="${jHotlist}">
-								<div class="col-12  board">
+ 						
+                       		
+                       	
+							
+								<c:forEach var="h" items="${jHotlist}">
+								<div class="col-12  board p-0">
 									<div class="row m-0 border border-2 rounded board_row ">
 
 
@@ -779,39 +785,37 @@ font-weight: bold;
 									</div>
 								</div>
 							</c:forEach>
-
-
-
-						</div>
-					</div>
-
-
+								
+								
+								
+							</div>
+							
 				</div>
 
 			</div>
+			</div>
 			<div class="col-12 col-md-6 bottom_board">
-				<div class="row border border-2 rounded">
+				<div class="row border border-2 rounded wrap12 d-flex flex-wrap align-content-start" >
 					<div class="col-9 border-bottom hotboard_bottom text-center" style="font-weight:bold; font-size:18px;">맛집</div>
 					<div class="col-3 border-bottom hotboard_bottom text-center">
 						<a class="allview" href="/foodMain.board?cpage=1"><button type="button" class="btn btn-outline-primary btn-sm" style="white-space:nowrap;">전체보기</button></a>
 					</div>
 
 					<div class="col-12 ">
-						<div class="row freeboard_bottom ">
-
-
-							<div class="row m-0 ">
-								<div class="col-12  m-0 p-0" style="height: 40px">
+ 						<div class="row  freeboard_bottom">
+ 						
+ 								<div class="col-12  m-0 p-0" style="height: 40px">
 									<div class="row m-0" id="board_menu_text">
-										<div class="col-7 text-center">제목</div>
+										<div class="col-7 ">제목</div>
 										<div class="col-3 p-0 text-center">글쓴이</div>
 										<div class="col-2 d-none d-md-block p-0 text-center">조회</div>
 									</div>
 
 								</div>
-							</div>
+ 						
+ 						
 							<c:forEach var="a" items="${rHotlist}">
-								<div class="col-12  board">
+								<div class="col-12  board p-0">
 									<div class="row m-0 border border-2 rounded board_row ">
 
 
@@ -828,13 +832,6 @@ font-weight: bold;
 									</div>
 								</div>
 							</c:forEach>
-
-
-
-
-
-						</div>
-					</div>
 
 
 				</div>
