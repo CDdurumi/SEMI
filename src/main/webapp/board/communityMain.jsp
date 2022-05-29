@@ -505,7 +505,7 @@ font-weight: bold;
 						class='bx bx-message nav_icon'></i> <span class="nav_name">커뮤니티</span>
 					</a> <a href="/editorReMain.board?" class="nav_link"> <i
 						class='bx bx-book-bookmark nav_icon'></i> <span class="nav_name">에디터추천</span>
-					</a> <a href="/boardMainView.board?cpage=1" class="nav_link"> <i
+					</a> <a href="/houseMain.board?cpage=1" class="nav_link"> <i
 						class='bx bx-home nav_icon'></i> <span class="nav_name">숙소리뷰</span>
 					</a> <c:choose>
 						<c:when test="${loginID !=null}">
@@ -834,7 +834,26 @@ font-weight: bold;
 		</div>
 	</div>
 
-	<footer class="mt-auto text-black-50"></footer>
+	<footer class="mt-auto text-black-50" style="background-color:#f5f5f7">
+        	<hr>
+        	<div class="row">
+        		<div class="col-5" style=" text-align:right;">
+        			<img src="/imgsrc/footerlogo2.png">
+        		</div>
+        		<div class="col-7">
+        			<div class="col-12">
+        				프로젝트 쉼표
+        			</div>
+        			<div class="col-12">
+        				강석원 | 강정윤 | 박한길 | 어 현 | 임혜경 | 조양기
+        			</div>
+        			<div class="col-12">
+        				Designed by Catch the Java
+        			</div>
+        		</div>
+        	</div>
+        	<hr>
+        </footer>
 
     
      <!--top 버튼-->
