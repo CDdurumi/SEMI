@@ -465,6 +465,21 @@ select{
 color:red;
 font-weight:bold;
 }
+@media (min-width: 576px) {
+  .footer1 {
+    text-align:right;
+  }
+}
+@media (max-width: 960px) {
+  .footer2 {
+    text-align:center;
+  }
+}
+@media (min-width: 960px) {
+  .footer2 {
+    text-align:left;
+  }
+}
     </style>
 </head>
 
@@ -781,13 +796,13 @@ $("#modal_loginBtn").on("click",function(){
         </div>
         </header>
 
-        <footer class="mt-auto text-black-50" style="background-color:#f5f5f7">
+<footer class="mt-auto text-black-50" style="background-color:#f5f5f7">
         	<hr>
         	<div class="row">
-        		<div class="col-5" style=" text-align:right;">
+        		<div class="d-none d-lg-block col-5 footer1">
         			<img src="/imgsrc/footerlogo2.png">
         		</div>
-        		<div class="col-7">
+        		<div class="col-12 col-lg-7 footer2">
         			<div class="col-12">
         				프로젝트 쉼표
         			</div>
