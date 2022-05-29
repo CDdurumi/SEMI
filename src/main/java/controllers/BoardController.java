@@ -512,6 +512,11 @@ public class BoardController extends HttpServlet {
 				jobj.addProperty("jjimCount", jjimCount);
 //				System.out.println(jjimCount);
 				pw.append(jobj.toString());
+				
+				
+			}else if(uri.equals("/goIndex.board")) { //index페이지로 연결
+				response.sendRedirect("/index.jsp");
+				
 			}
 			
 			
