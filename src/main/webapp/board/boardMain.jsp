@@ -357,7 +357,7 @@
         }
 
         .card-body {
-            height: 133px;
+            height: 100px;
         }
 
         .bottom_board {
@@ -453,7 +453,7 @@
 	color:rgb(255,208,0);
 }
 .wrap12{
- flex-direction:column; 
+ 
 height:500px;
 }
 
@@ -599,7 +599,7 @@ $("#modal_loginBtn").on("click",function(){
 
         <div class="row " id="freemain">
             <div class="col-12 col-md-6 bottom_board">
-                <div class="row border border-2 rounded wrap12">
+                <div class="row border border-2 rounded wrap12 d-flex flex-wrap align-content-start">
                     <div class="col-12 border-bottom hotboard_bottom text-center" style="font-weight:bold; font-size:18px;">자유게시판 화제</div>
                         <div class="col-12 ">
                             <div class="row freeboard_bottom ">
