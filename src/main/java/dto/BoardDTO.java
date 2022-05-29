@@ -96,7 +96,12 @@ public class BoardDTO {
 	public String getFormdDate() {
 		SimpleDateFormat sdf = new SimpleDateFormat("YYYY년 MM월 dd일 HH:mm");
 		return sdf.format(this.write_date);
-	}	
+	}
+	
+	public String getEditorFormdDate() {
+		SimpleDateFormat sdf = new SimpleDateFormat("YYYY년 MM월 dd일");
+		return sdf.format(this.write_date);
+	}
 
 
 
