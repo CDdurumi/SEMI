@@ -21,11 +21,13 @@ import dao.BoardDAO;
 import dao.FilesDAO;
 import dao.GoodDAO;
 import dao.JjimDAO;
+import dao.MemberDAO;
 import dao.ReplyDAO;
 import dto.BoardDTO;
 import dto.FilesDTO;
 import dto.GoodDTO;
 import dto.JjimDTO;
+import dto.MemberDTO;
 import dto.ReplyDTO;
 
 @WebServlet("*.board")
@@ -41,6 +43,7 @@ public class BoardController extends HttpServlet {
 		JjimDAO jjimDao = JjimDAO.getInstance();
 		GoodDAO goodDao = GoodDAO.getInstance();
 		ReplyDAO replyDao = ReplyDAO.getInstance();
+		MemberDAO memberDao = MemberDAO.getInstance();
 		Gson g = new Gson();
 		
 		String uri = request.getRequestURI();
@@ -293,6 +296,11 @@ public class BoardController extends HttpServlet {
 			}else if(uri.equals("/writeboard.board")) {//게시판 글 작성하기 폼 출력(boardMain.jsp에서 글 작성하기 버튼 클릭 시 여기로.)
 				String boardOption = request.getParameter("boardOption");
 				request.setAttribute("boardOption", boardOption);
+				
+				//관리자 계정 정보 get.
+				List<MemberDTO> memberDTO = memberDao.adminImformation();
+				request.setAttribute("memberDTO", memberDTO);
+				
 				request.getRequestDispatcher("/board/boardWrite.jsp").forward(request, response);
 				
 			}else if(uri.equals("/writeProcessing.board")) {//게시글 작성완료 처리 과정(boardWrite.jsp에서 작성완료 버튼 클릭 시 여기로.)
@@ -379,7 +387,6 @@ public class BoardController extends HttpServlet {
 				//리댓글 수
 				List<ReplyDTO> reList = replyDao.selectReCountByRe(seq);
 				request.setAttribute("reList", reList);
-				
 				
 				request.getRequestDispatcher("/board/boardView.jsp").forward(request, response);//작성글 페이지 전환
 

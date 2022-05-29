@@ -11,6 +11,7 @@ import javax.naming.Context;
 import javax.naming.InitialContext;
 import javax.sql.DataSource;
 
+import dto.BoardDTO;
 import dto.MemberDTO;
 
 public class MemberDAO {
@@ -136,6 +137,29 @@ public class MemberDAO {
 			int result = pstat.executeUpdate();
 			con.commit();
 			return result;
+		}
+	}
+	
+	//관리자 계정 정보
+	public List<MemberDTO> adminImformation() throws Exception {
+		String sql = "select * from member where isadmin = 'Y'";
+
+		try (Connection con = this.getConnection();
+				PreparedStatement pstat = con.prepareStatement(sql);
+				ResultSet rs = pstat.executeQuery();) {
+			List<MemberDTO> list = new ArrayList<MemberDTO>();
+
+			while (rs.next()) {
+				String id = rs.getString("id");
+				String email = rs.getString("email");
+				Timestamp join_date = rs.getTimestamp("join_date");
+				String information = rs.getString("information");
+				String isadmin = rs.getString("isadmin");
+
+				MemberDTO dto = new MemberDTO(id, null, email, join_date, information,isadmin);
+				list.add(dto);
+			}
+			return list;
 		}
 	}
 }
