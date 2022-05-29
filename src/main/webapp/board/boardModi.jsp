@@ -366,7 +366,13 @@ font-weight: bold;
 				max-width:100% !important;
 			}
 			
-			
+			#page{
+				font-weight:bold;
+            color: #0080ff;
+            text-decoration: underline;
+            text-underline-position : under;
+            font-size:17px;
+			}
 			/*--top버튼----------------------------------------------------------------*/
 
 #myBtn {

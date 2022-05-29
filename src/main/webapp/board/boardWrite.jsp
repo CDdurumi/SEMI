@@ -398,6 +398,13 @@ font-weight: bold;
 	padding-left: 2px;
 }			
 
+#page{
+	font-weight:bold;
+            color: #0080ff;
+            text-decoration: underline;
+            text-underline-position : under;
+            font-size:17px;
+            }
 
 #notice{
 	color: red;
