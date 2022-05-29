@@ -503,7 +503,7 @@ $(function(){
 		$("#select").after(div2);
     }
     
-	if(boardOption != 'e' ){
+	if(boardOption != 'e' && boardOption != 'g' ){
 		<c:forEach var="i" items="${memberDTO}">
 	    	<c:if test="${loginID eq i.id}">
 	    		let span = $("<span>");
@@ -892,7 +892,7 @@ $("#modal_loginBtn").on("click",function(){
 			//관리자 계정일 경우, 공지글로.
 			$(this).siblings("#notice").remove();
 			$(this).siblings("#noticeInput").remove();
-			if(option != 'e' ){
+			if(option != 'e' && option != 'g'){
 	            <c:forEach var="i" items="${memberDTO}">
 		        	<c:if test="${loginID eq i.id}">
 		        		let span = $("<span>");
