@@ -587,4 +587,35 @@ public class BoardDAO {
 		}
 	}
 	
+	
+	//각 게시판 별 공지글
+	public List<BoardDTO> selectNotice(String boardOption) throws Exception {
+		String sql = "select row_number() over(order by write_date desc) line, all_board.* from all_board where all_board_seq like '"+boardOption+"%' and editor_type = 'n'";
+System.out.println(sql);
+		try (Connection con = this.getConnection();
+				PreparedStatement pstat = con.prepareStatement(sql);
+				ResultSet rs = pstat.executeQuery();) {
+			List<BoardDTO> list = new ArrayList<BoardDTO>();
+
+			while (rs.next()) {
+				String all_board_seq = rs.getString("all_board_seq");
+				String id = rs.getString("id");
+				String title = rs.getString("title");
+				String contents = rs.getString("contents");
+				Timestamp write_date = rs.getTimestamp("write_date");
+				int like_count = rs.getInt("like_count");
+				int jjim_count = rs.getInt("jjim_count");
+				int view_count = rs.getInt("view_count");
+				String editor_type = rs.getString("editor_type");
+				int line = rs.getInt("line");
+
+				BoardDTO dto = new BoardDTO(all_board_seq, id, title, contents, write_date, like_count, jjim_count, view_count, editor_type, line);
+				list.add(dto);
+			}
+			return list;
+		}
+	}
+	
+	
+	
 }
