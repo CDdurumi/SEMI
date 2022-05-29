@@ -432,7 +432,7 @@ select{
 		
 				<c:otherwise>
 					<a href="#" class="login" id="login"  data-bs-toggle="modal" data-bs-target="#exampleModal">login</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-          			 <a href="/signup.jsp" class="join">join</a>
+          			 <a href="/goJoinPage.member" class="join">join</a>
 				</c:otherwise>
 			</c:choose>
     </div>

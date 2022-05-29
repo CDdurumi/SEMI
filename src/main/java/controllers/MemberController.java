@@ -56,6 +56,8 @@ public class MemberController extends HttpServlet {
 			else if (uri.equals("/logout.member")) {
 				request.getSession().invalidate();
 				response.sendRedirect("/index.jsp");
+			}else if(uri.equals("/goJoinPage.member")) {  //회원가입 페이지로 이동 
+				response.sendRedirect("/signup.jsp");
 			}
 		} catch (Exception e) {
 			e.printStackTrace();
