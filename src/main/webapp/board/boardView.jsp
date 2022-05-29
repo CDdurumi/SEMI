@@ -841,6 +841,7 @@
                                         		thisdelete.css("display","inline-block");
                                         		thiscancel.remove();
                                         		the.remove();
+                                        		location.reload();  //수정 완료 누르면 새로고침
                                         	})
                                         	dummyremodify='false';
                                         })
@@ -1106,6 +1107,7 @@
                                   btn4.css("display","none");
                                   col6.attr("contenteditable","false");
                                   $(".modify").attr("disabled",false);
+                                  location.reload();  //수정 완료 누르면 새로고침
                              })
                           })
                               
