@@ -508,7 +508,7 @@
          	<div class="row signup_input">
          		<div class ="col-12 input">
                     <div class="card-details">
-                        <input type="password" class="passwords passwords1_input" id="passwords1_input" placeholder="비밀번호" name="pw">
+                        <input type="password" class="passwords passwords1_input" id="form_passwords1_input" placeholder="비밀번호" name="pw">
                         <i class="fa fa-lock"></i>
                     </div>
          		</div>
@@ -517,7 +517,7 @@
          	<div class="row signup_input">
          		<div class ="col-12 input">
                     <div class="card-details">
-            			<input type="password" class="passwords passwords_input" id="password-input" placeholder="비밀번호 확인">
+            			<input type="password" class="passwords passwords_input" id="form_passwords_input" placeholder="비밀번호 확인">
             				<i class="fa fa-lock-open"></i>
             			<span><small class="fa fa-eye-slash passcode"></small></span>
         			</div>
@@ -595,6 +595,7 @@
 
 
 <script>
+
 	
 	$(".negativeBtn").on("click",function(){
 		$("#signin_btn").attr("disabled",true);
@@ -610,23 +611,27 @@
 	
 	$("#signupFrm").on("submit",function(){
 		let nickName = $("#nickname_input");
-		let pw1 = $("#passwords1_input");
+		let pw1 = $("#form_passwords1_input");
+		let pw2 = $("#form_passwords_input");
 		let email = $("#email_input");
-		let bool_check;
+		let bool_check = true;
 		
-		 if(!isEmail(email.val())){
+		if(isEmail(email.val())!==true){
 			email.focus();
 			return false;
 		}
 		 else if(!isNickName(nickName.val())){
 			nickName.focus();
 			return false;
-		}else if(!isPw(pw1.val())){
+			
+			
+		}else if(!isPw(pw1.val()) || pw1.val() !==pw2.val()){
 			pw1.focus();
 			return false;
 		}
-		
-		 $.ajax({
+		 
+		if(bool_check){
+			$.ajax({
 				url:"/isEmailExist.member",
 				type:"get",
 				data:{email:$("#email_input").val()},
@@ -635,7 +640,9 @@
 			}).done(function(resp){
 				$("#email_input").focus();
 				bool_check = !resp;						
-			}); 
+			});	
+		}
+		  
 		
 		 if(bool_check){
 			 $.ajax({
@@ -649,13 +656,9 @@
 						bool_check = !resp;
 					}); 
 		 }
-		 
-		 
+		 	 
 		
-				
 		 
-		
-				
 		 return bool_check;
 	})
 		//닉네임(한글,영문, 숫자 2-10자)
@@ -699,11 +702,12 @@
 			})
 	//비밀번호 확인 
 	$(".passwords").on("input", function () {
-            let pw1 = $(".passwords1_input").val();
-            let pw2 = $(".passwords_input").val();
+            let pw1 = $("#form_passwords1_input").val();
+            let pw2 = $("#form_passwords_input").val();
             let check = $("#pw_check_text");
-            
-            if(pw2!=""){
+            console.log("pw1 : "+ pw1);
+            console.log("pw2 : "+ pw2);
+            if(pw2!=="" &&pw1!==""){
             	if (pw1 == pw2) {
             		if(isPw(pw1)){
             			check.text("비밀번호가 일치합니다");
@@ -719,10 +723,10 @@
                     check.text("비밀번호가 일치하지 않습니다");
                     check.css({ color: "red" });
                 }
-            }else if(pw2==""){
+            }else if(pw2=="" || pw1==""){
     
             	check.text("비밀번호는 필수정보입니다");
-                check.css({ color: "red" });
+                check.css({ color: "black" });
             }
             
         });
@@ -826,7 +830,7 @@
     // input id, input pw, password eyes sign up
     let outer_eye = document.querySelector(".card-details span");
     let eye = document.querySelector(".passcode");
-    let input = document.querySelector("#password-input");
+    let input = document.querySelector("#form_passwords_input");
     outer_eye.addEventListener('click',function(){
 
        if(input.type=='password'){

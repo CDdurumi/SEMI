@@ -26,14 +26,14 @@
         <!-- Bootstrap core CSS -->
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css" integrity="sha512-KfkfwYDsLkIlwQp6LFnl8zNdLGxu9YAA1QvwINks4PhcElQSvqcyVLLD9aMhXd13uQjoXtEKNosOWaZqXgel0g==" crossorigin="anonymous" referrerpolicy="no-referrer" />
         
-        <link href="/docs/5.1/dist/css/bootstrap.min.css" rel="stylesheet"
-            integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+<!--         <link href="/docs/5.1/dist/css/bootstrap.min.css" rel="stylesheet" -->
+<!--             integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous"> -->
 
         <!-- Favicons -->
         <link rel="apple-touch-icon" href="/docs/5.1/assets/img/favicons/apple-touch-icon.png" sizes="180x180">
         <link rel="icon" href="/docs/5.1/assets/img/favicons/favicon-32x32.png" sizes="32x32" type="image/png">
         <link rel="icon" href="/docs/5.1/assets/img/favicons/favicon-16x16.png" sizes="16x16" type="image/png">
-        <link rel="manifest" href="/docs/5.1/assets/img/favicons/manifest.json">
+<!--         <link rel="manifest" href="/docs/5.1/assets/img/favicons/manifest.json"> -->
         <link rel="mask-icon" href="/docs/5.1/assets/img/favicons/safari-pinned-tab.svg" color="#7952b3">
         <link rel="icon" href="/docs/5.1/assets/img/favicons/favicon.ico">
         <meta name="theme-color" content="#7952b3">
@@ -397,6 +397,7 @@ font-weight: bold;
 	padding-top: 2px;
 	padding-left: 2px;
 }			
+
 #page{
 	font-weight:bold;
             color: #0080ff;
@@ -404,6 +405,14 @@ font-weight: bold;
             text-underline-position : under;
             font-size:17px;
             }
+
+#notice{
+	color: red;
+	font-weight: bold;
+	padding-left: 10px;
+	
+}
+
         </style>
         
 <script>
@@ -485,6 +494,22 @@ $(function(){
 		
 		$("#select").after(div2);
     }
+    
+	if(boardOption != 'e' ){
+		<c:forEach var="i" items="${memberDTO}">
+	    	<c:if test="${loginID eq i.id}">
+	    		let span = $("<span>");
+	    		span.attr({id:"notice"});
+	    		span.text("<공지>");
+	    		$("#select").after(span);
+	    		
+	    		let input = $("<input>");
+	    		input.attr({id:"noticeInput",name:"editor_type", value:"n" , type:"hidden"});
+	    		$("#select").after(input);
+	    		
+	    	</c:if>
+		</c:forEach>
+	}
 }) 
 </script>        
     </head>
@@ -783,6 +808,7 @@ $("#modal_loginBtn").on("click",function(){
 // 			alert(previous);
 // 			alert(option);
 			
+			//대표 사진 업로드 하도록 input type file 넣어줌
 			if((option == 'g' || option == 'e' || option == 'h' )){
 				if((previous == 'g' || previous == 'e' || previous == 'h') && (option == 'g' || option == 'e' || option == 'h')){
 					$("#fileArea").children("#profileDiv").remove();
@@ -822,7 +848,7 @@ $("#modal_loginBtn").on("click",function(){
 				$("#fileArea").children("#profileDiv").remove();
 			}
 			
-			
+			//애디터 추천 type 콤보박스
 			if(option == 'e' ){
 				if((previous == 'e')){
 					$(this).siblings("#editorSelect").remove();
@@ -853,6 +879,25 @@ $("#modal_loginBtn").on("click",function(){
 
 			}else{
 				$(this).siblings("#editorSelect").remove();
+			}
+			
+			//관리자 계정일 경우, 공지글로.
+			$(this).siblings("#notice").remove();
+			$(this).siblings("#noticeInput").remove();
+			if(option != 'e' ){
+	            <c:forEach var="i" items="${memberDTO}">
+		        	<c:if test="${loginID eq i.id}">
+		        		let span = $("<span>");
+		        		span.attr({id:"notice"});
+		        		span.text("<공지>");
+		        		$(this).after(span);
+		        		
+		        		let input = $("<input>");
+		        		input.attr({id:"noticeInput",name:"editor_type", value:"n" , type:"hidden"});
+		        		$(this).after(input);
+		        		
+		        	</c:if>
+	        	</c:forEach>
 			}
 		});
 

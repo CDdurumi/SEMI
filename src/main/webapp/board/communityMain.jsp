@@ -600,7 +600,7 @@ font-weight: bold;
 					<div class="col-10 border-bottom hotboard text-center" style="font-weight:bold; font-size:18px;">자유게시판
 						화제글</div>
 					<div class="col-2 border-bottom hotboard text-center">
-						<a class="allview" href="/boardMainView.board?cpage=1"><button type="button" class="btn btn-outline-primary btn-sm">전체보기</button></a>
+						<a class="allview" href="/boardMainView.board?cpage=1"><button type="button" class="btn btn-outline-primary btn-sm" style="white-space:nowrap;">전체보기</button></a>
 					</div>
 
 					<div class="col-12 mt-0">
@@ -744,9 +744,9 @@ font-weight: bold;
 		<div class="row " id="freemain">
 			<div class="col-12 col-md-6 bottom_board">
 				<div class="row border border-2 rounded">
-					<div class="col-10 border-bottom hotboard_bottom text-center" style="font-weight:bold; font-size:18px;">구인구직</div>
-					<div class="col-2 border-bottom hotboard_bottom text-center">
-						<a class="allview" href="/jobMain.board?cpage=1"><button type="button" class="btn btn-outline-primary btn-sm">전체보기</button></a>
+					<div class="col-9 border-bottom hotboard_bottom text-center" style="font-weight:bold; font-size:18px;">구인구직</div>
+					<div class="col-3 border-bottom hotboard_bottom text-center">
+						<a class="allview" href="/jobMain.board?cpage=1"><button type="button" class="btn btn-outline-primary btn-sm" style="white-space:nowrap;">전체보기</button></a>
 					</div>
 					<div class="col-12 ">
 						<div class="row freeboard_bottom ">
@@ -791,9 +791,9 @@ font-weight: bold;
 			</div>
 			<div class="col-12 col-md-6 bottom_board">
 				<div class="row border border-2 rounded">
-					<div class="col-10 border-bottom hotboard_bottom text-center" style="font-weight:bold; font-size:18px;">맛집</div>
-					<div class="col-2 border-bottom hotboard_bottom text-center">
-						<a class="allview" href="/foodMain.board?cpage=1"><button type="button" class="btn btn-outline-primary btn-sm">전체보기</button></a>
+					<div class="col-9 border-bottom hotboard_bottom text-center" style="font-weight:bold; font-size:18px;">맛집</div>
+					<div class="col-3 border-bottom hotboard_bottom text-center">
+						<a class="allview" href="/foodMain.board?cpage=1"><button type="button" class="btn btn-outline-primary btn-sm" style="white-space:nowrap;">전체보기</button></a>
 					</div>
 
 					<div class="col-12 ">
