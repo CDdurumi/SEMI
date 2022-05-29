@@ -388,8 +388,11 @@
             font-weight: bold;
         }
         #page{
+			font-weight:bold;
             color: #0080ff;
-        }
+            text-decoration: underline;
+            text-underline-position : under;
+            font-size:17px;        }
          /* 제목이 길어서 잘렸을 경우 밑의 두개 처리해준다 */
        .ellipsis{
            position: relative;
@@ -478,6 +481,9 @@ select{
 			</c:choose>
         </div>
     </header>
+     <div class="row">
+    <div class="col-12" id="dummy3" style="height: 10px;"></div>
+   </div>
     <ul class="nav nav2">
        <li class="nav-item">
             <a class="nav-link nav-link2" href="/boardMainView.board?cpage=1">자유게시판</a>
@@ -489,7 +495,7 @@ select{
             <a class="nav-link nav-link2" href="/jobMain.board?cpage=1">구인구직</a>
         </li>
         <li class="nav-item">
-            <a class="nav-link nav-link2" href="/foodMain.board?cpage=1">맛집</a>
+            <a class="nav-link nav-link2" href="/foodMain.board?cpage=1" id="page">맛집</a>
         </li>
         <li class="nav-item">
             <a class="nav-link nav-link2" href="/houseMain.board?cpage=1">숙소리뷰</a>

@@ -301,7 +301,13 @@
 
            
             /* div{border:1px solid black;} */
-
+			#page{
+				font-weight:bold;
+            color: #0080ff;
+            text-decoration: underline;
+            text-underline-position : under;
+            font-size:17px;
+			}
             /* 수정버튼 */
             #btn{
                 height: 50px;
@@ -450,12 +456,15 @@ font-weight: bold;
 			</c:choose>
         </div>
     </header>
+     <div class="row">
+    <div class="col-12" id="dummy3" style="height: 10px;"></div>
+   </div>
     <ul class="nav nav2">
         <li class="nav-item">
             <a class="nav-link nav-link2" href="/boardMainView.board?cpage=1">자유게시판</a>
         </li>
         <li class="nav-item">
-            <a class="nav-link nav-link2" href="/galleryMain.board?cpage=1">여행후기</a>
+            <a class="nav-link nav-link2" href="/galleryMain.board?cpage=1" id="page">여행후기</a>
         </li>
         <li class="nav-item">
             <a class="nav-link nav-link2" href="/jobMain.board?cpage=1">구인구직</a>
