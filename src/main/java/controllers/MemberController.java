@@ -83,7 +83,8 @@ public class MemberController extends HttpServlet {
 				System.out.println(email);
 				String information = request.getParameter("info");
 				System.out.println(information);
-				int result = dao.insert(new MemberDTO(nickname,pw,email,null,information));
+				int result = dao.insert(new MemberDTO(nickname,pw,email,null,information,null));
+				
 				
 				HttpSession session = request.getSession();
 				session.setAttribute("loginID", nickname);

@@ -36,7 +36,7 @@ public class MemberDAO {
 
 	public int insert(MemberDTO dto) throws Exception {
 
-		String sql = "insert into member values(?,?,?,default,?)";
+		String sql = "insert into member values(?,?,?,default,?,default)";
 		try (Connection con = this.getConnection(); PreparedStatement pstat = con.prepareStatement(sql);) {
 
 			pstat.setString(1, dto.getId());
@@ -105,7 +105,8 @@ public class MemberDAO {
 				email = rs.getString("email");
 				Timestamp join_date = rs.getTimestamp("join_date");
 				String information = rs.getString("information");
-				return (new MemberDTO(id, null, email, join_date, information));
+				String isadmin = rs.getString("isadmin");
+				return (new MemberDTO(id, null, email, join_date, information,isadmin));
 
 			}
 		}

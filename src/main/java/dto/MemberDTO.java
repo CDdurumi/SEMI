@@ -5,14 +5,15 @@ import java.sql.Timestamp;
 import java.text.SimpleDateFormat;
 
 public class MemberDTO {
-	public MemberDTO(String id, String pw, String email, Timestamp join_date, String information) {
+	
+	public MemberDTO(String id, String pw, String email, Timestamp join_date, String information, String isadmin) {
 		this.id = id;
 		this.pw = pw;
 		this.email = email;
 		this.join_date = join_date;
 		this.information = information;
+		this.isadmin = isadmin;
 	}
-	
 	public MemberDTO() {
 		// TODO Auto-generated constructor stub
 	}
@@ -22,7 +23,7 @@ public class MemberDTO {
 	private String email;
 	private Timestamp join_date;	
 	private String information;
-	
+	private String isadmin;
 	public String getId() {
 		return id;
 	}
@@ -58,5 +59,14 @@ public class MemberDTO {
 			SimpleDateFormat sdf = new SimpleDateFormat("YYYY년 MM월 dd일 ");
 			return sdf.format(this.join_date);
 		}
+
+		public String getIsadmin() {
+			return isadmin;
+		}
+
+		public void setIsadmin(String isadmin) {
+			this.isadmin = isadmin;
+		}
+		
 	
 }

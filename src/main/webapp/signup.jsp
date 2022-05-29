@@ -507,7 +507,7 @@
          	<div class="row signup_input">
          		<div class ="col-12 input">
                     <div class="card-details">
-                        <input type="password" class="passwords passwords1_input" placeholder="비밀번호" name="pw">
+                        <input type="password" class="passwords passwords1_input" id="passwords1_input" placeholder="비밀번호" name="pw">
                         <i class="fa fa-lock"></i>
                     </div>
          		</div>
@@ -609,7 +609,7 @@
 	
 	$("#signupFrm").on("submit",function(){
 		let nickName = $("#nickname_input");
-		let pw1 = $(".passwords1_input");
+		let pw1 = $("#passwords1_input");
 		let email = $("#email_input");
 		let bool_check;
 		
