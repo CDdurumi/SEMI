@@ -314,7 +314,7 @@
                 text-align: right;
             }
             .content{
-                margin: auto;
+                /* margin: auto; */
                 width:50%;
                 max-width: 600px;
                 min-width: 500px;
@@ -562,13 +562,13 @@ $("#modal_loginBtn").on("click",function(){
     <!--Container Main start-->
     <div class="container">
         <div class="row">
-            <div class="col-12 text-center display-6" style="height: 100px; line-height: 95px; border:0px;">
+            <div class="col-12 text-center display-6" style="height: 30px; line-height: 95px; border:0px;">
 <!--                - 애디터 추천글 - -->
             </div>
-            <div class="col-12" id="btn">
-                <button type="button" class="btn btn-primary">수정
+<!--             <div class="col-12" id="btn"> -->
+<!--                 <button type="button" class="btn btn-primary">수정 -->
 
-            </div>
+<!--             </div> -->
 
 
         </div>
