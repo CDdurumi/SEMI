@@ -649,11 +649,15 @@ $("#modal_loginBtn").on("click",function(){
                         <option value="h">
                             숙소리뷰
                         </option>
-<%--                         <c:if test="${loginID eq 'admin'}"> --%>
-	                        <option value="e">
-	                            애디터추천
-	                        </option>
-<%--                         </c:if> --%>
+                        
+                        <c:forEach var="i" items="${memberDTO}">
+                        	<c:if test="${loginID eq i.id}">
+								<option value="e">
+	                            	애디터추천
+	                        	</option>
+                        	</c:if>
+                        </c:forEach>
+
                     </select>
                     <input type="text" placeholder="글 제목을 입력하세요" name="title" class="title" required>
                 </div>
