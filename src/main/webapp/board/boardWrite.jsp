@@ -494,11 +494,11 @@ $(function(){
 	    		let span = $("<span>");
 	    		span.attr({id:"notice"});
 	    		span.text("<공지>");
-	    		$(this).after(span);
+	    		$("#select").after(span);
 	    		
 	    		let input = $("<input>");
 	    		input.attr({id:"noticeInput",name:"editor_type", value:"n" , type:"hidden"});
-	    		$(this).after(input);
+	    		$("#select").after(input);
 	    		
 	    	</c:if>
 		</c:forEach>
