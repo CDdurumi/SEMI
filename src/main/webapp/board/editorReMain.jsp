@@ -464,7 +464,7 @@ font-weight: bold;
             <a class="nav-link nav-link2" href="/boardMainView.board?cpage=1">자유게시판</a>
         </li>
         <li class="nav-item">
-            <a class="nav-link nav-link2" href="/galleryMain.board?cpage=1" id="page">여행후기</a>
+            <a class="nav-link nav-link2" href="/galleryMain.board?cpage=1" >여행후기</a>
         </li>
         <li class="nav-item">
             <a class="nav-link nav-link2" href="/jobMain.board?cpage=1">구인구직</a>
