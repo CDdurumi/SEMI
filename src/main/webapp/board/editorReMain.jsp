@@ -585,14 +585,14 @@ $("#modal_loginBtn").on("click",function(){
 										<div class="row h-100">
 											<div class="col-4 h-100 username">
 												<div class="row h-100">
-													<div class="col-12">${i.id}</div>
-													<div class="col-12">${i.formdDate}</div>
-													<div class="col-12">${i.view_count}</div>
+													<div class="col-12"><i class="bx bx-user"></i> ${i.id}</div>
+													<div class="col-12"><i class="bx bx-calendar-alt"></i> ${i.editorFormdDate}</div>
+													<div class="col-12"><i class="bx bx-face"></i> ${i.view_count}</div>
 
 												</div>
 											</div>
 											<div class="col-8 h-100 title">
-												<a href = "/detailView.board?cpage=1&seq=${i.all_board_seq}&click=ok">
+												<a href = "/detailView.board?cpage=1&seq=${i.all_board_seq}&click=ok" style="font-weight:bold; color:black; font-size:25px;">
 													${i.title}
 												</a>
 											</div>

@@ -503,21 +503,29 @@ $(function(){
 		$("#select").after(div2);
     }
     
-	if(boardOption != 'e' && boardOption != 'g' ){
+	
 		<c:forEach var="i" items="${memberDTO}">
 	    	<c:if test="${loginID eq i.id}">
-	    		let span = $("<span>");
-	    		span.attr({id:"notice"});
-	    		span.text("<공지>");
-	    		$("#select").after(span);
-	    		
-	    		let input = $("<input>");
-	    		input.attr({id:"noticeInput",name:"editor_type", value:"n" , type:"hidden"});
-	    		$("#select").after(input);
+		    	if(boardOption != 'e' && boardOption != 'g' ){
+		    		let span = $("<span>");
+		    		span.attr({id:"notice"});
+		    		span.text("<공지>");
+		    		$("#select").after(span);
+		    		
+		    		let input = $("<input>");
+		    		input.attr({id:"noticeInput",name:"editor_type", value:"n" , type:"hidden"});
+		    		$("#select").after(input);
+		    		
+	        		if(boardOption == 'h'){
+						
+	        			$("#fileArea").children("#profileDiv").remove();
+
+					}
+		    	}
 	    		
 	    	</c:if>
 		</c:forEach>
-	}
+
 }) 
 </script>        
     </head>
@@ -892,21 +900,31 @@ $("#modal_loginBtn").on("click",function(){
 			//관리자 계정일 경우, 공지글로.
 			$(this).siblings("#notice").remove();
 			$(this).siblings("#noticeInput").remove();
-			if(option != 'e' && option != 'g'){
+			
 	            <c:forEach var="i" items="${memberDTO}">
 		        	<c:if test="${loginID eq i.id}">
-		        		let span = $("<span>");
-		        		span.attr({id:"notice"});
-		        		span.text("<공지>");
-		        		$(this).after(span);
+		        		if(option != 'e' && option != 'g'){
+		        	
+			        		let span = $("<span>");
+			        		span.attr({id:"notice"});
+			        		span.text("<공지>");
+			        		$(this).after(span);
+			        		
+			        		let input = $("<input>");
+			        		input.attr({id:"noticeInput",name:"editor_type", value:"n" , type:"hidden"});
+			        		$(this).after(input);
+			        		
+			        		if(option == 'h'){
+								
+			        			$("#fileArea").children("#profileDiv").remove();
+
+							}
 		        		
-		        		let input = $("<input>");
-		        		input.attr({id:"noticeInput",name:"editor_type", value:"n" , type:"hidden"});
-		        		$(this).after(input);
+						}
 		        		
 		        	</c:if>
 	        	</c:forEach>
-			}
+
 		});
 
 
