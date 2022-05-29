@@ -1569,7 +1569,7 @@ $("#modal_loginBtn").on("click",function(){
         		data:{nickname:$("#editID").val()},
         		dataType:"json"
         		}).done(function(resp){
-        				console.log("닉네임 조회 resp : " + resp)
+        				console.log("닉네임 조회 resp : " + resp);
         					if(resp==false){						
         			        	if(isNickName($("#editID").val())) {
         			        		if($("#pw1").val()==$("#pw2").val()){
@@ -1616,7 +1616,7 @@ $("#modal_loginBtn").on("click",function(){
         						alert("이미 사용중인 닉네임입니다")
         					}
         					
-        				});
+        				};
         			})        	
       
         
@@ -1677,6 +1677,12 @@ $("#modal_loginBtn").on("click",function(){
           input.classList.remove('warning');
       }
     });
+    
+    
+    </script>
+    
+    <script>
+    
         document.addEventListener("DOMContentLoaded", function (event) {
 
             const show1Navbar = (toggleId, navId, bodyId, headerId) => {
@@ -1742,6 +1748,8 @@ $("#modal_loginBtn").on("click",function(){
          calendar.render();
          });
     </script>
+    
+    
     <script type="text/javascript">
     let city = ['Jeju City'];
    
@@ -2006,9 +2014,7 @@ $("#modal_sendmsg").on("click", function(){
     }
 })
 </script>
-<script>
 
-</script>
 </body>
 
 </html>
