@@ -70,7 +70,7 @@ public class BoardDAO {
 								+ "(select row_number() over(order by write_date desc) line, all_board.* "
 								+ "from all_board "
 								+ "where all_board_seq like '"+boardOption+"%' and "+serchOption+" like '%"+ccontents+"%') "
-					+ "where line between ? and ?";
+					+ "where line between ? and ? and editor_type != 'n'";
 
 		System.out.println(sql);
 		try (Connection con = this.getConnection();
@@ -115,8 +115,12 @@ public class BoardDAO {
 			pstat.setString(2, dto.getId());
 			pstat.setString(3, dto.getTitle());
 			pstat.setString(4, dto.getContents());
-			pstat.setString(5, dto.getEditor_type());
-
+			if(dto.getEditor_type() == null) {
+				pstat.setString(5, "none");
+			}else {
+				pstat.setString(5, dto.getEditor_type());
+			}
+			
 			int result = pstat.executeUpdate();
 			con.commit();
 			return result;
@@ -253,7 +257,7 @@ public class BoardDAO {
 
 	// 게시판 리스트 출력
 	public List<BoardDTO> selectAll(String boardOption) throws Exception {
-		String sql = "select row_number() over(order by write_date desc) line, all_board.* from all_board where all_board_seq like '"+boardOption+"%'";
+		String sql = "select row_number() over(order by write_date desc) line, all_board.* from all_board where all_board_seq like '"+boardOption+"%' and editor_type != 'n'";
 
 		try (Connection con = this.getConnection();
 				PreparedStatement pstat = con.prepareStatement(sql);
@@ -282,7 +286,7 @@ public class BoardDAO {
 	
 	// 애디터 추천 게시판 리스트 출력(by editor_type)
 	public List<BoardDTO> selectByEditorType(String boardOption, String eeditor_type) throws Exception {
-		String sql = "select row_number() over(order by write_date desc) line, all_board.* from all_board where all_board_seq like '"+boardOption+"%' and editor_type = ?";
+		String sql = "select row_number() over(order by write_date desc) line, all_board.* from all_board where all_board_seq like '"+boardOption+"%' and editor_type = ? and editor_type != 'n'";
 
 		try (Connection con = this.getConnection();
 				PreparedStatement pstat = con.prepareStatement(sql);) {
@@ -338,7 +342,7 @@ public class BoardDAO {
 
 	// DB의 총 record 개수를 알아내기 위한 메소드
 	private int getRecordTotalCount(String boardOption) throws Exception {
-		String sql = "select count(*) from all_board where all_board_seq like '"+boardOption+"%'";
+		String sql = "select count(*) from all_board where all_board_seq like '"+boardOption+"%' and editor_type != 'n'";
 
 		try (Connection con = this.getConnection();
 				PreparedStatement pstat = con.prepareStatement(sql);
@@ -518,8 +522,8 @@ public class BoardDAO {
 		int start = (cpage-1) * 20 +1;
 		int end = cpage * 20;
 
-		// 한 페이지에 게시글이 10개씩 보여지도록 하기 위해서 row_number를 활용하는데, 서브 쿼리를 활용해서 select 해준다.
-		String sql = "select * from (select row_number() over(order by write_date desc) line, all_board.* from all_board where all_board_seq like '"+boardOption+"%') where line between ? and ?";
+		// 한 페이지에 게시글이 20개씩 보여지도록 하기 위해서 row_number를 활용하는데, 서브 쿼리를 활용해서 select 해준다.
+		String sql = "select * from (select row_number() over(order by write_date desc) line, all_board.* from all_board where all_board_seq like '"+boardOption+"%' and editor_type != 'n') where line between ? and ?";
 						
 		try (Connection con = this.getConnection(); PreparedStatement pstat = con.prepareStatement(sql);) {
 			pstat.setInt(1, start);
@@ -555,7 +559,7 @@ public class BoardDAO {
 		int start = 1;
 		int end = 6;
 					  
-		String sql = "select * from (select row_number() over(order by like_count desc, view_count desc) line, all_board.* from all_board where all_board_seq like '"+boardOption+"%') where line between ? and ?";
+		String sql = "select * from (select row_number() over(order by like_count desc, view_count desc) line, all_board.* from all_board where all_board_seq like '"+boardOption+"%' and editor_type != 'n') where line between ? and ?";
 		try (Connection con = this.getConnection(); PreparedStatement pstat = con.prepareStatement(sql);) {
 			pstat.setInt(1, start);
 			pstat.setInt(2, end);
