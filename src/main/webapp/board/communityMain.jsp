@@ -856,6 +856,9 @@ font-weight: bold;
 		</div>
 		
 	</div>
+	
+	</div>
+	</div>
 	<footer class="mt-auto text-black-50" style="background-color:#f5f5f7">
         	<hr>
         	<div class="row">
@@ -876,6 +879,8 @@ font-weight: bold;
         	</div>
         	<hr>
         </footer>
+	</div>
+	
 	</div>
        
 
