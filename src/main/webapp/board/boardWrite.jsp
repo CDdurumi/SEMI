@@ -397,6 +397,15 @@ font-weight: bold;
 	padding-top: 2px;
 	padding-left: 2px;
 }			
+
+
+#notice{
+	color: red;
+	font-weight: bold;
+	padding-left: 10px;
+	
+}
+
         </style>
         
 <script>
@@ -478,6 +487,22 @@ $(function(){
 		
 		$("#select").after(div2);
     }
+    
+	if(boardOption != 'e' ){
+		<c:forEach var="i" items="${memberDTO}">
+	    	<c:if test="${loginID eq i.id}">
+	    		let span = $("<span>");
+	    		span.attr({id:"notice"});
+	    		span.text("<공지>");
+	    		$(this).after(span);
+	    		
+	    		let input = $("<input>");
+	    		input.attr({id:"noticeInput",name:"editor_type", value:"n" , type:"hidden"});
+	    		$(this).after(input);
+	    		
+	    	</c:if>
+		</c:forEach>
+	}
 }) 
 </script>        
     </head>
@@ -776,6 +801,7 @@ $("#modal_loginBtn").on("click",function(){
 // 			alert(previous);
 // 			alert(option);
 			
+			//대표 사진 업로드 하도록 input type file 넣어줌
 			if((option == 'g' || option == 'e' || option == 'h' )){
 				if((previous == 'g' || previous == 'e' || previous == 'h') && (option == 'g' || option == 'e' || option == 'h')){
 					$("#fileArea").children("#profileDiv").remove();
@@ -815,7 +841,7 @@ $("#modal_loginBtn").on("click",function(){
 				$("#fileArea").children("#profileDiv").remove();
 			}
 			
-			
+			//애디터 추천 type 콤보박스
 			if(option == 'e' ){
 				if((previous == 'e')){
 					$(this).siblings("#editorSelect").remove();
@@ -846,6 +872,25 @@ $("#modal_loginBtn").on("click",function(){
 
 			}else{
 				$(this).siblings("#editorSelect").remove();
+			}
+			
+			//관리자 계정일 경우, 공지글로.
+			$(this).siblings("#notice").remove();
+			$(this).siblings("#noticeInput").remove();
+			if(option != 'e' ){
+	            <c:forEach var="i" items="${memberDTO}">
+		        	<c:if test="${loginID eq i.id}">
+		        		let span = $("<span>");
+		        		span.attr({id:"notice"});
+		        		span.text("<공지>");
+		        		$(this).after(span);
+		        		
+		        		let input = $("<input>");
+		        		input.attr({id:"noticeInput",name:"editor_type", value:"n" , type:"hidden"});
+		        		$(this).after(input);
+		        		
+		        	</c:if>
+	        	</c:forEach>
 			}
 		});
 
