@@ -395,6 +395,21 @@
 #myBtn:hover {
   background-color: #555; 
 }
+@media (min-width: 576px) {
+  .footer1 {
+    text-align:right;
+  }
+}
+@media (max-width: 960px) {
+  .footer2 {
+    text-align:center;
+  }
+}
+@media (min-width: 960px) {
+  .footer2 {
+    text-align:left;
+  }
+}
 
 
 
@@ -582,8 +597,29 @@
          		<button type="submit" class="btn btn-primary" id ="signin_btn">회원가입</button>
          	</div> 	
         </div>
-        </div>       
+        </div>
+               
 </div>
+<footer class="mt-auto text-black-50" style="background-color:#f5f5f7">
+        	<hr>
+        	<div class="row">
+        		<div class="d-none d-lg-block col-5 footer1">
+        			<img src="/imgsrc/footerlogo2.png">
+        		</div>
+        		<div class="col-12 col-lg-7 footer2">
+        			<div class="col-12">
+        				프로젝트 쉼표
+        			</div>
+        			<div class="col-12">
+        				강석원 | 강정윤 | 박한길 | 어 현 | 임혜경 | 조양기
+        			</div>
+        			<div class="col-12">
+        				Designed by Catch the Java
+        			</div>
+        		</div>
+        	</div>
+        	<hr>
+        </footer>
 </form>
 
  <!--top 버튼-->
