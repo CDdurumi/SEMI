@@ -1,7 +1,7 @@
   <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-    <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-            
+  <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+  <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 <!DOCTYPE html>
 <html>
 
@@ -315,6 +315,7 @@
             }
             .content{
                 /* margin: auto; */
+                
                 width:50%;
                 max-width: 600px;
                 min-width: 500px;
@@ -339,7 +340,9 @@
                 border: 1px solid gray;
                 border-radius: 20px;
                 padding-top: 20px;
-                margin-right: 20px;
+                
+               	margin-right: 20px; 
+               	
             }
             .userimg{
                 padding-top: 10px;
@@ -579,7 +582,7 @@ $("#modal_loginBtn").on("click",function(){
 					<c:forEach var="j" items="${porfileList}">
 						<c:if test="${j.parent_seq eq i.all_board_seq}">
 
-							<div class="col-12 col-md-6 content ">
+							<div class="col-12 col-md-6 content" style="margin:auto;">
 								<div class="row h-100 wrapper">
 									<div class="col-12 main">
 										<div class="row h-100">
@@ -628,10 +631,15 @@ $("#modal_loginBtn").on("click",function(){
 								</div>
 
 							</div>
-			
+							
 						</c:if>
+						
+						
 					</c:forEach>
 				</c:forEach>
+				<c:if test="${fn:length(list) % 2 eq 1}">
+								<div class="col-6"></div>
+							</c:if>
 
         </div>
 <footer class="mt-auto text-black-50" style="background-color:#f5f5f7">
