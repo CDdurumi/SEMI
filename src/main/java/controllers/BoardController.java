@@ -185,6 +185,9 @@ public class BoardController extends HttpServlet {
 				request.setAttribute("list", list);
 				request.setAttribute("navi", pageNavi);
 				
+				//공지글 리스트
+				List<BoardDTO> noticeList = dao.selectNotice(boardOption);
+				request.setAttribute("noticeList", noticeList);
 				///////숙소 화제 게시글///////
 				request.setAttribute("hotlist", hotlist);
 				List<FilesDTO> hFilesDao = filesDAO.selectSysName(boardOption);//숙소 게시글 프로필 - sys_name get(해당게시글seq와 sys_name담겨 있음).
@@ -282,6 +285,9 @@ public class BoardController extends HttpServlet {
 				}else if(boardOption.equals("h")) {//숙소리뷰 메인페이지
 					absolutePath = "/board/houseMain.jsp";
 					
+					//공지글 리스트
+					List<BoardDTO> noticeList = dao.selectNotice(boardOption);
+					request.setAttribute("noticeList", noticeList);
 					///////숙소 화제 게시글///////
 					List<FilesDTO> hFilesDao = filesDAO.selectSysName(boardOption);//애디터추천 게시글 프로필 - sys_name get(해당게시글seq와 sys_name담겨 있음).
 					request.setAttribute("housePorfileList", hFilesDao);
