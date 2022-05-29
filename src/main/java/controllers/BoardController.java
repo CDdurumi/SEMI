@@ -324,6 +324,7 @@ public class BoardController extends HttpServlet {
 				String boardOption = multi.getParameter("boardOption");
 				String seq = dao.getSeqNextVal(boardOption); //해당 작성글 넘버 가져오기(해당 게시판의 seq)
 				String editor_type = multi.getParameter("editor_type");//에디터 게시글 분류(자유게시판:f,구인구직:s,숙소리뷰:h)
+				System.out.println(editor_type);
 				//게시글 저장 //
 				dao.insert(new BoardDTO(seq, writer, title, contents, null, 0, 0, 0, editor_type, 0));
 
