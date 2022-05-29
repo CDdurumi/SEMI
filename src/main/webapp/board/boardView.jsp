@@ -371,34 +371,39 @@
         }
        #heart{
            width: 82%;
-           text-align: right;
-           padding-top: 30px;
-       }
+           padding-top: 20px;
+           padding-left: 20px;
+           flex-wrap: nowrap; 
+       } 
+       #ht{
+         float: left;
+      }       
        #count{
            padding-top: 5px;
-        width: 82%;
+            width: 82%;
            text-align: center;
            padding-right: 5px;
        }
        #jjimcol{
-           font-size: 30px;
+           font-size: 27px;
            color: #b1b1b1;
            text-align: center;
            padding: 0px;
-           border-radius: 100px;
-           border: 1px solid rgb(177, 177, 177);
-           max-width: 47px;
-           min-width: 47px;
+            max-width: 56px;
+            min-width: 56px; 
+            float: left;
+            text-align: center;      
        }
        #goodcol{
-        font-size: 30px;
+           font-size: 27px;
            color: #b1b1b1;
            text-align: center;
            padding: 0px;
-           border-radius: 100px;
-           border: 1px solid rgb(177, 177, 177);
-           max-width: 47px;
-           min-width: 47px;
+           max-width: 56px;
+           min-width: 56px; 
+           float: left;
+           text-align: center;
+           
        }
        #likecnt{
            padding: 0px;
@@ -420,7 +425,14 @@
            width: 90%;
            padding-bottom: 10px;
        }
-     
+       .fa-border{
+         border-radius: 50%; 
+         height: 50px;
+         width:50px;
+         padding-top: 9px;
+        
+     }
+
         .rebtn{
             text-align: right;
         }
@@ -1390,40 +1402,48 @@ $("#modal_loginBtn").on("click",function(){
                     </div>
                 </div>
             </div>
-            <div class="col-12" style="text-align: right; padding-top: 10px;padding-right: 100px;">
+            <!-- <div class="col-12" style="text-align: right; padding-top: 10px;padding-right: 100px;">
 <%--                <c:if test="${loginID == dto.id}"> --%>
                      <button class="btn btn-primary " type="button" id="boardModi">수정</button>
                      <button class="btn btn-primary " type="button" id="boardDel">삭제</button>
 <%--                   </c:if> --%>
-            </div>
+            </div> -->
             
-            <div class="row " id="heart" style="margin: auto;">
-                
-                <div class="col-1" id="goodcol">
-                    <i class="fa-solid fa-thumbs-up"></i>
-                </div>
-                <div class="col-1 jjimdummy " ></div>
-                <div class="col-1 text-center" id="jjimcol">
-                    <i class="fa-solid fa-heart"></i>
-                </div>
-                <div class="col-9">
-                </div>
-            </div>
+            <div class="col-12"  id="heart" style="margin: auto;">
 
-            <div class="row " id="count" style="margin: auto;">
-                
-                <div class="col-1" id="likecnt">
-                    ${dto.like_count}
+                <div class="col-6" id="ht" >
+                    <div class="col-3" id="goodcol">
+                        <i class="fa-solid fa-border fa-thumbs-up"></i>
+                    </div>
+                    <div class="col-3" id="jjimcol">
+                        <i class="fa-solid fa-border fa-star"></i>
+                    </div>
                 </div>
-                <div class="col-1 jjimdummy" ></div>
-                <div class="col-1 text-center" id="jjimcnt">
-                   ${dto.jjim_count}
+        
+                <div class="col-6" id="ht" style="text-align: right; padding-top:8px; padding-right: 20px;">
+                    <c:if test="${loginID == dto.id}"> 
+                    <button class="btn btn-primary " type="button" id="boardModi">수정</button>
+                 <button class="btn btn-primary " type="button" id="boardDel">삭제</button>
+                 </c:if> 
                 </div>
-                <div class="col-9"></div>
-            </div>
             
-        </div>
-        <br>
+                    </div>
+                    <div class="row " id="count" style="margin: auto;">
+                        
+                        <div class="col-1" id="likecnt">
+                            ${dto.like_count}
+                        </div>
+                        <div class="col-1 jjimdummy" ></div>
+                        <div class="col-1 text-center" id="jjimcnt">
+                           ${dto.jjim_count}
+                        </div>
+                        <div class="col-9"></div>
+                    </div>
+                    
+                </div> 
+
+                <br>
+
 
         <div class="col-12" id="message">
 <%--          $("#message").text("댓글 ${reTotalCnt}개"); --%>
@@ -1649,15 +1669,15 @@ $("#modal_loginBtn").on("click",function(){
         }
         
         if (good) {
-            $("#goodcol").css("color", "#ffd000" );
-            $("#goodcol").css("border","1px solid #ffd000" );
+            $("#goodcol").css("color", "#blue");
+            $(".fa-thumbs-up").css("--fa-border-color","blue");
             good=false;
             const toast = new bootstrap.Toast(toastLiveExample1)
 
         	toast.show();
         } else {
             $("#goodcol").css("color", "#b1b1b1");
-            $("#goodcol").css("border","1px solid #b1b1b1" );
+            $(".fa-thumbs-up").css("--fa-border-color","#b1b1b1");
             good=true;
             const toast = new bootstrap.Toast(toastLiveExample2)
 
@@ -1695,8 +1715,8 @@ $("#modal_loginBtn").on("click",function(){
     let heart = true;
     if(${isBoardJjim!=null}){
        if(${isBoardJjim==true}){
-            $("#jjimcol").css("color", "red" );
-            $("#jjimcol").css("border","1px solid red" );
+            $("#jjimcol").css("color", "yellow" );
+            $(".fa-star").css("--fa-border-color","yellow");
           heart=false;
        }
     }
@@ -1709,8 +1729,8 @@ $("#modal_loginBtn").on("click",function(){
         }
        
         if (heart) {
-            $("#jjimcol").css("color", "red" );
-            $("#jjimcol").css("border","1px solid red" );
+            $("#jjimcol").css("color", "yellow" );
+            $(".fa-star").css("--fa-border-color","yellow");
             heart=false;
             
             const toast = new bootstrap.Toast(toastLiveExample3)
@@ -1718,7 +1738,7 @@ $("#modal_loginBtn").on("click",function(){
         	toast.show();
         } else {
             $("#jjimcol").css("color", "#b1b1b1");
-            $("#jjimcol").css("border","1px solid #b1b1b1" );
+            $(".fa-star").css("--fa-border-color","#b1b1b1");
             heart=true;
             
             const toast = new bootstrap.Toast(toastLiveExample4)
