@@ -1408,24 +1408,24 @@ $("#modal_loginBtn").on("click",function(){
                                        <input type="text" value="${loginID }" id="editID" style="text-align:center" name = "id" disabled/>
                                     </div>
                                     
-                                    <div class="col-12 newcheck" id="testID" >아이디:</div>
+                                    <div class="col-12 newcheck" id="testID" ></div>
                                     
                                 </div>
                                 <div class="row "  id="pw" >
                                     <div class="col-12 col-md-4 pw content" style="display:none;"><strong>비밀번호</strong> </div>
                                     <div class="col-12 col-md-8 modify content pw" style="display:none;">
-                                        <input type="password" placeholder="비밀번호" id="pw1" name="pw">
+                                        <input type="password" placeholder="비밀번호" id="pw1" name="pw" class="pw_check">
                                     </div>
                                     
-                                    <div class="col-12 newcheck" id="testPW" >비밀번호:</div>
+                                    <div class="col-12 newcheck" id="testPW" ></div>
                                     
-                                    <div class="col-12 col-md-4 check2" style="display:none;"><strong>비밀번호 확인</strong> </div>
+                                    <div class="col-12 col-md-4 check2" style="display:none;"><strong></strong> </div>
                                     <div class="col-12 col-md-8 check2" style="display:none;">
-                                        <input type="password" placeholder="비밀번호 확인" id="pw2">
+                                        <input type="password" placeholder="비밀번호 확인" id="pw2" class="pw_check">
                                         
                                     </div>
                                     
-                                    <div class="col-12 newcheck" id="testPWok" >비밀번호확인:</div>
+                                    <div class="col-12 newcheck" id="testPWok" ></div>
                                     
                                 </div>
                                 <div class="row" id="email">
@@ -1512,7 +1512,8 @@ $("#modal_loginBtn").on("click",function(){
             $("#modal_loginBtn").click();
         }
     })
-    //컨텐츠 숨김 나타냄
+    
+    //컨텐츠 숨김 나타냄 회원정보 수정
     $("#modify").on("click",function(){
         $(".content").css("display","none"); //모든 컨텐츠
         $("#back").css("display","inline"); //취소버튼
@@ -1530,7 +1531,7 @@ $("#modal_loginBtn").on("click",function(){
         	console.log(resp);
             
         	if(resp){
-        		 $(".newcheck").css("display","block"); //정규식 확인 보이기
+        		$(".newcheck").css("display","block"); //정규식 확인 보이기
                 $(".content").css("display","inline");
                 $("#ok").css("display","inline");    //완료버튼
                 $(".pw").css("display","block");    //비번 수정
@@ -1553,71 +1554,134 @@ $("#modal_loginBtn").on("click",function(){
         })
             
         })
-       
-
         })
-    
         
-       
-        	$("#ok").on("click",function(){
+        
+        //회원정보 수정 완료
+         //회원정보 수정 완료시
+        $("#ok").on("click",function(){
+        	if('${loginID }'==$("#editID").val()){
+        		
+        		if($("#pw1").val()==$("#pw2").val()&& isPw($("#pw1").val())){
+        			$.ajax({
+                		url:"/modifiedOk.member",
+                        data:{id:$("#editID").val(), pw:$("#pw1").val()},
+                        dataType:"json",
+                        type:"post"
+                	}).done(function(resp){
+          
+                		if(resp){        	//회원정보 수정 성공시		                			
+                			location.reload();
+                		}else{
+                			alert("error");
+                		}        			                		
+                	})
+        		}else{
+        			$("#pw1").focus();
+        		}
+        		
+        	}else{
+        		console.log("duplIDCheck.member 실행");
         		$.ajax({
-        		url:"/duplIDCheck.member",
-        		type:"get",
-        		data:{nickname:$("#editID").val()},
-        		dataType:"json"
-        		}).done(function(resp){
-        				console.log("닉네임 조회 resp : " + resp);
-        					if(resp==false){						
-        			        	if(isNickName($("#editID").val())) {
-        			        		if($("#pw1").val()==$("#pw2").val()){
-        			        			if(isPw($("#pw1").val())){
-
-
-        			            		alert(1);
-        			                	console.log($("#editID").val());
-        			                	console.log($("#pw1").val());
-        			                	$.ajax({
-        			                		url:"/modifiedOk.member",
-        			                        data:{id:$("#editID").val(), pw:$("#pw1").val()},
-        			                        dataType:"json",
-        			                        type:"post"
-        			                	}).done(function(resp){
-        			                		alert(2);
-        			                		if(resp){
-        			                			alert("변경완료");	
-        			                			 $(".pw").css("display","none"); //모든 컨텐츠
-        			                			 $(".check2").css("display","none"); //모든 컨텐츠
-        			                			 $("#ok").css("display","none");    //완료버튼
-        			                			 $("#modify").css("display","block");   //수정하기 버튼
-        			                			 $("#editID").attr("disabled", true);
-        			                			 $(".newcheck").css("display","none");//정규식 확인 버튼
-        			                			 $("#back").css("display","none");
-        			                		     $("#pwtext").val("");
-        			                		     $("#pwtext").attr("placeholder","비밀번호를 입력하세요.");
-        			                		}else{
-        			                			alert("error");
-        			                		}
-        			                		
-        			                	})	
-        			        		}else{
-        			        			
-        			        			alert("비밀번호 양실이 틀립니다")
-        			        		}
-        			        		
-        			        	}else{
-        			        		$("#testID").text("닉네임 양식이 틀립니다.");
-    			        			$("#testID").css("color:red");
-//         			        		alert("닉네임이 양식이 틀립니다")
-        			        	}
-        					}else if(resp==true){
-        						alert("이미 사용중인 닉네임입니다")
+            		url:"/duplIDCheck.member",
+            		type:"get",
+            		data:{nickname:$("#editID").val()},
+            		dataType:"json"
+            		}).done(function(resp){
+            				console.log("닉네임 조회 resp : " + resp);
+            					if(resp==false){						
+            			        	if(isNickName($("#editID").val())) {
+            			        		if($("#pw1").val()==$("#pw2").val()){
+            			        			if(isPw($("#pw1").val())){
+            			                	$.ajax({
+            			                		url:"/modifiedOk.member",
+            			                        data:{id:$("#editID").val(), pw:$("#pw1").val()},
+            			                        dataType:"json",
+            			                        type:"post"
+            			                	}).done(function(resp){
+            			          
+            			                		if(resp){        	//회원정보 수정 성공시		                			
+            			                			location.reload();
+            			                		}else{
+            			                			alert("error");
+            			                		}        			                		
+            			                	})	
+            			        		}else{    			        			
+            			        			$("#pw1").focus();
+            			        		}
+            			        		
+            			        	}else{
+            			        		$("#editID").focus();         			        
+            			        	}
+            					}
+            					
+            				}
+            					else if(resp==true){
+            						$("#editID").focus();
+            						$("#testID").text("이미 사용중인 닉네임입니다.");
+        		        			$("#testID").css({ color: "red" });
         					}
-        					
-        				};
-        			})        	
+            			})       
+        	}
+        	 	
         	})
-        
 //정규식
+
+//아이디 중복확인
+		$("#editID").on("input",function(){
+			
+		$.ajax({
+		url:"/duplIDCheck.member",
+		type:"get",
+		data:{nickname:$("#editID").val()},
+		dataType:"json"
+		}).done(function(resp){
+				
+					if(resp==false){						
+						if(isNickName($("#editID").val())){
+							$("#testID").text("사용 가능한 닉네임입니다!");
+							$("#testID").css({ color: "blue" });
+						}else{
+							$("#testID").text("닉네임은 한글,영문, 숫자 2-10자");
+							$("#testID").css({ color: "red" });
+						}
+
+					}else if('${loginID }'==$("#editID").val()){
+    					$("#testID").text("본인의 닉네임입니다.");
+	        			$("#testID").css({ color: "blue" });
+    				}else if(resp==true){
+						$("#testID").text("사용중인 닉네임입니다!");
+						$("#testID").css({ color: "red" });
+					}
+				});
+			})
+	//비밀번호 확인 
+	$(".pw_check").on("input", function () {
+            let pw1 = $("#pw1").val();
+            let pw2 = $("#pw2").val();
+            let check = $("#testPWok");
+            if(pw2!=="" &&pw1!==""){
+            	if (pw1 == pw2) {
+            		if(isPw(pw1)){
+            			check.text("비밀번호가 일치합니다");
+                        check.css({ color: "blue" });
+            		}else{
+            			check.text("비밀번호는 숫자,영문,특수문자 포함 8~16자");
+                        check.css({ color: "red" });
+                        
+            		}                	
+                }
+                else if(pw1!==pw2){
+                    check.text("비밀번호가 일치하지 않습니다");
+                    check.css({ color: "red" });
+                }
+            }else if(pw2=="" || pw1==""){
+    
+            	check.text("비밀번호는 필수정보입니다");
+                check.css({ color: "black" });
+            }
+            
+        });
 
 //닉네임(한글,영문, 숫자 2-10자)
 		function isNickName(asValue) {
