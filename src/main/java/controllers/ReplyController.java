@@ -94,6 +94,14 @@ public class ReplyController extends HttpServlet {
 				PrintWriter pw = response.getWriter();
 				pw.append(g.toJson(list));
 				
+			}else if(uri.equals("/reReplyinfo.reply")) {
+				String seq = request.getParameter("reply_re_seq");
+				System.out.println(seq);
+				ReplyReDTO result = daoRe.reReplyinfo(seq);
+				System.out.println(result.getContents());
+				PrintWriter pw = response.getWriter();
+				pw.append(g.toJson(result));
+				
 			}
 			
 			
