@@ -1,6 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+
+
 <!DOCTYPE html>
 <html>
 
@@ -535,7 +537,7 @@ pageEncoding="UTF-8"%>
             /* border-top: 1px solid #0080ff; */
         }
         .btn{
-            margin-top: 20px;
+/*             margin-top: 20px; */
         }
 
 /*--top버튼----------------------------------------------------------------*/
@@ -572,6 +574,17 @@ pageEncoding="UTF-8"%>
  }
 
 
+
+select{
+    border-radius: 5px;
+    margin-right: 8px;
+    font-size: 18px;
+    font-weight: bold;
+}
+#notice{
+color:red;
+font-weight:bold;
+}
     </style>
 	<script>
 // 	 let page = 1;  //페이징과 같은 방식이라고 생각하면 된다.
@@ -709,26 +722,181 @@ $("#modal_loginBtn").on("click",function(){
 		})
 </script>
 
-<ul class="nav nav-tabs" id="myTab" role="tablist">
-  <li class="nav-item" role="presentation">
-    <button class="nav-link active" id="home-tab" data-bs-toggle="tab" data-bs-target="#home-tab-pane" type="button" role="tab" aria-controls="home-tab-pane" aria-selected="true">Home</button>
-  </li>
-  <li class="nav-item" role="presentation">
-    <button class="nav-link" id="profile-tab" data-bs-toggle="tab" data-bs-target="#profile-tab-pane" type="button" role="tab" aria-controls="profile-tab-pane" aria-selected="false">Profile</button>
-  </li>
-  <li class="nav-item" role="presentation">
-    <button class="nav-link" id="contact-tab" data-bs-toggle="tab" data-bs-target="#contact-tab-pane" type="button" role="tab" aria-controls="contact-tab-pane" aria-selected="false">Contact</button>
-  </li>
-  <li class="nav-item" role="presentation">
-    <button class="nav-link" id="disabled-tab" data-bs-toggle="tab" data-bs-target="#disabled-tab-pane" type="button" role="tab" aria-controls="disabled-tab-pane" aria-selected="false" disabled>Disabled</button>
-  </li>
-</ul>
-<div class="tab-content" id="myTabContent">
-  <div class="tab-pane fade show active" id="home-tab-pane" role="tabpanel" aria-labelledby="home-tab" tabindex="0">...</div>
-  <div class="tab-pane fade" id="profile-tab-pane" role="tabpanel" aria-labelledby="profile-tab" tabindex="0">...</div>
-  <div class="tab-pane fade" id="contact-tab-pane" role="tabpanel" aria-labelledby="contact-tab" tabindex="0">...</div>
-  <div class="tab-pane fade" id="disabled-tab-pane" role="tabpanel" aria-labelledby="disabled-tab" tabindex="0">...</div>
+
+
+
+<div class="container">
+    <ul class="nav nav-tabs" id="myTab" role="tablist">
+
+      <li class="nav-item" role="presentation">
+        <button class="nav-link active" id="board-tab" data-bs-toggle="tab" data-bs-target="#board-tab-pane" type="button" role="tab" aria-controls="board-tab-pane" aria-selected="true">게시글</button>
+      </li>
+      <li class="nav-item" role="presentation">
+        <button class="nav-link" id="member-tab" data-bs-toggle="tab" data-bs-target="#member-tab-pane" type="button" role="tab" aria-controls="member-tab-pane" aria-selected="false">계정</button>
+      </li>
+      <li class="nav-item" role="presentation">
+        <button class="nav-link" id="contact-tab" data-bs-toggle="tab" data-bs-target="#contact-tab-pane" type="button" role="tab" aria-controls="contact-tab-pane" aria-selected="false">탭3</button>
+      </li>
+
+    </ul>
+
+    <div class="tab-content" id="myTabContent">
+      <!--탭1------------------------------------------------------->
+      <div class="tab-pane fade show active" id="board-tab-pane" role="tabpanel" aria-labelledby="board-tab" tabindex="0">
+	        <div class="row">
+	        <!---------------------검색창---------------->
+				<div class="col-12" id="searchbar" >
+				    <nav class="navbar bg">
+				        <div class="container-fluid">
+				          <a class="navbar-brand"> </a>
+				          <form action="#" method="post" class="d-flex" role="search">
+				          		<input type="hidden" value="f" name="boardOption">
+				          		<input type="hidden" value="1" name="cpage">
+								
+								<select name="boardOption" id="boardSelect">
+				                        <option value="f">
+				                            자유게시판
+				                        </option>
+				                        <option value="g">
+				                            여행후기
+				                        </option>
+				                        <option value="j">
+				                            구인구직
+				                        </option>
+				                        <option value="r">
+				                            맛집
+				                        </option>
+				                        <option value="h">
+				                            숙소리뷰
+				                        </option>		                        		                        
+								</select>
+								
+								
+								<select name="serchOption" id="select">
+				                        <option value="title">
+				                            제목
+				                        </option>
+				                        <option value="id">
+				                            작성자
+				                        </option>
+				                        <option value="contents">
+				                            내용
+				                        </option>
+								</select>
+				          	
+				          	
+				            <input class="form-control me-2" type="search" placeholder="검색어를 입력해주세요." aria-label="Search" name="contents">
+				            <button class="btn btn-outline-secondary btn-sm" type="submit">Search</button>&nbsp;
+				            
+				            		<c:choose>
+										<c:when test="${loginID !=null}">
+											<button type="button" class="btn btn-primary btn-sm" id="writeBtn" style="white-space:nowrap;"><i class="fa-solid fa-pen-to-square"></i>글 작성하기</button>
+										</c:when>
+						
+										<c:otherwise>
+											<button type="button" class="btn btn-primary btn-sm" style="white-space:nowrap;" data-bs-toggle="modal" data-bs-target="#exampleModal"><i class="fa-solid fa-pen-to-square"></i>글 작성하기</button>
+										</c:otherwise>
+									</c:choose>
+									
+				          </form>
+				          
+				        </div>
+				      </nav>
+				</div>
+	        
+	        
+		        <div class="row m-0" id="board_menu" ></div>
+		
+		        <div class="row m-0 ">
+		             <div class="col-12  ">
+		                <div class="row " id="board_menu_text">
+		                    <div class="col-md-1 d-none d-md-block p-0">번호</div>
+		                    <div class="col-7 col-md-5 " style="text-align:left">제목</div>
+		                    <div class="col-3 col-md-2 p-0 text-center">글쓴이</div>
+		                    <div class="col-md-2 d-none d-md-block p-0 text-center">날짜</div>
+		                    <div class="col-md-1 d-none d-md-block p-0">조회</div>
+		                    <div class="col-2 col-md-1 p-0">추천</div>
+		                </div>
+		             
+		            </div>
+		        </div>
+	        
+<!-- 			            여기는 공지글 -->
+		        <c:forEach var="i" items="${noticeList }">
+		        <div class="col-12  board">
+		            <div class="row m-0 border border-2 rounded board_row ">
+		            	
+		                <div class="col-1 col-md-1 d-none d-md-block p-0">
+		                <p id="notice">공지</p>
+		                </div>
+		               	<div class="col-7 col-md-5 m-0 title ididid " style="text-align:left">
+		               		<a href="/detailView.board?cpage=${cpage}&seq=${i.all_board_seq}&click=ok" style="color:black">${i. title }</a>
+		               	</div>
+		                <div class="col-3 col-md-2 p-0 ellipsis text-center ididid">${i.id }</div>
+		                <div class="col-md-2 d-none d-md-block p-0 "><fmt:formatDate value="${i.write_date }" pattern="yy-MM-dd"/></div>
+		                <div class="col-md-1 d-none d-md-block p-0">${i.view_count}</div>
+		                <div class="col-2 col-md-1 p-0">${i.like_count}</div>
+		                
+		            </div>
+		        </div>
+		        </c:forEach>
+		        
+		        
+<!-- 				        여기는 목록 -->
+		        <c:forEach var="i" items="${list }">
+		        <div class="col-12  board">
+		            <div class="row m-0 border border-2 rounded board_row ">
+		            	
+		                <div class="col-1 col-md-1 d-none d-md-block p-0">${i.line}</div>
+		               	<div class="col-7 col-md-5 m-0 title ididid "style="text-align:left">
+		               		<a href="/detailView.board?cpage=${cpage}&seq=${i.all_board_seq}&click=ok" style="color:black">${i. title }</a>
+		               	</div>
+		                <div class="col-3 col-md-2 p-0 ididid text-center">${i.id }</div>
+		                <div class="col-md-2 d-none d-md-block p-0 "><fmt:formatDate value="${i.write_date }" pattern="yy-MM-dd"/></div>
+		                <div class="col-md-1 d-none d-md-block p-0">${i.view_count}</div>
+		                <div class="col-2 col-md-1 p-0">${i.like_count}</div>
+		                
+		            </div>
+		        </div>
+		        </c:forEach>
+
+	        </div>
+	        
+			<div class="row">
+	            <div class="col-12 text-center">
+					<nav aria-label="Page navigation example">
+						  <ul class="pagination justify-content-center">
+								<li class="page-item">
+								  <a class="page-link" href="#" aria-label="Previous">
+								    <span aria-hidden="true">&laquo;</span>
+								  </a>
+								</li>
+								${navi}
+								<li class="page-item">
+								  <a class="page-link" href="#" aria-label="Next">
+								    <span aria-hidden="true">&raquo;</span>
+								  </a>
+								</li>
+						  </ul>
+					</nav>
+	            </div>
+			</div>
+	        
+      </div>
+
+      <!--탭2-------------------------------------------------------->
+      <div class="tab-pane fade" id="member-tab-pane" role="tabpanel" aria-labelledby="member-tab" tabindex="0">
+        계정
+      </div>
+
+      <!--탭3---------------------------------------------------------->
+      <div class="tab-pane fade" id="contact-tab-pane" role="tabpanel" aria-labelledby="contact-tab" tabindex="0">탭3</div>
+    </div>
+
 </div>
+
+
+
 
 <div class="modal fade" id="exampleModalsend" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
   <div class="modal-dialog">
@@ -765,6 +933,31 @@ $("#modal_loginBtn").on("click",function(){
 
 
     <script>
+    
+    //탭1 클릭 이벤트
+    $("#board-tab").on("click",function(){
+    	let boardOption = $("#boardSelect").val();
+    	location.href = "/adiminPageTap1.admin?boardOption="+boardOption+"&cpage=1"; 
+    	
+    })
+    
+    
+    //게시글 콤보박스 선택 시 이벤트
+        let previous = "";
+        $("#boardSelect").on('focus', function () {
+    		previous  = this.value;
+		}).change(function() {
+			let boardOption = $("#boardSelect").val();
+			location.href = "/adiminPageTap1.admin?boardOption="+boardOption+"&cpage=1"; 
+		});
+    
+    
+    
+    
+    
+    
+    
+    
     
     $("#password-input").on("keyup",function(e){
         if(e.keyCode==13){

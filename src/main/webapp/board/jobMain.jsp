@@ -295,7 +295,7 @@
     opacity:0.4;
     display:flex;
     justify-content:center;
-    align-items:center;
+ align-items:center; 
     cursor:pointer; 
 }
 
@@ -336,9 +336,9 @@
             margin-top: 20px;
         }
 
-        .hotboard_bottom {
-            margin-top: 20px;
-            padding-bottom: 10px;
+      .hotboard_bottom {
+        	height:50px;
+            margin-top: 15px;
         }
 
         #freemain {
@@ -362,7 +362,6 @@
         }
 
         .editor {
-            width: 100%;
             margin:auto;
             padding-right: 30px;
             padding-bottom: 30px;
@@ -376,16 +375,18 @@
         .board_row{
             padding-top: 10px;
            height: 100%;
-            text-align: center;
+            /* text-align: center; */
         }
         #board_menu{
             height: 30px;
         }
+        .fa-thumbs-up{
+       	color: rgb(255,208,0);
+       }
         #board_menu_text{
-            font-size: 18px;
             font-weight:bold ;
             margin-bottom: 20px;
-             text-align: center;
+             
         }
         .title{
             font-weight: bold;
@@ -398,22 +399,26 @@
             font-size:17px;
         }
          /* 제목이 길어서 잘렸을 경우 밑의 두개 처리해준다 */
-       .ellipsis{
-           position: relative;
-           min-width: 50px;
+/*        .ellipsis{ */
+/*            position: relative; */
+/*            min-width: 50px; */
            
+/*        } */
+/*        .ellipsis>span{ */
+/*         overflow: hidden; */
+/*            white-space: nowrap; */
+/*            text-overflow: ellipsis; */
+/*            position:absolute; */
+/*            left: 0px; */
+/*            right: 0px; */
+/*            height:100%; */
+/*            width:100%; */
+/*        } */
+ 	 .ididid{
+       overflow:hidden;
+       text-overflow:ellipsis;
+       white-space:nowrap;
        }
-       .ellipsis>span{
-        overflow: hidden;
-           white-space: nowrap;
-           text-overflow: ellipsis;
-           position:absolute;
-           left: 0px;
-           right: 0px;
-           height:100%;
-           width:100%;
-       }
-
        /*--top버튼----------------------------------------------------------------*/
 
 #myBtn {
@@ -480,6 +485,16 @@ font-weight:bold;
     text-align:left;
   }
 }
+
+.bottom_board {
+            padding-right: 30px;
+            padding-bottom: 30px;
+        }
+.wrap12{
+
+height:530px;
+}  
+
     </style>
 </head>
 
@@ -607,8 +622,47 @@ $("#modal_loginBtn").on("click",function(){
     <div class="height-100 ">
         <div class="row " id="freemain">
 
+			<div class="col-12 col-md-6 bottom_board">
+                <div class="row border border-2 rounded wrap12 d-flex flex-wrap align-content-start">
+                    <div class="col-12 border-bottom hotboard_bottom text-center" style="font-weight:bold; font-size:18px;">맛집</div>
+                  
+                        <div class="col-12 ">
+                            <div class="row freeboard_bottom ">
+                            
+                            	<div class="col-12  m-0 p-0" style="height: 40px">
+									<div class="row m-0" id="board_menu_text">
+										<div class="col-8 " style="text-align:left; padding-left:25px">제목</div>
+										<div class="col-4 " style="text-align:right; padding-right:25px">추천</div>
+										
+									</div>
+
+								</div>
+                            
+                            
+                                <c:forEach var="i" items="${hotlist }">
+                                <div class="col-12 border border-2 rounded ">
+                                    <div class="row m-0">
+                                        <div class="col-9 col-md-9 m-0 free_title ididid"><a href="/detailView.board?cpage=${cpage}&seq=${i.all_board_seq}&click=ok" style="color:black; font-weight:bold;">${i.title }</a></div>
+                                        <div class="col-3 col-md-3">
+                                            <div class="row ">
+                                                <div class="col-12 m-0" style="text-align:right"> <i class="fa-solid fa-thumbs-up"></i>&nbsp;${i.like_count }</div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                </c:forEach>
+                                
+                                
+                            </div>
+                        </div>
+
+                </div>
+
+            </div>
+
+
             <div class="col-12 col-md-6 editor">
-                <div class="row border border-2 rounded">
+                <div class="row border border-2 rounded wrap12">
                     <div class="col-12 border-bottom hotboard_bottom text-center" style="font-weight: bold; font-size:18px;">에디터 추천</div>
                     <div id="carouselExampleIndicators" class="carousel slide" data-bs-ride="carousel">
                        
@@ -725,12 +779,12 @@ $("#modal_loginBtn").on("click",function(){
         <div class="row m-0 ">
             <div class="col-12  ">
                 <div class="row " id="board_menu_text">
-                    <div class="col-md-1 d-none d-md-block p-0">번호</div>
+                    <div class="col-md-1 d-none d-md-block p-0 text-center">번호</div>
                     <div class="col-7 col-md-5 ">제목</div>
                     <div class="col-3 col-md-2 p-0 text-center">글쓴이</div>
-                    <div class="col-md-2 d-none d-md-block p-0">날짜</div>
-                    <div class="col-md-1 d-none d-md-block p-0">조회</div>
-                    <div class="col-2 col-md-1 p-0">추천</div>
+                    <div class="col-md-2 d-none d-md-block p-0 text-center">날짜</div>
+                    <div class="col-md-1 d-none d-md-block p-0 text-center">조회</div>
+                    <div class="col-2 col-md-1 p-0 text-center">추천</div>
                 </div>
              
             </div>
@@ -741,13 +795,13 @@ $("#modal_loginBtn").on("click",function(){
         <div class="col-12  board">
             <div class="row m-0 border border-2 rounded board_row ">
             	
-                <div class="col-1 col-md-1 d-none d-md-block p-0">
+                <div class="col-1 col-md-1 d-none d-md-block p-0 text-center">
                 <p id="notice">공지</p>
                 </div>
-               	<div class="col-7 col-md-5 m-0 title ellipsis">
-               		<span><a href="/detailView.board?cpage=${cpage}&seq=${i.all_board_seq}&click=ok" style="color:black">${i. title }</a></span>
+               	<div class="col-7 col-md-5 m-0 title ididid ">
+               		<a href="/detailView.board?cpage=${cpage}&seq=${i.all_board_seq}&click=ok" style="color:black">${i. title }</a>
                	</div>
-                <div class="col-3 col-md-2 p-0 ellipsis text-center"><span>${i.id }</span></div>
+                <div class="col-3 col-md-2 p-0 ididid text-center">${i.id }</div>
                 <div class="col-md-2 d-none d-md-block p-0 "><fmt:formatDate value="${i.write_date }" pattern="yy-MM-dd"/></div>
                 <div class="col-md-1 d-none d-md-block p-0">${i.view_count}</div>
                 <div class="col-2 col-md-1 p-0">${i.like_count}</div>
@@ -762,11 +816,11 @@ $("#modal_loginBtn").on("click",function(){
         <div class="col-12  board">
             <div class="row m-0 border border-2 rounded board_row ">
             	
-                <div class="col-1 col-md-1 d-none d-md-block p-0">${i.line}</div>
-               	<div class="col-7 col-md-5 m-0 title ellipsis">
-               		<span><a href="/detailView.board?cpage=${cpage}&seq=${i.all_board_seq}&click=ok" style="color:black">${i. title }</a></span>
+                <div class="col-1 col-md-1 d-none d-md-block p-0 text-center">${i.line}</div>
+               	<div class="col-7 col-md-5 m-0 title ididid">
+               	<a href="/detailView.board?cpage=${cpage}&seq=${i.all_board_seq}&click=ok" style="color:black" >${i. title }</a>
                	</div>
-                <div class="col-3 col-md-2 p-0 ellipsis text-center"><span>${i.id }</span></div>
+                <div class="col-3 col-md-2 p-0 ididid text-center">${i.id }</div>
                 <div class="col-md-2 d-none d-md-block p-0 "><fmt:formatDate value="${i.write_date }" pattern="yy-MM-dd"/></div>
                 <div class="col-md-1 d-none d-md-block p-0">${i.view_count}</div>
                 <div class="col-2 col-md-1 p-0">${i.like_count}</div>

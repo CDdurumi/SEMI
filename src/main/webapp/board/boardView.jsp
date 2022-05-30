@@ -382,7 +382,7 @@
            padding-top: 5px;
             width: 82%;
            text-align: center;
-           padding-right: 5px;
+           padding-left: 22px;
        }
        #jjimcol{
            font-size: 27px;
@@ -510,11 +510,7 @@
        #btn{
           width: 100%;
        }
-       .jjimdummy{
-           min-width: 5px;
-           max-width: 5px;
-       }
-       
+    
         img{
          max-width:100% !important;
          height: auto !important;
@@ -1455,12 +1451,22 @@ $("#modal_loginBtn").on("click",function(){
                     </div>
                 </div>
         
-                <div class="col-6" id="ht" style="text-align: right; padding-top:8px; padding-right: 20px;">
+                <div class="col-6" id="ht" style="text-align: right; padding-top:8px;">
                     <c:if test="${loginID == dto.id}"> 
                     <button class="btn btn-primary " type="button" id="boardModi">수정</button>
                  <button class="btn btn-primary " type="button" id="boardDel">삭제</button>
                  </c:if> 
+                 <button class="btn btn-primary " type="button" id="goList">목록</button>
                 </div>
+            
+            <script>
+            $("#goList").on("click",function(){
+            	location.href="/goList.board?seq=${dto.all_board_seq}&cpage=${cpage}"
+            	
+            })
+            
+            </script>
+            
             
                     </div>
                     <div class="row " id="count" style="margin: auto;">
@@ -1468,8 +1474,8 @@ $("#modal_loginBtn").on("click",function(){
                         <div class="col-1" id="likecnt">
                             ${dto.like_count}
                         </div>
-                        <div class="col-1 jjimdummy" ></div>
-                        <div class="col-1 text-center" id="jjimcnt">
+                     
+                        <div class="col-1 text-center" id="jjimcnt" style="margin-left:12px">
                            ${dto.jjim_count}
                         </div>
                         <div class="col-9"></div>
@@ -1685,8 +1691,8 @@ $("#modal_loginBtn").on("click",function(){
     let good = true;
    if(${isBoardGood!=null}){
       if(${isBoardGood==true}){
-           $("#goodcol").css("color", "#ffd000" );
-           $("#goodcol").css("border","1px solid #ffd000" );
+           $("#goodcol").css("color", "#0080ff" );
+           $(".fa-thumbs-up").css("--fa-border-color","#0080ff");
            good=false;
       }
    }
@@ -1704,8 +1710,8 @@ $("#modal_loginBtn").on("click",function(){
         }
         
         if (good) {
-            $("#goodcol").css("color", "#blue");
-            $(".fa-thumbs-up").css("--fa-border-color","blue");
+            $("#goodcol").css("color", "#0080ff");
+            $(".fa-thumbs-up").css("--fa-border-color","#0080ff");
             good=false;
             const toast = new bootstrap.Toast(toastLiveExample1)
 
@@ -1750,8 +1756,8 @@ $("#modal_loginBtn").on("click",function(){
     let heart = true;
     if(${isBoardJjim!=null}){
        if(${isBoardJjim==true}){
-            $("#jjimcol").css("color", "yellow" );
-            $(".fa-star").css("--fa-border-color","yellow");
+            $("#jjimcol").css("color", "#ffd000" );
+            $(".fa-star").css("--fa-border-color","#ffd000");
           heart=false;
        }
     }
@@ -1764,8 +1770,8 @@ $("#modal_loginBtn").on("click",function(){
         }
        
         if (heart) {
-            $("#jjimcol").css("color", "yellow" );
-            $(".fa-star").css("--fa-border-color","yellow");
+            $("#jjimcol").css("color", "#ffd000" );
+            $(".fa-star").css("--fa-border-color","#ffd000");
             heart=false;
             
             const toast = new bootstrap.Toast(toastLiveExample3)
