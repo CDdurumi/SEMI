@@ -380,7 +380,6 @@
         }
         #board_menu_text{
          text-align: center;
-            font-size: 18px;
             font-weight:bold ;
             margin-bottom: 20px;
         }
@@ -468,7 +467,7 @@ select{
 }
 .wrap12{
 
-height:500px;
+height:530px;
 }
 #notice{
 color:red;
