@@ -635,7 +635,6 @@ $("#modal_loginBtn").on("click",function(){
                                 <div class="col-12 border border-2 rounded ">
                                     <div class="row m-0">
                                         <div class="col-9 col-md-9 m-0 free_title ididid"><a href="/detailView.board?cpage=${cpage}&seq=${i.all_board_seq}&click=ok" style="color:black; font-weight:bold;">${i.title }</a></div>
-                                        <!-- ellipsis 밑에 forEach로 하니까 한줄만 추가했습니다.  -->
                                         <div class="col-3 col-md-3">
                                             <div class="row ">
                                                 <div class="col-12 m-0" style="text-align:right"> <i class="fa-solid fa-thumbs-up"></i>&nbsp;${i.like_count }</div>
@@ -785,10 +784,10 @@ $("#modal_loginBtn").on("click",function(){
                 <div class="col-1 col-md-1 d-none d-md-block p-0 text-center">
                 <p id="notice">공지</p>
                 </div>
-               	<div class="col-7 col-md-5 m-0 title ellipsis">
-               		<span><a href="/detailView.board?cpage=${cpage}&seq=${i.all_board_seq}&click=ok" style="color:black">${i. title }</a></span>
+               	<div class="col-7 col-md-5 m-0 title ididid">
+               		<a href="/detailView.board?cpage=${cpage}&seq=${i.all_board_seq}&click=ok" style="color:black">${i. title }</a>
                	</div>
-                <div class="col-3 col-md-2 p-0 ellipsis text-center"><span>${i.id }</span></div>
+                <div class="col-3 col-md-2 p-0 ididid text-center">${i.id }</div>
                 <div class="col-md-2 d-none d-md-block p-0 text-center "><fmt:formatDate value="${i.write_date }" pattern="yy-MM-dd"/></div>
                 <div class="col-md-1 d-none d-md-block p-0 text-center">${i.view_count}</div>
                 <div class="col-2 col-md-1 p-0 text-center">${i.like_count}</div>
@@ -803,10 +802,10 @@ $("#modal_loginBtn").on("click",function(){
             <div class="row m-0 border border-2 rounded board_row ">
             	
                 <div class="col-1 col-md-1 d-none d-md-block p-0 text-center">${i.line}</div>
-               	<div class="col-7 col-md-5 m-0 title ellipsis">
-               		<span><a href="/detailView.board?cpage=${cpage}&seq=${i.all_board_seq}&click=ok" style="color:black">${i. title }</a></span>
+               	<div class="col-7 col-md-5 m-0 title ididid">
+               		<a href="/detailView.board?cpage=${cpage}&seq=${i.all_board_seq}&click=ok" style="color:black">${i. title }</a>
                	</div>
-                <div class="col-3 col-md-2 p-0 ellipsis text-center"><span>${i.id }</span></div>
+                <div class="col-3 col-md-2 p-0 ididid text-center">${i.id }</div>
                 <div class="col-md-2 d-none d-md-block p-0 text-center"><fmt:formatDate value="${i.write_date }" pattern="yy-MM-dd"/></div>
                 <div class="col-md-1 d-none d-md-block p-0 text-center">${i.view_count}</div>
                 <div class="col-2 col-md-1 p-0 text-center">${i.like_count}</div>

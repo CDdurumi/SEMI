@@ -395,12 +395,13 @@
 /*            left: 9px; */
 /*            right: 9px; */
 /*        } */
- 		.ellipsis{
+ 		.ididid{
        overflow:hidden;
        text-overflow:ellipsis;
        white-space:nowrap;
        
        }
+       
        .allview{
        	color:black;
        }
@@ -633,9 +634,11 @@ font-weight: bold;
  						
  								<div class="col-12  m-0 p-0" style="height: 40px">
 									<div class="row m-0" id="board_menu_text">
-										<div class="col-7 ">제목</div>
+										<div class="col-7 col-md-5 ">제목</div>
 										<div class="col-3 p-0 text-center">글쓴이</div>
-										<div class="col-2 d-none d-md-block p-0 text-center">조회</div>
+										<div class="col-md-2 d-none d-md-block p-0 text-center">날짜</div>
+										<div class="col-md-1 d-none d-md-block p-0 text-center">조회</div>
+										<div class="col-2 col-md-1 p-0 text-center">추천</div>
 									</div>
 
 								</div>
@@ -646,14 +649,15 @@ font-weight: bold;
 									<div class="row m-0 border border-2 rounded board_row ">
 
 
-										<div class="col-7   title ellipsis"
+										<div class="col-7 col-md-5  title ididid"
 											style="padding-left: 7px; padding-right: 0px;">
 											<a
 												href="/detailView.board?cpage=1&seq=${j.all_board_seq}&click=ok"
 												style="color: black">${j.title }</a>
 										</div>
-										<div class="col-3  p-0 ellipsis text-center">${j.id}</div>
+										<div class="col-3  p-0 ididid text-center">${j.id}</div>
 										<%--                 <div class="col-sm-2 col-md-1 d-none d-md-block p-0 text-center"><fmt:formatDate value="${i.write_date }" pattern="yy-MM-dd"/>날짜</div> --%>
+										<div class="col-md-2 d-none d-md-block p-0 text-center"><fmt:formatDate value="${j.write_date }" pattern="yy-MM-dd"/></div>
 										<div class="col-md-1 d-none d-md-block p-0 text-center">
 											${j.view_count}</div>
 										<div class="col-2 col-md-1 p-0 text-center">
@@ -762,7 +766,7 @@ font-weight: bold;
 		</div>
 		<div class="row " id="freemain">
 			<div class="col-12 col-md-6 bottom_board">
-				<div class="row border border-2 rounded wrap12 w-100 d-flex flex-wrap align-content-start" >
+				<div class="row border border-2 rounded wrap12 d-flex flex-wrap align-content-start" >
 					<div class="col-9 border-bottom hotboard_bottom text-center" style="font-weight:bold; font-size:18px; flex-direction: row;">구인구직</div>
 					<div class="col-3 border-bottom hotboard_bottom text-center" >
 						<a class="allview" href="/jobMain.board?cpage=1" ><button type="button" class="btn btn-outline-primary btn-sm" style="white-space:nowrap; ">전체보기</button></a>
@@ -774,7 +778,7 @@ font-weight: bold;
 									<div class="row m-0" id="board_menu_text">
 										<div class="col-7 ">제목</div>
 										<div class="col-3 p-0 text-center">글쓴이</div>
-										<div class="col-2 d-none d-md-block p-0 text-center">조회</div>
+										<div class="col-2 p-0 text-center">추천</div>
 									</div>
 
 								</div>
@@ -787,13 +791,13 @@ font-weight: bold;
 									<div class="row m-0 border border-2 rounded board_row ">
 
 
-										<div class="col-7   title ellipsis"
+										<div class="col-7   title ididid"
 											style="padding-left: 7px; padding-right: 0px;">
 											<a
 												href="/detailView.board?cpage=1&seq=${h.all_board_seq}&click=ok"
 												style="color: black">${h.title }</a>
 										</div>
-										<div class="col-3  p-0 ellipsis text-center">${h.id}</div>
+										<div class="col-3  p-0 ididid text-center">${h.id}</div>
 										<%-- 										<div class="col-md-1 d-none d-md-block p-0 text-center"> ${j.view_count}</div> --%>
 										<div class="col-2 p-0 text-center">${h.like_count}</div>
 
@@ -823,7 +827,7 @@ font-weight: bold;
 									<div class="row m-0" id="board_menu_text">
 										<div class="col-7 ">제목</div>
 										<div class="col-3 p-0 text-center">글쓴이</div>
-										<div class="col-2 d-none d-md-block p-0 text-center">조회</div>
+										<div class="col-2 p-0 text-center">추천</div>
 									</div>
 
 								</div>
@@ -834,13 +838,13 @@ font-weight: bold;
 									<div class="row m-0 border border-2 rounded board_row ">
 
 
-										<div class="col-7   title ellipsis"
+										<div class="col-7   title ididid"
 											style="padding-left: 7px; padding-right: 0px;">
 											<a
 												href="/detailView.board?cpage=1&seq=${a.all_board_seq}&click=ok"
 												style="color: black">${a.title }</a>
 										</div>
-										<div class="col-3  p-0 ellipsis text-center">${a.id}</div>
+										<div class="col-3  p-0 ididid text-center">${a.id}</div>
 										<%-- 										<div class="col-md-1 d-none d-md-block p-0 text-center"> ${j.view_count}</div> --%>
 										<div class="col-2 p-0 text-center">${a.like_count}</div>
 

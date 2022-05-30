@@ -1455,9 +1455,18 @@ $("#modal_loginBtn").on("click",function(){
                     <c:if test="${loginID == dto.id}"> 
                     <button class="btn btn-primary " type="button" id="boardModi">수정</button>
                  <button class="btn btn-primary " type="button" id="boardDel">삭제</button>
-                 <button class="btn btn-primary " type="button" id="goList">목록</button>
                  </c:if> 
+                 <button class="btn btn-primary " type="button" id="goList">목록</button>
                 </div>
+            
+            <script>
+            $("#goList").on("click",function(){
+            	location.href="/goList.board?seq=${dto.all_board_seq}&cpage=${cpage}"
+            	
+            })
+            
+            </script>
+            
             
                     </div>
                     <div class="row " id="count" style="margin: auto;">
