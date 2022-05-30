@@ -370,7 +370,7 @@
             padding-top: 6px;
         }
        #heart{
-           width: 82%;
+           width: 87%;
            padding-top: 20px;
            padding-left: 20px;
            flex-wrap: nowrap; 
@@ -378,6 +378,15 @@
        #ht{
          float: left;
       }       
+      
+       #ht2{
+          float: left;  
+         text-align: right;
+       
+         vertical-align: right; 
+
+      } 
+      
        #count{
            padding-top: 5px;
             width: 82%;
@@ -1304,6 +1313,7 @@
                		<c:choose>
 						<c:when test="${loginID !=null}">
 							<a href="/goMyPage.mpg" class="nav_link"> <i class='bx bx-user nav_icon'></i> <span class="nav_name">마이페이지</span> </a>
+							<a href="/goMyPage.mpg" class="nav_link"> <i class='bx bx-calendar nav_icon'></i> <span class="nav_name">일정관리</span> </a>
 						</c:when>
 		
 						<c:otherwise>
@@ -1485,12 +1495,12 @@ $("#modal_loginBtn").on("click",function(){
                     </div>
                 </div>
         
-                <div class="col-6" id="ht" style="text-align: right; padding-top:8px;">
-                    <c:if test="${loginID == dto.id || loginIsAdmin == 'Y'}"> 
-                   	 	<button class="btn btn-primary " type="button" id="boardModi">수정</button>
-                 		<button class="btn btn-primary " type="button" id="boardDel">삭제</button>
-                 	</c:if> 
-                 	<button class="btn btn-primary " type="button" id="goList">목록</button>
+                <div class="col-6" id="ht2" style="padding-top:8px;">
+                    <c:if test="${loginID == dto.id}"> 
+                    <button class="btn btn-primary " type="button" id="boardModi">수정</button>
+                      <button class="btn btn-primary " type="button" id="boardDel">삭제</button>
+                 </c:if> 
+                 <button class="btn btn-primary " type="button" id="goList">목록</button>
                 </div>
             
             <script>

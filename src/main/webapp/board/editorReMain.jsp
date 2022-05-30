@@ -509,6 +509,7 @@ font-weight: bold;
                		<c:choose>
 						<c:when test="${loginID !=null}">
 							<a href="/goMyPage.mpg" class="nav_link"> <i class='bx bx-user nav_icon'></i> <span class="nav_name">마이페이지</span> </a>
+							<a href="/goMyPage.mpg" class="nav_link"> <i class='bx bx-calendar nav_icon'></i> <span class="nav_name">일정관리</span> </a>
 						</c:when>
 		
 						<c:otherwise>
@@ -663,8 +664,8 @@ $("#modal_loginBtn").on("click",function(){
 							</c:if>
 
         </div>
+        <div class="row dummy2" style="height:30px"></div>
 <footer class="mt-auto text-black-50" style="background-color:#f5f5f7">
-        	<hr>
         	<div class="row">
         		<div class="d-none d-lg-block col-5 footer1">
         			<img src="/imgsrc/footerlogo2.png">
@@ -681,8 +682,8 @@ $("#modal_loginBtn").on("click",function(){
         			</div>
         		</div>
         	</div>
-        	<hr>
         </footer>
+        <div class="row dummy2" style="height:30px"></div>
     </div>
     
     

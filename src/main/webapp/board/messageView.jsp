@@ -570,6 +570,7 @@
                		<c:choose>
 						<c:when test="${loginID !=null}">
 							<a href="/goMyPage.mpg" class="nav_link"> <i class='bx bx-user nav_icon'></i> <span class="nav_name">마이페이지</span> </a>
+							<a href="/goMyPage.mpg" class="nav_link"> <i class='bx bx-calendar nav_icon'></i> <span class="nav_name">일정관리</span> </a>
 						</c:when>
 		
 						<c:otherwise>
@@ -664,7 +665,7 @@ $("#modal_loginBtn").on("click",function(){
                 </div>
                 <div class="col-12 text-center" id="cont" style="padding:0px;">
                     <div class="row " id="contentsdummy" style="padding:0px;" >
-                        <div class="col-12" id="contentsdummy2" style="padding-top: 40px;padding-bottom: 40px;padding-left: 0px;padding-right: 0px;">
+                        <div class="col-12" id="contentsdummy2" style="padding-top: 40px; padding-bottom: 40px;padding-left: 0px;padding-right: 0px;">
                             ${dto.contents}
                         </div>
                     </div>

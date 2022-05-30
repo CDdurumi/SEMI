@@ -351,7 +351,7 @@ public class BoardController extends HttpServlet {
 				String editor_type = multi.getParameter("editor_type");//에디터 게시글 분류(자유게시판:f,구인구직:s,숙소리뷰:h)
 				System.out.println(editor_type);
 				//게시글 저장 //
-				dao.insert(new BoardDTO(seq, writer, title, contents, null, 0, 0, 0, editor_type, 0));
+				dao.insert(new BoardDTO(seq, writer, title, contents, "", 0, 0, 0, editor_type, 0));
 
 				//업로드 파일 정보 저장
 				Enumeration<String> e = multi.getFileNames();
@@ -454,7 +454,7 @@ public class BoardController extends HttpServlet {
 				String seq = multi.getParameter("seq"); //해당 작성글 넘버 가져오기
 				
 				//게시글 수정 //
-				dao.modifyPost(new BoardDTO(seq, writer, title, contents, null, 0, 0, 0, null, 0));
+				dao.modifyPost(new BoardDTO(seq, writer, title, contents, "", 0, 0, 0, null, 0));
 
 				//업로드 파일 정보 저장
 				Enumeration<String> e = multi.getFileNames();
@@ -554,9 +554,10 @@ public class BoardController extends HttpServlet {
 				}else if(menu.equals("h")) {
 					response.sendRedirect("/houseMain.board?cpage="+cpage);
 				}else if(menu.equals("e")) {
-					String referer= request.getHeader("referer");
-					System.out.println(referer);
-					response.sendRedirect(referer);
+					response.sendRedirect("/editorReMain.board?cpage="+cpage);
+//					String referer= request.getHeader("referer");
+//					System.out.println(referer);
+//					response.sendRedirect(referer);
 				}
 				
 			}
