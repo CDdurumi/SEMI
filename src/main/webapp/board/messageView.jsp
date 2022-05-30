@@ -665,7 +665,7 @@ $("#modal_loginBtn").on("click",function(){
                 </div>
                 <div class="col-12 text-center" id="cont" style="padding:0px;">
                     <div class="row " id="contentsdummy" style="padding:0px;" >
-                        <div class="col-12" id="contentsdummy2" style="padding-top: 40px;padding-bottom: 40px;padding-left: 0px;padding-right: 0px;">
+                        <div class="col-12" id="contentsdummy2" style="padding-top: 40px; padding-bottom: 40px;padding-left: 0px;padding-right: 0px;">
                             ${dto.contents}
                         </div>
                     </div>

@@ -408,7 +408,7 @@ pageEncoding="UTF-8"%>
         }
         /*탭 내용*/
         #v-pills-tabContent{
-            padding-left: 25px;
+            padding-left: 0px;
             padding-right: 25px;
             width: 100%;
             /* border: 1px solid black; */
@@ -538,7 +538,7 @@ pageEncoding="UTF-8"%>
             margin-bottom: 3px;
             padding: 0px;
         }
-
+		
         /*--계정관리---------------------------------------------------------------------------------------*/
 	.newcheck{
 	text-align:center;
@@ -822,13 +822,13 @@ $("#modal_loginBtn").on("click",function(){
                         <div class="tab-pane fade show active" id="v-pills-receive" role="tabpanel" aria-labelledby="v-pills-receive-tab" >
                             
                             <div class="container2">
-   									<div class="row " id="board_menu_text">
-                                        <div class="col-md-2 col-lg-1 d-none d-lg-block ">번호</div>
+                                <div class="row m-0 receive_msgbox">
+                                	<div class="row " id="board_menu_text" style="padding-left:30px;">
+                                        <div class="col-md-2 col-lg-1 d-none d-lg-block " style="text-align:center;">번호</div>
                                         <div class="col-8 col-md-8 col-lg-5">제목</div>
                                         <div class="col-4 col-md-4 col-lg-2 text-center">보낸이</div>
                                         <div class="col-md-2 col-lg-4 d-none d-lg-block text-center">날짜</div>
                                     </div>
-                                <div class="row m-0 receive_msgbox">
                                     <div class="col-12 receive_msgtext">
                                         <!-- 받은 쪽지함 반복문위치 -->
                                     </div>
@@ -839,13 +839,14 @@ $("#modal_loginBtn").on("click",function(){
                         <!--보낸 쪽지함-->
                         <div class="tab-pane fade" id="v-pills-send" role="tabpanel" aria-labelledby="v-pills-send-tab">
                             <div class="container2">
-                            		<div class="row " id="board_menu_text">
-                                        <div class="col-md-2 col-lg-1 d-none d-lg-block ">번호</div>
+                            		
+                                <div class="row m-0 send_msgbox">
+                               		<div class="row " id="board_menu_text" style="padding-left:30px;">
+                                        <div class="col-md-2 col-lg-1 d-none d-lg-block " style="text-align:center;">번호</div>
                                         <div class="col-8 col-md-8 col-lg-5">제목</div>
                                         <div class="col-4 col-md-4 col-lg-2 text-center">받는이</div>
                                         <div class="col-md-2 col-lg-4 d-none  d-lg-block text-center">날짜</div>
                                     </div>
-                                <div class="row m-0 send_msgbox">
                                     <div class="col-12 send_msgtext">
                                         <!-- 보낸 쪽지함 반복문위치 -->
                                     </div>
@@ -880,13 +881,13 @@ $("#modal_loginBtn").on("click",function(){
                       <div class="tab-pane fade show active" id="v-pills-tab1" role="tabpanel" aria-labelledby="v-pills-tab1-tab">
                         <div class="container2">
     
-                           <div class="row " id="board_menu_text">
-                            	<div class="col-md-2 col-lg-1 d-none d-lg-block ">번호</div>
-                                <div class="col-8 col-md-8 col-lg-5">제목</div>
-                                <div class="col-4 col-md-4 col-lg-2 text-center">보낸이</div>
-                                <div class="col-md-2 col-lg-4 d-none d-lg-block text-center">날짜</div>
-                            </div>
                             <div class="row m-0" id="free_boardbox">
+                            	<div class="row " id="board_menu_text" style="padding-left:30px;">
+                            		<div class="col-md-2 col-lg-1 d-none d-lg-block " style="text-align:center;">번호</div>
+                         	        <div class="col-8 col-md-8 col-lg-5">제목</div>
+                         	        <div class="col-4 col-md-4 col-lg-2 text-center">작성자</div>
+                         	        <div class="col-md-2 col-lg-4 d-none d-lg-block text-center">날짜</div>
+                        	    </div>
                                 <div class="col-12 " id="free_boardtext">
                                 
    										<!-- 자유게시판 반복문위치 -->
@@ -902,13 +903,14 @@ $("#modal_loginBtn").on("click",function(){
                       <div class="tab-pane fade" id="v-pills-tab2" role="tabpanel" aria-labelledby="v-pills-tab2-tab">
 
                         <div class="container2">
-    						<div class="row " id="board_menu_text">
-                                        <div class="col-md-2 col-lg-1 d-none d-lg-block ">번호</div>
-                                        <div class="col-8 col-md-8 col-lg-5">제목</div>
-                                        <div class="col-4 col-md-4 col-lg-2 text-center">보낸이</div>
-                                        <div class="col-md-2 col-lg-4 d-none  d-lg-block text-center">날짜</div>
-                                    </div>
+    						
                             <div class="row m-0 " id="gallery_boardbox">
+                            	<div class="row " id="board_menu_text" style="padding-left:30px;">
+                                    <div class="col-md-2 col-lg-1 d-none d-lg-block " style="text-align:center;">번호</div>
+                                    <div class="col-8 col-md-8 col-lg-5">제목</div>
+                                    <div class="col-4 col-md-4 col-lg-2 text-center">작성자</div>
+                                    <div class="col-md-2 col-lg-4 d-none  d-lg-block text-center">날짜</div>
+                                </div>
                                 <div class="col-12  " id="gallery_boardtext">
 								<!-- 여행후기 반복문위치 -->
                            </div>
@@ -923,13 +925,14 @@ $("#modal_loginBtn").on("click",function(){
                           
   
                         <div class="container2">
-    						<div class="row " id="board_menu_text">
-                                <div class="col-md-2 col-lg-1 d-none d-lg-block ">번호</div>
-                                <div class="col-8 col-md-8 col-lg-5">제목</div>
-                                <div class="col-4 col-md-4 col-lg-2 text-center">보낸이</div>
-                                <div class="col-md-2 col-lg-4 d-none  d-lg-block text-center">날짜</div>
-                            </div>
+    						
                             <div class="row m-0 " id="job_boardbox">
+                            	<div class="row " id="board_menu_text" style="padding-left:30px;">
+                                	<div class="col-md-2 col-lg-1 d-none d-lg-block " style="text-align:center;">번호</div>
+                          	        <div class="col-8 col-md-8 col-lg-5">제목</div>
+                         	        <div class="col-4 col-md-4 col-lg-2 text-center">작성자</div>
+                        	        <div class="col-md-2 col-lg-4 d-none  d-lg-block text-center">날짜</div>
+                            	</div>
                                 <div class="col-12  " id="job_boardtext">
 									<!-- 구인구직 반복문위치 -->
                                 </div>
@@ -943,13 +946,14 @@ $("#modal_loginBtn").on("click",function(){
                       <div class="tab-pane fade" id="v-pills-tab4" role="tabpanel" aria-labelledby="v-pills-tab4-tab">
 
                         <div class="container2">
-						    <div class="row " id="board_menu_text">
-                                        <div class="col-md-2 col-lg-1 d-none d-lg-block ">번호</div>
-                                        <div class="col-8 col-md-8 col-lg-5">제목</div>
-                                        <div class="col-4 col-md-4 col-lg-2 text-center">보낸이</div>
-                                        <div class="col-md-2 col-lg-4 d-none  d-lg-block text-center">날짜</div>
-                            </div>
+						    
                             <div class="row m-0 " id="food_boardbox">
+                            	<div class="row " id="board_menu_text" style="padding-left:30px;">
+                                    <div class="col-md-2 col-lg-1 d-none d-lg-block " style="text-align:center;">번호</div>
+                                    <div class="col-8 col-md-8 col-lg-5">제목</div>
+                                    <div class="col-4 col-md-4 col-lg-2 text-center">작성자</div>
+                                    <div class="col-md-2 col-lg-4 d-none  d-lg-block text-center">날짜</div>
+                            	</div>
                                 <div class="col-12  " id="food_boardbox">
                                 	<!-- 맛집 반복문위치 -->
                                 </div>
@@ -962,13 +966,14 @@ $("#modal_loginBtn").on("click",function(){
      <div class="tab-pane fade" id="v-pills-tab5" role="tabpanel" aria-labelledby="v-pills-tab5-tab">
 
         <div class="container2">
-			<div class="row " id="board_menu_text">
-               <div class="col-md-2 col-lg-1 d-none d-lg-block ">번호</div>
+			
+            <div class="row m-0 " id="house_boardbox">
+            <div class="row " id="board_menu_text" style="padding-left:30px;">
+               <div class="col-md-2 col-lg-1 d-none d-lg-block " style="text-align:center;">번호</div>
                <div class="col-8 col-md-8 col-lg-5">제목</div>
-               <div class="col-4 col-md-4 col-lg-2 text-center">보낸이</div>
+               <div class="col-4 col-md-4 col-lg-2 text-center">작성자</div>
                <div class="col-md-2 col-lg-4 d-none  d-lg-block text-center">날짜</div>
 			</div>
-            <div class="row m-0 " id="house_boardbox">
                <div class="col-12  " id="house_boardbox">
                <!-- 숙소리뷰 반복문위치 -->
                
@@ -986,13 +991,14 @@ $("#modal_loginBtn").on("click",function(){
                       <div class="tab-pane fade" id="v-pills-tab6" role="tabpanel" aria-labelledby="v-pills-tab6-tab">
 
                         <div class="container2">
-    						<div class="row " id="board_menu_text">
-                                <div class="col-md-2 col-lg-1 d-none d-lg-block ">번호</div>
-                                <div class="col-8 col-md-8 col-lg-5">제목</div>
-                                <div class="col-4 col-md-4 col-lg-2 text-center">보낸이</div>
-                                <div class="col-md-2 col-lg-4 d-none  d-lg-block text-center">날짜</div>
-                            </div>
+    						
                             <div class="row m-0 " id="jjim_boardbox">
+                            	<div class="row " id="board_menu_text" style="padding-left:30px;">
+                          	       <div class="col-md-2 col-lg-1 d-none d-lg-block " style="text-align:center;">번호</div>
+                         	       <div class="col-8 col-md-8 col-lg-5">제목</div>
+                         	       <div class="col-4 col-md-4 col-lg-2 text-center">작성자</div>
+                       		       <div class="col-md-2 col-lg-4 d-none  d-lg-block text-center">날짜</div>
+                     	        </div>
                                 <div class="col-12  " id="jjim_boardtext">
                                      <!-- 숙소리뷰 반복문위치 -->
                                 </div>
@@ -1543,9 +1549,9 @@ $("#modal_loginBtn").on("click",function(){
 		for(let i = 0; i < resp.length; i++){
 			
 			let msgDiv = $("<div class='col-12 receive_msgboard2'>");
-			let msgDiv1 = $("<div class='row m-0 border border-2 rounded board_row '>");
+			let msgDiv1 = $("<div class='row m-0 border border-2 rounded board_row'>");
 			
-			let msgDiv2 = $("<div class='col-md-2 col-lg-1 d-none d-lg-block p-0'>");
+			let msgDiv2 = $("<div class='col-md-2 col-lg-1 d-none d-lg-block p-0 text-center'>");
 			msgDiv2.text(resp[i].line);
 			
 			let msgDiv3 = $("<div class='col-8 col-md-8 col-lg-5 m-0 title ellipsis p-0'>");
@@ -1625,9 +1631,9 @@ $("#modal_loginBtn").on("click",function(){
 		for(let i = 0; i < resp.length; i++){
 			
 			let msgDiv = $("<div class='col-12 send_msgboard2'>");
-			let msgDiv1 = $("<div class='row m-0 border border-2 rounded board_row '>");
+			let msgDiv1 = $("<div class='row m-0 border border-2 rounded board_row'>");
 			
-			let msgDiv2 = $("<div class='col-md-2 col-lg-1 d-none d-lg-block p-0'>");
+			let msgDiv2 = $("<div class='col-md-2 col-lg-1 d-none d-lg-block p-0 text-center'>");
 			msgDiv2.text(resp[i].line);
 			
 			let msgDiv3 = $("<div class='col-8 col-md-8 col-lg-5 m-0 title ellipsis p-0'>");
@@ -1703,7 +1709,7 @@ $("#board-tab").on("click", function(){
 		let freeDiv = $("<div class='col-12 free_boardbox2'>");
 		let freeDiv1 = $("<div class='row m-0 border border-2 rounded board_row '>");
 		
-		let freeDiv2 = $("<div class='col-md-2 col-lg-1 d-none d-lg-block p-0'>");
+		let freeDiv2 = $("<div class='col-md-2 col-lg-1 d-none d-lg-block p-0 text-center'>");
 		freeDiv2.text(resp[i].line);
 		
 		let freeDiv3 = $("<div class='col-8 col-md-8 col-lg-5 m-0 title ellipsis p-0'>");
@@ -1778,7 +1784,7 @@ $("#v-pills-tab2-tab").on("click", function(){
 		let galleryDiv = $("<div class='col-12 gallery_boardbox2'>");
 		let galleryDiv1 = $("<div class='row m-0 border border-2 rounded board_row '>");
 		
-		let galleryDiv2 = $("<div class='col-md-2 col-lg-1 d-none d-lg-block p-0'>");
+		let galleryDiv2 = $("<div class='col-md-2 col-lg-1 d-none d-lg-block p-0 text-center'>");
 		galleryDiv2.text(resp[i].line);
 		
 		let galleryDiv3 = $("<div class='col-8 col-md-8 col-lg-5 m-0 title ellipsis p-0'>");
@@ -1851,7 +1857,7 @@ $("#v-pills-tab3-tab").on("click", function(){
 		let jobDiv = $("<div class='col-12 job_boardbox2'>");
 		let jobDiv1 = $("<div class='row m-0 border border-2 rounded board_row '>");
 		
-		let jobDiv2 = $("<div class='col-md-2 col-lg-1 d-none d-lg-block p-0'>");
+		let jobDiv2 = $("<div class='col-md-2 col-lg-1 d-none d-lg-block p-0 text-center'>");
 		jobDiv2.text(resp[i].line);
 		
 		let jobDiv3 = $("<div class='col-8 col-md-8 col-lg-5 m-0 title ellipsis p-0'>");
@@ -1924,7 +1930,7 @@ $("#v-pills-tab4-tab").on("click", function(){
 		let foodDiv = $("<div class='col-12 food_boardbox2'>");
 		let foodDiv1 = $("<div class='row m-0 border border-2 rounded board_row '>");
 		
-		let foodDiv2 = $("<div class='col-md-2 col-lg-1 d-none d-lg-block p-0'>");
+		let foodDiv2 = $("<div class='col-md-2 col-lg-1 d-none d-lg-block p-0 text-center'>");
 		foodDiv2.text(resp[i].line);
 		
 		let foodDiv3 = $("<div class='col-8 col-md-8 col-lg-5 m-0 title ellipsis p-0'>");
@@ -1997,7 +2003,7 @@ $("#v-pills-tab5-tab").on("click", function(){
 		let houseDiv = $("<div class='col-12 house_boardbox2'>");
 		let houseDiv1 = $("<div class='row m-0 border border-2 rounded board_row '>");
 		
-		let houseDiv2 = $("<div class='col-md-2 col-lg-1 d-none d-lg-block p-0'>");
+		let houseDiv2 = $("<div class='col-md-2 col-lg-1 d-none d-lg-block p-0 text-center'>");
 		houseDiv2.text(resp[i].line);
 		
 		let houseDiv3 = $("<div class='col-8 col-md-8 col-lg-5 m-0 title ellipsis p-0'>");
@@ -2069,7 +2075,7 @@ $("#v-pills-tab6-tab").on("click", function(){
 		let jjimDiv = $("<div class='col-12 jjim_boardbox2'>");
 		let jjimDiv1 = $("<div class='row m-0 border border-2 rounded board_row '>");
 		
-		let jjimDiv2 = $("<div class='col-md-2 col-lg-1 d-none d-lg-block p-0'>");
+		let jjimDiv2 = $("<div class='col-md-2 col-lg-1 d-none d-lg-block p-0 text-center'>");
 		jjimDiv2.text(resp[i].line);
 		
 		let jjimDiv3 = $("<div class='col-8 col-md-8 col-lg-5 m-0 title ellipsis p-0'>");
@@ -2079,7 +2085,7 @@ $("#v-pills-tab6-tab").on("click", function(){
 		
 		let jjimDiv4 = $("<div class='col-4 col-md-4 col-lg-2 p-0 ellipsis text-center'>");
 		let jjimSpan2 = $("<span>")
-		jjimSpan2.text('${loginID}');
+		jjimSpan2.text(resp[i].id);
 		
 		let jjimDiv5 = $("<div class='col-md-2 col-lg-4 d-none d-lg-block p-0 text-center'>");
 		jjimDiv5.text(resp[i].jjim_date);
