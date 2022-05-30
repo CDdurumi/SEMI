@@ -336,9 +336,9 @@
             margin-top: 20px;
         }
 
-        .hotboard_bottom {
-            margin-top: 20px;
-            padding-bottom: 10px;
+      .hotboard_bottom {
+        	height:50px;
+            margin-top: 15px;
         }
 
         #freemain {
@@ -362,7 +362,6 @@
         }
 
         .editor {
-            width: 100%;
             margin:auto;
             padding-right: 30px;
             padding-bottom: 30px;
@@ -381,8 +380,10 @@
         #board_menu{
             height: 30px;
         }
+        .fa-thumbs-up{
+       	color: rgb(255,208,0);
+       }
         #board_menu_text{
-            font-size: 18px;
             font-weight:bold ;
             margin-bottom: 20px;
              text-align: center;
@@ -480,6 +481,16 @@ font-weight:bold;
     text-align:left;
   }
 }
+
+.bottom_board {
+            padding-right: 30px;
+            padding-bottom: 30px;
+        }
+.wrap12{
+
+height:530px;
+}  
+
     </style>
 </head>
 
@@ -607,8 +618,48 @@ $("#modal_loginBtn").on("click",function(){
     <div class="height-100 ">
         <div class="row " id="freemain">
 
+			<div class="col-12 col-md-6 bottom_board">
+                <div class="row border border-2 rounded wrap12 d-flex flex-wrap align-content-start">
+                    <div class="col-12 border-bottom hotboard_bottom text-center" style="font-weight:bold; font-size:18px;">맛집</div>
+                  
+                        <div class="col-12 ">
+                            <div class="row freeboard_bottom ">
+                            
+                            	<div class="col-12  m-0 p-0" style="height: 40px">
+									<div class="row m-0" id="board_menu_text">
+										<div class="col-8 " style="text-align:left; padding-left:25px">제목</div>
+										<div class="col-4 " style="text-align:right; padding-right:25px">추천</div>
+										
+									</div>
+
+								</div>
+                            
+                            
+                                <c:forEach var="i" items="${hotlist }">
+                                <div class="col-12 border border-2 rounded ">
+                                    <div class="row m-0">
+                                        <div class="col-9 col-md-9 m-0 free_title ididid"><a href="/detailView.board?cpage=${cpage}&seq=${i.all_board_seq}&click=ok" style="color:black; font-weight:bold;">${i.title }</a></div>
+                                        <!-- ellipsis 밑에 forEach로 하니까 한줄만 추가했습니다.  -->
+                                        <div class="col-3 col-md-3">
+                                            <div class="row ">
+                                                <div class="col-12 m-0" style="text-align:right"> <i class="fa-solid fa-thumbs-up"></i>&nbsp;${i.like_count }</div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                </c:forEach>
+                                
+                                
+                            </div>
+                        </div>
+
+                </div>
+
+            </div>
+
+
             <div class="col-12 col-md-6 editor">
-                <div class="row border border-2 rounded">
+                <div class="row border border-2 rounded wrap12">
                     <div class="col-12 border-bottom hotboard_bottom text-center" style="font-weight: bold; font-size:18px;">에디터 추천</div>
                     <div id="carouselExampleIndicators" class="carousel slide" data-bs-ride="carousel">
                        
