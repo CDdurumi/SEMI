@@ -361,17 +361,22 @@
             margin: auto;
         }
         .card-body{
-            height: 130px;
+            height: 100px;
         }
         .card img {
             height: 300px;
         }
 
         #hugi {
-            height: 80px;
+            height: 50px;
             text-align: center;
             font-size: 20px;
-            padding-top: 35px;
+            padding-top: 15px;
+/*             border-bottom: 1px solid grey; */
+        }
+        .hugi{
+        margin:auto;
+        width:50%;
         }
         .bottom_board{
             padding-right: 15px;
@@ -457,11 +462,12 @@ font-weight: bold;
        color:#0080ff;
        }       
       .wrap12{
-
-	
- 		
  		height:470px; 
 }
+	.wrap11{
+		height:500px;
+	}
+
 @media (min-width: 576px) {
   .footer1 {
     text-align:right;
@@ -622,7 +628,7 @@ font-weight: bold;
 	<div class="height-85 ">
 		<div class="row " id="freemain">
 			<div class="col-12 " id="freemain_col">
-				<div class="row border border-2 rounded wrap12 d-flex flex-wrap align-content-start"">
+				<div class="row border border-2 rounded wrap12 d-flex flex-wrap align-content-start">
 					<div class="col-9 border-bottom hotboard_bottom text-center" style="font-weight:bold; font-size:18px;">자유게시판
 						화제글</div>
 					<div class="col-3 border-bottom hotboard_bottom text-center" >
@@ -675,12 +681,12 @@ font-weight: bold;
 
 	
 
+<div class="col-12 dummy" style="height: 30px;"></div>
 
+	<div class="row border border-2 rounded wrap11 hugi ">
+		<div class="col-12 border-bottom border-2 " id="hugi"><a href ="/galleryMain.board?cpage=1" style="font-weight:bold; font-size:18px;">여행 후기</a></div>
 
-	<div class="row">
-		<div class="col " id="hugi"><a href ="/galleryMain.board?cpage=1" style="font-weight:bold; font-size:18px;">여행 후기</a></div>
-
-		<div class="row">
+	
 			<div class="col-12" id="carousel">
 				<div id="carouselExampleIndicators" class="carousel slide"
 					data-bs-ride="carousel">
@@ -764,6 +770,9 @@ font-weight: bold;
 				</div>
 			</div>
 		</div>
+
+
+		
 		<div class="row " id="freemain">
 			<div class="col-12 col-md-6 bottom_board">
 				<div class="row border border-2 rounded wrap12 d-flex flex-wrap align-content-start" >
@@ -862,7 +871,7 @@ font-weight: bold;
 	</div>
 	
 	</div>
-	</div>
+
 	<footer class="mt-auto text-black-50" style="background-color:#f5f5f7">
         	<hr>
         	<div class="row">
@@ -888,7 +897,7 @@ font-weight: bold;
 	</div>
        
 
-    
+    </div>
      <!--top 버튼-->
     <button onclick="topFunction()" id="myBtn" title="Go to top">↑</button>
     
