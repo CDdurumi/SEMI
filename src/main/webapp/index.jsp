@@ -385,7 +385,17 @@ $("#modal_loginBtn").on("click",function(){
 							<a href="/goMyPage.mpg" class="nav_link" data-bs-toggle="modal" data-bs-target="#exampleModal"> <i class='bx bx-user nav_icon'></i> <span class="nav_name">마이페이지</span> </a>
 						</c:otherwise>
 					</c:choose>
-               		<a href="/goMyPage.mpg" class="nav_link" data-bs-toggle="modal" data-bs-target="#exampleModal"> <i class='bx bx-user nav_icon'></i> <span class="nav_name">관리자페이지</span> </a>
+					
+					<c:choose>
+						<c:when test="${loginIsAdmin == 'Y'}">
+               				<a href="/adiminPage.admin" class="nav_link"> <i class='bx bx-hard-hat nav_icon'></i> <span class="nav_name">관리자페이지</span> </a>
+                		</c:when>
+                	
+                		<c:otherwise>
+							
+						</c:otherwise>
+                	</c:choose>
+                
                 </div>
             </div> 
             <c:choose>
