@@ -177,7 +177,11 @@ pageEncoding="UTF-8"%>
     .nav_icon {
         font-size: 1.25rem
     }
-
+    #cont {
+            padding-top: 60px;
+            max-width: 1400px;
+            margin: auto;
+        }
     .show1 {
         left: 0
     }
@@ -648,11 +652,10 @@ ${navi }
 
 
 </div>
-</div>
 
-                        <button onclick="topFunction()" id="myBtn" title="Go to top">↑</button>
+<button onclick="topFunction()" id="myBtn" title="Go to top">↑</button>
+<div class="row dummy2" style="height:30px"></div>
 <footer class="mt-auto text-black-50" style="background-color:#f5f5f7">
-        	<hr>
         	<div class="row">
         		<div class="d-none d-lg-block col-5 footer1">
         			<img src="/imgsrc/footerlogo2.png">
@@ -669,8 +672,8 @@ ${navi }
         			</div>
         		</div>
         	</div>
-        	<hr>
         </footer>
+        <div class="row dummy2" style="height:30px"></div>
                     </div>
                     
 <!--Container Main end-->

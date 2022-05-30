@@ -744,7 +744,7 @@ $("#modal_loginBtn").on("click",function(){
                 </div>
 
             </div>
-        </div>
+    
 
 
 <!---------------------검색창---------------->
@@ -858,9 +858,8 @@ $("#modal_loginBtn").on("click",function(){
             </div>
         </div>
         </header>
-
+    <div class="row dummy2" style="height:30px"></div>
 <footer class="mt-auto text-black-50" style="background-color:#f5f5f7">
-        	<hr>
         	<div class="row">
         		<div class="d-none d-lg-block col-5 footer1">
         			<img src="/imgsrc/footerlogo2.png">
@@ -877,8 +876,9 @@ $("#modal_loginBtn").on("click",function(){
         			</div>
         		</div>
         	</div>
-        	<hr>
         </footer>
+        <div class="row dummy2" style="height:30px"></div>
+        </div>
     </div>
 
     <!--Container Main end-->
