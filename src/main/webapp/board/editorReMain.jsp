@@ -636,8 +636,8 @@ $("#modal_loginBtn").on("click",function(){
 										</div>
 
 										<div class="row " id="count" style="margin: auto;">
-											<div class="col-6 goodcnt" style="padding-right:18px;">${i.like_count}</div>
-											<div class="col-6 heartcnt" style="padding-left:18px;">${i.jjim_count}</div>
+											<div class="col-6 goodcnt" style="padding-right:20px;">${i.like_count}</div>
+											<div class="col-6 heartcnt" style="padding-left:20px;">${i.jjim_count}</div>
 										</div>
 									</div>
 								</div>
