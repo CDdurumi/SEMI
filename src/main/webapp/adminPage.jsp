@@ -537,7 +537,7 @@ pageEncoding="UTF-8"%>
             /* border-top: 1px solid #0080ff; */
         }
         .btn{
-            margin-top: 20px;
+/*             margin-top: 20px; */
         }
 
 /*--top버튼----------------------------------------------------------------*/
@@ -743,64 +743,124 @@ $("#modal_loginBtn").on("click",function(){
     <div class="tab-content" id="myTabContent">
       <!--탭1------------------------------------------------------->
       <div class="tab-pane fade show active" id="board-tab-pane" role="tabpanel" aria-labelledby="board-tab" tabindex="0">
-        <div class="row">
-        
-        
-        <!---------------------검색창---------------->
-		<div class="col-12" id="searchbar" >
-		    <nav class="navbar bg">
-		        <div class="container-fluid">
-		          <a class="navbar-brand"> </a>
-		          <form action="/search.board" method="post" class="d-flex" role="search">
-		          		<input type="hidden" value="f" name="boardOption">
-		          		<input type="hidden" value="1" name="cpage">
-						<select name="serchOption" id="select">
-		                        <option value="title">
-		                            제목
-		                        </option>
-		                        <option value="id">
-		                            작성자
-		                        </option>
-		                        <option value="contents">
-		                            내용
-		                        </option>
-						</select>
-		          	
-		          	
-		            <input class="form-control me-2" type="search" placeholder="검색어를 입력해주세요." aria-label="Search" name="contents">
-		            <button class="btn btn-outline-secondary btn-sm" type="submit">Search</button>&nbsp;
-		            
-		            		<c:choose>
-								<c:when test="${loginID !=null}">
-									<button type="button" class="btn btn-primary btn-sm" id="writeBtn" style="white-space:nowrap;"><i class="fa-solid fa-pen-to-square"></i>글 작성하기</button>
-								</c:when>
-				
-								<c:otherwise>
-									<button type="button" class="btn btn-primary btn-sm" style="white-space:nowrap;" data-bs-toggle="modal" data-bs-target="#exampleModal"><i class="fa-solid fa-pen-to-square"></i>글 작성하기</button>
-								</c:otherwise>
-							</c:choose>
-							
-		          </form>
-		          
+	        <div class="row">
+	        <!---------------------검색창---------------->
+				<div class="col-12" id="searchbar" >
+				    <nav class="navbar bg">
+				        <div class="container-fluid">
+				          <a class="navbar-brand"> </a>
+				          <form action="#" method="post" class="d-flex" role="search">
+				          		<input type="hidden" value="f" name="boardOption">
+				          		<input type="hidden" value="1" name="cpage">
+								
+								<select name="boardOption" id="boardSelect">
+				                        <option value="f">
+				                            자유게시판
+				                        </option>
+				                        <option value="g">
+				                            여행후기
+				                        </option>
+				                        <option value="j">
+				                            구인구직
+				                        </option>
+				                        <option value="r">
+				                            맛집
+				                        </option>
+				                        <option value="h">
+				                            숙소리뷰
+				                        </option>		                        		                        
+								</select>
+								
+								
+								<select name="serchOption" id="select">
+				                        <option value="title">
+				                            제목
+				                        </option>
+				                        <option value="id">
+				                            작성자
+				                        </option>
+				                        <option value="contents">
+				                            내용
+				                        </option>
+								</select>
+				          	
+				          	
+				            <input class="form-control me-2" type="search" placeholder="검색어를 입력해주세요." aria-label="Search" name="contents">
+				            <button class="btn btn-outline-secondary btn-sm" type="submit">Search</button>&nbsp;
+				            
+				            		<c:choose>
+										<c:when test="${loginID !=null}">
+											<button type="button" class="btn btn-primary btn-sm" id="writeBtn" style="white-space:nowrap;"><i class="fa-solid fa-pen-to-square"></i>글 작성하기</button>
+										</c:when>
+						
+										<c:otherwise>
+											<button type="button" class="btn btn-primary btn-sm" style="white-space:nowrap;" data-bs-toggle="modal" data-bs-target="#exampleModal"><i class="fa-solid fa-pen-to-square"></i>글 작성하기</button>
+										</c:otherwise>
+									</c:choose>
+									
+				          </form>
+				          
+				        </div>
+				      </nav>
+				</div>
+	        
+	        
+		        <div class="row m-0" id="board_menu" ></div>
+		
+		        <div class="row m-0 ">
+		             <div class="col-12  ">
+		                <div class="row " id="board_menu_text">
+		                    <div class="col-md-1 d-none d-md-block p-0">번호</div>
+		                    <div class="col-7 col-md-5 " style="text-align:left">제목</div>
+		                    <div class="col-3 col-md-2 p-0 text-center">글쓴이</div>
+		                    <div class="col-md-2 d-none d-md-block p-0 text-center">날짜</div>
+		                    <div class="col-md-1 d-none d-md-block p-0">조회</div>
+		                    <div class="col-2 col-md-1 p-0">추천</div>
+		                </div>
+		             
+		            </div>
 		        </div>
-		      </nav>
-		</div>
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        </div>
+	        
+			    <!--         여기는 공지글 -->
+<%-- 		        <c:forEach var="i" items="${noticeList }"> --%>
+<!-- 		        <div class="col-12  board"> -->
+<!-- 		            <div class="row m-0 border border-2 rounded board_row "> -->
+		            	
+<!-- 		                <div class="col-1 col-md-1 d-none d-md-block p-0"> -->
+<!-- 		                <p id="notice">공지</p> -->
+<!-- 		                </div> -->
+<!-- 		               	<div class="col-7 col-md-5 m-0 title ididid " style="text-align:left"> -->
+<%-- 		               		<a href="/detailView.board?cpage=${cpage}&seq=${i.all_board_seq}&click=ok" style="color:black">${i. title }</a> --%>
+<!-- 		               	</div> -->
+<%-- 		                <div class="col-3 col-md-2 p-0 ellipsis text-center ididid">${i.id }</div> --%>
+<%-- 		                <div class="col-md-2 d-none d-md-block p-0 "><fmt:formatDate value="${i.write_date }" pattern="yy-MM-dd"/></div> --%>
+<%-- 		                <div class="col-md-1 d-none d-md-block p-0">${i.view_count}</div> --%>
+<%-- 		                <div class="col-2 col-md-1 p-0">${i.like_count}</div> --%>
+		                
+<!-- 		            </div> -->
+<!-- 		        </div> -->
+<%-- 		        </c:forEach> --%>
+		        
+		        
+				<!--         여기는 목록 -->
+<%-- 		        <c:forEach var="i" items="${list }"> --%>
+<!-- 		        <div class="col-12  board"> -->
+<!-- 		            <div class="row m-0 border border-2 rounded board_row "> -->
+		            	
+<%-- 		                <div class="col-1 col-md-1 d-none d-md-block p-0">${i.line}</div> --%>
+<!-- 		               	<div class="col-7 col-md-5 m-0 title ididid "style="text-align:left"> -->
+<%-- 		               		<a href="/detailView.board?cpage=${cpage}&seq=${i.all_board_seq}&click=ok" style="color:black">${i. title }</a> --%>
+<!-- 		               	</div> -->
+<%-- 		                <div class="col-3 col-md-2 p-0 ididid text-center">${i.id }</div> --%>
+<%-- 		                <div class="col-md-2 d-none d-md-block p-0 "><fmt:formatDate value="${i.write_date }" pattern="yy-MM-dd"/></div> --%>
+<%-- 		                <div class="col-md-1 d-none d-md-block p-0">${i.view_count}</div> --%>
+<%-- 		                <div class="col-2 col-md-1 p-0">${i.like_count}</div> --%>
+		                
+<!-- 		            </div> -->
+<!-- 		        </div> -->
+<%-- 		        </c:forEach> --%>
+
+	        </div>
       </div>
 
       <!--탭2-------------------------------------------------------->
@@ -852,6 +912,24 @@ $("#modal_loginBtn").on("click",function(){
 
 
     <script>
+    
+    //탭1 클릭 이벤트
+    $("#board-tab").on("click",function(){
+    	let boardOption = $("#boardSelect").val();
+    	location.href = "/adiminPage.admin?tab=one"; 
+    	
+    })
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
     
     $("#password-input").on("keyup",function(e){
         if(e.keyCode==13){
