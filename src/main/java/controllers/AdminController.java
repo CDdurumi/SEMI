@@ -41,7 +41,7 @@ public class AdminController extends HttpServlet {
 				int cpage = Integer.parseInt(request.getParameter("cpage"));
 				request.setAttribute("cpage", cpage);
 				List<BoardDTO> list = boardDao.selectByPage(cpage,boardOption); //게시글 별 리스트
-				String pageNavi = boardDao.getPageNavi(cpage, boardOption);//페이징
+				String pageNavi = boardDao.getAdminPageNavi(cpage, boardOption);//관리자 게시글 전용 페이징
 				
 				request.setAttribute("list", list);
 				request.setAttribute("navi", pageNavi);
@@ -55,11 +55,11 @@ public class AdminController extends HttpServlet {
 			}else if(uri.equals("/adiminPageTap1.admin")) {
 				
 				String boardOption = request.getParameter("boardOption");
-System.out.println(boardOption);
+
 				int cpage = Integer.parseInt(request.getParameter("cpage"));
 				request.setAttribute("cpage", cpage);
 				List<BoardDTO> list = boardDao.selectByPage(cpage,boardOption); //게시글 별 리스트
-				String pageNavi = boardDao.getPageNavi(cpage, boardOption);//페이징
+				String pageNavi = boardDao.getAdminPageNavi(cpage, boardOption);//관리자 게시글 전용 페이징
 				
 				request.setAttribute("list", list);
 				request.setAttribute("navi", pageNavi);

@@ -937,7 +937,7 @@ $("#modal_loginBtn").on("click",function(){
     //탭1 클릭 이벤트
     $("#board-tab").on("click",function(){
     	let boardOption = $("#boardSelect").val();
-    	location.href = "/adiminPageTap1.admin?cpage=1&boardOption="+boardOption+""; 
+    	location.href = "/adiminPageTap1.admin?boardOption="+boardOption+"&cpage=1"; 
     	
     })
     
@@ -948,7 +948,7 @@ $("#modal_loginBtn").on("click",function(){
     		previous  = this.value;
 		}).change(function() {
 			let boardOption = $("#boardSelect").val();
-			location.href = "/adiminPageTap1.admin?cpage=1&boardOption="+boardOption+""; 
+			location.href = "/adiminPageTap1.admin?boardOption="+boardOption+"&cpage=1"; 
 		});
     
     
