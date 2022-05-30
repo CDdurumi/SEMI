@@ -41,13 +41,21 @@ public class ReplyController extends HttpServlet {
 
 			}else if(uri.equals("/modify.reply")) {//댓글 수정
 				String reply_seq = request.getParameter("reply_seq");
-				System.out.println(reply_seq);
+				
 				String contents = request.getParameter("replyContentModify");
-				System.out.println(contents);
+				
 				int result = dao.modify(reply_seq, contents);
 				PrintWriter pw = response.getWriter();
 				pw.append(g.toJson(result));
 				
+				
+			}else if(uri.equals("/replyinfo.reply")) {//댓글 정보
+				String seq = request.getParameter("reply_seq");
+				System.out.println(seq);
+				ReplyDTO result = dao.replyinfo(seq);
+				System.out.println(result.getContents());
+				PrintWriter pw = response.getWriter();
+				pw.append(g.toJson(result));
 				
 			}else if(uri.equals("/list.reply")) {//댓글 리스트
 				String parent_seq = request.getParameter("parent_seq");//해당 게시글 넘버
@@ -94,7 +102,7 @@ public class ReplyController extends HttpServlet {
 				PrintWriter pw = response.getWriter();
 				pw.append(g.toJson(list));
 				
-			}else if(uri.equals("/reReplyinfo.reply")) {
+			}else if(uri.equals("/reReplyinfo.reply")) {//re댓글 정보
 				String seq = request.getParameter("reply_re_seq");
 				System.out.println(seq);
 				ReplyReDTO result = daoRe.reReplyinfo(seq);

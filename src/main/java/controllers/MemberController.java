@@ -114,6 +114,7 @@ public class MemberController extends HttpServlet {
 					session.setAttribute("loginID",dto.getId());
 					session.setAttribute("loginEmail", dto.getEmail());
 					session.setAttribute("loginJoinDate",dto.getFormdDate());
+					session.setAttribute("loginIsAdmin",dto.getIsadmin());
 					//request.setAttribute("userList", list); 유저정보 담아놓은거 
 					
 					//response.sendRedirect("/index.jsp");

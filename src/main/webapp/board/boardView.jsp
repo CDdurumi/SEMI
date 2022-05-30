@@ -1110,16 +1110,28 @@
                               btn4.attr("class","btn btn-outline-danger btn-sm ");
                               btn4.attr("type","button");
                               
+                              col5.attr("value",resp[i].reply_seq);
+                              
+                              //수정취소 
                               btn4.on("click",function(){
-                                 btn1.css("display","inline-block");
-                                  btn2.css("display","inline-block");
-                                  btn5.css("display","inline-block");
-                                  btn3.css("display","none");
-                                  btn4.css("display","none");
-                                  col6.attr("contenteditable","false");
-                                  col6.text(resp[i].contents);
-                                  $(".modify").attr("disabled",false);
-                                  add.css("border","0px solid black");
+                            	  $.ajax({
+                            		  url:"/replyinfo.reply",
+                            		   data:{reply_seq:col5.attr("value") },
+                                       dataType:'json',
+                                       type:'POST'
+                            	  }).done(function(resp){
+                            	       btn1.css("display","inline-block");
+                                       btn2.css("display","inline-block");
+                                       btn5.css("display","inline-block");
+                                       btn3.css("display","none");
+                                       btn4.css("display","none");
+                                       col6.attr("contenteditable","false");
+                                       col6.text(resp.contents);
+                                       $(".modify").attr("disabled",false);
+                                       add.css("border","0px solid black");
+                            	  });
+                            	  
+                          
                               })
                               
                               //댓글 수정
@@ -1141,7 +1153,7 @@
                                   btn4.css("display","none");
                                   col6.attr("contenteditable","false");
                                   $(".modify").attr("disabled",false);
-                                  location.reload();  //수정 완료 누르면 새로고침
+                                  
                              })
                           })
                               
@@ -1297,7 +1309,16 @@
 						<c:otherwise>
 							<a href="/goMyPage.mpg" class="nav_link" data-bs-toggle="modal" data-bs-target="#exampleModal"> <i class='bx bx-user nav_icon'></i> <span class="nav_name">마이페이지</span> </a>
 						</c:otherwise>
-					</c:choose> 
+					</c:choose>
+					<c:choose>
+						<c:when test="${loginIsAdmin == 'Y'}">
+               				<a href="/adiminPage.admin" class="nav_link"> <i class='bx bx-hard-hat nav_icon'></i> <span class="nav_name">관리자페이지</span> </a>
+                		</c:when>
+                	
+                		<c:otherwise>
+							
+						</c:otherwise>
+                	</c:choose> 
                  </div>
             </div>
             <c:choose>
