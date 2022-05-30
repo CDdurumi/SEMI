@@ -574,6 +574,17 @@ pageEncoding="UTF-8"%>
  }
 
 
+
+select{
+    border-radius: 5px;
+    margin-right: 8px;
+    font-size: 18px;
+    font-weight: bold;
+}
+#notice{
+color:red;
+font-weight:bold;
+}
     </style>
 	<script>
 // 	 let page = 1;  //페이징과 같은 방식이라고 생각하면 된다.
@@ -730,17 +741,74 @@ $("#modal_loginBtn").on("click",function(){
     </ul>
 
     <div class="tab-content" id="myTabContent">
-      <!--탭1-->
+      <!--탭1------------------------------------------------------->
       <div class="tab-pane fade show active" id="board-tab-pane" role="tabpanel" aria-labelledby="board-tab" tabindex="0">
-        게시글
+        <div class="row">
+        
+        
+        <!---------------------검색창---------------->
+		<div class="col-12" id="searchbar" >
+		    <nav class="navbar bg">
+		        <div class="container-fluid">
+		          <a class="navbar-brand"> </a>
+		          <form action="/search.board" method="post" class="d-flex" role="search">
+		          		<input type="hidden" value="f" name="boardOption">
+		          		<input type="hidden" value="1" name="cpage">
+						<select name="serchOption" id="select">
+		                        <option value="title">
+		                            제목
+		                        </option>
+		                        <option value="id">
+		                            작성자
+		                        </option>
+		                        <option value="contents">
+		                            내용
+		                        </option>
+						</select>
+		          	
+		          	
+		            <input class="form-control me-2" type="search" placeholder="검색어를 입력해주세요." aria-label="Search" name="contents">
+		            <button class="btn btn-outline-secondary btn-sm" type="submit">Search</button>&nbsp;
+		            
+		            		<c:choose>
+								<c:when test="${loginID !=null}">
+									<button type="button" class="btn btn-primary btn-sm" id="writeBtn" style="white-space:nowrap;"><i class="fa-solid fa-pen-to-square"></i>글 작성하기</button>
+								</c:when>
+				
+								<c:otherwise>
+									<button type="button" class="btn btn-primary btn-sm" style="white-space:nowrap;" data-bs-toggle="modal" data-bs-target="#exampleModal"><i class="fa-solid fa-pen-to-square"></i>글 작성하기</button>
+								</c:otherwise>
+							</c:choose>
+							
+		          </form>
+		          
+		        </div>
+		      </nav>
+		</div>
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        </div>
       </div>
 
-      <!--탭2-->
+      <!--탭2-------------------------------------------------------->
       <div class="tab-pane fade" id="member-tab-pane" role="tabpanel" aria-labelledby="member-tab" tabindex="0">
         계정
       </div>
 
-      <!--탭3-->
+      <!--탭3---------------------------------------------------------->
       <div class="tab-pane fade" id="contact-tab-pane" role="tabpanel" aria-labelledby="contact-tab" tabindex="0">탭3</div>
     </div>
 
