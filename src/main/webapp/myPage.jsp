@@ -664,6 +664,7 @@ pageEncoding="UTF-8"%>
                     <c:choose>
 						<c:when test="${loginID !=null}">
 							<a href="/goMyPage.mpg" class="nav1_link"> <i class='bx bx-user nav1_icon'></i> <span class="nav1_name">마이페이지</span> </a>
+							<a href="/goMyPage.mpg" class="nav1_link"> <i class='bx bx-calendar nav_icon'></i> <span class="nav_name">일정관리</span> </a>
 						</c:when>
 		
 						<c:otherwise>
