@@ -861,6 +861,27 @@ $("#modal_loginBtn").on("click",function(){
 		        </c:forEach>
 
 	        </div>
+	        
+			<div class="row">
+	            <div class="col-12 text-center">
+					<nav aria-label="Page navigation example">
+						  <ul class="pagination justify-content-center">
+								<li class="page-item">
+								  <a class="page-link" href="#" aria-label="Previous">
+								    <span aria-hidden="true">&laquo;</span>
+								  </a>
+								</li>
+								${navi}
+								<li class="page-item">
+								  <a class="page-link" href="#" aria-label="Next">
+								    <span aria-hidden="true">&raquo;</span>
+								  </a>
+								</li>
+						  </ul>
+					</nav>
+	            </div>
+			</div>
+	        
       </div>
 
       <!--탭2-------------------------------------------------------->
@@ -921,7 +942,14 @@ $("#modal_loginBtn").on("click",function(){
     })
     
     
-    
+    //게시글 콤보박스 선택 시 이벤트
+        let previous = "";
+        $("#boardSelect").on('focus', function () {
+    		previous  = this.value;
+		}).change(function() {
+			let boardOption = $("#boardSelect").val();
+			location.href = "/adiminPageTap1.admin?cpage=1&boardOption="+boardOption+""; 
+		});
     
     
     
