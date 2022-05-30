@@ -815,12 +815,12 @@ $("#modal_loginBtn").on("click",function(){
         <div class="row m-0 ">
             <div class="col-12 ">
                 <div class="row " id="board_menu_text">
-                    <div class="col-md-1 d-none d-md-block p-0">번호</div>
+                    <div class="col-md-1 d-none d-md-block p-0 text-center">번호</div>
                     <div class="col-7 col-md-5 title">제목</div>
                     <div class="col-3 col-md-2 p-0 text-center">글쓴이</div>
                     <div class="col-md-2 d-none d-md-block p-0 text-center">날짜</div>
-                    <div class="col-md-1 d-none d-md-block p-0">조회</div>
-                    <div class="col-2 col-md-1 p-0">추천</div>
+                    <div class="col-md-1 d-none d-md-block p-0 text-center">조회</div>
+                    <div class="col-2 col-md-1 p-0 text-center">추천</div>
                 </div>
              
             </div>
@@ -831,16 +831,16 @@ $("#modal_loginBtn").on("click",function(){
         <div class="col-12  board">
             <div class="row m-0 border border-2 rounded board_row ">
             	
-                <div class="col-1 col-md-1 d-none d-md-block p-0">
+                <div class="col-1 col-md-1 d-none d-md-block p-0 text-center">
                 <p id="notice">공지</p>
                 </div>
-               	<div class="col-7 col-md-5 m-0 title ellipsis">
+               	<div class="col-7 col-md-5 m-0 title ellipsis ">
                		<span><a href="/detailView.board?cpage=${cpage}&seq=${i.all_board_seq}&click=ok" style="color:black">${i. title }</a></span>
                	</div>
                 <div class="col-3 col-md-2 p-0 ellipsis text-center"><span>${i.id }</span></div>
-                <div class="col-md-2 d-none d-md-block p-0 "><fmt:formatDate value="${i.write_date }" pattern="yy-MM-dd"/></div>
-                <div class="col-md-1 d-none d-md-block p-0">${i.view_count}</div>
-                <div class="col-2 col-md-1 p-0">${i.like_count}</div>
+                <div class="col-md-2 d-none d-md-block p-0 text-center"><fmt:formatDate value="${i.write_date }" pattern="yy-MM-dd"/></div>
+                <div class="col-md-1 d-none d-md-block p-0 text-center">${i.view_count}</div>
+                <div class="col-2 col-md-1 p-0 text-center">${i.like_count}</div>
                 
             </div>
         </div>
@@ -851,14 +851,14 @@ $("#modal_loginBtn").on("click",function(){
         <div class="col-12  board">
             <div class="row m-0 border border-2 rounded board_row ">
             	
-                <div class="col-1 col-md-1 d-none d-md-block p-0">${i.line}</div>
+                <div class="col-1 col-md-1 d-none d-md-block p-0 text-center">${i.line}</div>
                	<div class="col-7 col-md-5 m-0 title ellipsis">
                		<span><a href="/detailView.board?cpage=${cpage}&seq=${i.all_board_seq}&click=ok" style="color:black">${i. title }</a></span>
                	</div>
                 <div class="col-3 col-md-2 p-0 ellipsis text-center"><span>${i.id }</span></div>
-                <div class="col-md-2 d-none d-md-block p-0 "><fmt:formatDate value="${i.write_date }" pattern="yy-MM-dd"/></div>
-                <div class="col-md-1 d-none d-md-block p-0">${i.view_count}</div>
-                <div class="col-2 col-md-1 p-0">${i.like_count}</div>
+                <div class="col-md-2 d-none d-md-block p-0 text-center"><fmt:formatDate value="${i.write_date }" pattern="yy-MM-dd"/></div>
+                <div class="col-md-1 d-none d-md-block p-0 text-center">${i.view_count}</div>
+                <div class="col-2 col-md-1 p-0 text-center">${i.like_count}</div>
                 
             </div>
         </div>
