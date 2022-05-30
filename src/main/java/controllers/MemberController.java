@@ -168,7 +168,7 @@ public class MemberController extends HttpServlet {
 				pr.append(g.toJson(result));
 			}
 		}catch (Exception e) {
-			response.sendRedirect("errol.html");
+			response.sendRedirect("error.jsp");
 		}
 	}
 
