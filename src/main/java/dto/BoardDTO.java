@@ -15,9 +15,13 @@ public class BoardDTO {
 	private String editor_type;
 	private int line;
 	private String date;
+	private Timestamp jjimm_date;
+	private String jjim_date;
+	private String jjim_id;
 	public BoardDTO() {
 		// TODO Auto-generated constructor stub
 	}
+	
 	public BoardDTO(String all_board_seq, String id, String title, String contents, Timestamp write_date,
 			int like_count, int jjim_count, int view_count, String editor_type, int line) {
 		super();
@@ -32,6 +36,7 @@ public class BoardDTO {
 		this.editor_type = editor_type;
 		this.line = line;
 	}
+	// 마이페이지에 게시글 가져오는 DTO
 	public BoardDTO(String all_board_seq, String id, String title, String contents, String date,
 			int like_count, int jjim_count, int view_count, String editor_type, int line) {
 		super();
@@ -46,11 +51,55 @@ public class BoardDTO {
 		this.editor_type = editor_type;
 		this.line = line;
 	}
+	// 마이페이지에 찜 게시글 가져오는 DTO
+	
 	
 	
 	public String getDate() {
 		return date;
 	}
+	public BoardDTO(String all_board_seq, String id, String title, String contents, String date,
+			int like_count, int jjim_count, int view_count, String editor_type, int line,
+			String jjim_date, String jjim_id) {
+		super();
+		this.all_board_seq = all_board_seq;
+		this.id = id;
+		this.title = title;
+		this.contents = contents;
+		this.write_date = write_date;
+		this.like_count = like_count;
+		this.jjim_count = jjim_count;
+		this.view_count = view_count;
+		this.editor_type = editor_type;
+		this.line = line;
+		this.jjim_date = jjim_date;
+		this.jjim_id = jjim_id;
+	}
+	
+	public String getJjim_date() {
+		return jjim_date;
+	}
+
+	public void setJjim_date(String jjim_date) {
+		this.jjim_date = jjim_date;
+	}
+
+	public Timestamp getJjimm_date() {
+		return jjimm_date;
+	}
+
+	public void setJjimm_date(Timestamp jjimm_date) {
+		this.jjimm_date = jjimm_date;
+	}
+
+	public String getJjim_id() {
+		return jjim_id;
+	}
+
+	public void setJjim_id(String jjim_id) {
+		this.jjim_id = jjim_id;
+	}
+
 	public void setDate(String date) {
 		this.date = date;
 	}

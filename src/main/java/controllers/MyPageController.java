@@ -173,6 +173,45 @@ public class MyPageController extends HttpServlet {
 				
 				pw.append(g.toJson(list));
 				
+			}else if(uri.equals("/foodBox.mpg")){
+				System.out.println("맛집 게시판 수신확인");
+				String writer = (String)request.getSession().getAttribute("loginID");
+				int cpage = Integer.parseInt(request.getParameter("page"));
+				System.out.println(cpage);
+				String boardOption ="r";
+				List<BoardDTO> list = dao.selectByPageFree(cpage, boardOption, writer);
+				System.out.println(list);
+				
+				PrintWriter pw = response.getWriter();
+				
+				pw.append(g.toJson(list));
+				
+			}else if(uri.equals("/houseBox.mpg")){
+				System.out.println("숙소리뷰 게시판 수신확인");
+				String writer = (String)request.getSession().getAttribute("loginID");
+				int cpage = Integer.parseInt(request.getParameter("page"));
+				System.out.println(cpage);
+				String boardOption ="h";
+				List<BoardDTO> list = dao.selectByPageFree(cpage, boardOption, writer);
+				System.out.println(list);
+				
+				PrintWriter pw = response.getWriter();
+				
+				pw.append(g.toJson(list));
+				
+			}else if(uri.equals("/jjimBox.mpg")){
+				System.out.println("찜 게시판 수신확인");
+				String writer = (String)request.getSession().getAttribute("loginID");
+				int cpage = Integer.parseInt(request.getParameter("page"));
+				System.out.println(cpage);
+				String boardOption ="h";
+				List<BoardDTO> list = dao.selectByPageFree(cpage, boardOption, writer);
+				System.out.println(list);
+				
+				PrintWriter pw = response.getWriter();
+				
+				pw.append(g.toJson(list));
+				
 			}else if(uri.equals("/goMyPage.mpg")) {
 				response.sendRedirect("/myPage.jsp");
 			}

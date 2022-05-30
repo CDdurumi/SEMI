@@ -520,6 +520,24 @@ pageEncoding="UTF-8"%>
             margin-bottom: 3px;
             padding: 0px;
         }
+        .food_boardbox2{
+            /* text-align: center; */
+            height: 50px;
+            margin-bottom: 3px;
+            padding: 0px;
+        }
+        .house_boardbox2{
+            /* text-align: center; */
+            height: 50px;
+            margin-bottom: 3px;
+            padding: 0px;
+        }
+        .jjim_boardbox2{
+            /* text-align: center; */
+            height: 50px;
+            margin-bottom: 3px;
+            padding: 0px;
+        }
 
         /*--계정관리---------------------------------------------------------------------------------------*/
 	.newcheck{
@@ -854,10 +872,10 @@ $("#modal_loginBtn").on("click",function(){
                         <div class="container2">
     
                            <div class="row " id="board_menu_text">
-                            	<div class="col-md-2 col-lg-1 d-none d-md-block ">번호</div>
+                            	<div class="col-md-2 col-lg-1 d-none d-lg-block ">번호</div>
                                 <div class="col-8 col-md-8 col-lg-5">제목</div>
                                 <div class="col-4 col-md-4 col-lg-2 text-center">보낸이</div>
-                                <div class="col-md-2 col-lg-4 d-none  d-md-block text-center">날짜</div>
+                                <div class="col-md-2 col-lg-4 d-none d-lg-block text-center">날짜</div>
                             </div>
                             <div class="row m-0" id="free_boardbox">
                                 <div class="col-12 " id="free_boardtext">
@@ -876,10 +894,10 @@ $("#modal_loginBtn").on("click",function(){
 
                         <div class="container2">
     						<div class="row " id="board_menu_text">
-                                        <div class="col-md-2 col-lg-1 d-none d-md-block ">번호</div>
-                                        <div class="col-8 col-md-6 col-lg-7">제목</div>
-                                        <div class="col-4 col-md-2 col-lg-2 text-center">보낸이</div>
-                                        <div class="col-md-2 col-lg-2 d-none  d-md-block text-center">날짜</div>
+                                        <div class="col-md-2 col-lg-1 d-none d-lg-block ">번호</div>
+                                        <div class="col-8 col-md-8 col-lg-5">제목</div>
+                                        <div class="col-4 col-md-4 col-lg-2 text-center">보낸이</div>
+                                        <div class="col-md-2 col-lg-4 d-none  d-lg-block text-center">날짜</div>
                                     </div>
                             <div class="row m-0 " id="gallery_boardbox">
                                 <div class="col-12  " id="gallery_boardtext">
@@ -897,14 +915,14 @@ $("#modal_loginBtn").on("click",function(){
   
                         <div class="container2">
     						<div class="row " id="board_menu_text">
-                                <div class="col-md-2 col-lg-1 d-none d-md-block ">번호</div>
-                                <div class="col-8 col-md-6 col-lg-7">제목</div>
-                                <div class="col-4 col-md-2 col-lg-2 text-center">보낸이</div>
-                                <div class="col-md-2 col-lg-2 d-none  d-md-block text-center">날짜</div>
+                                <div class="col-md-2 col-lg-1 d-none d-lg-block ">번호</div>
+                                <div class="col-8 col-md-8 col-lg-5">제목</div>
+                                <div class="col-4 col-md-4 col-lg-2 text-center">보낸이</div>
+                                <div class="col-md-2 col-lg-4 d-none  d-lg-block text-center">날짜</div>
                             </div>
                             <div class="row m-0 " id="job_boardbox">
                                 <div class="col-12  " id="job_boardtext">
-
+									<!-- 구인구직 반복문위치 -->
                                 </div>
 
                            </div>
@@ -916,93 +934,18 @@ $("#modal_loginBtn").on("click",function(){
                       <div class="tab-pane fade" id="v-pills-tab4" role="tabpanel" aria-labelledby="v-pills-tab4-tab">
 
                         <div class="container2">
-    
-                            <div class="row m-0 ">
-                                <div class="col-12  ">
-                                    <div class="row " id="board_menu_text">
-                                        <div class="col-md-2 col-lg-1 d-none d-md-block ">번호</div>
-                                        <div class="col-8 col-md-6 col-lg-7">제목</div>
-                                        <div class="col-4 col-md-2 col-lg-2 text-center">보낸이</div>
-                                        <div class="col-md-2 col-lg-2 d-none  d-md-block text-center">날짜</div>
-                                    </div>
+						    <div class="row " id="board_menu_text">
+                                        <div class="col-md-2 col-lg-1 d-none d-lg-block ">번호</div>
+                                        <div class="col-8 col-md-8 col-lg-5">제목</div>
+                                        <div class="col-4 col-md-4 col-lg-2 text-center">보낸이</div>
+                                        <div class="col-md-2 col-lg-4 d-none  d-lg-block text-center">날짜</div>
+                            </div>
+                            <div class="row m-0 " id="food_boardbox">
+                                <div class="col-12  " id="food_boardbox">
+                                	<!-- 맛집 반복문위치 -->
                                 </div>
-
-                               <div class="col-12  board2">
-                                   <div class="row m-0 border border-2 rounded board_row ">
-                                       <div class="col-md-2 col-lg-1 d-none d-md-block p-0">번호</div>
-                                       <div class="col-8 col-md-6 col-lg-7 m-0 title ellipsis p-0"><span>글 제목글 제목</span></div>
-                                       <!-- ellipsis"><span>글 제목</span></div> 밑에 forEach 작업이라 한줄만 추가했습니다. -->
-                                       <div class="col-4 col-md-2 col-lg-2 p-0 ellipsis text-center"><span>글쓴이글쓴이글쓴이</span></div>
-                                       <!-- 글제목 글쓴이 col 밑에랑 달라요 반복이라 한줄만 추가합니다 -->
-                                       <div class="col-md-2 col-lg-2 d-none d-md-block p-0 text-center">날짜</div>
-
-                                       
-                                   </div>
-                               </div>
-                               <div class="col-12  board2">
-                                   <div class="row m-0 border border-2 rounded board_row">
-                                       <div class="col-md-2 col-lg-1 d-none d-md-block p-0 ">번호</div>
-                                       <div class="col-8 col-md-6 col-lg-7 m-0 title ellipsis p-0">글 제목</div>
-                                       <div class="col-4 col-md-2 col-lg-2 p-0 ellipsis text-center"><span>글쓴이글쓴이글쓴이</span></div>
-                                       <div class="col-md-2 col-lg-2 d-none d-md-block p-0 text-center">날짜</div>
-                                   </div>
-                               </div>
-                               <div class="col-12  board2">
-                                   <div class="row m-0 border border-2 rounded board_row">
-                                       <div class="col-md-2 col-lg-1 d-none d-md-block p-0">번호</div>
-                                       <div class="col-8 col-md-6 col-lg-7 m-0 title ellipsis p-0">글 제목</div>
-                                       <div class="col-4 col-md-2 col-lg-2 p-0 ellipsis text-center"><span>글쓴이글쓴이글쓴이</span></div>
-                                       <div class="col-md-2 col-lg-2 d-none d-md-block p-0 text-center">날짜</div>
-                                   </div>
-                               </div>
-                               <div class="col-12  board2">
-                                   <div class="row m-0 border border-2 rounded board_row">
-                                       <div class="col-md-2 col-lg-1 d-none d-md-block p-0">번호</div>
-                                       <div class="col-8 col-md-6 col-lg-7 m-0 title ellipsis p-0">글 제목</div>
-                                       <div class="col-4 col-md-2 col-lg-2 p-0 ellipsis text-center"><span>글쓴이글쓴이글쓴이</span></div>
-                                       <div class="col-md-2 col-lg-2 d-none d-md-block p-0 text-center">날짜</div>
-                                   </div>
-                               </div>
-                               <div class="col-12  board2">
-                                   <div class="row m-0 border border-2 rounded board_row">
-                                       <div class="col-md-2 col-lg-1 d-none d-md-block p-0">번호</div>
-                                       <div class="col-8 col-md-6 col-lg-7 m-0 title ellipsis p-0">글 제목</div>
-                                       <div class="col-4 col-md-2 col-lg-2 p-0 ellipsis text-center"><span>글쓴이글쓴이글쓴이</span></div>
-                                       <div class="col-md-2 col-lg-2 d-none d-md-block p-0 text-center">날짜</div>
-                                   </div>
-                               </div>
-                               <div class="col-12  board2">
-                                   <div class="row m-0 border border-2 rounded board_row">
-                                       <div class="col-md-2 col-lg-1 d-none d-md-block p-0">번호</div>
-                                       <div class="col-8 col-md-6 col-lg-7 m-0 title ellipsis p-0">글 제목</div>
-                                       <div class="col-4 col-md-2 col-lg-2 p-0 ellipsis text-center"><span>글쓴이글쓴이글쓴이</span></div>
-                                       <div class="col-md-2 col-lg-2 d-none d-md-block p-0 text-center">날짜</div>
-                                   </div>
-                               </div>
-                               <div calss="row">
-                                   <div class="col-12 text-center">
-                                       <nav aria-label="Page navigation example">
-                               <ul class="pagination justify-content-center">
-                                 <li class="page-item">
-                                   <a class="page-link" href="#" aria-label="Previous">
-                                     <span aria-hidden="true">&laquo;</span>
-                                   </a>
-                                 </li>
-                                 ${navi }
-                                 <li class="page-item">
-                                   <a class="page-link" href="#" aria-label="Next">
-                                     <span aria-hidden="true">&raquo;</span>
-                                   </a>
-                                 </li>
-                               </ul>
-                             </nav>
-                                   </div>
-                               </div>
                            </div>
                         </div>
-
-
-
                       </div>
 
 <!----숙소리뷰-------------------------------------------->
@@ -1010,89 +953,18 @@ $("#modal_loginBtn").on("click",function(){
      <div class="tab-pane fade" id="v-pills-tab5" role="tabpanel" aria-labelledby="v-pills-tab5-tab">
 
         <div class="container2">
-
-           <div class="row m-0 ">
-               <div class="col-12  ">
-                 <div class="row " id="board_menu_text">
-                    <div class="col-md-2 col-lg-1 d-none d-md-block ">번호</div>
-                    <div class="col-8 col-md-6 col-lg-7">제목</div>
-                    <div class="col-4 col-md-2 col-lg-2 text-center">보낸이</div>
-                    <div class="col-md-2 col-lg-2 d-none  d-md-block text-center">날짜</div>
-                </div>
+			<div class="row " id="board_menu_text">
+               <div class="col-md-2 col-lg-1 d-none d-lg-block ">번호</div>
+               <div class="col-8 col-md-8 col-lg-5">제목</div>
+               <div class="col-4 col-md-4 col-lg-2 text-center">보낸이</div>
+               <div class="col-md-2 col-lg-4 d-none  d-lg-block text-center">날짜</div>
+			</div>
+            <div class="row m-0 " id="house_boardbox">
+               <div class="col-12  " id="house_boardbox">
+               <!-- 숙소리뷰 반복문위치 -->
+               
             </div>
 
-           <div class="col-12  board2">
-               <div class="row m-0 border border-2 rounded board_row ">
-                   <div class="col-md-2 col-lg-1 d-none d-md-block p-0">번호</div>
-                   <div class="col-8 col-md-6 col-lg-7 m-0 title ellipsis p-0"><span>글 제목글 제목</span></div>
-                   <!-- ellipsis"><span>글 제목</span></div> 밑에 forEach 작업이라 한줄만 추가했습니다. -->
-                   <div class="col-4 col-md-2 col-lg-2 p-0 ellipsis text-center"><span>글쓴이글쓴이글쓴이</span></div>
-                   <!-- 글제목 글쓴이 col 밑에랑 달라요 반복이라 한줄만 추가합니다 -->
-                   <div class="col-md-2 col-lg-2 d-none d-md-block p-0 text-center">날짜</div>
-
-                   
-               </div>
-           </div>
-           
-           <div class="col-12  board2">
-               <div class="row m-0 border border-2 rounded board_row">
-                   <div class="col-md-2 col-lg-1 d-none d-md-block p-0 ">번호</div>
-                   <div class="col-8 col-md-6 col-lg-7 m-0 title ellipsis p-0">글 제목</div>
-                   <div class="col-4 col-md-2 col-lg-2 p-0 ellipsis text-center"><span>글쓴이글쓴이글쓴이</span></div>
-                   <div class="col-md-2 col-lg-2 d-none d-md-block p-0 text-center">날짜</div>
-               </div>
-           </div>
-           <div class="col-12  board2">
-               <div class="row m-0 border border-2 rounded board_row">
-                   <div class="col-md-2 col-lg-1 d-none d-md-block p-0">번호</div>
-                   <div class="col-8 col-md-6 col-lg-7 m-0 title ellipsis p-0">글 제목</div>
-                   <div class="col-4 col-md-2 col-lg-2 p-0 ellipsis text-center"><span>글쓴이글쓴이글쓴이</span></div>
-                   <div class="col-md-2 col-lg-2 d-none d-md-block p-0 text-center">날짜</div>
-               </div>
-           </div>
-           <div class="col-12  board2">
-               <div class="row m-0 border border-2 rounded board_row">
-                   <div class="col-md-2 col-lg-1 d-none d-md-block p-0">번호</div>
-                   <div class="col-8 col-md-6 col-lg-7 m-0 title ellipsis p-0">글 제목</div>
-                   <div class="col-4 col-md-2 col-lg-2 p-0 ellipsis text-center"><span>글쓴이글쓴이글쓴이</span></div>
-                   <div class="col-md-2 col-lg-2 d-none d-md-block p-0 text-center">날짜</div>
-               </div>
-           </div>
-           <div class="col-12  board2">
-               <div class="row m-0 border border-2 rounded board_row">
-                   <div class="col-md-2 col-lg-1 d-none d-md-block p-0">번호</div>
-                   <div class="col-8 col-md-6 col-lg-7 m-0 title ellipsis p-0">글 제목</div>
-                   <div class="col-4 col-md-2 col-lg-2 p-0 ellipsis text-center"><span>글쓴이글쓴이글쓴이</span></div>
-                   <div class="col-md-2 col-lg-2 d-none d-md-block p-0 text-center">날짜</div>
-               </div>
-           </div>
-           <div class="col-12  board2">
-               <div class="row m-0 border border-2 rounded board_row">
-                   <div class="col-md-2 col-lg-1 d-none d-md-block p-0">번호</div>
-                   <div class="col-8 col-md-6 col-lg-7 m-0 title ellipsis p-0">글 제목</div>
-                   <div class="col-4 col-md-2 col-lg-2 p-0 ellipsis text-center"><span>글쓴이글쓴이글쓴이</span></div>
-                   <div class="col-md-2 col-lg-2 d-none d-md-block p-0 text-center">날짜</div>
-               </div>
-           </div>
-           <div calss="row">
-               <div class="col-12 text-center">
-                   <nav aria-label="Page navigation example">
-           <ul class="pagination justify-content-center">
-             <li class="page-item">
-               <a class="page-link" href="#" aria-label="Previous">
-                 <span aria-hidden="true">&laquo;</span>
-               </a>
-             </li>
-             ${navi }
-             <li class="page-item">
-               <a class="page-link" href="#" aria-label="Next">
-                 <span aria-hidden="true">&raquo;</span>
-               </a>
-             </li>
-           </ul>
-         </nav>
-               </div>
-           </div>
        </div>
     </div>
 
@@ -2068,6 +1940,152 @@ $("#v-pills-tab3-tab").on("click", function(){
 		
 		jobDiv.hide();
 		jobDiv.fadeIn(1500);
+		}
+	})
+};
+//맛집 스크립트
+isFoodClick= true;
+$("#v-pills-tab4-tab").on("click", function(){
+	if(isFoodClick){
+		$("#food_boardtext").remove();
+		let food_boardText = $("<div class='col-12 ' id='food_boardtext'>");
+		$("#food_boardbox").append(food_boardText);
+		
+		let page = 1;  //페이징과 같은 방식이라고 생각하면 된다.
+        getFoodList(page);
+        page++;
+	
+//	alert(page)
+	 	  $(window).scroll(function(){   //스크롤이 최하단 으로 내려가면 리스트를 조회하고 page를 증가시킨다.
+	  	  	if($(window).scrollTop() >= $(document).height() - $(window).height()){
+//	  	        alert(page)
+	  	  		getFoodList(page);
+	   	        page++;   
+//	                console.log(page);
+	    	 } 
+	 	   });
+	 	 isFoodClick = false;
+	}else{
+		
+	}
+	
+});
+
+
+
+ function getFoodList(pape){
+	let page = pape;
+	$.ajax({
+      url : '/foodBox.mpg',
+      type : 'POST',
+      data : {page : page},
+      dataType : 'json'
+ }).done(function(resp){
+	console.log(resp);
+	for(let i = 0; i < resp.length; i++){
+		let foodDiv = $("<div class='col-12 food_boardbox2'>");
+		let foodDiv1 = $("<div class='row m-0 border border-2 rounded board_row '>");
+		
+		let foodDiv2 = $("<div class='col-md-2 col-lg-1 d-none d-lg-block p-0'>");
+		foodDiv2.text(resp[i].line);
+		
+		let foodDiv3 = $("<div class='col-8 col-md-8 col-lg-5 m-0 title ellipsis p-0'>");
+		let foodHref = $("<a href='detailView.board?cpage="+page+"&seq="+resp[i].all_board_seq+"&click=ok'>");
+		let foodSpan = $("<span>")
+		foodHref.text(resp[i].title);
+		
+		let foodDiv4 = $("<div class='col-4 col-md-4 col-lg-2 p-0 ellipsis text-center'>");
+		let foodSpan2 = $("<span>")
+		foodSpan2.text('${loginID}');
+		
+		let foodDiv5 = $("<div class='col-md-2 col-lg-4 d-none d-lg-block p-0 text-center'>");
+		foodDiv5.text(resp[i].date);
+		
+		$("#food_boardtext").append(foodDiv);
+		foodDiv.append(foodDiv1);
+		foodDiv1.append(foodDiv2);
+		foodDiv1.append(foodDiv3);
+		foodDiv3.append(foodSpan);
+		foodSpan.append(foodHref);
+		foodDiv1.append(foodDiv4);
+		foodDiv4.append(foodSpan2);
+		foodDiv1.append(foodDiv5);
+		
+		foodDiv.hide();
+		foodDiv.fadeIn(1500);
+		}
+	})
+};
+//숙소리뷰 스크립트
+isHouseClick= true;
+$("#v-pills-tab5-tab").on("click", function(){
+	if(isHouseClick){
+		$("#house_boardtext").remove();
+		let house_boardText = $("<div class='col-12 ' id='house_boardtext'>");
+		$("#house_boardbox").append(house_boardText);
+		
+		let page = 1;  //페이징과 같은 방식이라고 생각하면 된다.
+        getHouseList(page);
+        page++;
+	
+//	alert(page)
+	 	  $(window).scroll(function(){   //스크롤이 최하단 으로 내려가면 리스트를 조회하고 page를 증가시킨다.
+	  	  	if($(window).scrollTop() >= $(document).height() - $(window).height()){
+//	  	        alert(page)
+	  	  		getHouseList(page);
+	   	        page++;   
+//	                console.log(page);
+	    	 } 
+	 	   });
+	 	 isHouseClick = false;
+	}else{
+		
+	}
+	
+});
+
+
+
+ function getHouseList(pape){
+	let page = pape;
+	$.ajax({
+      url : '/houseBox.mpg',
+      type : 'POST',
+      data : {page : page},
+      dataType : 'json'
+ }).done(function(resp){
+	console.log(resp);
+	for(let i = 0; i < resp.length; i++){
+		let houseDiv = $("<div class='col-12 house_boardbox2'>");
+		let houseDiv1 = $("<div class='row m-0 border border-2 rounded board_row '>");
+		
+		let houseDiv2 = $("<div class='col-md-2 col-lg-1 d-none d-lg-block p-0'>");
+		houseDiv2.text(resp[i].line);
+		
+		let houseDiv3 = $("<div class='col-8 col-md-8 col-lg-5 m-0 title ellipsis p-0'>");
+		let houseHref = $("<a href='detailView.board?cpage="+page+"&seq="+resp[i].all_board_seq+"&click=ok'>");
+		let houseSpan = $("<span>")
+		houseHref.text(resp[i].title);
+		
+		let houseDiv4 = $("<div class='col-4 col-md-4 col-lg-2 p-0 ellipsis text-center'>");
+		let houseSpan2 = $("<span>")
+		houseSpan2.text('${loginID}');
+		
+		let houseDiv5 = $("<div class='col-md-2 col-lg-4 d-none d-lg-block p-0 text-center'>");
+		houseDiv5.text(resp[i].date);
+		
+		$("#house_boardtext").append(houseDiv);
+		houseDiv.append(houseDiv1);
+		houseDiv1.append(houseDiv2);
+		houseDiv1.append(houseDiv3);
+		houseDiv3.append(houseSpan);
+		houseSpan.append(houseHref);
+		houseDiv1.append(houseDiv4);
+		houseDiv4.append(houseSpan2);
+		houseDiv1.append(houseDiv5);
+		
+		houseDiv.hide();
+		houseDiv.fadeIn(1500);
 		}
 	})
 };

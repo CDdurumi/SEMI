@@ -246,7 +246,57 @@ public class MessageDAO {
 			}
 		}
 	}
-	
+	public List<BoardDTO> selectByJjimPage(int cpage, String nick) throws Exception{
+
+		// 게시글의 번호를 세팅한다.
+		int start = (cpage-1) *20 +1;//해당 페이지의 첫 게시글 번호 1 16 31 
+		int end = cpage * 20;//해당 페이지의 끝 게시글 번호 15 30 45 
+
+		// 한 페이지에 게시글이 15개씩 보여지도록 하기 위해서 row_number를 활용하는데, 서브 쿼리를 활용해서 select 해준다.
+		String sql = "select * from (select row_number() over(order by B.jjimm_date desc) line, A.*, B.*\r\n"
+				+ "from all_board A join jjim B on (A.all_board_seq = B.board_seq) \r\n"
+				+ "where (B.jjim_id = ?) \r\n"
+				+ "order by B.jjimm_date desc) where line between ? and ?;";
+		
+
+		try(Connection con = this.getConnection();
+				PreparedStatement pstat = con.prepareStatement(sql);){
+			pstat.setString(1, nick);
+			pstat.setInt(2, start);
+			pstat.setInt(3, end);
+			
+
+			try(ResultSet rs = pstat.executeQuery();){
+				List<MessageDTO> list = new ArrayList<MessageDTO>();
+				
+				while(rs.next()) {
+					int line = rs.getInt("line");
+					int seq = rs.getInt("all_board_seq");
+					String id = rs.getString("id");
+					String title = rs.getString("title");
+					String contents = rs.getString("contents");
+					Timestamp write_date = rs.getTimestamp("write_date");
+					int like_count = rs.getInt("like_count");
+					int jjim_count = rs.getInt("jjim_count");
+					int view_count = rs.getInt("view_count");
+					String editor_type = rs.getString("editor_type");
+					String board_seq = rs.getString("board_seq");
+					String jjim_id = rs.getString("jjim_id");
+					Timestamp jjimm_date = rs.getTimestamp("jjimm_date");
+					
+					SimpleDateFormat sdf = new SimpleDateFormat("YY년 MM월 dd일 HH:mm");
+					String date = sdf.format(write_date);
+					String jjim_date = sdf.format(write_date);
+
+					MessageDTO dto = new MessageDTO(line, seq, title, contents, date, like_count, jjim_count, view_count, editor_type, line, jjimm_date, jjim_id);
+					
+					
+					list.add(dto);
+				}
+				return list;
+			}
+		}
+	}
 	
 	
 }
