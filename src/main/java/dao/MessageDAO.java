@@ -12,6 +12,7 @@ import javax.naming.Context;
 import javax.naming.InitialContext;
 import javax.sql.DataSource;
 
+import dto.BoardDTO;
 import dto.MemberDTO;
 import dto.MessageDTO;
 
@@ -124,8 +125,8 @@ public class MessageDAO {
 	public List<MessageDTO> selectBySendPage(int cpage, String email) throws Exception{
 
 		// 게시글의 번호를 세팅한다.
-		int start = (cpage-1) *15 +1;//해당 페이지의 첫 게시글 번호
-		int end = cpage * 15;//해당 페이지의 끝 게시글 번호
+		int start = (cpage-1) *20 +1;//해당 페이지의 첫 게시글 번호
+		int end = cpage * 20;//해당 페이지의 끝 게시글 번호
 
 		// 한 페이지에 게시글이 15개씩 보여지도록 하기 위해서 row_number를 활용하는데, 서브 쿼리를 활용해서 select 해준다.
 		String sql = "select * from (select (row_number() over(order by write_date desc)) line, message.* from message where sender_email=?) where (line between ? and ?) and (sender_email=?) order by line";
@@ -165,8 +166,8 @@ public class MessageDAO {
 	public List<MessageDTO> selectByReceivePage(int cpage, String email) throws Exception{
 
 		// 게시글의 번호를 세팅한다.
-		int start = (cpage-1) *15 +1;//해당 페이지의 첫 게시글 번호 1 16 31 
-		int end = cpage * 15;//해당 페이지의 끝 게시글 번호 15 30 45 
+		int start = (cpage-1) *20 +1;//해당 페이지의 첫 게시글 번호 1 16 31 
+		int end = cpage * 20;//해당 페이지의 끝 게시글 번호 15 30 45 
 
 		// 한 페이지에 게시글이 15개씩 보여지도록 하기 위해서 row_number를 활용하는데, 서브 쿼리를 활용해서 select 해준다.
 		String sql = "select * from (select (row_number() over(order by write_date desc)) line, message.* from message where receiver_email=?) where (line between ? and ?) and (receiver_email=?) order by line";
@@ -205,7 +206,46 @@ public class MessageDAO {
 			}
 		}
 	}
-	
+	public List<BoardDTO> selectByPageFree(int cpage,String boardOption, String nick) throws Exception {
+
+		// 게시글의 번호를 세팅한다.
+		int start = (cpage-1) * 20 +1;
+		int end = cpage * 20;
+
+		// 한 페이지에 게시글이 20개씩 보여지도록 하기 위해서 row_number를 활용하는데, 서브 쿼리를 활용해서 select 해준다.
+		String sql = "select * from (select row_number() over(order by write_date desc) line, all_board.* from all_board where all_board_seq like '"+boardOption+"%' and editor_type != 'n') where (line between ? and ?) and (id=?)";
+						
+		try (Connection con = this.getConnection(); PreparedStatement pstat = con.prepareStatement(sql);) {
+			pstat.setInt(1, start);
+			pstat.setInt(2, end);
+			pstat.setString(3, nick);
+
+			try (ResultSet rs = pstat.executeQuery();) {
+				List<BoardDTO> list = new ArrayList<BoardDTO>();
+
+				while (rs.next()) {
+					String seq = rs.getString("all_board_seq");
+					String id = rs.getString("id");
+					String title = rs.getString("title");
+					String contents = rs.getString("contents");
+					Timestamp write_date = rs.getTimestamp("write_date");
+					int like_count = rs.getInt("jjim_count");
+					int jjim_count = rs.getInt("like_count");
+					int view_count = rs.getInt("view_count");
+					String editor_type = rs.getString("editor_type");
+					int line = rs.getInt("line");
+					
+					SimpleDateFormat sdf = new SimpleDateFormat("YY년 MM월 dd일 HH:mm");
+					String date = sdf.format(write_date);
+
+					BoardDTO dto = new BoardDTO(seq, id, title, contents, write_date, jjim_count, like_count,
+							view_count, editor_type, line);
+					list.add(dto);
+				}
+				return list;
+			}
+		}
+	}
 	
 	
 	

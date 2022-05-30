@@ -12,8 +12,11 @@ import javax.servlet.http.HttpServletResponse;
 
 import com.google.gson.Gson;
 
+import dao.BoardDAO;
+import dao.JjimDAO;
 import dao.MemberDAO;
 import dao.MessageDAO;
+import dto.BoardDTO;
 import dto.MessageDTO;
 
 
@@ -30,6 +33,9 @@ public class MyPageController extends HttpServlet {
 		
 		MessageDAO dao = MessageDAO.getInstance();
 		MemberDAO mdao = MemberDAO.getInstance();
+		BoardDAO bdao = BoardDAO.getInstance(); 
+		JjimDAO jjimDao = JjimDAO.getInstance();
+		
 		Gson g= new Gson();
 		try {
 			if(uri.equals("/sendMsg.mpg")) { // 쪽지보내기
@@ -124,6 +130,23 @@ public class MyPageController extends HttpServlet {
 				dao.delete(message_seq);
 				
 				response.sendRedirect("/myPage.jsp");
+				
+			}else if(uri.equals("/freeboardBox.mpg")){
+				System.out.println("자유 게시판 수신확인");
+				String writer = (String)request.getSession().getAttribute("loginID");
+				int cpage = Integer.parseInt(request.getParameter("page"));
+				System.out.println(cpage);
+				String boardOption ="f";
+				List<BoardDTO> list = dao.selectByPageFree(cpage,boardOption, writer);
+				System.out.println(list);
+				
+				PrintWriter pw = response.getWriter();
+				
+				pw.append(g.toJson(list));
+//				List<BoardDTO> hotlist = bdao.selectByLikeCount(boardOption);
+//				String pageNavi = bdao.getPageNavi(cpage, boardOption);
+				
+//				request.setAttribute("list", list);
 				
 			}else if(uri.equals("/goMyPage.mpg")) {
 				response.sendRedirect("/myPage.jsp");
