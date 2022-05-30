@@ -256,7 +256,7 @@ public class MessageDAO {
 		String sql = "select * from (select row_number() over(order by B.jjimm_date desc) line, A.*, B.*\r\n"
 				+ "from all_board A join jjim B on (A.all_board_seq = B.board_seq) \r\n"
 				+ "where (B.jjim_id = ?) \r\n"
-				+ "order by B.jjimm_date desc) where line between ? and ?;";
+				+ "order by B.jjimm_date desc) where line between ? and ?";
 		
 
 		try(Connection con = this.getConnection();
@@ -267,11 +267,11 @@ public class MessageDAO {
 			
 
 			try(ResultSet rs = pstat.executeQuery();){
-				List<MessageDTO> list = new ArrayList<MessageDTO>();
+				List<BoardDTO> list = new ArrayList<BoardDTO>();
 				
 				while(rs.next()) {
 					int line = rs.getInt("line");
-					int seq = rs.getInt("all_board_seq");
+					String all_seq = rs.getString("all_board_seq");
 					String id = rs.getString("id");
 					String title = rs.getString("title");
 					String contents = rs.getString("contents");
@@ -286,9 +286,9 @@ public class MessageDAO {
 					
 					SimpleDateFormat sdf = new SimpleDateFormat("YY년 MM월 dd일 HH:mm");
 					String date = sdf.format(write_date);
-					String jjim_date = sdf.format(write_date);
+					String j_date = sdf.format(write_date);
 
-					MessageDTO dto = new MessageDTO(line, seq, title, contents, date, like_count, jjim_count, view_count, editor_type, line, jjimm_date, jjim_id);
+					BoardDTO dto = new BoardDTO(line, all_seq, id, title, contents, date, like_count, jjim_count, view_count, editor_type, board_seq, j_date, jjim_id);
 					
 					
 					list.add(dto);

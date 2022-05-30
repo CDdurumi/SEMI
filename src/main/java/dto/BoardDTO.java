@@ -18,6 +18,7 @@ public class BoardDTO {
 	private Timestamp jjimm_date;
 	private String jjim_date;
 	private String jjim_id;
+	private String Board_seq;
 	public BoardDTO() {
 		// TODO Auto-generated constructor stub
 	}
@@ -52,30 +53,37 @@ public class BoardDTO {
 		this.line = line;
 	}
 	// 마이페이지에 찜 게시글 가져오는 DTO
-	
-	
-	
+
 	public String getDate() {
 		return date;
 	}
-	public BoardDTO(String all_board_seq, String id, String title, String contents, String date,
-			int like_count, int jjim_count, int view_count, String editor_type, int line,
+	public BoardDTO(int line, String all_board_seq, String id, String title, String contents, String date,
+			int like_count, int jjim_count, int view_count, String editor_type, String board_seq,
 			String jjim_date, String jjim_id) {
 		super();
+		this.line = line;
 		this.all_board_seq = all_board_seq;
 		this.id = id;
 		this.title = title;
 		this.contents = contents;
-		this.write_date = write_date;
+		this.date = date;
 		this.like_count = like_count;
 		this.jjim_count = jjim_count;
 		this.view_count = view_count;
 		this.editor_type = editor_type;
-		this.line = line;
+		this.Board_seq = board_seq;
 		this.jjim_date = jjim_date;
 		this.jjim_id = jjim_id;
 	}
 	
+	public String getBoard_seq() {
+		return Board_seq;
+	}
+
+	public void setBoard_seq(String board_seq) {
+		this.Board_seq = board_seq;
+	}
+
 	public String getJjim_date() {
 		return jjim_date;
 	}

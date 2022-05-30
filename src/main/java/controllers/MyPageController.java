@@ -204,8 +204,7 @@ public class MyPageController extends HttpServlet {
 				String writer = (String)request.getSession().getAttribute("loginID");
 				int cpage = Integer.parseInt(request.getParameter("page"));
 				System.out.println(cpage);
-				String boardOption ="h";
-				List<BoardDTO> list = dao.selectByPageFree(cpage, boardOption, writer);
+				List<BoardDTO> list = dao.selectByJjimPage(cpage, writer);
 				System.out.println(list);
 				
 				PrintWriter pw = response.getWriter();
