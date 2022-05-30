@@ -238,7 +238,7 @@ public class MessageDAO {
 					SimpleDateFormat sdf = new SimpleDateFormat("YY년 MM월 dd일 HH:mm");
 					String date = sdf.format(write_date);
 
-					BoardDTO dto = new BoardDTO(seq, id, title, contents, write_date, jjim_count, like_count,
+					BoardDTO dto = new BoardDTO(seq, id, title, contents, date, jjim_count, like_count,
 							view_count, editor_type, line);
 					list.add(dto);
 				}

@@ -148,6 +148,31 @@ public class MyPageController extends HttpServlet {
 				
 //				request.setAttribute("list", list);
 				
+			}else if(uri.equals("/galleryBox.mpg")){
+				System.out.println("여행후기 게시판 수신확인");
+				String writer = (String)request.getSession().getAttribute("loginID");
+				int cpage = Integer.parseInt(request.getParameter("page"));
+				System.out.println(cpage);
+				String boardOption ="g";
+				List<BoardDTO> list = dao.selectByPageFree(cpage, boardOption, writer);
+				System.out.println(list);
+				
+				PrintWriter pw = response.getWriter();
+				
+				pw.append(g.toJson(list));
+			}else if(uri.equals("/jobBox.mpg")){
+				System.out.println("구인구직 게시판 수신확인");
+				String writer = (String)request.getSession().getAttribute("loginID");
+				int cpage = Integer.parseInt(request.getParameter("page"));
+				System.out.println(cpage);
+				String boardOption ="j";
+				List<BoardDTO> list = dao.selectByPageFree(cpage, boardOption, writer);
+				System.out.println(list);
+				
+				PrintWriter pw = response.getWriter();
+				
+				pw.append(g.toJson(list));
+				
 			}else if(uri.equals("/goMyPage.mpg")) {
 				response.sendRedirect("/myPage.jsp");
 			}
