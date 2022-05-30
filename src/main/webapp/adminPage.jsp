@@ -821,44 +821,44 @@ $("#modal_loginBtn").on("click",function(){
 		            </div>
 		        </div>
 	        
-			    <!--         여기는 공지글 -->
-<%-- 		        <c:forEach var="i" items="${noticeList }"> --%>
-<!-- 		        <div class="col-12  board"> -->
-<!-- 		            <div class="row m-0 border border-2 rounded board_row "> -->
+<!-- 			            여기는 공지글 -->
+		        <c:forEach var="i" items="${noticeList }">
+		        <div class="col-12  board">
+		            <div class="row m-0 border border-2 rounded board_row ">
 		            	
-<!-- 		                <div class="col-1 col-md-1 d-none d-md-block p-0"> -->
-<!-- 		                <p id="notice">공지</p> -->
-<!-- 		                </div> -->
-<!-- 		               	<div class="col-7 col-md-5 m-0 title ididid " style="text-align:left"> -->
-<%-- 		               		<a href="/detailView.board?cpage=${cpage}&seq=${i.all_board_seq}&click=ok" style="color:black">${i. title }</a> --%>
-<!-- 		               	</div> -->
-<%-- 		                <div class="col-3 col-md-2 p-0 ellipsis text-center ididid">${i.id }</div> --%>
-<%-- 		                <div class="col-md-2 d-none d-md-block p-0 "><fmt:formatDate value="${i.write_date }" pattern="yy-MM-dd"/></div> --%>
-<%-- 		                <div class="col-md-1 d-none d-md-block p-0">${i.view_count}</div> --%>
-<%-- 		                <div class="col-2 col-md-1 p-0">${i.like_count}</div> --%>
+		                <div class="col-1 col-md-1 d-none d-md-block p-0">
+		                <p id="notice">공지</p>
+		                </div>
+		               	<div class="col-7 col-md-5 m-0 title ididid " style="text-align:left">
+		               		<a href="/detailView.board?cpage=${cpage}&seq=${i.all_board_seq}&click=ok" style="color:black">${i. title }</a>
+		               	</div>
+		                <div class="col-3 col-md-2 p-0 ellipsis text-center ididid">${i.id }</div>
+		                <div class="col-md-2 d-none d-md-block p-0 "><fmt:formatDate value="${i.write_date }" pattern="yy-MM-dd"/></div>
+		                <div class="col-md-1 d-none d-md-block p-0">${i.view_count}</div>
+		                <div class="col-2 col-md-1 p-0">${i.like_count}</div>
 		                
-<!-- 		            </div> -->
-<!-- 		        </div> -->
-<%-- 		        </c:forEach> --%>
+		            </div>
+		        </div>
+		        </c:forEach>
 		        
 		        
-				<!--         여기는 목록 -->
-<%-- 		        <c:forEach var="i" items="${list }"> --%>
-<!-- 		        <div class="col-12  board"> -->
-<!-- 		            <div class="row m-0 border border-2 rounded board_row "> -->
+<!-- 				        여기는 목록 -->
+		        <c:forEach var="i" items="${list }">
+		        <div class="col-12  board">
+		            <div class="row m-0 border border-2 rounded board_row ">
 		            	
-<%-- 		                <div class="col-1 col-md-1 d-none d-md-block p-0">${i.line}</div> --%>
-<!-- 		               	<div class="col-7 col-md-5 m-0 title ididid "style="text-align:left"> -->
-<%-- 		               		<a href="/detailView.board?cpage=${cpage}&seq=${i.all_board_seq}&click=ok" style="color:black">${i. title }</a> --%>
-<!-- 		               	</div> -->
-<%-- 		                <div class="col-3 col-md-2 p-0 ididid text-center">${i.id }</div> --%>
-<%-- 		                <div class="col-md-2 d-none d-md-block p-0 "><fmt:formatDate value="${i.write_date }" pattern="yy-MM-dd"/></div> --%>
-<%-- 		                <div class="col-md-1 d-none d-md-block p-0">${i.view_count}</div> --%>
-<%-- 		                <div class="col-2 col-md-1 p-0">${i.like_count}</div> --%>
+		                <div class="col-1 col-md-1 d-none d-md-block p-0">${i.line}</div>
+		               	<div class="col-7 col-md-5 m-0 title ididid "style="text-align:left">
+		               		<a href="/detailView.board?cpage=${cpage}&seq=${i.all_board_seq}&click=ok" style="color:black">${i. title }</a>
+		               	</div>
+		                <div class="col-3 col-md-2 p-0 ididid text-center">${i.id }</div>
+		                <div class="col-md-2 d-none d-md-block p-0 "><fmt:formatDate value="${i.write_date }" pattern="yy-MM-dd"/></div>
+		                <div class="col-md-1 d-none d-md-block p-0">${i.view_count}</div>
+		                <div class="col-2 col-md-1 p-0">${i.like_count}</div>
 		                
-<!-- 		            </div> -->
-<!-- 		        </div> -->
-<%-- 		        </c:forEach> --%>
+		            </div>
+		        </div>
+		        </c:forEach>
 
 	        </div>
       </div>
@@ -916,7 +916,7 @@ $("#modal_loginBtn").on("click",function(){
     //탭1 클릭 이벤트
     $("#board-tab").on("click",function(){
     	let boardOption = $("#boardSelect").val();
-    	location.href = "/adiminPage.admin?tab=one"; 
+    	location.href = "/adiminPageTap1.admin?cpage=1&boardOption="+boardOption+""; 
     	
     })
     
