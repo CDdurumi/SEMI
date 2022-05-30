@@ -563,7 +563,13 @@
 #myBtn:hover {
   background-color: #555; 
 }
-
+#mesImg{
+	transtition: all 0.2s linear;
+	cursor:pointer;
+}
+#mesImg:hover{
+	transform:scale(1.4);
+}
                
     </style>
 
@@ -1407,7 +1413,8 @@ $("#modal_loginBtn").on("click",function(){
                     
 <!--                     </div> -->
                     
-                    <div class="col-3 col-md-3 ellipsis ididid" style="padding-left:8px;"><i id="mesImg" class="fa-solid fa-envelope icon" data-bs-toggle="modal" data-bs-target="#messageModal"></i>&nbsp;&nbsp;${dto.id} </div>
+                    <div class="col-3 col-md-3 ellipsis ididid" style="padding-left:8px;">
+                    <i id="mesImg" class="fa-solid fa-envelope icon" data-bs-toggle="modal" data-bs-target="#messageModal"></i>&nbsp;&nbsp;${dto.id} </div>
                     
                     
                     <div class="col-9"><i class="fa-solid fa-calendar"></i>&nbsp;&nbsp;${dto.formdDate}</div>
