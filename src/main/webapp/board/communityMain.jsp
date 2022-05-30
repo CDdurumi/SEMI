@@ -186,11 +186,11 @@
             padding-left: calc(var(--nav-width) + 1rem)
         }
 
-        .active {
+        .active1 {
             color: var(--white-color)
         }
 
-        .active::before {
+        .active1::before {
             content: '';
             position: absolute;
             left: 0;
@@ -542,7 +542,7 @@ font-weight: bold;
 						class="nav_name"><span class="weather"> <span
 								class="CurrTemp"></span> <span class="City"></span>
 						</span></span>
-					</a> <a href="/communityMain.board" class="nav_link active"> <i
+					</a> <a href="/communityMain.board" class="nav_link active1"> <i
 						class='bx bx-message nav_icon'></i> <span class="nav_name">커뮤니티</span>
 					</a> <a href="/editorReMain.board?" class="nav_link"> <i
 						class='bx bx-book-bookmark nav_icon'></i> <span class="nav_name">에디터추천</span>
@@ -733,10 +733,10 @@ font-weight: bold;
 												<div class="card w-100 border-0" style="width: 18rem;">
 													<a
 														href="/detailView.board?cpage=1&seq=${i.all_board_seq}&click=ok"><img
-														src="${profilePath}${j.sys_name}" class="card-img-top"
+														src="${profilePath}${j.sys_name}" class="d-block w-100"
 														alt="..."></a>
-													<div class="card-body">
-														<p class="card-text text-black">${i.title}</p>
+													<div class="carousel-caption d-none d-md-block">
+														<h5>${i.title}</h5>
 													</div>
 												</div>
 											</div>
@@ -747,10 +747,10 @@ font-weight: bold;
 												<div class="card w-100 border-0" style="width: 18rem;">
 													<a
 														href="/detailView.board?cpage=1&seq=${i.all_board_seq}&click=ok"><img
-														src="${profilePath}${j.sys_name}" class="card-img-top"
+														src="${profilePath}${j.sys_name}" class="d-block w-100"
 														alt="..."></a>
-													<div class="card-body">
-														<p class="card-text text-black">${i.title}</p>
+													<div class="carousel-caption d-none d-md-block">
+														<h5>${i.title}</h5>
 													</div>
 												</div>
 											</div>
@@ -952,8 +952,8 @@ font-weight: bold;
 
             function colorLink() {
                 if (linkColor) {
-                    linkColor.forEach(l => l.classList.remove('active'))
-                    this.classList.add('active')
+                    linkColor.forEach(l => l.classList.remove('active1'))
+                    this.classList.add('active1')
                 }
             }
             linkColor.forEach(l => l.addEventListener('click', colorLink))
