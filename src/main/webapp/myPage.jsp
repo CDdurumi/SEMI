@@ -36,7 +36,7 @@ pageEncoding="UTF-8"%>
    href='https://cdn.jsdelivr.net/npm/fullcalendar@5.11.0/main.min.css'
    rel='stylesheet' />
    <script src='https://cdn.jsdelivr.net/npm/fullcalendar@5.11.0/main.min.js'></script>
-    
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment.min.js"></script>
     <style>
         @import url("https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700&display=swap");
   body::-webkit-scrollbar{
@@ -715,6 +715,7 @@ pageEncoding="UTF-8"%>
     </div>
   </div>
 </div>
+
 <script>
 window.onload = function(){
 	if(${loginID == null}){
@@ -1117,9 +1118,49 @@ $("#modal_loginBtn").on("click",function(){
     </div>
   </div>
 </div>
-    
-    
-    
+
+<!-- 캘린더 Calendar Modal -->    
+    <div class="modal fade" id="calendarModal" tabindex="-1"  aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog" >
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLabel">일정을 입력하세요.</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <div class="form-group">
+                            <label for="taskId" class="col-form-label">일정 제목</label>
+                            <input type="text" class="form-control" id="calendar_title" name="calendar_title">
+                            <label for="taskId" class="col-form-label">시작 날짜</label>
+                            <input type="date" class="form-control" id="calendar_start_date" name="calendar_start_date">
+                            <label for="taskId" class="col-form-label">종료 날짜</label>
+                            <input type="date" class="form-control" id="calendar_end_date" name="calendar_end_date">
+                            <label for="taskId" class="col-form-label">색상 선택</label>
+                             <select class="form-control" name="color" id="calendar_color">
+                                    <option value="#D25565" style="color:#D25565;">빨간색</option>
+                                    <option value="#9775fa" style="color:#9775fa;">보라색</option>
+                                    <option value="#ffa94d" style="color:#ffa94d;">주황색</option>
+                                    <option value="#74c0fc" style="color:#74c0fc;">파란색</option>
+                                    <option value="#f06595" style="color:#f06595;">핑크색</option>
+                                    <option value="#63e6be" style="color:#63e6be;">연두색</option>
+                                    <option value="#a9e34b" style="color:#a9e34b;">초록색</option>
+                                    <option value="#4d638c" style="color:#4d638c;">남색</option>
+                                    <option value="#495057" style="color:#495057;">검정색</option>
+                             </select>
+                             <label for="taskId" class="col-form-label">일정 내용</label>
+                             <textarea rows="4" cols="50" class="form-control" name="calendar_contents" id="calendar_contents"></textarea>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-warning" id="addCalendar" >추가</button>
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal"
+                            id="sprintSettingModalClose">취소</button>
+                    </div>
+        
+                </div>
+            </div>
+        </div>
+<!-- 캘린더 Calendar Modal -->    
      <!--top 버튼-->
     <button onclick="topFunction()" id="myBtn" title="Go to top">↑</button>
     <!-------------------------------------------------------------------------------------------------------------------Container Main end-->
@@ -1191,7 +1232,7 @@ $("#modal_loginBtn").on("click",function(){
                         dataType:"json",
                         type:"post"
                 	}).done(function(resp){
-          
+      
                 		if(resp){        	//회원정보 수정 성공시		                			
                 			location.reload();
                 		}else{
@@ -1404,32 +1445,116 @@ $("#modal_loginBtn").on("click",function(){
 
             // Your code to run since DOM is loaded and ready
         });
-        /*========== Calendar Script ==========*/
-      document.addEventListener('DOMContentLoaded', function() {
-         var calendarEl = document.getElementById('calendar');
-         var calendar = new FullCalendar.Calendar(calendarEl, {
-            initialView: 'dayGridMonth',
-            googleCalendarApiKey: 'AIzaSyBJEiOXKXgzlPpGoHUB3C00sjH3_2I_Tyw',
-            eventSources: [{
-               googleCalendarId: '${email }',
-               className: 'gcal-event'
-               },{
-               googleCalendarId : 'ko.south_korea#holiday@group.v.calendar.google.com',
-               className : 'ko_event'
-               }], 
-            eventClick: function(info) {
-               info.jsEvent.stopPropagation();
-               info.jsEvent.preventDefault();
-            },
-            dayMaxEventRows: true, // for all non-TimeGrid views
-              views: {
-                timeGrid: {
-                  dayMaxEventRows: 6// adjust to 6 only for timeGridWeek/timeGridDay
-                }
-              }
-         });
-         calendar.render();
-         });
+        /*==캘린더======== Calendar Script ==========*/
+      
+            
+            
+        
+            document.addEventListener('DOMContentLoaded', function () {
+            	
+            	$.ajax({
+    				url:"/showCal.mpg",
+    				type:"post",
+    				data:{
+    					email:'${loginEmail}'
+					},
+    				dataType:"json"
+    			}).done(function(resp){
+    				
+    				console.log(resp);
+    				
+    				for(let i =0; i<resp.length; i++){
+    					resp[i].start = moment(resp[i].start).format('YYYY-MM-DD HH:mm:ss');
+        				resp[i].end = moment(resp[i].end).format('YYYY-MM-DD HH:mm:ss');
+        				
+    				}
+    				
+    				
+    				 var calendarEl = document.getElementById('calendar');
+    	                var calendar = new FullCalendar.Calendar(calendarEl, {
+    	                	
+
+    	                    timeZone: 'UTC',
+    	                    initialView: 'dayGridMonth', // 홈페이지에서 다른 형태의 view를 확인할  수 있다.
+    	                    locale: 'ko',
+    	                    firstDay : 1, // 일요일 부터 시작하려면 0
+    	                    weekNumberCalculation     : "ISO",
+    	                    
+    	                   	events:resp,
+    	                    headerToolbar: {
+    	                        center: 'addEventButton' // headerToolbar에 버튼을 추가
+    	                    }, customButtons: {
+    	                        addEventButton: { // 추가한 버튼 설정
+    	                            text : "일정 추가",  // 버튼 내용
+    	                            click : function(){ // 버튼 클릭 시 이벤트 추가
+    	                                $("#calendarModal").modal("show"); // modal 나타내기
+    	    
+    	                                $("#addCalendar").on("click",function(){  // modal의 추가 버튼 클릭 시
+    	                                    var title = $("#calendar_title").val();
+    	                                    var start_date = $("#calendar_start_date").val();
+    	                                    var end_date = $("#calendar_end_date").val();
+    	                                    var backgroundColor = $("#calendar_color").val();
+    	                                    var contents = $("#calendar_contents").val();
+    	                                    //내용 입력 여부 확인
+    	                                    if(title == null || title == ""){
+    	                                        alert("제목을 입력하세요.");
+    	                                    }else if(start_date == "" || end_date ==""){
+    	                                        alert("날짜를 입력하세요.");
+    	                                    }else if(new Date(end_date)- new Date(start_date) < 0){ // date 타입으로 변경 후 확인
+    	                                        alert("종료일이 시작일보다 먼저입니다.");
+    	                                    }else if(contents == "" || contents == null){ 
+    	                                        alert("내용을 채워주세요.");
+    	                                    }else{ // 정상적인 입력 시
+    	                                       
+    	                                    	
+    	                                    	$.ajax({
+    	                            				url:"/insertCal.mpg",
+    	                            				type:"post",
+    	                            				data:{
+    	                            					"title" : title,
+    	                                                "start" : start_date,
+    	                                                "end" : end_date,
+    	                                                "textColor" : '#ffffff',
+    	                                                "backgroundColor":backgroundColor,
+    	                                                "contents" : contents
+    	    										},
+    	                            				dataType:"json"
+    	                            			}).done(function(resp){
+    	                            				location.reload();	
+    	                            			})    
+    	                                       }
+    	                                    
+    	                                });
+    	                            }
+    	                        }
+    	                    },
+    	                    editable: true, // false로 변경 시 draggable 작동 x 
+    	                    displayEventTime: false // 시간 표시 x
+    	                });
+    	                calendar.render();
+    	            });
+    			})
+    			
+            
+    		
+            
+            
+            function getTimestampToDate(timestamp){
+            	    var date = new Date(timestamp*1000);
+            	    var chgTimestamp = date.getFullYear().toString()
+            	        +addZero(date.getMonth()+1)
+            	        +addZero(date.getDate().toString())
+            	        +addZero(date.getHours().toString())
+            	        +addZero(date.getMinutes().toString())
+            	        +addZero(date.getSeconds().toString());
+            	    return chgTimestamp;
+            	}
+            	 
+            	function addZero(data){
+            	    return (data<10) ? "0"+data : data;
+            	}
+            	
+        
     </script>
     
     
