@@ -586,18 +586,37 @@ color:red;
 font-weight:bold;
 }
     </style>
-	<script>
-// 	 let page = 1;  //페이징과 같은 방식이라고 생각하면 된다.
 
-//  	  $(window).scroll(function(){   //스크롤이 최하단 으로 내려가면 리스트를 조회하고 page를 증가시킨다.
-//   	  	if($(window).scrollTop() >= $(document).height() - $(window).height()){
-//   	        getList(page);
-//    	        page++;   
-// //                console.log(page);
-//     	 } 
-//  	   });
+
+<script>
+$(function(){
 	
-	</script>
+	//탭1 - 게시판 콤보박스 자동 set.
+    let boardOption = "${boardOption}";
+    if(boardOption == 'f'){//자유게시판
+    	 $("#f").attr("selected","selected");
+    }else if(boardOption == 'g'){//여행후기
+    	 $("#g").attr("selected","selected");
+    }else if(boardOption == 'j'){//구인구작
+    	 $("#j").attr("selected","selected");
+    }else if(boardOption == 'r'){//맛집
+    	 $("#r").attr("selected","selected");
+    }else if(boardOption == 'h'){//숙소리뷰
+    	 $("#h").attr("selected","selected");
+    }
+    
+    //게시글 콤보박스 선택 시 이벤트
+    let previous = "";
+    $("#boardSelect").on('focus', function () {
+		previous  = this.value;
+	}).change(function() {
+		let boardOption = $("#boardSelect").val();
+		location.href = "/adiminPageTap1.admin?boardOption="+boardOption+"&cpage=1"; 
+	});
+
+}) 
+
+</script> 
 
 
 
@@ -749,24 +768,23 @@ $("#modal_loginBtn").on("click",function(){
 				    <nav class="navbar bg">
 				        <div class="container-fluid">
 				          <a class="navbar-brand"> </a>
-				          <form action="#" method="post" class="d-flex" role="search">
-				          		<input type="hidden" value="f" name="boardOption">
+				          <form action="/adiminPageTap1Search.admin" method="post" class="d-flex" role="search">
 				          		<input type="hidden" value="1" name="cpage">
 								
 								<select name="boardOption" id="boardSelect">
-				                        <option value="f">
+				                        <option value="f" id="f">
 				                            자유게시판
 				                        </option>
-				                        <option value="g">
+				                        <option value="g" id="g">
 				                            여행후기
 				                        </option>
-				                        <option value="j">
+				                        <option value="j" id="j">
 				                            구인구직
 				                        </option>
-				                        <option value="r">
+				                        <option value="r" id="r">
 				                            맛집
 				                        </option>
-				                        <option value="h">
+				                        <option value="h" id="h">
 				                            숙소리뷰
 				                        </option>		                        		                        
 								</select>
@@ -940,20 +958,7 @@ $("#modal_loginBtn").on("click",function(){
     	location.href = "/adiminPageTap1.admin?boardOption="+boardOption+"&cpage=1"; 
     	
     })
-    
-    
-    //게시글 콤보박스 선택 시 이벤트
-        let previous = "";
-        $("#boardSelect").on('focus', function () {
-    		previous  = this.value;
-		}).change(function() {
-			let boardOption = $("#boardSelect").val();
-			location.href = "/adiminPageTap1.admin?boardOption="+boardOption+"&cpage=1"; 
-		});
-    
-    
-    
-    
+
     
     
     
