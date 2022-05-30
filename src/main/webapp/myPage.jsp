@@ -642,7 +642,15 @@ pageEncoding="UTF-8"%>
                <a href="/logout.member" class="nav1_link"> <i class='bx bx-log-out nav_icon'></i> <span class="nav1_name">로그아웃</span> </a>   
             </c:when>
          </c:choose>
-            
+<c:choose>
+						<c:when test="${loginIsAdmin == 'Y'}">
+               				<a href="/adiminPage.admin" class="nav_link"> <i class='bx bx-hard-hat nav_icon'></i> <span class="nav_name">관리자페이지</span> </a>
+                		</c:when>
+                	
+                		<c:otherwise>
+							
+						</c:otherwise>
+                	</c:choose>            
         </nav>
     </div>
     

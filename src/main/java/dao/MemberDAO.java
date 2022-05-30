@@ -158,6 +158,7 @@ public class MemberDAO {
 
 				MemberDTO dto = new MemberDTO(id, null, email, join_date, information,isadmin);
 				list.add(dto);
+				
 			}
 			return list;
 		}
