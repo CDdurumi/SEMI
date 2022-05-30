@@ -82,6 +82,7 @@ public class AdminController extends HttpServlet {
 				String pageNavi = boardDao.getAdminSearchPageNavi(cpage, boardOption, serchOption, contents);//관리자 게시글 전용 페이징
 
 				request.setAttribute("cpage", cpage);
+				request.setAttribute("boardOption", boardOption);//관리자 페이지에서 받아서 게시글 콤보박스 set하기 위함.
 				request.setAttribute("list", list);
 				request.setAttribute("navi", pageNavi);
 				
