@@ -43,8 +43,16 @@ public class MyPageController extends HttpServlet {
 				String receiver = request.getParameter("receiver");
 				
 				String receiver_email = dao.searchEmail(receiver);
-				
+//				String receiver = dao.searchId(receiver);
 				System.out.println(receiver_email + " : " +title+ " : " + contents + " : "+ receiver +" : " + sender);
+				
+//				if(mdao.isEmailExist(receiver)) {
+//					result = dao.insert(new MessageDTO(0,0,title,sender,receiver,sender_email,receiver_email,contents,""));
+//					
+//				}else {
+//					result = 0;
+//				}
+//				PrintWriter pw = response.getWriter();
 				
 				if(mdao.isEmailExist(receiver_email)) {
 					result = dao.insert(new MessageDTO(0,0,title,sender,receiver,sender_email,receiver_email,contents,""));
@@ -74,15 +82,6 @@ public class MyPageController extends HttpServlet {
 				System.out.println(list);
 				String result = g.toJson(list);
 				pw.append(result);
-//				String pageNavi = dao.getPageNavi(cpage);
-//				
-//				request.setAttribute("list", list);
-//				request.setAttribute("pageNavi", pageNavi);
-//				
-//				System.out.println(cpage);			
-//				request.setAttribute("tap", "msg");
-//
-//				request.getRequestDispatcher("/myPage.jsp").forward(request, response);
 				
 			}else if(uri.equals("/sendMsgBox.mpg")) { // 보낸쪽지함
 				System.out.println("보낸 쪽지함 수신확인");
