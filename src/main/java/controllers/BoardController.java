@@ -535,6 +535,30 @@ public class BoardController extends HttpServlet {
 			}else if(uri.equals("/goIndex.board")) { //index페이지로 연결
 				response.sendRedirect("/index.jsp");
 				
+			} else if(uri.equals("/goList.board")) {  //목록으로
+				String seq = request.getParameter("seq");
+//				System.out.println(seq);
+				String menu = seq.substring(0,1);
+//				System.out.println(menu);
+				int cpage = Integer.parseInt(request.getParameter("cpage"));
+				System.out.println(cpage);
+				
+				if(menu.equals("f")) {
+					response.sendRedirect("/boardMainView.board?cpage="+cpage);
+				}else if(menu.equals("g")) {
+					response.sendRedirect("/galleryMain.board?cpage="+cpage);
+				}else if(menu.equals("j")) {
+					response.sendRedirect("/jobMain.board?cpage="+cpage);
+				}else if(menu.equals("r")) {
+					response.sendRedirect("/foodMain.board?cpage="+cpage);
+				}else if(menu.equals("h")) {
+					response.sendRedirect("/houseMain.board?cpage="+cpage);
+				}else if(menu.equals("e")) {
+					String referer= request.getHeader("referer");
+					System.out.println(referer);
+					response.sendRedirect(referer);
+				}
+				
 			}
 			
 			
