@@ -563,6 +563,7 @@
 #myBtn:hover {
   background-color: #555; 
 }
+
                
     </style>
 
@@ -1339,29 +1340,56 @@ $("#modal_loginBtn").on("click",function(){
 		
 </script>
 
-<!-- Modal -->
+
+<!-- 쪽지 Modal -->
 <div class="modal fade" id="messageModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
   <div class="modal-dialog">
     <div class="modal-content">
-      <div class="modal-header">
+      <div class="modal-header" >
         <h5 class="modal-title" id="exampleModalLabel">쪽지 보내기</h5>
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
       <div class="modal-body">
-      	받는 사람 | <input type="text" placeholder="받는 사람 ID">
+      	 
+      	받는 사람 | <input type="text" placeholder="받는 사람 ID" id="modal_receiver" value="${dto.id}"><p></p>
+      	<input type="text" placeholder="제목을 입력하세요" id="modal_title" name="title" style="width:100%">
       	<p>
       		
       	</p>
       	
-        <textarea style="width:100%; min-height:150px" placeholder="내용을 입력하세요"></textarea>
+        <textarea style="width:100%; min-height:150px" placeholder="내용을 입력하세요" id="modal_msgContents"></textarea>
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">닫기</button>
-        <button type="button" class="btn btn-primary">보내기</button>
+        <button type="button" class="btn btn-primary" id="modal_sendmsg">보내기</button>
       </div>
     </div>
   </div>
 </div>
+
+<!-- <!-- 쪽지 Modal --> 
+<!-- <div class="modal fade" id="messageModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true"> -->
+<!--   <div class="modal-dialog"> -->
+<!--     <div class="modal-content"> -->
+<!--       <div class="modal-header"> -->
+<!--         <h5 class="modal-title" id="exampleModalLabel">쪽지 보내기</h5> -->
+<!--         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button> -->
+<!--       </div> -->
+<!--       <div class="modal-body"> -->
+<!--       	받는 사람 | <input type="text" placeholder="받는 사람 ID"> -->
+<!--       	<p> -->
+      		
+<!--       	</p> -->
+      	
+<!--         <textarea style="width:100%; min-height:150px" placeholder="내용을 입력하세요"></textarea> -->
+<!--       </div> -->
+<!--       <div class="modal-footer"> -->
+<!--         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">닫기</button> -->
+<!--         <button type="button" class="btn btn-primary">보내기</button> -->
+<!--       </div> -->
+<!--     </div> -->
+<!--   </div> -->
+<!-- </div> -->
 
 
 
@@ -1379,7 +1407,7 @@ $("#modal_loginBtn").on("click",function(){
                     
 <!--                     </div> -->
                     
-                    <div class="col-3 col-md-3 ellipsis ididid" style="padding-left:8px;"><i class="fa-solid fa-envelope icon" data-bs-toggle="modal" data-bs-target="#messageModal"></i>&nbsp;&nbsp;${dto.id} </div>
+                    <div class="col-3 col-md-3 ellipsis ididid" style="padding-left:8px;"><i id="mesImg" class="fa-solid fa-envelope icon" data-bs-toggle="modal" data-bs-target="#messageModal"></i>&nbsp;&nbsp;${dto.id} </div>
                     
                     
                     <div class="col-9"><i class="fa-solid fa-calendar"></i>&nbsp;&nbsp;${dto.formdDate}</div>
@@ -1790,6 +1818,41 @@ $("#modal_loginBtn").on("click",function(){
       })
     
 
+      
+      //쪽지보내기
+		$("#modal_sendmsg").on("click", function(){
+			if($("#modal_receiver").val()==""){
+				alert("받는 사람의 닉네임을 입력하세요.");
+				$("#modal_receiver").focus();
+				return false;
+			}else if($("#modal_title").val()==""){
+				alert("제목을 입력해주세요.");
+				$("#modal_title").focus();
+			}else if($("#modal_msgContents").val()==""){
+				alert("내용을 입력해주세요.");
+				$("#modal_msgContents").focus();
+			}else{
+		    	$.ajax({
+		    		url:"sendMsg.mpg",
+		    		type:"post",
+		    		data:{
+		    			receiver:$("#modal_receiver").val(),
+		    			title:$("#modal_title").val(),
+		    			contents:$("#modal_msgContents").val()
+		    			},
+		    		dataType:"json"
+		    	}).done(function(resp){
+		    		console.log(resp);
+		    		if(resp==0){
+		    			alert("존재하지 않는 닉네임입니다.");
+		    		}else{
+		    			location.reload();
+		    		}
+		    	})
+		    }
+		})
+      
+      
     
     
         document.addEventListener("DOMContentLoaded", function (event) {
