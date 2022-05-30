@@ -1,6 +1,8 @@
 package controllers;
 
 import java.io.IOException;
+import java.util.List;
+
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -15,6 +17,8 @@ import dao.GoodDAO;
 import dao.JjimDAO;
 import dao.MemberDAO;
 import dao.ReplyDAO;
+import dto.BoardDTO;
+import dto.FilesDTO;
 
 @WebServlet("*.admin")
 public class AdminController extends HttpServlet {
@@ -24,7 +28,7 @@ public class AdminController extends HttpServlet {
 		response.setCharacterEncoding("UTF-8");//한글 안깨지게
 		request.setCharacterEncoding("UTF-8");// post 방식 한글 안깨지게
 		
-		BoardDAO dao = BoardDAO.getInstance();
+		BoardDAO boardDao = BoardDAO.getInstance();
 		Gson g = new Gson();
 		
 		String uri = request.getRequestURI();
@@ -32,16 +36,39 @@ public class AdminController extends HttpServlet {
 		try{
 			
 			if(uri.equals("/adiminPage.admin")) {
-				String tab = request.getParameter("tab");
+				String boardOption = "f";
 
-				if(tab.equals("one")) {
-
-				}else if(tab.equals("two")) {
-					
-				}
+				int cpage = Integer.parseInt(request.getParameter("cpage"));
+				request.setAttribute("cpage", cpage);
+				List<BoardDTO> list = boardDao.selectByPage(cpage,boardOption); //게시글 별 리스트
+				String pageNavi = boardDao.getPageNavi(cpage, boardOption);//페이징
+				
+				request.setAttribute("list", list);
+				request.setAttribute("navi", pageNavi);
+				
+				//공지글 리스트
+				List<BoardDTO> noticeList = boardDao.selectNotice(boardOption);
+				request.setAttribute("noticeList", noticeList);
 				
 				request.getRequestDispatcher("/adminPage.jsp").forward(request, response);
 				
+			}else if(uri.equals("/adiminPageTap1.admin")) {
+				
+				String boardOption = request.getParameter("boardOption");
+System.out.println(boardOption);
+				int cpage = Integer.parseInt(request.getParameter("cpage"));
+				request.setAttribute("cpage", cpage);
+				List<BoardDTO> list = boardDao.selectByPage(cpage,boardOption); //게시글 별 리스트
+				String pageNavi = boardDao.getPageNavi(cpage, boardOption);//페이징
+				
+				request.setAttribute("list", list);
+				request.setAttribute("navi", pageNavi);
+				
+				//공지글 리스트
+				List<BoardDTO> noticeList = boardDao.selectNotice(boardOption);
+				request.setAttribute("noticeList", noticeList);
+				
+				request.getRequestDispatcher("/adminPage.jsp").forward(request, response);
 			}
 
 		}catch(Exception e) {
