@@ -1473,12 +1473,6 @@ $("#modal_loginBtn").on("click",function(){
                     </div>
                 </div>
             </div>
-            <!-- <div class="col-12" style="text-align: right; padding-top: 10px;padding-right: 100px;">
-<%--                <c:if test="${loginID == dto.id}"> --%>
-                     <button class="btn btn-primary " type="button" id="boardModi">수정</button>
-                     <button class="btn btn-primary " type="button" id="boardDel">삭제</button>
-<%--                   </c:if> --%>
-            </div> -->
             
             <div class="col-12"  id="heart" style="margin: auto;">
 
@@ -1492,11 +1486,11 @@ $("#modal_loginBtn").on("click",function(){
                 </div>
         
                 <div class="col-6" id="ht" style="text-align: right; padding-top:8px;">
-                    <c:if test="${loginID == dto.id}"> 
-                    <button class="btn btn-primary " type="button" id="boardModi">수정</button>
-                 <button class="btn btn-primary " type="button" id="boardDel">삭제</button>
-                 </c:if> 
-                 <button class="btn btn-primary " type="button" id="goList">목록</button>
+                    <c:if test="${loginID == dto.id || loginIsAdmin == 'Y'}"> 
+                   	 	<button class="btn btn-primary " type="button" id="boardModi">수정</button>
+                 		<button class="btn btn-primary " type="button" id="boardDel">삭제</button>
+                 	</c:if> 
+                 	<button class="btn btn-primary " type="button" id="goList">목록</button>
                 </div>
             
             <script>
