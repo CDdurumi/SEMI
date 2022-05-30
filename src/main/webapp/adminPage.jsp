@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 
 <!DOCTYPE html>
 <html>
@@ -581,10 +581,12 @@ select{
     font-size: 18px;
     font-weight: bold;
 }
-#notice{
-color:red;
-font-weight:bold;
+.notice{
+	color:red;
+	font-weight:bold;
 }
+
+
     </style>
 
 
@@ -835,15 +837,15 @@ $("#modal_loginBtn").on("click",function(){
 	        
 		        <div class="row m-0" id="board_menu" ></div>
 		
-		        <div class="row m-0 ">
-		             <div class="col-12  ">
+		        <div class="row m-0">
+		             <div class="col-12 board ">
 		                <div class="row " id="board_menu_text">
-		                    <div class="col-md-1 d-none d-md-block p-0">번호</div>
-		                    <div class="col-7 col-md-5 " style="text-align:left">제목</div>
+		                    <div class="col-md-1 d-none d-md-block p-0 text-center">번호</div>
+		                    <div class="col-7 col-md-5 " ><p class="mx-3">제목</p></div>
 		                    <div class="col-3 col-md-2 p-0 text-center">글쓴이</div>
 		                    <div class="col-md-2 d-none d-md-block p-0 text-center">날짜</div>
-		                    <div class="col-md-1 d-none d-md-block p-0">조회</div>
-		                    <div class="col-2 col-md-1 p-0">추천</div>
+		                    <div class="col-md-1 d-none d-md-block p-0 text-center">조회</div>
+		                    <div class="col-2 col-md-1 p-0 text-center">추천</div>
 		                </div>
 		             
 		            </div>
@@ -854,16 +856,16 @@ $("#modal_loginBtn").on("click",function(){
 		        <div class="col-12  board">
 		            <div class="row m-0 border border-2 rounded board_row ">
 		            	
-		                <div class="col-1 col-md-1 d-none d-md-block p-0">
-		                <p id="notice">공지</p>
+		                <div class="col-1 col-md-1 d-none d-md-block p-0 text-center">
+		                <p class="notice">공지</p>
 		                </div>
 		               	<div class="col-7 col-md-5 m-0 title ididid " style="text-align:left">
 		               		<a href="/detailView.board?cpage=${cpage}&seq=${i.all_board_seq}&click=ok" style="color:black">${i. title }</a>
 		               	</div>
 		                <div class="col-3 col-md-2 p-0 ellipsis text-center ididid">${i.id }</div>
-		                <div class="col-md-2 d-none d-md-block p-0 "><fmt:formatDate value="${i.write_date }" pattern="yy-MM-dd"/></div>
-		                <div class="col-md-1 d-none d-md-block p-0">${i.view_count}</div>
-		                <div class="col-2 col-md-1 p-0">${i.like_count}</div>
+		                <div class="col-md-2 d-none d-md-block p-0 text-center"><fmt:formatDate value="${i.write_date }" pattern="yy-MM-dd"/></div>
+		                <div class="col-md-1 d-none d-md-block p-0 text-center">${i.view_count}</div>
+		                <div class="col-2 col-md-1 p-0 text-center">${i.like_count}</div>
 		                
 		            </div>
 		        </div>
@@ -875,14 +877,14 @@ $("#modal_loginBtn").on("click",function(){
 		        <div class="col-12  board">
 		            <div class="row m-0 border border-2 rounded board_row ">
 		            	
-		                <div class="col-1 col-md-1 d-none d-md-block p-0">${i.line}</div>
+		                <div class="col-1 col-md-1 d-none d-md-block p-0 text-center">${i.line}</div>
 		               	<div class="col-7 col-md-5 m-0 title ididid "style="text-align:left">
 		               		<a href="/detailView.board?cpage=${cpage}&seq=${i.all_board_seq}&click=ok" style="color:black">${i. title }</a>
 		               	</div>
 		                <div class="col-3 col-md-2 p-0 ididid text-center">${i.id }</div>
-		                <div class="col-md-2 d-none d-md-block p-0 "><fmt:formatDate value="${i.write_date }" pattern="yy-MM-dd"/></div>
-		                <div class="col-md-1 d-none d-md-block p-0">${i.view_count}</div>
-		                <div class="col-2 col-md-1 p-0">${i.like_count}</div>
+		                <div class="col-md-2 d-none d-md-block p-0 text-center"><fmt:formatDate value="${i.write_date }" pattern="yy-MM-dd"/></div>
+		                <div class="col-md-1 d-none d-md-block p-0 text-center">${i.view_count}</div>
+		                <div class="col-2 col-md-1 p-0 text-center">${i.like_count}</div>
 		                
 		            </div>
 		        </div>
@@ -976,6 +978,12 @@ $("#modal_loginBtn").on("click",function(){
     	location.href = "/adiminPageTap1.admin?boardOption="+boardOption+"&cpage="+cpage+""; 
     })
     
+    
+    
+    //탭2 클릭 이벤트
+    $("#member-tab").on("click",function(){
+		alert("미완성된 기능입니다.")
+    })
     
     
     
