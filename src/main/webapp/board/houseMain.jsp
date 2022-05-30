@@ -398,18 +398,23 @@
             font-size:17px;
         }
          /* 제목이 길어서 잘렸을 경우 밑의 두개 처리해준다 */
-       .ellipsis{
-           position: relative;
-           min-width: 50px;
+/*        .ellipsis{ */
+/*            position: relative; */
+/*            min-width: 50px; */
            
-       }
-       .ellipsis>span{
-        overflow: hidden;
-           white-space: nowrap;
-           text-overflow: ellipsis;
-           position:absolute;
-           left: 9px;
-           right: 9px;
+/*        } */
+/*        .ellipsis>span{ */
+/*         overflow: hidden; */
+/*            white-space: nowrap; */
+/*            text-overflow: ellipsis; */
+/*            position:absolute; */
+/*            left: 9px; */
+/*            right: 9px; */
+/*        } */
+   .ellipsis{
+       overflow:hidden;
+       text-overflow:ellipsis;
+       white-space:nowrap;
        }
        .carousel-control-prev{
         padding-bottom: 150px;
@@ -835,9 +840,9 @@ $("#modal_loginBtn").on("click",function(){
                 <p id="notice">공지</p>
                 </div>
                	<div class="col-7 col-md-5 m-0 title ellipsis ">
-               		<span><a href="/detailView.board?cpage=${cpage}&seq=${i.all_board_seq}&click=ok" style="color:black">${i. title }</a></span>
+               		<a href="/detailView.board?cpage=${cpage}&seq=${i.all_board_seq}&click=ok" style="color:black">${i. title }</a>
                	</div>
-                <div class="col-3 col-md-2 p-0 ellipsis text-center"><span>${i.id }</span></div>
+                <div class="col-3 col-md-2 p-0 ellipsis text-center">${i.id }</div>
                 <div class="col-md-2 d-none d-md-block p-0 text-center"><fmt:formatDate value="${i.write_date }" pattern="yy-MM-dd"/></div>
                 <div class="col-md-1 d-none d-md-block p-0 text-center">${i.view_count}</div>
                 <div class="col-2 col-md-1 p-0 text-center">${i.like_count}</div>
@@ -853,9 +858,9 @@ $("#modal_loginBtn").on("click",function(){
             	
                 <div class="col-1 col-md-1 d-none d-md-block p-0 text-center">${i.line}</div>
                	<div class="col-7 col-md-5 m-0 title ellipsis">
-               		<span><a href="/detailView.board?cpage=${cpage}&seq=${i.all_board_seq}&click=ok" style="color:black">${i. title }</a></span>
+               		<a href="/detailView.board?cpage=${cpage}&seq=${i.all_board_seq}&click=ok" style="color:black">${i. title }</a>
                	</div>
-                <div class="col-3 col-md-2 p-0 ellipsis text-center"><span>${i.id }</span></div>
+                <div class="col-3 col-md-2 p-0 ellipsis text-center">${i.id }</div>
                 <div class="col-md-2 d-none d-md-block p-0 text-center"><fmt:formatDate value="${i.write_date }" pattern="yy-MM-dd"/></div>
                 <div class="col-md-1 d-none d-md-block p-0 text-center">${i.view_count}</div>
                 <div class="col-2 col-md-1 p-0 text-center">${i.like_count}</div>
