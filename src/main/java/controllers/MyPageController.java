@@ -67,9 +67,7 @@ public class MyPageController extends HttpServlet {
 					result = 0;
 				}
 				PrintWriter pw = response.getWriter();
-				
-				
-				
+
 				pw.append(g.toJson(result));
 //				dao.insert(new MessageDTO(0, 0, title, sender, receiver, contents, ""));
 			}else if(uri.equals("/receiveMsgBox.mpg")) { //받은쪽지함
