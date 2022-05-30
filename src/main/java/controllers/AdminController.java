@@ -36,19 +36,22 @@ public class AdminController extends HttpServlet {
 		try{
 			
 			if(uri.equals("/adiminPage.admin")) {
+				//탭1 정보///////////////
 				String boardOption = "f";
-
-				int cpage = Integer.parseInt(request.getParameter("cpage"));
+				int cpage = 1;
 				request.setAttribute("cpage", cpage);
 				List<BoardDTO> list = boardDao.selectByPage(cpage,boardOption); //게시글 별 리스트
 				String pageNavi = boardDao.getAdminPageNavi(cpage, boardOption);//관리자 게시글 전용 페이징
-				
 				request.setAttribute("list", list);
 				request.setAttribute("navi", pageNavi);
-				
 				//공지글 리스트
 				List<BoardDTO> noticeList = boardDao.selectNotice(boardOption);
 				request.setAttribute("noticeList", noticeList);
+				
+				
+				//탭2 정보///////////////////
+				
+				
 				
 				request.getRequestDispatcher("/adminPage.jsp").forward(request, response);
 				
