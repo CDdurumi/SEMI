@@ -255,7 +255,8 @@ public class BoardDAO {
 		}
 	}
 
-	// 게시판 리스트 출력
+
+	// 게시판 리스트 출력( 단, 공지글 제외)
 	public List<BoardDTO> selectAll(String boardOption) throws Exception {
 		String sql = "select row_number() over(order by write_date desc) line, all_board.* from all_board where all_board_seq like '"+boardOption+"%' and editor_type != 'n'";
 
@@ -284,7 +285,7 @@ public class BoardDAO {
 	}
 
 	
-	// 애디터 추천 게시판 리스트 출력(by editor_type)
+	// 애디터 추천 게시판 리스트 출력(by editor_type //  단, 공지글 제외)
 	public List<BoardDTO> selectByEditorType(String boardOption, String eeditor_type) throws Exception {
 		String sql = "select row_number() over(order by write_date desc) line, all_board.* from all_board where all_board_seq like '"+boardOption+"%' and editor_type = ? and editor_type != 'n'";
 
@@ -340,7 +341,7 @@ public class BoardDAO {
 		}
 	}
 
-	// DB의 총 record 개수를 알아내기 위한 메소드
+	// DB의 총 record 개수를 알아내기 위한 메소드(  단, 공지글 제외)
 	private int getRecordTotalCount(String boardOption) throws Exception {
 		String sql = "select count(*) from all_board where all_board_seq like '"+boardOption+"%' and editor_type != 'n'";
 
@@ -515,7 +516,7 @@ public class BoardDAO {
 	
 	
 	
-	// boradlist에서 보여지는 게시글 개수를 정하기 위한 메소드
+	// boradlist에서 보여지는 게시글 개수를 정하기 위한 메소드(  단, 공지글 제외)
 	public List<BoardDTO> selectByPage(int cpage,String boardOption) throws Exception {
 
 		// 게시글의 번호를 세팅한다.
@@ -553,7 +554,7 @@ public class BoardDAO {
 		}
 	}
 
-	// 화제글 list(좋아요, 조회수 정렬)
+	// 화제글 list(좋아요, 조회수 정렬//  단, 공지글 제외)
 	public List<BoardDTO> selectByLikeCount(String boardOption) throws Exception {
 
 		int start = 1;
@@ -591,7 +592,7 @@ public class BoardDAO {
 	//각 게시판 별 공지글
 	public List<BoardDTO> selectNotice(String boardOption) throws Exception {
 		String sql = "select row_number() over(order by write_date desc) line, all_board.* from all_board where all_board_seq like '"+boardOption+"%' and editor_type = 'n'";
-System.out.println(sql);
+//System.out.println(sql);
 		try (Connection con = this.getConnection();
 				PreparedStatement pstat = con.prepareStatement(sql);
 				ResultSet rs = pstat.executeQuery();) {
@@ -615,6 +616,39 @@ System.out.println(sql);
 			return list;
 		}
 	}
+	
+	
+	
+	///////////////////////////////////////////관리자////////////////////////////////////////////////////////////////////////
+	
+	// 모든 게시판 리스트(관리자 전용//단, 공지글 제외)
+	public List<BoardDTO> selectAll() throws Exception {
+		String sql = "select row_number() over(order by write_date desc) line, all_board.* from all_board where editor_type != 'n'";
+
+		try (Connection con = this.getConnection();
+				PreparedStatement pstat = con.prepareStatement(sql);
+				ResultSet rs = pstat.executeQuery();) {
+			List<BoardDTO> list = new ArrayList<BoardDTO>();
+
+			while (rs.next()) {
+				String all_board_seq = rs.getString("all_board_seq");
+				String id = rs.getString("id");
+				String title = rs.getString("title");
+				String contents = rs.getString("contents");
+				Timestamp write_date = rs.getTimestamp("write_date");
+				int like_count = rs.getInt("like_count");
+				int jjim_count = rs.getInt("jjim_count");
+				int view_count = rs.getInt("view_count");
+				String editor_type = rs.getString("editor_type");
+				int line = rs.getInt("line");
+
+				BoardDTO dto = new BoardDTO(all_board_seq, id, title, contents, write_date, like_count, jjim_count, view_count, editor_type, line);
+				list.add(dto);
+			}
+			return list;
+		}
+	}
+	
 	
 	
 	
