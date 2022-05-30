@@ -36,7 +36,29 @@ public class AdminController extends HttpServlet {
 		try{
 			
 			if(uri.equals("/adiminPage.admin")) {
+				//탭1 정보///////////////
 				String boardOption = "f";
+				int cpage = 1;
+				request.setAttribute("cpage", cpage);
+				List<BoardDTO> list = boardDao.selectByPage(cpage,boardOption); //게시글 별 리스트
+				String pageNavi = boardDao.getAdminPageNavi(cpage, boardOption);//관리자 게시글 전용 페이징
+				request.setAttribute("list", list);
+				request.setAttribute("navi", pageNavi);
+				//공지글 리스트
+				List<BoardDTO> noticeList = boardDao.selectNotice(boardOption);
+				request.setAttribute("noticeList", noticeList);
+				
+				
+				//탭2 정보///////////////////
+				
+				
+				
+				request.getRequestDispatcher("/adminPage.jsp").forward(request, response);
+				
+			}else if(uri.equals("/adiminPageTap1.admin")) {
+				
+				String boardOption = request.getParameter("boardOption");
+				request.setAttribute("boardOption", boardOption);//관리자 페이지에서 받아서 게시글 콤보박스 set하기 위함.
 
 				int cpage = Integer.parseInt(request.getParameter("cpage"));
 				request.setAttribute("cpage", cpage);
@@ -52,15 +74,18 @@ public class AdminController extends HttpServlet {
 				
 				request.getRequestDispatcher("/adminPage.jsp").forward(request, response);
 				
-			}else if(uri.equals("/adiminPageTap1.admin")) {
+			}else if(uri.equals("/adiminPageTap1Search.admin")) {
 				
-				String boardOption = request.getParameter("boardOption");
+				int cpage = Integer.parseInt(request.getParameter("cpage"));//페이징네비 페이지 넘버
+				String boardOption = request.getParameter("boardOption"); //게시판 옵션(f:자유게시판, g:여행후기, j:구인구직, r:맛집, h:숙소리뷰)
+				String serchOption = request.getParameter("serchOption"); //검색 옵션(id, title, contents)
+				String contents = request.getParameter("contents"); //검색 내용
+				
+				List<BoardDTO> list = boardDao.search(cpage, serchOption, contents, boardOption);//검색 결과 게시글 리스트	
+				String pageNavi = boardDao.getAdminSearchPageNavi(cpage, boardOption, serchOption, contents);//관리자 게시글 전용 페이징
 
-				int cpage = Integer.parseInt(request.getParameter("cpage"));
 				request.setAttribute("cpage", cpage);
-				List<BoardDTO> list = boardDao.selectByPage(cpage,boardOption); //게시글 별 리스트
-				String pageNavi = boardDao.getAdminPageNavi(cpage, boardOption);//관리자 게시글 전용 페이징
-				
+				request.setAttribute("boardOption", boardOption);//관리자 페이지에서 받아서 게시글 콤보박스 set하기 위함.
 				request.setAttribute("list", list);
 				request.setAttribute("navi", pageNavi);
 				

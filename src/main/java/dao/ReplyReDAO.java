@@ -100,5 +100,23 @@ public class ReplyReDAO {
 		}
 	}
 	
+	//re댓글 정보 가져오기
+	public ReplyReDTO reReplyinfo(String seq) throws Exception{
+		String sql = "select * from reply_re where reply_re_seq =?";
+		try(Connection con = this.getConnection();
+				PreparedStatement pstat = con.prepareStatement(sql);){
+			pstat.setString(1, seq);
+			try(ResultSet rs = pstat.executeQuery();){
+				rs.next();
+				String reply_re_seq = rs.getString("reply_re_seq");
+				String id = rs.getString("id");
+				String contents = rs.getString("contents");
+				Timestamp write_date = rs.getTimestamp("write_date");
+				String parent_seq = rs.getString("parent_seq");
+				return  new ReplyReDTO(reply_re_seq, id, contents, write_date, parent_seq);
+			}
+		}
+	}
+	
 	
 }

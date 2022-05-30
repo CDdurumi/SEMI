@@ -770,6 +770,8 @@
                                 
                                 recol11=$("<div>");
                                 recol11.attr("class","col-3 rebtn");
+                                recol11.attr("value", resp[i].reply_re_seq);
+                               
                                 //대댓글 수정 버튼
                                 rebtn2 =$("<button>");
                                 rebtn2.html('<i class="fa-solid fa-pen-clip" ></i>')
@@ -856,27 +858,44 @@
                                         		thisdelete.css("display","inline-block");
                                         		thiscancel.remove();
                                         		the.remove();
-                                        		location.reload();  //수정 완료 누르면 새로고침
+//                                         		location.reload();  //수정 완료 누르면 새로고침
                                         	})
                                         	dummyremodify='false';
                                         })
                                         
                                         //대댓글 수정 취소
                                         $(rebtn5).on("click",function(){
-                                           console.log("오오오");
-                                           $($(this).siblings()[0]).css("display","inline-block");
-                                           $($(this).siblings()[1]).css("display","inline-block");
-                                           thisborder=$(this).closest(".bordermodi");
-                                           
+                                        	  
+                                        	let reply_re_seq =   $(this).parent().attr("value");
+                                        	
+                                        	
+                                        	let modibtn = $($(this).siblings()[0]);
+                                        	let delbtn = $($(this).siblings()[1])
+                                        	  
+                                        	
+                                           let thisborder=$(this).closest(".bordermodi");
                                            let thiscontents=$(this).parent().siblings()[1];
+                                           let reok =$($(this).siblings()[2]);
+                                           let the = $(this);
+                                          
                                            
-                                           $(thiscontents).attr("contenteditable",false);
-                                           $(thiscontents).text(resp[i].contents);
+                                        
+                                           $.ajax({
+                                        	   url:"/reReplyinfo.reply",
+                                               type : 'POST',
+                                               data : {reply_re_seq :reply_re_seq },
+                                               dataType : 'json'
+                                           }).done(function(resp){
+													modibtn.css("display","inline-block");
+                                          			delbtn.css("display","inline-block");
+                                          			 $(thiscontents).attr("contenteditable",false);
+                                          			$(".remodify").attr("disabled",false);
+                                          			 reok.remove();
+                                                     the.remove();
+                                                     thisborder.css("box-shadow","");
+                                        	   $(thiscontents).text(resp.contents);
+                                           });
                                            
-                                           $(".remodify").attr("disabled",false);
-                                           $($(this).siblings()[2]).remove();
-                                           $(this).remove();
-                                           thisborder.css("box-shadow","");
                                            
                                            dummyremodify=false;
                                         })

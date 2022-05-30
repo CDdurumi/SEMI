@@ -586,18 +586,37 @@ color:red;
 font-weight:bold;
 }
     </style>
-	<script>
-// 	 let page = 1;  //페이징과 같은 방식이라고 생각하면 된다.
 
-//  	  $(window).scroll(function(){   //스크롤이 최하단 으로 내려가면 리스트를 조회하고 page를 증가시킨다.
-//   	  	if($(window).scrollTop() >= $(document).height() - $(window).height()){
-//   	        getList(page);
-//    	        page++;   
-// //                console.log(page);
-//     	 } 
-//  	   });
+
+<script>
+$(function(){
 	
-	</script>
+	//탭1 - 게시판 콤보박스 자동 set.
+    let boardOption = "${boardOption}";
+    if(boardOption == 'f'){//자유게시판
+    	 $("#f").attr("selected","selected");
+    }else if(boardOption == 'g'){//여행후기
+    	 $("#g").attr("selected","selected");
+    }else if(boardOption == 'j'){//구인구작
+    	 $("#j").attr("selected","selected");
+    }else if(boardOption == 'r'){//맛집
+    	 $("#r").attr("selected","selected");
+    }else if(boardOption == 'h'){//숙소리뷰
+    	 $("#h").attr("selected","selected");
+    }
+    
+    //게시글 콤보박스 선택 시 이벤트
+    let previous = "";
+    $("#boardSelect").on('focus', function () {
+		previous  = this.value;
+	}).change(function() {
+		let boardOption = $("#boardSelect").val();
+		location.href = "/adiminPageTap1.admin?boardOption="+boardOption+"&cpage=1"; 
+	});
+
+}) 
+
+</script> 
 
 
 
@@ -749,24 +768,23 @@ $("#modal_loginBtn").on("click",function(){
 				    <nav class="navbar bg">
 				        <div class="container-fluid">
 				          <a class="navbar-brand"> </a>
-				          <form action="#" method="post" class="d-flex" role="search">
-				          		<input type="hidden" value="f" name="boardOption">
+				          <form action="/adiminPageTap1Search.admin" method="post" class="d-flex" role="search">
 				          		<input type="hidden" value="1" name="cpage">
 								
 								<select name="boardOption" id="boardSelect">
-				                        <option value="f">
+				                        <option value="f" id="f">
 				                            자유게시판
 				                        </option>
-				                        <option value="g">
+				                        <option value="g" id="g">
 				                            여행후기
 				                        </option>
-				                        <option value="j">
+				                        <option value="j" id="j">
 				                            구인구직
 				                        </option>
-				                        <option value="r">
+				                        <option value="r" id="r">
 				                            맛집
 				                        </option>
-				                        <option value="h">
+				                        <option value="h" id="h">
 				                            숙소리뷰
 				                        </option>		                        		                        
 								</select>
@@ -787,7 +805,7 @@ $("#modal_loginBtn").on("click",function(){
 				          	
 				            <input class="form-control me-2" type="search" placeholder="검색어를 입력해주세요." aria-label="Search" name="contents">
 				            <button class="btn btn-outline-secondary btn-sm" type="submit">Search</button>&nbsp;
-				            
+				            <button class="btn btn-outline-secondary btn-sm" type="button" id ="cancel">x</button>&nbsp;
 				            		<c:choose>
 										<c:when test="${loginID !=null}">
 											<button type="button" class="btn btn-primary btn-sm" id="writeBtn" style="white-space:nowrap;"><i class="fa-solid fa-pen-to-square"></i>글 작성하기</button>
@@ -941,19 +959,12 @@ $("#modal_loginBtn").on("click",function(){
     	
     })
     
-    
-    //게시글 콤보박스 선택 시 이벤트
-        let previous = "";
-        $("#boardSelect").on('focus', function () {
-    		previous  = this.value;
-		}).change(function() {
-			let boardOption = $("#boardSelect").val();
-			location.href = "/adiminPageTap1.admin?boardOption="+boardOption+"&cpage=1"; 
-		});
-    
-    
-    
-    
+	//X버튼 클릭 시(검색 취소)
+    $("#cancel").on("click",function(){
+    	let boardOption = $("#boardSelect").val();
+    	let cpage = ${cpage};
+    	location.href = "/adiminPageTap1.admin?boardOption="+boardOption+"&cpage="+cpage+""; 
+    })
     
     
     
