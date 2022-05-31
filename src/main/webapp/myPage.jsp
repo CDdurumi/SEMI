@@ -671,23 +671,26 @@ pageEncoding="UTF-8"%>
 							<a href="/goMyPage.mpg" class="nav1_link" data-bs-toggle="modal" data-bs-target="#exampleModal"> <i class='bx bx-user nav1_icon'></i> <span class="nav1_name">마이페이지</span> </a>
 						</c:otherwise>
 					</c:choose>
-                </div>
+             
             </div>
             <c:choose>
-            <c:when test="${loginID !=null}">
-               <a href="/logout.member" class="nav1_link"> <i class='bx bx-log-out nav1_icon'></i> <span class="nav1_name">로그아웃</span> </a>   
-            </c:when>
-         </c:choose>
-<c:choose>
-						<c:when test="${loginIsAdmin == 'Y'}">
+            <c:when test="${loginIsAdmin == 'Y'}">
                				<a href="/adiminPage.admin" class="nav1_link"> <i class='bx bx-hard-hat nav1_icon'></i> <span class="nav1_name">관리자페이지</span> </a>
-                		</c:when>
-                	
-                		<c:otherwise>
+            </c:when>
+            <c:otherwise>
 							
-						</c:otherwise>
+			</c:otherwise>
+           
+         </c:choose>
+         </div>
+<c:choose>
+						
+                 <c:when test="${loginID !=null}">
+               <a href="/logout.member" class="nav1_link"> <i class='bx bx-log-out nav1_icon'></i> <span class="nav1_name">로그아웃</span> </a>   
+            </c:when>	
+                		
                 	</c:choose>            
-        </nav>
+       </nav>
     </div>
     
 <div class="modal" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
