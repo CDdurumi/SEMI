@@ -1496,7 +1496,7 @@ $("#modal_loginBtn").on("click",function(){
                 </div>
         
                 <div class="col-6" id="ht2" style="padding-top:8px;">
-                    <c:if test="${loginID == dto.id}"> 
+                    <c:if test="${loginID == dto.id || loginID == loginIsAdmin}"> 
                     <button class="btn btn-primary " type="button" id="boardModi">수정</button>
                       <button class="btn btn-primary " type="button" id="boardDel">삭제</button>
                  </c:if> 
