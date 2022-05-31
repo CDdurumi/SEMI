@@ -693,8 +693,9 @@ font-weight: bold;
 
 <div class="col-12 dummy" style="height: 30px;"></div>
 
-	<div class="row border border-2 rounded wrap11 hugi ">
-		<div class="col-12 border-bottom border-2 " id="hugi"><a href ="/galleryMain.board?cpage=1" style="font-weight:bold; font-size:18px;">여행 후기</a></div>
+<!-- 	<div class="row border border-2 rounded wrap11 hugi "> -->
+		<div class="col-12  border-2 " id="hugi"><a href ="/galleryMain.board?cpage=1" style="font-weight:bold; font-size:20px; color:black; text-decoration: underline;
+    text-underline-position: under;">여행 후기</a></div>
 
 	
 			<div class="col-12" id="carousel">

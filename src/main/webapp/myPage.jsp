@@ -1768,7 +1768,7 @@ $("#modal_loginBtn").on("click",function(){
 			
 			let msgDiv4 = $("<div class='col-4 col-md-4 col-lg-2 p-0 ellipsis text-center'>");
 			let msgSpan2 = $("<span>")
-			msgSpan2.text('${loginID}');
+			msgSpan2.text(resp[i].receiver);
 			
 			let msgDiv5 = $("<div class='col-md-2 col-lg-4 d-none d-lg-block p-0 text-center'>");
 			msgDiv5.text(resp[i].date);
