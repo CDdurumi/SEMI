@@ -40,7 +40,7 @@ public class MyPageController extends HttpServlet {
 		try {
 			if(uri.equals("/sendMsg.mpg")) { // 쪽지보내기
 				System.out.println("메세지 보내기 수신확인");
-				int result;
+				int result=0;
 				String sender = (String)request.getSession().getAttribute("loginID");
 				String sender_email = (String)request.getSession().getAttribute("loginEmail");
 //				int message_seq = Integer.parseInt(request.getParameter("message_seq"));
@@ -62,9 +62,10 @@ public class MyPageController extends HttpServlet {
 				
 				if(mdao.isEmailExist(receiver_email)) {
 					result = dao.insert(new MessageDTO(0,0,title,sender,receiver,sender_email,receiver_email,contents,""));
-					
+					System.out.println(result);
 				}else {
 					result = 0;
+					System.out.println(result);
 				}
 				PrintWriter pw = response.getWriter();
 

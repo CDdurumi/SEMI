@@ -562,9 +562,11 @@
             <div> <a href="/goIndex.board" class="nav_logo"> <i class='bx bx-layer nav_logo-icon'></i> <span class="nav_logo-name">쉼표
                         <br>- 일상의 쉼표를 찍다</span> </a>
                 <div class="nav_list">
-                    <a class="nav_link" style="color:white;"> <i class='bx bx-wind nav_icon'></i> <span
-                            class="nav_name">날씨</span> </a>
-                    <a href="/communityMain.board" class="nav_link"> <i class='bx bx-message nav_icon'></i> <span class="nav_name">커뮤니티</span> </a> 
+                   <a class="nav_link" style="color:white;"> <i class='CurrIcon'></i> <span class="nav_name"><span class="weather">
+                   <span class="CurrTemp"></span>
+                   <span class="City"></span>
+                   </span></span> </a>
+                   <a href="/communityMain.board" class="nav_link"> <i class='bx bx-message nav_icon'></i> <span class="nav_name">커뮤니티</span> </a> 
                    <a href="/editorReMain.board?" class="nav_link"> <i class='bx bx-book-bookmark nav_icon'></i> <span class="nav_name">에디터추천</span> </a> 
                    <a href="/houseMain.board?cpage=1" class="nav_link"> <i class='bx bx-home nav_icon'></i> <span class="nav_name">숙소리뷰</span> </a>
                		<c:choose>
@@ -656,7 +658,7 @@ $("#modal_loginBtn").on("click",function(){
             <div class="col-12 p-0 border-bottom border-2 rounded h-100" id="contents">
                 <div class="row border-bottom border-2 rounded h-100" id="conMenu">
                     <div class="col-12 col-md-12 ellipsis "  style="padding-left:15px" id="title">${dto.title}</div>
-                    <div class="col-3 col-md-3 ellipsis " ><span style="width: 90%; ">${loginID}</span></div>
+                    <div class="col-3 col-md-3 ellipsis " ><span style="width: 90%; ">${dto.receiver}</span></div>
                     <div class="col-9 ">${dto.date }</div>
                     
                     
