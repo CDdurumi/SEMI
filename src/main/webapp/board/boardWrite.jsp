@@ -700,7 +700,7 @@ $("#modal_loginBtn").on("click",function(){
 
     <!-- 게시글 작성하기 메인 ----------------------------------------------------------------------->
     <!--Container Main start-->
-    <form action="/writeProcessing.board" method="post" enctype="multipart/form-data" id="from">
+    <form action="/writeProcessing.board" method="post" enctype="multipart/form-data" id="form">
         <div class="container my-4">
             <div class="row">
                 <!-- <div class="col-12 text-center display-6 mainTitle p-1">
@@ -733,7 +733,7 @@ $("#modal_loginBtn").on("click",function(){
                         </c:forEach>
 
                     </select>
-                    <input type="text" placeholder="글 제목을 입력하세요" name="title" class="title" required>
+                    <input type="text" placeholder="글 제목을 입력하세요" name="title" class="title" id="title" required>
                 </div>
                 
                 <div class="col-12 " id="fileArea" style="border-top:1px solid #aaa9a9">
@@ -977,8 +977,16 @@ $("#modal_loginBtn").on("click",function(){
             
 		});
 	    
+	    
+	    //UTF-8 인코딩 방식 바이트 길이 구하기
+		const getByteLengthOfString = function(s,b,i,c){
+		    for(b=i=0;c=s.charCodeAt(i++);b+=c>>11?3:c>>7?2:1);
+		    return b;
+		};
+
+	    
 		//작성완료 버튼 클릭 시 서머노트 안 적었으면 경고창 & 로그인 안 했으면 경고창//////////////////////
-		let frm = document.getElementById("from");
+		let frm = document.getElementById("form");
 		frm.onsubmit = function(){
 			let summernote = document.getElementById("summernote").value;
 			if(summernote == "" || summernote =="<p><br></p>"){
@@ -994,6 +1002,20 @@ $("#modal_loginBtn").on("click",function(){
 	        //서머노트 input type = file 부분 임시적으로 삭제.
 	        $("[class *='note-image-input form-control-file note-form-control note-input']").remove();
 	        
+	        
+	      	//공백체크 정규식
+	        var pattern = /\s/g; 
+	        //제목 UTF-8 인코딩 방식 바이트 길이 구하기
+	        const titleLength = $("#title").val();
+	        
+	        if(getByteLengthOfString(titleLength)>50){
+	        	alert("제목을 줄여주세요.");
+	        	return false;
+	        }
+	        if(titleLength.match(pattern)){
+	        	alert("제목을 입력해주세요.");
+	        	return false;
+	        }
 		}
 	    
 		//서머노트////////////////////////////////////////////////////////////////////////////
