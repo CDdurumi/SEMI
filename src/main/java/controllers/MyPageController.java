@@ -235,8 +235,8 @@ public class MyPageController extends HttpServlet {
 				String title = request.getParameter("title");
                 String start = request.getParameter("start");
                 String end = request.getParameter("end");
-                String backgroundColor = request.getParameter("color");
-                String textColor = request.getParameter("color");
+                String backgroundColor = request.getParameter("backgroundColor");
+                String textColor = request.getParameter("textColor");
                 String contents = request.getParameter("contents");
                 
                 int result = caldao.insert(0,email,title,contents,start,end,backgroundColor,textColor);
