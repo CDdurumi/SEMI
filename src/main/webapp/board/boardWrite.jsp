@@ -1005,11 +1005,17 @@ $("#modal_loginBtn").on("click",function(){
 	        
 	        //제목 UTF-8 인코딩 방식 바이트 길이 구하기
 	        const titleLength = $("#title").val();
+	        const contentsLength = $("#summernote").val();
 	        
 	        if(getByteLengthOfString(titleLength)>50){
 	        	alert("제목을 줄여주세요.");
 	        	return false;
 	        }
+	        if(getByteLengthOfString(contentsLength)>12000){
+	        	alert("내용을 줄여주세요.");
+	        	return false;
+	        }
+	        
 	        if(titleLength.replace(/\s|　/gi, "").length == 0){
 	        	alert("제목을 입력해주세요.");
 	        	$("#title").val("");
