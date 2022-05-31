@@ -611,7 +611,7 @@
 <div class="row dummy2" style="height:30px"></div>
 <footer class="mt-auto text-black-50" >
         	
-        	<div class="row" style="border-top:1px solid #c3c3c3; border-bottom:1px solid #c3c3c3; background-color:#f5f5f7">
+        	<div class="row" style="border-top:1px solid #c3c3c3; border-bottom:1px solid #c3c3c3; background-color:#f5f5f7; max-width:1400px; margin:auto;">
         		<div class="d-none d-lg-block col-5 footer1" style="margin-top:15px; margin-bottom:15px">
         			<img src="/imgsrc/footerlogo2.png">
         		</div>
