@@ -205,7 +205,9 @@
         .height-100 {
             height: 100vh
         }
-
+ .card img {
+            height: 300px;
+        }
         @media screen and (min-width: 768px) {
             body {
                 margin: calc(var(--header-height) + 1rem) 0 0 0;
@@ -353,7 +355,7 @@
         }
 
         .card-body {
-            height: 150px;
+            height: 100px;
            
             text-align: center;
         }
@@ -634,7 +636,7 @@ $("#modal_loginBtn").on("click",function(){
 
 			<div class="col-12 col-md-6 bottom_board">
                 <div class="row border border-2 rounded wrap12 d-flex flex-wrap align-content-start">
-                    <div class="col-12 border-bottom hotboard_bottom text-center" style="font-weight:bold; font-size:18px;">맛집</div>
+                    <div class="col-12 border-bottom hotboard_bottom text-center" style="font-weight:bold; font-size:18px;">구인구직 화제</div>
                   
                         <div class="col-12 ">
                             <div class="row freeboard_bottom ">
