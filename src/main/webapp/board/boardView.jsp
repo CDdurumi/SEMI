@@ -391,7 +391,7 @@
            padding-top: 5px;
             width: 82%;
            text-align: center;
-           padding-left: 22px;
+         	margin-left:10px;
        }
        #jjimcol{
            font-size: 27px;
