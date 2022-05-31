@@ -129,7 +129,7 @@ public class MessageDAO {
 		int end = cpage * 20;//해당 페이지의 끝 게시글 번호
 
 		// 한 페이지에 게시글이 15개씩 보여지도록 하기 위해서 row_number를 활용하는데, 서브 쿼리를 활용해서 select 해준다.
-		String sql = "select * from (select (row_number() over(order by write_date desc)) line, message.* from message where sender_email=?) where (line between ? and ?) and (sender_email=?) order by line";
+		String sql = "select * from (select (row_number() over(order by write_date )) line, message.* from message where sender_email=? order by line desc) where (line between ? and ?) and (sender_email=?)";
 
 
 		try(Connection con = this.getConnection();
@@ -170,7 +170,7 @@ public class MessageDAO {
 		int end = cpage * 20;//해당 페이지의 끝 게시글 번호 15 30 45 
 
 		// 한 페이지에 게시글이 15개씩 보여지도록 하기 위해서 row_number를 활용하는데, 서브 쿼리를 활용해서 select 해준다.
-		String sql = "select * from (select (row_number() over(order by write_date desc)) line, message.* from message where receiver_email=?) where (line between ? and ?) and (receiver_email=?) order by line";
+		String sql = "select * from (select (row_number() over(order by write_date )) line, message.* from message where receiver_email=? order by line desc) where (line between ? and ?) and (receiver_email=?) ";
 		
 
 		try(Connection con = this.getConnection();
@@ -213,12 +213,13 @@ public class MessageDAO {
 		int end = cpage * 20;
 
 		// 한 페이지에 게시글이 20개씩 보여지도록 하기 위해서 row_number를 활용하는데, 서브 쿼리를 활용해서 select 해준다.
-		String sql = "select * from (select row_number() over(order by write_date desc) line, all_board.* from all_board where all_board_seq like '"+boardOption+"%' and editor_type != 'n') where (line between ? and ?) and (id=?)";
+		String sql = "select * from (select row_number() over(order by write_date ) line, all_board.* from all_board where all_board_seq like '"+boardOption+"%' and editor_type != 'n' and (id=?) order by line desc) where (line between ? and ?)";
 						
 		try (Connection con = this.getConnection(); PreparedStatement pstat = con.prepareStatement(sql);) {
-			pstat.setInt(1, start);
-			pstat.setInt(2, end);
-			pstat.setString(3, nick);
+			pstat.setString(1, nick);
+			pstat.setInt(2, start);
+			pstat.setInt(3, end);
+			
 
 			try (ResultSet rs = pstat.executeQuery();) {
 				List<BoardDTO> list = new ArrayList<BoardDTO>();
@@ -253,10 +254,10 @@ public class MessageDAO {
 		int end = cpage * 20;//해당 페이지의 끝 게시글 번호 15 30 45 
 
 		// 한 페이지에 게시글이 15개씩 보여지도록 하기 위해서 row_number를 활용하는데, 서브 쿼리를 활용해서 select 해준다.
-		String sql = "select * from (select row_number() over(order by B.jjimm_date desc) line, A.*, B.*\r\n"
+		String sql = "select * from (select row_number() over(order by B.jjimm_date ) line, A.*, B.*\r\n"
 				+ "from all_board A join jjim B on (A.all_board_seq = B.board_seq) \r\n"
 				+ "where (B.jjim_id = ?) \r\n"
-				+ "order by B.jjimm_date desc) where line between ? and ?";
+				+ "order by line desc) where line between ? and ?";
 		
 
 		try(Connection con = this.getConnection();
