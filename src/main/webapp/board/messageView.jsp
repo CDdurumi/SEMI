@@ -658,7 +658,7 @@ $("#modal_loginBtn").on("click",function(){
             <div class="col-12 p-0 border-bottom border-2 rounded h-100" id="contents">
                 <div class="row border-bottom border-2 rounded h-100" id="conMenu">
                     <div class="col-12 col-md-12 ellipsis "  style="padding-left:15px" id="title">${dto.title}</div>
-                    <div class="col-3 col-md-3 ellipsis " ><span style="width: 90%; ">${dto.receiver}</span></div>
+                    <div class="col-3 col-md-3 ellipsis " ><span style="width: 90%; ">받은이 | ${dto.receiver}</span></div>
                     <div class="col-9 ">${dto.date }</div>
                     
                     
