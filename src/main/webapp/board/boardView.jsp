@@ -957,8 +957,11 @@
                                 if(relogin_id=='${loginID}'){
                                 recol11.append(rebtn2);
                                 recol11.append(' ');
-                                recol11.append(rebtn3);
+                                
                                 }
+                                if(${loginIsAdmin == 'Y'} || relogin_id=='${loginID}' ){
+                                    recol11.append(rebtn3);
+                                    }
                                 
                                 rerow3.append(recol12);
 //                                 target1.append(recol4);
@@ -1496,8 +1499,11 @@ $("#modal_loginBtn").on("click",function(){
                 </div>
         
                 <div class="col-6" id="ht2" style="padding-top:8px;">
-                    <c:if test="${loginID == dto.id || loginIsAdmin == 'Y'}"> 
+                    <c:if test="${loginID == dto.id }">
                     <button class="btn btn-primary " type="button" id="boardModi">수정</button>
+                    </c:if>
+                    <c:if test="${loginID == dto.id || loginIsAdmin == 'Y'}"> 
+                    
                       <button class="btn btn-primary " type="button" id="boardDel">삭제</button>
                  </c:if> 
                  <button class="btn btn-primary " type="button" id="goList">목록</button>
