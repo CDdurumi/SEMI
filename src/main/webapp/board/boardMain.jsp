@@ -354,6 +354,7 @@
 
         .card img {
             height: 300px;
+            object-fit:cover;
         }
 
         .card-body {
@@ -494,7 +495,7 @@ font-weight:bold;
 <body id="body-pd">
     <header class="header" id="header" style="background-color:#f5f5f7">
         <div class="header_toggle"><i class='bx bx-menu' id="header-toggle"></i></div>
-        <div><a href="/board/communityMain.jsp" class="comuview"> 자유게시판</a></div>
+        <div><a href="/communityMain.board" class="comuview"> 자유게시판</a></div>
         <div>
 			<c:choose>
 				<c:when test="${loginID !=null}">
@@ -645,9 +646,11 @@ $("#modal_loginBtn").on("click",function(){
 								</div>
                             
                             <c:forEach var="i" items="${hotlist }">
+                            
                                 <div class="col-12 border border-2 rounded ">
+                            <a href="/detailView.board?cpage=${cpage}&seq=${i.all_board_seq}&click=ok" style="color:black; font-weight:bold;">
                                     <div class="row m-0">
-                                        <div class="col-9 col-md-9 m-0 free_title ididid"><a href="/detailView.board?cpage=${cpage}&seq=${i.all_board_seq}&click=ok" style="color:black; font-weight:bold;">${i.title }</a></div>
+                                        <div class="col-9 col-md-9 m-0 free_title ididid">${i.title }</div>
                                         <!-- ellipsis 밑에 forEach로 하니까 한줄만 추가했습니다.  -->
                                         <div class="col-3 col-md-3">
                                             <div class="row ">
@@ -655,7 +658,9 @@ $("#modal_loginBtn").on("click",function(){
                                             </div>
                                         </div>
                                     </div>
+                                 </a>
                                 </div>
+                               
                                 </c:forEach>
                             </div>
                         </div>
@@ -803,13 +808,14 @@ $("#modal_loginBtn").on("click",function(){
 <!--         여기는 공지글 -->
         <c:forEach var="i" items="${noticeList }">
         <div class="col-12  board">
+        <a href="/detailView.board?cpage=${cpage}&seq=${i.all_board_seq}&click=ok" style="color:black">
             <div class="row m-0 border border-2 rounded board_row ">
             	
                 <div class="col-1 col-md-1 d-none d-md-block p-0">
                 <p id="notice">공지</p>
                 </div>
                	<div class="col-7 col-md-5 m-0 title ididid " style="text-align:left">
-               		<a href="/detailView.board?cpage=${cpage}&seq=${i.all_board_seq}&click=ok" style="color:black">${i. title }</a>
+               		${i. title }
                	</div>
                 <div class="col-3 col-md-2 p-0 ellipsis text-center ididid">${i.id }</div>
                 <div class="col-md-2 d-none d-md-block p-0 "><fmt:formatDate value="${i.write_date }" pattern="yy-MM-dd"/></div>
@@ -817,6 +823,7 @@ $("#modal_loginBtn").on("click",function(){
                 <div class="col-2 col-md-1 p-0">${i.like_count}</div>
                 
             </div>
+            </a>
         </div>
         </c:forEach>
         
@@ -824,11 +831,12 @@ $("#modal_loginBtn").on("click",function(){
 <!--         여기는 목록 -->
         <c:forEach var="i" items="${list }">
         <div class="col-12  board">
+        <a href="/detailView.board?cpage=${cpage}&seq=${i.all_board_seq}&click=ok" style="color:black">
             <div class="row m-0 border border-2 rounded board_row ">
             	
                 <div class="col-1 col-md-1 d-none d-md-block p-0">${i.line}</div>
                	<div class="col-7 col-md-5 m-0 title ididid "style="text-align:left">
-               		<a href="/detailView.board?cpage=${cpage}&seq=${i.all_board_seq}&click=ok" style="color:black">${i. title }</a>
+               		${i. title }
                	</div>
                 <div class="col-3 col-md-2 p-0 ididid text-center">${i.id }</div>
                 <div class="col-md-2 d-none d-md-block p-0 "><fmt:formatDate value="${i.write_date }" pattern="yy-MM-dd"/></div>
@@ -836,6 +844,7 @@ $("#modal_loginBtn").on("click",function(){
                 <div class="col-2 col-md-1 p-0">${i.like_count}</div>
                 
             </div>
+            </a>
         </div>
         </c:forEach>
         
