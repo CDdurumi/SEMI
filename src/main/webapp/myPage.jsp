@@ -664,23 +664,23 @@ pageEncoding="UTF-8"%>
                     <c:choose>
 						<c:when test="${loginID !=null}">
 							<a href="/goMyPage.mpg" class="nav1_link"> <i class='bx bx-user nav1_icon'></i> <span class="nav1_name">마이페이지</span> </a>
-							<a href="/goMyPage.mpg" class="nav1_link"> <i class='bx bx-calendar nav_icon'></i> <span class="nav_name">일정관리</span> </a>
+							<a href="/goMyPage.mpg" class="nav1_link"> <i class='bx bx-calendar nav1_icon'></i> <span class="nav1_name">일정관리</span> </a>
 						</c:when>
 		
 						<c:otherwise>
-							<a href="/goMyPage.mpg" class="nav1_link" data-bs-toggle="modal" data-bs-target="#exampleModal"> <i class='bx bx-user nav1_icon'></i> <span class="nav_name">마이페이지</span> </a>
+							<a href="/goMyPage.mpg" class="nav1_link" data-bs-toggle="modal" data-bs-target="#exampleModal"> <i class='bx bx-user nav1_icon'></i> <span class="nav1_name">마이페이지</span> </a>
 						</c:otherwise>
 					</c:choose>
                 </div>
             </div>
             <c:choose>
             <c:when test="${loginID !=null}">
-               <a href="/logout.member" class="nav1_link"> <i class='bx bx-log-out nav_icon'></i> <span class="nav1_name">로그아웃</span> </a>   
+               <a href="/logout.member" class="nav1_link"> <i class='bx bx-log-out nav1_icon'></i> <span class="nav1_name">로그아웃</span> </a>   
             </c:when>
          </c:choose>
 <c:choose>
 						<c:when test="${loginIsAdmin == 'Y'}">
-               				<a href="/adiminPage.admin" class="nav_link"> <i class='bx bx-hard-hat nav_icon'></i> <span class="nav_name">관리자페이지</span> </a>
+               				<a href="/adiminPage.admin" class="nav1_link"> <i class='bx bx-hard-hat nav1_icon'></i> <span class="nav1_name">관리자페이지</span> </a>
                 		</c:when>
                 	
                 		<c:otherwise>
