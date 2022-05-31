@@ -67,9 +67,9 @@ public class BoardDAO {
 		int end = cpage * 20;
 		
 		String sql = "select * from "
-								+ "(select row_number() over(order by write_date desc) line, all_board.* "
+								+ "(select row_number() over(order by write_date ) line, all_board.* "
 								+ "from all_board "
-								+ "where all_board_seq like '"+boardOption+"%' and "+serchOption+" like '%"+ccontents+"%') "
+								+ "where all_board_seq like '"+boardOption+"%' and "+serchOption+" like '%"+ccontents+"%' order by line desc) "
 					+ "where line between ? and ? and editor_type != 'n'";
 
 		System.out.println(sql);
@@ -258,7 +258,9 @@ public class BoardDAO {
 
 	// 게시판 리스트 출력( 단, 공지글 제외)
 	public List<BoardDTO> selectAll(String boardOption) throws Exception {
-		String sql = "select row_number() over(order by write_date desc) line, all_board.* from all_board where all_board_seq like '"+boardOption+"%' and editor_type != 'n'";
+		String sql = "select row_number() over(order by write_date) line, all_board.* "
+				+ "from all_board "
+				+ "where all_board_seq like '"+boardOption+"%' and editor_type != 'n' order by line desc";
 
 		try (Connection con = this.getConnection();
 				PreparedStatement pstat = con.prepareStatement(sql);
@@ -287,7 +289,9 @@ public class BoardDAO {
 	
 	// 애디터 추천 게시판 리스트 출력(by editor_type //  단, 공지글 제외)
 	public List<BoardDTO> selectByEditorType(String boardOption, String eeditor_type) throws Exception {
-		String sql = "select row_number() over(order by write_date desc) line, all_board.* from all_board where all_board_seq like '"+boardOption+"%' and editor_type = ? and editor_type != 'n'";
+		String sql = "select row_number() over(order by write_date ) line, all_board.* "
+				+ "from all_board "
+				+ "where all_board_seq like '"+boardOption+"%' and editor_type = ? and editor_type != 'n' order by line desc";
 
 		try (Connection con = this.getConnection();
 				PreparedStatement pstat = con.prepareStatement(sql);) {
@@ -524,7 +528,10 @@ public class BoardDAO {
 		int end = cpage * 20;
 
 		// 한 페이지에 게시글이 20개씩 보여지도록 하기 위해서 row_number를 활용하는데, 서브 쿼리를 활용해서 select 해준다.
-		String sql = "select * from (select row_number() over(order by write_date desc) line, all_board.* from all_board where all_board_seq like '"+boardOption+"%' and editor_type != 'n') where line between ? and ?";
+		String sql = "select * from (select row_number() over(order by write_date ) line, all_board.* "
+										+ "from all_board "
+										+ "where all_board_seq like '"+boardOption+"%' and editor_type != 'n' order by line desc) "
+					+ "where line between ? and ?";
 						
 		try (Connection con = this.getConnection(); PreparedStatement pstat = con.prepareStatement(sql);) {
 			pstat.setInt(1, start);
@@ -591,7 +598,9 @@ public class BoardDAO {
 	
 	//각 게시판 별 공지글
 	public List<BoardDTO> selectNotice(String boardOption) throws Exception {
-		String sql = "select row_number() over(order by write_date desc) line, all_board.* from all_board where all_board_seq like '"+boardOption+"%' and editor_type = 'n'";
+		String sql = "select row_number() over(order by write_date ) line, all_board.* "
+				+ "from all_board "
+				+ "where all_board_seq like '"+boardOption+"%' and editor_type = 'n' order by line desc";
 //System.out.println(sql);
 		try (Connection con = this.getConnection();
 				PreparedStatement pstat = con.prepareStatement(sql);
@@ -623,7 +632,7 @@ public class BoardDAO {
 	
 	// 모든 게시판 리스트(관리자 전용//단, 공지글 제외)
 	public List<BoardDTO> selectAll() throws Exception {
-		String sql = "select row_number() over(order by write_date desc) line, all_board.* from all_board where editor_type != 'n'";
+		String sql = "select row_number() over(order by write_date ) line, all_board.* from all_board where editor_type != 'n' order by line desc";
 
 		try (Connection con = this.getConnection();
 				PreparedStatement pstat = con.prepareStatement(sql);
