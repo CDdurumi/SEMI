@@ -612,7 +612,7 @@ $("#modal_loginBtn").on("click",function(){
 
     <!-- 게시글 작성하기 메인 ----------------------------------------------------------------------->
     <!--Container Main start-->
-    <form action="/modify.board" method="post" enctype="multipart/form-data" id="from">
+    <form action="/modify.board" method="post" enctype="multipart/form-data" id="form">
         <div class="container my-4">
             <div class="row">
                 <!-- <div class="col-12 text-center display-6 mainTitle p-1">
@@ -644,7 +644,7 @@ $("#modal_loginBtn").on("click",function(){
 	                        </option>
                         </c:if>
                     </select>
-                    <input type="text" placeholder="글 제목을 입력하세요" name="title" class="title" required value="${dto.title}">
+                    <input type="text" placeholder="글 제목을 입력하세요" name="title" id="title" class="title" required value="${dto.title}">
                 </div>
 				<!-- 기존파일 보기 -->
 				<div class="col-12 " id="upfiles" style="border-top:1px solid #aaa9a9">
@@ -698,14 +698,6 @@ $("#modal_loginBtn").on("click",function(){
     <!--  ----------------------------------------------------------게시글 작성하기 메인------------->
 
     <script>
-    //
-    $("#from").on("submit",function(){
-    	$("#boardOption").removeAttr("disabled");
-    })
-    
-    
-    
-    
     
         document.addEventListener("DOMContentLoaded", function (event) {
 
@@ -793,8 +785,16 @@ $("#modal_loginBtn").on("click",function(){
             
 		});
 	    
-		//작성완료 버튼 클릭 시 서머노트 안 적었으면 경고창 & 로그인 안 했으면 경고창//////////////////////
-		let frm = document.getElementById("from");
+		
+	    //UTF-8 인코딩 방식 바이트 길이 구하기 함수
+		const getByteLengthOfString = function(s,b,i,c){
+		    for(b=i=0;c=s.charCodeAt(i++);b+=c>>11?3:c>>7?2:1);
+		    return b;
+		};
+	    
+	    
+	    //form태그 submit이벤트
+		let frm = document.getElementById("form");
 		frm.onsubmit = function(){
 			$.ajax({ // ajax를 통해 파일 업로드 처리
 	 	        data : {delFileList : delFileList ,pseq:"${dto.all_board_seq }"},
@@ -807,7 +807,7 @@ $("#modal_loginBtn").on("click",function(){
 			
 			let summernote = document.getElementById("summernote").value;
 			if(summernote == "" || summernote =="<p><br></p>"){
-				alert("본문을 작성해주세요.");
+				alert("본문을 작성해주세요.");//작성완료 버튼 클릭 시 서머노트 안 적었으면 경고창 & 로그인 안 했으면 경고창//
 				return false;
 			}
 			
@@ -819,8 +819,28 @@ $("#modal_loginBtn").on("click",function(){
 	        //서머노트 input type = file 부분 임시적으로 삭제.
 	        $("[class *='note-image-input form-control-file note-form-control note-input']").remove();
 	        
+	        //submit 될 때는 콤보박스 사용할 수 있게 풀어야지 값이 넘어감.
+	        $("#boardOption").removeAttr("disabled");
+	        
+
+	        //제목 UTF-8 인코딩 방식 바이트 길이 구하기
+	        const titleLength = $("#title").val();
+	        
+	        if(getByteLengthOfString(titleLength)>50){
+	        	alert("제목을 줄여주세요.");
+	        	return false;
+	        }
+	        if(titleLength.replace(/\s|　/gi, "").length == 0){
+	        	alert("제목을 입력해주세요.");
+	        	$("#title").val("");
+	        	$("#title").focus();
+	        	return false;
+	        }
+ 
 		}
 	    
+		
+		
 		//서머노트////////////////////////////////////////////////////////////////////////////
 		$('.summernote').summernote({
 			placeholder:"자유롭게 글을 작성할 수 있습니다.<br/>명예훼손이나 상대방을 비방, 불쾌감을 주는 글, 욕설, 남을 모욕하는 글은 임의로 제제가 있을 수 있습니다.",

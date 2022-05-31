@@ -978,7 +978,7 @@ $("#modal_loginBtn").on("click",function(){
 		});
 	    
 	    
-	    //UTF-8 인코딩 방식 바이트 길이 구하기
+	    //UTF-8 인코딩 방식 바이트 길이 구하기 함수
 		const getByteLengthOfString = function(s,b,i,c){
 		    for(b=i=0;c=s.charCodeAt(i++);b+=c>>11?3:c>>7?2:1);
 		    return b;
@@ -1003,8 +1003,6 @@ $("#modal_loginBtn").on("click",function(){
 	        $("[class *='note-image-input form-control-file note-form-control note-input']").remove();
 	        
 	        
-	      	//공백체크 정규식
-	        var pattern = /\s/g; 
 	        //제목 UTF-8 인코딩 방식 바이트 길이 구하기
 	        const titleLength = $("#title").val();
 	        
@@ -1012,8 +1010,10 @@ $("#modal_loginBtn").on("click",function(){
 	        	alert("제목을 줄여주세요.");
 	        	return false;
 	        }
-	        if(titleLength.match(pattern)){
+	        if(titleLength.replace(/\s|　/gi, "").length == 0){
 	        	alert("제목을 입력해주세요.");
+	        	$("#title").val("");
+	        	$("#title").focus();
 	        	return false;
 	        }
 		}
