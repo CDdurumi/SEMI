@@ -717,7 +717,7 @@ $("#modal_loginBtn").on("click",function(){
       </div>
       <div class="modal-body">
       	 
-      	받는 사람 | <input type="text" placeholder="받는 사람 ID" id="receiver"><p></p>
+      	받는 사람 | <input type="text" placeholder="받는 사람 ID" id="receiver"><p></p><div id="checkReceiver"></div>
       	<input type="text" placeholder="제목을 입력하세요" id="title1" name="title" style="width:100%">
       	<p>
       		
@@ -917,7 +917,26 @@ $("#modal_loginBtn").on("click",function(){
          })
       });
    });
-   
+   $("#receiver").on("blur",function(){
+		$.ajax({
+		url:"/duplIDCheck.member",
+		type:"get",
+		data:{nickname:$("#receiver").val()},
+		dataType:"json"
+		}).done(function(resp){
+			if(resp==false){						
+				$("#checkReceiver").text("존재하지 않는 닉네임입니다.");
+				$("#checkReceiver").css({ color: "red" });
+				
+				$("#sendMsg").attr("disabled", "disabled");
+			}else if(resp==true){
+				$("#checkReceiver").text("존재하는 닉네임입니다.");
+				$("#checkReceiver").css({ color: "blue" });
+				
+				$("#sendMsg").removeAttr("disabled");
+			}
+		});
+	})
 </script>
 </body>
 

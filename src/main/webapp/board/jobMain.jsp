@@ -1023,6 +1023,7 @@ $("#modal_loginBtn").on("click",function(){
             $("#modal_loginBtn").click();
         }
     })
+    
     </script>
     
 </body>
