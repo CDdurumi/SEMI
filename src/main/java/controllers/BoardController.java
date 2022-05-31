@@ -554,7 +554,7 @@ public class BoardController extends HttpServlet {
 				}else if(menu.equals("h")) {
 					response.sendRedirect("/houseMain.board?cpage="+cpage);
 				}else if(menu.equals("e")) {
-					response.sendRedirect("/editorReMain.board?cpage="+cpage);
+					response.sendRedirect("/editorReMain.board?cpage=1");
 //					String referer= request.getHeader("referer");
 //					System.out.println(referer);
 //					response.sendRedirect(referer);
