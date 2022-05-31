@@ -645,7 +645,7 @@ $(function(){
     
     <div class="l-navbar" id="nav1-bar">
         <nav class="nav1">
-            <div> <a href="/goindex.board" class="nav1_logo"> <i class='bx bx-layer nav1_logo-icon'></i> <span class="nav1_logo-name">쉼표
+            <div> <a href="/goIndex.board" class="nav1_logo"> <i class='bx bx-layer nav1_logo-icon'></i> <span class="nav1_logo-name">쉼표
                         <br>- 일상의 쉼표를 찍다</span> </a>
                 <div class="nav1_list">
                     <a class="nav1_link" style="color:white;"> <i class='CurrIcon'></i> <span class="nav1_name"><span class="weather">
@@ -663,7 +663,7 @@ $(function(){
                     <c:choose>
 						<c:when test="${loginID !=null}">
 							<a href="/goMyPage.mpg" class="nav1_link"> <i class='bx bx-user nav1_icon'></i> <span class="nav1_name">마이페이지</span> </a>
-							<a href="/goMyPage.mpg" class="nav_link"> <i class='bx bx-calendar nav_icon'></i> <span class="nav_name">일정관리</span> </a>
+							<a href="/goMyPage.mpg" class="nav1_link"> <i class='bx bx-calendar nav_icon'></i> <span class="nav_name">일정관리</span> </a>
 						</c:when>
 		
 						<c:otherwise>
@@ -672,7 +672,7 @@ $(function(){
 					</c:choose>
 					<c:choose>
 						<c:when test="${loginIsAdmin == 'Y'}">
-               				<a href="/adiminPage.admin" class="nav_link"> <i class='bx bx-hard-hat nav_icon'></i> <span class="nav_name">관리자페이지</span> </a>
+               				<a href="/adiminPage.admin" class="nav1_link"> <i class='bx bx-hard-hat nav_icon'></i> <span class="nav_name">관리자페이지</span> </a>
                 		</c:when>
                 	
                 		<c:otherwise>
