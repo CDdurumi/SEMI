@@ -494,7 +494,7 @@ font-weight:bold;
 <body id="body-pd">
     <header class="header" id="header" style="background-color:#f5f5f7">
         <div class="header_toggle"><i class='bx bx-menu' id="header-toggle"></i></div>
-        <div><a href="/board/communityMain.jsp" class="comuview">맛집은 공유해야 제 맛!</a></div>
+        <div><a href="/communityMain.board" class="comuview">맛집은 공유해야 제 맛!</a></div>
         <div>
         <c:choose>
 				<c:when test="${loginID !=null}">
