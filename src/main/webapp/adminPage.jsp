@@ -963,6 +963,11 @@ $("#modal_loginBtn").on("click",function(){
 
 
     <script>
+    $("#writeBtn").on("click",function(){
+    	let boardOption = $("#boardSelect").val();
+    	location.href="/writeboard.board?boardOption="+boardOption;
+    })
+    
     
     //탭1 클릭 이벤트
     $("#board-tab").on("click",function(){
