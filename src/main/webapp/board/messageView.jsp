@@ -658,7 +658,7 @@ $("#modal_loginBtn").on("click",function(){
             <div class="col-12 p-0 border-bottom border-2 rounded h-100" id="contents">
                 <div class="row border-bottom border-2 rounded h-100" id="conMenu">
                     <div class="col-12 col-md-12 ellipsis "  style="padding-left:15px" id="title">${dto.title}</div>
-                    <div class="col-3 col-md-3 ellipsis " ><span style="width: 90%; ">${dto.receiver}</span></div>
+                    <div class="col-3 col-md-3 ellipsis " ><span style="width: 90%; ">받은이 | ${dto.receiver}</span></div>
                     <div class="col-9 ">${dto.date }</div>
                     
                     
@@ -717,7 +717,7 @@ $("#modal_loginBtn").on("click",function(){
       </div>
       <div class="modal-body">
       	 
-      	받는 사람 | <input type="text" placeholder="받는 사람 ID" id="receiver"><p></p>
+      	받는 사람 | <input type="text" placeholder="받는 사람 ID" id="receiver"><p></p><div id="checkReceiver"></div>
       	<input type="text" placeholder="제목을 입력하세요" id="title1" name="title" style="width:100%">
       	<p>
       		
@@ -917,7 +917,26 @@ $("#modal_loginBtn").on("click",function(){
          })
       });
    });
-   
+   $("#receiver").on("blur",function(){
+		$.ajax({
+		url:"/duplIDCheck.member",
+		type:"get",
+		data:{nickname:$("#receiver").val()},
+		dataType:"json"
+		}).done(function(resp){
+			if(resp==false){						
+				$("#checkReceiver").text("존재하지 않는 닉네임입니다.");
+				$("#checkReceiver").css({ color: "red" });
+				
+				$("#sendMsg").attr("disabled", "disabled");
+			}else if(resp==true){
+				$("#checkReceiver").text("존재하는 닉네임입니다.");
+				$("#checkReceiver").css({ color: "blue" });
+				
+				$("#sendMsg").removeAttr("disabled");
+			}
+		});
+	})
 </script>
 </body>
 
