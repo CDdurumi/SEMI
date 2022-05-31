@@ -389,9 +389,9 @@
       
        #count{
            padding-top: 5px;
-            width: 82%;
+            width: 87%;
            text-align: center;
-         	margin-left:10px;
+           padding-left:20px;
        }
        #jjimcol{
            font-size: 27px;
@@ -416,13 +416,13 @@
        }
        #likecnt{
            padding: 0px;
-           max-width: 47px;
-           min-width: 47px;
+           max-width: 56px;
+           min-width: 56px;
        }
        #jjimcnt{
            padding: 0px;
-           max-width: 47px;
-           min-width: 47px;
+           max-width: 56px;
+           min-width: 56px;
        }
        .msg{
            width: 90%;
@@ -1513,13 +1513,13 @@ $("#modal_loginBtn").on("click",function(){
             
             
                     </div>
-                    <div class="row " id="count" style="margin: auto;">
+                    <div class="row " id="count"  style="margin:auto">
                         
                         <div class="col-1" id="likecnt">
                             ${dto.like_count}
                         </div>
                      
-                        <div class="col-1 text-center" id="jjimcnt" style="margin-left:12px">
+                        <div class="col-1 text-center" id="jjimcnt" >
                            ${dto.jjim_count}
                         </div>
                         <div class="col-9"></div>
