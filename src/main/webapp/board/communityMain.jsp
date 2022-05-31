@@ -493,7 +493,7 @@ font-weight: bold;
 			<i class='bx bx-menu' id="header-toggle"></i>
 		</div>
 		<div>
-			<a href="/board/communityMain.jsp" class="comuview"> 여행 커뮤니티</a>
+			<a href="/communityMain.board" class="comuview"> 여행 커뮤니티</a>
 		</div>
 		<div>
 			<c:choose>
