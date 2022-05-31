@@ -479,7 +479,7 @@ $(function(){
 		div.append("<br>");
 		$("#fileArea").prepend(div);
 		$("#h").addClass("page");
-    }else if(boardOption == 'e'){//애디터추천
+    }else if(boardOption == 'e'){//에디터추천
     	$("[value='e']").attr("selected","selected");
 		let div = $("<div>");
 		let file = $("<input>");
@@ -727,7 +727,7 @@ $("#modal_loginBtn").on("click",function(){
                         <c:forEach var="i" items="${memberDTO}">
                         	<c:if test="${loginID eq i.id}">
 								<option value="e">
-	                            	애디터추천
+	                            	에디터추천
 	                        	</option>
                         	</c:if>
                         </c:forEach>
@@ -891,7 +891,7 @@ $("#modal_loginBtn").on("click",function(){
 				$("#fileArea").children("#profileDiv").remove();
 			}
 			
-			//애디터 추천 type 콤보박스
+			//에디터 추천 type 콤보박스
 			if(option == 'e' ){
 				if((previous == 'e')){
 					$(this).siblings("#editorSelect").remove();

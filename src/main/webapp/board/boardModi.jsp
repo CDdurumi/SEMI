@@ -439,7 +439,7 @@ font-weight: bold;
             	$("[value='r']").attr("selected","selected");
             }else if(boardOption == 'h'){//숙소리뷰
             	$("[value='h']").attr("selected","selected");
-            }else if(boardOption == 'e'){//애디터추천
+            }else if(boardOption == 'e'){//에디터추천
             	$("[value='e']").attr("selected","selected");
             }
             
@@ -640,7 +640,7 @@ $("#modal_loginBtn").on("click",function(){
                         </option>
                         <c:if test="${loginID eq 'admin'}">
 	                        <option value="e">
-	                            애디터추천
+	                            에디터추천
 	                        </option>
                         </c:if>
                     </select>
