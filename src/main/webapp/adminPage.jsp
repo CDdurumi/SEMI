@@ -627,7 +627,7 @@ $(function(){
 <body id="body-pd">
     <header class="header" id="header" style="background-color:#f5f5f7">
         <div class="header_toggle"><i class='bx bx-menu' id="header-toggle"></i></div>
-        <div><a href="/myPage.jsp" class="comuview">마이페이지</a></div>
+        <div><a href="/myPage.jsp" class="comuview">관리자페이지</a></div>
         <div>
             <c:choose>
             <c:when test="${loginID !=null}">
@@ -645,7 +645,7 @@ $(function(){
     
     <div class="l-navbar" id="nav1-bar">
         <nav class="nav1">
-            <div> <a href="/goindex.board" class="nav1_logo"> <i class='bx bx-layer nav1_logo-icon'></i> <span class="nav1_logo-name">쉼표
+            <div> <a href="/goIndex.board" class="nav1_logo"> <i class='bx bx-layer nav1_logo-icon'></i> <span class="nav1_logo-name">쉼표
                         <br>- 일상의 쉼표를 찍다</span> </a>
                 <div class="nav1_list">
                     <a class="nav1_link" style="color:white;"> <i class='CurrIcon'></i> <span class="nav1_name"><span class="weather">
@@ -663,16 +663,16 @@ $(function(){
                     <c:choose>
 						<c:when test="${loginID !=null}">
 							<a href="/goMyPage.mpg" class="nav1_link"> <i class='bx bx-user nav1_icon'></i> <span class="nav1_name">마이페이지</span> </a>
-							<a href="/goMyPage.mpg" class="nav_link"> <i class='bx bx-calendar nav_icon'></i> <span class="nav_name">일정관리</span> </a>
+							<a href="/goMyPage.mpg" class="nav1_link"> <i class='bx bx-calendar nav1_icon'></i> <span class="nav1_name">일정관리</span> </a>
 						</c:when>
 		
 						<c:otherwise>
-							<a href="/goMyPage.mpg" class="nav1_link" data-bs-toggle="modal" data-bs-target="#exampleModal"> <i class='bx bx-user nav1_icon'></i> <span class="nav_name">마이페이지</span> </a>
+							<a href="/goMyPage.mpg" class="nav1_link" data-bs-toggle="modal" data-bs-target="#exampleModal"> <i class='bx bx-user nav1_icon'></i> <span class="nav1_name">마이페이지</span> </a>
 						</c:otherwise>
 					</c:choose>
 					<c:choose>
 						<c:when test="${loginIsAdmin == 'Y'}">
-               				<a href="/adiminPage.admin" class="nav_link"> <i class='bx bx-hard-hat nav_icon'></i> <span class="nav_name">관리자페이지</span> </a>
+               				<a href="/adiminPage.admin" class="nav1_link"> <i class='bx bx-hard-hat nav1_icon'></i> <span class="nav1_name">관리자페이지</span> </a>
                 		</c:when>
                 	
                 		<c:otherwise>
@@ -683,7 +683,7 @@ $(function(){
             </div>
             <c:choose>
             <c:when test="${loginID !=null}">
-               <a href="/logout.member" class="nav1_link"> <i class='bx bx-log-out nav_icon'></i> <span class="nav1_name">로그아웃</span> </a>   
+               <a href="/logout.member" class="nav1_link"> <i class='bx bx-log-out nav1_icon'></i> <span class="nav1_name">로그아웃</span> </a>   
             </c:when>
          </c:choose>
             
@@ -963,6 +963,11 @@ $("#modal_loginBtn").on("click",function(){
 
 
     <script>
+    $("#writeBtn").on("click",function(){
+    	let boardOption = $("#boardSelect").val();
+    	location.href="/writeboard.board?boardOption="+boardOption;
+    })
+    
     
     //탭1 클릭 이벤트
     $("#board-tab").on("click",function(){
