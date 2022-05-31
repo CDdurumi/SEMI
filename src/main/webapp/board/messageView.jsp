@@ -875,6 +875,50 @@ $("#modal_loginBtn").on("click",function(){
   
  
     </script>
+       <script type="text/javascript">
+    let city = ['Jeju City'];
+   
+   city.forEach(function(city){
+      $(document).ready(function() {
+         let weatherIcon = {
+         '01' : 'fas fa-sun',
+         '02' : 'fas fa-cloud-sun',
+         '03' : 'fas fa-cloud',
+         '04' : 'fas fa-cloud-meatball',
+         '09' : 'fas fa-cloud-sun-rain',
+         '10' : 'fas fa-cloud-showers-heavy',
+         '11' : 'fas fa-poo-storm',
+         '13' : 'far fa-snowflake',
+         '50' : 'fas fa-smog'
+         };
+         $.ajax({
+            url:'http://api.openweathermap.org/data/2.5/weather?q='+city+'&APPID=71199a5512c711405120f9710683654c&units=metric',
+            dataType:'json',
+            type:'GET',
+            success:function(data){
+               let $Icon = (data.weather[0].icon).substr(0,2);
+               let $Temp = Math.floor(data.main.temp) + 'º';
+               let $city = "제주도";
+               
+               $('.CurrIcon').append('<i class="' + weatherIcon[$Icon] +'"></i>');
+               $('.CurrTemp').prepend($Temp);
+               $('.City').append($city);
+               console.log(data);
+                   console.log("현재온도 : "+ (data.main.temp- 273.15) ); //섭씨온도를 만들기 위함
+                   console.log("현재습도 : "+ data.main.humidity);
+                   console.log("날씨 : "+ data.weather[0].main );
+                   console.log("상세날씨설명 : "+ data.weather[0].description );
+                   console.log("날씨 이미지 : "+ data.weather[0].icon );
+                   console.log("바람   : "+ data.wind.speed );
+                   console.log("나라   : "+ data.sys.country );
+                   console.log("도시이름  : "+ data.name );
+                   console.log("구름  : "+ (data.clouds.all) +"%" );  
+            }
+         })
+      });
+   });
+   
+</script>
 </body>
 
 </html>
