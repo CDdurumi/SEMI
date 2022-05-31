@@ -44,7 +44,9 @@ public class MyPageController extends HttpServlet {
 		try {
 			if(uri.equals("/sendMsg.mpg")) { // 쪽지보내기
 				System.out.println("메세지 보내기 수신확인");
-				int result=0;
+				int result;
+				String receiver_email = "";
+				
 				String sender = (String)request.getSession().getAttribute("loginID");
 				String sender_email = (String)request.getSession().getAttribute("loginEmail");
 //				int message_seq = Integer.parseInt(request.getParameter("message_seq"));
@@ -52,7 +54,9 @@ public class MyPageController extends HttpServlet {
 				String contents = request.getParameter("contents");
 				String receiver = request.getParameter("receiver");
 				
-				String receiver_email = dao.searchEmail(receiver);
+				if(dao.searchEmail(receiver) != "") {
+					receiver_email = dao.searchEmail(receiver);
+				}
 //				String receiver = dao.searchId(receiver);
 				System.out.println(receiver_email + " : " +title+ " : " + contents + " : "+ receiver +" : " + sender);
 				
@@ -62,18 +66,12 @@ public class MyPageController extends HttpServlet {
 //				}else {
 //					result = 0;
 //				}
-//				PrintWriter pw = response.getWriter();
-				
-				if(mdao.isEmailExist(receiver_email)) {
-					result = dao.insert(new MessageDTO(0,0,title,sender,receiver,sender_email,receiver_email,contents,""));
-					System.out.println(result);
-				}else {
-					result = 0;
-					System.out.println(result);
-				}
 				PrintWriter pw = response.getWriter();
+				if(receiver_email != "") {
+					dao.insert(new MessageDTO(0,0,title,sender,receiver,sender_email,receiver_email,contents,""));
+				}
 
-				pw.append(g.toJson(result));
+				pw.append(g.toJson(receiver_email));
 //				dao.insert(new MessageDTO(0, 0, title, sender, receiver, contents, ""));
 			}else if(uri.equals("/receiveMsgBox.mpg")) { //받은쪽지함
 				
