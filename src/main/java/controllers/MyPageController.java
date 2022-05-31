@@ -2,6 +2,7 @@ package controllers;
 
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.sql.Timestamp;
 import java.util.List;
 
 import javax.servlet.ServletException;
@@ -13,10 +14,12 @@ import javax.servlet.http.HttpServletResponse;
 import com.google.gson.Gson;
 
 import dao.BoardDAO;
+import dao.CalDAO;
 import dao.JjimDAO;
 import dao.MemberDAO;
 import dao.MessageDAO;
 import dto.BoardDTO;
+import dto.CalDTO;
 import dto.MessageDTO;
 
 
@@ -35,7 +38,8 @@ public class MyPageController extends HttpServlet {
 		MemberDAO mdao = MemberDAO.getInstance();
 		BoardDAO bdao = BoardDAO.getInstance(); 
 		JjimDAO jjimDao = JjimDAO.getInstance();
-		
+		CalDAO caldao = new CalDAO();
+		CalDTO caldto = new CalDTO();
 		Gson g= new Gson();
 		try {
 			if(uri.equals("/sendMsg.mpg")) { // 쪽지보내기
@@ -212,6 +216,36 @@ public class MyPageController extends HttpServlet {
 				
 			}else if(uri.equals("/goMyPage.mpg")) {
 				response.sendRedirect("/myPage.jsp");
+			}
+			else if(uri.equals("/goSchedule.mpg")) {
+				response.sendRedirect("/schedule.jsp");
+			}else if (uri.equals("/showCal.mpg")) {
+				System.out.println("showCal : 수신확인");
+				
+				
+				String email = request.getParameter("email");
+				System.out.println("들어온 id  =  "+email);				
+				List<CalDTO> list = caldao.show(email);
+				PrintWriter pw = response.getWriter();
+				System.out.println(list+"조회하고 나온 값");
+				pw.append(g.toJson(list));
+			}else if (uri.equals("/insertCal.mpg")) {
+				System.out.println("insertCal.mpg : 수신확인");
+				
+				String email = (String)request.getSession().getAttribute("loginEmail");
+				String title = request.getParameter("title");
+                String start = request.getParameter("start");
+                String end = request.getParameter("end");
+                String backgroundColor = request.getParameter("backgroundColor");
+                String textColor = request.getParameter("textColor");
+                String contents = request.getParameter("contents");
+                
+                int result = caldao.insert(0,email,title,contents,start,end,backgroundColor,textColor);
+                
+                PrintWriter pw = response.getWriter();
+                pw.append(g.toJson(result));
+                
+				
 			}
 		}catch(Exception e) {
 			e.printStackTrace();
