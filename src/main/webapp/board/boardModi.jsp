@@ -442,6 +442,24 @@ font-weight: bold;
             }else if(boardOption == 'e'){//애디터추천
             	$("[value='e']").attr("selected","selected");
             }
+            
+            
+            $("#delBtn0").click(function(){
+            	if(boardOption == 'g' || boardOption == 'h' || boardOption == 'e' ){
+            		let div = $("<div>");
+            		let file = $("<input>");
+            		let text = $("<i>");
+            		
+            		div.attr("id","profileDiv");
+            		file.attr({type:"file",name:"file0",id:"profile",required:"required", accept:"image/*"});
+            		text.text("프로필 사진")
+            		
+            		div.append(file);
+            		div.append(text);
+            		div.append("<br>");
+            		$("#fileArea").prepend(div);
+            	}
+            })
    	}) 
         
         </script>
@@ -604,7 +622,7 @@ $("#modal_loginBtn").on("click",function(){
                 
                 
                 <div class="col-12 ">
-					<select name="boardOption">
+					<select name="boardOption" id="boardOption" disabled>
                         <option value="f">
                             자유게시판
                         </option>
@@ -680,6 +698,15 @@ $("#modal_loginBtn").on("click",function(){
     <!--  ----------------------------------------------------------게시글 작성하기 메인------------->
 
     <script>
+    //
+    $("#from").on("submit",function(){
+    	$("#boardOption").removeAttr("disabled");
+    })
+    
+    
+    
+    
+    
         document.addEventListener("DOMContentLoaded", function (event) {
 
             const show1Navbar = (toggleId, navId, bodyId, headerId) => {
