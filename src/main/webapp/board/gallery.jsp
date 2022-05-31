@@ -201,6 +201,7 @@ pageEncoding="UTF-8"%>
         width: 2px;
         height: 32px;
         background-color: var(--white-color)
+        
     }
 
     .height-100 {
@@ -328,6 +329,7 @@ margin: 0%;
 padding: 0%;
 border: 3px solid #929090;
     border-radius: 20px;
+    object-fit: cover;
 }
 
 
@@ -349,8 +351,10 @@ border: 3px solid #929090;
 }
 
 
-p1{color: #fff;
+p1{
+    color: #e6e5e5, 182, 182;
  line-height:370px;
+ font-weight:bold;
 }
 .mask{
 left: 0; top:0; 
@@ -358,7 +362,7 @@ text-align: center;
     width: 100%; height: 100%;
    position: absolute;
      border-radius: 50%;
-     background-color: rgba(32, 32, 32, 0.329); 
+     background-color: rgba(32, 32, 32, 0.063); 
      display: none;
     }
 
