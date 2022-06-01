@@ -108,7 +108,11 @@ public class MemberDAO {
 				Timestamp join_date = rs.getTimestamp("join_date");
 				String information = rs.getString("information");
 				String isadmin = rs.getString("isadmin");
-				return (new MemberDTO(id, null, email, join_date, information, isadmin));
+				
+				SimpleDateFormat sdf = new SimpleDateFormat("YY년 MM월 dd일 HH:mm");
+				String date = sdf.format(join_date);
+				
+				return (new MemberDTO(id, null, email, join_date, information, date, isadmin));
 
 			}
 		}
@@ -127,7 +131,33 @@ public class MemberDAO {
 				Timestamp join_date = rs.getTimestamp("join_date");
 				String information = rs.getString("information");
 				String isadmin = rs.getString("isadmin");
-				return (new MemberDTO(id, null, email, join_date, information, isadmin));
+				
+				SimpleDateFormat sdf = new SimpleDateFormat("YY년 MM월 dd일 HH:mm");
+				String date = sdf.format(join_date);
+				
+				return (new MemberDTO(id, null, email, join_date, information, date, isadmin));
+
+			}
+		}
+	}
+	public MemberDTO searchUserEmail(String email) throws Exception {
+
+		String sql = "select * from member where email = ?";
+		try (Connection con = this.getConnection(); PreparedStatement pstat = con.prepareStatement(sql);) {
+			pstat.setString(1, email);
+			try (ResultSet rs = pstat.executeQuery()) {
+
+				rs.next();
+				String id = rs.getString("id");
+				email = rs.getString("email");
+				Timestamp join_date = rs.getTimestamp("join_date");
+				String information = rs.getString("information");
+				String isadmin = rs.getString("isadmin");
+				
+				SimpleDateFormat sdf = new SimpleDateFormat("YY년 MM월 dd일 HH:mm");
+				String date = sdf.format(join_date);
+				
+				return (new MemberDTO(id, null, email, join_date, information, date, isadmin));
 
 			}
 		}

@@ -116,7 +116,7 @@ public class AdminController extends HttpServlet {
 					dto = memberDao.searchUserId(contents);
 				}else if(searchOption.equals("searchEmail")) {
 					System.out.println("이메일으로 검색 실행");
-					dto = memberDao.searchUser(contents);
+					dto = memberDao.searchUserEmail(contents);
 				}
 				
 				PrintWriter pw = response.getWriter();
