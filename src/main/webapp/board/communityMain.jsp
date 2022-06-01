@@ -485,7 +485,15 @@ font-weight: bold;
   }
 }
 
-
+ .goview{
+		font-weight:bold;
+		color:black;
+		}
+		.goview:hover{
+			color:#0d6efd !important;
+			text-decoration: underline;
+ 			text-underline-position: under; 
+		}
 
 .slider {
   width: 100%;
@@ -869,7 +877,7 @@ font-weight: bold;
 											style="padding-left: 7px; padding-right: 0px;">
 											<a
 												href="/detailView.board?cpage=1&seq=${j.all_board_seq}&click=ok"
-												style="color: black">${j.title }</a>
+												style="color: black" class="goview goview1" id="${j.all_board_seq}" ></a>
 										</div>
 										<div class="col-3  p-0 ididid text-center">${j.id}</div>
 										<%--                 <div class="col-sm-2 col-md-1 d-none d-md-block p-0 text-center"><fmt:formatDate value="${i.write_date }" pattern="yy-MM-dd"/>날짜</div> --%>
@@ -883,7 +891,40 @@ font-weight: bold;
 								</div>
 
 							</c:forEach>
+			<script> 	
+        	let title ;
+     
+             <c:forEach var="s" items="${fHotlist }">
+         	   	
 
+         	   title = '${s.title}';
+         	   
+            	$.ajax({
+            		url:"/replycnt.board", 
+            	type:"post", 
+            	data:{seq:'${s.all_board_seq}'},
+            	dataType:"json" 
+            	}).done(function(resp){ 
+            		console.log("${s.title} :" +resp); 
+            		
+             	   	$(".goview1").each(function(i, items){
+             	   		all_board_seq = $(this).attr("id");
+             	   		if(all_board_seq == "${s.all_board_seq}"){
+             	   			$(this).text( "${s.title} (" +resp +")");
+             	   		}
+
+
+             	   		
+             	   	})
+
+            		
+            	}) 
+            	
+           
+               	
+               
+   			  </c:forEach>
+   			</script>
 
 				</div>
 			</div>
@@ -930,6 +971,43 @@ font-weight: bold;
     		</c:if>
     	</c:forEach>
   	</c:forEach>
+  	
+  	<script> 	
+        	let title ;
+     
+             <c:forEach var="s" items="${fHotlist }">
+         	   	
+
+         	   title = '${s.title}';
+         	   
+            	$.ajax({
+            		url:"/replycnt.board", 
+            	type:"post", 
+            	data:{seq:'${s.all_board_seq}'},
+            	dataType:"json" 
+            	}).done(function(resp){ 
+            		console.log("${s.title} :" +resp); 
+            		
+             	   	$(".goview1").each(function(i, items){
+             	   		all_board_seq = $(this).attr("id");
+             	   		if(all_board_seq == "${s.all_board_seq}"){
+             	   			$(this).text( "${s.title} (" +resp +")");
+             	   		}
+
+
+             	   		
+             	   	})
+
+            		
+            	}) 
+            	
+           
+               	
+               
+   			  </c:forEach>
+   			</script>
+  	
+  	
   </div>
   	
   <div class="dots">
@@ -1068,7 +1146,7 @@ font-weight: bold;
 											style="padding-left: 7px; padding-right: 0px;">
 											<a
 												href="/detailView.board?cpage=1&seq=${h.all_board_seq}&click=ok"
-												style="color: black">${h.title }</a>
+												style="color: black" class="goview goview2" id="${h.all_board_seq}"></a>
 										</div>
 										<div class="col-3  p-0 ididid text-center">${h.id}</div>
 										<%-- 										<div class="col-md-1 d-none d-md-block p-0 text-center"> ${j.view_count}</div> --%>
@@ -1077,7 +1155,40 @@ font-weight: bold;
 									</div>
 								</div>
 							</c:forEach>
-								
+								<script> 	
+        	title ;
+     
+             <c:forEach var="s" items="${jHotlist }">
+         	   	
+
+         	   title = '${s.title}';
+         	   
+            	$.ajax({
+            		url:"/replycnt.board", 
+            	type:"post", 
+            	data:{seq:'${s.all_board_seq}'},
+            	dataType:"json" 
+            	}).done(function(resp){ 
+            		console.log("${s.title} :" +resp); 
+            		
+             	   	$(".goview2").each(function(i, items){
+             	   		all_board_seq = $(this).attr("id");
+             	   		if(all_board_seq == "${s.all_board_seq}"){
+             	   			$(this).text( "${s.title} (" +resp +")");
+             	   		}
+
+
+             	   		
+             	   	})
+
+            		
+            	}) 
+            	
+           
+               	
+               
+   			  </c:forEach>
+   			</script>
 								
 								
 							</div>
@@ -1115,7 +1226,7 @@ font-weight: bold;
 											style="padding-left: 7px; padding-right: 0px;">
 											<a
 												href="/detailView.board?cpage=1&seq=${a.all_board_seq}&click=ok"
-												style="color: black">${a.title }</a>
+												style="color: black" class="goview goview3" id="${a.all_board_seq}"></a>
 										</div>
 										<div class="col-3  p-0 ididid text-center">${a.id}</div>
 										<%-- 										<div class="col-md-1 d-none d-md-block p-0 text-center"> ${j.view_count}</div> --%>
@@ -1124,7 +1235,40 @@ font-weight: bold;
 									</div>
 								</div>
 							</c:forEach>
+	<script> 	
+        	title ;
+     
+             <c:forEach var="s" items="${rHotlist }">
+         	   	
 
+         	   title = '${s.title}';
+         	   
+            	$.ajax({
+            		url:"/replycnt.board", 
+            	type:"post", 
+            	data:{seq:'${s.all_board_seq}'},
+            	dataType:"json" 
+            	}).done(function(resp){ 
+            		console.log("${s.title} :" +resp); 
+            		
+             	   	$(".goview3").each(function(i, items){
+             	   		all_board_seq = $(this).attr("id");
+             	   		if(all_board_seq == "${s.all_board_seq}"){
+             	   			$(this).text( "${s.title} (" +resp +")");
+             	   		}
+
+
+             	   		
+             	   	})
+
+            		
+            	}) 
+            	
+           
+               	
+               
+   			  </c:forEach>
+   			</script>
 
 				</div>
 
@@ -1136,12 +1280,13 @@ font-weight: bold;
 	
 	</div>
 <div class="row dummy2" style="height:30px"></div>
-	<footer class="mt-auto text-black-50" style="background-color:#f5f5f7">
-        	<div class="row">
-        		<div class="d-none d-lg-block col-5 footer1">
+	<footer class="mt-auto text-black-50" >
+        	
+        	<div class="row" style="border-top:1px solid #c3c3c3; border-bottom:1px solid #c3c3c3; background-color:#f5f5f7; max-width:1400px; margin:auto;">
+        		<div class="d-none d-lg-block col-5 footer1" style="margin-top:15px; margin-bottom:15px">
         			<img src="/imgsrc/footerlogo2.png">
         		</div>
-        		<div class="col-12 col-lg-7 footer2">
+        		<div class="col-12 col-lg-7 footer2" style="margin-top:15px; margin-bottom:15px">
         			<div class="col-12">
         				프로젝트 쉼표
         			</div>
@@ -1153,6 +1298,7 @@ font-weight: bold;
         			</div>
         		</div>
         	</div>
+   
         </footer>
         <div class="row dummy2" style="height:30px"></div>
 	</div>
