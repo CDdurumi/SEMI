@@ -505,7 +505,7 @@
             <div class="row signup_input">
          		<div class ="col-12 input">
                     <div class="card-details">
-                        <input type="text" id="email_input" placeholder="이메일" name="email">
+                        <input type="text" id="email_input" placeholder="이메일 : durumi@naver.com" name="email">
                         <i class="fa fa-envelope"></i>
                     </div>
          		</div>         		
@@ -518,7 +518,7 @@
          	<div class="row signup_input">
          		<div class ="col-12 input">
                     <div class="card-details">
-                        <input type="text" id="nickname_input" placeholder="닉네임" name="nickname">
+                        <input type="text" id="nickname_input" placeholder="닉네임 : 한글,영문, 숫자 2-10자" name="nickname">
                         <i class="fa fa-user"></i>
                     </div>
          		</div>         		
@@ -531,7 +531,7 @@
          	<div class="row signup_input">
          		<div class ="col-12 input">
                     <div class="card-details">
-                        <input type="password" class="passwords passwords1_input" id="form_passwords1_input" placeholder="비밀번호" name="pw">
+                        <input type="password" class="passwords passwords1_input" id="form_passwords1_input" placeholder="비밀번호 : 숫자,영문,특수문자 8~16자" name="pw">
                         <i class="fa fa-lock"></i>
                     </div>
          		</div>
@@ -876,16 +876,19 @@
     // input id, input pw, password eyes sign up
     let outer_eye = document.querySelector(".card-details span");
     let eye = document.querySelector(".passcode");
+    let input_pw = document.querySelector("#form_passwords1_input");
     let input = document.querySelector("#form_passwords_input");
     outer_eye.addEventListener('click',function(){
 
        if(input.type=='password'){
            input.type="text"; 
+           input_pw.type="text";
            eye.classList.remove('fa-eye-slash');
            eye.classList.add('fa-eye');
          input.classList.add('warning');
         }else{
-          input.type="password"; 
+          input.type="password";
+          input_pw.type="password";
           eye.classList.remove('fa-eye');
           eye.classList.add('fa-eye-slash');
           input.classList.remove('warning');
