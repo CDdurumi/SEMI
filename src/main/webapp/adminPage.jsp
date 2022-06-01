@@ -572,7 +572,15 @@ pageEncoding="UTF-8"%>
  	min-width:90px; 
 /* 	padding-right:25px;  */
  }
+        .goview{
 
+	color:black;
+}
+.goview:hover{
+color:#0d6efd !important;
+ text-decoration: underline;
+    text-underline-position: under; 
+}
 
 
 select{
@@ -663,7 +671,7 @@ $(function(){
                     <c:choose>
 						<c:when test="${loginID !=null}">
 							<a href="/goMyPage.mpg" class="nav1_link"> <i class='bx bx-user nav1_icon'></i> <span class="nav1_name">마이페이지</span> </a>
-							<a href="/goMyPage.mpg" class="nav1_link"> <i class='bx bx-calendar nav1_icon'></i> <span class="nav1_name">일정관리</span> </a>
+							
 						</c:when>
 		
 						<c:otherwise>
@@ -817,7 +825,7 @@ $("#modal_loginBtn").on("click",function(){
 				          	
 				            <input class="form-control me-2" type="search" placeholder="검색어를 입력해주세요." aria-label="Search" name="contents">
 				            <button class="btn btn-outline-secondary btn-sm" type="submit">Search</button>&nbsp;
-				            <button class="btn btn-outline-secondary btn-sm" type="button" id ="cancel">x</button>&nbsp;
+				            <button class="btn btn-outline-secondary btn-sm" type="button" id ="cancel"><i class="fa-solid fa-eraser"></i></button>&nbsp;
 				            		<c:choose>
 										<c:when test="${loginID !=null}">
 											<button type="button" class="btn btn-primary btn-sm" id="writeBtn" style="white-space:nowrap;"><i class="fa-solid fa-pen-to-square"></i>글 작성하기</button>
@@ -860,7 +868,7 @@ $("#modal_loginBtn").on("click",function(){
 		                <p class="notice">공지</p>
 		                </div>
 		               	<div class="col-7 col-md-5 m-0 title ididid " style="text-align:left">
-		               		<a href="/detailView.board?cpage=${cpage}&seq=${i.all_board_seq}&click=ok" style="color:black">${i. title }</a>
+		               		<a href="/detailView.board?cpage=${cpage}&seq=${i.all_board_seq}&click=ok" style="color:black" id="${i.all_board_seq}" class="goview goview4"></a>
 		               	</div>
 		                <div class="col-3 col-md-2 p-0 ellipsis text-center ididid">${i.id }</div>
 		                <div class="col-md-2 d-none d-md-block p-0 text-center"><fmt:formatDate value="${i.write_date }" pattern="yy-MM-dd"/></div>
@@ -870,7 +878,40 @@ $("#modal_loginBtn").on("click",function(){
 		            </div>
 		        </div>
 		        </c:forEach>
-		        
+		         <script> 	
+        	let title ;
+     
+             <c:forEach var="s" items="${noticeList }">
+         	   	
+
+         	   title = '${s.title}';
+         	   
+            	$.ajax({
+            		url:"/replycnt.board", 
+            	type:"post", 
+            	data:{seq:'${s.all_board_seq}'},
+            	dataType:"json" 
+            	}).done(function(resp){ 
+            		console.log("${s.title} :" +resp); 
+            		
+             	   	$(".goview4").each(function(i, items){
+             	   		all_board_seq = $(this).attr("id");
+             	   		if(all_board_seq == "${s.all_board_seq}"){
+             	   			$(this).text( "${s.title} (" +resp +")");
+             	   		}
+
+
+             	   		
+             	   	})
+
+            		
+            	}) 
+            	
+           
+               	
+               
+   			  </c:forEach>
+   			</script>
 		        
 <!-- 				        여기는 목록 -->
 		        <c:forEach var="i" items="${list }">
@@ -879,7 +920,7 @@ $("#modal_loginBtn").on("click",function(){
 		            	
 		                <div class="col-1 col-md-1 d-none d-md-block p-0 text-center">${i.line}</div>
 		               	<div class="col-7 col-md-5 m-0 title ididid "style="text-align:left">
-		               		<a href="/detailView.board?cpage=${cpage}&seq=${i.all_board_seq}&click=ok" style="color:black">${i. title }</a>
+		               		<a href="/detailView.board?cpage=${cpage}&seq=${i.all_board_seq}&click=ok" id="${i.all_board_seq}" class="goview goview3" style="color:black"></a>
 		               	</div>
 		                <div class="col-3 col-md-2 p-0 ididid text-center">${i.id }</div>
 		                <div class="col-md-2 d-none d-md-block p-0 text-center"><fmt:formatDate value="${i.write_date }" pattern="yy-MM-dd"/></div>
@@ -889,7 +930,40 @@ $("#modal_loginBtn").on("click",function(){
 		            </div>
 		        </div>
 		        </c:forEach>
+   <script> 	
+        	title ;
+     
+             <c:forEach var="s" items="${list }">
+         	   	
 
+         	   title = '${s.title}';
+         	   
+            	$.ajax({
+            		url:"/replycnt.board", 
+            	type:"post", 
+            	data:{seq:'${s.all_board_seq}'},
+            	dataType:"json" 
+            	}).done(function(resp){ 
+            		console.log("${s.title} :" +resp); 
+            		
+             	   	$(".goview3").each(function(i, items){
+             	   		all_board_seq = $(this).attr("id");
+             	   		if(all_board_seq == "${s.all_board_seq}"){
+             	   			$(this).text( "${s.title} (" +resp +")");
+             	   		}
+
+
+             	   		
+             	   	})
+
+            		
+            	}) 
+            	
+           
+               	
+               
+   			  </c:forEach>
+   			</script>
 	        </div>
 	        
 			<div class="row">

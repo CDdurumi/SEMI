@@ -13,7 +13,7 @@
     <meta name="description" content="">
     <meta name="author" content="Mark Otto, Jacob Thornton, and Bootstrap contributors">
     <meta name="generator" content="Hugo 0.88.1">
-    <title>Insert title here</title>
+    <title>쉼표 | 구인구직</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
@@ -556,13 +556,13 @@ height:530px;
                     <span class="CurrTemp"></span>
                     <span class="City"></span>
                     </span></span> </a>
-                  <a href="/communityMain.board" class="nav_link active"> <i class='bx bx-message nav_icon'></i> <span class="nav_name">커뮤니티</span> </a> 
+                  <a href="/communityMain.board" class="nav_link active1"> <i class='bx bx-message nav_icon'></i> <span class="nav_name">커뮤니티</span> </a> 
                    <a href="/editorReMain.board?" class="nav_link"> <i class='bx bx-book-bookmark nav_icon'></i> <span class="nav_name">에디터추천</span> </a> 
                    <a href="/houseMain.board?cpage=1" class="nav_link"> <i class='bx bx-home nav_icon'></i> <span class="nav_name">숙소리뷰</span> </a>
                		<c:choose>
 						<c:when test="${loginID !=null}">
 							<a href="/goMyPage.mpg" class="nav_link"> <i class='bx bx-user nav_icon'></i> <span class="nav_name">마이페이지</span> </a>
-							<a href="/goMyPage.mpg" class="nav_link"> <i class='bx bx-calendar nav_icon'></i> <span class="nav_name">일정관리</span> </a>
+							
 						</c:when>
 		
 						<c:otherwise>
@@ -663,7 +663,18 @@ $("#modal_loginBtn").on("click",function(){
                                 <c:forEach var="i" items="${hotlist }">
                                 <div class="col-12 border border-2 rounded ">
                                     <div class="row m-0">
-                                        <div class="col-9 col-md-9 m-0 free_title ididid"><a href="/detailView.board?cpage=${cpage}&seq=${i.all_board_seq}&click=ok"  class="goview" style="color:black; font-weight:bold;">${i.title }</a></div>
+                                        <div class="col-9 col-md-9 m-0 free_title ididid">
+                                        <a href="/detailView.board?cpage=${cpage}&seq=${i.all_board_seq}&click=ok" id="${i.all_board_seq}" class="goview" style="color:black; font-weight:bold;"></a></div>
+                                        	<script>
+											$.ajax({
+											url:"/replycnt.board",
+											type:"post",
+											data:{seq:'${i.all_board_seq}'},
+											dataType:"json"
+											}).done(function(resp){
+											$("#${i.all_board_seq}").text( "${i. title } (" + resp + ")")
+											})
+											</script>
                                         <div class="col-3 col-md-3">
                                             <div class="row ">
                                                 <div class="col-12 m-0" style="text-align:right"> <i class="fa-solid fa-thumbs-up"></i>&nbsp;${i.like_count }</div>
@@ -872,7 +883,7 @@ $("#modal_loginBtn").on("click",function(){
           	
             		<input class="form-control me-2" type="search" placeholder="검색어를 입력해주세요." aria-label="Search" name="contents">
                     <button class="btn btn-outline-secondary btn-sm" type="submit">Search</button>&nbsp;
-            		<button class="btn btn-outline-secondary btn-sm" type="button" id ="cancel">x</button>&nbsp;
+            		<button class="btn btn-outline-secondary btn-sm" type="button" id ="cancel"><i class="fa-solid fa-eraser"></i></button>&nbsp;
             		<c:choose>
 						<c:when test="${loginID !=null}">
 							<button type="button" class="btn btn-primary btn-sm" id="writeBtn" style="white-space:nowrap;"><i class="fa-solid fa-pen-to-square"></i>글 작성하기</button>
@@ -912,8 +923,18 @@ $("#modal_loginBtn").on("click",function(){
                 <p id="notice">공지</p>
                 </div>
                	<div class="col-7 col-md-5 m-0 title ididid ">
-               		<a href="/detailView.board?cpage=${cpage}&seq=${i.all_board_seq}&click=ok" style="color:black" class="goview">${i. title }</a>
+               		<a href="/detailView.board?cpage=${cpage}&seq=${i.all_board_seq}&click=ok" id="${i.all_board_seq}" style="color:black" class="goview"></a>
                	</div>
+               		<script>
+					$.ajax({
+					url:"/replycnt.board",
+					type:"post",
+					data:{seq:'${i.all_board_seq}'},
+					dataType:"json"
+					}).done(function(resp){
+					$("#${i.all_board_seq}").text( "${i. title } (" + resp + ")")
+					})
+					</script>
                 <div class="col-3 col-md-2 p-0 ididid text-center">${i.id }</div>
                 <div class="col-md-2 d-none d-md-block p-0 text-center"><fmt:formatDate value="${i.write_date }" pattern="yy-MM-dd"/></div>
                 <div class="col-md-1 d-none d-md-block p-0 text-center">${i.view_count}</div>
@@ -931,8 +952,10 @@ $("#modal_loginBtn").on("click",function(){
             	
                 <div class="col-1 col-md-1 d-none d-md-block p-0 text-center">${i.line}</div>
                	<div class="col-7 col-md-5 m-0 title ididid">
-               	<a href="/detailView.board?cpage=${cpage}&seq=${i.all_board_seq}&click=ok" style="color:black" class="goview" >${i. title }</a>
+               	<a href="/detailView.board?cpage=${cpage}&seq=${i.all_board_seq}&click=ok" id="${i.all_board_seq}" style="color:black" class="goview goview2" ></a>
                	</div>
+               	
+			
                 <div class="col-3 col-md-2 p-0 ididid text-center">${i.id }</div>
                 <div class="col-md-2 d-none d-md-block p-0 text-center"><fmt:formatDate value="${i.write_date }" pattern="yy-MM-dd"/></div>
                 <div class="col-md-1 d-none d-md-block p-0 text-center">${i.view_count}</div>
@@ -941,6 +964,41 @@ $("#modal_loginBtn").on("click",function(){
             </div>
         </div>
         </c:forEach>
+        <script> 	
+        	let title ;
+     
+             <c:forEach var="s" items="${list }">
+         	   	
+
+         	   title = '${s.title}';
+         	   
+            	$.ajax({
+            		url:"/replycnt.board", 
+            	type:"post", 
+            	data:{seq:'${s.all_board_seq}'},
+            	dataType:"json" 
+            	}).done(function(resp){ 
+            		console.log("${s.title} :" +resp); 
+            		
+             	   	$(".goview2").each(function(i, items){
+             	   		all_board_seq = $(this).attr("id");
+             	   		if(all_board_seq == "${s.all_board_seq}"){
+             	   			$(this).text( "${s.title} (" +resp +")");
+             	   		}
+
+
+             	   		
+             	   	})
+
+            		
+            	}) 
+            	
+           
+               	
+               
+   			  </c:forEach>
+   			</script>
+        
         
         <div class="row">
             <div class="col-12 text-center">

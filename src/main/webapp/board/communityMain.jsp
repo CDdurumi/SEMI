@@ -13,7 +13,7 @@
     <meta name="description" content="">
     <meta name="author" content="Mark Otto, Jacob Thornton, and Bootstrap contributors">
     <meta name="generator" content="Hugo 0.88.1">
-    <title>Insert title here</title>
+    <title>쉼표 | 커뮤니티 메인</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
@@ -485,7 +485,15 @@ font-weight: bold;
   }
 }
 
-
+ .goview{
+		font-weight:bold;
+		color:black;
+		}
+		.goview:hover{
+			color:#0d6efd !important;
+			text-decoration: underline;
+ 			text-underline-position: under; 
+		}
 
 .slider {
   width: 100%;
@@ -519,6 +527,7 @@ font-weight: bold;
 }
 .testimonials .item img {
      width:100%;
+     height:100%;
 /*   border-radius: 50%; */
 /*   border: 13px solid #3B344D; */
 }
@@ -750,7 +759,7 @@ font-weight: bold;
 					</a> <c:choose>
 						<c:when test="${loginID !=null}">
 							<a href="/goMyPage.mpg" class="nav_link"> <i class='bx bx-user nav_icon'></i> <span class="nav_name">마이페이지</span> </a>
-							<a href="/goMyPage.mpg" class="nav_link"> <i class='bx bx-calendar nav_icon'></i> <span class="nav_name">일정관리</span> </a>
+							
 						</c:when>
 		
 						<c:otherwise>
@@ -868,7 +877,7 @@ font-weight: bold;
 											style="padding-left: 7px; padding-right: 0px;">
 											<a
 												href="/detailView.board?cpage=1&seq=${j.all_board_seq}&click=ok"
-												style="color: black">${j.title }</a>
+												style="color: black" class="goview goview1" id="${j.all_board_seq}" ></a>
 										</div>
 										<div class="col-3  p-0 ididid text-center">${j.id}</div>
 										<%--                 <div class="col-sm-2 col-md-1 d-none d-md-block p-0 text-center"><fmt:formatDate value="${i.write_date }" pattern="yy-MM-dd"/>날짜</div> --%>
@@ -882,7 +891,40 @@ font-weight: bold;
 								</div>
 
 							</c:forEach>
+			<script> 	
+        	let title ;
+     
+             <c:forEach var="s" items="${fHotlist }">
+         	   	
 
+         	   title = '${s.title}';
+         	   
+            	$.ajax({
+            		url:"/replycnt.board", 
+            	type:"post", 
+            	data:{seq:'${s.all_board_seq}'},
+            	dataType:"json" 
+            	}).done(function(resp){ 
+            		console.log("${s.title} :" +resp); 
+            		
+             	   	$(".goview1").each(function(i, items){
+             	   		all_board_seq = $(this).attr("id");
+             	   		if(all_board_seq == "${s.all_board_seq}"){
+             	   			$(this).text( "${s.title} (" +resp +")");
+             	   		}
+
+
+             	   		
+             	   	})
+
+            		
+            	}) 
+            	
+           
+               	
+               
+   			  </c:forEach>
+   			</script>
 
 				</div>
 			</div>
@@ -921,7 +963,7 @@ font-weight: bold;
 	      <a href="/detailView.board?cpage=1&seq=${i.all_board_seq}&click=ok">
 	      	<img src="${profilePath}${j.sys_name}" class="d-block w-100" alt="picture">
 	      </a>
-	      <p>${i.title}</p>
+	      <p style="color:black;">${i.title}</p>
 	    </label>
    
     
@@ -929,6 +971,43 @@ font-weight: bold;
     		</c:if>
     	</c:forEach>
   	</c:forEach>
+  	
+  	<script> 	
+        	let title ;
+     
+             <c:forEach var="s" items="${fHotlist }">
+         	   	
+
+         	   title = '${s.title}';
+         	   
+            	$.ajax({
+            		url:"/replycnt.board", 
+            	type:"post", 
+            	data:{seq:'${s.all_board_seq}'},
+            	dataType:"json" 
+            	}).done(function(resp){ 
+            		console.log("${s.title} :" +resp); 
+            		
+             	   	$(".goview1").each(function(i, items){
+             	   		all_board_seq = $(this).attr("id");
+             	   		if(all_board_seq == "${s.all_board_seq}"){
+             	   			$(this).text( "${s.title} (" +resp +")");
+             	   		}
+
+
+             	   		
+             	   	})
+
+            		
+            	}) 
+            	
+           
+               	
+               
+   			  </c:forEach>
+   			</script>
+  	
+  	
   </div>
   	
   <div class="dots">
@@ -1067,7 +1146,7 @@ font-weight: bold;
 											style="padding-left: 7px; padding-right: 0px;">
 											<a
 												href="/detailView.board?cpage=1&seq=${h.all_board_seq}&click=ok"
-												style="color: black">${h.title }</a>
+												style="color: black" class="goview goview2" id="${h.all_board_seq}"></a>
 										</div>
 										<div class="col-3  p-0 ididid text-center">${h.id}</div>
 										<%-- 										<div class="col-md-1 d-none d-md-block p-0 text-center"> ${j.view_count}</div> --%>
@@ -1076,7 +1155,40 @@ font-weight: bold;
 									</div>
 								</div>
 							</c:forEach>
-								
+								<script> 	
+        	title ;
+     
+             <c:forEach var="s" items="${jHotlist }">
+         	   	
+
+         	   title = '${s.title}';
+         	   
+            	$.ajax({
+            		url:"/replycnt.board", 
+            	type:"post", 
+            	data:{seq:'${s.all_board_seq}'},
+            	dataType:"json" 
+            	}).done(function(resp){ 
+            		console.log("${s.title} :" +resp); 
+            		
+             	   	$(".goview2").each(function(i, items){
+             	   		all_board_seq = $(this).attr("id");
+             	   		if(all_board_seq == "${s.all_board_seq}"){
+             	   			$(this).text( "${s.title} (" +resp +")");
+             	   		}
+
+
+             	   		
+             	   	})
+
+            		
+            	}) 
+            	
+           
+               	
+               
+   			  </c:forEach>
+   			</script>
 								
 								
 							</div>
@@ -1114,7 +1226,7 @@ font-weight: bold;
 											style="padding-left: 7px; padding-right: 0px;">
 											<a
 												href="/detailView.board?cpage=1&seq=${a.all_board_seq}&click=ok"
-												style="color: black">${a.title }</a>
+												style="color: black" class="goview goview3" id="${a.all_board_seq}"></a>
 										</div>
 										<div class="col-3  p-0 ididid text-center">${a.id}</div>
 										<%-- 										<div class="col-md-1 d-none d-md-block p-0 text-center"> ${j.view_count}</div> --%>
@@ -1123,7 +1235,40 @@ font-weight: bold;
 									</div>
 								</div>
 							</c:forEach>
+	<script> 	
+        	title ;
+     
+             <c:forEach var="s" items="${rHotlist }">
+         	   	
 
+         	   title = '${s.title}';
+         	   
+            	$.ajax({
+            		url:"/replycnt.board", 
+            	type:"post", 
+            	data:{seq:'${s.all_board_seq}'},
+            	dataType:"json" 
+            	}).done(function(resp){ 
+            		console.log("${s.title} :" +resp); 
+            		
+             	   	$(".goview3").each(function(i, items){
+             	   		all_board_seq = $(this).attr("id");
+             	   		if(all_board_seq == "${s.all_board_seq}"){
+             	   			$(this).text( "${s.title} (" +resp +")");
+             	   		}
+
+
+             	   		
+             	   	})
+
+            		
+            	}) 
+            	
+           
+               	
+               
+   			  </c:forEach>
+   			</script>
 
 				</div>
 
@@ -1135,12 +1280,13 @@ font-weight: bold;
 	
 	</div>
 <div class="row dummy2" style="height:30px"></div>
-	<footer class="mt-auto text-black-50" style="background-color:#f5f5f7">
-        	<div class="row">
-        		<div class="d-none d-lg-block col-5 footer1">
+	<footer class="mt-auto text-black-50" >
+        	
+        	<div class="row" style="border-top:1px solid #c3c3c3; border-bottom:1px solid #c3c3c3; background-color:#f5f5f7; max-width:1400px; margin:auto;">
+        		<div class="d-none d-lg-block col-5 footer1" style="margin-top:15px; margin-bottom:15px">
         			<img src="/imgsrc/footerlogo2.png">
         		</div>
-        		<div class="col-12 col-lg-7 footer2">
+        		<div class="col-12 col-lg-7 footer2" style="margin-top:15px; margin-bottom:15px">
         			<div class="col-12">
         				프로젝트 쉼표
         			</div>
@@ -1152,6 +1298,7 @@ font-weight: bold;
         			</div>
         		</div>
         	</div>
+   
         </footer>
         <div class="row dummy2" style="height:30px"></div>
 	</div>
