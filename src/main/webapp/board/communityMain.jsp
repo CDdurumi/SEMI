@@ -519,6 +519,7 @@ font-weight: bold;
 }
 .testimonials .item img {
      width:100%;
+     height:100%;
 /*   border-radius: 50%; */
 /*   border: 13px solid #3B344D; */
 }
