@@ -660,8 +660,20 @@ $("#modal_loginBtn").on("click",function(){
                                 <div class="col-12 border border-2 rounded ">
                             
                                     <div class="row m-0">
-                                        <div class="col-9 col-md-9 m-0 free_title ididid"><a href="/detailView.board?cpage=${cpage}&seq=${i.all_board_seq}&click=ok" class="goview" style="font-weight:bold;">${i.title }</a></div>
+                                        <div class="col-9 col-md-9 m-0 free_title ididid">
+                                        <a href="/detailView.board?cpage=${cpage}&seq=${i.all_board_seq}&click=ok" id="${i.all_board_seq}" class="goview" style="font-weight:bold;"></a></div>
                                         <!-- ellipsis 밑에 forEach로 하니까 한줄만 추가했습니다.  -->
+                                        	<script>
+						               		$.ajax({
+						               			url:"/replycnt.board",
+						        				type:"post",
+						        				data:{seq:'${i.all_board_seq}'},
+						        				dataType:"json"
+						               		}).done(function(resp){
+						               			$("#${i.all_board_seq}").text( "${i. title } (" + resp + ")");
+						               			
+						               		})
+						               		</script>
                                         <div class="col-3 col-md-3">
                                             <div class="row ">
                                                 <div class="col-12 m-0" style="text-align:right"> <i class="fa-solid fa-thumbs-up"></i>&nbsp;${i.like_count }</div>
@@ -914,7 +926,10 @@ $("#modal_loginBtn").on("click",function(){
                 <p id="notice">공지</p>
                 </div>
                	<div class="col-7 col-md-5 m-0 title ididid " style="text-align:left">
-               		<a href="/detailView.board?cpage=${cpage}&seq=${i.all_board_seq}&click=ok" class="goview">${i. title }</a>
+               		<a href="/detailView.board?cpage=${cpage}&seq=${i.all_board_seq}&click=ok" id=${i.all_board_seq} class="goview goview2"></a>
+               	
+               	
+               	
                	</div>
                 <div class="col-3 col-md-2 p-0 ellipsis text-center ididid">${i.id }</div>
                 <div class="col-md-2 d-none d-md-block p-0 "><fmt:formatDate value="${i.write_date }" pattern="yy-MM-dd"/></div>
@@ -926,17 +941,63 @@ $("#modal_loginBtn").on("click",function(){
         </div>
         </c:forEach>
         
+        <script> 	
+        	let title ;
+     
+             <c:forEach var="j" items="${noticeList }">
+         	   	
+
+         	   title = '${j.title}';
+         	   
+            	$.ajax({
+            		url:"/replycnt.board", 
+            	type:"post", 
+            	data:{seq:'${j.all_board_seq}'},
+            	dataType:"json" 
+            	}).done(function(resp){ 
+            		console.log("${j.title} :" +resp); 
+            		
+             	   	$(".goview2").each(function(i, items){
+             	   		all_board_seq = $(this).attr("id");
+             	   		if(all_board_seq == "${j.all_board_seq}"){
+             	   			$(this).text( "${j.title} (" +resp +")");
+             	   		}
+
+
+             	   		
+             	   	})
+
+            		
+            	}) 
+            	
+           
+               	
+               
+   			  </c:forEach>
+   			</script>
+   			
+   			
+        
+        
+        
         
 <!--         여기는 목록 -->
+
+
+
+
         <c:forEach var="i" items="${list }">
         <div class="col-12  board">
         
             <div class="row m-0 border border-2 rounded board_row ">
             	
                 <div class="col-1 col-md-1 d-none d-md-block p-0">${i.line}</div>
-               	<div class="col-7 col-md-5 m-0 title ididid "style="text-align:left">
-               		<a href="/detailView.board?cpage=${cpage}&seq=${i.all_board_seq}&click=ok" class="goview">${i. title }</a>
-               	</div>
+               	<div class="col-7 col-md-5 m-0 title ididid "style="text-align:left" >
+               		<a href="/detailView.board?cpage=${cpage}&seq=${i.all_board_seq}&click=ok" id='${i.all_board_seq}' class="goview goview1"></a>
+               		</div>
+               		
+
+   	    
                 <div class="col-3 col-md-2 p-0 ididid text-center">${i.id }</div>
                 <div class="col-md-2 d-none d-md-block p-0 "><fmt:formatDate value="${i.write_date }" pattern="yy-MM-dd"/></div>
                 <div class="col-md-1 d-none d-md-block p-0">${i.view_count}</div>
@@ -945,8 +1006,48 @@ $("#modal_loginBtn").on("click",function(){
             </div>
            
         </div>
-        </c:forEach>
-        
+        	
+        	</c:forEach>
+        	
+        	
+        	<script> 	
+        	
+     
+             <c:forEach var="j" items="${list }">
+         	   	
+
+         	   title = '${j.title}';
+         	   
+            	$.ajax({
+            		url:"/replycnt.board", 
+            	type:"post", 
+            	data:{seq:'${j.all_board_seq}'},
+            	dataType:"json" 
+            	}).done(function(resp){ 
+            		console.log("${j.title} :" +resp); 
+            		
+             	   	$(".goview1").each(function(i, items){
+             	   		all_board_seq = $(this).attr("id");
+             	   		if(all_board_seq == "${j.all_board_seq}"){
+             	   			$(this).text( "${j.title} (" +resp +")");
+             	   		}
+
+
+             	   		
+             	   	})
+
+            		
+            	}) 
+            	
+           
+               	
+               
+   			  </c:forEach>
+   			</script>
+   			
+   			
+   			
+     
         <div class="row">
             <div class="col-12 text-center">
                 <nav aria-label="Page navigation example">
@@ -998,7 +1099,12 @@ $("#modal_loginBtn").on("click",function(){
  <button onclick="topFunction()" id="myBtn" title="Go to top">↑</button>
 
 
+
+
     <script>
+    
+    
+    
 	//X버튼 클릭 시(검색 취소)
     $("#cancel").on("click",function(){
     	location.href = "/boardMainView.board?cpage=1"; 
@@ -1076,6 +1182,7 @@ $("#modal_loginBtn").on("click",function(){
     })
     </script>
     
+  
     <script type="text/javascript">
  	let city = ['Jeju City'];
 	
@@ -1141,7 +1248,14 @@ $("#modal_loginBtn").on("click",function(){
       document.body.scrollTop = 0; 
       document.documentElement.scrollTop = 0; 
     }
+    
+    
+    
+
+    
+    
     </script>
+    
 </body>
 
 </html>

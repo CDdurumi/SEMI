@@ -663,7 +663,18 @@ $("#modal_loginBtn").on("click",function(){
                                 <c:forEach var="i" items="${hotlist }">
                                 <div class="col-12 border border-2 rounded ">
                                     <div class="row m-0">
-                                        <div class="col-9 col-md-9 m-0 free_title ididid"><a href="/detailView.board?cpage=${cpage}&seq=${i.all_board_seq}&click=ok"  class="goview" style="color:black; font-weight:bold;">${i.title }</a></div>
+                                        <div class="col-9 col-md-9 m-0 free_title ididid">
+                                        <a href="/detailView.board?cpage=${cpage}&seq=${i.all_board_seq}&click=ok" id="${i.all_board_seq}" class="goview" style="color:black; font-weight:bold;"></a></div>
+                                        	<script>
+											$.ajax({
+											url:"/replycnt.board",
+											type:"post",
+											data:{seq:'${i.all_board_seq}'},
+											dataType:"json"
+											}).done(function(resp){
+											$("#${i.all_board_seq}").text( "${i. title } (" + resp + ")")
+											})
+											</script>
                                         <div class="col-3 col-md-3">
                                             <div class="row ">
                                                 <div class="col-12 m-0" style="text-align:right"> <i class="fa-solid fa-thumbs-up"></i>&nbsp;${i.like_count }</div>
@@ -912,8 +923,18 @@ $("#modal_loginBtn").on("click",function(){
                 <p id="notice">공지</p>
                 </div>
                	<div class="col-7 col-md-5 m-0 title ididid ">
-               		<a href="/detailView.board?cpage=${cpage}&seq=${i.all_board_seq}&click=ok" style="color:black" class="goview">${i. title }</a>
+               		<a href="/detailView.board?cpage=${cpage}&seq=${i.all_board_seq}&click=ok" id="${i.all_board_seq}" style="color:black" class="goview"></a>
                	</div>
+               		<script>
+					$.ajax({
+					url:"/replycnt.board",
+					type:"post",
+					data:{seq:'${i.all_board_seq}'},
+					dataType:"json"
+					}).done(function(resp){
+					$("#${i.all_board_seq}").text( "${i. title } (" + resp + ")")
+					})
+					</script>
                 <div class="col-3 col-md-2 p-0 ididid text-center">${i.id }</div>
                 <div class="col-md-2 d-none d-md-block p-0 text-center"><fmt:formatDate value="${i.write_date }" pattern="yy-MM-dd"/></div>
                 <div class="col-md-1 d-none d-md-block p-0 text-center">${i.view_count}</div>
@@ -931,8 +952,19 @@ $("#modal_loginBtn").on("click",function(){
             	
                 <div class="col-1 col-md-1 d-none d-md-block p-0 text-center">${i.line}</div>
                	<div class="col-7 col-md-5 m-0 title ididid">
-               	<a href="/detailView.board?cpage=${cpage}&seq=${i.all_board_seq}&click=ok" style="color:black" class="goview" >${i. title }</a>
+               	<a href="/detailView.board?cpage=${cpage}&seq=${i.all_board_seq}&click=ok" id="${i.all_board_seq}" style="color:black" class="goview" ></a>
                	</div>
+               	
+				<script>
+					$.ajax({
+					url:"/replycnt.board",
+					type:"post",
+					data:{seq:'${i.all_board_seq}'},
+					dataType:"json"
+					}).done(function(resp){
+					$("#${i.all_board_seq}").text( "${i.title } (" + resp + ")")
+					})
+					</script>
                 <div class="col-3 col-md-2 p-0 ididid text-center">${i.id }</div>
                 <div class="col-md-2 d-none d-md-block p-0 text-center"><fmt:formatDate value="${i.write_date }" pattern="yy-MM-dd"/></div>
                 <div class="col-md-1 d-none d-md-block p-0 text-center">${i.view_count}</div>
