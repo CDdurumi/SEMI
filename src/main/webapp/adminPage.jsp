@@ -776,9 +776,6 @@ $("#modal_loginBtn").on("click",function(){
       <li class="nav-item" role="presentation">
         <button class="nav-link" id="member-tab" data-bs-toggle="tab" data-bs-target="#member-tab-pane" type="button" role="tab" aria-controls="member-tab-pane" aria-selected="false">계정</button>
       </li>
-      <li class="nav-item" role="presentation">
-        <button class="nav-link" id="contact-tab" data-bs-toggle="tab" data-bs-target="#contact-tab-pane" type="button" role="tab" aria-controls="contact-tab-pane" aria-selected="false">탭3</button>
-      </li>
 
     </ul>
 
@@ -969,9 +966,7 @@ $("#modal_loginBtn").on("click",function(){
                         </div>
 		        </div>
 		</div>	
-			
-      <!--탭3---------------------------------------------------------->
-      <div class="tab-pane fade" id="contact-tab-pane" role="tabpanel" aria-labelledby="contact-tab" tabindex="0">탭3</div>
+
     </div>
 
 </div>
