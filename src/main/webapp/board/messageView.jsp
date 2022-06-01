@@ -652,6 +652,7 @@ $("#modal_loginBtn").on("click",function(){
 				
 			});
 		})
+
 </script>
     <!--Container Main start-->
     <div class="height-100 ">

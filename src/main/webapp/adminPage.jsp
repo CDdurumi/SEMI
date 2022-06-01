@@ -680,7 +680,7 @@ $(function(){
 					</c:choose>
 					<c:choose>
 						<c:when test="${loginIsAdmin == 'Y'}">
-               				<a href="/adiminPage.admin" class="nav1_link"> <i class='bx bx-hard-hat nav1_icon'></i> <span class="nav1_name">관리자페이지</span> </a>
+               				<a href="/adiminPage.admin" class="nav1_link active"> <i class='bx bx-hard-hat nav1_icon'></i> <span class="nav1_name">관리자페이지</span> </a>
                 		</c:when>
                 	
                 		<c:otherwise>
