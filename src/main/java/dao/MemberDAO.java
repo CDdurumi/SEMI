@@ -118,14 +118,16 @@ public class MemberDAO {
 		}
 	}
 	// 사용자 정보 뽑기(닉네임)
-	public MemberDTO searchUserId(String id) throws Exception {
+	public List<MemberDTO> searchUserId(String id) throws Exception {
 
-		String sql = "select * from member where id =?";
+		String sql = "select * from member where id like '%'||?||'%'";
 		try (Connection con = this.getConnection(); PreparedStatement pstat = con.prepareStatement(sql);) {
 			pstat.setString(1, id);
+			
 			try (ResultSet rs = pstat.executeQuery()) {
-
-				rs.next();
+				List<MemberDTO> list = new ArrayList<MemberDTO>();
+				
+				while(rs.next()) {
 				id = rs.getString("id");
 				String email = rs.getString("email");
 				Timestamp join_date = rs.getTimestamp("join_date");
@@ -134,20 +136,23 @@ public class MemberDAO {
 				
 				SimpleDateFormat sdf = new SimpleDateFormat("YY년 MM월 dd일 HH:mm");
 				String date = sdf.format(join_date);
+				MemberDTO dto = new MemberDTO(id, null, email, join_date, information, date, isadmin);
 				
-				return (new MemberDTO(id, null, email, join_date, information, date, isadmin));
-
+				list.add(dto);
+				}
+				return list;
 			}
 		}
 	}
-	public MemberDTO searchUserEmail(String email) throws Exception {
+	public List<MemberDTO> searchUserEmail(String email) throws Exception {
 
-		String sql = "select * from member where email = ?";
+		String sql = "select * from member where email like '%'||?||'%'";
 		try (Connection con = this.getConnection(); PreparedStatement pstat = con.prepareStatement(sql);) {
 			pstat.setString(1, email);
 			try (ResultSet rs = pstat.executeQuery()) {
-
-				rs.next();
+				List<MemberDTO> list = new ArrayList<MemberDTO>();
+				
+				while(rs.next()) {
 				String id = rs.getString("id");
 				email = rs.getString("email");
 				Timestamp join_date = rs.getTimestamp("join_date");
@@ -157,8 +162,11 @@ public class MemberDAO {
 				SimpleDateFormat sdf = new SimpleDateFormat("YY년 MM월 dd일 HH:mm");
 				String date = sdf.format(join_date);
 				
-				return (new MemberDTO(id, null, email, join_date, information, date, isadmin));
-
+				MemberDTO dto = new MemberDTO(id, null, email, join_date, information, date, isadmin);
+				
+				list.add(dto);
+				}
+				return list;
 			}
 		}
 	}

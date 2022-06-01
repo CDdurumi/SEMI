@@ -947,7 +947,6 @@ $("#modal_loginBtn").on("click",function(){
 				          	
 				            <input class="form-control me-2" type="search" placeholder="검색어를 입력해주세요." aria-label="Search" id="Membercontents" name="contents">
 				            <button class="btn btn-outline-secondary btn-sm" type="button" id="search-member">Search</button>&nbsp;
-				            <button class="btn btn-outline-secondary btn-sm" type="button" id ="cancel">x</button>&nbsp;
 				          </div>
 				          
 				        </div>
@@ -1616,29 +1615,33 @@ $("#search-member").on("click",function(){
 		},
 		dataType:"json"
 	}).done(function(resp){
-		let memberDiv = $("<div class='col-12 member_boardbox2'>");
-		let memberDiv1 = $("<div class='row m-0 border border-2 rounded board_row '>");
-		
-		let memberDiv2 = $("<div class='col-6 col-lg-3 col-sm-6 d-lg-block p-0 text-center'>");
-		memberDiv2.text(resp.id);
-		
-		let memberDiv3 = $("<div class='col-6 col-lg-5 col-sm-6 m-0 title ellipsis p-0 text-center'>");
-		memberDiv3.text(resp.email);
-		
-		
-		let memberDiv4 = $("<div class='col-lg-4 d-none d-lg-block p-0 text-center'>");
-		memberDiv4.text(resp.date);
-		
-		
-		
-		$(".member_boardtext").append(memberDiv);
-		memberDiv.append(memberDiv1);
-		memberDiv1.append(memberDiv2);
-		memberDiv1.append(memberDiv3);
-		memberDiv1.append(memberDiv4);
-		
-		memberDiv.hide();
-		memberDiv.fadeIn(1500);
+		for(let i = 0; i < resp.length; i++){
+			
+			let memberDiv = $("<div class='col-12 member_boardbox2'>");
+			let memberDiv1 = $("<div class='row m-0 border border-2 rounded board_row '>");
+			
+			let memberDiv2 = $("<div class='col-6 col-lg-3 col-sm-6 d-lg-block p-0 text-center'>");
+			memberDiv2.text(resp[i].id);
+			
+			let memberDiv3 = $("<div class='col-6 col-lg-5 col-sm-6 m-0 title ellipsis p-0 text-center'>");
+			memberDiv3.text(resp[i].email);
+			
+			
+			let memberDiv4 = $("<div class='col-lg-4 d-none d-lg-block p-0 text-center'>");
+			memberDiv4.text(resp[i].date);
+			
+			
+			
+			$(".member_boardtext").append(memberDiv);
+			memberDiv.append(memberDiv1);
+			memberDiv1.append(memberDiv2);
+			memberDiv1.append(memberDiv3);
+			memberDiv1.append(memberDiv4);
+			
+			memberDiv.hide();
+			memberDiv.fadeIn(1500);
+            
+		}
 	})
 })
 
