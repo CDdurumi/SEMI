@@ -697,7 +697,7 @@ $("#modal_loginBtn").on("click",function(){
             
             <div class="col-12 col-md-6 bottom_board">
                 <div class="row border border-2 rounded wrap12" style="overflow:hidden;">
-                    <div class="col-12 border-bottom hotboard_bottom text-center">에디터 추천</div>
+                    <div class="col-12 border-bottom hotboard_bottom text-center" style="font-weight: bold; font-size:18px;">에디터 추천</div>
                     
                     <div class="col-12" id="carousel">
 						<div id="carouselExampleIndicators" class="carousel slide" data-bs-ride="carousel">
