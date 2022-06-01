@@ -921,7 +921,7 @@ font-weight: bold;
 	      <a href="/detailView.board?cpage=1&seq=${i.all_board_seq}&click=ok">
 	      	<img src="${profilePath}${j.sys_name}" class="d-block w-100" alt="picture">
 	      </a>
-	      <p>${i.title}</p>
+	      <p style="color:black;">${i.title}</p>
 	    </label>
    
     
