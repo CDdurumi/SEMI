@@ -475,7 +475,7 @@ select{
 }
 .wrap12{
 
-height:530px;
+height:470px;
 }
 #notice{
 color:red;
