@@ -479,7 +479,7 @@ select{
 }     
 .wrap12{
 
-height:500px;
+height:470px;
 }  
 #notice{
 color:red;

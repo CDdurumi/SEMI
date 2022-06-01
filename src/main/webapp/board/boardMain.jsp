@@ -468,7 +468,7 @@ color:#0d6efd !important;
 }
 .wrap12{
  
-height:530px;
+height:470px;
 }
 
 select{
