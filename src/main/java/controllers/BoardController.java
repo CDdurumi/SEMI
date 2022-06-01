@@ -68,9 +68,9 @@ public class BoardController extends HttpServlet {
 				boardOption = "g";
 				List<BoardDTO> gHotlist = dao.selectByLikeCount(boardOption);
 				request.setAttribute("gHotlist", gHotlist);
-				List<FilesDTO> gFilesDao = filesDAO.selectSysName(boardOption);// 여행후기 게시글 프로필 - sys_name get(해당게시글seq와
-																				// sys_name담겨 있음).
-				request.setAttribute("jobPorfileList", gFilesDao);
+
+				List<FilesDTO> gFilesDao = filesDAO.selectSysName(boardOption);//여행후기 게시글 프로필 - sys_name get(해당게시글seq와 sys_name담겨 있음).
+				request.setAttribute("gPorfileList", gFilesDao);
 				request.setAttribute("profilePath", "/files/");
 				request.getRequestDispatcher("/board/communityMain.jsp").forward(request, response);// 커뮤니티 메인페이지
 

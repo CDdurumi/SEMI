@@ -1699,7 +1699,24 @@ $("#modal_loginBtn").on("click",function(){
         }
     })
     
-   //누르면 파일 펼치기
+   //파일
+   
+   $.ajax({
+            url:"/f_list.file",
+            data:{parent_seq:"${dto.all_board_seq}"},
+            dataType:"json"
+         }).done(function(resp){
+               
+        	 if(resp ==false){
+             	console.log("파일없음");
+             	$(".filebtn").remove();
+             	$(".filebox").text("첨부파일 없음");
+        	 }
+            })
+    
+    
+    
+    //누르면 파일 펼치기
    let listExist = false;
    
    $(".filebtn").on("click",function(){

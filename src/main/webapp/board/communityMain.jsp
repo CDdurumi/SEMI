@@ -33,7 +33,8 @@
     <link rel="mask-icon" href="/docs/5.1/assets/img/favicons/safari-pinned-tab.svg" color="#7952b3">
     <link rel="icon" href="/docs/5.1/assets/img/favicons/favicon.ico">
     <meta name="theme-color" content="#7952b3">
-
+<link rel="stylesheet" href="carousel.css" />
+<script src="carousel.js"></script>
 
     <style>
         @import url("https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700&display=swap");
@@ -483,7 +484,206 @@ font-weight: bold;
     text-align:left;
   }
 }
-       
+
+
+
+.slider {
+  width: 100%;
+}
+.slider input {
+  display: none;
+}
+.testimonials {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  min-height: 350px;
+  perspective: 1000px;
+  overflow: hidden;
+}
+.testimonials .item {
+  top: 20px;
+  position: absolute;
+  box-sizing: border-box;
+  background-color: #f5f5f7;
+  padding: 30px;
+  width: 450px;
+  height:300px;
+  text-align: center;
+  transition: transform 0.4s;
+  -webkit-transform-style: preserve-3d;
+  box-shadow: 0 0 10px rgba(0,0,0,0.3);
+  user-select: none;
+  cursor: pointer;
+}
+.testimonials .item img {
+     width:100%;
+     height:100%;
+/*   border-radius: 50%; */
+/*   border: 13px solid #3B344D; */
+}
+.testimonials .item p {
+  color: #ddd;
+}
+.testimonials .item h2 {
+  font-size: 14px;
+}
+.dots {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.dots label {
+  display: block;
+  height: 5px;
+  width: 5px;
+  border-radius: 50%;
+  cursor: pointer;
+  background-color: grey;
+  margin: 7px;
+  transition: transform 0.2s, color 0.2s;
+}
+/* First */
+#t-1:checked ~ .dots label[for="t-1"] {
+  transform: scale(2);
+  background-color: black;
+}
+#t-1:checked ~ .dots label[for="t-2"] {
+  transform: scale(1.5);
+}
+#t-1:checked ~ .testimonials label[for="t-1"] {
+  z-index: 4;
+}
+#t-1:checked ~ .testimonials label[for="t-2"] {
+  transform: translateX(300px) translateZ(-90px) rotateY(-15deg);
+  z-index: 3;
+}
+#t-1:checked ~ .testimonials label[for="t-3"] {
+  transform: translateX(600px) translateZ(-180px) rotateY(-25deg);
+  z-index: 2;
+}
+#t-1:checked ~ .testimonials label[for="t-4"] {
+  transform: translateX(900px) translateZ(-270px) rotateY(-35deg);
+  z-index: 1;
+}
+#t-1:checked ~ .testimonials label[for="t-5"] {
+  transform: translateX(1200px) translateZ(-360px) rotateY(-45deg);
+}
+/* Second */
+#t-2:checked ~ .dots label[for="t-1"] {
+  transform: scale(1.5);
+}
+#t-2:checked ~ .dots label[for="t-2"] {
+  transform: scale(2);
+  background-color: black;
+}
+#t-2:checked ~ .dots label[for="t-3"] {
+  transform: scale(1.5);
+}
+#t-2:checked ~ .testimonials label[for="t-1"] {
+  transform: translateX(-300px) translateZ(-90px) rotateY(15deg);
+}
+#t-2:checked ~ .testimonials label[for="t-2"] {
+  z-index: 3;
+}
+#t-2:checked ~ .testimonials label[for="t-3"] {
+  transform: translateX(300px) translateZ(-90px) rotateY(-15deg);
+  z-index: 2;
+}
+#t-2:checked ~ .testimonials label[for="t-4"] {
+  transform: translateX(600px) translateZ(-180px) rotateY(-25deg);
+  z-index: 1;
+}
+#t-2:checked ~ .testimonials label[for="t-5"] {
+  transform: translateX(900px) translateZ(-270px) rotateY(-35deg);
+}
+/* Third */
+#t-3:checked ~ .dots label[for="t-2"] {
+  transform: scale(1.5);
+}
+#t-3:checked ~ .dots label[for="t-3"] {
+  transform: scale(2);
+  background-color: black;
+}
+#t-3:checked ~ .dots label[for="t-4"] {
+  transform: scale(1.5);
+}
+#t-3:checked ~ .testimonials label[for="t-1"] {
+  transform: translateX(-600px) translateZ(-180px) rotateY(25deg);
+}
+#t-3:checked ~ .testimonials label[for="t-2"] {
+  transform: translateX(-300px) translateZ(-90px) rotateY(15deg);
+}
+#t-3:checked ~ .testimonials label[for="t-3"] {
+  z-index: 3;
+}
+#t-3:checked ~ .testimonials label[for="t-4"] {
+  transform: translateX(300px) translateZ(-90px) rotateY(-15deg);
+  z-index: 2;
+}
+#t-3:checked ~ .testimonials label[for="t-5"] {
+  transform: translateX(600px) translateZ(-180px) rotateY(-25deg);
+}
+/* Fourth */
+#t-4:checked ~ .dots label[for="t-3"] {
+  transform: scale(1.5);
+}
+#t-4:checked ~ .dots label[for="t-4"] {
+  transform: scale(2);
+  background-color: black;
+}
+#t-4:checked ~ .dots label[for="t-5"] {
+  transform: scale(1.5);
+}
+#t-4:checked ~ .testimonials label[for="t-1"] {
+  transform: translateX(-900px) translateZ(-270px) rotateY(35deg);
+}
+#t-4:checked ~ .testimonials label[for="t-2"] {
+  transform: translateX(-600px) translateZ(-180px) rotateY(25deg);
+}
+#t-4:checked ~ .testimonials label[for="t-3"] {
+  transform: translateX(-300px) translateZ(-90px) rotateY(15deg);
+  z-index: 2;
+}
+#t-4:checked ~ .testimonials label[for="t-4"] {
+  z-index: 3;
+}
+#t-4:checked ~ .testimonials label[for="t-5"] {
+  transform: translateX(300px) translateZ(-90px) rotateY(-15deg);
+}
+/* Fifth */
+#t-5:checked ~ .dots label[for="t-4"] {
+  transform: scale(1.5);
+}
+#t-5:checked ~ .dots label[for="t-5"] {
+  transform: scale(2);
+  background-color: black;
+}
+#t-5:checked ~ .testimonials label[for="t-1"] {
+  transform: translateX(-1200px) translateZ(-360px) rotateY(45deg);
+}
+#t-5:checked ~ .testimonials label[for="t-2"] {
+  transform: translateX(-900px) translateZ(-270px) rotateY(35deg);
+  z-index: 1;
+}
+#t-5:checked ~ .testimonials label[for="t-3"] {
+  transform: translateX(-600px) translateZ(-180px) rotateY(25deg);
+  z-index: 2;
+}
+#t-5:checked ~ .testimonials label[for="t-4"] {
+  transform: translateX(-300px) translateZ(-90px) rotateY(15deg);
+  z-index: 3;
+}
+#t-5:checked ~ .testimonials label[for="t-5"] {
+  z-index: 4;
+}
+
+
+
+
+
+   
     </style>
 </head>
 
@@ -698,88 +898,141 @@ font-weight: bold;
     text-underline-position: under;">여행 후기</a></div>
 
 	
-			<div class="col-12" id="carousel">
-				<div id="carouselExampleIndicators" class="carousel slide"
-					data-bs-ride="carousel">
+<div class="slider">
 
-					<div class="carousel-indicators">
+<%-- <c:forEach var="i" items="${editorList}" varStatus="status"> --%>
+<%-- 	<c:if test="${status.index lt fn:length(editorList)-1}"> --%>
+  <input type="radio" name="testimonial" id="t-1">
+  <input type="radio" name="testimonial" id="t-2">
+  <input type="radio" name="testimonial" id="t-3" checked>
+  <input type="radio" name="testimonial" id="t-4">
+  <input type="radio" name="testimonial" id="t-5">
+  
+<%--   </c:if> --%>
+<%-- </c:forEach> --%>
+  <div class="testimonials">
+  
+  
+  <c:forEach var="i" items="${gHotlist}" varStatus="status">
+	<c:forEach var="j" items="${gPorfileList}">
+		<c:if test="${j.parent_seq eq i.all_board_seq}">
+		
+		
+	    <label class="item p-0" for="t-${status.index+1 }">
+	      <a href="/detailView.board?cpage=1&seq=${i.all_board_seq}&click=ok">
+	      	<img src="${profilePath}${j.sys_name}" class="d-block w-100" alt="picture">
+	      </a>
+	      <p style="color:black;">${i.title}</p>
+	    </label>
+   
+    
+    
+    		</c:if>
+    	</c:forEach>
+  	</c:forEach>
+  </div>
+  	
+  <div class="dots">
+  
+  
+    <label for="t-1"></label>
+    <label for="t-2"></label>
+    <label for="t-3"></label>
+    <label for="t-4"></label>
+    <label for="t-5"></label>
+  </div>
+</div>
+	
+	
+	
+	
+	
+	
+	
+	
+	
+<!-- 			<div class="col-12" id="carousel"> -->
+<!-- 				<div id="carouselExampleIndicators" class="carousel slide" -->
+<!-- 					data-bs-ride="carousel"> -->
 
-						<button type="button" data-bs-target="#carouselExampleIndicators"
-							data-bs-slide-to="0" class="active" aria-current="true"
-							aria-label="Slide 1"></button>
+<!-- 					<div class="carousel-indicators"> -->
 
-						<c:forEach var="i" items="${gHotlist}" varStatus="status">
-							<c:if test="${status.index lt fn:length(gHotlist)-1}">
-								<button type="button"
-									data-bs-target="#carouselExampleIndicators"
-									data-bs-slide-to="${status.count}"
-									aria-label="Slide ${status.count + 1}"></button>
-							</c:if>
-						</c:forEach>
+<!-- 						<button type="button" data-bs-target="#carouselExampleIndicators" -->
+<!-- 							data-bs-slide-to="0" class="active" aria-current="true" -->
+<!-- 							aria-label="Slide 1"></button> -->
 
-					</div>
+<%-- 						<c:forEach var="i" items="${gHotlist}" varStatus="status"> --%>
+<%-- 							<c:if test="${status.index lt fn:length(gHotlist)-1}"> --%>
+<!-- 								<button type="button" -->
+<!-- 									data-bs-target="#carouselExampleIndicators" -->
+<%-- 									data-bs-slide-to="${status.count}" --%>
+<%-- 									aria-label="Slide ${status.count + 1}"></button> --%>
+<%-- 							</c:if> --%>
+<%-- 						</c:forEach> --%>
 
-
-					<div class="carousel-inner text-center">
-
-						<c:set var="count" value="0" />
-						<c:forEach var="i" items="${gHotlist}">
-
-							<c:forEach var="j" items="${jobPorfileList}">
-
-								<c:if test="${j.parent_seq eq i.all_board_seq}">
-									<c:set var="count" value="${count+1}" />
-									<c:choose>
-										<c:when test="${count eq 1}">
-											<div class="carousel-item active ">
-												<div class="card w-100 border-0" style="width: 18rem;">
-													<a
-														href="/detailView.board?cpage=1&seq=${i.all_board_seq}&click=ok"><img
-														src="${profilePath}${j.sys_name}" class="d-block w-100"
-														alt="..."></a>
-													<div class="carousel-caption d-none d-md-block">
-														<h5>${i.title}</h5>
-													</div>
-												</div>
-											</div>
-										</c:when>
-
-										<c:otherwise>
-											<div class="carousel-item ">
-												<div class="card w-100 border-0" style="width: 18rem;">
-													<a
-														href="/detailView.board?cpage=1&seq=${i.all_board_seq}&click=ok"><img
-														src="${profilePath}${j.sys_name}" class="d-block w-100"
-														alt="..."></a>
-													<div class="carousel-caption d-none d-md-block">
-														<h5>${i.title}</h5>
-													</div>
-												</div>
-											</div>
-										</c:otherwise>
-									</c:choose>
-
-								</c:if>
-
-							</c:forEach>
-						</c:forEach>
+<!-- 					</div> -->
 
 
-					</div>
+<!-- 					<div class="carousel-inner text-center"> -->
+
+<%-- 						<c:set var="count" value="0" /> --%>
+<%-- 						<c:forEach var="i" items="${gHotlist}"> --%>
+
+<%-- 							<c:forEach var="j" items="${gPorfileList}"> --%>
+
+<%-- 								<c:if test="${j.parent_seq eq i.all_board_seq}"> --%>
+<%-- 									<c:set var="count" value="${count+1}" /> --%>
+<%-- 									<c:choose> --%>
+<%-- 										<c:when test="${count eq 1}"> --%>
+<!-- 											<div class="carousel-item active "> -->
+<!-- 												<div class="card w-100 border-0" style="width: 18rem;"> -->
+<!-- 													<a -->
+<%-- 														href="/detailView.board?cpage=1&seq=${i.all_board_seq}&click=ok"><img --%>
+<%-- 														src="${profilePath}${j.sys_name}" class="d-block w-100" --%>
+<!-- 														alt="..."></a> -->
+<!-- 													<div class="carousel-caption d-none d-md-block"> -->
+<%-- 														<h5>${i.title}</h5> --%>
+<!-- 													</div> -->
+<!-- 												</div> -->
+<!-- 											</div> -->
+<%-- 										</c:when> --%>
+
+<%-- 										<c:otherwise> --%>
+<!-- 											<div class="carousel-item "> -->
+<!-- 												<div class="card w-100 border-0" style="width: 18rem;"> -->
+<!-- 													<a -->
+<%-- 														href="/detailView.board?cpage=1&seq=${i.all_board_seq}&click=ok"><img --%>
+<%-- 														src="${profilePath}${j.sys_name}" class="d-block w-100" --%>
+<!-- 														alt="..."></a> -->
+<!-- 													<div class="carousel-caption d-none d-md-block"> -->
+<%-- 														<h5>${i.title}</h5> --%>
+<!-- 													</div> -->
+<!-- 												</div> -->
+<!-- 											</div> -->
+<%-- 										</c:otherwise> --%>
+<%-- 									</c:choose> --%>
+
+<%-- 								</c:if> --%>
+
+<%-- 							</c:forEach> --%>
+<%-- 						</c:forEach> --%>
 
 
-					<button class="carousel-control-prev" type="button"
-						data-bs-target="#carouselExampleIndicators" data-bs-slide="prev">
-						<span class="carousel-control-prev-icon" aria-hidden="true"></span>
-						<span class="visually-hidden">Previous</span>
-					</button>
-					<button class="carousel-control-next" type="button"
-						data-bs-target="#carouselExampleIndicators" data-bs-slide="next">
-						<span class="carousel-control-next-icon" aria-hidden="true"></span>
-						<span class="visually-hidden">Next</span>
-					</button>
-				</div>
-			</div>
+<!-- 					</div> -->
+
+
+<!-- 					<button class="carousel-control-prev" type="button" -->
+<!-- 						data-bs-target="#carouselExampleIndicators" data-bs-slide="prev"> -->
+<!-- 						<span class="carousel-control-prev-icon" aria-hidden="true"></span> -->
+<!-- 						<span class="visually-hidden">Previous</span> -->
+<!-- 					</button> -->
+<!-- 					<button class="carousel-control-next" type="button" -->
+<!-- 						data-bs-target="#carouselExampleIndicators" data-bs-slide="next"> -->
+<!-- 						<span class="carousel-control-next-icon" aria-hidden="true"></span> -->
+<!-- 						<span class="visually-hidden">Next</span> -->
+<!-- 					</button> -->
+<!-- 				</div> -->
+<!-- 			</div> -->
 		</div>
 
 
