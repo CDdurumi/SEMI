@@ -635,7 +635,7 @@ $(function(){
 <body id="body-pd">
     <header class="header" id="header" style="background-color:#f5f5f7">
         <div class="header_toggle"><i class='bx bx-menu' id="header-toggle"></i></div>
-        <div><a href="/myPage.jsp" class="comuview">관리자페이지</a></div>
+        <div><a href="/adiminPage.admin" class="comuview">관리자페이지</a></div>
         <div>
             <c:choose>
             <c:when test="${loginID !=null}">
