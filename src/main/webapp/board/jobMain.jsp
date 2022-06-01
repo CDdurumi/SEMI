@@ -503,7 +503,7 @@ font-weight:bold;
         }
 .wrap12{
 
-height:530px;
+height:470px;
 }  
 
     </style>
@@ -597,18 +597,22 @@ height:530px;
       </div>
       <div class="modal-body">
         <div class="card-details">
-            <input type="text" id="id-input" placeholder="id">
+            <input type="text" id="id-input" placeholder="email" name="email" required>
             <i class="fa fa-envelope"></i>
         </div>
         <div class="card-details">
-            <input type="password" id="password-input" placeholder="password">
+            <input type="password" id="password-input" placeholder="password" name="pw" required>
             <i class="fa fa-lock"></i>
             <span><small class="fa fa-eye-slash passcode"></small></span>
         </div>
+        <div>
+        <span id="idpw_check"></span>
+        	</div>
+      
       </div>
       <div class="modal-footer">
       <button type="button" class="btn btn-primary" id="modal_loginBtn">로그인</button>
-        <button type="button" class="btn btn-outline-primary">회원가입</button>
+        <a href="/signup.jsp"><button type="button" class="btn btn-outline-primary">회원가입</button></a>
       </div>
     </div>
   </div>
