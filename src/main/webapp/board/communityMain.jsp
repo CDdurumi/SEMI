@@ -905,7 +905,6 @@ font-weight: bold;
             	data:{seq:'${s.all_board_seq}'},
             	dataType:"json" 
             	}).done(function(resp){ 
-            		console.log("${s.title} :" +resp); 
             		
              	   	$(".goview1").each(function(i, items){
              	   		all_board_seq = $(this).attr("id");
@@ -973,7 +972,7 @@ font-weight: bold;
   	</c:forEach>
   	
   	<script> 	
-        	let title ;
+        	title ;
      
              <c:forEach var="s" items="${fHotlist }">
          	   	
@@ -986,7 +985,6 @@ font-weight: bold;
             	data:{seq:'${s.all_board_seq}'},
             	dataType:"json" 
             	}).done(function(resp){ 
-            		console.log("${s.title} :" +resp); 
             		
              	   	$(".goview1").each(function(i, items){
              	   		all_board_seq = $(this).attr("id");
@@ -1156,7 +1154,7 @@ font-weight: bold;
 								</div>
 							</c:forEach>
 								<script> 	
-        	title ;
+       
      
              <c:forEach var="s" items="${jHotlist }">
          	   	
@@ -1169,7 +1167,6 @@ font-weight: bold;
             	data:{seq:'${s.all_board_seq}'},
             	dataType:"json" 
             	}).done(function(resp){ 
-            		console.log("${s.title} :" +resp); 
             		
              	   	$(".goview2").each(function(i, items){
              	   		all_board_seq = $(this).attr("id");
@@ -1236,7 +1233,7 @@ font-weight: bold;
 								</div>
 							</c:forEach>
 	<script> 	
-        	title ;
+      
      
              <c:forEach var="s" items="${rHotlist }">
          	   	
