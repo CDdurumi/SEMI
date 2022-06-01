@@ -552,7 +552,7 @@ font-weight:bold;
                     <span class="CurrTemp"></span>
                     <span class="City"></span>
                     </span></span> </a>
-                    <a href="/communityMain.board" class="nav_link active"> <i class='bx bx-message nav_icon'></i> <span class="nav_name">커뮤니티</span> </a> 
+                    <a href="/communityMain.board" class="nav_link active1"> <i class='bx bx-message nav_icon'></i> <span class="nav_name">커뮤니티</span> </a> 
                    <a href="/editorReMain.board?" class="nav_link"> <i class='bx bx-book-bookmark nav_icon'></i> <span class="nav_name">에디터추천</span> </a> 
                    <a href="/houseMain.board?cpage=1" class="nav_link"> <i class='bx bx-home nav_icon'></i> <span class="nav_name">숙소리뷰</span> </a>
                		<c:choose>
@@ -680,8 +680,8 @@ $("#modal_loginBtn").on("click",function(){
             
             
             <div class="col-12 col-md-6 bottom_board">
-                <div class="row border border-2 rounded wrap12">
-                    <div class="col-12 border-bottom hotboard_bottom text-center" style="font-weight:bold; font-size:18px;">에디터 추천</div>
+                <div class="row border border-2 rounded wrap12" style="overflow:hidden;">
+                    <div class="col-12 border-bottom hotboard_bottom text-center">에디터 추천</div>
                     
                     <div class="col-12" id="carousel">
 						<div id="carouselExampleIndicators" class="carousel slide" data-bs-ride="carousel">
@@ -715,12 +715,11 @@ $("#modal_loginBtn").on("click",function(){
 											<c:set var="count" value="${count+1}" />
 											<c:choose>
 												<c:when test="${count eq 1}">
-													<div class="carousel-item active ">
-														<div class="card w-100 border-0" style="width: 18rem;">
-															<a 
-																href="/detailView.board?cpage=1&seq=${i.all_board_seq}&click=ok"><img
-																src="${profilePath}${j.sys_name}" class="d-block w-100"
-																alt="..."></a>
+													<div class="carousel-item active">
+														<div class="card w-100 border-0" >
+															<a href="/detailView.board?cpage=1&seq=${i.all_board_seq}&click=ok">
+																<img src="${profilePath}${j.sys_name}" class="d-block" style="height:100%; width:100%;" alt="...">
+															</a>
 															<div class="carousel-caption d-none d-md-block">
 																<h5>${i.title}</h5>
 															</div>

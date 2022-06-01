@@ -828,7 +828,7 @@ $("#modal_loginBtn").on("click",function(){
                             <div class="container2">
                                 <div class="row m-0 receive_msgbox">
                                 	<div class="row " id="board_menu_text" style="padding-left:30px;">
-                                        <div class="col-md-2 col-lg-1 d-none d-lg-block " style="text-align:center;">번호</div>
+                                        <div class="col-md-2 col-lg-1 d-none d-lg-block " style="text-align:left;">번호</div>
                                         <div class="col-8 col-md-8 col-lg-5">제목</div>
                                         <div class="col-4 col-md-4 col-lg-2 text-center">보낸이</div>
                                         <div class="col-md-2 col-lg-4 d-none d-lg-block text-center">날짜</div>
