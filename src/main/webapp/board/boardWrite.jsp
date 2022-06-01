@@ -445,7 +445,7 @@ $(function(){
     }else if(boardOption == 'g'){//여행후기
     	$("[value='g']").attr("selected","selected");
 		let div = $("<div>");
-		let file = $("<input>");
+		let file = $("<input onchange='checkFile(this)'>");
 		let text = $("<i>");
 		
 		div.attr("id","profileDiv");
@@ -467,7 +467,7 @@ $(function(){
     }else if(boardOption == 'h'){//숙소리뷰
     	$("[value='h']").attr("selected","selected");
 		let div = $("<div>");
-		let file = $("<input>");
+		let file = $("<input onchange='checkFile(this)'>");
 		let text = $("<i>");
 		
 		div.attr("id","profileDiv");
@@ -482,7 +482,7 @@ $(function(){
     }else if(boardOption == 'e'){//에디터추천
     	$("[value='e']").attr("selected","selected");
 		let div = $("<div>");
-		let file = $("<input>");
+		let file = $("<input onchange='checkFile(this)'>");
 		let text = $("<i>");
 		
 		div.attr("id","profileDiv");
@@ -737,7 +737,7 @@ $("#modal_loginBtn").on("click",function(){
                 </div>
                 
                 <div class="col-12 " id="fileArea" style="border-top:1px solid #aaa9a9">
-                    <input type="file" name="file1" id="firstFile">
+                    <input type="file" name="file1" id="firstFile" onchange="checkFile(this)">
                     <button id="plusBtn" type="button">+</button>
                     <button id="minusBtn" type="button">-</button>
                 </div>
@@ -857,7 +857,7 @@ $("#modal_loginBtn").on("click",function(){
 					$("#fileArea").children("#profileDiv").remove();
 
 					let div = $("<div>");
-					let file = $("<input>");
+					let file = $("<input onchange='checkFile(this)'>");
 					let text = $("<i>");
 					
 					div.attr("id","profileDiv");
@@ -873,7 +873,7 @@ $("#modal_loginBtn").on("click",function(){
 					$("#fileArea").children("#profileDiv").remove();
 
 					let div = $("<div>");
-					let file = $("<input>");
+					let file = $("<input onchange='checkFile(this)'>");
 					let text = $("<i>");
 					
 					div.attr("id","profileDiv");
@@ -959,7 +959,7 @@ $("#modal_loginBtn").on("click",function(){
 		let i = 2;
         //+버튼 클릭시 type=file 추가
 		$("#plusBtn").on("click",function(){
-			let fileInput = ("<input type='file' class='addFile' name = file"+i+++">");
+			let fileInput = ("<input type='file' class='addFile' name = file"+i+++" onchange='checkFile(this)'>");
 			$("#fileArea").append("<br>");
 			$("#fileArea").append(fileInput);
 			// $("#fileCount").val(i-1);
@@ -1049,7 +1049,14 @@ $("#modal_loginBtn").on("click",function(){
             callbacks: {//콜백
                 //이미지 업로드 시 감지하는 이벤트
                onImageUpload : function(files, editor, welEditable) {
-            	   sendFile(files[0],this);
+            	   var maxImageSize = 10 * 1024 * 1024;
+            	   if(files[0].size > maxImageSize){
+            		   alert('10MB 이하 파일만 등록할 수 있습니다.\n\n' + '현재파일 용량 : ' + (Math.round(files[0].size / 1024 / 1024 * 100) / 100) + 'MB');
+            		   return false;
+            	   }
+            	   
+            	   sendFile(files[0],this);//이미지 업로드
+
                 },
                 
                 //이미지 마우스 오른쪽 클릭하여 쓰레기통 이모티콘 클릭 시 감지하는 이벤트
@@ -1096,6 +1103,30 @@ $("#modal_loginBtn").on("click",function(){
 // 	 	    });
 // 	 	}
          //////////////////////////////////////////////////////////////////////서머노트////////
+         
+         
+         
+         
+         //파일 업로드 용량 제한////////////////////////////////
+         function checkFile(el){
+
+			// files 로 해당 파일 정보 얻기.
+			var file = el.files;
+		
+			// file[0].size 는 파일 용량 정보입니다.
+			if(file[0].size > 1024 * 1024 * 10){
+				// 용량 초과시 경고후 해당 파일의 용량도 보여줌
+				alert('10MB 이하 파일만 등록할 수 있습니다.\n\n' + '현재파일 용량 : ' + (Math.round(file[0].size / 1024 / 1024 * 100) / 100) + 'MB');
+			}
+		
+			// 체크를 통과했다면 종료.
+			else return;
+		
+			el.outerHTML = el.outerHTML;
+		}
+         
+         
+         
     </script>
     
     <script type="text/javascript">
