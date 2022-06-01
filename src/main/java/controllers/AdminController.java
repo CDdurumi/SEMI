@@ -2,6 +2,7 @@ package controllers;
 
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.servlet.ServletException;
@@ -105,6 +106,7 @@ public class AdminController extends HttpServlet {
 				
 				pw.append(g.toJson(list));
 			}else if(uri.equals("/adiminPageTap2Search.admin")) {
+				List<MemberDTO> list = new ArrayList<MemberDTO>();
 				
 				String searchOption = request.getParameter("searchOption"); //검색 옵션(id, title, contents)
 				System.out.println(searchOption);
@@ -113,15 +115,15 @@ public class AdminController extends HttpServlet {
 				
 				if(searchOption.equals("searchNick")) {
 					System.out.println("닉네임으로 검색 실행");
-					dto = memberDao.searchUserId(contents);
+					list = memberDao.searchUserId(contents);
 				}else if(searchOption.equals("searchEmail")) {
 					System.out.println("이메일으로 검색 실행");
-					dto = memberDao.searchUserEmail(contents);
+					list = memberDao.searchUserEmail(contents);
 				}
 				
 				PrintWriter pw = response.getWriter();
 
-				pw.append(g.toJson(dto));
+				pw.append(g.toJson(list));
 				//공지글 리스트
 			}
 
