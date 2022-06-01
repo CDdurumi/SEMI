@@ -32,25 +32,25 @@ public class MemberController extends HttpServlet {
 		response.setCharacterEncoding("UTF-8");//get
 		try {
 			if (uri.equals("/duplIDCheck.member")) {// 아이디 중복 확인
-				System.out.println("닉네임 중복확인 수신확인");
+				
 				String nickname = request.getParameter("nickname");
 
 				boolean result = dao.isNickNameExist(nickname);
 				PrintWriter pw = response.getWriter();
 				pw.append(g.toJson(result));
-				System.out.println("멤버 컨트롤러에서 아이디(닉네임)"+nickname+"조회하고 나온 결과 : "+result);
+				
 
 			}else if (uri.equals("/isEmailExist.member")) {// 이메일 중복 확인
 				String email = request.getParameter("email");
 				
-				System.out.println("들어온 이메일 주소 : "+email);
+				
 				
 				
 				boolean result = dao.isEmailExist(email);
-				System.out.println("DAO에서 EMAIL 조회하고 나온 값 : "+result );
+				
 				PrintWriter pw = response.getWriter();
 				pw.append(g.toJson(result));
-				System.out.println(result);
+				
 
 			}
 			else if (uri.equals("/logout.member")) {
@@ -58,6 +58,15 @@ public class MemberController extends HttpServlet {
 				response.sendRedirect("/index.jsp");
 			}else if(uri.equals("/goJoinPage.member")) {  //회원가입 페이지로 이동 
 				response.sendRedirect("/signup.jsp");
+			}else if(uri.equals("/memberOut.member")) {
+				
+				String email = request.getParameter("email");
+				
+				int result = dao.memberOut(email);
+				
+				request.getSession().invalidate();
+				PrintWriter pw = response.getWriter();
+				pw.append(g.toJson(result));
 			}
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -75,16 +84,16 @@ public class MemberController extends HttpServlet {
 		MemberDTO dto =new MemberDTO();
 		Gson g= new Gson();
 		request.setCharacterEncoding("UTF-8");//post
-		System.out.println(uri);
+		
 		try {
 			if(uri.equals("/signup.member")) {
 				String nickname = request.getParameter("nickname");
 				String pw = request.getParameter("pw");
 				pw = EncryptUtils.SHA512(pw);
 				String email = request.getParameter("email");
-				System.out.println(email);
+				
 				String information = request.getParameter("info");
-				System.out.println(information);
+				
 				int result = dao.insert(new MemberDTO(nickname,pw,email,null,information,null));
 				
 				
@@ -97,18 +106,18 @@ public class MemberController extends HttpServlet {
 				response.sendRedirect("/index.jsp");
 			}else if(uri.equals("/login.member")) {
 				String email = request.getParameter("email");
-				System.out.println(email);
+				
 				String pw = request.getParameter("pw");
-				System.out.println(pw);
+				
 				pw = EncryptUtils.SHA512(pw);
 				
-				System.out.println("EMAIL PW DB에서 체크");
+				
 				boolean result = dao.isEmailPwExist(email, pw);
 				
 				if (result) {			
 					
 					//유저정보
-					System.out.println("유저정보 탐색");
+					
 					dto = dao.searchUser(email);			
 					HttpSession session = request.getSession();
 					session.setAttribute("loginID",dto.getId());
@@ -122,43 +131,35 @@ public class MemberController extends HttpServlet {
 				
 					PrintWriter pwriter = response.getWriter();
 					pwriter.append(g.toJson(result));
-					System.out.println(result);
+					
 				
 				
 				
 			}else if(uri.equals("/modified.member")){
 				 String id = (String)request.getSession().getAttribute("loginID");
 				 String pw = request.getParameter("pw");
-				 System.out.println(pw);
+				 
 				 pw = EncryptUtils.SHA512(pw);
 				 
 				 boolean result = dao.isModifiedPossible(id, pw);
 				 
-				 System.out.println("입력아이디 : " + id);
-				 System.out.println("입력 패스워드 : " + pw);
-				 System.out.println("비밀번호 확인 결과" + result);
-				 System.out.println((String)request.getSession().getAttribute("loginID"));
 				 
 				 PrintWriter pr = response.getWriter();
 				 pr.append(g.toJson(result));
 			
 			}else if(uri.equals("/modifiedOk.member")) {
-				System.out.println("수신확인");
+				
 				String id = request.getParameter("id");
 				String pw = request.getParameter("pw");
 				pw = EncryptUtils.SHA512(pw);
-				System.out.println("수정을 원하는 아이디" + id);
-				System.out.println("수정을 원하는 패스워드" + pw);
+				
 				
 				String email = (String)request.getSession().getAttribute("loginEmail");
-				System.out.println(email);
+				
 				int result = dao.modifiedUser(id, pw, email);
 				
 				
-				System.out.println("수정을 원하는 아이디" + id);
-				System.out.println("수정을 원하는 패스워드" + pw);
-				System.out.println("수정 결과값" + result);
-				System.out.println(email);
+				
 				
 				HttpSession session = request.getSession();
 				session.setAttribute("loginID",id);

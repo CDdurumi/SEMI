@@ -11,6 +11,7 @@ pageEncoding="UTF-8"%>
     <meta name="author" content="Mark Otto, Jacob Thornton, and Bootstrap contributors">
     <meta name="generator" content="Hugo 0.88.1">
     <title>쉼표 | 마이페이지</title>
+    <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
@@ -1077,6 +1078,7 @@ $("#modal_loginBtn").on("click",function(){
                                     <div class="row btn" id="btn">
                                         <div class="col-12 text-center" >
                                         <button type="button" class="btn btn-primary " id="modify">수정하기</button>
+                                        <button type="button" class="btn btn-danger " id="memberoutBtn">탈퇴하기</button>
                                         <button type="button" class="btn btn-primary " id="ok" style="display:none;">완료</button>
                                         <button type="button" class="btn btn-primary check " id="checkpw" style="display:none;">확인</button>
                                         <input type="button" class="btn btn-primary " value="취소" id="back" style="display:none;">
@@ -1179,13 +1181,46 @@ $("#modal_loginBtn").on("click",function(){
         }
     })
     
-    //컨텐츠 숨김 나타냄 회원정보 수정
+    //탈퇴
+  	$("#memberoutBtn").on("click",function(){
+  		Swal.fire({
+  		  title: '회원탈퇴',
+  		  text: "정말 쉼표를 떠나시겠습니까 ?",
+  		  icon: 'warning',
+  		  showCancelButton: true,
+  		  confirmButtonColor: '#3085d6',
+  		  cancelButtonColor: '#d33',
+  		  confirmButtonText: '네, 탈퇴할게요!',
+  		  cancelButtonText: '아뇨',
+  		}).then((result) => {
+  		  if (result.isConfirmed) {
+  		    Swal.fire(
+  		      '탈퇴 완료!',
+  		      '계정정보가 삭제되었습니다.',
+  		      'success'
+  		    )
+  		    $.ajax({
+    				url:"/memberOut.member",
+    				type:"get",
+    				data:{
+    					email:'${loginEmail}'
+					},
+    				dataType:"json"
+    			}).done(function(resp){
+    				location.href= "index.jsp";
+    			})
+  		  }
+  		})
+  	});
+
+    
+   //컨텐츠 숨김 나타냄 회원정보 수정
     $("#modify").on("click",function(){
         $(".content").css("display","none"); //모든 컨텐츠
         $("#back").css("display","inline"); //취소버튼
         $("#modify").css("display","none");   //수정하기 버튼
         $(".check").css("display","inline"); //비밀번호 확인 입력창
-       
+        $("#memberoutBtn").css("display","none");// 회원탈퇴
         
         $("#checkpw").on("click",function(){
             $.ajax({
@@ -1369,6 +1404,7 @@ $("#modal_loginBtn").on("click",function(){
         
 
     $("#back").on("click",function(){
+    	$("#memberoutBtn").css("display","inline");// 회원탈퇴
         $(".content").css("display","inline"); 
         $("#modify").css("display","inline");
         $("#back").css("display","none");
