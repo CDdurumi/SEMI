@@ -1,6 +1,7 @@
 package controllers;
 
 import java.io.IOException;
+import java.io.PrintWriter;
 import java.util.List;
 
 import javax.servlet.ServletException;
@@ -12,13 +13,9 @@ import javax.servlet.http.HttpServletResponse;
 import com.google.gson.Gson;
 
 import dao.BoardDAO;
-import dao.FilesDAO;
-import dao.GoodDAO;
-import dao.JjimDAO;
 import dao.MemberDAO;
-import dao.ReplyDAO;
 import dto.BoardDTO;
-import dto.FilesDTO;
+import dto.MemberDTO;
 
 @WebServlet("*.admin")
 public class AdminController extends HttpServlet {
@@ -29,6 +26,8 @@ public class AdminController extends HttpServlet {
 		request.setCharacterEncoding("UTF-8");// post 방식 한글 안깨지게
 		
 		BoardDAO boardDao = BoardDAO.getInstance();
+		MemberDAO memberDao = MemberDAO.getInstance();
+		MemberDTO dto =new MemberDTO();
 		Gson g = new Gson();
 		
 		String uri = request.getRequestURI();
@@ -94,6 +93,36 @@ public class AdminController extends HttpServlet {
 				request.setAttribute("noticeList", noticeList);
 				
 				request.getRequestDispatcher("/adminPage.jsp").forward(request, response);
+			}else if(uri.equals("/searchMember.admin")){
+				System.out.println("멤버정보 수신확인");
+				
+				int cpage = Integer.parseInt(request.getParameter("page"));
+				System.out.println(cpage);
+				List<MemberDTO> list = memberDao.selectByMemberPage(cpage);
+				System.out.println(list);
+				
+				PrintWriter pw = response.getWriter();
+				
+				pw.append(g.toJson(list));
+			}else if(uri.equals("/adiminPageTap2Search.admin")) {
+				
+				String searchOption = request.getParameter("searchOption"); //검색 옵션(id, title, contents)
+				System.out.println(searchOption);
+				String contents = request.getParameter("Membercontents"); //검색 내용
+				System.out.println(contents);
+				
+				if(searchOption.equals("searchNick")) {
+					System.out.println("닉네임으로 검색 실행");
+					dto = memberDao.searchUserId(contents);
+				}else if(searchOption.equals("searchEmail")) {
+					System.out.println("이메일으로 검색 실행");
+					dto = memberDao.searchUser(contents);
+				}
+				
+				PrintWriter pw = response.getWriter();
+
+				pw.append(g.toJson(dto));
+				//공지글 리스트
 			}
 
 		}catch(Exception e) {
