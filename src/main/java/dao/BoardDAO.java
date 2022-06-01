@@ -63,14 +63,14 @@ public class BoardDAO {
 	//게시글 검색
 	public List<BoardDTO> search(int cpage, String serchOption, String ccontents , String boardOption) throws Exception {
 		// 페이지 당 게시글의 번호 세팅.(한 페이지에 20개의 게시글 씩)
-		int start = cpage * 10 - 9;
+		int start = (cpage-1) * 20 +1;
 		int end = cpage * 20;
 		
 		String sql = "select * from "
-								+ "(select row_number() over(order by write_date ) line, all_board.* "
+								+ "(select row_number() over(order by write_date ) line, row_number() over(order by write_date desc) num, all_board.* "
 								+ "from all_board "
 								+ "where all_board_seq like '"+boardOption+"%' and "+serchOption+" like '%"+ccontents+"%' order by line desc) "
-					+ "where line between ? and ? and editor_type != 'n'";
+					+ "where num between ? and ? and editor_type != 'n'";
 
 		System.out.println(sql);
 		try (Connection con = this.getConnection();
@@ -528,10 +528,10 @@ public class BoardDAO {
 		int end = cpage * 20;
 
 		// 한 페이지에 게시글이 20개씩 보여지도록 하기 위해서 row_number를 활용하는데, 서브 쿼리를 활용해서 select 해준다.
-		String sql = "select * from (select row_number() over(order by write_date ) line, all_board.* "
+		String sql = "select * from (select row_number() over(order by write_date ) line, row_number() over(order by write_date desc) num, all_board.* "
 										+ "from all_board "
 										+ "where all_board_seq like '"+boardOption+"%' and editor_type != 'n' order by line desc) "
-					+ "where line between ? and ?";
+					+ "where num between ? and ?";
 						
 		try (Connection con = this.getConnection(); PreparedStatement pstat = con.prepareStatement(sql);) {
 			pstat.setInt(1, start);
