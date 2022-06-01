@@ -565,7 +565,7 @@ public class BoardDAO {
 	public List<BoardDTO> selectByLikeCount(String boardOption) throws Exception {
 
 		int start = 1;
-		int end = 6;
+		int end = 5;
 					  
 		String sql = "select * from (select row_number() over(order by like_count desc, view_count desc) line, all_board.* from all_board where all_board_seq like '"+boardOption+"%' and editor_type != 'n') where line between ? and ?";
 		try (Connection con = this.getConnection(); PreparedStatement pstat = con.prepareStatement(sql);) {
