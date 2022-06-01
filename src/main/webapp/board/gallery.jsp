@@ -527,29 +527,33 @@ select{
 </div>
 
 <div class="modal" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-<div class="modal-dialog modal-right" role="document">
-<div class="modal-content">
-  <div class="modal-header">
-    <h5 class="modal-title text-center" id="exampleModalLabel">로그인</h5>
-    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-  </div>
-  <div class="modal-body">
-    <div class="card-details">
-        <input type="text" id="id-input" placeholder="id">
-        <i class="fa fa-envelope"></i>
+  <div class="modal-dialog modal-right" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title text-center" id="exampleModalLabel">로그인</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <div class="card-details">
+            <input type="text" id="id-input" placeholder="email" name="email" required>
+            <i class="fa fa-envelope"></i>
+        </div>
+        <div class="card-details">
+            <input type="password" id="password-input" placeholder="password" name="pw" required>
+            <i class="fa fa-lock"></i>
+            <span><small class="fa fa-eye-slash passcode"></small></span>
+        </div>
+        <div>
+        <span id="idpw_check"></span>
+        	</div>
+      
+      </div>
+      <div class="modal-footer">
+      <button type="button" class="btn btn-primary" id="modal_loginBtn">로그인</button>
+        <a href="/signup.jsp"><button type="button" class="btn btn-outline-primary">회원가입</button></a>
+      </div>
     </div>
-    <div class="card-details">
-        <input type="password" id="password-input" placeholder="password">
-        <i class="fa fa-lock"></i>
-        <span><small class="fa fa-eye-slash passcode"></small></span>
-    </div>
   </div>
-  <div class="modal-footer">
-  	<button type="button" class="btn btn-primary" id="modal_loginBtn">로그인</button>
-    <button type="button" class="btn btn-outline-primary">회원가입</button>
-  </div>
-</div>
-</div>
 </div>
 <script>
 $("#login").on("click",function(){
