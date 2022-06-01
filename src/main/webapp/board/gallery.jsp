@@ -10,7 +10,7 @@ pageEncoding="UTF-8"%>
 <meta name="description" content="">
 <meta name="author" content="Mark Otto, Jacob Thornton, and Bootstrap contributors">
 <meta name="generator" content="Hugo 0.88.1">
-<title>Insert title here</title>
+<title>쉼표 | 여행후기</title>
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet"
     integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
@@ -627,7 +627,7 @@ $("#modal_loginBtn").on("click",function(){
 					<div class="col-12 col-sm-6 col-md-3" id="img">
 						<a href = "/detailView.board?cpage=1&seq=${i.all_board_seq}&click=ok" >
 							<img src="${profilePath}${j.sys_name}" alt=".." class="rounded-circle w-100 h-100" style="box-shadow: 5px 5px 5px 5px gray;">
-							<div class="mask"><p1>${i.title}</p1></div>
+							<div class="mask text-center"><p1 style="color:black; font-size:30px;">${i.title}</p1></div>
 						</a>
 						
 					</div>
