@@ -214,7 +214,7 @@ public class MessageDAO {
 		int end = cpage * 20;
 
 		// 한 페이지에 게시글이 20개씩 보여지도록 하기 위해서 row_number를 활용하는데, 서브 쿼리를 활용해서 select 해준다.
-		String sql = "select * from (select row_number() over(order by write_date ) line, all_board.* from all_board where all_board_seq like '"+boardOption+"%' and editor_type != 'n' and (id=?) order by line desc) where (line between ? and ?)";
+		String sql = "select * from (select row_number() over(order by write_date ) line, all_board.* from all_board where all_board_seq like '"+boardOption+"%'  and (id=?) order by line desc) where (line between ? and ?)";
 						
 		try (Connection con = this.getConnection(); PreparedStatement pstat = con.prepareStatement(sql);) {
 			pstat.setString(1, nick);
