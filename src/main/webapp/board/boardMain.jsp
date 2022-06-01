@@ -73,7 +73,7 @@
         }
 
         a {
-            text-decoration: none
+           text-decoration: none 
         }
 
         .header {
@@ -457,6 +457,15 @@
 .fa-thumbs-up{
 	color:rgb(255,208,0);
 }
+.goview{
+
+	color:black;
+}
+.goview:hover{
+color:#0d6efd !important;
+ text-decoration: underline;
+    text-underline-position: under; 
+}
 .wrap12{
  
 height:530px;
@@ -489,6 +498,7 @@ font-weight:bold;
     text-align:left;
   }
 }
+
     </style>
 </head>
 
@@ -648,9 +658,9 @@ $("#modal_loginBtn").on("click",function(){
                             <c:forEach var="i" items="${hotlist }">
                             
                                 <div class="col-12 border border-2 rounded ">
-                            <a href="/detailView.board?cpage=${cpage}&seq=${i.all_board_seq}&click=ok" style="color:black; font-weight:bold;">
+                            
                                     <div class="row m-0">
-                                        <div class="col-9 col-md-9 m-0 free_title ididid">${i.title }</div>
+                                        <div class="col-9 col-md-9 m-0 free_title ididid"><a href="/detailView.board?cpage=${cpage}&seq=${i.all_board_seq}&click=ok" class="goview" style="font-weight:bold;">${i.title }</a></div>
                                         <!-- ellipsis 밑에 forEach로 하니까 한줄만 추가했습니다.  -->
                                         <div class="col-3 col-md-3">
                                             <div class="row ">
@@ -658,7 +668,6 @@ $("#modal_loginBtn").on("click",function(){
                                             </div>
                                         </div>
                                     </div>
-                                 </a>
                                 </div>
                                
                                 </c:forEach>
@@ -708,7 +717,7 @@ $("#modal_loginBtn").on("click",function(){
 												<c:when test="${count eq 1}">
 													<div class="carousel-item active ">
 														<div class="card w-100 border-0" style="width: 18rem;">
-															<a
+															<a 
 																href="/detailView.board?cpage=1&seq=${i.all_board_seq}&click=ok"><img
 																src="${profilePath}${j.sys_name}" class="d-block w-100"
 																alt="..."></a>
@@ -898,14 +907,14 @@ $("#modal_loginBtn").on("click",function(){
 <!--         여기는 공지글 -->
         <c:forEach var="i" items="${noticeList }">
         <div class="col-12  board">
-        <a href="/detailView.board?cpage=${cpage}&seq=${i.all_board_seq}&click=ok" style="color:black">
+        
             <div class="row m-0 border border-2 rounded board_row ">
             	
                 <div class="col-1 col-md-1 d-none d-md-block p-0">
                 <p id="notice">공지</p>
                 </div>
                	<div class="col-7 col-md-5 m-0 title ididid " style="text-align:left">
-               		${i. title }
+               		<a href="/detailView.board?cpage=${cpage}&seq=${i.all_board_seq}&click=ok" class="goview">${i. title }</a>
                	</div>
                 <div class="col-3 col-md-2 p-0 ellipsis text-center ididid">${i.id }</div>
                 <div class="col-md-2 d-none d-md-block p-0 "><fmt:formatDate value="${i.write_date }" pattern="yy-MM-dd"/></div>
@@ -913,7 +922,7 @@ $("#modal_loginBtn").on("click",function(){
                 <div class="col-2 col-md-1 p-0">${i.like_count}</div>
                 
             </div>
-            </a>
+            
         </div>
         </c:forEach>
         
@@ -921,12 +930,12 @@ $("#modal_loginBtn").on("click",function(){
 <!--         여기는 목록 -->
         <c:forEach var="i" items="${list }">
         <div class="col-12  board">
-        <a href="/detailView.board?cpage=${cpage}&seq=${i.all_board_seq}&click=ok" style="color:black">
+        
             <div class="row m-0 border border-2 rounded board_row ">
             	
                 <div class="col-1 col-md-1 d-none d-md-block p-0">${i.line}</div>
                	<div class="col-7 col-md-5 m-0 title ididid "style="text-align:left">
-               		${i. title }
+               		<a href="/detailView.board?cpage=${cpage}&seq=${i.all_board_seq}&click=ok" class="goview">${i. title }</a>
                	</div>
                 <div class="col-3 col-md-2 p-0 ididid text-center">${i.id }</div>
                 <div class="col-md-2 d-none d-md-block p-0 "><fmt:formatDate value="${i.write_date }" pattern="yy-MM-dd"/></div>
@@ -934,7 +943,7 @@ $("#modal_loginBtn").on("click",function(){
                 <div class="col-2 col-md-1 p-0">${i.like_count}</div>
                 
             </div>
-            </a>
+           
         </div>
         </c:forEach>
         
@@ -959,13 +968,13 @@ $("#modal_loginBtn").on("click",function(){
         </div>
         </header>
   <div class="row dummy2" style="height:30px"></div>
-        <footer class="mt-auto text-black-50" style="background-color:#f5f5f7">
-        
-        	<div class="row">
-        		<div class="d-none d-lg-block col-5 footer1">
+        <footer class="mt-auto text-black-50" >
+        	
+        	<div class="row" style="border-top:1px solid #c3c3c3; border-bottom:1px solid #c3c3c3; background-color:#f5f5f7; max-width:1400px; margin:auto;">
+        		<div class="d-none d-lg-block col-5 footer1" style="margin-top:15px; margin-bottom:15px">
         			<img src="/imgsrc/footerlogo2.png">
         		</div>
-        		<div class="col-12 col-lg-7 footer2">
+        		<div class="col-12 col-lg-7 footer2" style="margin-top:15px; margin-bottom:15px">
         			<div class="col-12">
         				프로젝트 쉼표
         			</div>
@@ -977,7 +986,7 @@ $("#modal_loginBtn").on("click",function(){
         			</div>
         		</div>
         	</div>
-        	
+   
         </footer>
        
          </div>

@@ -169,7 +169,6 @@
         }
         .height-100{
         	padding-top:50px;
-            height:100vh;
             max-width:500px;
             margin:auto;         
         }
@@ -506,7 +505,7 @@
             <div class="row signup_input">
          		<div class ="col-12 input">
                     <div class="card-details">
-                        <input type="text" id="email_input" placeholder="이메일" name="email">
+                        <input type="text" id="email_input" placeholder="이메일 : durumi@naver.com" name="email">
                         <i class="fa fa-envelope"></i>
                     </div>
          		</div>         		
@@ -519,7 +518,7 @@
          	<div class="row signup_input">
          		<div class ="col-12 input">
                     <div class="card-details">
-                        <input type="text" id="nickname_input" placeholder="닉네임" name="nickname">
+                        <input type="text" id="nickname_input" placeholder="닉네임 : 한글,영문, 숫자 2-10자" name="nickname">
                         <i class="fa fa-user"></i>
                     </div>
          		</div>         		
@@ -532,7 +531,7 @@
          	<div class="row signup_input">
          		<div class ="col-12 input">
                     <div class="card-details">
-                        <input type="password" class="passwords passwords1_input" id="form_passwords1_input" placeholder="비밀번호" name="pw">
+                        <input type="password" class="passwords passwords1_input" id="form_passwords1_input" placeholder="비밀번호 : 숫자,영문,특수문자 8~16자" name="pw">
                         <i class="fa fa-lock"></i>
                     </div>
          		</div>
@@ -609,13 +608,14 @@
         </div>
                
 </div>
-<footer class="mt-auto text-black-50" style="background-color:#f5f5f7">
-        	<hr>
-        	<div class="row">
-        		<div class="d-none d-lg-block col-5 footer1">
+<div class="row dummy2" style="height:30px"></div>
+<footer class="mt-auto text-black-50" >
+        	
+        	<div class="row" style="border-top:1px solid #c3c3c3; border-bottom:1px solid #c3c3c3; background-color:#f5f5f7; max-width:1400px; margin:auto;">
+        		<div class="d-none d-lg-block col-5 footer1" style="margin-top:15px; margin-bottom:15px">
         			<img src="/imgsrc/footerlogo2.png">
         		</div>
-        		<div class="col-12 col-lg-7 footer2">
+        		<div class="col-12 col-lg-7 footer2" style="margin-top:15px; margin-bottom:15px">
         			<div class="col-12">
         				프로젝트 쉼표
         			</div>
@@ -627,8 +627,9 @@
         			</div>
         		</div>
         	</div>
-        	<hr>
+   
         </footer>
+        <div class="row dummy2" style="height:30px"></div>
 </form>
 
  <!--top 버튼-->
@@ -875,16 +876,19 @@
     // input id, input pw, password eyes sign up
     let outer_eye = document.querySelector(".card-details span");
     let eye = document.querySelector(".passcode");
+    let input_pw = document.querySelector("#form_passwords1_input");
     let input = document.querySelector("#form_passwords_input");
     outer_eye.addEventListener('click',function(){
 
        if(input.type=='password'){
            input.type="text"; 
+           input_pw.type="text";
            eye.classList.remove('fa-eye-slash');
            eye.classList.add('fa-eye');
          input.classList.add('warning');
         }else{
-          input.type="password"; 
+          input.type="password";
+          input_pw.type="password";
           eye.classList.remove('fa-eye');
           eye.classList.add('fa-eye-slash');
           input.classList.remove('warning');

@@ -750,13 +750,13 @@ $("#modal_loginBtn").on("click",function(){
                 </div>
             </div>
         </div>
-        <footer class="mt-auto text-black-50" style="background-color:#f5f5f7;margin:auto; max-width:1400px;">
+     <footer class="mt-auto text-black-50" >
         	
-        	<div class="row">
-        		<div class="d-none d-lg-block col-5 footer1">
+        	<div class="row" style="border-top:1px solid #c3c3c3; border-bottom:1px solid #c3c3c3; background-color:#f5f5f7; max-width:1400px; margin:auto;">
+        		<div class="d-none d-lg-block col-5 footer1" style="margin-top:15px; margin-bottom:15px">
         			<img src="/imgsrc/footerlogo2.png">
         		</div>
-        		<div class="col-12 col-lg-7 footer2">
+        		<div class="col-12 col-lg-7 footer2" style="margin-top:15px; margin-bottom:15px">
         			<div class="col-12">
         				프로젝트 쉼표
         			</div>
@@ -768,7 +768,7 @@ $("#modal_loginBtn").on("click",function(){
         			</div>
         		</div>
         	</div>
-        
+   
         </footer>
         <div class="row dummy2" style="height:30px"></div>
     </form>
