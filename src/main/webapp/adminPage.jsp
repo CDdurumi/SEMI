@@ -4,6 +4,7 @@ pageEncoding="UTF-8"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 
 <!DOCTYPE html>
+
 <html>
 
 <head>
@@ -504,7 +505,12 @@ pageEncoding="UTF-8"%>
             padding-top: 10px;
             height: 100%;
         }
-        
+        .member_boardbox2{
+            /* text-align: center; */
+            height: 50px;
+            margin-bottom: 3px;
+            padding: 0px;
+        }
 
         /*--계정관리---------------------------------------------------------------------------------------*/
 	.newcheck{
@@ -539,7 +545,12 @@ pageEncoding="UTF-8"%>
         .btn{
 /*             margin-top: 20px; */
         }
-
+		.member_board{
+		    height: 50px;
+            margin-bottom: 3px;
+			width:600px;
+/* 			align:center; */
+		}
 /*--top버튼----------------------------------------------------------------*/
 
 #myBtn {
@@ -572,15 +583,7 @@ pageEncoding="UTF-8"%>
  	min-width:90px; 
 /* 	padding-right:25px;  */
  }
-        .goview{
 
-	color:black;
-}
-.goview:hover{
-color:#0d6efd !important;
- text-decoration: underline;
-    text-underline-position: under; 
-}
 
 
 select{
@@ -639,7 +642,7 @@ $(function(){
         <div>
             <c:choose>
             <c:when test="${loginID !=null}">
-                  ${loginID }님 안녕하세요 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                  <div class="d-md-inline d-none"> ${loginID }님 안녕하세요 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</div>
                <a href="/logout.member" class=""  >logout</a>               
             </c:when>
       
@@ -671,7 +674,7 @@ $(function(){
                     <c:choose>
 						<c:when test="${loginID !=null}">
 							<a href="/goMyPage.mpg" class="nav1_link"> <i class='bx bx-user nav1_icon'></i> <span class="nav1_name">마이페이지</span> </a>
-							
+							<a href="/goMyPage.mpg" class="nav1_link"> <i class='bx bx-calendar nav1_icon'></i> <span class="nav1_name">일정관리</span> </a>
 						</c:when>
 		
 						<c:otherwise>
@@ -680,7 +683,7 @@ $(function(){
 					</c:choose>
 					<c:choose>
 						<c:when test="${loginIsAdmin == 'Y'}">
-               				<a href="/adiminPage.admin" class="nav1_link active"> <i class='bx bx-hard-hat nav1_icon'></i> <span class="nav1_name">관리자페이지</span> </a>
+               				<a href="/adiminPage.admin" class="nav1_link"> <i class='bx bx-hard-hat nav1_icon'></i> <span class="nav1_name">관리자페이지</span> </a>
                 		</c:when>
                 	
                 		<c:otherwise>
@@ -825,7 +828,7 @@ $("#modal_loginBtn").on("click",function(){
 				          	
 				            <input class="form-control me-2" type="search" placeholder="검색어를 입력해주세요." aria-label="Search" name="contents">
 				            <button class="btn btn-outline-secondary btn-sm" type="submit">Search</button>&nbsp;
-				            <button class="btn btn-outline-secondary btn-sm" type="button" id ="cancel"><i class="fa-solid fa-eraser"></i></button>&nbsp;
+				            <button class="btn btn-outline-secondary btn-sm" type="button" id ="cancel">x</button>&nbsp;
 				            		<c:choose>
 										<c:when test="${loginID !=null}">
 											<button type="button" class="btn btn-primary btn-sm" id="writeBtn" style="white-space:nowrap;"><i class="fa-solid fa-pen-to-square"></i>글 작성하기</button>
@@ -868,7 +871,7 @@ $("#modal_loginBtn").on("click",function(){
 		                <p class="notice">공지</p>
 		                </div>
 		               	<div class="col-7 col-md-5 m-0 title ididid " style="text-align:left">
-		               		<a href="/detailView.board?cpage=${cpage}&seq=${i.all_board_seq}&click=ok" style="color:black" id="${i.all_board_seq}" class="goview goview4"></a>
+		               		<a href="/detailView.board?cpage=${cpage}&seq=${i.all_board_seq}&click=ok" style="color:black">${i. title }</a>
 		               	</div>
 		                <div class="col-3 col-md-2 p-0 ellipsis text-center ididid">${i.id }</div>
 		                <div class="col-md-2 d-none d-md-block p-0 text-center"><fmt:formatDate value="${i.write_date }" pattern="yy-MM-dd"/></div>
@@ -878,40 +881,7 @@ $("#modal_loginBtn").on("click",function(){
 		            </div>
 		        </div>
 		        </c:forEach>
-		         <script> 	
-        	let title ;
-     
-             <c:forEach var="s" items="${noticeList }">
-         	   	
-
-         	   title = '${s.title}';
-         	   
-            	$.ajax({
-            		url:"/replycnt.board", 
-            	type:"post", 
-            	data:{seq:'${s.all_board_seq}'},
-            	dataType:"json" 
-            	}).done(function(resp){ 
-            		console.log("${s.title} :" +resp); 
-            		
-             	   	$(".goview4").each(function(i, items){
-             	   		all_board_seq = $(this).attr("id");
-             	   		if(all_board_seq == "${s.all_board_seq}"){
-             	   			$(this).text( "${s.title} (" +resp +")");
-             	   		}
-
-
-             	   		
-             	   	})
-
-            		
-            	}) 
-            	
-           
-               	
-               
-   			  </c:forEach>
-   			</script>
+		        
 		        
 <!-- 				        여기는 목록 -->
 		        <c:forEach var="i" items="${list }">
@@ -920,7 +890,7 @@ $("#modal_loginBtn").on("click",function(){
 		            	
 		                <div class="col-1 col-md-1 d-none d-md-block p-0 text-center">${i.line}</div>
 		               	<div class="col-7 col-md-5 m-0 title ididid "style="text-align:left">
-		               		<a href="/detailView.board?cpage=${cpage}&seq=${i.all_board_seq}&click=ok" id="${i.all_board_seq}" class="goview goview3" style="color:black"></a>
+		               		<a href="/detailView.board?cpage=${cpage}&seq=${i.all_board_seq}&click=ok" style="color:black">${i. title }</a>
 		               	</div>
 		                <div class="col-3 col-md-2 p-0 ididid text-center">${i.id }</div>
 		                <div class="col-md-2 d-none d-md-block p-0 text-center"><fmt:formatDate value="${i.write_date }" pattern="yy-MM-dd"/></div>
@@ -930,40 +900,7 @@ $("#modal_loginBtn").on("click",function(){
 		            </div>
 		        </div>
 		        </c:forEach>
-   <script> 	
-        	title ;
-     
-             <c:forEach var="s" items="${list }">
-         	   	
 
-         	   title = '${s.title}';
-         	   
-            	$.ajax({
-            		url:"/replycnt.board", 
-            	type:"post", 
-            	data:{seq:'${s.all_board_seq}'},
-            	dataType:"json" 
-            	}).done(function(resp){ 
-            		console.log("${s.title} :" +resp); 
-            		
-             	   	$(".goview3").each(function(i, items){
-             	   		all_board_seq = $(this).attr("id");
-             	   		if(all_board_seq == "${s.all_board_seq}"){
-             	   			$(this).text( "${s.title} (" +resp +")");
-             	   		}
-
-
-             	   		
-             	   	})
-
-            		
-            	}) 
-            	
-           
-               	
-               
-   			  </c:forEach>
-   			</script>
 	        </div>
 	        
 			<div class="row">
@@ -990,9 +927,50 @@ $("#modal_loginBtn").on("click",function(){
 
       <!--탭2-------------------------------------------------------->
       <div class="tab-pane fade" id="member-tab-pane" role="tabpanel" aria-labelledby="member-tab" tabindex="0">
-        계정
-      </div>
-
+      
+				<div class="col-12" id="searchbar" >
+				    <nav class="navbar bg">
+				        <div class="container-fluid">
+				          <a class="navbar-brand"> </a>
+				          <div class="d-flex">
+				          		<input type="hidden" value="1" name="cpage">
+									
+								<select name="searchMember" id="searchMember">
+				                        <option value="searchNick" id="searchNick">
+				                            닉네임
+				                        </option>
+				                        <option value="searchEmail" id="searchEmail">
+				                            이메일
+				                        </option>	                        		                        
+								</select>
+				          	
+				          	
+				            <input class="form-control me-2" type="search" placeholder="검색어를 입력해주세요." aria-label="Search" id="Membercontents" name="contents">
+				            <button class="btn btn-outline-secondary btn-sm" type="button" id="search-member">Search</button>&nbsp;
+				            <button class="btn btn-outline-secondary btn-sm" type="button" id ="cancel">x</button>&nbsp;
+				          </div>
+				          
+				        </div>
+				      </nav>
+				</div>
+<!-- 				padding 구간 -->
+				<div class="row m-0" id="board_menu" ></div>
+<!-- 				멤버 목록 -->
+		        <div class="row m-0 member_boardbox" id="member_boardbox">
+		        	<div class="row" style="padding-left:30px; padding-right:0px;">
+		                <div class="row " id="member_menu_text" style="text-align:center;">
+		                    <div class="col-6 col-lg-3 col-sm-6 d-lg-block p-0 text-center">아이디</div>
+		                    <div class="col-6 col-lg-5 col-sm-6" ><p class="mx-3">이메일</p></div>
+		                    <div class="col-lg-4 d-none d-lg-block p-0 text-center">가입일</div>
+		                </div>
+		           </div>
+		             	<div class="col-12 member_boardtext" id="member_boardtext">
+                                
+   							<!-- 멤버리스트 반복문위치 -->
+                        </div>
+		        </div>
+		</div>	
+			
       <!--탭3---------------------------------------------------------->
       <div class="tab-pane fade" id="contact-tab-pane" role="tabpanel" aria-labelledby="contact-tab" tabindex="0">탭3</div>
     </div>
@@ -1014,7 +992,7 @@ $("#modal_loginBtn").on("click",function(){
       	받는 사람 | <input type="text" placeholder="받는 사람 ID" id="modal_receiver"><p></p>
       	<input type="text" placeholder="제목을 입력하세요" id="modal_title" name="title" style="width:100%">
       	<p>
-      		
+      	
       	</p>
       	
         <textarea style="width:100%; min-height:150px" placeholder="내용을 입력하세요" id="modal_msgContents"></textarea>
@@ -1060,9 +1038,9 @@ $("#modal_loginBtn").on("click",function(){
     
     
     //탭2 클릭 이벤트
-    $("#member-tab").on("click",function(){
-		alert("미완성된 기능입니다.")
-    })
+//     $("#member-tab").on("click",function(){
+// 		alert("미완성된 기능입니다.")
+//     })
     
     
     
@@ -1434,19 +1412,18 @@ $("#modal_loginBtn").on("click",function(){
      document.body.scrollTop = 0; 
      document.documentElement.scrollTop = 0; 
    }
-	//쪽지 스크립트(인피티니스크롤미적용)
+	//멤버 스크립트
 	
-	let isReceiveClick = true;
+	let isMemberClick = true;
 	
-	
-	$("#message-tab").on("click", function(){
-		if(isReceiveClick){
-			$(".receive_msgtext").remove();
-			let msgText = $("<div class='col-12 receive_msgtext'>");
-			$(".receive_msgbox").append(msgText);
+	$("#member-tab").on("click", function(){
+		if(isMemberClick){
+			$(".member_boardtext").remove();
+			let memberText = $("<div class='col-12 member_boardtext'>");
+			$(".member_boardbox").append(memberText);
 		
 			let page = 1;  //페이징과 같은 방식이라고 생각하면 된다.
-	        getReceiveList(page);
+	        getMemberList(page);
 	        page++;
 //				if(isAjaxing){
 //					return;
@@ -1456,13 +1433,13 @@ $("#modal_loginBtn").on("click",function(){
 		 	  $(window).scroll(function(){   //스크롤이 최하단 으로 내려가면 리스트를 조회하고 page를 증가시킨다.
 		  	  	if($(window).scrollTop() >= $(document).height() - $(window).height()){
 //			  	        alert(page)
-		  	  		getReceiveList(page);
+		  	  		getMemberList(page);
 		   	        page++;   
 //		                console.log(page);
 		    	 } 
 		 	   });
 		 	   
-		 	   isReceiveClick = false;
+		 	   isMemberClick = false;
 		}else{
 			
 		}
@@ -1472,52 +1449,42 @@ $("#modal_loginBtn").on("click",function(){
 	
 	
 	
-	 function getReceiveList(pape){
+	 function getMemberList(pape){
 		let page = pape;
-
 		$.ajax({
-           url : '/receiveMsgBox.mpg',
+           url : '/searchMember.admin',
            type : 'POST',
            data : {page : page},
            dataType : 'json'
       }).done(function(resp){
 //			$(".receive_msgboard2").remove();
-		console.log(resp);
 //			if()
+		console.log(resp);
 		for(let i = 0; i < resp.length; i++){
 			
-			let msgDiv = $("<div class='col-12 receive_msgboard2'>");
-			let msgDiv1 = $("<div class='row m-0 border border-2 rounded board_row '>");
+			let memberDiv = $("<div class='col-12 member_boardbox2'>");
+			let memberDiv1 = $("<div class='row m-0 border border-2 rounded board_row '>");
 			
-			let msgDiv2 = $("<div class='col-md-2 col-lg-1 d-none d-lg-block p-0'>");
-			msgDiv2.text(resp[i].line);
+			let memberDiv2 = $("<div class='col-6 col-lg-3 col-sm-6 d-lg-block p-0 text-center'>");
+			memberDiv2.text(resp[i].id);
 			
-			let msgDiv3 = $("<div class='col-8 col-md-8 col-lg-5 m-0 title ellipsis p-0'>");
-			let msgSpan = $("<span>");
-			let msgHref = $("<a href='detailMsg.mpg?message_seq="+resp[i].message_seq+"'>");
-			msgHref.text(resp[i].title);
+			let memberDiv3 = $("<div class='col-6 col-lg-5 col-sm-6 m-0 title ellipsis p-0 text-center'>");
+			memberDiv3.text(resp[i].email);
 			
-			let msgDiv4 = $("<div class='col-4 col-md-4 col-lg-2 p-0 ellipsis text-center'>");
-			let msgSpan2 = $("<span>")
-			msgSpan2.text(resp[i].sender);
 			
-			let msgDiv5 = $("<div class='col-md-2 col-lg-4 d-none d-lg-block p-0 text-center'>");
-			msgDiv5.text(resp[i].date);
+			let memberDiv4 = $("<div class='col-lg-4 d-none d-lg-block p-0 text-center'>");
+			memberDiv4.text(resp[i].information);
 			
 			
 			
-			$(".receive_msgtext").append(msgDiv);
-			msgDiv.append(msgDiv1);
-			msgDiv1.append(msgDiv2);
-			msgDiv1.append(msgDiv3);
-			msgDiv3.append(msgSpan);
-			msgSpan.append(msgHref);
-			msgDiv1.append(msgDiv4);
-			msgDiv4.append(msgSpan2);
-			msgDiv1.append(msgDiv5);
+			$(".member_boardtext").append(memberDiv);
+			memberDiv.append(memberDiv1);
+			memberDiv1.append(memberDiv2);
+			memberDiv1.append(memberDiv3);
+			memberDiv1.append(memberDiv4);
 			
-			msgDiv.hide();
-            msgDiv.fadeIn(1500);
+			memberDiv.hide();
+			memberDiv.fadeIn(1500);
             
 		}
 //			setTimeout(function(){isAjaxing = false;}, 100000);
@@ -1634,6 +1601,47 @@ $("#modal_sendmsg").on("click", function(){
     	})
     }
 })
+//멤버 검색하기
+$("#search-member").on("click",function(){
+	$(".member_boardtext").remove();
+	let memberText = $("<div class='col-12 member_boardtext'>");
+	$(".member_boardbox").append(memberText);
+
+	$.ajax({
+		url:"adiminPageTap2Search.admin",
+		type:"get",
+		data:{
+			searchOption : $("#searchMember").val(),
+			Membercontents : $("#Membercontents").val()
+		},
+		dataType:"json"
+	}).done(function(resp){
+		let memberDiv = $("<div class='col-12 member_boardbox2'>");
+		let memberDiv1 = $("<div class='row m-0 border border-2 rounded board_row '>");
+		
+		let memberDiv2 = $("<div class='col-6 col-lg-3 col-sm-6 d-lg-block p-0 text-center'>");
+		memberDiv2.text(resp.id);
+		
+		let memberDiv3 = $("<div class='col-6 col-lg-5 col-sm-6 m-0 title ellipsis p-0 text-center'>");
+		memberDiv3.text(resp.email);
+		
+		
+		let memberDiv4 = $("<div class='col-lg-4 d-none d-lg-block p-0 text-center'>");
+		memberDiv4.text(resp.date);
+		
+		
+		
+		$(".member_boardtext").append(memberDiv);
+		memberDiv.append(memberDiv1);
+		memberDiv1.append(memberDiv2);
+		memberDiv1.append(memberDiv3);
+		memberDiv1.append(memberDiv4);
+		
+		memberDiv.hide();
+		memberDiv.fadeIn(1500);
+	})
+})
+
 </script>
 
 </body>
