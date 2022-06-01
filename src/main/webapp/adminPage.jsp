@@ -572,7 +572,15 @@ pageEncoding="UTF-8"%>
  	min-width:90px; 
 /* 	padding-right:25px;  */
  }
+        .goview{
 
+	color:black;
+}
+.goview:hover{
+color:#0d6efd !important;
+ text-decoration: underline;
+    text-underline-position: under; 
+}
 
 
 select{
