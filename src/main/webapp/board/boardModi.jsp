@@ -10,7 +10,7 @@
     <meta name="description" content="">
     <meta name="author" content="Mark Otto, Jacob Thornton, and Bootstrap contributors">
     <meta name="generator" content="Hugo 0.88.1">
-    <title>Document</title>
+    <title>쉼표 | 게시글 수정하기</title>
 
    
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet"
@@ -415,7 +415,14 @@ font-weight: bold;
 #myBtn:hover {
   background-color: #555; 
 }
-			
+	
+.page{
+	font-weight:bold;
+            color: #0080ff;
+            text-decoration: underline;
+            text-underline-position : under;
+            font-size:17px;
+            }			
 			
         </style>
         
@@ -431,14 +438,19 @@ font-weight: bold;
             
             if(boardOption == 'f'){//자유게시판
             	$("[value='f']").attr("selected","selected");
+        		$("#f").addClass("page");
             }else if(boardOption == 'g'){//여행후기
             	$("[value='g']").attr("selected","selected");
+        		$("#g").addClass("page");
             }else if(boardOption == 'j'){//구인구작
             	$("[value='j']").attr("selected","selected");
+        		$("#j").addClass("page");
             }else if(boardOption == 'r'){//맛집
             	$("[value='r']").attr("selected","selected");
+        		$("#r").addClass("page");
             }else if(boardOption == 'h'){//숙소리뷰
             	$("[value='h']").attr("selected","selected");
+        		$("#h").addClass("page");
             }else if(boardOption == 'e'){//에디터추천
             	$("[value='e']").attr("selected","selected");
             }
@@ -489,19 +501,19 @@ font-weight: bold;
     </header>
     <ul class="nav nav2">
         <li class="nav-item">
-            <a class="nav-link nav-link2" href="/boardMainView.board?cpage=1">자유게시판</a>
+            <a class="nav-link nav-link2" href="/boardMainView.board?cpage=1" id="f">자유게시판</a>
         </li>
         <li class="nav-item">
-            <a class="nav-link nav-link2" href="/galleryMain.board?cpage=1">여행후기</a>
+            <a class="nav-link nav-link2" href="/galleryMain.board?cpage=1" id="g">여행후기</a>
         </li>
         <li class="nav-item">
-            <a class="nav-link nav-link2" href="/jobMain.board?cpage=1">구인구직</a>
+            <a class="nav-link nav-link2" href="/jobMain.board?cpage=1" id="j">구인구직</a>
         </li>
         <li class="nav-item">
-            <a class="nav-link nav-link2" href="/foodMain.board?cpage=1">맛집</a>
+            <a class="nav-link nav-link2" href="/foodMain.board?cpage=1" id="r">맛집</a>
         </li>
         <li class="nav-item">
-            <a class="nav-link nav-link2" href="/houseMain.board?cpage=1">숙소리뷰</a>
+            <a class="nav-link nav-link2" href="/houseMain.board?cpage=1" id="h">숙소리뷰</a>
         </li>
     </ul>
     <div class="l-navbar" id="nav-bar">
@@ -519,7 +531,7 @@ font-weight: bold;
                		<c:choose>
 						<c:when test="${loginID !=null}">
 							<a href="/goMyPage.mpg" class="nav_link"> <i class='bx bx-user nav_icon'></i> <span class="nav_name">마이페이지</span> </a>
-							<a href="/goMyPage.mpg" class="nav_link"> <i class='bx bx-calendar nav_icon'></i> <span class="nav_name">일정관리</span> </a>
+							
 						</c:when>
 		
 						<c:otherwise>

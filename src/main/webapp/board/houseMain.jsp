@@ -13,7 +13,7 @@
     <meta name="description" content="">
     <meta name="author" content="Mark Otto, Jacob Thornton, and Bootstrap contributors">
     <meta name="generator" content="Hugo 0.88.1">
-    <title>Insert title here</title>
+    <title>쉼표 | 숙소리뷰</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
@@ -552,11 +552,11 @@ font-weight:bold;
                     </span></span> </a>
                     <a href="/communityMain.board" class="nav_link"> <i class='bx bx-message nav_icon'></i> <span class="nav_name">커뮤니티</span> </a> 
                    <a href="/editorReMain.board?" class="nav_link"> <i class='bx bx-book-bookmark nav_icon'></i> <span class="nav_name">에디터추천</span> </a> 
-                   <a href="/houseMain.board?cpage=1" class="nav_link active"> <i class='bx bx-home nav_icon'></i> <span class="nav_name">숙소리뷰</span> </a>
+                   <a href="/houseMain.board?cpage=1" class="nav_link active1"> <i class='bx bx-home nav_icon'></i> <span class="nav_name">숙소리뷰</span> </a>
                		<c:choose>
 						<c:when test="${loginID !=null}">
 							<a href="/goMyPage.mpg" class="nav_link"> <i class='bx bx-user nav_icon'></i> <span class="nav_name">마이페이지</span> </a>
-							<a href="/goMyPage.mpg" class="nav_link"> <i class='bx bx-calendar nav_icon'></i> <span class="nav_name">일정관리</span> </a>
+							
 						</c:when>
 		
 						<c:otherwise>
@@ -967,7 +967,7 @@ $("#modal_loginBtn").on("click",function(){
           	
             <input class="form-control me-2" type="search" placeholder="검색어를 입력해주세요." aria-label="Search" name="contents">
             <button class="btn btn-outline-secondary btn-sm" type="submit">Search</button>&nbsp;
-           <button class="btn btn-outline-secondary btn-sm" type="button" id ="cancel">x</button>&nbsp;
+           <button class="btn btn-outline-secondary btn-sm" type="button" id ="cancel"><i class="fa-solid fa-eraser"></i></button>&nbsp;
             <c:choose>
 						<c:when test="${loginID !=null}">
 							<button type="button" class="btn btn-primary btn-sm" id="writeBtn" style="white-space:nowrap;"><i class="fa-solid fa-pen-to-square"></i>글 작성하기</button>
