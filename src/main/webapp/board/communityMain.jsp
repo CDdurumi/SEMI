@@ -446,7 +446,6 @@
 
 color:rgb(0, 0, 0);
 
-width: 300px;
 
 position: absolute;
 
@@ -463,7 +462,7 @@ font-weight: bold;
        color:#0080ff;
        }       
       .wrap12{
- 		height:470px; 
+ 		height:410px;
 }
 	.wrap11{
 		height:500px;

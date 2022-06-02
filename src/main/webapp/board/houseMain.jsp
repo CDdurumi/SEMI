@@ -459,7 +459,6 @@
 }
 .comuview{
        	color:rgb(0, 0, 0);
-       	width: 300px;
     	position: absolute;
     	left: 50%;
     	transform: translate(-50%, -50%);
@@ -479,7 +478,7 @@ select{
 }     
 .wrap12{
 
-height:500px;
+height:470px;
 }  
 #notice{
 color:red;

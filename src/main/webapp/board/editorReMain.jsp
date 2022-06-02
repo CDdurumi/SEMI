@@ -420,7 +420,6 @@
 
 color:rgb(0, 0, 0);
 
-width: 300px;
 
 position:absolute;
 

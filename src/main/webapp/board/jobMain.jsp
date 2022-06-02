@@ -458,7 +458,6 @@ color:#0d6efd !important;
 }
 .comuview{
        	color:rgb(0, 0, 0);
-       	width: 300px;
     	position: absolute;
     	left: 50%;
     	transform: translate(-50%, -50%);
@@ -503,7 +502,7 @@ font-weight:bold;
         }
 .wrap12{
 
-height:530px;
+height:470px;
 }  
 
     </style>

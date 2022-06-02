@@ -23,7 +23,28 @@ public class MemberDTO {
 	private String email;
 	private Timestamp join_date;	
 	private String information;
+	private String date;
 	private String isadmin;
+	
+	
+	
+	public MemberDTO(String id, String pw, String email, Timestamp join_date, String information, String date,
+			String isadmin) {
+		super();
+		this.id = id;
+		this.pw = pw;
+		this.email = email;
+		this.join_date = join_date;
+		this.information = information;
+		this.date = date;
+		this.isadmin = isadmin;
+	}
+	public String getDate() {
+		return date;
+	}
+	public void setDate(String date) {
+		this.date = date;
+	}
 	public String getId() {
 		return id;
 	}
