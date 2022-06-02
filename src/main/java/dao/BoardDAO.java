@@ -445,11 +445,31 @@ public class BoardDAO {
 	}
 
 	
+	
+	
+	
+	
+	
+	
+	
+	// DB의 총 record 개수를 알아내기 위한 메소드(  단, 공지글 제외)
+	private int getRecordTotalCount(String boardOption, String serchOption, String contents) throws Exception {
+		String sql = "select count(*) from all_board where all_board_seq like '"+boardOption+"%' and "+serchOption+" like '%"+contents+"%'  and editor_type != 'n'";
+		try (Connection con = this.getConnection();
+				PreparedStatement pstat = con.prepareStatement(sql);
+				ResultSet rs = pstat.executeQuery();) {
+			rs.next();
+			return rs.getInt(1); // count(*)로 전체 record 수가 출력되는데, 1열만 나오기 때문에
+		}
+	}
+	
+	
+	
 	//검색 전용 페이징
 	public String getPageNavi(int currentPage, String boardOption, String serchOption, String contents) throws Exception {
 		String url = "/search.board?boardOption="+boardOption+"&serchOption="+serchOption+"&contents="+contents+"&cpage=";
 		
-		int recordTotalCount = this.getRecordTotalCount(boardOption); // 총 게시글의 개수 -> 향후 실제 데이터베이스의 개수를 세어와야함
+		int recordTotalCount = this.getRecordTotalCount(boardOption, serchOption, contents); // 총 게시글의 개수 -> 향후 실제 데이터베이스의 개수를 세어와야함
 
 		int recordCountPerPage = 20; // 한 페이지에 몇 개의 게시글을 보여줄 건지
 
@@ -736,7 +756,7 @@ public class BoardDAO {
 	public String getAdminSearchPageNavi(int currentPage, String boardOption, String serchOption, String contents) throws Exception {
 		String url = "/adiminPageTap1Search.admin?boardOption="+boardOption+"&serchOption="+serchOption+"&contents="+contents+"&cpage=";
 		
-		int recordTotalCount = this.getRecordTotalCount(boardOption); // 총 게시글의 개수 -> 향후 실제 데이터베이스의 개수를 세어와야함
+		int recordTotalCount = this.getRecordTotalCount(boardOption, serchOption, contents); // 총 게시글의 개수 -> 향후 실제 데이터베이스의 개수를 세어와야함
 
 		int recordCountPerPage = 20; // 한 페이지에 몇 개의 게시글을 보여줄 건지
 

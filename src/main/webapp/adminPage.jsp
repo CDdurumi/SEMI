@@ -1025,7 +1025,7 @@ window.onload = function(){
                          
                         <input class="form-control me-2" type="search" placeholder="검색어를 입력해주세요." aria-label="Search" id="Membercontents" name="contents">
                         <button class="btn btn-outline-secondary btn-sm" type="button" id="search-member">Search</button>&nbsp;
-                        <button class="btn btn-outline-secondary btn-sm" type="button" id ="cancel-member" disabled>x</button>&nbsp;
+                        <button class="btn btn-outline-secondary btn-sm" type="button" id ="cancel-member" disabled><i class="fa-solid fa-eraser"></i></button>&nbsp;
                       </div>
                       
                     </div>
@@ -1511,7 +1511,7 @@ window.onload = function(){
             	if(isSearchOk){
             		return false;
             	}
-            	
+//             	alert(111)
                 if($(window).scrollTop() >= $(document).height() - $(window).height()){
 //                      alert(page)
                    getMemberList(page);
@@ -1604,9 +1604,6 @@ window.onload = function(){
 //            isAjaxing = true;
 //         alert(page)
             $(window).scroll(function(){   //스크롤이 최하단 으로 내려가면 리스트를 조회하고 page를 증가시킨다.
-            	if(isSearchOk){
-            		return false;
-            	}
             	
                 if($(window).scrollTop() >= $(document).height() - $(window).height()){
 //                      alert(page)
@@ -1619,8 +1616,6 @@ window.onload = function(){
            setTimeout(function(){
              $("#cancel-member").removeAttr("disabled");
           },3000);
-
-           isSearchOk == false;
            
 	      }
    });
