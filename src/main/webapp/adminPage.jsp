@@ -1590,7 +1590,9 @@ window.onload = function(){
 		    	 } 
 		 	   });
 		 	   
-			
+		 	 setTimeout(function(){
+		 		$("#cancel-member").removeAttr("disabled");
+		 	},3000);
 
 		
 	});
@@ -1723,47 +1725,69 @@ $("#search-member").on("click",function(){
 	$(".member_boardtext").remove();
 	let memberText = $("<div class='col-12 member_boardtext'>");
 	$(".member_boardbox").append(memberText);
+	
+	let page = 1;  //페이징과 같은 방식이라고 생각하면 된다.
+    getMemberSearchList(page);
+    page++;
+//		if(isAjaxing){
+//			return;
+//		}
+//		isAjaxing = true;
+//	alert(page)
+ 	  $(window).scroll(function(){   //스크롤이 최하단 으로 내려가면 리스트를 조회하고 page를 증가시킨다.
+  	  	if($(window).scrollTop() >= $(document).height() - $(window).height()){
+//	  	        alert(page)
+  	  		getMemberSearchList(page);
+   	        page++;   
+//                console.log(page);
+    	 } 
+ 	   });
 
-	$.ajax({
-		url:"adiminPageTap2Search.admin",
-		type:"get",
-		data:{
-			searchOption : $("#searchMember").val(),
-			Membercontents : $("#Membercontents").val(),
-			sDate : sDate,
-			eDate : eDate
-		},
-		dataType:"json"
-	}).done(function(resp){
-		for(let i = 0; i < resp.length; i++){
-			
-			let memberDiv = $("<div class='col-12 member_boardbox2'>");
-			let memberDiv1 = $("<div class='row m-0 border border-2 rounded board_row '>");
-			
-			let memberDiv2 = $("<div class='col-6 col-lg-3 col-sm-6 d-lg-block p-0 text-center'>");
-			memberDiv2.text(resp[i].id);
-			
-			let memberDiv3 = $("<div class='col-6 col-lg-5 col-sm-6 m-0 title ellipsis p-0 text-center'>");
-			memberDiv3.text(resp[i].email);
-			
-			
-			let memberDiv4 = $("<div class='col-lg-4 d-none d-lg-block p-0 text-center'>");
-			memberDiv4.text(resp[i].date);
-			
-			
-			
-			$(".member_boardtext").append(memberDiv);
-			memberDiv.append(memberDiv1);
-			memberDiv1.append(memberDiv2);
-			memberDiv1.append(memberDiv3);
-			memberDiv1.append(memberDiv4);
-			
-			memberDiv.hide();
-			memberDiv.fadeIn(1500);
-            
-		}
-	})
 })
+function getMemberSearchList(pape){
+		let page = pape;
+		
+		$.ajax({
+			url:"adiminPageTap2Search.admin",
+			type:"get",
+			data:{
+				searchOption : $("#searchMember").val(),
+				Membercontents : $("#Membercontents").val(),
+				sDate : sDate,
+				eDate : eDate,
+				page : page
+			},
+			dataType:"json"
+		}).done(function(resp){
+			for(let i = 0; i < resp.length; i++){
+				
+				let memberDiv = $("<div class='col-12 member_boardbox2'>");
+				let memberDiv1 = $("<div class='row m-0 border border-2 rounded board_row '>");
+				
+				let memberDiv2 = $("<div class='col-6 col-lg-3 col-sm-6 d-lg-block p-0 text-center'>");
+				memberDiv2.text(resp[i].id);
+				
+				let memberDiv3 = $("<div class='col-6 col-lg-5 col-sm-6 m-0 title ellipsis p-0 text-center'>");
+				memberDiv3.text(resp[i].email);
+				
+				
+				let memberDiv4 = $("<div class='col-lg-4 d-none d-lg-block p-0 text-center'>");
+				memberDiv4.text(resp[i].date);
+				
+				
+				
+				$(".member_boardtext").append(memberDiv);
+				memberDiv.append(memberDiv1);
+				memberDiv1.append(memberDiv2);
+				memberDiv1.append(memberDiv3);
+				memberDiv1.append(memberDiv4);
+				
+				memberDiv.hide();
+				memberDiv.fadeIn(1500);
+	            
+			}
+		})
+};
 
 </script>
 
