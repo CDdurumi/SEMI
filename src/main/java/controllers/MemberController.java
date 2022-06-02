@@ -155,17 +155,9 @@ public class MemberController extends HttpServlet {
 				
 				
 				String email = (String)request.getSession().getAttribute("loginEmail");
-				
 				int result = dao.modifiedUser(id, pw, email);
-				
-				
-				
-				
 				HttpSession session = request.getSession();
 				session.setAttribute("loginID",id);
-				
-				
-				
 				PrintWriter pr = response.getWriter();
 				pr.append(g.toJson(result));
 			}
