@@ -953,6 +953,7 @@
                                 rerow2.append(recol7);
                                 recol7.append(rerow3);
                                 rerow3.append(recol8);
+                                
                                 recol8.append(rerow4);
                                 rerow4.append(recol9);
                                 rerow4.append(recol10);
@@ -970,7 +971,7 @@
                                 rerow3.append(recol12);
 //                                 target1.append(recol4);
 
-                                rereply.append(recol4)
+                                rereply.prepend(recol4)
                                 
                                 replyView=true;
                            }

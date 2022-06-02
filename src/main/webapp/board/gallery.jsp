@@ -447,7 +447,7 @@ select{
 <body id="body-pd">
 <header class="header" id="header" style="background-color:#f5f5f7">
     <div class="header_toggle"><i class='bx bx-menu' id="header-toggle"></i></div>
-    <div><a href="/communityMain.board" class="comuview">사진으로 함께하는 여행후기</a></div>
+    <div><a href="/communityMain.board" class="comuview">사진으로 함께하는</a></div>
     <div>
         
             <c:choose>

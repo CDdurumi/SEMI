@@ -205,8 +205,9 @@
         .height-100 {
             height: 100vh
         }
- .card img {
-            height: 300px;
+   .card img {
+            height: 350px;
+             object-fit:cover; 
         }
         .goview{
 
@@ -468,9 +469,7 @@ color:#0d6efd !important;
 .comuview:hover{
        color:#0080ff;
        }
-		.card{
-				height:350px;
-			}
+		
 
 select{
     border-radius: 5px;
