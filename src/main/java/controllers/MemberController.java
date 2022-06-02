@@ -160,6 +160,18 @@ public class MemberController extends HttpServlet {
 				session.setAttribute("loginID",id);
 				PrintWriter pr = response.getWriter();
 				pr.append(g.toJson(result));
+			}else if (uri.equals("/resetpw.member")) {
+				System.out.println("resetpw");
+				String email = request.getParameter("email");
+				String nickname = request.getParameter("nickname");
+				String pw = request.getParameter("pw");
+				pw = EncryptUtils.SHA512(pw);
+				
+				int result = dao.resetpw(email,nickname,pw);
+				
+				PrintWriter pr = response.getWriter();
+				 pr.append(g.toJson(result));
+				
 			}
 		}catch (Exception e) {
 			response.sendRedirect("error.jsp");
