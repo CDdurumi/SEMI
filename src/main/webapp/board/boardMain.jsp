@@ -239,9 +239,7 @@
                 padding-left: calc(var(--nav-width) + 188px)
             }
         }
-			.card{
-				height:350px;
-			}
+		
         /*  */
         .bd-placeholder-img {
             font-size: 1.125rem;
@@ -355,8 +353,8 @@
         }
 
         .card img {
-            height: 300px;
-            object-fit:cover;
+            height: 350px;
+             object-fit:cover; 
         }
 
         .card-body {
@@ -735,7 +733,7 @@ $("#modal_loginBtn").on("click",function(){
 													<div class="carousel-item active">
 														<div class="card w-100 border-0" >
 															<a href="/detailView.board?cpage=1&seq=${i.all_board_seq}&click=ok">
-																<img src="${profilePath}${j.sys_name}" class="d-block" style="height:100%; width:100%;" alt="...">
+																<img src="${profilePath}${j.sys_name}" class="d-block" style="width:100%;" alt="...">
 															</a>
 															<div class="carousel-caption d-none d-md-block">
 																<h5>${i.title}</h5>
