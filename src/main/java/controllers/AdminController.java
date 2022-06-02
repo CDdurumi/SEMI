@@ -106,7 +106,7 @@ public class AdminController extends HttpServlet {
 				
 				pw.append(g.toJson(list));
 			}else if(uri.equals("/adiminPageTap2Search.admin")) {
-
+				int capge = Integer.parseInt(request.getParameter(uri));
 				String sDate = request.getParameter("sDate");
 				String eDate = request.getParameter("eDate");
 				
@@ -119,10 +119,10 @@ public class AdminController extends HttpServlet {
 				
 				if(searchOption.equals("searchNick")) {
 					System.out.println("닉네임으로 검색 실행");
-					list = memberDao.searchUserId(contents ,sDate, eDate);
+					list = memberDao.searchUserId(capge,contents ,sDate, eDate);
 				}else if(searchOption.equals("searchEmail")) {
 					System.out.println("이메일으로 검색 실행");
-					list = memberDao.searchUserEmail(contents, sDate, eDate);
+					list = memberDao.searchUserEmail(capge,contents, sDate, eDate);
 				}
 				
 				PrintWriter pw = response.getWriter();
