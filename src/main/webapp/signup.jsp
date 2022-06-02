@@ -490,7 +490,7 @@
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-primary" id="modal_loginBtn">로그인</button>
-        <button type="button" class="btn btn-outline-primary">회원가입</button>
+        <button type="button" class="btn btn-outline-primary" id="modal_signupbtn">회원가입</button>
       </div>
     </div>
   </div>
@@ -641,7 +641,30 @@
 
 
 <script>
-
+$("#modal_loginBtn").on("click",function(){
+	$.ajax({
+		url:"/login.member",
+		type:"post",
+		data:{email:$("#id-input1").val(),pw:$("#password-input1").val()},
+		dataType:"json"
+	}).done(function(resp){
+		console.log(resp);
+		if(resp==false){					
+			$("#idpw_check").text("Email 또는 비밀번호가 올바르지 않습니다!");
+			$("#idpw_check").css({ color: "red" })
+			$("#id-input1").val("");
+			$("#id-input1").focus();					
+			$("#password-input1").val("");
+		}else if(resp==true){
+			location.href = "index.jsp";
+		}
+		
+	});
+})
+	
+	$("#modal_signupbtn").on("click",function(){
+		location.href = "signup.jsp";
+	})
 	
 	$(".negativeBtn").on("click",function(){
 		$("#signin_btn").attr("disabled",true);
