@@ -133,9 +133,12 @@ public class MemberDAO {
 		}
 	}
 	// 사용자 정보 뽑기(닉네임)
-	public List<MemberDTO> searchUserId(String id) throws Exception {
-
-		String sql = "select * from member where id like '%'||?||'%'";
+	public List<MemberDTO> searchUserId(String id, String sDate, String eDate) throws Exception {
+		String sql = "select * from member where id like '%'||?||'%' and substr(JOIN_DATE,1,8) between TO_DATE('"+sDate+"', 'YY/MM/DD') and TO_DATE('"+eDate+"', 'YY/MM/DD')";
+		if(sDate.equals("") || eDate.equals("")) {
+			sql = "select * from member where id like '%'||?||'%'";
+		}
+		
 		try (Connection con = this.getConnection(); PreparedStatement pstat = con.prepareStatement(sql);) {
 			pstat.setString(1, id);
 			
@@ -159,9 +162,12 @@ public class MemberDAO {
 			}
 		}
 	}
-	public List<MemberDTO> searchUserEmail(String email) throws Exception {
-
-		String sql = "select * from member where email like '%'||?||'%'";
+	public List<MemberDTO> searchUserEmail(String email, String sDate, String eDate) throws Exception {
+		String sql = "select * from member where email like '%'||?||'%' and substr(JOIN_DATE,1,8) between TO_DATE('"+sDate+"', 'YY/MM/DD') and TO_DATE('"+eDate+"', 'YY/MM/DD')";
+		if(sDate.equals("") || eDate.equals("")) {
+			sql = "select * from member where email like '%'||?||'%'";
+		}
+		
 		try (Connection con = this.getConnection(); PreparedStatement pstat = con.prepareStatement(sql);) {
 			pstat.setString(1, email);
 			try (ResultSet rs = pstat.executeQuery()) {

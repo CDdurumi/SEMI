@@ -597,6 +597,11 @@ select{
 }
 
 
+#sDate, #eDate{
+	margin-right: 8px;
+	width: 60%
+}
+
     </style>
 
 
@@ -930,6 +935,9 @@ $("#modal_loginBtn").on("click",function(){
 				          <a class="navbar-brand"> </a>
 				          <div class="d-flex">
 				          		<input type="hidden" value="1" name="cpage">
+								
+								<input type="date" name="sDate" id="sDate">
+								<input type="date" name="eDate" id="eDate">
 									
 								<select name="searchMember" id="searchMember">
 				                        <option value="searchNick" id="searchNick">
@@ -1631,6 +1639,18 @@ $("#modal_sendmsg").on("click", function(){
 })
 //멤버 검색하기
 $("#search-member").on("click",function(){
+	let sDate = $("#sDate").val();//시작일
+	let eDate = $("#eDate").val();//종료일
+	if(sDate == "" && eDate == ""){
+	}else if(sDate == ""){
+		alert("시작 일자를 선택해주세요. 닉네임이나 이메일로만 검색하고 싶으시다면 일자를 삭제해 주세요.");
+		return false;
+	}else if(eDate ==""){
+		alert("마지막 일자를 선택해주세요. 닉네임이나 이메일로만 검색하고 싶으시다면 일자를 삭제해 주세요.");
+		return false;
+	}
+	
+	
 	$(".member_boardtext").remove();
 	let memberText = $("<div class='col-12 member_boardtext'>");
 	$(".member_boardbox").append(memberText);
@@ -1640,7 +1660,9 @@ $("#search-member").on("click",function(){
 		type:"get",
 		data:{
 			searchOption : $("#searchMember").val(),
-			Membercontents : $("#Membercontents").val()
+			Membercontents : $("#Membercontents").val(),
+			sDate : sDate,
+			eDate : eDate
 		},
 		dataType:"json"
 	}).done(function(resp){
