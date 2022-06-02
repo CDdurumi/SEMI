@@ -1077,15 +1077,15 @@
                      
                      
                      
-                     
-                     if(my_id =='${loginID}'){
+                     let btn2;
+                    
                       let btn1 = $("<button>");
                           btn1.html(' <i class="fa-solid fa-pen-clip"></i>');
                           btn1.attr("class","btn btn-outline-primary btn-sm modify");
                           btn1.attr("type","button");
                           
                       
-                      let btn2 = $("<button>");
+                      btn2 = $("<button>");
                           btn2.html('<i class="fa-solid fa-trash"></i>');
                           btn2.attr("class","btn btn-outline-danger btn-sm delete ");
                           btn2.attr("type","button");
@@ -1201,12 +1201,16 @@
                           });
                           
                           
+                          if(my_id =='${loginID}'){  
                           col5.append(' ');
                           col5.append(btn1);
-                          col5.append(' ');
-                          col5.append(btn2);
-                      }
-                       
+                          }
+                         
+                      
+                     if(${loginIsAdmin == 'Y' || my_id =='${loginID}'}  ){
+                         col5.append(' ');
+                         col5.append(btn2);
+                         }
                       
        
                      row1.hide();
