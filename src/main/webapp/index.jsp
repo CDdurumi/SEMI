@@ -330,7 +330,7 @@
                   </div>            
             </div>
             <div class="modal-footer">
-                <button class="btn btn-danger" data-bs-target="#exampleModalToggle2" data-bs-toggle="modal">비밀번호를 잊으셨나요 ?</button>
+                <button class="btn btn-outline-success" data-bs-target="#exampleModalToggle2" data-bs-toggle="modal">비밀번호를 잊으셨나요 ?</button>
             <button type="button" class="btn btn-primary" id="modal_loginBtn">로그인</button>
               <a href="/signup.jsp"><button type="button" class="btn btn-outline-primary">회원가입</button></a>
             </div>
