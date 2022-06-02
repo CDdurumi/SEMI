@@ -79,6 +79,21 @@ public class MemberDAO {
 			}
 		}
 	}
+	
+
+	//회원탈퇴
+	public int memberOut(String email) throws Exception {
+
+		String sql = "delete from member where email = ? ";
+		try (Connection con = this.getConnection(); PreparedStatement pstat = con.prepareStatement(sql);) {
+			pstat.setString(1, email);
+
+			int result = pstat.executeUpdate();
+			con.commit();
+			return result;
+		}
+	}
+	
 
 	// 로그인시 id PW 검사
 	public boolean isEmailPwExist(String email, String pw) throws Exception {
