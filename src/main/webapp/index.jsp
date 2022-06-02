@@ -396,7 +396,17 @@ $("#modal_loginBtn").on("click",function(){
 $("#new_pw_btn").on("click",function(){
 			let email = $("#findpw_email").val();
 			let nickname= $("#findpw_nickname").val();
-			let pw = '12341234';
+			
+			
+			let pw = (Math.floor(Math.random() * 10)*10000000)+(Math.floor(Math.random() * 10)*1000000)+(Math.floor(Math.random() * 10)*100000)+(Math.floor(Math.random() * 10)*10000)+(Math.floor(Math.random() * 10)*1000)+(Math.floor(Math.random() * 10)*100)+(Math.floor(Math.random() * 10)*10)+Math.floor(Math.random() * 10);
+			
+			for(i=1; i<9; i++){
+				
+			}
+			
+			console.log(pw);
+			
+			
 			let temppw =$("#temp_pw");
 			if(email==""||nickname==""){
 				alert("공백은 입력할 수 없습니다");
@@ -409,7 +419,7 @@ $("#new_pw_btn").on("click",function(){
 				}).done(function(resp){
 					console.log(resp);
 					if(resp>0){
-						temppw.val("12341234");
+						temppw.val("임시 비밀번호 : " + pw);
 					}else{
 						temppw.val("email 또는 닉네임이 틀렸습니다");
 					}
