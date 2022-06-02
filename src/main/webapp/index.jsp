@@ -307,35 +307,66 @@
    
 <!-- 로그인 모달  -->
    
-<div class="modal" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-  <div class="modal-dialog modal-right" role="document">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title text-center" id="exampleModalLabel">로그인</h5>
-        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+<!--로그인 모달-->
+    <div class="modal" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-right" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title text-center" id="exampleModalLabel">로그인</h5>
+              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+              <div class="card-details">
+                  <input type="text" id="id-input" placeholder="email" name="email" required>
+                  <i class="fa fa-envelope"></i>
+              </div>
+              <div class="card-details">
+                  <input type="password" id="password-input" placeholder="password" name="pw" required>
+                  <i class="fa fa-lock"></i>
+                  <span><small class="fa fa-eye-slash passcode"></small></span>
+              </div>
+              <div>
+              <span id="idpw_check"></span>
+                  </div>            
+            </div>
+            <div class="modal-footer">
+                <button class="btn btn-danger" data-bs-target="#exampleModalToggle2" data-bs-toggle="modal">비밀번호 초기화</button>
+            <button type="button" class="btn btn-primary" id="modal_loginBtn">로그인</button>
+              <a href="/signup.jsp"><button type="button" class="btn btn-outline-primary">회원가입</button></a>
+            </div>
+          </div>
+        </div>
       </div>
-      <div class="modal-body">
-        <div class="card-details">
-            <input type="text" id="id-input" placeholder="email" name="email" required>
-            <i class="fa fa-envelope"></i>
+      <!--pw 찾기 모달-->
+      <div class="modal fade" id="exampleModalToggle2" aria-hidden="true" aria-labelledby="exampleModalToggleLabel2" tabindex="-1">
+        <div class="modal-dialog modal-dialog-centered">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="exampleModalToggleLabel2">비밀번호 찾기</h5>
+              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+              가입한 <strong>이메일</strong>과 사용한 <strong>닉네임</strong>이 같으면 
+              <br>임시 비밀번호가 발급됩니다
+
+              <div class="input-group mb-3">
+                <span class="input-group-text" id="inputGroup-sizing-default">이메일</span>
+                <input type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default" id="findpw_email">
+              </div>
+              <div class="input-group mb-3">
+                <span class="input-group-text" id="inputGroup-sizing-default">닉네임</span>
+                <input type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default" id="findpw_nickname">
+              </div>
+              <input class="form-control" type="text" placeholder="임시비밀번호" aria-label="default input example" id="temp_pw">
+            </div>
+            <div class="modal-footer">
+                <button class="btn btn-danger" data-bs-target="#exampleModal" id="new_pw_btn">임시 비밀번호 발급</button>
+              <button class="btn btn-primary" data-bs-target="#exampleModal" data-bs-toggle="modal">로그인으로</button>
+            </div>
+          </div>
         </div>
-        <div class="card-details">
-            <input type="password" id="password-input" placeholder="password" name="pw" required>
-            <i class="fa fa-lock"></i>
-            <span><small class="fa fa-eye-slash passcode"></small></span>
-        </div>
-        <div>
-        <span id="idpw_check"></span>
-        	</div>
+      </div>
       
-      </div>
-      <div class="modal-footer">
-      <button type="button" class="btn btn-primary" id="modal_loginBtn">로그인</button>
-        <a href="/signup.jsp"><button type="button" class="btn btn-outline-primary">회원가입</button></a>
-      </div>
-    </div>
-  </div>
-</div>
 <script>
 $("#login").on("click",function(){
 	$("#idpw_check").text("");
@@ -361,6 +392,32 @@ $("#modal_loginBtn").on("click",function(){
 				
 			});
 		})
+
+$("#new_pw_btn").on("click",function(){
+			let email = $("#findpw_email").val();
+			let nickname= $("#findpw_nickname").val();
+			let pw = '12341234';
+			let temppw =$("#temp_pw");
+			if(email==""||nickname==""){
+				alert("공백은 입력할 수 없습니다");
+			}else{
+				$.ajax({
+					url:"/resetpw.member",
+					type:"post",
+					data:{email:email,nickname:nickname,pw:pw},
+					dataType:"json"
+				}).done(function(resp){
+					console.log(resp);
+					if(resp>0){
+						temppw.val("12341234");
+					}else{
+						temppw.val("email 또는 닉네임이 틀렸습니다");
+					}
+				});
+			}
+			
+		})
+
 </script>		
 <!-- 로그인 모달  -->
 

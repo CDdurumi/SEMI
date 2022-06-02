@@ -203,7 +203,21 @@ public class MemberDAO {
 
 		}
 	}
-	
+	//pw 초기화
+		public int resetpw(String email, String nickname, String pw) throws Exception {
+			String sql = "update member set pw = ? where email = ? and id= ?";
+			try(Connection con = this.getConnection();
+					PreparedStatement pstat = con.prepareStatement(sql);){
+				pstat.setString(1, pw);
+				pstat.setString(2, email);
+				pstat.setString(3, nickname);
+				
+				int result = pstat.executeUpdate();
+				con.commit();
+				return result;
+			}
+		}
+		
 	public int modifiedUser(String id, String pw, String email) throws Exception {
 		String sql = "update member set id = ?, pw = ? where email = ?";
 		try(Connection con = this.getConnection();
