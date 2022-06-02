@@ -133,14 +133,24 @@ public class MemberDAO {
 		}
 	}
 	// 사용자 정보 뽑기(닉네임)
-	public List<MemberDTO> searchUserId(String id, String sDate, String eDate) throws Exception {
-		String sql = "select * from member where id like '%'||?||'%' and substr(JOIN_DATE,1,8) between TO_DATE('"+sDate+"', 'YY/MM/DD') and TO_DATE('"+eDate+"', 'YY/MM/DD')";
+	public List<MemberDTO> searchUserId(int cpage, String id, String sDate, String eDate) throws Exception {
+		// 게시글의 번호를 세팅한다.
+		int start = (cpage-1) *20 +1;//해당 페이지의 첫 게시글 번호 1 16 31 
+		int end = cpage * 20;//해당 페이지의 끝 게시글 번호 15 30 45 
+		
+		
+		String sql = "select * from  (select row_number() over(order by join_date desc) line , member.* from member where id like '%'||?||'%' and substr(JOIN_DATE,1,8) between TO_DATE('"+sDate+"', 'YY/MM/DD') and TO_DATE('"+eDate+"', 'YY/MM/DD') )"
+				+ "where line between ? and ?";
+		
 		if(sDate.equals("") || eDate.equals("")) {
-			sql = "select * from member where id like '%'||?||'%'";
+			sql = "select * from (select row_number() over(order by join_date desc) line, member.* from member where id like '%'||?||'%')"
+					+ "where line between ? and ?";
 		}
 		
 		try (Connection con = this.getConnection(); PreparedStatement pstat = con.prepareStatement(sql);) {
 			pstat.setString(1, id);
+			pstat.setInt(2, start);
+			pstat.setInt(3, end);
 			
 			try (ResultSet rs = pstat.executeQuery()) {
 				List<MemberDTO> list = new ArrayList<MemberDTO>();
@@ -162,14 +172,22 @@ public class MemberDAO {
 			}
 		}
 	}
-	public List<MemberDTO> searchUserEmail(String email, String sDate, String eDate) throws Exception {
-		String sql = "select * from member where email like '%'||?||'%' and substr(JOIN_DATE,1,8) between TO_DATE('"+sDate+"', 'YY/MM/DD') and TO_DATE('"+eDate+"', 'YY/MM/DD')";
+	public List<MemberDTO> searchUserEmail(int cpage, String email, String sDate, String eDate) throws Exception {
+		// 게시글의 번호를 세팅한다.
+		int start = (cpage-1) *20 +1;//해당 페이지의 첫 게시글 번호 1 16 31 
+		int end = cpage * 20;//해당 페이지의 끝 게시글 번호 15 30 45 
+		
+		String sql = "select * from  (select row_number() over(order by join_date desc) line , member.* from member where email like '%'||?||'%' and substr(JOIN_DATE,1,8) between TO_DATE('"+sDate+"', 'YY/MM/DD') and TO_DATE('"+eDate+"', 'YY/MM/DD') )"
+				+ "where line between ? and ?";
 		if(sDate.equals("") || eDate.equals("")) {
-			sql = "select * from member where email like '%'||?||'%'";
+			sql = "select * from (select row_number() over(order by join_date desc) line, member.* from member where email like '%'||?||'%')"
+					+ "where line between ? and ?";
 		}
 		
 		try (Connection con = this.getConnection(); PreparedStatement pstat = con.prepareStatement(sql);) {
 			pstat.setString(1, email);
+			pstat.setInt(2, start);
+			pstat.setInt(3, end);
 			try (ResultSet rs = pstat.executeQuery()) {
 				List<MemberDTO> list = new ArrayList<MemberDTO>();
 				
@@ -203,7 +221,21 @@ public class MemberDAO {
 
 		}
 	}
-	
+	//pw 초기화
+		public int resetpw(String email, String nickname, String pw) throws Exception {
+			String sql = "update member set pw = ? where email = ? and id= ?";
+			try(Connection con = this.getConnection();
+					PreparedStatement pstat = con.prepareStatement(sql);){
+				pstat.setString(1, pw);
+				pstat.setString(2, email);
+				pstat.setString(3, nickname);
+				
+				int result = pstat.executeUpdate();
+				con.commit();
+				return result;
+			}
+		}
+		
 	public int modifiedUser(String id, String pw, String email) throws Exception {
 		String sql = "update member set id = ?, pw = ? where email = ?";
 		try(Connection con = this.getConnection();
