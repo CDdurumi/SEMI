@@ -361,8 +361,9 @@
             margin: auto;
         }
 
-        .card img {
-            height: 300px;
+         .card img {
+            height: 350px;
+             object-fit:cover; 
         }
 
         .card-body {
@@ -464,9 +465,7 @@
 .comuview:hover{
        color:#0080ff;
        }
-		.card{
-				height:350px;
-			}
+		
 
 select{
     border-radius: 5px;
