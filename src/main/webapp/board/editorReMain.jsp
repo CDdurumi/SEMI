@@ -349,6 +349,8 @@
             }
             .username{
                 font-size: 14px;
+                padding-right:0px;
+                max-width:165px;
             }
             .main2>.row{
                 padding-top:20px ;
@@ -364,9 +366,17 @@
                 height: 8%;
             }
             .title{
+            padding-left:0px;
                 padding-top: 5px;
                 font-size: 20px;
-
+				
+				
+            }
+            .info{
+            padding-right:0px;
+            }
+            .info1{
+            display:inline-block;
             }
             .heartcol{
            font-size: 25px;
@@ -615,10 +625,10 @@ $("#modal_loginBtn").on("click",function(){
 									<div class="col-12 main">
 										<div class="row h-100">
 											<div class="col-4 h-100 username">
-												<div class="row h-100">
-													<div class="col-12"><i class="bx bx-user"></i> ${i.id}</div>
-													<div class="col-12"><i class="bx bx-calendar-alt"></i> ${i.editorFormdDate}</div>
-													<div class="col-12"><i class="bx bx-face"></i> ${i.view_count}</div>
+												<div class="row h-100 info1">
+													<div class="col-12 info"><i class="bx bx-user"></i> ${i.id}</div>
+													<div class="col-12 info"><i class="bx bx-calendar-alt"></i> ${i.editorFormdDate}</div>
+													<div class="col-12 info"><i class="bx bx-face"></i> ${i.view_count}</div>
 
 												</div>
 											</div>
