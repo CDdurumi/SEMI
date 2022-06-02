@@ -951,6 +951,7 @@ $("#modal_loginBtn").on("click",function(){
 				          	
 				            <input class="form-control me-2" type="search" placeholder="검색어를 입력해주세요." aria-label="Search" id="Membercontents" name="contents">
 				            <button class="btn btn-outline-secondary btn-sm" type="button" id="search-member">Search</button>&nbsp;
+				            <button class="btn btn-outline-secondary btn-sm" type="button" id ="cancel-member">x</button>&nbsp;
 				          </div>
 				          
 				        </div>
@@ -1491,6 +1492,40 @@ $("#modal_loginBtn").on("click",function(){
 //			setTimeout(function(){isAjaxing = false;}, 100000);
 	})
 };
+// 	search 리셋버튼
+	
+	isMemberCancelClick = true;
+	$("#cancel-member").on("click", function(){
+		if(isMemberCancelClick){
+			$(".member_boardtext").remove();
+			let memberText = $("<div class='col-12 member_boardtext'>");
+			$(".member_boardbox").append(memberText);
+		
+			let page = 1;  //페이징과 같은 방식이라고 생각하면 된다.
+	        getMemberList(page);
+	        page++;
+//				if(isAjaxing){
+//					return;
+//				}
+//				isAjaxing = true;
+//			alert(page)
+		 	  $(window).scroll(function(){   //스크롤이 최하단 으로 내려가면 리스트를 조회하고 page를 증가시킨다.
+		  	  	if($(window).scrollTop() >= $(document).height() - $(window).height()){
+//			  	        alert(page)
+		  	  		getMemberList(page);
+		   	        page++;   
+//		                console.log(page);
+		    	 } 
+		 	   });
+		 	   
+		 	 isMemberCancelClick = false;
+		}else{
+			
+		}
+
+		
+	});
+	
 	
 	
 	isSendClick= true;

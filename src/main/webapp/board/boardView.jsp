@@ -1208,7 +1208,7 @@
                           }
                          
                       
-                     if(${loginIsAdmin == 'Y' || my_id =='${loginID}'}  ){
+                     if(my_id =='${loginID}'|| ${loginIsAdmin == 'Y'  } ){
                          col5.append(' ');
                          col5.append(btn2);
                          }
