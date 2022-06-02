@@ -425,12 +425,12 @@
        text-overflow:ellipsis;
        white-space:nowrap;
        }
-       .carousel-control-prev{
-        padding-bottom: 150px;
-    }
-     .carousel-control-next{
-        padding-bottom: 150px;
-     }
+/*        .carousel-control-prev{ */
+/*         padding-bottom: 150px; */
+/*     } */
+/*      .carousel-control-next{ */
+/*         padding-bottom: 150px; */
+/*      } */
      /*--top버튼----------------------------------------------------------------*/
 
 #myBtn {
