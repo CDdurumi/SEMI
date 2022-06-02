@@ -592,7 +592,7 @@ $(function(){
                     </span></span> </a>
                     <a href="/communityMain.board"  class="nav_link active"> <i class='bx bx-message nav_icon'></i> <span
                             class="nav_name">커뮤니티</span> </a>
-                    <a href="/editorReMain.board?" class="nav_link"> <i class='bx bx-bus nav_icon'></i> <span class="nav_name">에디터추천</span>
+                    <a href="/editorReMain.board?" class="nav_link"> <i class='bx bx-book-bookmark nav_icon'></i> <span class="nav_name">에디터추천</span>
                     </a>
                    
                     
