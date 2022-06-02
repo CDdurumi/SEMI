@@ -1493,9 +1493,7 @@ $("#modal_loginBtn").on("click",function(){
 };
 // 	search 리셋버튼
 	
-	isMemberCancelClick = true;
 	$("#cancel-member").on("click", function(){
-		if(isMemberCancelClick){
 			$(".member_boardtext").remove();
 			let memberText = $("<div class='col-12 member_boardtext'>");
 			$(".member_boardbox").append(memberText);
@@ -1517,10 +1515,7 @@ $("#modal_loginBtn").on("click",function(){
 		    	 } 
 		 	   });
 		 	   
-		 	 isMemberCancelClick = false;
-		}else{
 			
-		}
 
 		
 	});
