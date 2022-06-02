@@ -330,7 +330,7 @@
                   </div>            
             </div>
             <div class="modal-footer">
-                <button class="btn btn-danger" data-bs-target="#exampleModalToggle2" data-bs-toggle="modal">비밀번호 초기화</button>
+                <button class="btn btn-danger" data-bs-target="#exampleModalToggle2" data-bs-toggle="modal">비밀번호를 잊으셨나요 ?</button>
             <button type="button" class="btn btn-primary" id="modal_loginBtn">로그인</button>
               <a href="/signup.jsp"><button type="button" class="btn btn-outline-primary">회원가입</button></a>
             </div>
@@ -357,7 +357,7 @@
                 <span class="input-group-text" id="inputGroup-sizing-default">닉네임</span>
                 <input type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default" id="findpw_nickname">
               </div>
-              <input class="form-control" type="text" placeholder="임시비밀번호" aria-label="default input example" id="temp_pw">
+              <input class="form-control" type="text" placeholder="임시비밀번호" aria-label="default input example" id="temp_pw" disabled>
             </div>
             <div class="modal-footer">
                 <button class="btn btn-danger" data-bs-target="#exampleModal" id="new_pw_btn">임시 비밀번호 발급</button>

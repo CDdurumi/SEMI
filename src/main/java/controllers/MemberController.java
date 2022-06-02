@@ -165,6 +165,7 @@ public class MemberController extends HttpServlet {
 				String email = request.getParameter("email");
 				String nickname = request.getParameter("nickname");
 				String pw = request.getParameter("pw");
+				pw = EncryptUtils.SHA512(pw);
 				
 				int result = dao.resetpw(email,nickname,pw);
 				
