@@ -248,7 +248,7 @@ public class MemberDAO {
 		int end = cpage * 20;//해당 페이지의 끝 게시글 번호 15 30 45 
 
 		// 한 페이지에 게시글이 15개씩 보여지도록 하기 위해서 row_number를 활용하는데, 서브 쿼리를 활용해서 select 해준다.
-		String sql = "select * from (select (row_number() over(order by join_date )) line , row_number() over(order by write_date desc) num, member.* from member order by line desc) where (num between ? and ?)";
+		String sql = "select * from (select (row_number() over(order by join_date )) line , row_number() over(order by join_date desc) num, member.* from member order by line desc) where (num between ? and ?)";
 		
 
 		try(Connection con = this.getConnection();
