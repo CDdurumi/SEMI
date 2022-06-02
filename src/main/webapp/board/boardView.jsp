@@ -34,6 +34,7 @@
 <!--     <link rel="manifest" href="/docs/5.1/assets/img/favicons/manifest.json"> -->
     <link rel="mask-icon" href="/docs/5.1/assets/img/favicons/safari-pinned-tab.svg" color="#7952b3">
     <link rel="icon" href="/docs/5.1/assets/img/favicons/favicon.ico">
+      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" />
     <meta name="theme-color" content="#7952b3">
     <script src="https://kit.fontawesome.com/247b201f79.js" crossorigin="anonymous"></script>
 
@@ -275,7 +276,7 @@
     border:none;
 }
 .icon{
-  color:#ffe69a;
+  color:#c5e4ff;
 }
 .card-details i{
     position:absolute;
@@ -569,11 +570,13 @@
   background-color: #555; 
 }
 #mesImg{
-	transtition: all 0.2s linear;
+ 	
 	cursor:pointer;
 }
 #mesImg:hover{
-	transform:scale(1.4);
+
+	animation : tada;
+	animation-duration: 1s;
 }
                
     </style>
@@ -680,7 +683,7 @@
 
                      if(resp[i].reply_seq == '${reList[status.index].reply_seq}'){
 //   						alert(123);
-						btn5.html(' <i class="fa-solid fa-message"></i>' +"(${reList[status.index].reReCount})");
+						btn5.html(' <i class="fa-solid fa-message "></i>' +"(${reList[status.index].reReCount})");
 						
 					}
                      
@@ -1466,8 +1469,18 @@ $("#modal_loginBtn").on("click",function(){
                     
 <!--                     </div> -->
                     
-                    <div class="col-3 col-md-3 ellipsis ididid" style="padding-left:8px;">
-                    <i id="mesImg" class="fa-solid fa-envelope icon" data-bs-toggle="modal" data-bs-target="#messageModal"></i>&nbsp;&nbsp;${dto.id} </div>
+                    <div class="col-3 col-md-3 ellipsis ididid " style="padding-left:8px;">
+                    <i id="mesImg" class="fa-solid fa-envelope icon " data-bs-toggle="modal" data-bs-target="#messageModal"></i>&nbsp;&nbsp;${dto.id} </div>
+                    <script>
+                    $("#mesImg").on("mouseenter",function(){
+                    	
+                    	$("#mesImg").attr("class", "fa-solid fa-envelope icon fa-lg")
+                    })
+                     $("#mesImg").on("mouseleave",function(){
+                    	
+                    	$("#mesImg").attr("class", "fa-solid fa-envelope icon")
+                    })
+                    </script>
                     
                     
                     <div class="col-9"><i class="fa-solid fa-calendar"></i>&nbsp;&nbsp;${dto.formdDate}</div>
