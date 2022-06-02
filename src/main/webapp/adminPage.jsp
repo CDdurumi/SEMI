@@ -1025,7 +1025,7 @@ window.onload = function(){
                          
                         <input class="form-control me-2" type="search" placeholder="검색어를 입력해주세요." aria-label="Search" id="Membercontents" name="contents">
                         <button class="btn btn-outline-secondary btn-sm" type="button" id="search-member">Search</button>&nbsp;
-                        <button class="btn btn-outline-secondary btn-sm" type="button" id ="cancel-member">x</button>&nbsp;
+                        <button class="btn btn-outline-secondary btn-sm" type="button" id ="cancel-member" disabled>x</button>&nbsp;
                       </div>
                       
                     </div>
@@ -1573,7 +1573,24 @@ window.onload = function(){
 };
 //    search 리셋버튼
    
+   
+   var isDelDisabled = false;
    $("#cancel-member").on("click", function(){
+		$("#cancel-member").attr("disabled","disabled");
+		$("#search-member").removeAttr("disabled");
+		
+	   isDisabled = false;//검색버튼 다시 수행 가능하게.
+	   
+	    if (isDelDisabled) {  //<-( 1 ) 수행가능여부 검사
+	        alert("이미 작업을 수행했습니다. 검색을 해주세요.");
+	        return false;
+	      } else {
+	      isDelDisabled = true; //<-( 2 ) 실행 불가능하도록 flag 변경
+	      
+	      
+	   	 $("#Membercontents").val("");
+	   	 
+	   
          $(".member_boardtext").remove();
          let memberText = $("<div class='col-12 member_boardtext'>");
          $(".member_boardbox").append(memberText);
@@ -1587,6 +1604,10 @@ window.onload = function(){
 //            isAjaxing = true;
 //         alert(page)
             $(window).scroll(function(){   //스크롤이 최하단 으로 내려가면 리스트를 조회하고 page를 증가시킨다.
+            	if(isSearchOk){
+            		return false;
+            	}
+            	
                 if($(window).scrollTop() >= $(document).height() - $(window).height()){
 //                      alert(page)
                    getMemberList(page);
@@ -1599,7 +1620,9 @@ window.onload = function(){
              $("#cancel-member").removeAttr("disabled");
           },3000);
 
-      
+           isSearchOk == false;
+           
+	      }
    });
    
    
@@ -1713,9 +1736,25 @@ $("#modal_sendmsg").on("click", function(){
        })
     }
 })
+
+
 //멤버 검색하기
+var isDisabled = false;
 $("#search-member").on("click",function(){
-   isSearchOk = true;
+	$("#search-member").attr("disabled","disabled");
+	$("#cancel-member").removeAttr("disabled");
+	isDelDisabled = false;//X버튼 다시 수행가능하게 
+	
+	
+	if (isDisabled) {  //<-( 1 ) 수행가능여부 검사
+        alert("이미 작업이 수행중입니다.");
+        return false;
+      } else {
+        isDisabled = true; //<-( 2 ) 실행 불가능하도록 flag 변경
+
+
+    
+   isSearchOk = true;//다른 스크롤 비활성화 시키는데 사용되는 변수.
    
    let sDate = $("#sDate").val();//시작일
    let eDate = $("#eDate").val();//종료일
@@ -1749,7 +1788,9 @@ $("#search-member").on("click",function(){
 //                console.log(page);
         } 
        });
+       
 
+      }
 })
 function getMemberSearchList(pape){
       let page = pape;
