@@ -443,7 +443,6 @@
 
 .comuview{
        	color:rgb(0, 0, 0);
-       	width: 300px;
     	position: absolute;
     	left: 50%;
     	transform: translate(-50%, -50%);
