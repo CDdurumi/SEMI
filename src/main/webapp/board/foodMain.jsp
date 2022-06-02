@@ -464,7 +464,9 @@
 .comuview:hover{
        color:#0080ff;
        }
-
+		.card{
+				height:350px;
+			}
 
 select{
     border-radius: 5px;

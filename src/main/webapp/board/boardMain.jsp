@@ -239,7 +239,9 @@
                 padding-left: calc(var(--nav-width) + 188px)
             }
         }
-
+			.card{
+				height:350px;
+			}
         /*  */
         .bd-placeholder-img {
             font-size: 1.125rem;
