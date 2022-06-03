@@ -1042,6 +1042,11 @@
                       replyOn = true;
                       //대댓글 등록
                    rebtn1.on("click",function(){
+                           if(${loginID == null}){
+                              alert("로그인이 필요합니다.");
+                              return false;
+                           }
+                	   
                       let the = $(this);
                       $.ajax({
                            url : '/reChatIN.reply',
