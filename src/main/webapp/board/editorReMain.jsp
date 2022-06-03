@@ -466,7 +466,7 @@ font-weight: bold;
 <body id="body-pd">
     <header class="header" id="header" style="background-color:#f5f5f7">
         <div class="header_toggle"><i class='bx bx-menu' id="header-toggle"></i></div>
-        <div><a href="/communityMain.board" class="comuview">에디터가 엄선한 오늘의 추천!</a></div>
+        <div><a href="/communityMain.board" class="comuview">에디터의 추천!</a></div>
         <div>
             
             <c:choose>
