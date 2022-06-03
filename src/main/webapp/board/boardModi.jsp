@@ -902,7 +902,7 @@ $("#new_pw_btn").on("click",function(){
 	        	alert("제목을 줄여주세요.");
 	        	return false;
 	        }
-	        if(getByteLengthOfString(contentsLength)>4000){
+	        if(getByteLengthOfString(contentsLength)>65532){
 	        	alert("내용을 줄여주세요.");
 	        	return false;
 	        }
