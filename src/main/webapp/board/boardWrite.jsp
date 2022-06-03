@@ -1108,7 +1108,7 @@ $("#modal_loginBtn").on("click",function(){
 	        	alert("제목을 줄여주세요.");
 	        	return false;
 	        }
-	        if(getByteLengthOfString(contentsLength)>65532){
+	        if(getByteLengthOfString(contentsLength)>4000){
 	        	alert("내용을 줄여주세요.");
 	        	return false;
 	        }
