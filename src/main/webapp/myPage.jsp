@@ -659,7 +659,7 @@ pageEncoding="UTF-8"%>
                     </a>
                     
                    
-                    <a href="/boardMainView.board?cpage=1" class="nav1_link"> <i class='bx bx-home nav1_icon'></i> <span class="nav1_name">숙소리뷰</span>
+                    <a href="/houseMain.board?cpage=1" class="nav1_link"> <i class='bx bx-home nav1_icon'></i> <span class="nav1_name">숙소리뷰</span>
                     </a>
                     <c:choose>
 						<c:when test="${loginID != null}">
