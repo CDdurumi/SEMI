@@ -695,10 +695,10 @@ $("#new_pw_btn").on("click",function(){
         <c:forEach var="i" items="${list}">
         	<c:forEach var="j" items="${porfileList}">
 				<c:if test="${j.parent_seq eq i.all_board_seq}">
-					<div class="col-12 col-sm-6 col-md-3" id="img">
+					<div class="col-12 col-sm-6 col-md-3" id="img" style="overflow:hidden;">
 						<a href = "/detailView.board?cpage=1&seq=${i.all_board_seq}&click=ok" >
 							<img src="${profilePath}${j.sys_name}" alt=".." class="rounded-circle w-100 h-100" style="box-shadow: 5px 5px 5px 5px gray;">
-							<div class="mask text-center"><p1 style="color:black; font-size:30px;">${i.title}</p1></div>
+							<div class="mask text-center"><p1 style="color:white; font-size:25px;">${i.title}</p1></div>
 						</a>
 						
 					</div>

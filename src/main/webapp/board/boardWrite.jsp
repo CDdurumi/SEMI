@@ -541,6 +541,12 @@ $(function(){
 	    	</c:if>
 		</c:forEach>
 
+		
+		//복사 붙여넣기 방지
+		window.addEventListener("paste", function(event) {
+			alert("붙여넣기는 사용하실 수 없습니다.");
+			return event.preventDefault();
+		});
 }) 
 </script>        
     </head>
@@ -549,7 +555,7 @@ $(function(){
 
     <header class="header" id="header" style="background-color:#f5f5f7">
         <div class="header_toggle"><i class='bx bx-menu' id="header-toggle"></i></div>
-        <div><a href="/board/communityMain.jsp" class="comuview"> 게시판 글 작성하기</a></div>
+        <div><a href="/communityMain.board" class="comuview"> 게시판 글 작성하기</a></div>
         <div>
             <c:choose>
 				<c:when test="${loginID !=null}">
@@ -842,7 +848,35 @@ $("#modal_loginBtn").on("click",function(){
                     <textarea class="summernote" name="contents" id="summernote" ></textarea>
                 </div>
                 <div class="col-12 " style="text-align: right;">
-                    <a href="/board/boardMain.jsp?cpage=1"><input type="button" value="목록으로" class="my-1"></a>
+                
+                	<c:choose>
+                		<c:when test="${boardOption eq 'f'}">
+							<a href="/boardMainView.board?cpage=1"><input type="button" value="목록으로" class="my-1"></a>
+                		</c:when>
+                		
+                		<c:when test="${boardOption eq 'g'}">
+							<a href="/galleryMain.board?cpage=1"><input type="button" value="목록으로" class="my-1"></a>
+                		</c:when>
+                	
+                		<c:when test="${boardOption eq 'j'}">
+							<a href="/jobMain.board?cpage=1"><input type="button" value="목록으로" class="my-1"></a>
+                		</c:when>
+                		
+                		<c:when test="${boardOption eq 'r'}">
+							<a href="/foodMain.board?cpage=1"><input type="button" value="목록으로" class="my-1"></a>
+                		</c:when>
+                		
+                		<c:when test="${boardOption eq 'h'}">
+							<a href="/houseMain.board?cpage=1"><input type="button" value="목록으로" class="my-1"></a>
+                		</c:when>
+                		
+                		<c:when test="${boardOption eq 'e'}">
+							<a href="/adiminPage.admin"><input type="button" value="목록으로" class="my-1"></a>
+                		</c:when>
+                	
+                	</c:choose>
+
+                    
                     <input type="submit" value="작성완료" class="mx-2" >
                 </div>
             </div>
@@ -1108,7 +1142,7 @@ $("#modal_loginBtn").on("click",function(){
 	        	alert("제목을 줄여주세요.");
 	        	return false;
 	        }
-	        if(getByteLengthOfString(contentsLength)>12000){
+	        if(getByteLengthOfString(contentsLength)>4000){
 	        	alert("내용을 줄여주세요.");
 	        	return false;
 	        }

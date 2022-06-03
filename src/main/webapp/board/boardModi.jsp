@@ -471,6 +471,13 @@ font-weight: bold;
             		$("#fileArea").prepend(div);
             	}
             })
+            
+            
+    		//복사 붙여넣기 방지
+    		window.addEventListener("paste", function(event) {
+    			alert("붙여넣기는 사용하실 수 없습니다.");
+    			return event.preventDefault();
+    		});
    	}) 
         
         </script>
@@ -902,7 +909,7 @@ $("#new_pw_btn").on("click",function(){
 	        	alert("제목을 줄여주세요.");
 	        	return false;
 	        }
-	        if(getByteLengthOfString(contentsLength)>12000){
+	        if(getByteLengthOfString(contentsLength)>4000){
 	        	alert("내용을 줄여주세요.");
 	        	return false;
 	        }

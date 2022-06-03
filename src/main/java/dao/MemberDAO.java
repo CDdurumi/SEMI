@@ -146,12 +146,12 @@ public class MemberDAO {
 			sql = "select * from (select row_number() over(order by join_date desc) line, member.* from member where id like '%'||?||'%')"
 					+ "where line between ? and ?";
 		}
-		
+		System.out.println(sql);		
 		try (Connection con = this.getConnection(); PreparedStatement pstat = con.prepareStatement(sql);) {
 			pstat.setString(1, id);
 			pstat.setInt(2, start);
 			pstat.setInt(3, end);
-			
+
 			try (ResultSet rs = pstat.executeQuery()) {
 				List<MemberDTO> list = new ArrayList<MemberDTO>();
 				

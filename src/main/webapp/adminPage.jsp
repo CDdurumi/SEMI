@@ -290,13 +290,13 @@ pageEncoding="UTF-8"%>
             }
         }
         .comuview{
-       	color:rgb(0, 0, 0);
-    	position: absolute;
-    	left: 50%;
-    	transform: translate(-50%, -50%);
-    	text-align:center;
-    	font-weight: bold;
-    	font-size:20px;
+          color:rgb(0, 0, 0);
+       position: absolute;
+       left: 50%;
+       transform: translate(-50%, -50%);
+       text-align:center;
+       font-weight: bold;
+       font-size:20px;
        }
 .comuview:hover{
        color:#0080ff;
@@ -384,7 +384,7 @@ pageEncoding="UTF-8"%>
             margin-bottom: 20px;
         }
 
-		
+      
 
         /* 제목이 길어서 잘렸을 경우 밑의 두개 처리해준다 */
        .ellipsis{
@@ -419,12 +419,12 @@ pageEncoding="UTF-8"%>
         #v-pills-tabContent >div{
             color: black;
         }
-		.title{
-			font-weight:bold;
-			text-decoration: none;
-			color:black;
-		}
-		a{color:black;}
+      .title{
+         font-weight:bold;
+         text-decoration: none;
+         color:black;
+      }
+      a{color:black;}
         /*쪽지함 메인-----------------------------------*/
         #board_menu_text{
             font-size: 18px;
@@ -512,10 +512,10 @@ pageEncoding="UTF-8"%>
         }
 
         /*--계정관리---------------------------------------------------------------------------------------*/
-	.newcheck{
-	text-align:center;
-	display:none;
-	}
+   .newcheck{
+   text-align:center;
+   display:none;
+   }
          #header_header {
            height: 100%;
           padding-top: 80px;
@@ -544,12 +544,12 @@ pageEncoding="UTF-8"%>
         .btn{
 /*             margin-top: 20px; */
         }
-		.member_board{
-		    height: 50px;
+      .member_board{
+          height: 50px;
             margin-bottom: 3px;
-			width:600px;
-/* 			align:center; */
-		}
+         width:600px;
+/*          align:center; */
+      }
 /*--top버튼----------------------------------------------------------------*/
 
 #myBtn {
@@ -579,8 +579,8 @@ pageEncoding="UTF-8"%>
 
  메세지보내기버튼 
  #sendMsgBtn{ 
- 	min-width:90px; 
-/* 	padding-right:25px;  */
+    min-width:90px; 
+/*    padding-right:25px;  */
  }
 
 
@@ -592,14 +592,14 @@ select{
     font-weight: bold;
 }
 .notice{
-	color:red;
-	font-weight:bold;
+   color:red;
+   font-weight:bold;
 }
 
 
 #sDate, #eDate{
-	margin-right: 8px;
-	width: 60%
+   margin-right: 8px;
+   width: 60%
 }
 
     </style>
@@ -607,29 +607,31 @@ select{
 
 <script>
 $(function(){
-	
-	//탭1 - 게시판 콤보박스 자동 set.
+   
+   //탭1 - 게시판 콤보박스 자동 set.
     let boardOption = "${boardOption}";
     if(boardOption == 'f'){//자유게시판
-    	 $("#f").attr("selected","selected");
+        $("#f").attr("selected","selected");
     }else if(boardOption == 'g'){//여행후기
-    	 $("#g").attr("selected","selected");
+        $("#g").attr("selected","selected");
     }else if(boardOption == 'j'){//구인구작
-    	 $("#j").attr("selected","selected");
+        $("#j").attr("selected","selected");
     }else if(boardOption == 'r'){//맛집
-    	 $("#r").attr("selected","selected");
+        $("#r").attr("selected","selected");
     }else if(boardOption == 'h'){//숙소리뷰
-    	 $("#h").attr("selected","selected");
+        $("#h").attr("selected","selected");
+    }else if(boardOption == 'e'){//숙소리뷰
+        $("#e").attr("selected","selected");
     }
     
     //게시글 콤보박스 선택 시 이벤트
     let previous = "";
     $("#boardSelect").on('focus', function () {
-		previous  = this.value;
-	}).change(function() {
-		let boardOption = $("#boardSelect").val();
-		location.href = "/adiminPageTap1.admin?boardOption="+boardOption+"&cpage=1"; 
-	});
+      previous  = this.value;
+   }).change(function() {
+      let boardOption = $("#boardSelect").val();
+      location.href = "/adiminPageTap1.admin?boardOption="+boardOption+"&cpage=1"; 
+   });
 
 }) 
 
@@ -673,26 +675,26 @@ $(function(){
                     </a>
                     
                    
-                    <a href="/boardMainView.board?cpage=1" class="nav1_link"> <i class='bx bx-home nav1_icon'></i> <span class="nav1_name">숙소리뷰</span>
+                    <a href="/houseMain.board?cpage=1" class="nav1_link"> <i class='bx bx-home nav1_icon'></i> <span class="nav1_name">숙소리뷰</span>
                     </a>
                     <c:choose>
-						<c:when test="${loginID !=null}">
-							<a href="/goMyPage.mpg" class="nav1_link"> <i class='bx bx-user nav1_icon'></i> <span class="nav1_name">마이페이지</span> </a>
-						</c:when>
-		
-						<c:otherwise>
-							<a href="/goMyPage.mpg" class="nav1_link" data-bs-toggle="modal" data-bs-target="#exampleModal"> <i class='bx bx-user nav1_icon'></i> <span class="nav1_name">마이페이지</span> </a>
-						</c:otherwise>
-					</c:choose>
-					<c:choose>
-						<c:when test="${loginIsAdmin == 'Y'}">
-               				<a href="/adiminPage.admin" class="nav1_link active"> <i class='bx bx-hard-hat nav1_icon'></i> <span class="nav1_name">관리자페이지</span> </a>
-                		</c:when>
-                	
-                		<c:otherwise>
-							
-						</c:otherwise>
-                	</c:choose>
+                  <c:when test="${loginID !=null}">
+                     <a href="/goMyPage.mpg" class="nav1_link"> <i class='bx bx-user nav1_icon'></i> <span class="nav1_name">마이페이지</span> </a>
+                  </c:when>
+      
+                  <c:otherwise>
+                     <a href="/goMyPage.mpg" class="nav1_link" data-bs-toggle="modal" data-bs-target="#exampleModal"> <i class='bx bx-user nav1_icon'></i> <span class="nav1_name">마이페이지</span> </a>
+                  </c:otherwise>
+               </c:choose>
+               <c:choose>
+                  <c:when test="${loginIsAdmin == 'Y'}">
+                           <a href="/adiminPage.admin" class="nav1_link active"> <i class='bx bx-hard-hat nav1_icon'></i> <span class="nav1_name">관리자페이지</span> </a>
+                      </c:when>
+                   
+                      <c:otherwise>
+                     
+                  </c:otherwise>
+                   </c:choose>
                 </div>
             </div>
             <c:choose>
@@ -766,77 +768,77 @@ $(function(){
       
 <script>
 $("#login").on("click",function(){
-	$("#idpw_check").text("");
-	$("#idpw_check").css({ color: "black" })
+   $("#idpw_check").text("");
+   $("#idpw_check").css({ color: "black" })
 })
 $("#modal_loginBtn").on("click",function(){
-			$.ajax({
-				url:"/login.member",
-				type:"post",
-				data:{email:$("#id-input").val(),pw:$("#password-input").val()},
-				dataType:"json"
-			}).done(function(resp){
-				console.log(resp);
-				if(resp==false){					
-					$("#idpw_check").text("Email 또는 비밀번호가 올바르지 않습니다!");
-					$("#idpw_check").css({ color: "red" })
-					$("#id-input").val("");
-					$("#id-input").focus();					
-					$("#password-input").val("");
-				}else if(resp==true){
-					location.reload();
-				}
-				
-			});
-		})
+         $.ajax({
+            url:"/login.member",
+            type:"post",
+            data:{email:$("#id-input").val(),pw:$("#password-input").val()},
+            dataType:"json"
+         }).done(function(resp){
+            console.log(resp);
+            if(resp==false){               
+               $("#idpw_check").text("Email 또는 비밀번호가 올바르지 않습니다!");
+               $("#idpw_check").css({ color: "red" })
+               $("#id-input").val("");
+               $("#id-input").focus();               
+               $("#password-input").val("");
+            }else if(resp==true){
+               location.reload();
+            }
+            
+         });
+      })
 
 $("#new_pw_btn").on("click",function(){
-			let email = $("#findpw_email").val();
-			let nickname= $("#findpw_nickname").val();
-			
-			
-			let pw = (Math.floor(Math.random() * 10)*10000000)+(Math.floor(Math.random() * 10)*1000000)+(Math.floor(Math.random() * 10)*100000)+(Math.floor(Math.random() * 10)*10000)+(Math.floor(Math.random() * 10)*1000)+(Math.floor(Math.random() * 10)*100)+(Math.floor(Math.random() * 10)*10)+Math.floor(Math.random() * 10);
-			
-			for(i=1; i<9; i++){
-				
-			}
-			
-			console.log(pw);
-			
-			
-			let temppw =$("#temp_pw");
-			if(email==""||nickname==""){
-				alert("공백은 입력할 수 없습니다");
-			}else{
-				$.ajax({
-					url:"/resetpw.member",
-					type:"post",
-					data:{email:email,nickname:nickname,pw:pw},
-					dataType:"json"
-				}).done(function(resp){
-					console.log(resp);
-					if(resp>0){
-						temppw.val("임시 비밀번호 : " + pw);
-					}else{
-						temppw.val("email 또는 닉네임이 틀렸습니다");
-					}
-				});
-			}
-			
-		})
+         let email = $("#findpw_email").val();
+         let nickname= $("#findpw_nickname").val();
+         
+         
+         let pw = (Math.floor(Math.random() * 10)*10000000)+(Math.floor(Math.random() * 10)*1000000)+(Math.floor(Math.random() * 10)*100000)+(Math.floor(Math.random() * 10)*10000)+(Math.floor(Math.random() * 10)*1000)+(Math.floor(Math.random() * 10)*100)+(Math.floor(Math.random() * 10)*10)+Math.floor(Math.random() * 10);
+         
+         for(i=1; i<9; i++){
+            
+         }
+         
+         console.log(pw);
+         
+         
+         let temppw =$("#temp_pw");
+         if(email==""||nickname==""){
+            alert("공백은 입력할 수 없습니다");
+         }else{
+            $.ajax({
+               url:"/resetpw.member",
+               type:"post",
+               data:{email:email,nickname:nickname,pw:pw},
+               dataType:"json"
+            }).done(function(resp){
+               console.log(resp);
+               if(resp>0){
+                  temppw.val("임시 비밀번호 : " + pw);
+               }else{
+                  temppw.val("email 또는 닉네임이 틀렸습니다");
+               }
+            });
+         }
+         
+      })
 
-</script>		
+</script>      
 <!-- 로그인 모달  -->
 <script>
 window.onload = function(){
-	if(${loginID == null}){
-		Swal.fire({
-			  icon: 'error',
-			  title: 'Oops...',
-			  text: 'Something went wrong!',
-			  footer: '<a href="">Why do I have this issue?</a>'
-			})
-	}
+   if(${loginID == null}){
+      Swal.fire({
+           icon: 'error',
+           title: 'Oops...',
+           text: 'Something went wrong!',
+           footer: '<a href="">Why do I have this issue?</a>'
+         })
+   }
 }
 
 
@@ -860,194 +862,197 @@ window.onload = function(){
     <div class="tab-content" id="myTabContent">
       <!--탭1------------------------------------------------------->
       <div class="tab-pane fade show active" id="board-tab-pane" role="tabpanel" aria-labelledby="board-tab" tabindex="0">
-	        <div class="row">
-	        <!---------------------검색창---------------->
-				<div class="col-12" id="searchbar" >
-				    <nav class="navbar bg">
-				        <div class="container-fluid">
-				          <a class="navbar-brand"> </a>
-				          <form action="/adiminPageTap1Search.admin" method="post" class="d-flex" role="search">
-				          		<input type="hidden" value="1" name="cpage">
-								
-								<select name="boardOption" id="boardSelect">
-				                        <option value="f" id="f">
-				                            자유게시판
-				                        </option>
-				                        <option value="g" id="g">
-				                            여행후기
-				                        </option>
-				                        <option value="j" id="j">
-				                            구인구직
-				                        </option>
-				                        <option value="r" id="r">
-				                            맛집
-				                        </option>
-				                        <option value="h" id="h">
-				                            숙소리뷰
-				                        </option>		                        		                        
-								</select>
-								
-								
-								<select name="serchOption" id="select">
-				                        <option value="title">
-				                            제목
-				                        </option>
-				                        <option value="id">
-				                            작성자
-				                        </option>
-				                        <option value="contents">
-				                            내용
-				                        </option>
-								</select>
-				          	
-				          	
-				            <input class="form-control me-2" type="search" placeholder="검색어를 입력해주세요." aria-label="Search" name="contents">
-				            <button class="btn btn-outline-secondary btn-sm" type="submit">Search</button>&nbsp;
-				            <button class="btn btn-outline-secondary btn-sm" type="button" id ="cancel"><i class="fa-solid fa-eraser"></i></button>&nbsp;
-				            		<c:choose>
-										<c:when test="${loginID !=null}">
-											<button type="button" class="btn btn-primary btn-sm" id="writeBtn" style="white-space:nowrap;"><i class="fa-solid fa-pen-to-square"></i>글 작성하기</button>
-										</c:when>
-						
-										<c:otherwise>
-											<button type="button" class="btn btn-primary btn-sm" style="white-space:nowrap;" data-bs-toggle="modal" data-bs-target="#exampleModal"><i class="fa-solid fa-pen-to-square"></i>글 작성하기</button>
-										</c:otherwise>
-									</c:choose>
-									
-				          </form>
-				          
-				        </div>
-				      </nav>
-				</div>
-	        
-	        
-		        <div class="row m-0" id="board_menu" ></div>
-		
-		        <div class="row m-0">
-		             <div class="col-12 board ">
-		                <div class="row " id="board_menu_text">
-		                    <div class="col-md-1 d-none d-md-block p-0 text-center">번호</div>
-		                    <div class="col-7 col-md-5 " ><p class="mx-3">제목</p></div>
-		                    <div class="col-3 col-md-2 p-0 text-center">글쓴이</div>
-		                    <div class="col-md-2 d-none d-md-block p-0 text-center">날짜</div>
-		                    <div class="col-md-1 d-none d-md-block p-0 text-center">조회</div>
-		                    <div class="col-2 col-md-1 p-0 text-center">추천</div>
-		                </div>
-		             
-		            </div>
-		        </div>
-	        
-<!-- 			            여기는 공지글 -->
-		        <c:forEach var="i" items="${noticeList }">
-		        <div class="col-12  board">
-		            <div class="row m-0 border border-2 rounded board_row ">
-		            	
-		                <div class="col-1 col-md-1 d-none d-md-block p-0 text-center">
-		                <p class="notice">공지</p>
-		                </div>
-		               	<div class="col-7 col-md-5 m-0 title ididid " style="text-align:left">
-		               		<a href="/detailView.board?cpage=${cpage}&seq=${i.all_board_seq}&click=ok" style="color:black">${i. title }</a>
-		               	</div>
-		                <div class="col-3 col-md-2 p-0 ellipsis text-center ididid">${i.id }</div>
-		                <div class="col-md-2 d-none d-md-block p-0 text-center"><fmt:formatDate value="${i.write_date }" pattern="yy-MM-dd"/></div>
-		                <div class="col-md-1 d-none d-md-block p-0 text-center">${i.view_count}</div>
-		                <div class="col-2 col-md-1 p-0 text-center">${i.like_count}</div>
-		                
-		            </div>
-		        </div>
-		        </c:forEach>
-		        
-		        
-<!-- 				        여기는 목록 -->
-		        <c:forEach var="i" items="${list }">
-		        <div class="col-12  board">
-		            <div class="row m-0 border border-2 rounded board_row ">
-		            	
-		                <div class="col-1 col-md-1 d-none d-md-block p-0 text-center">${i.line}</div>
-		               	<div class="col-7 col-md-5 m-0 title ididid "style="text-align:left">
-		               		<a href="/detailView.board?cpage=${cpage}&seq=${i.all_board_seq}&click=ok" style="color:black">${i. title }</a>
-		               	</div>
-		                <div class="col-3 col-md-2 p-0 ididid text-center">${i.id }</div>
-		                <div class="col-md-2 d-none d-md-block p-0 text-center"><fmt:formatDate value="${i.write_date }" pattern="yy-MM-dd"/></div>
-		                <div class="col-md-1 d-none d-md-block p-0 text-center">${i.view_count}</div>
-		                <div class="col-2 col-md-1 p-0 text-center">${i.like_count}</div>
-		                
-		            </div>
-		        </div>
-		        </c:forEach>
+           <div class="row">
+           <!---------------------검색창---------------->
+            <div class="col-12" id="searchbar" >
+                <nav class="navbar bg">
+                    <div class="container-fluid">
+                      <a class="navbar-brand"> </a>
+                      <form action="/adiminPageTap1Search.admin" method="post" class="d-flex" role="search">
+                            <input type="hidden" value="1" name="cpage">
+                        
+                        <select name="boardOption" id="boardSelect">
+                                    <option value="f" id="f">
+                                        자유게시판
+                                    </option>
+                                    <option value="g" id="g">
+                                        여행후기
+                                    </option>
+                                    <option value="j" id="j">
+                                        구인구직
+                                    </option>
+                                    <option value="r" id="r">
+                                        맛집
+                                    </option>
+                                    <option value="h" id="h">
+                                        숙소리뷰
+                                    </option>
+                                    <option value="e" id="e">
+                                        에디터추천
+                                    </option>                                                               
+                        </select>
+                        
+                        
+                        <select name="serchOption" id="select">
+                                    <option value="title">
+                                        제목
+                                    </option>
+                                    <option value="id">
+                                        작성자
+                                    </option>
+                                    <option value="contents">
+                                        내용
+                                    </option>
+                        </select>
+                         
+                         
+                        <input class="form-control me-2" type="search" placeholder="검색어를 입력해주세요." aria-label="Search" name="contents">
+                        <button class="btn btn-outline-secondary btn-sm" type="submit">Search</button>&nbsp;
+                        <button class="btn btn-outline-secondary btn-sm" type="button" id ="cancel"><i class="fa-solid fa-eraser"></i></button>&nbsp;
+                              <c:choose>
+                              <c:when test="${loginID !=null}">
+                                 <button type="button" class="btn btn-primary btn-sm" id="writeBtn" style="white-space:nowrap;"><i class="fa-solid fa-pen-to-square"></i>글 작성하기</button>
+                              </c:when>
+                  
+                              <c:otherwise>
+                                 <button type="button" class="btn btn-primary btn-sm" style="white-space:nowrap;" data-bs-toggle="modal" data-bs-target="#exampleModal"><i class="fa-solid fa-pen-to-square"></i>글 작성하기</button>
+                              </c:otherwise>
+                           </c:choose>
+                           
+                      </form>
+                      
+                    </div>
+                  </nav>
+            </div>
+           
+           
+              <div class="row m-0" id="board_menu" ></div>
+      
+              <div class="row m-0">
+                   <div class="col-12 board ">
+                      <div class="row " id="board_menu_text">
+                          <div class="col-md-1 d-none d-md-block p-0 text-center">번호</div>
+                          <div class="col-7 col-md-5 " ><p class="mx-3">제목</p></div>
+                          <div class="col-3 col-md-2 p-0 text-center">글쓴이</div>
+                          <div class="col-md-2 d-none d-md-block p-0 text-center">날짜</div>
+                          <div class="col-md-1 d-none d-md-block p-0 text-center">조회</div>
+                          <div class="col-2 col-md-1 p-0 text-center">추천</div>
+                      </div>
+                   
+                  </div>
+              </div>
+           
+<!--                      여기는 공지글 -->
+              <c:forEach var="i" items="${noticeList }">
+              <div class="col-12  board">
+                  <div class="row m-0 border border-2 rounded board_row ">
+                     
+                      <div class="col-1 col-md-1 d-none d-md-block p-0 text-center">
+                      <p class="notice">공지</p>
+                      </div>
+                        <div class="col-7 col-md-5 m-0 title ididid " style="text-align:left">
+                           <a href="/detailView.board?cpage=${cpage}&seq=${i.all_board_seq}&click=ok" style="color:black">${i. title }</a>
+                        </div>
+                      <div class="col-3 col-md-2 p-0 ellipsis text-center ididid">${i.id }</div>
+                      <div class="col-md-2 d-none d-md-block p-0 text-center"><fmt:formatDate value="${i.write_date }" pattern="yy-MM-dd"/></div>
+                      <div class="col-md-1 d-none d-md-block p-0 text-center">${i.view_count}</div>
+                      <div class="col-2 col-md-1 p-0 text-center">${i.like_count}</div>
+                      
+                  </div>
+              </div>
+              </c:forEach>
+              
+              
+<!--                     여기는 목록 -->
+              <c:forEach var="i" items="${list }">
+              <div class="col-12  board">
+                  <div class="row m-0 border border-2 rounded board_row ">
+                     
+                      <div class="col-1 col-md-1 d-none d-md-block p-0 text-center">${i.line}</div>
+                        <div class="col-7 col-md-5 m-0 title ididid "style="text-align:left">
+                           <a href="/detailView.board?cpage=${cpage}&seq=${i.all_board_seq}&click=ok" style="color:black">${i. title }</a>
+                        </div>
+                      <div class="col-3 col-md-2 p-0 ididid text-center">${i.id }</div>
+                      <div class="col-md-2 d-none d-md-block p-0 text-center"><fmt:formatDate value="${i.write_date }" pattern="yy-MM-dd"/></div>
+                      <div class="col-md-1 d-none d-md-block p-0 text-center">${i.view_count}</div>
+                      <div class="col-2 col-md-1 p-0 text-center">${i.like_count}</div>
+                      
+                  </div>
+              </div>
+              </c:forEach>
 
-	        </div>
-	        
-			<div class="row">
-	            <div class="col-12 text-center">
-					<nav aria-label="Page navigation example">
-						  <ul class="pagination justify-content-center">
-								<li class="page-item">
-								  <a class="page-link" href="#" aria-label="Previous">
-								    <span aria-hidden="true">&laquo;</span>
-								  </a>
-								</li>
-								${navi}
-								<li class="page-item">
-								  <a class="page-link" href="#" aria-label="Next">
-								    <span aria-hidden="true">&raquo;</span>
-								  </a>
-								</li>
-						  </ul>
-					</nav>
-	            </div>
-			</div>
-	        
+           </div>
+           
+         <div class="row">
+               <div class="col-12 text-center">
+               <nav aria-label="Page navigation example">
+                    <ul class="pagination justify-content-center">
+                        <li class="page-item">
+                          <a class="page-link" href="#" aria-label="Previous">
+                            <span aria-hidden="true">&laquo;</span>
+                          </a>
+                        </li>
+                        ${navi}
+                        <li class="page-item">
+                          <a class="page-link" href="#" aria-label="Next">
+                            <span aria-hidden="true">&raquo;</span>
+                          </a>
+                        </li>
+                    </ul>
+               </nav>
+               </div>
+         </div>
+           
       </div>
 
       <!--탭2-------------------------------------------------------->
       <div class="tab-pane fade" id="member-tab-pane" role="tabpanel" aria-labelledby="member-tab" tabindex="0">
       
-				<div class="col-12" id="searchbar" >
-				    <nav class="navbar bg">
-				        <div class="container-fluid">
-				          <a class="navbar-brand"> </a>
-				          <div class="d-flex">
-				          		<input type="hidden" value="1" name="cpage">
-								
-								<input type="date" name="sDate" id="sDate">
-								<input type="date" name="eDate" id="eDate">
-									
-								<select name="searchMember" id="searchMember">
-				                        <option value="searchNick" id="searchNick">
-				                            닉네임
-				                        </option>
-				                        <option value="searchEmail" id="searchEmail">
-				                            이메일
-				                        </option>	                        		                        
-								</select>
-				          	
-				          	
-				            <input class="form-control me-2" type="search" placeholder="검색어를 입력해주세요." aria-label="Search" id="Membercontents" name="contents">
-				            <button class="btn btn-outline-secondary btn-sm" type="button" id="search-member">Search</button>&nbsp;
-				            <button class="btn btn-outline-secondary btn-sm" type="button" id ="cancel-member">x</button>&nbsp;
-				          </div>
-				          
-				        </div>
-				      </nav>
-				</div>
-<!-- 				padding 구간 -->
-				<div class="row m-0" id="board_menu" ></div>
-<!-- 				멤버 목록 -->
-		        <div class="row m-0 member_boardbox" id="member_boardbox">
-		        	<div class="row" style="padding-left:30px; padding-right:0px;">
-		                <div class="row " id="member_menu_text" style="text-align:center;">
-		                    <div class="col-6 col-lg-3 col-sm-6 d-lg-block p-0 text-center">아이디</div>
-		                    <div class="col-6 col-lg-5 col-sm-6" ><p class="mx-3">이메일</p></div>
-		                    <div class="col-lg-4 d-none d-lg-block p-0 text-center">가입일</div>
-		                </div>
-		           </div>
-		             	<div class="col-12 member_boardtext" id="member_boardtext">
+            <div class="col-12" id="searchbar" >
+                <nav class="navbar bg">
+                    <div class="container-fluid">
+                      <a class="navbar-brand"> </a>
+                      <div class="d-flex">
+                            <input type="hidden" value="1" name="cpage">
+                        
+                        <input type="date" name="sDate" id="sDate">
+                        <input type="date" name="eDate" id="eDate">
+                           
+                        <select name="searchMember" id="searchMember">
+                                    <option value="searchNick" id="searchNick">
+                                        닉네임
+                                    </option>
+                                    <option value="searchEmail" id="searchEmail">
+                                        이메일
+                                    </option>                                                         
+                        </select>
+                         
+                         
+                        <input class="form-control me-2" type="search" placeholder="검색어를 입력해주세요." aria-label="Search" id="Membercontents" name="contents">
+                        <button class="btn btn-outline-secondary btn-sm" type="button" id="search-member">Search</button>&nbsp;
+                        <button class="btn btn-outline-secondary btn-sm" type="button" id ="cancel-member" disabled><i class="fa-solid fa-eraser"></i></button>&nbsp;
+                      </div>
+                      
+                    </div>
+                  </nav>
+            </div>
+<!--             padding 구간 -->
+            <div class="row m-0" id="board_menu" ></div>
+<!--             멤버 목록 -->
+              <div class="row m-0 member_boardbox" id="member_boardbox">
+                 <div class="row" style="padding-left:30px; padding-right:0px;">
+                      <div class="row " id="member_menu_text" style="text-align:center;">
+                          <div class="col-6 col-lg-3 col-sm-6 d-lg-block p-0 text-center">아이디</div>
+                          <div class="col-6 col-lg-5 col-sm-6" ><p class="mx-3">이메일</p></div>
+                          <div class="col-lg-4 d-none d-lg-block p-0 text-center">가입일</div>
+                      </div>
+                 </div>
+                      <div class="col-12 member_boardtext" id="member_boardtext">
                                 
-   							<!-- 멤버리스트 반복문위치 -->
+                        <!-- 멤버리스트 반복문위치 -->
                         </div>
-		        </div>
-		</div>	
+              </div>
+      </div>   
 
     </div>
 
@@ -1064,13 +1069,13 @@ window.onload = function(){
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
       <div class="modal-body">
-      	 
-      	받는 사람 | <input type="text" placeholder="받는 사람 ID" id="modal_receiver"><p></p>
-      	<input type="text" placeholder="제목을 입력하세요" id="modal_title" name="title" style="width:100%">
-      	<p>
-      	
-      	</p>
-      	
+          
+         받는 사람 | <input type="text" placeholder="받는 사람 ID" id="modal_receiver"><p></p>
+         <input type="text" placeholder="제목을 입력하세요" id="modal_title" name="title" style="width:100%">
+         <p>
+         
+         </p>
+         
         <textarea style="width:100%; min-height:150px" placeholder="내용을 입력하세요" id="modal_msgContents"></textarea>
       </div>
       <div class="modal-footer">
@@ -1092,30 +1097,30 @@ window.onload = function(){
 
     <script>
     $("#writeBtn").on("click",function(){
-    	let boardOption = $("#boardSelect").val();
-    	location.href="/writeboard.board?boardOption="+boardOption;
+       let boardOption = $("#boardSelect").val();
+       location.href="/writeboard.board?boardOption="+boardOption;
     })
     
     
     //탭1 클릭 이벤트
     $("#board-tab").on("click",function(){
-    	let boardOption = $("#boardSelect").val();
-    	location.href = "/adiminPageTap1.admin?boardOption="+boardOption+"&cpage=1"; 
-    	
+       let boardOption = $("#boardSelect").val();
+       location.href = "/adiminPageTap1.admin?boardOption="+boardOption+"&cpage=1"; 
+       
     })
     
-	//X버튼 클릭 시(검색 취소)
+   //X버튼 클릭 시(검색 취소)
     $("#cancel").on("click",function(){
-    	let boardOption = $("#boardSelect").val();
-    	let cpage = ${cpage};
-    	location.href = "/adiminPageTap1.admin?boardOption="+boardOption+"&cpage="+cpage+""; 
+       let boardOption = $("#boardSelect").val();
+       let cpage = ${cpage};
+       location.href = "/adiminPageTap1.admin?boardOption="+boardOption+"&cpage="+cpage+""; 
     })
     
     
     
     //탭2 클릭 이벤트
 //     $("#member-tab").on("click",function(){
-// 		alert("미완성된 기능입니다.")
+//       alert("미완성된 기능입니다.")
 //     })
     
     
@@ -1142,10 +1147,10 @@ window.onload = function(){
             dataType:"json",
             type:"post"
         }).done(function(resp){
-        	console.log(resp);
+           console.log(resp);
             
-        	if(resp){
-        		$(".newcheck").css("display","block"); //정규식 확인 보이기
+           if(resp){
+              $(".newcheck").css("display","block"); //정규식 확인 보이기
                 $(".content").css("display","inline");
                 $("#ok").css("display","inline");    //완료버튼
                 $(".pw").css("display","block");    //비번 수정
@@ -1154,10 +1159,10 @@ window.onload = function(){
 //                 $("#pw").css("display","block");
                 $("#back").css("display","inline-block"); //취소버튼
                 $("#pw1").val("");
-				$("#pw2").val(""); 
-				$("#pw1").attr("placeholder","변경하실 비밀번호");
-				$("#pw2").attr("placeholder","변경하실 비밀번호 확인");
-				 
+            $("#pw2").val(""); 
+            $("#pw1").attr("placeholder","변경하실 비밀번호");
+            $("#pw2").attr("placeholder","변경하실 비밀번호 확인");
+             
 //                 $(".modify").attr("contenteditable","true");
                 $("#editID").attr("disabled", false);
                 $(".modify").css("color","#0089ff");
@@ -1174,116 +1179,116 @@ window.onload = function(){
         //회원정보 수정 완료
          //회원정보 수정 완료시
         $("#ok").on("click",function(){
-        	if('${loginID }'==$("#editID").val()){
-        		
-        		if($("#pw1").val()==$("#pw2").val()&& isPw($("#pw1").val())){
-        			$.ajax({
-                		url:"/modifiedOk.member",
+           if('${loginID }'==$("#editID").val()){
+              
+              if($("#pw1").val()==$("#pw2").val()&& isPw($("#pw1").val())){
+                 $.ajax({
+                      url:"/modifiedOk.member",
                         data:{id:$("#editID").val(), pw:$("#pw1").val()},
                         dataType:"json",
                         type:"post"
-                	}).done(function(resp){
+                   }).done(function(resp){
           
-                		if(resp){        	//회원정보 수정 성공시		                			
-                			location.reload();
-                		}else{
-                			alert("error");
-                		}        			                		
-                	})
-        		}else{
-        			$("#pw1").focus();
-        		}
-        		
-        	}else{
-        		console.log("duplIDCheck.member 실행");
-        		$.ajax({
-            		url:"/duplIDCheck.member",
-            		type:"get",
-            		data:{nickname:$("#editID").val()},
-            		dataType:"json"
-            		}).done(function(resp){
-            				console.log("닉네임 조회 resp : " + resp);
-            					if(resp==false){						
-            			        	if(isNickName($("#editID").val())) {
-            			        		if($("#pw1").val()==$("#pw2").val()){
-            			        			if(isPw($("#pw1").val())){
-            			                	$.ajax({
-            			                		url:"/modifiedOk.member",
-            			                        data:{id:$("#editID").val(), pw:$("#pw1").val()},
-            			                        dataType:"json",
-            			                        type:"post"
-            			                	}).done(function(resp){
-            			          
-            			                		if(resp){        	//회원정보 수정 성공시		                			
-            			                			location.reload();
-            			                		}else{
-            			                			alert("error");
-            			                		}        			                		
-            			                	})	
-            			        		}else{    			        			
-            			        			$("#pw1").focus();
-            			        		}
-            			        		
-            			        	}else{
-            			        		$("#editID").focus();         			        
-            			        	}
-            					}
-            					
-            				}
-            					else if(resp==true){
-            						$("#editID").focus();
-            						$("#testID").text("이미 사용중인 닉네임입니다.");
-        		        			$("#testID").css({ color: "red" });
-        					}
-            			})       
-        	}
-        	 	
-        	})
+                      if(resp){           //회원정보 수정 성공시                               
+                         location.reload();
+                      }else{
+                         alert("error");
+                      }                                       
+                   })
+              }else{
+                 $("#pw1").focus();
+              }
+              
+           }else{
+              console.log("duplIDCheck.member 실행");
+              $.ajax({
+                  url:"/duplIDCheck.member",
+                  type:"get",
+                  data:{nickname:$("#editID").val()},
+                  dataType:"json"
+                  }).done(function(resp){
+                        console.log("닉네임 조회 resp : " + resp);
+                           if(resp==false){                  
+                                if(isNickName($("#editID").val())) {
+                                   if($("#pw1").val()==$("#pw2").val()){
+                                      if(isPw($("#pw1").val())){
+                                        $.ajax({
+                                           url:"/modifiedOk.member",
+                                             data:{id:$("#editID").val(), pw:$("#pw1").val()},
+                                             dataType:"json",
+                                             type:"post"
+                                        }).done(function(resp){
+                               
+                                           if(resp){           //회원정보 수정 성공시                               
+                                              location.reload();
+                                           }else{
+                                              alert("error");
+                                           }                                       
+                                        })   
+                                   }else{                              
+                                      $("#pw1").focus();
+                                   }
+                                   
+                                }else{
+                                   $("#editID").focus();                          
+                                }
+                           }
+                           
+                        }
+                           else if(resp==true){
+                              $("#editID").focus();
+                              $("#testID").text("이미 사용중인 닉네임입니다.");
+                               $("#testID").css({ color: "red" });
+                       }
+                     })       
+           }
+               
+           })
 //정규식
 
 //아이디 중복확인
-		$("#editID").on("input",function(){
-			
-		$.ajax({
-		url:"/duplIDCheck.member",
-		type:"get",
-		data:{nickname:$("#editID").val()},
-		dataType:"json"
-		}).done(function(resp){
-				
-					if(resp==false){						
-						if(isNickName($("#editID").val())){
-							$("#testID").text("사용 가능한 닉네임입니다!");
-							$("#testID").css({ color: "blue" });
-						}else{
-							$("#testID").text("닉네임은 한글,영문, 숫자 2-10자");
-							$("#testID").css({ color: "red" });
-						}
+      $("#editID").on("input",function(){
+         
+      $.ajax({
+      url:"/duplIDCheck.member",
+      type:"get",
+      data:{nickname:$("#editID").val()},
+      dataType:"json"
+      }).done(function(resp){
+            
+               if(resp==false){                  
+                  if(isNickName($("#editID").val())){
+                     $("#testID").text("사용 가능한 닉네임입니다!");
+                     $("#testID").css({ color: "blue" });
+                  }else{
+                     $("#testID").text("닉네임은 한글,영문, 숫자 2-10자");
+                     $("#testID").css({ color: "red" });
+                  }
 
-					}else if('${loginID }'==$("#editID").val()){
-    					$("#testID").text("본인의 닉네임입니다.");
-	        			$("#testID").css({ color: "blue" });
-    				}else if(resp==true){
-						$("#testID").text("사용중인 닉네임입니다!");
-						$("#testID").css({ color: "red" });
-					}
-				});
-			})
-	//비밀번호 확인 
-	$(".pw_check").on("input", function () {
+               }else if('${loginID }'==$("#editID").val()){
+                   $("#testID").text("본인의 닉네임입니다.");
+                    $("#testID").css({ color: "blue" });
+                }else if(resp==true){
+                  $("#testID").text("사용중인 닉네임입니다!");
+                  $("#testID").css({ color: "red" });
+               }
+            });
+         })
+   //비밀번호 확인 
+   $(".pw_check").on("input", function () {
             let pw1 = $("#pw1").val();
             let pw2 = $("#pw2").val();
             let check = $("#testPWok");
             if(pw2!=="" &&pw1!==""){
-            	if (pw1 == pw2) {
-            		if(isPw(pw1)){
-            			check.text("비밀번호가 일치합니다");
+               if (pw1 == pw2) {
+                  if(isPw(pw1)){
+                     check.text("비밀번호가 일치합니다");
                         check.css({ color: "blue" });
-            		}else{
-            			check.text("비밀번호는 숫자,영문,특수문자 포함 8~16자");
+                  }else{
+                     check.text("비밀번호는 숫자,영문,특수문자 포함 8~16자");
                         check.css({ color: "red" });
                         
-            		}                	
+                  }                   
                 }
                 else if(pw1!==pw2){
                     check.text("비밀번호가 일치하지 않습니다");
@@ -1291,22 +1296,22 @@ window.onload = function(){
                 }
             }else if(pw2=="" || pw1==""){
     
-            	check.text("비밀번호는 필수정보입니다");
+               check.text("비밀번호는 필수정보입니다");
                 check.css({ color: "black" });
             }
             
         });
 
 //닉네임(한글,영문, 숫자 2-10자)
-		function isNickName(asValue) {
-			var regExp = /^[a-z가-힣0-9]{2,10}$/g;		
-			return regExp.test(asValue);
-			};
-		//비밀번호(숫자 영문 특문 조합 8~16자)
-		function isPw(asValue) {
-			var regExp = /^.{8,16}$/;
-			return regExp.test(asValue);
-		};
+      function isNickName(asValue) {
+         var regExp = /^[a-z가-힣0-9]{2,10}$/g;      
+         return regExp.test(asValue);
+         };
+      //비밀번호(숫자 영문 특문 조합 8~16자)
+      function isPw(asValue) {
+         var regExp = /^.{8,16}$/;
+         return regExp.test(asValue);
+      };
   
     
   //계정관리
@@ -1488,282 +1493,349 @@ window.onload = function(){
      document.body.scrollTop = 0; 
      document.documentElement.scrollTop = 0; 
    }
-	//멤버 스크립트
-	
-	let isMemberClick = true;
-	
-	$("#member-tab").on("click", function(){
-		if(isMemberClick){
-			$(".member_boardtext").remove();
-			let memberText = $("<div class='col-12 member_boardtext'>");
-			$(".member_boardbox").append(memberText);
-		
-			let page = 1;  //페이징과 같은 방식이라고 생각하면 된다.
-	        getMemberList(page);
-	        page++;
-//				if(isAjaxing){
-//					return;
-//				}
-//				isAjaxing = true;
-//			alert(page)
-		 	  $(window).scroll(function(){   //스크롤이 최하단 으로 내려가면 리스트를 조회하고 page를 증가시킨다.
-		  	  	if($(window).scrollTop() >= $(document).height() - $(window).height()){
-//			  	        alert(page)
-		  	  		getMemberList(page);
-		   	        page++;   
-//		                console.log(page);
-		    	 } 
-		 	   });
-		 	   
-		 	   isMemberClick = false;
-		}else{
-			
-		}
+   //멤버 스크립트
+   
+   let isMemberClick = true;
+   let isSearchOk = false;
+   
+   $("#member-tab").on("click", function(){
+      if(isMemberClick){
+         $(".member_boardtext").remove();
+         let memberText = $("<div class='col-12 member_boardtext'>");
+         $(".member_boardbox").append(memberText);
+      
+         let page = 1;  //페이징과 같은 방식이라고 생각하면 된다.
+           getMemberList(page);
+           page++;
+//            if(isAjaxing){
+//               return;
+//            }
+//            isAjaxing = true;
+//         alert(page)
+            $(window).scroll(function(){   //스크롤이 최하단 으로 내려가면 리스트를 조회하고 page를 증가시킨다.
+            	if(isSearchOk){
+            		return false;
+            	}
+//             	alert(111)
+                if($(window).scrollTop() >= $(document).height() - $(window).height()){
+//                      alert(page)
+                   getMemberList(page);
+                    page++;   
+//                      console.log(page);
+              } 
+             });
+             
+             isMemberClick = false;
+      }else{
+         
+      }
 
-		
-	});
-	
-	
-	
-	 function getMemberList(pape){
-		let page = pape;
-		$.ajax({
+      
+   });
+   
+   
+   
+    function getMemberList(pape){
+      let page = pape;
+      $.ajax({
            url : '/searchMember.admin',
            type : 'POST',
            data : {page : page},
            dataType : 'json'
       }).done(function(resp){
-//			$(".receive_msgboard2").remove();
-//			if()
-		console.log(resp);
-		for(let i = 0; i < resp.length; i++){
-			
-			let memberDiv = $("<div class='col-12 member_boardbox2'>");
-			let memberDiv1 = $("<div class='row m-0 border border-2 rounded board_row '>");
-			
-			let memberDiv2 = $("<div class='col-6 col-lg-3 col-sm-6 d-lg-block p-0 text-center'>");
-			memberDiv2.text(resp[i].id);
-			
-			let memberDiv3 = $("<div class='col-6 col-lg-5 col-sm-6 m-0 title ellipsis p-0 text-center'>");
-			memberDiv3.text(resp[i].email);
-			
-			
-			let memberDiv4 = $("<div class='col-lg-4 d-none d-lg-block p-0 text-center'>");
-			memberDiv4.text(resp[i].information);
-			
-			
-			
-			$(".member_boardtext").append(memberDiv);
-			memberDiv.append(memberDiv1);
-			memberDiv1.append(memberDiv2);
-			memberDiv1.append(memberDiv3);
-			memberDiv1.append(memberDiv4);
-			
-			memberDiv.hide();
-			memberDiv.fadeIn(1500);
+//         $(".receive_msgboard2").remove();
+//         if()
+      console.log(resp);
+      for(let i = 0; i < resp.length; i++){
+         
+         let memberDiv = $("<div class='col-12 member_boardbox2'>");
+         let memberDiv1 = $("<div class='row m-0 border border-2 rounded board_row '>");
+         
+         let memberDiv2 = $("<div class='col-6 col-lg-3 col-sm-6 d-lg-block p-0 text-center'>");
+         memberDiv2.text(resp[i].id);
+         
+         let memberDiv3 = $("<div class='col-6 col-lg-5 col-sm-6 m-0 title ellipsis p-0 text-center'>");
+         memberDiv3.text(resp[i].email);
+         
+         
+         let memberDiv4 = $("<div class='col-lg-4 d-none d-lg-block p-0 text-center'>");
+         memberDiv4.text(resp[i].information);
+         
+         
+         
+         $(".member_boardtext").append(memberDiv);
+         memberDiv.append(memberDiv1);
+         memberDiv1.append(memberDiv2);
+         memberDiv1.append(memberDiv3);
+         memberDiv1.append(memberDiv4);
+         
+         memberDiv.hide();
+         memberDiv.fadeIn(1500);
             
-		}
-//			setTimeout(function(){isAjaxing = false;}, 100000);
-	})
+      }
+//         setTimeout(function(){isAjaxing = false;}, 100000);
+   })
 };
-// 	search 리셋버튼
-	
-	$("#cancel-member").on("click", function(){
-			$(".member_boardtext").remove();
-			let memberText = $("<div class='col-12 member_boardtext'>");
-			$(".member_boardbox").append(memberText);
+//    search 리셋버튼
+   
+   
+   var isDelDisabled = false;
+   $("#cancel-member").on("click", function(){
+		$("#cancel-member").attr("disabled","disabled");
+		$("#search-member").removeAttr("disabled");
 		
-			let page = 1;  //페이징과 같은 방식이라고 생각하면 된다.
-	        getMemberList(page);
-	        page++;
-//				if(isAjaxing){
-//					return;
-//				}
-//				isAjaxing = true;
-//			alert(page)
-		 	  $(window).scroll(function(){   //스크롤이 최하단 으로 내려가면 리스트를 조회하고 page를 증가시킨다.
-		  	  	if($(window).scrollTop() >= $(document).height() - $(window).height()){
-//			  	        alert(page)
-		  	  		getMemberList(page);
-		   	        page++;   
-//		                console.log(page);
-		    	 } 
-		 	   });
-		 	   
-			
-
-		
-	});
-	
-	
-	
-	isSendClick= true;
-	$("#v-pills-send-tab").on("click", function(){
-		if(isSendClick){
-			console.log(123);
-			$(".send_msgtext").remove();
-			let msgText = $("<div class='col-12 send_msgtext'>");
-			$(".send_msgbox").append(msgText);
-			
-			let page = 1;  //페이징과 같은 방식이라고 생각하면 된다.
-	        getSendList(page);
-	        page++;
-		
-//		alert(page)
-		 	  $(window).scroll(function(){   //스크롤이 최하단 으로 내려가면 리스트를 조회하고 page를 증가시킨다.
-		  	  	if($(window).scrollTop() >= $(document).height() - $(window).height()){
-//		  	        alert(page)
-		  	  		getSendList(page);
-		   	        page++;   
-//		                console.log(page);
-		    	 } 
-		 	   });
-		 	   isSendClick = false;
-		}else{
-			
-		}
-		
-	});
-	
-	
-	
-	 function getSendList(pape){
-		let page = pape;
-		
-		$.ajax({
+	   isDisabled = false;//검색버튼 다시 수행 가능하게.
+	   
+	    if (isDelDisabled) {  //<-( 1 ) 수행가능여부 검사
+	        alert("이미 작업을 수행했습니다. 검색을 해주세요.");
+	        return false;
+	      } else {
+	      isDelDisabled = true; //<-( 2 ) 실행 불가능하도록 flag 변경
+	      
+	      
+	   	 $("#Membercontents").val("");
+	   	 
+	   
+         $(".member_boardtext").remove();
+         let memberText = $("<div class='col-12 member_boardtext'>");
+         $(".member_boardbox").append(memberText);
+      
+         let page = 1;  //페이징과 같은 방식이라고 생각하면 된다.
+           getMemberList(page);
+           page++;
+//            if(isAjaxing){
+//               return;
+//            }
+//            isAjaxing = true;
+//         alert(page)
+            $(window).scroll(function(){   //스크롤이 최하단 으로 내려가면 리스트를 조회하고 page를 증가시킨다.
+            	
+                if($(window).scrollTop() >= $(document).height() - $(window).height()){
+//                      alert(page)
+                   getMemberList(page);
+                    page++;   
+//                      console.log(page);
+              } 
+             });
+             
+           setTimeout(function(){
+             $("#cancel-member").removeAttr("disabled");
+          },3000);
+           
+	      }
+   });
+   
+   
+   
+   isSendClick= true;
+   $("#v-pills-send-tab").on("click", function(){
+      if(isSendClick){
+         console.log(123);
+         $(".send_msgtext").remove();
+         let msgText = $("<div class='col-12 send_msgtext'>");
+         $(".send_msgbox").append(msgText);
+         
+         let page = 1;  //페이징과 같은 방식이라고 생각하면 된다.
+           getSendList(page);
+           page++;
+      
+//      alert(page)
+            $(window).scroll(function(){   //스크롤이 최하단 으로 내려가면 리스트를 조회하고 page를 증가시킨다.
+                if($(window).scrollTop() >= $(document).height() - $(window).height()){
+//                   alert(page)
+                   getSendList(page);
+                    page++;   
+//                      console.log(page);
+              } 
+             });
+             isSendClick = false;
+      }else{
+         
+      }
+      
+   });
+   
+   
+   
+    function getSendList(pape){
+      let page = pape;
+      
+      $.ajax({
           url : '/sendMsgBox.mpg',
           type : 'POST',
           data : {page : page},
           dataType : 'json'
      }).done(function(resp){
-		
-		
-		for(let i = 0; i < resp.length; i++){
-			
-			let msgDiv = $("<div class='col-12 send_msgboard2'>");
-			let msgDiv1 = $("<div class='row m-0 border border-2 rounded board_row '>");
-			
-			let msgDiv2 = $("<div class='col-md-2 col-lg-1 d-none d-lg-block p-0'>");
-			msgDiv2.text(resp[i].line);
-			
-			let msgDiv3 = $("<div class='col-8 col-md-8 col-lg-5 m-0 title ellipsis p-0'>");
-			let msgHref = $("<a href='detailMsg.mpg?message_seq="+resp[i].message_seq+"'>");
-			let msgSpan = $("<span>")
-			msgHref.text(resp[i].title);
-			
-			let msgDiv4 = $("<div class='col-4 col-md-4 col-lg-2 p-0 ellipsis text-center'>");
-			let msgSpan2 = $("<span>")
-			msgSpan2.text('${loginID}');
-			
-			let msgDiv5 = $("<div class='col-md-2 col-lg-4 d-none d-lg-block p-0 text-center'>");
-			msgDiv5.text(resp[i].date);
-			
-			$(".send_msgtext").append(msgDiv);
-			msgDiv.append(msgDiv1);
-			msgDiv1.append(msgDiv2);
-			msgDiv1.append(msgDiv3);
-			msgDiv3.append(msgSpan);
-			msgSpan.append(msgHref);
-			msgDiv1.append(msgDiv4);
-			msgDiv4.append(msgSpan2);
-			msgDiv1.append(msgDiv5);
-			
-			msgDiv.hide();
+      
+      
+      for(let i = 0; i < resp.length; i++){
+         
+         let msgDiv = $("<div class='col-12 send_msgboard2'>");
+         let msgDiv1 = $("<div class='row m-0 border border-2 rounded board_row '>");
+         
+         let msgDiv2 = $("<div class='col-md-2 col-lg-1 d-none d-lg-block p-0'>");
+         msgDiv2.text(resp[i].line);
+         
+         let msgDiv3 = $("<div class='col-8 col-md-8 col-lg-5 m-0 title ellipsis p-0'>");
+         let msgHref = $("<a href='detailMsg.mpg?message_seq="+resp[i].message_seq+"'>");
+         let msgSpan = $("<span>")
+         msgHref.text(resp[i].title);
+         
+         let msgDiv4 = $("<div class='col-4 col-md-4 col-lg-2 p-0 ellipsis text-center'>");
+         let msgSpan2 = $("<span>")
+         msgSpan2.text('${loginID}');
+         
+         let msgDiv5 = $("<div class='col-md-2 col-lg-4 d-none d-lg-block p-0 text-center'>");
+         msgDiv5.text(resp[i].date);
+         
+         $(".send_msgtext").append(msgDiv);
+         msgDiv.append(msgDiv1);
+         msgDiv1.append(msgDiv2);
+         msgDiv1.append(msgDiv3);
+         msgDiv3.append(msgSpan);
+         msgSpan.append(msgHref);
+         msgDiv1.append(msgDiv4);
+         msgDiv4.append(msgSpan2);
+         msgDiv1.append(msgDiv5);
+         
+         msgDiv.hide();
             msgDiv.fadeIn(1500);
-		}
-	})
+      }
+   })
 };
 
 //쪽지보내기
 $("#modal_sendmsg").on("click", function(){
-	if($("#modal_receiver").val()==""){
-		alert("받는 사람의 닉네임을 입력하세요.");
-		$("#modal_receiver").focus();
-		return false;
-	}else if($("#modal_title").val()==""){
-		alert("제목을 입력해주세요.");
-		$("#modal_title").focus();
-	}else if($("#modal_msgContents").val()==""){
-		alert("내용을 입력해주세요.");
-		$("#modal_msgContents").focus();
-	}else{
-    	$.ajax({
-    		url:"sendMsg.mpg",
-    		type:"post",
-    		data:{
-    			receiver:$("#modal_receiver").val(),
-    			title:$("#modal_title").val(),
-    			contents:$("#modal_msgContents").val()
-    			},
-    		dataType:"json"
-    	}).done(function(resp){
-    		console.log(resp);
-    		if(resp==0){
-    			alert("존재하지 않는 닉네임입니다.");
-    		}else{
-    			location.reload();
-    		}
-    	})
+   if($("#modal_receiver").val()==""){
+      alert("받는 사람의 닉네임을 입력하세요.");
+      $("#modal_receiver").focus();
+      return false;
+   }else if($("#modal_title").val()==""){
+      alert("제목을 입력해주세요.");
+      $("#modal_title").focus();
+   }else if($("#modal_msgContents").val()==""){
+      alert("내용을 입력해주세요.");
+      $("#modal_msgContents").focus();
+   }else{
+       $.ajax({
+          url:"sendMsg.mpg",
+          type:"post",
+          data:{
+             receiver:$("#modal_receiver").val(),
+             title:$("#modal_title").val(),
+             contents:$("#modal_msgContents").val()
+             },
+          dataType:"json"
+       }).done(function(resp){
+          console.log(resp);
+          if(resp==0){
+             alert("존재하지 않는 닉네임입니다.");
+          }else{
+             location.reload();
+          }
+       })
     }
 })
-//멤버 검색하기
-$("#search-member").on("click",function(){
-	let sDate = $("#sDate").val();//시작일
-	let eDate = $("#eDate").val();//종료일
-	if(sDate == "" && eDate == ""){
-	}else if(sDate == ""){
-		alert("시작 일자를 선택해주세요. 닉네임이나 이메일로만 검색하고 싶으시다면 일자를 삭제해 주세요.");
-		return false;
-	}else if(eDate ==""){
-		alert("마지막 일자를 선택해주세요. 닉네임이나 이메일로만 검색하고 싶으시다면 일자를 삭제해 주세요.");
-		return false;
-	}
-	
-	
-	$(".member_boardtext").remove();
-	let memberText = $("<div class='col-12 member_boardtext'>");
-	$(".member_boardbox").append(memberText);
 
-	$.ajax({
-		url:"adiminPageTap2Search.admin",
-		type:"get",
-		data:{
-			searchOption : $("#searchMember").val(),
-			Membercontents : $("#Membercontents").val(),
-			sDate : sDate,
-			eDate : eDate
-		},
-		dataType:"json"
-	}).done(function(resp){
-		for(let i = 0; i < resp.length; i++){
-			
-			let memberDiv = $("<div class='col-12 member_boardbox2'>");
-			let memberDiv1 = $("<div class='row m-0 border border-2 rounded board_row '>");
-			
-			let memberDiv2 = $("<div class='col-6 col-lg-3 col-sm-6 d-lg-block p-0 text-center'>");
-			memberDiv2.text(resp[i].id);
-			
-			let memberDiv3 = $("<div class='col-6 col-lg-5 col-sm-6 m-0 title ellipsis p-0 text-center'>");
-			memberDiv3.text(resp[i].email);
-			
-			
-			let memberDiv4 = $("<div class='col-lg-4 d-none d-lg-block p-0 text-center'>");
-			memberDiv4.text(resp[i].date);
-			
-			
-			
-			$(".member_boardtext").append(memberDiv);
-			memberDiv.append(memberDiv1);
-			memberDiv1.append(memberDiv2);
-			memberDiv1.append(memberDiv3);
-			memberDiv1.append(memberDiv4);
-			
-			memberDiv.hide();
-			memberDiv.fadeIn(1500);
-            
-		}
-	})
+
+//멤버 검색하기
+var isDisabled = false;
+$("#search-member").on("click",function(){
+	$("#search-member").attr("disabled","disabled");
+	$("#cancel-member").removeAttr("disabled");
+	isDelDisabled = false;//X버튼 다시 수행가능하게 
+	
+	
+	if (isDisabled) {  //<-( 1 ) 수행가능여부 검사
+        alert("이미 작업이 수행중입니다.");
+        return false;
+      } else {
+        isDisabled = true; //<-( 2 ) 실행 불가능하도록 flag 변경
+
+
+    
+   isSearchOk = true;//다른 스크롤 비활성화 시키는데 사용되는 변수.
+   
+   let sDate = $("#sDate").val();//시작일
+   let eDate = $("#eDate").val();//종료일
+   if(sDate == "" && eDate == ""){
+   }else if(sDate == ""){
+      alert("시작 일자를 선택해주세요. 닉네임이나 이메일로만 검색하고 싶으시다면 일자를 삭제해 주세요.");
+      return false;
+   }else if(eDate ==""){
+      alert("마지막 일자를 선택해주세요. 닉네임이나 이메일로만 검색하고 싶으시다면 일자를 삭제해 주세요.");
+      return false;
+   }
+   
+   
+   $(".member_boardtext").remove();
+   let memberText = $("<div class='col-12 member_boardtext'>");
+   $(".member_boardbox").append(memberText);
+   
+   let page = 1;  //페이징과 같은 방식이라고 생각하면 된다.
+    getMemberSearchList(page);
+    page++;
+//      if(isAjaxing){
+//         return;
+//      }
+//      isAjaxing = true;
+//   alert(page)
+      $(window).scroll(function(){   //스크롤이 최하단 으로 내려가면 리스트를 조회하고 page를 증가시킨다.
+          if($(window).scrollTop() >= $(document).height() - $(window).height()){
+//                alert(page)
+             getMemberSearchList(page);
+              page++;   
+//                console.log(page);
+        } 
+       });
+       
+
+      }
 })
+function getMemberSearchList(pape){
+      let page = pape;
+      
+      $.ajax({
+         url:"adiminPageTap2Search.admin",
+         type:"get",
+         data:{
+            searchOption : $("#searchMember").val(),
+            Membercontents : $("#Membercontents").val(),
+            sDate :  $("#sDate").val(),
+            eDate : $("#eDate").val(),
+            page : page
+         },
+         dataType:"json"
+      }).done(function(resp){
+         for(let i = 0; i < resp.length; i++){
+            
+            let memberDiv = $("<div class='col-12 member_boardbox2'>");
+            let memberDiv1 = $("<div class='row m-0 border border-2 rounded board_row '>");
+            
+            let memberDiv2 = $("<div class='col-6 col-lg-3 col-sm-6 d-lg-block p-0 text-center'>");
+            memberDiv2.text(resp[i].id);
+            
+            let memberDiv3 = $("<div class='col-6 col-lg-5 col-sm-6 m-0 title ellipsis p-0 text-center'>");
+            memberDiv3.text(resp[i].email);
+            
+            
+            let memberDiv4 = $("<div class='col-lg-4 d-none d-lg-block p-0 text-center'>");
+            memberDiv4.text(resp[i].date);
+            
+            
+            
+            $(".member_boardtext").append(memberDiv);
+            memberDiv.append(memberDiv1);
+            memberDiv1.append(memberDiv2);
+            memberDiv1.append(memberDiv3);
+            memberDiv1.append(memberDiv4);
+            
+            memberDiv.hide();
+            memberDiv.fadeIn(1500);
+               
+         }
+      })
+};
 
 </script>
 

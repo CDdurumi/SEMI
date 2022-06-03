@@ -106,7 +106,7 @@ public class AdminController extends HttpServlet {
 				
 				pw.append(g.toJson(list));
 			}else if(uri.equals("/adiminPageTap2Search.admin")) {
-				int capge = Integer.parseInt(request.getParameter(uri));
+				int capge = Integer.parseInt(request.getParameter("page"));
 				String sDate = request.getParameter("sDate");
 				String eDate = request.getParameter("eDate");
 				
