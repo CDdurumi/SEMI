@@ -471,6 +471,13 @@ font-weight: bold;
             		$("#fileArea").prepend(div);
             	}
             })
+            
+            
+    		//복사 붙여넣기 방지
+    		window.addEventListener("paste", function(event) {
+    			alert("붙여넣기는 사용하실 수 없습니다.");
+    			return event.preventDefault();
+    		});
    	}) 
         
         </script>
