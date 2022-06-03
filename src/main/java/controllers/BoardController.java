@@ -436,8 +436,27 @@ public class BoardController extends HttpServlet {
 				String seq = request.getParameter("seq");
 				dao.delete(seq);// 게시글 삭제
 
-				response.sendRedirect("/boardMainView.board?cpage=1");// 자유게시판 메인화면으로 전환
+				String menu = seq.substring(0, 1);
 
+				if (menu.equals("f")) {
+					response.sendRedirect("/boardMainView.board?cpage=1");
+				} else if (menu.equals("g")) {
+					response.sendRedirect("/galleryMain.board?cpage=1");
+				} else if (menu.equals("j")) {
+					response.sendRedirect("/jobMain.board?cpage=1");
+				} else if (menu.equals("r")) {
+					response.sendRedirect("/foodMain.board?cpage=1");
+				} else if (menu.equals("h")) {
+					response.sendRedirect("/houseMain.board?cpage=1");
+				} else if (menu.equals("e")) {
+					response.sendRedirect("/editorReMain.board?cpage=1");
+//					String referer= request.getHeader("referer");
+//					System.out.println(referer);
+//					response.sendRedirect(referer);
+				}
+				
+				
+				
 			} else if (uri.equals("/modiPage.board")) {// 게시글 수정 버튼 클릭 시
 				String all_board_seq = request.getParameter("seq");// 게시글 고유 넘버
 //				System.out.println(all_board_seq);

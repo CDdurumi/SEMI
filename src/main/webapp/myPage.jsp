@@ -460,6 +460,9 @@ pageEncoding="UTF-8"%>
            right: 0px;
            height: 100%;
        }
+       #editID, #pwtext, .pw_check{
+       width:90%;
+       }
        /*받은 쪽지함, 보낸 쪽지함 버튼*/
        #v-pills-tab> button{
            width: 80px;

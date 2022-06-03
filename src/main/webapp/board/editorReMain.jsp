@@ -317,8 +317,8 @@
                 /* margin: auto; */
                 
                 width:50%;
-                max-width: 600px;
-                min-width: 500px;
+                 max-width: 600px; 
+                 min-width: 400px; 
                 height: 500px;
                 padding-bottom: 20px;
             }
@@ -367,7 +367,6 @@
             }
             .title{
             padding-left:0px;
-                padding-top: 5px;
                 font-size: 20px;
 				
 				
