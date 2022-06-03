@@ -620,6 +620,8 @@ $(function(){
         $("#r").attr("selected","selected");
     }else if(boardOption == 'h'){//숙소리뷰
         $("#h").attr("selected","selected");
+    }else if(boardOption == 'e'){//숙소리뷰
+        $("#e").attr("selected","selected");
     }
     
     //게시글 콤보박스 선택 시 이벤트
@@ -884,7 +886,10 @@ window.onload = function(){
                                     </option>
                                     <option value="h" id="h">
                                         숙소리뷰
-                                    </option>                                                            
+                                    </option>
+                                    <option value="e" id="e">
+                                        에디터추천
+                                    </option>                                                               
                         </select>
                         
                         
