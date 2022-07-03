@@ -47,7 +47,7 @@ public class FilesController extends HttpServlet {
 				String sys_name = request.getParameter("sys_name");
 				String ori_name = request.getParameter("ori_name");
 
-				File target = new File(filePath +"/"+ ori_name );
+				File target = new File(filePath +"/"+ sys_name );
 				byte[] contents = new byte[(int) target.length()];
 
 				ori_name = new String(ori_name.getBytes("utf8"),"ISO-8859-1");		
